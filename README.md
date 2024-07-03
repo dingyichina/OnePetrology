@@ -9,4 +9,4 @@
 
 
 
-![Structure](images/structure.jpg)
+![Structure](https://github.com/dingyichina/OnePetrology/tree/main/images/structure.jpg)
