@@ -3,4 +3,4 @@ Belonging to the DDE International Big Science Program, it focuses on the resear
 
 [visit OnePetrology](https://dde.igeodata.org)
 
-![Structure](images/structure.png)
+![Structure](./images/structure.png)
