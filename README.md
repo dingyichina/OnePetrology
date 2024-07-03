@@ -10,5 +10,3 @@
 
 
 ![Structure](images/structure.jpg)
-
-
