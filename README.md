@@ -3,4 +3,4 @@
 
 [visit OnePetrology](https://dde.igeodata.org)
 
-![Structure](./images/structure.png)
+![Structure](images/structure.png)
