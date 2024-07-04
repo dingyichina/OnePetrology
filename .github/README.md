@@ -1,7 +1,7 @@
-# Project Name
+# DDE OnePetrology
 
-Welcome to the [Project Name] repository!
+Welcome to the [OnePetrology] repository!
 
 Select your language:
-- [English](README.en.md)
-- [中文](README.zh.md)
+- [English](../README.en.md)
+- [中文](../README.zh.md)
