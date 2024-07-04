@@ -1,0 +1,26 @@
+<div class="portfolio-area sp " >
+        <div class="container" >
+            <div class="row" >
+                <@_contentList  categoryId=139  pageIndex=0  pageSize=5 > 
+                    <#list page.list as a>
+                <div class="single-portfolio col-md-3">
+                    <div class="inner">
+                        <div class="portfolio-img">
+                            <img src="    ${(a.cover)!}" alt="portfolio-image">
+                            <div class="hover-content">
+                                <div>
+                                    <a href="#anchordata" class="button">数据详情...</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-content">
+                            <a href="#"><h4>    ${(a.title)!}</h4></a>
+                            <span>${(a.author)!}</span>
+                        </div>
+                    </div>
+                </div>
+                </#list>
+                </@_contentList>
+         </div>
+    </div>
+  </div>

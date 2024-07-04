@@ -1,0 +1,36 @@
+<div class="pageContent">
+    <div layoutH class="leftPageContent">
+        <ul class="tree treeFolder">
+            <li>
+                <@_sysDept id=admin.deptId>
+                    <#assign  dept=object/>
+                </@_sysDept>
+                <#if dept?has_content&&dept.ownsAllCategory>
+                    <a href="common/content_list.html" target="ajax" rel="contentBox"><@t.page 'category'/></a>
+                <#else>
+                    <a href="javascript:;" onclick="return false;"><@t.page 'category'/></a>
+                </#if>
+                <ul>
+                    <@_categoryList advanced=true parentId=parentId pageSize=500>
+                        <#list page.list as a>
+                            <@t.merge 'categoryIds' a.id!/>
+                        </#list>
+                        <@_sysDeptCategory deptId=admin.deptId!'' categoryIds=t.categoryIds!><#assign deptCategoryMap=map!/></@_sysDeptCategory>
+                        <#list page.list as a>
+                            <#if (deptCategoryMap[a.id?string])?has_content&&deptCategoryMap[a.id?string]>
+                                <li<#if a.childIds?has_content> _src="common/contentCategoryTree.html?parentId=${a.id}"</#if>>
+                                    <a href="common/content_list.html?categoryId=${a.id}" class="exclude-translate" target="ajax" rel="contentBox">${(a.name)!}</a>
+                                </li>
+                            </#if>
+                        <#else>
+                            <li><a><@t.page 'empty_directory'/></a></li>
+                        </#list>
+                    </@_categoryList>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="contentBox" class="rightPageContent">
+        <#include "../common/content_list.html"/>
+    </div>
+</div>

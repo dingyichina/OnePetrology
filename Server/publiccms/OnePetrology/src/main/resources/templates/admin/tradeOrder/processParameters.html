@@ -1,0 +1,67 @@
+<@_tradeOrder id=id><#assign a=object/></@_tradeOrder>
+<form action="tradeOrder/process?callbackType=closeCurrent" method="post" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+    <input type="hidden" name="id" value="${id!}"/>
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="pageFormContent" layoutH>
+        <dl class="nowrap">
+            <dt><@t.page 'product_list'/>:</dt>
+            <dd class="exclude-translate" >
+                <@_tradeOrderProductList orderId=a.id>
+                <#list page.list as op>
+                    <@t.merge 'contentIds' op.contentId!/>
+                    <@t.merge 'productIds' op.productId!/>
+                </#list>
+                <@_content ids=t.contentIds!><#assign contentMap=map!/></@_content>
+                <@_contentProduct ids=t.productIds!><#assign productMap=map!/></@_contentProduct>
+                <#list page.list as op>
+                    <div class="unit">
+                        <#if (productMap[op.productId?string].cover)?has_content || (contentMap[op.contentId?string].cover)?has_content>
+                            <p class="thumbnail">
+                                <img src="${(productMap[op.productId?string].cover)!(contentMap[op.contentId?string].cover)!}"/>
+                            </p>
+                        </#if>
+                        <p><label><@t.page 'title'/>:</label><a href="cmsContent/view.html?id=${op.contentId!}" class="exclude-translate" target="dialog" rel="viewContent${op.contentId!}">${(contentMap[op.contentId?string].title)!}</a> - ${(productMap[op.productId?string].title)!}</p>
+                        <p><label><@t.page 'product.price'/>:</label>${op.price!}</p>
+                        <p><label><@t.page 'product.quantity'/>:</label>${op.quantity!}</p>
+                        <p><label><@t.page 'remark'/>:</label>${op.remark!}</p>
+                    </div>
+                    <div class="divider"></div>
+                </#list>
+            </@_tradeOrderProductList>
+            </dd>
+        </dl>
+        <dl class="nowrap">
+            <dt><@t.page 'receiver'/>:</dt>
+            <dd class="exclude-translate" >
+                <p>${a.addressee!} <label><@t.page 'telephone'/>:</label>${a.telephone!}</p>
+                <p><label><@t.page 'shipping_address'/>:</label>${a.address!}</p>
+            </dd>
+        </dl>
+        <dl class="nowrap">
+            <dt><@t.page 'remark'/>:</dt>
+            <dd class="exclude-translate" >${(a.remark)!}</dd>
+        </dl>
+        <dl>
+            <dt><@t.page 'create_date'/>:</dt>
+            <dd class="exclude-translate" >
+                ${(a.createDate)!}
+            </dd>
+        </dl>
+        <dl>
+            <dt><@t.page 'payment'/>:</dt>
+            <dd>
+                <#if a.paymentId?has_content><label><@t.page 'payment.id'/>:</label></#if>${(a.paymentId)!} ${(a.paymentDate)!}
+            </dd>
+        </dl>
+        <dl class="nowrap">
+            <dt><@t.page 'order.process_info'/>:</dt>
+            <dd><input name="processInfo" class="required" type="text" value="" size="80" maxlength="200"/></dd>
+        </dl>
+    </div>
+    <div class="formBar">
+        <ul>
+            <li><button type="submit" class="buttonActive"><@t.page 'order.process'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+</form>

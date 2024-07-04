@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://www.kerneler.com/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+    <table-filter match-name="NI_ENTERPRISE_GROUP"/>
+    <table-filter match-name="ENTERPRISE_2_ECQ"/>
+    <table-filter match-name="NI_ENTERPRISE"/>
+    <table-filter match-name="NI_PROCESS_UNIT"/>
+    <table-filter match-name="NI_COLLECT_ITEM"/>
+    <table-filter match-name="NI_COLLECT_SYSTEM_TYPE"/>
+    <table-filter match-name="NI_ENERGY_TYPE"/>
+    <table-filter match-name="NI_ENERGY_USAGE"/>
+    <table-filter match-name="NI_ENTERPRISE_TYPE"/>
+    <table-filter match-name="NI_INDUSTRY"/>
+    <table-filter match-name="NI_NATIONAL_RAW_DATA"/>
+    <table-filter match-name="NI_PROCESS"/>
+    <table-filter match-name="NI_PRODUCT_QUOTA"/>
+    <table-filter match-name="NI_REGION"/>
+    <table-filter match-name="NI_PLT_COMM_PROTOCOL_BF"/>
+    <table-filter match-name="NI_ENERGY_COLLECT_QUOTA"/>
+    <table-filter match-name="PLJSON_TESTSUITE"/>
+    <table-filter match-name="EI_DEVICE"/>
+    <table-filter match-name="EI_ENERGY_COLLECT_QUOTA"/>
+    <table-filter match-name="EI_METER"/>
+    <table-filter match-name="TEST"/>
+    <table-filter match-name="EI_ENTERPRISE"/>
+    <table-filter match-name="EI_ENTERPRISE_ENERGY_DATA"/>
+    <table-filter match-name="TMPA"/>
+    <table-filter match-name="EI_ENTERPRISE_GROUP"/>
+    <table-filter match-name="NI_PLT_COMM_PROTOCOL"/>
+    <table-filter match-name="EI_ENTERPRISE_RAW_DATA_JSON"/>
+    <table-filter match-name="CJ_TEST_JSON"/>
+    <table-filter match-name="EI_PROCESS_UNIT"/>
+    <table-filter match-name="EI_ENTERPRISE_RAW_DATA"/>
+    <table-filter match-name="EI_PROCESS"/>
+    <table-filter match-name="NI_UP_ENERGY_TASK"/>
+    <table-filter match-name="C_JSON_T"/>
+    <table-filter match-name="NI_ENERGY_COLLECT_QUOTA_BF"/>
+    <table-filter match-name="RPT_NYXF_ENTERPRISE"/>
+</hibernate-reverse-engineering>

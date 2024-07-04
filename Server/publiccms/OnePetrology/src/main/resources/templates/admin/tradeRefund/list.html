@@ -1,0 +1,82 @@
+<@_tradeRefundList paymentId=paymentId refundUserId=refundUserId status=status 
+            orderType=orderType pageIndex=pageNum pageSize=numPerPage>
+<div class="pageHeader">
+    <form class="pagerForm" autocomplete="off" onsubmit="return navTabSearch(this);" method="post">
+        <#include "../include_page/parameters.html"/>
+        <div class="searchBar">
+            <ul class="searchContent">
+                <li>
+                    <label><@t.page 'payment.id'/>:</label>
+                    <input type="text" name="paymentId" value="${paymentId!}" />
+                </li>
+                <li>
+                    <label><@t.page 'operate_user'/>:</label>
+                    <#if refundUserId?has_content><@_sysUser id=refundUserId><#assign u=object/></@_sysUser></#if>
+                    <input name="refundUserId" value="${(u.id)!}" type="hidden"/>
+                    <input name="nickName" readonly="readonly" size="10" value="${(u.nickName)!}" type="text"/>
+                    <a class="btnLook" href="sysUser/lookup.html?field=refundUserId" width="920" lookupGroup=""><@t.page 'user.select'/></a>
+                </li>
+                <li>
+                    <label><@t.page 'status'/>:</label>
+                    <#list 0..4 as s>
+                        <label style="width:auto">
+                            <input <@t.compare status!'' s?string 'checked="checked"'/> name="status" value="${s}" type="checkbox"/>
+                            <@t.page 'status.refund.'+s/>
+                        </label>
+                    </#list>
+                </li>
+            </ul>
+            <div class="subBar">
+                <ul>
+                    <li>
+                        <button type="submit" class="buttonActive"><@t.page 'button.search'/></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<@_sysAuthorized roleIds=admin.roles urls='tradeRefund/refundParameters,tradeRefund/refuseParameters'><#assign authorizedMap=map/></@_sysAuthorized>
+<div class="pageContent">
+    <table class="table" width="100%" layoutH>
+        <thead>
+            <tr>
+                <th><@t.page 'id'/></th>
+                <th><@t.page 'payment.id'/></th>
+                <th><@t.page 'amount'/></th>
+                <th><@t.page 'refund.reason'/></th>
+                <th><@t.page 'operate_user'/></th>
+                <th><@t.page 'refund.amount'/></th>
+                <th><@t.page 'status'/></th>
+                <th><@t.page 'reply'/></th>
+                <th orderField="createDate" class="<#if orderField??&&'createDate'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>"><@t.page 'create_date'/></th>
+                <th><@t.page 'operate'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.id}">
+                <td>${a.id!}</td>
+                <td>${a.orderId!}</td>
+                <td>${a.amount!}</td>
+                <td class="exclude-translate">${a.reason!}</td>
+                <td>${a.refundUserId!}</td>
+                <td>${a.refundAmount!}</td>
+                <td><@t.page 'status.refund.'+a.status/></td>
+                <td class="exclude-translate">${a.reply!}</td>
+                <td>${a.createDate!}</td>
+                <td class="wrap">
+                <#if authorizedMap['tradeRefund/refundParameters'] && (0=a.status || 4=a.status)>
+                    <a href="tradeRefund/refundParameters.html?id=${a.id}" class="btnText green" target="dialog" mask="true"><i class="icon-plus-sign-alt"></i> <@t.page 'refund'/></a>
+                </#if>
+                <#if authorizedMap['tradeRefund/refuseParameters'] && (0=a.status || 4=a.status)>
+                    <a href="tradeRefund/refuseParameters.html?id=${a.id}" class="btnText red" target="dialog" mask="true"><i class="icon-plus-sign-alt"></i> <@t.page 'button.refuse'/></a>
+                </#if>
+                </td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</div>
+</@_tradeRefundList>

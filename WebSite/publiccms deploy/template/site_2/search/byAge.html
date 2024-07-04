@@ -1,0 +1,590 @@
+<html lang="en">
+<head>
+    <@_includePlace path="/63241365-51a7-4903-89e6-7619031fa9fe.html"/> <#-- Header-link -->
+    <link href="${site.sitePath}css/earthchem.css" rel="stylesheet">
+    <link as=style href=${site.sitePath}css/app.9390168c.css rel=preload>
+    <link as=style href=${site.sitePath}css/chunk-vendors.81999dec.css rel=preload>
+    <link as=script href=${site.sitePath}js/app.d2778863.js rel=preload>
+    <link as=script href=${site.sitePath}js/chunk-vendors.3b2de4a4.js rel=preload>
+    <link href=${site.sitePath}css/chunk-vendors.81999dec.css rel=stylesheet>
+    <link href=${site.sitePath}css/app.9390168c.css rel=stylesheet>
+    <style >
+        td, th {
+            padding: 3px;
+        }
+    </style>
+    <link href="${site.sitePath}datatables/DataTables-1.10.25/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <script src="${site.sitePath}datatables/datatables.js"></script>
+    <link href="${site.sitePath}datatables/Buttons-1.7.1/css/buttons.bootstrap4.css" rel="stylesheet">
+    <script src="${site.sitePath}datatables/Buttons-1.7.1/js/buttons.bootstrap4.min.js"></script>
+    <script src="${site.sitePath}datatables/JSZip-2.5.0/jszip.min.js"></script>
+
+    <style>
+        div.dt-buttons {
+            clear: both;
+        }
+    </style>
+    <!--
+<script src="/ectemplatefiles/js/jssor.slider-27.1.0.min.js" type="text/javascript"></script>
+<script src="/ectemplatefiles/js/jssor.js"></script>
+-->
+    <style>
+
+        html,body{
+            padding: 0;
+            margin: 0;
+        }
+        main{
+            display: flex;
+            height: 500px;
+            flex-flow: row nowrap;
+        }
+        .left{
+			margin-top: 100px;
+           width: 600px;
+            background: #ff0;
+        }
+        .right{
+			margin-top: 388px;
+            flex: 1;
+            background: #F0F0F0;
+        }
+        footer{
+
+            position: fixed;
+            left: 0px;
+            bottom: 0px;
+            width: 100%;
+            height: 200px;
+            background-color: #eee;
+            z-index: 9999;
+        }
+
+
+    </style>
+
+    <script type="text/javascript">
+        <!--
+        function showdebug() {
+            $("#debug").show();
+        }
+
+        -->
+    </script>
+
+</head>
+
+<body class="menu-always-on-top">
+
+<div class="cl"></div>
+<main>
+
+ <@_includePlace path="/c8014652-e25e-4c4d-a3ca-9aad7fa0385c.html"/> <#-- header -->
+    
+         <div class="left">
+            <h1>Set Age</h1>
+            <form id="setmineral" action="/sampleInfo/querybyAge" method="post">
+                <input name="returnUrl" type="hidden" value="${site.dynamicPath}search/queryResult.html?result=true" />
+                <input type="hidden" name="pageIndex" value="1"/>
+                <input type="hidden" name="pageSize" value="50"/>
+                <input type="hidden" name="orderByField" value="id"/>
+                <input type="hidden" name="orderByType" value="asc"/>
+                <table class="ku_grid">
+                    <tbody>
+                    <tr>
+                        <td><h4>Age Span</h4>
+                        </td>
+                        <td>
+                            Min: <input name="age_min" size="5" type="text" value=""> Ma
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            Max: <input name="age_max" size="5" type="text" value=""> Ma
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="border:none">
+                            <div align="center">or</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><h4>Exact Age</h4>
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input name="age" size="5" type="text" value=""> Ma
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="border:none">
+                            <div align="center">or</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><h4>Geological Age</h4>
+                        </td>
+                        <td>
+                            <select name="geoage">
+                                <option value="">Select Age...
+                                </option>
+                                <option value="1"> CENOZOIC ( 0 Ma - 65.5 Ma )
+                                </option>
+                                <option value="2"> QUATERNARY ( 0 Ma - 2.6 Ma )
+                                </option>
+                                <option value="3"> HOLOCENE ( 0 Ma - 0.01 Ma )
+                                </option>
+                                <option value="4"> PLEISTOCENE ( 0.01 Ma - 2.6 Ma )
+                                </option>
+                                <option value="5"> CALABRIAN ( 0.01 Ma - 1.8 Ma )
+                                </option>
+                                <option value="6"> GELASIAN ( 1.8 Ma - 2.6 Ma )
+                                </option>
+                                <option value="7"> TERTIARY ( 2.6 Ma - 65.5 Ma )
+                                </option>
+                                <option value="8"> NEOGENE ( 2.6 Ma - 23 Ma )
+                                </option>
+                                <option value="9"> PLIOCENE ( 2.6 Ma - 5.3 Ma )
+                                </option>
+                                <option value="10"> PIACENZIAN ( 2.6 Ma - 3.6 Ma )
+                                </option>
+                                <option value="11"> ZANCLEAN ( 3.6 Ma - 5.3 Ma )
+                                </option>
+                                <option value="12"> MIOCENE ( 5.3 Ma - 23 Ma )
+                                </option>
+                                <option value="13"> MESSINIAN ( 5.3 Ma - 7.2 Ma )
+                                </option>
+                                <option value="14"> TORTONIAN ( 7.3 Ma - 11.6 Ma )
+                                </option>
+                                <option value="15"> SERRAVALLIAN ( 11.6 Ma - 13.8 Ma )
+                                </option>
+                                <option value="16"> LANGHIAN ( 13.8 Ma - 16 Ma )
+                                </option>
+                                <option value="17"> BURDIGALIAN ( 16 Ma - 20.4 Ma )
+                                </option>
+                                <option value="18"> AQUITANIAN ( 20.4 Ma - 23 Ma )
+                                </option>
+                                <option value="19"> OLIGOCENE ( 23 Ma - 33.9 Ma )
+                                </option>
+                                <option value="20"> CHATTIAN ( 23 Ma - 28.4 Ma )
+                                </option>
+                                <option value="21"> RUPELIAN ( 28.4 Ma - 33.9 Ma )
+                                </option>
+                                <option value="22"> EOCENE ( 33.9 Ma - 55.8 Ma )
+                                </option>
+                                <option value="23"> PRIABONIAN ( 33.9 Ma - 37.2 Ma )
+                                </option>
+                                <option value="24"> BARTONIAN ( 37.2 Ma - 40.4 Ma )
+                                </option>
+                                <option value="25"> LUTETIAN ( 40.4 Ma - 48.6 Ma )
+                                </option>
+                                <option value="26"> YPRESIAN ( 48.6 Ma - 55.8 Ma )
+                                </option>
+                                <option value="27"> PALEOCENE ( 55.8 Ma - 65.5 Ma )
+                                </option>
+                                <option value="28"> THANETIAN ( 55.8 Ma - 58.7 Ma )
+                                </option>
+                                <option value="29"> SELANDIAN ( 58.7 Ma - 61.7 Ma )
+                                </option>
+                                <option value="30"> DANIAN ( 61.7 Ma - 65.5 Ma )
+                                </option>
+                                <option value="31"> MESOZOIC ( 65.5 Ma - 251 Ma )
+                                </option>
+                                <option value="32"> CRETACEOUS ( 65.5 Ma - 145.5 Ma )
+                                </option>
+                                <option value="33"> LATE CRETACEOUS ( 65.5 Ma - 99.6 Ma )
+                                </option>
+                                <option value="34"> MAASTRICHTIAN ( 65.5 Ma - 70.6 Ma )
+                                </option>
+                                <option value="35"> CAMPANIAN ( 70.6 Ma - 83.5 Ma )
+                                </option>
+                                <option value="36"> SANTONIAN ( 83.5 Ma - 85.8 Ma )
+                                </option>
+                                <option value="37"> CONIACIAN ( 85.8 Ma - 89.3 Ma )
+                                </option>
+                                <option value="38"> TURONIAN ( 89.3 Ma - 93.5 Ma )
+                                </option>
+                                <option value="39"> CENOMANIAN ( 93.5 Ma - 99.6 Ma )
+                                </option>
+                                <option value="40"> EARLY CRETACIOUS ( 99.6 Ma - 145.5 Ma )
+                                </option>
+                                <option value="41"> ALBIAN ( 99.6 Ma - 112 Ma )
+                                </option>
+                                <option value="42"> APTIAN ( 112 Ma - 125 Ma )
+                                </option>
+                                <option value="43"> BARREMIAN ( 125 Ma - 130 Ma )
+                                </option>
+                                <option value="44"> HAUTERIVIAN ( 130 Ma - 136 Ma )
+                                </option>
+                                <option value="45"> VALANGINIAN ( 136 Ma - 140 Ma )
+                                </option>
+                                <option value="46"> BERRIASIAN ( 140 Ma - 145.5 Ma )
+                                </option>
+                                <option value="47"> JURASSIC ( 145.5 Ma - 201.6 Ma )
+                                </option>
+                                <option value="48"> LATE JURASSIC ( 145.5 Ma - 161 Ma )
+                                </option>
+                                <option value="49"> TITHONIAN ( 145.5 Ma - 151 Ma )
+                                </option>
+                                <option value="50"> KIMMERIDGIAN ( 151 Ma - 156 Ma )
+                                </option>
+                                <option value="51"> OXFORDIAN ( 156 Ma - 161 Ma )
+                                </option>
+                                <option value="52"> MIDDLE JURASSIC ( 161 Ma - 176 Ma )
+                                </option>
+                                <option value="53"> CALLOVIAN ( 161 Ma - 165 Ma )
+                                </option>
+                                <option value="54"> BATHONIAN ( 165 Ma - 168 Ma )
+                                </option>
+                                <option value="55"> BAJOCIAN ( 168 Ma - 172 Ma )
+                                </option>
+                                <option value="56"> AALENIAN ( 172 Ma - 176 Ma )
+                                </option>
+                                <option value="57"> EARLY JURASSIC ( 176 Ma - 201.6 Ma )
+                                </option>
+                                <option value="58"> TOARCIAN ( 176 Ma - 183 Ma )
+                                </option>
+                                <option value="59"> PLIENSBACHIAN ( 183 Ma - 190 Ma )
+                                </option>
+                                <option value="60"> SINEMURIAN ( 190 Ma - 197 Ma )
+                                </option>
+                                <option value="61"> HETTANGIAN ( 197 Ma - 201.6 Ma )
+                                </option>
+                                <option value="62"> TRIASSIC ( 201.6 Ma - 251 Ma )
+                                </option>
+                                <option value="63"> LATE TRIASSIC ( 201.6 Ma - 235 Ma )
+                                </option>
+                                <option value="64"> RHAETIAN ( 201.6 Ma - 204 Ma )
+                                </option>
+                                <option value="65"> NORIAN ( 204 Ma - 228 Ma )
+                                </option>
+                                <option value="66"> CARNIAN ( 228 Ma - 235 Ma )
+                                </option>
+                                <option value="67"> MIDDLE TRIASSIC ( 235 Ma - 245 Ma )
+                                </option>
+                                <option value="68"> LADINIAN ( 235 Ma - 241 Ma )
+                                </option>
+                                <option value="69"> ANISIAN ( 241 Ma - 245 Ma )
+                                </option>
+                                <option value="70"> EARLY TRIASSIC ( 245 Ma - 251 Ma )
+                                </option>
+                                <option value="71"> OLENEKIAN ( 245 Ma - 250 Ma )
+                                </option>
+                                <option value="72"> INDUAN ( 250 Ma - 251 Ma )
+                                </option>
+                                <option value="73"> PALEOZOIC ( 251 Ma - 542 Ma )
+                                </option>
+                                <option value="74"> PERMIAN ( 251 Ma - 299 Ma )
+                                </option>
+                                <option value="75"> LATE PERMIAN ( 251 Ma - 260 Ma )
+                                </option>
+                                <option value="76"> CHANGHSINGIAN ( 251 Ma - 254 Ma )
+                                </option>
+                                <option value="77"> WUCHIAPINGIAN ( 254 Ma - 260 Ma )
+                                </option>
+                                <option value="78"> MIDLE PERMIAN ( 260 Ma - 271 Ma )
+                                </option>
+                                <option value="79"> CAPITANIAN ( 260 Ma - 266 Ma )
+                                </option>
+                                <option value="80"> WORDIAN ( 266 Ma - 268 Ma )
+                                </option>
+                                <option value="81"> ROADIAN ( 268 Ma - 271 Ma )
+                                </option>
+                                <option value="82"> EARLY PERMIAN ( 271 Ma - 299 Ma )
+                                </option>
+                                <option value="83"> KUNGURIAN ( 271 Ma - 276 Ma )
+                                </option>
+                                <option value="84"> ARTINSKIAN ( 276 Ma - 284 Ma )
+                                </option>
+                                <option value="85"> SAKMARIAN ( 284 Ma - 297 Ma )
+                                </option>
+                                <option value="86"> ASSELIAN ( 297 Ma - 299 Ma )
+                                </option>
+                                <option value="87"> CARBONIFEROUS ( 299 Ma - 359 Ma )
+                                </option>
+                                <option value="88"> PENNSYLVANIAN ( 299 Ma - 318 Ma )
+                                </option>
+                                <option value="89"> GZELIAN ( 299 Ma - 304 Ma )
+                                </option>
+                                <option value="90"> KASIMOVIAN ( 304 Ma - 306 Ma )
+                                </option>
+                                <option value="91"> MOSCOVIAN ( 306 Ma - 312 Ma )
+                                </option>
+                                <option value="92"> BASHKIRIAN ( 312 Ma - 318 Ma )
+                                </option>
+                                <option value="93"> MISSISSIPPIAN ( 318 Ma - 359 Ma )
+                                </option>
+                                <option value="94"> SERPUKHOVIAN ( 318 Ma - 326 Ma )
+                                </option>
+                                <option value="95"> VISEAN ( 326 Ma - 345 Ma )
+                                </option>
+                                <option value="96"> TOURNAISIAN ( 345 Ma - 359 Ma )
+                                </option>
+                                <option value="97"> DEVONIAN ( 359 Ma - 416 Ma )
+                                </option>
+                                <option value="98"> LATE DEVONIAN ( 359 Ma - 385 Ma )
+                                </option>
+                                <option value="99"> FAMENNIAN ( 359 Ma - 374 Ma )
+                                </option>
+                                <option value="100"> FRASNIAN ( 374 Ma - 385 Ma )
+                                </option>
+                                <option value="101"> MIDDLE DEVONIAN ( 385 Ma - 398 Ma )
+                                </option>
+                                <option value="102"> GIVETIAN ( 385 Ma - 392 Ma )
+                                </option>
+                                <option value="103"> EIFELIAN ( 392 Ma - 398 Ma )
+                                </option>
+                                <option value="104"> EARLY DEVONIAN ( 398 Ma - 416 Ma )
+                                </option>
+                                <option value="105"> EMSIAN ( 398 Ma - 407 Ma )
+                                </option>
+                                <option value="106"> PRAGHIAN ( 407 Ma - 411 Ma )
+                                </option>
+                                <option value="107"> LOCKHOVIAN ( 411 Ma - 416 Ma )
+                                </option>
+                                <option value="108"> SILURIAN ( 416 Ma - 444 Ma )
+                                </option>
+                                <option value="109"> LATE SILURIAN ( 416 Ma - 423 Ma )
+                                </option>
+                                <option value="110"> PRIDOLIAN ( 416 Ma - 419 Ma )
+                                </option>
+                                <option value="111"> LUDFORDIAN ( 419 Ma - 421 Ma )
+                                </option>
+                                <option value="112"> GORSTIAN ( 421 Ma - 423 Ma )
+                                </option>
+                                <option value="113"> MIDDLE SILURIAN ( 423 Ma - 428 Ma )
+                                </option>
+                                <option value="114"> HOMERIAN ( 423 Ma - 426 Ma )
+                                </option>
+                                <option value="115"> SHEINWOODIAN ( 426 Ma - 428 Ma )
+                                </option>
+                                <option value="116"> EARLY SILURIAN ( 428 Ma - 444 Ma )
+                                </option>
+                                <option value="117"> TELYCHIAN ( 428 Ma - 436 Ma )
+                                </option>
+                                <option value="118"> AERONIAN ( 436 Ma - 439 Ma )
+                                </option>
+                                <option value="119"> RHUDDANIAN ( 439 Ma - 444 Ma )
+                                </option>
+                                <option value="120"> ORDOVICIAN ( 444 Ma - 488 Ma )
+                                </option>
+                                <option value="121"> LATE ORDOVICIAN ( 444 Ma - 461 Ma )
+                                </option>
+                                <option value="122"> HIRNANTIAN ( 444 Ma - 446 Ma )
+                                </option>
+                                <option value="123"> KATIAN ( 446 Ma - 455 Ma )
+                                </option>
+                                <option value="124"> SANDBIAN ( 455 Ma - 461 Ma )
+                                </option>
+                                <option value="125"> MIDDLE ORDOVICIAN ( 461 Ma - 472 Ma )
+                                </option>
+                                <option value="126"> DARRIWILIAN ( 461 Ma - 468 Ma )
+                                </option>
+                                <option value="127"> DAPINGIAN ( 468 Ma - 472 Ma )
+                                </option>
+                                <option value="128"> EARLY ORDOVICIAN ( 472 Ma - 488 Ma )
+                                </option>
+                                <option value="129"> FLOIAN ( 472 Ma - 479 Ma )
+                                </option>
+                                <option value="130"> TREMADOCIAN ( 479 Ma - 488 Ma )
+                                </option>
+                                <option value="131"> CAMBRIAN ( 488 Ma - 542 Ma )
+                                </option>
+                                <option value="132"> FURONGIAN ( 488 Ma - 501 Ma )
+                                </option>
+                                <option value="133"> STAGE 10 ( 488 Ma - 492 Ma )
+                                </option>
+                                <option value="134"> STAGE 9 ( 492 Ma - 496 Ma )
+                                </option>
+                                <option value="135"> PAIBIAN ( 496 Ma - 501 Ma )
+                                </option>
+                                <option value="136"> SERIES 3 ( 501 Ma - 510 Ma )
+                                </option>
+                                <option value="137"> GUZHANGIAN ( 501 Ma - 503 Ma )
+                                </option>
+                                <option value="138"> DRUMIAN ( 503 Ma - 507 Ma )
+                                </option>
+                                <option value="139"> STAGE 5 ( 507 Ma - 510 Ma )
+                                </option>
+                                <option value="140"> SERIES 2 ( 510 Ma - 521 Ma )
+                                </option>
+                                <option value="141"> STAGE 4 ( 510 Ma - 517 Ma )
+                                </option>
+                                <option value="142"> STAGE 3 ( 517 Ma - 521 Ma )
+                                </option>
+                                <option value="143"> TERREVEUVIAN ( 521 Ma - 542 Ma )
+                                </option>
+                                <option value="144"> STAGE 2 ( 521 Ma - 535 Ma )
+                                </option>
+                                <option value="145"> FORTUNIAN ( 535 Ma - 542 Ma )
+                                </option>
+                                <option value="146"> PRECAMBRIAN ( 542 Ma - 3850 Ma )
+                                </option>
+                                <option value="147"> PROTEROZOIC ( 542 Ma - 2500 Ma )
+                                </option>
+                                <option value="148"> NEOPROTEROZOIC ( 542 Ma - 1000 Ma )
+                                </option>
+                                <option value="149"> EDIACARAN ( 542 Ma - 630 Ma )
+                                </option>
+                                <option value="150"> CRYOGENIAN ( 630 Ma - 850 Ma )
+                                </option>
+                                <option value="151"> TONIAN ( 850 Ma - 1000 Ma )
+                                </option>
+                                <option value="152"> MESEOPROTEROZOIC ( 1000 Ma - 1600 Ma )
+                                </option>
+                                <option value="153"> STENIAN ( 1000 Ma - 1200 Ma )
+                                </option>
+                                <option value="154"> ECTASIAN ( 1200 Ma - 1400 Ma )
+                                </option>
+                                <option value="155"> CALYMMIAN ( 1400 Ma - 1600 Ma )
+                                </option>
+                                <option value="156"> PALEOPROTEROZOIC ( 1600 Ma - 2500 Ma )
+                                </option>
+                                <option value="157"> STATHERIAN ( 1600 Ma - 1800 Ma )
+                                </option>
+                                <option value="158"> OROSIRIAN ( 1800 Ma - 2050 Ma )
+                                </option>
+                                <option value="159"> RHYACIAN ( 2050 Ma - 2300 Ma )
+                                </option>
+                                <option value="160"> SIDERIAN ( 2300 Ma - 2500 Ma )
+                                </option>
+                                <option value="161"> ARCHEAN ( 2500 Ma - 3850 Ma )
+                                </option>
+                                <option value="162"> NEOARCHEAN ( 2500 Ma - 2800 Ma )
+                                </option>
+                                <option value="163"> MESOARCHEAN ( 2800 Ma - 3200 Ma )
+                                </option>
+                                <option value="164"> PALEOARCHEAN ( 3200 Ma - 3600 Ma )
+                                </option>
+                                <option value="165"> EOARCHEAN ( 3600 Ma - 3850 Ma )
+                                </option>
+                                <option value="166"> HADEAN ( &gt; 3850 Ma )
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="border:none">
+                            <div align="center">or</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><h4>Age Exists</h4>
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input name="ageexists" type="checkbox" value="yes"><br>
+                            Use this option to return all samples that have age values associated with them.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" colspan="2" style="border:none">
+                            <input class="submitbutton" name="submit" type="submit" value="Submit">
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+                <input name="pkey" type="hidden" value="3534511">
+                <input name="glossary_pkey" type="hidden" value="">
+            </form>
+
+        </div>
+
+        <div id=app class="right">
+            <noscript><strong>We're sorry but ics-chart doesn't work properly without JavaScript enabled. Please enable it to
+                continue.</strong></noscript>
+            <script src=${site.sitePath}js/chunk-vendors.3b2de4a4.js></script>
+            <script src=${site.sitePath}js/app.d2778863.js></script>
+        </div>
+</main>
+<footer>
+    <!--footer-->
+    <!-- BEGIN PRE-FOOTER -->
+    <div class="pre-footer" id="contact">
+        <div class="container">
+            <div class="row">
+                <!-- BEGIN BOTTOM ABOUT BLOCK -->
+                <div class="col-md-4 col-sm-6 pre-footer-col">
+                    <h2>About us</h2>
+                    <p>We belong to the rock group of DDE science program, focusing on the research and construction of magmatic rock database. </p>
+                    <p>Our team is composed of Institute of geology, Chinese Academy of Geological Sciences and development research center of China Geological Survey. We warmly welcome colleagues from all walks of life to join us.</p>
+                </div>
+                <!-- END BOTTOM ABOUT BLOCK -->
+                <!-- BEGIN TWITTER BLOCK -->
+                <div class="col-md-4 col-sm-6 pre-footer-col">
+                    <h2 class="margin-bottom-0">Links：</h2>
+                    <p><a href="http://www.cags.ac.cn">Chinese Academy of Geological Sciences</a> </p>
+                    <p><a href="http://igeo.cags.ac.cn">Institute of geology, Chinese Academy of Geological Sciences</a> </p>
+                    <p><a href="http://geocloud.cgs.gov.cn">GeoCloud</a> </p>
+                    <p><a href="http://www.ddeworld.org/">DDE World</a> </p>
+                </div>
+                <!-- END TWITTER BLOCK -->
+                <div class="col-md-4 col-sm-6 pre-footer-col">
+                    <!-- BEGIN BOTTOM CONTACTS -->
+                    <h2>Contact us：</h2>
+                    <address class="margin-bottom-20">
+                        26 wanwanzhuang street, Xicheng District, Beijing<br>
+                        Institute of geology, Chinese Academy of Geological Sciences<br>
+                        Phone: 010-88332550<br>
+                        Email: <a href="mailto:geowind@126.com">geowind@126.com</a><br>
+                    </address>
+                    <!-- END BOTTOM CONTACTS -->
+
+                </div>
+                <div class="col-md-12 ">
+                    <h2>THANKS</h2>
+
+                    <p>The DDE platform (deep net) provides computing support.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- END PRE-FOOTER -->
+<!--- Google Analytics. This is the newest version of their tracking code. It must appear before the closing body tag, on every page to be tracked. EEJones March 2008 --->
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-4350683-14']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+
+
+<script>mendeleyWebImporter = {
+    downloadPdfs(e, t) {
+        return this._call('downloadPdfs', [e, t]);
+    },
+    open() {
+        return this._call('open', []);
+    },
+    setLoginToken(e) {
+        return this._call('setLoginToken', [e]);
+    },
+    _call(methodName, methodArgs) {
+        const id = Math.random();
+        window.postMessage({id, token: '0.963413281910408', methodName, methodArgs}, 'https://search.earthchem.org');
+        return new Promise(resolve => {
+            const listener = window.addEventListener('message', event => {
+                const data = event.data;
+                if (typeof data !== 'object' || !('result' in data) || data.id !== id) return;
+                window.removeEventListener('message', listener);
+                resolve(data.result);
+            });
+        });
+    }
+};</script>
+
+
+</body>
+
+</html>

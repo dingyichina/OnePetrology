@@ -1,0 +1,59 @@
+<@_dPSamariumNeodymium id=id><#assign a=object/></@_dPSamariumNeodymium>
+<form method="post" action="dPSamariumNeodymium/save.do?callbackType=closeCurrent&navTabId=dPSamariumNeodymium/list" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <input name="id" type="hidden" value="${id!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+    <div class="pageContent">
+        <div class="pageFormContent" layoutH="56">
+            <dl>
+                <dt>ID：</dt>
+                <dd><input class="required" name="id" type="text" size="30" value="${(a.id)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>样品：</dt>
+                <dd><input class="required" name="sampleId" type="text" size="30" value="${(a.sampleId)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>衰变常数 （1/年）：</dt>
+                <dd><input class="required" name="decayConst" type="text" size="30" value="${(a.decayConst)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钐(10<sup>-6</sup>)：</dt>
+                <dd><input class="required" name="sm" type="text" size="30" value="${(a.sm)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钕（10<sup>-6</sup>）：</dt>
+                <dd><input class="required" name="nd" type="text" size="30" value="${(a.nd)!}"/></dd>
+            </dl>
+            <dl>
+                <dt><sup>147</sup>Sm／<sup>144</sup>Nd：</dt>
+                <dd><input class="required" name="sm147Nd144" type="text" size="30" value="${(a.sm147Nd144)!}"/></dd>
+            </dl>
+            <dl>
+                <dt><sup>143</sup>Nd／<sup>144</sup>Nd：</dt>
+                <dd><input class="required" name="nd143Nd144" type="text" size="30" value="${(a.nd143Nd144)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>模式年龄（Ma）：</dt>
+                <dd><input class="required" name="modelAge" type="text" size="30" value="${(a.modelAge)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>年龄误差(Ma)：</dt>
+                <dd><input class="required" name="ageError" type="text" size="30" value="${(a.ageError)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>εNd(o)：</dt>
+                <dd><input class="required" name="epsilonNdO" type="text" size="30" value="${(a.epsilonNdO)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>备注：</dt>
+                <dd><input class="required" name="remark" type="text" size="30" value="${(a.remark)!}"/></dd>
+            </dl>
+        </div>
+    </div>
+</form>

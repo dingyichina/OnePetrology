@@ -1,0 +1,1 @@
+flet build apk --template ./.cookiecutters/flet-build-template --project OnePetrology --description "DDE IgneousRock Database" --product OnePetrology --copyright "Copyright@遵循DDE相关规定，解释权归地质所团队所有" --org DDE --company igeo@cags   --include-packages flet_webview   flet_audio_recorder -vv

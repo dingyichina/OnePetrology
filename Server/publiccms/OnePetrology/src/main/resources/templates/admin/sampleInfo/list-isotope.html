@@ -1,0 +1,199 @@
+<div class="pageHeader">
+    <form class="pagerForm" onsubmit="return navTabSearch(this);" method="post">
+        <#include "../include_page/parameters.html"/>
+        <div class="searchBar">
+            <ul class="searchContent">
+                <li>
+                    <label>Sample Id：</label>
+                    <input type="text" name="sampleId" value="${sampleId!}" />
+                </li>
+                <li>
+                    <label>Oraginal Sample Id：</label>
+                    <input type="text" name="oraginalSampleId" value="${oraginalSampleId!}" />
+                </li>
+                <li>
+                    <label>Location：</label>
+                    <input type="text" name="location" value="${location!}" />
+                </li>
+                <li>
+                    <label>Location Type：</label>
+                    <input type="text" name="locationType" value="${locationType!}" />
+                </li>
+                <li>
+                    <label>Tectonic Location：</label>
+                    <input type="text" name="tectonicLocation" value="${tectonicLocation!}" />
+                </li>
+
+            </ul>
+            <div class="subBar">
+                <ul>
+                    <li>
+                    	<button type="submit" class="buttonActive"><@t.page 'button.search'/></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<@_sysAuthorized roleIds=admin.roles urls='sampleInfo/add,sampleInfo/delete'><#assign authorizedMap=map/></@_sysAuthorized>
+<div class="pageContent">
+    <div class="panelBar">
+        <ul class="toolBar">
+        <#if authorizedMap['sampleInfo/add']>
+            <li><a href="sampleInfo/add.html" target="navTab" rel="sampleInfo/add"><i class="icon-plus-sign-alt icon-large"></i> <@t.page 'button.add'/></a></li>
+            <li><a href="sampleInfo/add.html?id={sid}" target="navTab" rel="sampleInfo/edit"><i class="icon-edit icon-large"></i> <@t.page 'button.edit'/></a></li>
+        </#if>
+        <#if authorizedMap['sampleInfo/delete']>
+            <li><a href="sampleInfoAdmin/delete.do?_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.batch_delete'/>" target="selectedTodo" rel="ids"><i class="icon-trash icon-large"></i> <@t.page 'button.batch_delete'/></a></li>
+        </#if>
+        </ul>
+    </div>
+<@_sampleInfoList sampleId=sampleId oraginalSampleId=oraginalSampleId 
+            location=location locationType=locationType tectonicLocation=tectonicLocation 
+            primaryStructuralUnit=primaryStructuralUnit secondaryStructuralUnit=secondaryStructuralUnit tertiaryStructuralUnit=tertiaryStructuralUnit 
+            lithology=lithology occurrence=occurrence intrusion=intrusion 
+            rockName=rockName rockCode=rockCode era=era 
+            geobodyName=geobodyName geobodyCode=geobodyCode surroundingRockAge=surroundingRockAge 
+            surroundingRockLithology=surroundingRockLithology relationshipWithSurroundingRock=relationshipWithSurroundingRock form=form 
+            whetherToCutAreaConstructionLine=whetherToCutAreaConstructionLine degreeOfDeformation=degreeOfDeformation characteristicMinerals=characteristicMinerals 
+            geneticType=geneticType age=age ageError=ageError 
+            testObject=testObject testMethod=testMethod ageSelected=ageSelected 
+            ageSelectedError=ageSelectedError tectonicType=tectonicType sourceOfStructuralTypeDiscrimination=sourceOfStructuralTypeDiscrimination 
+            alkalinity=alkalinity aluminumQuality=aluminumQuality photo=photo 
+            collector=collector collectorOrg=collectorOrg reviewer=reviewer 
+            analyzeOrg=analyzeOrg analyzePerson=analyzePerson testDate=testDate 
+            dataSource=dataSource articleDoi=articleDoi remark=remark 
+            siO2=siO2 tiO2=tiO2 al2o3=al2o3 
+            fe2o3=fe2o3 feO=feO fe2o3t=fe2o3t 
+            feOt=feOt tfe=tfe mnO=mnO 
+            mgO=mgO caO=caO na2o=na2o 
+            k2o=k2o p2o5=p2o5 h2op=h2op 
+            h2on=h2on co2=co2 so3=so3 
+            f=f cl=cl loi=loi 
+            total=total la=la ce=ce 
+            pr=pr nd=nd pm=pm 
+            sm=sm eu=eu gd=gd 
+            tb=tb dy=dy ho=ho 
+            er=er tm=tm yb=yb 
+            lu=lu y=y sc=sc 
+            totalReElement=totalReElement v=v cr=cr 
+            co=co ni=ni mn=mn 
+            cu=cu zn=zn ga=ga 
+            ge=ge cs=cs rb=rb 
+            ba=ba th=th u=u 
+            nb=nb ta=ta ti=ti 
+            p=p pb=pb sr=sr 
+            zr=zr hf=hf li=li 
+            be=be w=w pt=pt 
+            pd=pd os=os ir=ir 
+            ru=ru rh=rh srIsotope=srIsotope 
+            ndIsotope=ndIsotope rb87Sr86=rb87Sr86 sr87Sr86M=sr87Sr86M 
+            sm147Nd144=sm147Nd144 nd143Nd144=nd143Nd144 testRockMa=testRockMa 
+            sr87Sr86I=sr87Sr86I nd143Nd144TChur=nd143Nd144TChur nd143Nd144I=nd143Nd144I 
+            FSmNdS=FSmNdS epsilonNd0=epsilonNd0 epsilonNdT=epsilonNdT 
+            tdmMa=tdmMa tdm2Ma=tdm2Ma hfIsotope=hfIsotope 
+            hfPointNum=hfPointNum hfNormalNum=hfNormalNum epsilonHftMin=epsilonHftMin 
+            epsilonHftMax=epsilonHftMax epsilonHftMedian=epsilonHftMedian epsilonHftAverage=epsilonHftAverage 
+            tdmcMin=tdmcMin tdmcMax=tdmcMax tdmcMedian=tdmcMedian 
+            tdmcAverage=tdmcAverage hfOisotope=hfOisotope d18oMin=d18oMin 
+            d18oMax=d18oMax d18oAverage=d18oAverage d18oMedian=d18oMedian 
+            orderField=orderField orderType=orderType pageIndex=pageNum pageSize=numPerPage>
+    <table class="list" width="250%" layoutH="92">
+        <thead>
+            <tr>
+                <th orderField="id" class="<#if orderField??&&'id'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">ID</th>
+                <th orderField="sampleId" class="<#if orderField??&&'sampleId'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Sample Id</th>
+                <th orderField="oraginalSampleId" class="<#if orderField??&&'oraginalSampleId'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Oraginal Sample Id</th>
+                <th orderField="longitude" class="<#if orderField??&&'longitude'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Longitude</th>
+                <th orderField="latitude" class="<#if orderField??&&'latitude'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Latitude</th>
+                <th orderField="location" class="<#if orderField??&&'location'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Location</th>
+                <th orderField="locationType" class="<#if orderField??&&'locationType'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Location Type</th>
+                <th orderField="tectonicLocation" class="<#if orderField??&&'tectonicLocation'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Tectonic Location</th>
+                <th orderField="srIsotope" class="<#if orderField??&&'srIsotope'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Sr Isotope</th>
+                <th orderField="ndIsotope" class="<#if orderField??&&'ndIsotope'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Nd Isotope</th>
+                <th orderField="rb87Sr86" class="<#if orderField??&&'rb87Sr86'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">(<sup>87</sup>Rb/<sup>86</sup>Sr)m</th>
+                <th orderField="sr87Sr86M" class="<#if orderField??&&'sr87Sr86M'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">(<sup>87</sup>Sr/<sup>86</sup>Sr)m</th>
+                <th orderField="sm147Nd144" class="<#if orderField??&&'sm147Nd144'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">(<sup>147</sup>Sm/<sup>144</sup>Nd)m</th>
+                <th orderField="nd143Nd144" class="<#if orderField??&&'nd143Nd144'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">(<sup>143</sup>Nd/<sup>144</sup>Nd)m</th>
+                <th orderField="testRockMa" class="<#if orderField??&&'testRockMa'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Test Rock (Ma)</th>
+                <th orderField="sr87Sr86I" class="<#if orderField??&&'sr87Sr86I'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">(<sup>87</sup>Sr/<sup>86</sup>Sr)i</th>
+                <th orderField="nd143Nd144TChur" class="<#if orderField??&&'nd143Nd144TChur'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">(<sup>143</sup>Nd/<sup>144</sup>Nd)t,CHUR</th>
+                <th orderField="nd143Nd144I" class="<#if orderField??&&'nd143Nd144I'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">(<sup>143</sup>Nd/<sup>144</sup>Nd)i</th>
+                <th orderField="FSmNdS" class="<#if orderField??&&'FSmNdS'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">f(Sm/Nd)s</th>
+                <th orderField="epsilonNd0" class="<#if orderField??&&'epsilonNd0'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">εNd(0)</th>
+                <th orderField="epsilonNdT" class="<#if orderField??&&'epsilonNdT'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">εNd(t)</th>
+                <th orderField="tdmMa" class="<#if orderField??&&'tdmMa'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">TDM(Ma)</th>
+                <th orderField="tdm2Ma" class="<#if orderField??&&'tdm2Ma'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">TDM2(Ma)</th>
+                <th orderField="hfIsotope" class="<#if orderField??&&'hfIsotope'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Hf Isotope</th>
+                <th orderField="hfPointNum" class="<#if orderField??&&'hfPointNum'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Hf Point Number</th>
+                <th orderField="hfNormalNum" class="<#if orderField??&&'hfNormalNum'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Hf Normal Number</th>
+                <th orderField="epsilonHftMin" class="<#if orderField??&&'epsilonHftMin'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">εHft_min</th>
+                <th orderField="epsilonHftMax" class="<#if orderField??&&'epsilonHftMax'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">εHft_max</th>
+                <th orderField="epsilonHftMedian" class="<#if orderField??&&'epsilonHftMedian'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">εHft_median</th>
+                <th orderField="epsilonHftAverage" class="<#if orderField??&&'epsilonHftAverage'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">εHft_average</th>
+                <th orderField="tdmcMin" class="<#if orderField??&&'tdmcMin'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">T<sub>DM</sub><sup>C</sup>_min</th>
+                <th orderField="tdmcMax" class="<#if orderField??&&'tdmcMax'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">T<sub>DM</sub><sup>C</sup>_max</th>
+                <th orderField="tdmcMedian" class="<#if orderField??&&'tdmcMedian'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">T<sub>DM</sub><sup>C</sup>_median</th>
+                <th orderField="tdmcAverage" class="<#if orderField??&&'tdmcAverage'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">T<sub>DM</sub><sup>C</sup>(Ma)_Average</th>
+                <th orderField="hfOisotope" class="<#if orderField??&&'hfOisotope'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">HfO Isotope</th>
+                <th orderField="d18oMin" class="<#if orderField??&&'d18oMin'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">d<sup>18</sup>O_min</th>
+                <th orderField="d18oMax" class="<#if orderField??&&'d18oMax'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">d<sup>18</sup>O_max</th>
+                <th orderField="d18oAverage" class="<#if orderField??&&'d18oAverage'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">d<sup>18</sup>O_average</th>
+                <th orderField="d18oMedian" class="<#if orderField??&&'d18oMedian'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">d<sup>18</sup>O_median</th>
+                <th><@t.page 'operate'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.id}">
+                <td>${a.id!}</td>
+                <td>${a.sampleId!}</td>
+                <td>${a.oraginalSampleId!}</td>
+                <td>${a.longitude!}</td>
+                <td>${a.latitude!}</td>
+                <td>${a.location!}</td>
+                <td>${a.locationType!}</td>
+                <td>${a.tectonicLocation!}</td>
+                <td>${a.srIsotope!}</td>
+                <td>${a.ndIsotope!}</td>
+                <td>${a.rb87Sr86!}</td>
+                <td>${a.sr87Sr86M!}</td>
+                <td>${a.sm147Nd144!}</td>
+                <td>${a.nd143Nd144!}</td>
+                <td>${a.testRockMa!}</td>
+                <td>${a.sr87Sr86I!}</td>
+                <td>${a.nd143Nd144TChur!}</td>
+                <td>${a.nd143Nd144I!}</td>
+                <td>${a.FSmNdS!}</td>
+                <td>${a.epsilonNd0!}</td>
+                <td>${a.epsilonNdT!}</td>
+                <td>${a.tdmMa!}</td>
+                <td>${a.tdm2Ma!}</td>
+                <td>${a.hfIsotope!}</td>
+                <td>${a.hfPointNum!}</td>
+                <td>${a.hfNormalNum!}</td>
+                <td>${a.epsilonHftMin!}</td>
+                <td>${a.epsilonHftMax!}</td>
+                <td>${a.epsilonHftMedian!}</td>
+                <td>${a.epsilonHftAverage!}</td>
+                <td>${a.tdmcMin!}</td>
+                <td>${a.tdmcMax!}</td>
+                <td>${a.tdmcMedian!}</td>
+                <td>${a.tdmcAverage!}</td>
+                <td>${a.hfOisotope!}</td>
+                <td>${a.d18oMin!}</td>
+                <td>${a.d18oMax!}</td>
+                <td>${a.d18oAverage!}</td>
+                <td>${a.d18oMedian!}</td>
+                <td>
+                <#if authorizedMap['sampleInfo/delete']>
+                    <a href="sampleInfo/delete.do?ids=${a.id}&_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.delete'/>"  target="ajaxTodo"><@t.page 'button.delete'/></a>
+                </#if>
+                </td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</@_sampleInfoList>
+</div>

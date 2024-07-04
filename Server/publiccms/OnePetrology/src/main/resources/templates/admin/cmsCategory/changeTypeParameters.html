@@ -1,0 +1,20 @@
+<div class="pageFormContent" layoutH>
+    <ul class="tree treeFolder expand">
+        <li><a href="cmsCategory/changeType?id=${id!}&_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.change_type'/>" target="ajaxTodo"><@t.page 'category.change_type'/></a></li>
+<@_categoryTypeList>
+    <#list page.list as a>
+        <li><a href="cmsCategory/changeType?id=${id!}&typeId=${a.id}&_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.change_type'/>" target="ajaxTodo"><@t.page 'change_type_to' a.name!/></a></li>
+    </#list>
+</@_categoryTypeList>
+    </ul>
+</div>
+<div class="formBar">
+    <ul>
+        <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+    </ul>
+</div>
+<script>
+$('ul li a',$.pdialog.getCurrent()).click(function(){
+    $.pdialog.closeCurrent();
+});
+</script>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<@_includePlace path="/63241365-51a7-4903-89e6-7619031fa9fe.html"/> <#-- Header-link -->
+	
+	<link rel="stylesheet" href="${site.sitePath}leaflet/leaflet.css" />
+    <link rel="stylesheet" href="${site.sitePath}leaflet/leaflet-geoman.css" />
+    <link rel="stylesheet" href="${site.sitePath}leaflet/Leaflet.PolylineMeasure.css" />
+    <link rel="stylesheet" href="${site.sitePath}leaflet/leaflet-search.src.css" />
+    <link rel="stylesheet" href="${site.sitePath}leaflet/leaflet.awesome-markers.css">
+    <link href="${site.sitePath}font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="${site.sitePath}font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="${site.sitePath}leaflet/Leaflet.fullscreen.css">
+    <script src="${site.sitePath}leaflet/leaflet.js"></script>
+    <script src="${site.sitePath}leaflet/Leaflet.fullscreen.js"></script>
+    <script src="${site.sitePath}leaflet/leaflet-tilelayer-wmts-src.js"></script>
+    <script src="${site.sitePath}leaflet/leaflet-geoman.min.js"></script>
+    <script src="${site.sitePath}leaflet/Leaflet.PolylineMeasure.js"></script>
+    <script src="${site.sitePath}leaflet/leaflet-search.src.js"></script>
+    <script src="${site.sitePath}leaflet/leaflet.awesome-markers.js"></script>
+    <script src="${site.sitePath}leaflet/leaflet-ant-path.js"></script>
+	   <link rel="stylesheet" href="${site.sitePath}leaflet/pruneCluster.css">
+	<script src="${site.sitePath}leaflet/PruneCluster.js"></script>
+    <script src="${site.sitePath}js/jquery-1.12.4.min.js"></script>
+
+	<script src="${site.sitePath}leaflet/leaflet-providers.js"></script>
+    <script src="${site.sitePath}leaflet/leaflet-bing-layer.js"></script>
+	<script src="${site.sitePath}leaflet/leaflet.ChineseTmsProviders.js"></script>
+	
+	<link href="${site.sitePath}css/earthchem.css" rel="stylesheet">
+</head>
+<body  class="menu-always-on-top">
+	
+<@_includePlace path="/c8014652-e25e-4c4d-a3ca-9aad7fa0385c.html"/> <#-- header -->
+	
+	<div class="wrapper" style="margin-top:100px;">
+		<!-- end header -->
+        <h1 id="title">Polygon Map</h1>
+		<div class="mapdetails">
+		Click on the map below to define a search polygon. Click on each vertex of your polygon, double-clicking
+		on the last vertex to close the shape. You can use the zoom bar to zoom in and out. Use shift-click to create a smooth polygon
+		with many vertices.<br/>
+		You can draw rectangle  or polygon on the map,then the point coordinate will appear in textarea in (lng,lat) paris state. The next  polygon will overwrite the pre selection. 
+		</div>
+
+        
+		<div style="padding-top:5px;padding-bottom:5px;">
+			<table>
+				<tbody><tr>
+					<td>
+						<form name="mapform" id="mapform" action="/sampleInfo/queryPolygon" method="post">
+							<input type="hidden" name="_csrf" value="<@_csrfToken/>"/>
+							<input name="returnUrl" type="hidden" value="${site.dynamicPath}search/queryResult.html?result=true" />
+							<input type="hidden" name="pageIndex" value="1"/>
+							<input type="hidden" name="pageSize" value="50"/>
+							<input type="hidden" name="orderByField" value="id"/>
+							<input type="hidden" name="orderByType" value="asc"/>
+							
+ 						    <div class="form-group">
+									<label for="queryGeojson">Selected Area ((lng,lat) pairs,comma seperated.):</label>
+									<textarea style="width: 789px;height: 61px;" id="queryGeojson"  name="queryGeojson" class="form-control" rows="5" name=textarea></textarea>
+							</div>
+							<input type="button" class="submitbutton"   style="background:blue;" onclick="return doSubmit();"  value="Submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<button type="button" class="submitbutton" style="background:blue;" onclick="clearpoly();">Clear</button>
+						</form>
+						
+					</td>
+					<td>
+					
+					</td>
+				</tr>
+			</tbody></table>
+		</div>
+	<div style="width:1024px;height: 768px; margin:20px;" id='map-container' >
+	</div>
+	<script language="javascript" type="text/javascript"> 
+					function doSubmit(){
+						var ptlist=$("#queryGeojson").val();
+						if (ptlist==null || ptlist==""){
+							alert("choose the area first please.");
+							return false;
+						} 
+						sessionStorage.setItem("polygon",ptlist);
+						window.location.href="options.html";
+						return true;
+					}
+					
+					
+					function clearpoly(){
+						$("#queryGeojson").val("");
+						location.reload();
+   				    }
+					
+					$(function() {
+						var currentMap = createMap();//创建地图
+						// var markers = new L.MarkerClusterGroup();
+						addMapPlugs(currentMap); //加载插件
+						currentMap.setView(L.latLng(34, 108), 4);
+
+					})
+					//创建地图
+					function createMap(){
+						var newMap = L.map('map-container', {
+            minZoom: 2,
+            maxZoom: 13,
+            crs: L.CRS.EPSG3857,
+            fullscreenControl: {
+                pseudoFullscreen: false
+            },
+            center: [0,0]
+        });
+		
+		//换一种方式加载geoserver的图层
+		var rocklayer = L.tileLayer('${site.dynamicPath!}geoserver/gwc/service/tms/1.0.0/dde%3Aworld2021@EPSG%3A3857@png/{z}/{x}/{-y}.png', {
+			 minZoom: 2,
+			maxZoom: 18,
+			attribution: '&copy; <a href="https://petrology.deep-time.org">OnePetrology</a> contributors'
+		 });
+		newMap.addLayer(rocklayer);
+	    /*var pointslayer = L.tileLayer('${site.dynamicPath!}geoserver/gwc/service/tms/1.0.0/dde%3ASamplePoints@EPSG%3A3857@png/{z}/{x}/{-y}.png', {
+			 minZoom: 2,
+			maxZoom: 18,
+			attribution: '&copy; <a href="https://petrology.deep-time.org">OnePetrology</a> contributors'
+		 });
+		newMap.addLayer(pointslayer);
+		*/
+		
+		//添加工具栏
+        L.control.scale({'position': 'bottomleft', 'metric': true, 'imperial': false}).addTo(newMap);
+		//背景底图
+		var opacity=0.8; //背景底图透明度
+		//Esri 的世界影像
+		var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+		});
+		Esri_WorldImagery.setOpacity(opacity);
+		//Osm De的地图，包含中英文两种标注
+	    var OpenStreetMap_DE = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			maxZoom: 18,
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+		 });
+		//OpenStreetMap_DE.setOpacity(opacity);
+		//微软bing map的影像
+		//var BING_KEY = 'AvewBhQcQ8oh_dZ0rYIkYfHrrQdj87mT42i4plCmcqccDe0JXsWaOSNi4NuWvH0Z';
+       // var bingLayer = L.tileLayer.bing(BING_KEY);
+	//	bingLayer.setOpacity(opacity);
+		//高德影像
+		//var imgm = L.tileLayer.chinaProvider('GaoDe.Satellite.Map', {
+		//	maxZoom: 18,
+		//	minZoom: 3
+		//});
+		//var imga = L.tileLayer.chinaProvider('GaoDe.Satellite.Annotion', {
+		//	maxZoom: 18,
+	//		minZoom: 3
+	//	});
+      //  gaodeLayer = L.layerGroup([imgm, imga]);
+		//gaodeLayer.setOpacity(opacity);
+		//高德地图
+		var normalGaoDe = L.tileLayer.chinaProvider('GaoDe.Normal.Map', {
+			maxZoom: 18,
+			minZoom: 2
+		});
+		
+		//天地图
+		var normalm = L.tileLayer.chinaProvider('TianDiTu.Normal.Map', {
+			key:'3359c151db487347bd379173613694a3',
+        maxZoom: 18,
+        minZoom: 2
+    }),
+    normala = L.tileLayer.chinaProvider('TianDiTu.Normal.Annotion', {
+		key:'3359c151db487347bd379173613694a3',
+        maxZoom: 18,
+        minZoom: 2
+    }),
+    imgm = L.tileLayer.chinaProvider('TianDiTu.Satellite.Map', {
+		key:'3359c151db487347bd379173613694a3',
+        maxZoom: 18,
+        minZoom: 2
+    }),
+    imga = L.tileLayer.chinaProvider('TianDiTu.Satellite.Annotion', {
+		key:'3359c151db487347bd379173613694a3',
+        maxZoom: 18,
+        minZoom: 2
+    });
+
+var tianditunormal = L.layerGroup([normalm, normala]),
+    tiandituimage = L.layerGroup([imgm, imga]);
+
+// 自己的底图
+			var ourbaselayer = L.tileLayer('${site.dynamicPath!}geoserver/gwc/service/tms/1.0.0/dde%3Aworld2022@EPSG%3A3857@png/{z}/{x}/{-y}.png', {
+			 minZoom: 2,
+			maxZoom: 18,
+			attribution: '&copy; <a href="https://petrology.deep-time.org">OnePetrology</a> contributors'
+		 });
+		
+		//组合所有的背景图以供选择
+			var baselayer={"Magmatic rocks": ourbaselayer,"ESRI":Esri_WorldImagery,"OSM":OpenStreetMap_DE,"TianDiTu":normalm,"TianDiTu Satelite":imgm,"GaoDe":normalGaoDe};
+		 L.control.layers(baselayer, null).addTo(newMap);
+		  newMap.addLayer(tianditunormal); //默认添加天地图
+		
+		rocklayer.setZIndex(9);  //确保岩浆岩图在上面
+		//pointslayer.setZIndex(10);//确保样品点在最上面 
+        return newMap;
+					}
+
+					//加载插件
+					function addMapPlugs(map){
+						if(!map){
+							return ;
+						}
+						//标记插件--geoman
+						map.pm.addControls({
+							position: 'topleft',
+							drawCircle: false,
+							drawMarker:false,
+							drawPolyline:false,
+							editMode:false,
+							dragMode:false,
+							cutPolygon:false,
+							removalMode:false,
+							drawCircleMarker:false,
+						});
+					//绘制完成事件
+					   map.on('pm:create', e => {
+						let shape = e.shape;
+						//多边形
+						if ('Polygon' === shape || 'Rectangle' === shape ||  'Circle' === shape) {
+						  // 处理绘制完成的逻辑
+							console.log(e);//得到所绘的图形
+							shapes = e.layer.toGeoJSON();
+							pointstr="";
+							var ptlist=shapes.geometry.coordinates[0];
+							str=ptlist.join("),(");
+							str="("+str+")";
+							console.log(str);
+							$("#queryGeojson").val(str);
+							console.log(shapes.geometry.type);//得到所绘的图形
+						   console.log(shapes.geometry.coordinates[0]);//得到所绘的图形
+						}
+					  });
+					}
+				</script>
+			<!-- start footer -->
+		</div>
+  <@_includePlace path="/f95e232b-027b-40ae-9e2d-0a6385f7c418.html"/> <#-- footer -->
+    </script>
+</body>
+</html>

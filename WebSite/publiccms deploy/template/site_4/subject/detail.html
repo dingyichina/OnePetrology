@@ -1,0 +1,235 @@
+<@_content id=id>
+ <#assign attribute=getContentAttribute(id)/> 			<#-- 参数:内容Id -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+	    <title>OnePetrology：${object.title}</title>
+<@_includePlace path="/Header-link.html"/> <#-- head-link -->
+
+</head>
+<body >
+<@_includePlace path="/header.html"/> <#-- header -->
+	<#-- id:内容ID -->
+
+	  <div class="container">
+		  
+		   <div class="row">
+                <div class="col-md-12">
+                    <!-- start location -->
+                    <ul class="breadcrumb pull-left">
+						 <li class="breadcrumb-prefix breadcrumb-item d-none d-md-block">You Are Here: </li>
+
+                        <li class="breadcrumb-item"><a href="${site.dynamicPath!}">Home</a></li>
+     
+                        <li class="breadcrumb-item"><a href="${site.dynamicPath!}subject/index.html">  Thematic  database</a></li>
+						<li class="breadcrumb-item"><a href="${site.dynamicPath!}subject/detail.html?id=${id}"> ${object.title}</a></li>
+
+
+                    </ul>
+                    <!-- end location -->
+                </div>
+            </div>
+			
+		  
+		  
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="bc-blk-07">
+                        <div class="bc-blk-hd">
+							<script>
+								function dosearch(){
+									//设置session，然后跳转
+								    sessionStorage.setItem("k_node",'${(attribute.k_node)!}');
+									sessionStorage.setItem("owner", '${(attribute.owner)!}' );
+									sessionStorage.setItem("scope", '${(attribute.scope)!}' );
+									sessionStorage.setItem("extent", '${(attribute.extent)!}' );
+									
+									window.location.href="/subject/search.html";
+									return false;
+								}
+								
+									function doSearchZironHfO(){
+									//设置session，然后跳转
+								    sessionStorage.setItem("k_node",'Zircon_Hf_O_isotopes');
+									sessionStorage.setItem("owner", '${(attribute.owner)!}' );
+									sessionStorage.setItem("scope", '${(attribute.scope)!}' );
+									window.location.href="/subject/search.html";
+									return false;
+								}
+								function doSearchFe(){
+									   
+									window.location.assign("http://47.94.233.83:18888");
+									return false;
+								}
+								function doSearchCa(){
+									   
+									window.location.href="http://47.94.233.83:18888/calist";
+									return false;
+								}
+							function fetchThisDataCount(){
+									//$("#resultCount").html('<p > please wait for a moment......</p>');
+									var k_node = '${(attribute.k_node)!}';
+		  							 var owner=  '${(attribute.owner)!}';
+		 			   				 var scope =   '${(attribute.scope)!}' ;
+									 var extent ='${(attribute.extent)!}' 
+									sessionStorage.setItem("k_node",k_node);
+									sessionStorage.setItem("owner", owner );
+									sessionStorage.setItem("scope", scope);
+									sessionStorage.setItem("extent",extent );								
+									console(extent);
+									 $.ajax({
+											 type: "get",        // 请求方式
+											 url: "${site.dynamicPath!}fastapi/kdata/"+k_node+"/"+owner,
+											data:{'boundary':'','condition':'','scope':scope,'start':0,'length':3},
+											dataType: "json",   // 预期返回一个 json 类型数据
+										   success: function (data) {   // data是形参名，代表返回的数据
+												//处理返回数据
+												/*var mycolumns =[];
+												for(var i=0;i<data.columns.length;i++){
+														mycolumns.push({'title':data.columns[i],'data':data.columns[i]});
+												}*/
+												//把列名存储到session
+												 sessionStorage.setItem("mycolumns",data.columns);
+												 var totalCount=data.recordsTotal;
+												 sessionStorage.setItem("totalcount",totalCount); 					
+												 $("#resultCount").html('<p >Total count of this thematic database is  <font color="#FF0000"> '+totalCount +' </font>  records.  <font color="#0000FF"> View the Results</font></p>');
+											 }
+							       });	 
+									
+									//sessionStorage.setItem("mycolumn", "Contributor,ContributorSampleID,Longitude,Latitude,Dataset Source,SiO2,TiO2,Al2O3,Fe2O3,MnO,MgO,CaO,Na2O,K2O,P2O5,owner,scope,update_time,Total,Y,V,Nb,Sr,Zr,CO2");
+									  
+									//window.location.href="/subject/result.html";
+									return false;
+								}
+								
+								
+								function doSearchIODPAll(){
+					//				$("#resultCount").html('<p > please wait for a moment......</p>');
+									var k_node = '${(attribute.k_node)!}';
+		  							 var owner=  '${(attribute.owner)!}';
+		 			   				 var scope =   '${(attribute.scope)!}' ;
+									 var extent ='${(attribute.extent)!}' 
+									sessionStorage.setItem("k_node",k_node);
+									sessionStorage.setItem("owner", owner );
+									sessionStorage.setItem("scope", scope);
+									sessionStorage.setItem("extent",extent );								
+									
+									 $.ajax({
+											 asyn:"false",
+											 type: "get",        // 请求方式
+											 url: "${site.dynamicPath!}fastapi/kdata/"+k_node+"/"+owner,
+											data:{'boundary':'','condition':'','scope':scope,'start':0},
+													dataType: "json",   // 预期返回一个 json 类型数据
+												   success: function (data) {   // data是形参名，代表返回的数据
+												//处理返回数据
+												/*var mycolumns =[];
+												for(var i=0;i<data.columns.length;i++){
+														mycolumns.push({'title':data.columns[i],'data':data.columns[i]});
+												}*/
+												//把列名存储到session
+												 sessionStorage.setItem("mycolumns",data.columns);
+												 var totalCount=data.recordsTotal;
+												 sessionStorage.setItem("totalcount",totalCount); 					
+											   //		     $("#resultCount").html('<p >find  <font color="#FF0000"> '+totalCount +' </font>  records.  <a href="/subject/result.html"><font color="#0000FF"> View the Results</a></font></p>');
+												  }
+										 });	 
+
+									//sessionStorage.setItem("mycolumn", "Contributor,ContributorSampleID,Longitude,Latitude,Dataset Source,SiO2,TiO2,Al2O3,Fe2O3,MnO,MgO,CaO,Na2O,K2O,P2O5,owner,scope,update_time,Total,Y,V,Nb,Sr,Zr,CO2");
+									  
+									window.location.href="/subject/result.html";
+									return false;
+								}
+							</script>
+							
+                            <h4 class="bc-blk-hd-title"><span>${object.title}</span></h4>  
+									
+						  	<#if object.title =="Potassic rocks Data">
+								<button  onclick="dosearch(); "> Search data ......</button>
+							 	<button  onclick="doSearchZironHfO(); "> Search Zircon Hf O Isotope data </button>
+							<#elseif object.title =="Non-traditional Stable Isotope Data">		
+							 	<button  onclick="doSearchFe(); ">Search  Fe data......</button>
+							    <button  onclick="doSearchCa(); ">Search Ca data......</button>						
+							<#else>
+							<!--button  onclick="dosearch(); "> Search data ......</button-->
+							</#if>
+							<!--<#if object.title =="International Ocean Drilling Basalt Data">		
+							<button  onclick="doSearchIODPAll(); ">Search all ......</button>
+							</#if>-->
+						   <h5 style="text-align:center;"  ><span>Author: ${object.author!}</span> </h5>
+						<@_includePlace path="/10c0737c-703e-49d7-bbe5-4433795e1937.html"/> <#-- 数据库概述 -->
+				            <!--   此处直接放置查询功能，去掉上面的button-->
+						   <div class="row" style="padding:0 15%">
+                                    <div class="col-md-4 col-12">
+                                        <div class="item plain">
+                                            <div class="img-ctn">
+                                                <a href="/subject/bylocation.html" >
+                                                    <img class="img-fluid" src="${site.sitePath!}images/ByLocation.jpg" />
+                                                </a>
+                                            </div>
+                                            <div class="text-ctn">
+                                                <h5 class="art-caption text-left" style="font-size:1.125rem;"><a href="/subject/bylocation.html" >By Location</a></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-12">
+                                        <div class="item plain">
+                                            <div class="img-ctn">
+                                                <a href="/subject/bycondition.html" >
+                                                    <img class="img-fluid" src="${site.sitePath!}images/ByFeature.jpg" />
+                                                </a>
+                                            </div>
+                                            <div class="text-ctn">
+                                                <h5 class="art-caption text-left" style="font-size:1.125rem;"><a href="/subject/bycondition.html" >By Feature</a></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                              
+                                    <p class="col-md-4 col-12 art-detail text-center" style="margin-top:3.125rem"><a href="/subject/advance.html" >Advanced Search</a></p>
+                          
+                       
+                        </div >
+                        <div class="bc-blk-bd">
+                            <div class="bc-multi-col-pictext-list-01">
+                                <div class="row">
+								<span>
+                                    ${(attribute.text?no_esc)!}
+								</span> 
+                                </div>
+								 <#-- head-link -->
+
+		                  </div>
+                            <!-- Pager Start -->
+                            <!-- Pager End -->
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</@_content>
+
+
+    <footer>
+		<@_includePlace path="/53d9aa26-ab9a-41df-90d5-efc5307c3b3e.html"/> <#-- footer -->
+    </footer>
+    <script src="${site.dynamicPath}resource/js/cms.analytics.js"></script>
+    <script>
+        var ca = cmsAnalytics();
+        var url='${site.dynamicPath}api/visit/record';
+        if("string" ==typeof itemString){
+            url=url+"?"+itemString;
+        }
+        ca.report(url);
+		//设置session，然后跳转
+		 sessionStorage.setItem("k_node",'${(attribute.k_node)!}');
+		 sessionStorage.setItem("owner", '${(attribute.owner)!}' );
+		sessionStorage.setItem("scope", '${(attribute.scope)!}' );
+		sessionStorage.setItem("extent", '${(attribute.extent)!}' );
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<#macro pageTree filepath=''>
+    <@_templateList path=filepath>
+        <#list list as a>
+            <@t.merge 'pages' filepath+'/'+a.fileName/>
+        </#list>
+        <@_sysDeptPage deptId=admin.deptId!'' pages=t.pages!><#assign deptPageMap=map!/></@_sysDeptPage>
+        <#list list as a>
+            <#local path=filepath+'/'+a.fileName>
+            <#if (deptPageMap[path])?has_content&&deptPageMap[path]>
+                <li>
+                <#if a.directory>
+                    <a href="javascript:;" onclick="return false;">${a.fileName}</a>
+                    <ul><@pageTree path/></ul>
+                <#else>
+                    <a href="cmsPage/metadata.html?path=${(path?url)!}" target="ajax" rel="pageBox">
+                        <@_metadata path=path>
+                            ${(object.alias)?has_content?then(object.alias+' ('+a.fileName+')',a.fileName)}
+                        </@_metadata>
+                    </a>
+                </#if>
+                </li>
+            </#if>
+        <#else>
+            <li><a><@t.page 'empty_directory'/></a></li>
+        </#list>
+    </@_templateList>
+</#macro>
+<div class="pageContent">
+    <div layoutH class="leftPageContent">
+        <ul class="tree treeFolder">
+            <@pageTree/>
+         </ul>
+    </div>
+    <div id="pageBox" class="unitBox rightPageContent">
+    </div>
+</div>

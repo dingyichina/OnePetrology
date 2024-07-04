@@ -1,0 +1,175 @@
+<@_zircon id=id><#assign a=object/></@_zircon>
+<form method="post" action="zircon/save.do?callbackType=closeCurrent&navTabId=zircon/list" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <input name="id" type="hidden" value="${id!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+    <div class="pageContent">
+        <div class="pageFormContent" layoutH="56">
+            <dl>
+                <dt>ID：</dt>
+                <dd><input class="required" name="id" type="text" size="30" value="${(a.id)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Sample Id：</dt>
+                <dd><input class="required" name="sampleId" type="text" size="30" value="${(a.sampleId)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Oraginal Sample Id：</dt>
+                <dd><input class="required" name="oraginalSampleId" type="text" size="30" value="${(a.oraginalSampleId)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Point Num：</dt>
+                <dd><input class="required" name="pointNum" type="text" size="30" value="${(a.pointNum)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Hf Type：</dt>
+                <dd><input class="required" name="hfType" type="text" size="30" value="${(a.hfType)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Test Age（Ma）：</dt>
+                <dd><input class="required" name="testAge" type="text" size="30" value="${(a.testAge)!}"/></dd>
+            </dl>
+            <dl>
+                <dt><sup>176</sup>Yb/<sup>177</sup>Hf：</dt>
+                <dd><input class="required" name="yb176Hf177" type="text" size="30" value="${(a.yb176Hf177)!}"/></dd>
+            </dl>
+            <dl>
+                <dt><sup>176</sup>Lu/<sup>177</sup>Hf：</dt>
+                <dd><input class="required" name="lu176Hf177" type="text" size="30" value="${(a.lu176Hf177)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>2σ Error：</dt>
+                <dd><input class="required" name="sigma2LuHf" type="text" size="30" value="${(a.sigma2LuHf)!}"/></dd>
+            </dl>
+            <dl>
+                <dt><sup>176</sup>Hf/<sup>177</sup>Hf：</dt>
+                <dd><input class="required" name="hf176Hf177" type="text" size="30" value="${(a.hf176Hf177)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>2σ Error：</dt>
+                <dd><input class="required" name="sigma2HfHf" type="text" size="30" value="${(a.sigma2HfHf)!}"/></dd>
+            </dl>
+            <dl>
+                <dt><sup>176</sup>Hf/<sup>177</sup>Hf（t）：</dt>
+                <dd><input class="required" name="hf176Hf177T" type="text" size="30" value="${(a.hf176Hf177T)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>CHUR（t）：</dt>
+                <dd><input class="required" name="churT" type="text" size="30" value="${(a.churT)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>DM（t）：</dt>
+                <dd><input class="required" name="dmT" type="text" size="30" value="${(a.dmT)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>εHf(t)：</dt>
+                <dd><input class="required" name="epsilonHfT" type="text" size="30" value="${(a.epsilonHfT)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>2σ Error：</dt>
+                <dd><input class="required" name="sigma2EpsilonHfT" type="text" size="30" value="${(a.sigma2EpsilonHfT)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>f<sub>Lu/Hf</sub>：</dt>
+                <dd><input class="required" name="FLuHf" type="text" size="30" value="${(a.FLuHf)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>T<sub>DM1</sub>：</dt>
+                <dd><input class="required" name="tdm1" type="text" size="30" value="${(a.tdm1)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>2σ Error：</dt>
+                <dd><input class="required" name="sigma2Tdm1" type="text" size="30" value="${(a.sigma2Tdm1)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>T<sub>DM2</sub>：</dt>
+                <dd><input class="required" name="tdm2" type="text" size="30" value="${(a.tdm2)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>2σ Error：</dt>
+                <dd><input class="required" name="sigma2Tdm2" type="text" size="30" value="${(a.sigma2Tdm2)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>εHf(0)：</dt>
+                <dd><input class="required" name="epsilonHf0" type="text" size="30" value="${(a.epsilonHf0)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>d18O：</dt>
+                <dd><input class="required" name="d18o" type="text" size="30" value="${(a.d18o)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>2σ Error：</dt>
+                <dd><input class="required" name="epsilonD180" type="text" size="30" value="${(a.epsilonD180)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>d18O Control：</dt>
+                <dd><input class="required" name="epsilonD18oControl" type="text" size="30" value="${(a.epsilonD18oControl)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>SiO<sub>2</sub>：</dt>
+                <dd><input class="required" name="siO2" type="text" size="30" value="${(a.siO2)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>lithology：</dt>
+                <dd><input class="required" name="lithology" type="text" size="30" value="${(a.lithology)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Mineral Type：</dt>
+                <dd><input class="required" name="mineralType" type="text" size="30" value="${(a.mineralType)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Number of Grains：</dt>
+                <dd><input class="required" name="grainsNumber" type="text" size="30" value="${(a.grainsNumber)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>P(χ2) (%)：</dt>
+                <dd><input class="required" name="chiSquareProbability" type="text" size="30" value="${(a.chiSquareProbability)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Central Age(Ma)：</dt>
+                <dd><input class="required" name="centralAge" type="text" size="30" value="${(a.centralAge)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Central Age Error (Ma)：</dt>
+                <dd><input class="required" name="centralAgeError" type="text" size="30" value="${(a.centralAgeError)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Pooled Age (Ma)：</dt>
+                <dd><input class="required" name="pooledAge" type="text" size="30" value="${(a.pooledAge)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Pooled Age Error (Ma)：</dt>
+                <dd><input class="required" name="pooledAgeError" type="text" size="30" value="${(a.pooledAgeError)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Mean Track Length (cm)：</dt>
+                <dd><input class="required" name="meanTrackLength" type="text" size="30" value="${(a.meanTrackLength)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Length Error (cm)：</dt>
+                <dd><input class="required" name="lengthError" type="text" size="30" value="${(a.lengthError)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>(U-Th)/He（Ma）：</dt>
+                <dd><input class="required" name="UThHeAge" type="text" size="30" value="${(a.UThHeAge)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>(U-Th)/He Error（Ma）：</dt>
+                <dd><input class="required" name="UThHeAgeError" type="text" size="30" value="${(a.UThHeAgeError)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Article Ref：</dt>
+                <dd><input class="required" name="articleRef" type="text" size="30" value="${(a.articleRef)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Article DOI：</dt>
+                <dd><input class="required" name="articleDoi" type="text" size="30" value="${(a.articleDoi)!}"/></dd>
+            </dl>
+        </div>
+    </div>
+</form>

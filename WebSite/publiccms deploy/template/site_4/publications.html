@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<@_includePlace path="/Header-link.html"/> <#-- head-link -->
+	
+	<style type="text/css">
+		.border-end {
+			border-right: 1px solid #dee2e6!important;
+		}
+		.float-right{float:right;}
+		.float-left{float:left;}
+
+		main .regulation .menu{width:303px;padding:20px;border:1px solid #ededed;}
+		main .regulation .menu ul{list-style:none;font-size:14px;position: relative;}
+		main .regulation .menu ul:before{content: "";height: 100%;position: absolute;left:6px;background-color: #ededed;width: 1px;z-index:0;}
+		main .regulation .menu ul li{line-height:20px;margin-bottom:20px;background-color:#fff;position: relative;z-index:1;}
+		main .regulation .menu ul li:before{content: "";width:8px;height:8px;display: inline-block;margin-right:8px;border:3px solid #ededed;border-radius:50%;}
+		main .regulation .menu ul li a{color:#333;font-weight:bold;}
+		main .regulation .menu ul li:hover a,
+		main .regulation .menu ul li.selected a{color:#005bac;}
+		main .regulation .menu ul li.selected:before{border-color:#005bac;}
+		main .regulation .text{padding:20px;width:70%;height:500px;overflow-y:auto;color:#666;border:1px solid #ededed;}
+		main .regulation .text h3{color:#000;}
+
+	</style>  
+</head>
+<body>
+<@_includePlace path="/header.html"/> <#-- header -->
+	 
+       <main>
+		   <div class="section-white">
+           <div class="container">
+		 <div class="row">
+                <div class="col-md-12">
+                    <!-- start location -->
+                    <ul class="breadcrumb pull-left">
+                        <li class="breadcrumb-prefix breadcrumb-item d-none d-md-block">You Are Here: </li>
+
+                        <li class="breadcrumb-item"><a href="${site.dynamicPath!}">Home</a></li>
+
+                        <li class="breadcrumb-item"><a href="${site.dynamicPath!}maps.html">Published Maps</a></li>
+
+                    </ul>
+                    <!-- end location -->
+                </div>
+            </div>
+		
+		
+        <div class="row">
+		   
+		   
+        <div class=" regulation clearfix">
+             <@_category code="publication">
+			 <@_contentList categoryId=object.id pageSize=100>
+            <div class="menu float-left">
+                <ul>
+                    <#list page.list as a>
+                    <li><a href="javascript:void(0)" data-id="${a.id}">${a.title}</a></li>
+                    </#list>
+                </ul>
+            </div>
+            <article class=" text float-left" style='height:1000px;'>
+                <#list page.list as a>
+                <h3 data-id="${a.id}">${a.title}</h3>
+                ${(getContentAttribute(a.id).text?no_esc)!}
+                </#list>
+            </article>
+            </@_contentList>
+				</@_category>
+        </div>
+			</div>
+			   </div>
+		   </div>
+    </main>
+				
+
+    <footer>
+<@_includePlace path="/53d9aa26-ab9a-41df-90d5-efc5307c3b3e.html"/> <#-- footer -->
+    </footer>
+			
+			
+			
+    <script src="${site.dynamicPath}resource/js/cms.analytics.js"></script>
+    <script>
+        var ca = cmsAnalytics();
+        var url='${site.dynamicPath}api/visit/record';
+        if("string" ==typeof itemString){
+            url=url+"?"+itemString;
+        }
+        ca.report(url);
+		
+			// dom加载完成后执行的函数
+		$(document).ready(function(){
+		
+			$('main .regulation .text').scroll(function(){
+				if($("main .regulation .text")){
+					var last;
+					$("main .regulation .text h3").each(function(){
+						if($(this).offset().top >= $('main .regulation .text').offset().top + 100){
+							$("main .regulation .menu ul li").removeClass('selected');
+							if(last){
+								$("main .regulation .menu ul li a[data-id="+last.data('id')+"]").parent().addClass('selected');
+							}else{
+								$("main .regulation .menu ul li a[data-id="+$(this).data('id')+"]").parent().addClass('selected');
+							}
+							return false;
+						}
+						last=$(this);
+					});
+				}
+			}).trigger("scroll");
+			$("main .regulation .menu ul li a").click(function(){
+				var hight= $("main .regulation .text h3[data-id="+$(this).data('id')+"]").offset().top - $('main .regulation .text').offset().top + $('main .regulation .text').scrollTop();
+				$('main .regulation .text').stop().animate({scrollTop:hight},500);
+			});
+			
+		});
+		
+    </script>
+</body>
+</html>

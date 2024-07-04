@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<@_includePlace path="/940fd251-b42a-4d62-a863-106b41db3b21.html"/> <#-- 变革Head -->
+</head>
+<body  class="menu-always-on-top">
+<@_includePlace path="/501dbfda-4c14-4841-8c70-cfb693c2f3b1.html"/> <#-- 变革header -->
+<main>
+<div class="service-area bg2 sp">
+
+        <div class="container">
+
+           <@_contentList  categoryId=140  pageIndex=0  pageSize=300 > 
+			 <table class="table table-hover">
+                <thead>
+                <tr>
+					 <th scope="col">#</th>
+                    <th scope="col">文章标题</th>
+                    <th scope="col">发布时间</th>
+                </tr>
+                </thead>
+                <tbody>
+               <#list page.list as a>
+                    <tr>
+						<th scope="row">${a.id} </th>
+                        <td><a href="${site.dynamicPath!}bgxjs/news.html?id=${(a.id)!}" }> ${(a.title)!}</a></td>
+                        <td>${a.createDate?date} </td>
+                    </tr>
+              </#list>       
+                </tbody>
+            </table>
+			</@_contentList>
+			
+			<!--------
+            <@_contentList  categoryId=140  pageIndex=0  pageSize=300 > 
+            <ul class="list-unstyled">
+                    <ul class="list-group">
+                            <#list page.list as a>
+                           <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <a href="${site.dynamicPath!}bgxjs/news.html?id=${(a.id)!}" }>
+                                    <h5 class="mt-0 mb-1">
+                                          ${(a.title)!}
+                                    </h5>
+                                </a>
+                                <span class="badge badge-primary badge-pill">${a.createDate?date} </span>
+                            </li>
+                            </#list>        
+                    </ul>
+            </ul>
+                </@_contentList>
+           ------->
+
+        </div>
+    </div>
+</main>
+<@_includePlace path="/95481b45-919b-413f-bbfb-9493ad16d93e.html"/> <#-- 变革footer -->
+<script>
+function unstar(itemId,itemType){
+    $.getJSON('${site.dynamicPath}score/unscore?itemId='+itemId+'&itemType='+itemType+'&_csrf=<@_csrfToken/>', function(data){
+        location.reload();
+    });
+}
+    </script>
+</body>
+</html>

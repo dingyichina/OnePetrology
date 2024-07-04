@@ -1,0 +1,2561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<@_includePlace path="/63241365-51a7-4903-89e6-7619031fa9fe.html"/> <#-- Header-link -->
+	<link href="${site.sitePath}css/earthchem.css" rel="stylesheet">
+   <style >
+		td, th {
+				 padding: 3px;
+			}
+	</style>
+	<script language="javascript" type="text/javascript">
+		function checkNum(e) {
+         if(isNaN(e.value)){
+            alert("Please in put correct Number!");
+           e.value = "";
+            e.focus();
+    }
+}
+		
+	function doSubmit(){
+
+   	    var   inputs=document.getElementsByTagName('input');
+    	var   j=0;
+   		var map={};
+		for(var i=0;i<inputs.length;i++){
+  			  whichObj=inputs[i];
+  			  if(whichObj.type=="text"||whichObj.type=="radio")	{
+    		if(""!=whichObj.value&&whichObj.value!=null)
+				if(!isNaN(whichObj.value)||whichObj.type=="radio")
+					sessionStorage.setItem(whichObj.name+"", whichObj.value);
+				else{
+					alert("Please input correct Number!");
+					return false;
+				}
+					
+       }
+}
+	 var chemjson=manuplate();
+	 console.log(chemjson);
+	sessionStorage.setItem("chemjson",chemjson);	
+    window.location.href="${site.dynamicPath}search/options.html";
+    return true;
+}
+
+function manuplate(){
+    var trs=$("tr");
+    let result=[];
+   var index=0;
+    var kvstr;
+  for (var i=0;i<trs.length;i++){   
+    trObj=trs[i];      
+       inputObjs=trObj.getElementsByTagName('input');
+      if(inputObjs!=null){			
+		    let jsonElement=[];
+          for (var j=0;j<inputObjs.length;j++){
+       if(inputObjs[j].type=="text"){                 
+           kvstr=inputObjs[j].name+":"+inputObjs[j].value;
+             jsonElement.push(kvstr);
+           }
+    } 
+     result.push(jsonElement);
+    }
+  }
+  return JSON.stringify(result);
+}
+	</script>		
+</head>
+<body  class="menu-always-on-top" >
+	<@_includePlace path="/c8014652-e25e-4c4d-a3ca-9aad7fa0385c.html"/> <#-- header -->
+	
+    <main>
+	<div class="wrapper">
+		<!-- end header -->
+
+<script type="text/javascript">
+
+	function setclear(myitem) {
+		
+		mycheck=document.getElementById(myitem+'_check');
+		if(mycheck.checked==1){
+			//alert(myitem+' is checked');
+			mylt=document.getElementById(myitem+'_lt');
+			mylt.value='0';
+			mygt=document.getElementById(myitem+'_gt');
+			mygt.value='100';
+		}else{
+			//alert(myitem+' is not checked');
+			mylt=document.getElementById(myitem+'_lt');
+			mylt.value='';
+			mygt=document.getElementById(myitem+'_gt');
+			mygt.value='';
+		}
+		
+	}
+	
+	function clearcheck(myitem){
+		console.log(myitem);
+		$('#'+myitem+'_check').prop('checked', false);
+	}
+	
+	function logInput(){
+	
+	  var inputs=document.getElementsByTagName("input");
+    for(var i=0;i<inputs.length;i++){
+        var input=inputs[i];
+        console.log("@param  "+input.name+"\n");
+	 }
+
+		
+	}
+	
+</script>
+
+<h1>Set Chemistry / CIPW Norms</h1>
+<form name="chemistry_form" id="chemistry_form" action="searchupdate.php" method="post">
+
+<div style="padding-left:10px;padding-top:10px;">
+<h3>Query Operator:</h3>
+<div style="padding-top:5px;"></div>
+<div style="padding-left:15px;"><input type="radio" name="chemswitch" value="and" checked="checked"> AND &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#434343;">i.e. 0 &lt; sio2 &lt; 5 <strong>AND</strong> 0 &lt; tio2 &lt; 5</span></div>
+<div style="padding-left:15px;"><input type="radio" name="chemswitch" value="or"> OR &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#434343;">i.e. 0 &lt; sio2 &lt; 5 <strong>OR</strong> 0 &lt; tio2 &lt; 5</span></div>
+</div>
+
+
+<table class="ku_htmloutput" style="border:none">
+<tbody><tr><td colspan="10" style="border:none;"></td></tr>
+  	<tr>
+  		<td colspan="8" style="border:none;vertical-align:bottom">
+       	<h3>MAJOR ELEMENTS</h3>
+  		</td><td style="border:none;vertical-align:bottom" colspan="2"><input class="submitbutton" type="button" name="submit1" value="Submit" onclick="return doSubmit();" ></td>
+  	</tr>
+<tr style="border:1px solid;">
+	<td style="border:none;"><h4>EXISTS</h4></td>
+	<td style="border:none;">&nbsp;</td>
+	<td style="border:none;">&nbsp;</td>
+	<td style="border:none;"></td>
+	<td style="border:none;">&nbsp;</td>
+	<td style="border:none;">&nbsp;</td>
+		<td style="border:none;"><h4>UNITS</h4></td>
+		<td style="border:none;"></td>
+</tr> 
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="SIO2_check" id="SIO2_check" onclick="setclear('SIO2')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="SIO2_lt" id="SIO2_lt" onfocus="clearcheck('SIO2')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">SiO<sub>2</sub> </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="SIO2_gt" id="SIO2_gt" onfocus="clearcheck('SIO2')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;WT%</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="TIO2_check" id="TIO2_check" onclick="setclear('TIO2')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TIO2_lt" id="TIO2_lt" onfocus="clearcheck('TIO2')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">TiO<sub>2</sub> </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TIO2_gt" id="TIO2_gt" onfocus="clearcheck('TIO2')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;WT%</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="AL2O3_check" id="AL2O3_check" onclick="setclear('AL2O3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="AL2O3_lt" id="AL2O3_lt" onfocus="clearcheck('AL2O3')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Al<sub>2</sub>O<sub>3</sub> </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="AL2O3_gt" id="AL2O3_gt" onfocus="clearcheck('AL2O3')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;WT%</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="FE2O3_check" id="FE2O3_check" onclick="setclear('FE2O3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="FE2O3_lt" id="FE2O3_lt" onfocus="clearcheck('FE2O3')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Fe<sub>2</sub>O<sub>3</sub> </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="FE2O3_gt" id="FE2O3_gt" onfocus="clearcheck('FE2O3')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;WT%</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="FE2O3T_check" id="FE2O3T_check" onclick="setclear('FE2O3T')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="FE2O3T_lt" id="FE2O3T_lt" onfocus="clearcheck('FE2O3T')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Fe<sub>2</sub>O<sub>3</sub> Total </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="FE2O3T_gt" id="FE2O3T_gt" onfocus="clearcheck('FE2O3T')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;WT%</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="FEO_check" id="FEO_check" onclick="setclear('FEO')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="FEO_lt" id="FEO_lt" onfocus="clearcheck('FEO')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">FeO </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="FEO_gt" id="FEO_gt" onfocus="clearcheck('FEO')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;WT%</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="FEOT_check" id="FEOT_check" onclick="setclear('FEOT')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="FEOT_lt" id="FEOT_lt" onfocus="clearcheck('FEOT')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">FeO Total </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="FEOT_gt" id="FEOT_gt" onfocus="clearcheck('FEOT')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;WT%</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="MGO_check" id="MGO_check" onclick="setclear('MGO')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="MGO_lt" id="MGO_lt" onfocus="clearcheck('MGO')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">MgO </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="MGO_gt" id="MGO_gt" onfocus="clearcheck('MGO')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;WT%</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="CAO_check" id="CAO_check" onclick="setclear('CAO')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CAO_lt" id="CAO_lt" onfocus="clearcheck('CAO')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">CaO </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CAO_gt" id="CAO_gt" onfocus="clearcheck('CAO')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;WT%</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="NA2O_check" id="NA2O_check" onclick="setclear('NA2O')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="NA2O_lt" id="NA2O_lt" onfocus="clearcheck('NA2O')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Na<sub>2</sub>O </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="NA2O_gt" id="NA2O_gt" onfocus="clearcheck('NA2O')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;WT%</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="K2O_check" id="K2O_check" onclick="setclear('K2O')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="K2O_lt" id="K2O_lt" onfocus="clearcheck('K2O')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">K<sub>2</sub>O </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="K2O_gt" id="K2O_gt" onfocus="clearcheck('K2O')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;WT%</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="P2O5_check" id="P2O5_check" onclick="setclear('P2O5')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="P2O5_lt" id="P2O5_lt" onfocus="clearcheck('P2O5')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">P<sub>2</sub>O<sub>5</sub> </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="P2O5_gt" id="P2O5_gt" onfocus="clearcheck('P2O5')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;WT%</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="MNO_check" id="MNO_check" onclick="setclear('MNO')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="MNO_lt" id="MNO_lt" onfocus="clearcheck('MNO')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">MnO </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="MNO_gt" id="MNO_gt" onfocus="clearcheck('MNO')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;WT%</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="CR2O3_check" id="CR2O3_check" onclick="setclear('CR2O3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CR2O3_lt" id="CR2O3_lt" onfocus="clearcheck('CR2O3')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Cr<sub>2</sub>O<sub>3</sub> </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CR2O3_gt" id="CR2O3_gt" onfocus="clearcheck('CR2O3')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;WT%</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="NIO_check" id="NIO_check" onclick="setclear('NIO')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="NIO_lt" id="NIO_lt" onfocus="clearcheck('NIO')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">NiO </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="NIO_gt" id="NIO_gt" onfocus="clearcheck('NIO')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;WT%</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="CACO3_check" id="CACO3_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CACO3_lt" id="CACO3_lt" onfocus="clearcheck('CACO3')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">CaCO<sub>3</sub> </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CACO3_gt" id="CACO3_gt" onfocus="clearcheck('CACO3')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;WT%</td>
+</tr>
+<tr><td colspan="10" style="border:none;"></td></tr>
+  	<tr>
+  		<td colspan="8" style="border:none;vertical-align:bottom">
+       	<h3>TRACE ELEMENTS</h3>
+  		</td><td style="border:none;vertical-align:bottom" colspan="2"><input class="submitbutton" type="button" name="submit1" value="Submit"  onclick="return doSubmit();" ></td>
+  	</tr>
+<tr style="border:1px solid;">
+	<td style="border:none;"><h4>EXISTS</h4></td>
+	<td style="border:none;">&nbsp;</td>
+	<td style="border:none;">&nbsp;</td>
+	<td style="border:none;"></td>
+	<td style="border:none;">&nbsp;</td>
+	<td style="border:none;">&nbsp;</td>
+		<td style="border:none;"><h4>UNITS</h4></td>
+		<td style="border:none;"></td>
+</tr> 
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="LI_check" id="LI_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="LI_lt" id="LI_lt" onfocus="clearcheck('LI')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Li </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="LI_gt" id="LI_gt" onfocus="clearcheck('LI')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="BE_check" id="BE_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="BE_lt" id="BE_lt" onfocus="clearcheck('BE')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Be </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="BE_gt" id="BE_gt" onfocus="clearcheck('BE')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="B_check" id="B_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="B_lt" id="B_lt" onfocus="clearcheck('B')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">B </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="B_gt" id="B_gt" onfocus="clearcheck('B')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="C_check" id="C_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="C_lt" id="C_lt" onfocus="clearcheck('C')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">C </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="C_gt" id="C_gt" onfocus="clearcheck('C')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="K_check" id="K_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="K_lt" id="K_lt" onfocus="clearcheck('K')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">K </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="K_gt" id="K_gt" onfocus="clearcheck('K')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="CA_check" id="CA_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CA_lt" id="CA_lt" onfocus="clearcheck('CA')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Ca </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CA_gt" id="CA_gt" onfocus="clearcheck('CA')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="MG_check" id="MG_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="MG_lt" id="MG_lt" onfocus="clearcheck('MG')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Mg </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="MG_gt" id="MG_gt" onfocus="clearcheck('MG')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="SC_check" id="SC_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="SC_lt" id="SC_lt" onfocus="clearcheck('SC')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Sc </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="SC_gt" id="SC_gt" onfocus="clearcheck('SC')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="TI_check" id="TI_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TI_lt" id="TI_lt" onfocus="clearcheck('TI')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Ti </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TI_gt" id="TI_gt" onfocus="clearcheck('TI')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="V_check" id="V_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="V_lt" id="V_lt" onfocus="clearcheck('V')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">V </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="V_gt" id="V_gt" onfocus="clearcheck('V')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="FE_check" id="FE_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="FE_lt" id="FE_lt" onfocus="clearcheck('FE')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Fe </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="FE_gt" id="FE_gt" onfocus="clearcheck('FE')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="CR_check" id="CR_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CR_lt" id="CR_lt" onfocus="clearcheck('CR')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Cr </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CR_gt" id="CR_gt" onfocus="clearcheck('CR')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="MN_check" id="MN_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="MN_lt" id="MN_lt" onfocus="clearcheck('MN')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Mn </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="MN_gt" id="MN_gt" onfocus="clearcheck('MN')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="CO_check" id="CO_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CO_lt" id="CO_lt" onfocus="clearcheck('CO')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Co </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CO_gt" id="CO_gt" onfocus="clearcheck('CO')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="NI_check" id="NI_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="NI_lt" id="NI_lt" onfocus="clearcheck('NI')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Ni </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="NI_gt" id="NI_gt" onfocus="clearcheck('NI')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="ZN_check" id="ZN_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="ZN_lt" id="ZN_lt" onfocus="clearcheck('ZN')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Zn </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="ZN_gt" id="ZN_gt" onfocus="clearcheck('ZN')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="CU_check" id="CU_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CU_lt" id="CU_lt" onfocus="clearcheck('CU')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Cu </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CU_gt" id="CU_gt" onfocus="clearcheck('CU')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="ZR_check" id="ZR_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="ZR_lt" id="ZR_lt" onfocus="clearcheck('ZR')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Zr </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="ZR_gt" id="ZR_gt" onfocus="clearcheck('ZR')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="GA_check" id="GA_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="GA_lt" id="GA_lt" onfocus="clearcheck('GA')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Ga </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="GA_gt" id="GA_gt" onfocus="clearcheck('GA')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="GER_check" id="GER_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="GER_lt" id="GER_lt" onfocus="clearcheck('GER')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Ge </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="GER_gt" id="GER_gt" onfocus="clearcheck('GER')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="P_check" id="P_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="P_lt" id="P_lt" onfocus="clearcheck('P')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">P </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="P_gt" id="P_gt" onfocus="clearcheck('P')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="SN_check" id="SN_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="SN_lt" id="SN_lt" onfocus="clearcheck('SN')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Sn </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="SN_gt" id="SN_gt" onfocus="clearcheck('SN')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="CD_check" id="CD_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CD_lt" id="CD_lt" onfocus="clearcheck('CD')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Cd </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CD_gt" id="CD_gt" onfocus="clearcheck('CD')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="HF_check" id="HF_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="HF_lt" id="HF_lt" onfocus="clearcheck('HF')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Hf </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="HF_gt" id="HF_gt" onfocus="clearcheck('HF')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="IR_check" id="IR_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="IR_lt" id="IR_lt" onfocus="clearcheck('IR')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Ir </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="IR_gt" id="IR_gt" onfocus="clearcheck('IR')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="PT_check" id="PT_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PT_lt" id="PT_lt" onfocus="clearcheck('PT')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Pt </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PT_gt" id="PT_gt" onfocus="clearcheck('PT')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="TL_check" id="TL_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TL_lt" id="TL_lt" onfocus="clearcheck('TL')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Tl </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TL_gt" id="TL_gt" onfocus="clearcheck('TL')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="SE_check" id="SE_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="SE_lt" id="SE_lt" onfocus="clearcheck('SE')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Se </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="SE_gt" id="SE_gt" onfocus="clearcheck('SE')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="ARSENIC_check" id="ARSENIC_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="ARSENIC_lt" id="ARSENIC_lt" onfocus="clearcheck('ARSENIC')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">As </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="ARSENIC_gt" id="ARSENIC_gt" onfocus="clearcheck('ARSENIC')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="PD_check" id="PD_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PD_lt" id="PD_lt" onfocus="clearcheck('PD')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Pd </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PD_gt" id="PD_gt" onfocus="clearcheck('PD')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="SR_check" id="SR_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="SR_lt" id="SR_lt" onfocus="clearcheck('SR')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Sr </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="SR_gt" id="SR_gt" onfocus="clearcheck('SR')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="AG_check" id="AG_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="AG_lt" id="AG_lt" onfocus="clearcheck('AG')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Ag </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="AG_gt" id="AG_gt" onfocus="clearcheck('AG')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="Y_check" id="Y_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="Y_lt" id="Y_lt" onfocus="clearcheck('Y')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Y </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="Y_gt" id="Y_gt" onfocus="clearcheck('Y')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="RE_check" id="RE_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="RE_lt" id="RE_lt" onfocus="clearcheck('RE')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Re </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="RE_gt" id="RE_gt" onfocus="clearcheck('RE')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="BA_check" id="BA_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="BA_lt" id="BA_lt" onfocus="clearcheck('BA')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Ba </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="BA_gt" id="BA_gt" onfocus="clearcheck('BA')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="PB_check" id="PB_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PB_lt" id="PB_lt" onfocus="clearcheck('PB')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Pb </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PB_gt" id="PB_gt" onfocus="clearcheck('PB')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="BI_check" id="BI_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="BI_lt" id="BI_lt" onfocus="clearcheck('BI')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Bi </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="BI_gt" id="BI_gt" onfocus="clearcheck('BI')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="I_check" id="I_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="I_lt" id="I_lt" onfocus="clearcheck('I')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">I </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="I_gt" id="I_gt" onfocus="clearcheck('I')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="AL_check" id="AL_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="AL_lt" id="AL_lt" onfocus="clearcheck('AL')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Al </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="AL_gt" id="AL_gt" onfocus="clearcheck('AL')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="HG_check" id="HG_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="HG_lt" id="HG_lt" onfocus="clearcheck('HG')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Hg </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="HG_gt" id="HG_gt" onfocus="clearcheck('HG')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="NB_check" id="NB_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="NB_lt" id="NB_lt" onfocus="clearcheck('NB')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Nb </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="NB_gt" id="NB_gt" onfocus="clearcheck('NB')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="TE_check" id="TE_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TE_lt" id="TE_lt" onfocus="clearcheck('TE')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Te </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TE_gt" id="TE_gt" onfocus="clearcheck('TE')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="W_check" id="W_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="W_lt" id="W_lt" onfocus="clearcheck('W')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">W </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="W_gt" id="W_gt" onfocus="clearcheck('W')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="SB_check" id="SB_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="SB_lt" id="SB_lt" onfocus="clearcheck('SB')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Sb </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="SB_gt" id="SB_gt" onfocus="clearcheck('SB')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="TH_check" id="TH_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH_lt" id="TH_lt" onfocus="clearcheck('TH')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Th </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH_gt" id="TH_gt" onfocus="clearcheck('TH')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="OS_check" id="OS_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="OS_lt" id="OS_lt" onfocus="clearcheck('OS')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Os </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="OS_gt" id="OS_gt" onfocus="clearcheck('OS')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="RB_check" id="RB_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="RB_lt" id="RB_lt" onfocus="clearcheck('RB')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Rb </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="RB_gt" id="RB_gt" onfocus="clearcheck('RB')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="S_check" id="S_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="S_lt" id="S_lt" onfocus="clearcheck('S')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">S </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="S_gt" id="S_gt" onfocus="clearcheck('S')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="AU_check" id="AU_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="AU_lt" id="AU_lt" onfocus="clearcheck('AU')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Au </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="AU_gt" id="AU_gt" onfocus="clearcheck('AU')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="CS_check" id="CS_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CS_lt" id="CS_lt" onfocus="clearcheck('CS')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Cs </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CS_gt" id="CS_gt" onfocus="clearcheck('CS')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="MO_check" id="MO_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="MO_lt" id="MO_lt" onfocus="clearcheck('MO')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Mo </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="MO_gt" id="MO_gt" onfocus="clearcheck('MO')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="U_check" id="U_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="U_lt" id="U_lt" onfocus="clearcheck('U')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">U </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="U_gt" id="U_gt" onfocus="clearcheck('U')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="TA_check" id="TA_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TA_lt" id="TA_lt" onfocus="clearcheck('TA')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Ta </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TA_gt" id="TA_gt" onfocus="clearcheck('TA')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+<tr><td colspan="10" style="border:none;"></td></tr>
+  	<tr>
+  		<td colspan="8" style="border:none;vertical-align:bottom">
+       	<h3>VOLATILE</h3>
+  		</td><td style="border:none;vertical-align:bottom" colspan="2"><input class="submitbutton" type="button" name="submit1" value="Submit" onclick="return doSubmit();" ></td>
+  	</tr>
+<tr style="border:1px solid;">
+	<td style="border:none;"><h4>EXISTS</h4></td>
+	<td style="border:none;">&nbsp;</td>
+	<td style="border:none;">&nbsp;</td>
+	<td style="border:none;"></td>
+	<td style="border:none;">&nbsp;</td>
+	<td style="border:none;">&nbsp;</td>
+		<td style="border:none;"><h4>UNITS</h4></td>
+		<td style="border:none;"></td>
+</tr> 
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="LOI_check" id="LOI_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="LOI_lt" id="LOI_lt" onfocus="clearcheck('LOI')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">LOI </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="LOI_gt" id="LOI_gt" onfocus="clearcheck('LOI')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="H2O_P_check" id="H2O_P_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="H2O_P_lt" id="H2O_P_lt" onfocus="clearcheck('H2O_P')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">H<sub>2</sub>O+ </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="H2O_P_gt" id="H2O_P_gt" onfocus="clearcheck('H2O_P')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="H2O_M_check" id="H2O_M_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="H2O_M_lt" id="H2O_M_lt" onfocus="clearcheck('H2O_M')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">H<sub>2</sub>O- </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="H2O_M_gt" id="H2O_M_gt" onfocus="clearcheck('H2O_M')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="H2O_check" id="H2O_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="H2O_lt" id="H2O_lt" onfocus="clearcheck('H2O')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">H<sub>2</sub>O </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="H2O_gt" id="H2O_gt" onfocus="clearcheck('H2O')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="H2O_T_check" id="H2O_T_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="H2O_T_lt" id="H2O_T_lt" onfocus="clearcheck('H2O_T')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">H<sub>2</sub>O Total </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="H2O_T_gt" id="H2O_T_gt" onfocus="clearcheck('H2O_T')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="CO2_check" id="CO2_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CO2_lt" id="CO2_lt" onfocus="clearcheck('CO2')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Co<sub>2</sub> </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CO2_gt" id="CO2_gt" onfocus="clearcheck('CO2')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="F_check" id="F_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="F_lt" id="F_lt" onfocus="clearcheck('F')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">F </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="F_gt" id="F_gt" onfocus="clearcheck('F')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="CL_check" id="CL_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CL_lt" id="CL_lt" onfocus="clearcheck('CL')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Cl </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CL_gt" id="CL_gt" onfocus="clearcheck('CL')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+<tr><td colspan="10" style="border:none;"></td></tr>
+  	<tr>
+  		<td colspan="8" style="border:none;vertical-align:bottom">
+       	<h3>RARE EARTH ELEMENTS</h3>
+  		</td><td style="border:none;vertical-align:bottom" colspan="2"><input class="submitbutton" type="button" name="submit1" value="Submit" onclick="return doSubmit();" ></td>
+  	</tr>
+<tr style="border:1px solid;">
+	<td style="border:none;"><h4>EXISTS</h4></td>
+	<td style="border:none;">&nbsp;</td>
+	<td style="border:none;">&nbsp;</td>
+	<td style="border:none;"></td>
+	<td style="border:none;">&nbsp;</td>
+	<td style="border:none;">&nbsp;</td>
+		<td style="border:none;"><h4>UNITS</h4></td>
+		<td style="border:none;"></td>
+</tr> 
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="LA_check" id="LA_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="LA_lt" id="LA_lt" onfocus="clearcheck('LA')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">La </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="LA_gt" id="LA_gt" onfocus="clearcheck('LA')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="CE_check" id="CE_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CE_lt" id="CE_lt" onfocus="clearcheck('CE')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Ce </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CE_gt" id="CE_gt" onfocus="clearcheck('CE')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="PR_check" id="PR_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PR_lt" id="PR_lt" onfocus="clearcheck('PR')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Pr </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PR_gt" id="PR_gt" onfocus="clearcheck('PR')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="ND_check" id="ND_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="ND_lt" id="ND_lt" onfocus="clearcheck('ND')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Nd </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="ND_gt" id="ND_gt" onfocus="clearcheck('ND')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="SM_check" id="SM_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="SM_lt" id="SM_lt" onfocus="clearcheck('SM')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Sm </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="SM_gt" id="SM_gt" onfocus="clearcheck('SM')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="EU_check" id="EU_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="EU_lt" id="EU_lt" onfocus="clearcheck('EU')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Eu </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="EU_gt" id="EU_gt" onfocus="clearcheck('EU')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="GD_check" id="GD_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="GD_lt" id="GD_lt" onfocus="clearcheck('GD')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Gd </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="GD_gt" id="GD_gt" onfocus="clearcheck('GD')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="TB_check" id="TB_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TB_lt" id="TB_lt" onfocus="clearcheck('TB')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Tb </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TB_gt" id="TB_gt" onfocus="clearcheck('TB')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="DY_check" id="DY_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="DY_lt" id="DY_lt" onfocus="clearcheck('DY')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Dy </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="DY_gt" id="DY_gt" onfocus="clearcheck('DY')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="HO_check" id="HO_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="HO_lt" id="HO_lt" onfocus="clearcheck('HO')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Ho </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="HO_gt" id="HO_gt" onfocus="clearcheck('HO')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="ER_check" id="ER_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="ER_lt" id="ER_lt" onfocus="clearcheck('ER')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Er </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="ER_gt" id="ER_gt" onfocus="clearcheck('ER')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="TM_check" id="TM_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TM_lt" id="TM_lt" onfocus="clearcheck('TM')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Tm </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TM_gt" id="TM_gt" onfocus="clearcheck('TM')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="YB_check" id="YB_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="YB_lt" id="YB_lt" onfocus="clearcheck('YB')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Yb </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="YB_gt" id="YB_gt" onfocus="clearcheck('YB')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="LU_check" id="LU_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="LU_lt" id="LU_lt" onfocus="clearcheck('LU')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Lu </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="LU_gt" id="LU_gt" onfocus="clearcheck('LU')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;&nbsp;&nbsp;PPM</td>
+</tr>
+<tr><td colspan="10" style="border:none;"></td></tr>
+  	<tr>
+  		<td colspan="8" style="border:none;vertical-align:bottom">
+       	<h3>STABLE ISOTOPES</h3>
+  		</td><td style="border:none;vertical-align:bottom" colspan="2"><input class="submitbutton" type="button" name="submit1" value="Submit"  onclick="return doSubmit();" ></td>
+  	</tr>
+<tr style="border:1px solid;">
+	<td style="border:none;"><h4>EXISTS</h4></td>
+	<td style="border:none;">&nbsp;</td>
+	<td style="border:none;">&nbsp;</td>
+	<td style="border:none;"></td>
+	<td style="border:none;">&nbsp;</td>
+	<td style="border:none;">&nbsp;</td>
+		<td style="border:none;"></td>
+</tr> 
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="DELTA_O18_check" id="DELTA_O18_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="DELTA_O18_lt" id="DELTA_O18_lt" onfocus="clearcheck('DELTA_O18')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Delta <sup>18</sup>O </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="DELTA_O18_gt" id="DELTA_O18_gt" onfocus="clearcheck('DELTA_O18')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="DELTA_C13_check" id="DELTA_C13_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="DELTA_C13_lt" id="DELTA_C13_lt" onfocus="clearcheck('DELTA_C13')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Delta <sup>13</sup>C </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="DELTA_C13_gt" id="DELTA_C13_gt" onfocus="clearcheck('DELTA_C13')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="delta_fe57_check" id="delta_fe57_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_fe57_lt" id="delta_fe57_lt" onfocus="clearcheck('delta_fe57')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Delta <sup>57</sup>Fe </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_fe57_gt" id="delta_fe57_gt" onfocus="clearcheck('delta_fe57')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="delta_b11_check" id="delta_b11_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_b11_lt" id="delta_b11_lt" onfocus="clearcheck('delta_b11')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Delta <sup>11</sup>B </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_b11_gt" id="delta_b11_gt" onfocus="clearcheck('delta_b11')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="delta_cl37_check" id="delta_cl37_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_cl37_lt" id="delta_cl37_lt" onfocus="clearcheck('delta_cl37')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Delta <sup>37</sup>Cl </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_cl37_gt" id="delta_cl37_gt" onfocus="clearcheck('delta_cl37')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="delta_cu65_check" id="delta_cu65_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_cu65_lt" id="delta_cu65_lt" onfocus="clearcheck('delta_cu65')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Delta <sup>65</sup>Cu </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_cu65_gt" id="delta_cu65_gt" onfocus="clearcheck('delta_cu65')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="delta_d_check" id="delta_d_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_d_lt" id="delta_d_lt" onfocus="clearcheck('delta_d')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Delta D </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_d_gt" id="delta_d_gt" onfocus="clearcheck('delta_d')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="delta_fe56_check" id="delta_fe56_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_fe56_lt" id="delta_fe56_lt" onfocus="clearcheck('delta_fe56')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Delta <sup>56</sup>Fe </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_fe56_gt" id="delta_fe56_gt" onfocus="clearcheck('delta_fe56')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="delta_li6_check" id="delta_li6_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_li6_lt" id="delta_li6_lt" onfocus="clearcheck('delta_li6')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Delta <sup>6</sup>Li </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_li6_gt" id="delta_li6_gt" onfocus="clearcheck('delta_li6')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="delta_li7_check" id="delta_li7_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_li7_lt" id="delta_li7_lt" onfocus="clearcheck('delta_li7')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Delta <sup>7</sup>Li </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_li7_gt" id="delta_li7_gt" onfocus="clearcheck('delta_li7')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="delta_mg25_check" id="delta_mg25_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_mg25_lt" id="delta_mg25_lt" onfocus="clearcheck('delta_mg25')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Delta <sup>25</sup>Mg </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_mg25_gt" id="delta_mg25_gt" onfocus="clearcheck('delta_mg25')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="delta_mg26_check" id="delta_mg26_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_mg26_lt" id="delta_mg26_lt" onfocus="clearcheck('delta_mg26')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Delta <sup>26</sup>Mg </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_mg26_gt" id="delta_mg26_gt" onfocus="clearcheck('delta_mg26')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="delta_mo98_check" id="delta_mo98_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_mo98_lt" id="delta_mo98_lt" onfocus="clearcheck('delta_mo98')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Delta <sup>98</sup>Mo </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_mo98_gt" id="delta_mo98_gt" onfocus="clearcheck('delta_mo98')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="delta_n15_check" id="delta_n15_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_n15_lt" id="delta_n15_lt" onfocus="clearcheck('delta_n15')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Delta <sup>15</sup>N </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_n15_gt" id="delta_n15_gt" onfocus="clearcheck('delta_n15')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="delta_ni60_check" id="delta_ni60_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_ni60_lt" id="delta_ni60_lt" onfocus="clearcheck('delta_ni60')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Delta <sup>60</sup>Ni </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_ni60_gt" id="delta_ni60_gt" onfocus="clearcheck('delta_ni60')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="delta_s33_check" id="delta_s33_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_s33_lt" id="delta_s33_lt" onfocus="clearcheck('delta_s33')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Delta <sup>33</sup>S </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_s33_gt" id="delta_s33_gt" onfocus="clearcheck('delta_s33')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="delta_s34_check" id="delta_s34_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_s34_lt" id="delta_s34_lt" onfocus="clearcheck('delta_s34')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Delta <sup>34</sup>S </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_s34_gt" id="delta_s34_gt" onfocus="clearcheck('delta_s34')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="cap_delta_s33_check" id="cap_delta_s33_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="cap_delta_s33_lt" id="cap_delta_s33_lt" onfocus="clearcheck('cap_delta_s33')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Cap Delta <sup>33</sup>S </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="cap_delta_s33_gt" id="cap_delta_s33_gt" onfocus="clearcheck('cap_delta_s33')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="cap_delta_s36_check" id="cap_delta_s36_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="cap_delta_s36_lt" id="cap_delta_s36_lt" onfocus="clearcheck('cap_delta_s36')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Cap Delta <sup>36</sup>S </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="cap_delta_s36_gt" id="cap_delta_s36_gt" onfocus="clearcheck('cap_delta_s36')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="delta_s36_check" id="delta_s36_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_s36_lt" id="delta_s36_lt" onfocus="clearcheck('delta_s36')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Delta <sup>36</sup>S </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_s36_gt" id="delta_s36_gt" onfocus="clearcheck('delta_s36')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="delta_si29_check" id="delta_si29_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_si29_lt" id="delta_si29_lt" onfocus="clearcheck('delta_si29')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Delta <sup>29</sup>Si </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_si29_gt" id="delta_si29_gt" onfocus="clearcheck('delta_si29')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="delta_si30_check" id="delta_si30_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_si30_lt" id="delta_si30_lt" onfocus="clearcheck('delta_si30')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Delta <sup>30</sup>Si </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_si30_gt" id="delta_si30_gt" onfocus="clearcheck('delta_si30')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="delta_zn66_check" id="delta_zn66_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_zn66_lt" id="delta_zn66_lt" onfocus="clearcheck('delta_zn66')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Delta <sup>66</sup>Zn </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_zn66_gt" id="delta_zn66_gt" onfocus="clearcheck('delta_zn66')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="delta_zn68_check" id="delta_zn68_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_zn68_lt" id="delta_zn68_lt" onfocus="clearcheck('delta_zn68')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">Delta <sup>68</sup>Zn </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="delta_zn68_gt" id="delta_zn68_gt" onfocus="clearcheck('delta_zn68')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="ar40_ar36_ini_check" id="ar40_ar36_ini_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="ar40_ar36_ini_lt" id="ar40_ar36_ini_lt" onfocus="clearcheck('ar40_ar36_ini')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>40</sup>Ar / <sup>36</sup>Ar (i) </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="ar40_ar36_ini_gt" id="ar40_ar36_ini_gt" onfocus="clearcheck('ar40_ar36_ini')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="ar40_atm_check" id="ar40_atm_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="ar40_atm_lt" id="ar40_atm_lt" onfocus="clearcheck('ar40_atm')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>40</sup>Ar Atm </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="ar40_atm_gt" id="ar40_atm_gt" onfocus="clearcheck('ar40_atm')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="b11_b10_check" id="b11_b10_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="b11_b10_lt" id="b11_b10_lt" onfocus="clearcheck('b11_b10')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>11</sup>B / <sup>10</sup>B </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="b11_b10_gt" id="b11_b10_gt" onfocus="clearcheck('b11_b10')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="os188_check" id="os188_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="os188_lt" id="os188_lt" onfocus="clearcheck('os188')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>188</sup>Os </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="os188_gt" id="os188_gt" onfocus="clearcheck('os188')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="tl203_tl205_check" id="tl203_tl205_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="tl203_tl205_lt" id="tl203_tl205_lt" onfocus="clearcheck('tl203_tl205')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>203</sup>Tl / <sup>205</sup>Tl </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="tl203_tl205_gt" id="tl203_tl205_gt" onfocus="clearcheck('tl203_tl205')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+<tr><td colspan="10" style="border:none;"></td></tr>
+  	<tr>
+  		<td colspan="8" style="border:none;vertical-align:bottom">
+       	<h3>RADIOGENIC ISOTOPE SYSTEMS</h3>
+  		</td><td style="border:none;vertical-align:bottom" colspan="2"><input class="submitbutton" type="button" name="submit1" value="Submit" onclick="return doSubmit();" ></td>
+  	</tr>
+<tr style="border:1px solid;">
+	<td style="border:none;"><h4>EXISTS</h4></td>
+	<td style="border:none;">&nbsp;</td>
+	<td style="border:none;">&nbsp;</td>
+	<td style="border:none;"></td>
+	<td style="border:none;">&nbsp;</td>
+	<td style="border:none;">&nbsp;</td>
+		<td style="border:none;"></td>
+</tr> 
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="AR37_AR39_check" id="AR37_AR39_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="AR37_AR39_lt" id="AR37_AR39_lt" onfocus="clearcheck('AR37_AR39')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>37</sup>Ar / <sup>39</sup>Ar </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="AR37_AR39_gt" id="AR37_AR39_gt" onfocus="clearcheck('AR37_AR39')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="BE10_BE_check" id="BE10_BE_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="BE10_BE_lt" id="BE10_BE_lt" onfocus="clearcheck('BE10_BE')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>10</sup>Be / Be </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="BE10_BE_gt" id="BE10_BE_gt" onfocus="clearcheck('BE10_BE')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="AR40_AR36_check" id="AR40_AR36_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="AR40_AR36_lt" id="AR40_AR36_lt" onfocus="clearcheck('AR40_AR36')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>40</sup>Ar / <sup>36</sup>Ar </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="AR40_AR36_gt" id="AR40_AR36_gt" onfocus="clearcheck('AR40_AR36')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="BE10_BE9_check" id="BE10_BE9_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="BE10_BE9_lt" id="BE10_BE9_lt" onfocus="clearcheck('BE10_BE9')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>10</sup>Be / <sup>9</sup>Be </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="BE10_BE9_gt" id="BE10_BE9_gt" onfocus="clearcheck('BE10_BE9')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="AR36_AR39_check" id="AR36_AR39_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="AR36_AR39_lt" id="AR36_AR39_lt" onfocus="clearcheck('AR36_AR39')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>36</sup>Ar / <sup>39</sup>Ar </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="AR36_AR39_gt" id="AR36_AR39_gt" onfocus="clearcheck('AR36_AR39')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="PB207_PB204_check" id="PB207_PB204_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PB207_PB204_lt" id="PB207_PB204_lt" onfocus="clearcheck('PB207_PB204')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>207</sup>Pb / <sup>204</sup>Pb </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PB207_PB204_gt" id="PB207_PB204_gt" onfocus="clearcheck('PB207_PB204')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="XE126_XE130_check" id="XE126_XE130_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE126_XE130_lt" id="XE126_XE130_lt" onfocus="clearcheck('XE126_XE130')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>126</sup>Xe / <sup>130</sup>Xe </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE126_XE130_gt" id="XE126_XE130_gt" onfocus="clearcheck('XE126_XE130')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="PB206_PB207_check" id="PB206_PB207_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PB206_PB207_lt" id="PB206_PB207_lt" onfocus="clearcheck('PB206_PB207')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>206</sup>Pb / <sup>207</sup>Pb </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PB206_PB207_gt" id="PB206_PB207_gt" onfocus="clearcheck('PB206_PB207')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="XE131_XE132_check" id="XE131_XE132_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE131_XE132_lt" id="XE131_XE132_lt" onfocus="clearcheck('XE131_XE132')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>131</sup>Xe / <sup>132</sup>Xe </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE131_XE132_gt" id="XE131_XE132_gt" onfocus="clearcheck('XE131_XE132')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="XE129_XE132_check" id="XE129_XE132_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE129_XE132_lt" id="XE129_XE132_lt" onfocus="clearcheck('XE129_XE132')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>129</sup>Xe / <sup>132</sup>Xe </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE129_XE132_gt" id="XE129_XE132_gt" onfocus="clearcheck('XE129_XE132')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="KR80_KR84_check" id="KR80_KR84_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="KR80_KR84_lt" id="KR80_KR84_lt" onfocus="clearcheck('KR80_KR84')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>80</sup>Kr / <sup>84</sup>Kr </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="KR80_KR84_gt" id="KR80_KR84_gt" onfocus="clearcheck('KR80_KR84')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="XE126_XE132_check" id="XE126_XE132_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE126_XE132_lt" id="XE126_XE132_lt" onfocus="clearcheck('XE126_XE132')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>126</sup>Xe / <sup>132</sup>Xe </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE126_XE132_gt" id="XE126_XE132_gt" onfocus="clearcheck('XE126_XE132')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="K40_AR36_check" id="K40_AR36_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="K40_AR36_lt" id="K40_AR36_lt" onfocus="clearcheck('K40_AR36')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>40</sup>K / <sup>36</sup>Ar </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="K40_AR36_gt" id="K40_AR36_gt" onfocus="clearcheck('K40_AR36')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="ND143_ND144_check" id="ND143_ND144_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="ND143_ND144_lt" id="ND143_ND144_lt" onfocus="clearcheck('ND143_ND144')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>143</sup>Nd / <sup>144</sup>Nd </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="ND143_ND144_gt" id="ND143_ND144_gt" onfocus="clearcheck('ND143_ND144')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="LU176_HF177_check" id="LU176_HF177_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="LU176_HF177_lt" id="LU176_HF177_lt" onfocus="clearcheck('LU176_HF177')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>176</sup>Lu / <sup>177</sup>Hf </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="LU176_HF177_gt" id="LU176_HF177_gt" onfocus="clearcheck('LU176_HF177')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="XE124_XE132_check" id="XE124_XE132_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE124_XE132_lt" id="XE124_XE132_lt" onfocus="clearcheck('XE124_XE132')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>124</sup>Xe / <sup>132</sup>Xe </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE124_XE132_gt" id="XE124_XE132_gt" onfocus="clearcheck('XE124_XE132')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="XE136_XE132_check" id="XE136_XE132_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE136_XE132_lt" id="XE136_XE132_lt" onfocus="clearcheck('XE136_XE132')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>136</sup>Xe / <sup>132</sup>Xe </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE136_XE132_gt" id="XE136_XE132_gt" onfocus="clearcheck('XE136_XE132')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="AR37_AR40_check" id="AR37_AR40_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="AR37_AR40_lt" id="AR37_AR40_lt" onfocus="clearcheck('AR37_AR40')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>37</sup>Ar / <sup>40</sup>Ar </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="AR37_AR40_gt" id="AR37_AR40_gt" onfocus="clearcheck('AR37_AR40')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="HE4_NE20_check" id="HE4_NE20_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="HE4_NE20_lt" id="HE4_NE20_lt" onfocus="clearcheck('HE4_NE20')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>4</sup>He / <sup>20</sup>Ne </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="HE4_NE20_gt" id="HE4_NE20_gt" onfocus="clearcheck('HE4_NE20')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="XE129_XE130_check" id="XE129_XE130_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE129_XE130_lt" id="XE129_XE130_lt" onfocus="clearcheck('XE129_XE130')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>124</sup>Xe / <sup>130</sup>Xe </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE129_XE130_gt" id="XE129_XE130_gt" onfocus="clearcheck('XE129_XE130')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="SM147_ND144_check" id="SM147_ND144_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="SM147_ND144_lt" id="SM147_ND144_lt" onfocus="clearcheck('SM147_ND144')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>147</sup>Sm / <sup>144</sup>Nd </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="SM147_ND144_gt" id="SM147_ND144_gt" onfocus="clearcheck('SM147_ND144')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="XE132_XE130_check" id="XE132_XE130_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE132_XE130_lt" id="XE132_XE130_lt" onfocus="clearcheck('XE132_XE130')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>132</sup>Xe / <sup>130</sup>Xe </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE132_XE130_gt" id="XE132_XE130_gt" onfocus="clearcheck('XE132_XE130')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="RE187_OS188_check" id="RE187_OS188_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="RE187_OS188_lt" id="RE187_OS188_lt" onfocus="clearcheck('RE187_OS188')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>187</sup>Re / <sup>188</sup>Os </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="RE187_OS188_gt" id="RE187_OS188_gt" onfocus="clearcheck('RE187_OS188')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="XE128_XE130_check" id="XE128_XE130_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE128_XE130_lt" id="XE128_XE130_lt" onfocus="clearcheck('XE128_XE130')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>128</sup>Xe / <sup>130</sup>Xe </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE128_XE130_gt" id="XE128_XE130_gt" onfocus="clearcheck('XE128_XE130')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="NE20_NE22_check" id="NE20_NE22_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="NE20_NE22_lt" id="NE20_NE22_lt" onfocus="clearcheck('NE20_NE22')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>20</sup>Ne / <sup>22</sup>Ne </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="NE20_NE22_gt" id="NE20_NE22_gt" onfocus="clearcheck('NE20_NE22')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="XE130_XE132_check" id="XE130_XE132_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE130_XE132_lt" id="XE130_XE132_lt" onfocus="clearcheck('XE130_XE132')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>130</sup>Xe / <sup>132</sup>Xe </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE130_XE132_gt" id="XE130_XE132_gt" onfocus="clearcheck('XE130_XE132')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="HF176_HF177_check" id="HF176_HF177_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="HF176_HF177_lt" id="HF176_HF177_lt" onfocus="clearcheck('HF176_HF177')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>176</sup>Hf / <sup>177</sup>Hf </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="HF176_HF177_gt" id="HF176_HF177_gt" onfocus="clearcheck('HF176_HF177')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="XE131_XE130_check" id="XE131_XE130_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE131_XE130_lt" id="XE131_XE130_lt" onfocus="clearcheck('XE131_XE130')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>131</sup>Xe / <sup>130</sup>Xe </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE131_XE130_gt" id="XE131_XE130_gt" onfocus="clearcheck('XE131_XE130')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="KR86_KR84_check" id="KR86_KR84_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="KR86_KR84_lt" id="KR86_KR84_lt" onfocus="clearcheck('KR86_KR84')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>86</sup>Kr / <sup>84</sup>Kr </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="KR86_KR84_gt" id="KR86_KR84_gt" onfocus="clearcheck('KR86_KR84')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="NE21_NE22_check" id="NE21_NE22_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="NE21_NE22_lt" id="NE21_NE22_lt" onfocus="clearcheck('NE21_NE22')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>21</sup>Ne / <sup>22</sup>Ne </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="NE21_NE22_gt" id="NE21_NE22_gt" onfocus="clearcheck('NE21_NE22')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="KR78_KR84_check" id="KR78_KR84_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="KR78_KR84_lt" id="KR78_KR84_lt" onfocus="clearcheck('KR78_KR84')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>78</sup>Kr / <sup>84</sup>Kr </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="KR78_KR84_gt" id="KR78_KR84_gt" onfocus="clearcheck('KR78_KR84')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="NE21_NE20_check" id="NE21_NE20_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="NE21_NE20_lt" id="NE21_NE20_lt" onfocus="clearcheck('NE21_NE20')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>21</sup>Ne / <sup>20</sup>Ne </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="NE21_NE20_gt" id="NE21_NE20_gt" onfocus="clearcheck('NE21_NE20')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="HE3_HE4_check" id="HE3_HE4_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="HE3_HE4_lt" id="HE3_HE4_lt" onfocus="clearcheck('HE3_HE4')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>3</sup>He / <sup>4</sup>He </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="HE3_HE4_gt" id="HE3_HE4_gt" onfocus="clearcheck('HE3_HE4')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="OS187_OS188_check" id="OS187_OS188_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="OS187_OS188_lt" id="OS187_OS188_lt" onfocus="clearcheck('OS187_OS188')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>187</sup>Os / <sup>188</sup>Os </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="OS187_OS188_gt" id="OS187_OS188_gt" onfocus="clearcheck('OS187_OS188')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="PB206_PB204_check" id="PB206_PB204_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PB206_PB204_lt" id="PB206_PB204_lt" onfocus="clearcheck('PB206_PB204')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>206</sup>Pb / <sup>204</sup>Pb </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PB206_PB204_gt" id="PB206_PB204_gt" onfocus="clearcheck('PB206_PB204')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="SR87_SR86_check" id="SR87_SR86_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="SR87_SR86_lt" id="SR87_SR86_lt" onfocus="clearcheck('SR87_SR86')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>87</sup>Sr / <sup>86</sup>Sr </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="SR87_SR86_gt" id="SR87_SR86_gt" onfocus="clearcheck('SR87_SR86')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="KR82_KR84_check" id="KR82_KR84_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="KR82_KR84_lt" id="KR82_KR84_lt" onfocus="clearcheck('KR82_KR84')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>82</sup>Kr / <sup>84</sup>Kr </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="KR82_KR84_gt" id="KR82_KR84_gt" onfocus="clearcheck('KR82_KR84')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="XE134_XE130_check" id="XE134_XE130_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE134_XE130_lt" id="XE134_XE130_lt" onfocus="clearcheck('XE134_XE130')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>134</sup>Xe / <sup>130</sup>Xe </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE134_XE130_gt" id="XE134_XE130_gt" onfocus="clearcheck('XE134_XE130')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="XE134_XE132_check" id="XE134_XE132_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE134_XE132_lt" id="XE134_XE132_lt" onfocus="clearcheck('XE134_XE132')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>134</sup>Xe / <sup>132</sup>Xe </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE134_XE132_gt" id="XE134_XE132_gt" onfocus="clearcheck('XE134_XE132')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="NE22_NE20_check" id="NE22_NE20_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="NE22_NE20_lt" id="NE22_NE20_lt" onfocus="clearcheck('NE22_NE20')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>22</sup>Ne / <sup>20</sup>Ne </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="NE22_NE20_gt" id="NE22_NE20_gt" onfocus="clearcheck('NE22_NE20')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="OS187_OS186_check" id="OS187_OS186_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="OS187_OS186_lt" id="OS187_OS186_lt" onfocus="clearcheck('OS187_OS186')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>187</sup>Os / <sup>186</sup>Os </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="OS187_OS186_gt" id="OS187_OS186_gt" onfocus="clearcheck('OS187_OS186')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="PB206_PB208_check" id="PB206_PB208_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PB206_PB208_lt" id="PB206_PB208_lt" onfocus="clearcheck('PB206_PB208')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>206</sup>Pb / <sup>208</sup>Pb </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PB206_PB208_gt" id="PB206_PB208_gt" onfocus="clearcheck('PB206_PB208')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="HE4_HE3_check" id="HE4_HE3_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="HE4_HE3_lt" id="HE4_HE3_lt" onfocus="clearcheck('HE4_HE3')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>4</sup>He / <sup>3</sup>He </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="HE4_HE3_gt" id="HE4_HE3_gt" onfocus="clearcheck('HE4_HE3')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="CL36_CL_check" id="CL36_CL_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CL36_CL_lt" id="CL36_CL_lt" onfocus="clearcheck('CL36_CL')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>36</sup>Cl / Cl </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="CL36_CL_gt" id="CL36_CL_gt" onfocus="clearcheck('CL36_CL')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="PB208_PB204_check" id="PB208_PB204_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PB208_PB204_lt" id="PB208_PB204_lt" onfocus="clearcheck('PB208_PB204')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>208</sup>Pb / <sup>204</sup>Pb </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PB208_PB204_gt" id="PB208_PB204_gt" onfocus="clearcheck('PB208_PB204')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="XE124_XE130_check" id="XE124_XE130_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE124_XE130_lt" id="XE124_XE130_lt" onfocus="clearcheck('XE124_XE130')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>124</sup>Xe / <sup>130</sup>Xe </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE124_XE130_gt" id="XE124_XE130_gt" onfocus="clearcheck('XE124_XE130')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="KR83_KR84_check" id="KR83_KR84_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="KR83_KR84_lt" id="KR83_KR84_lt" onfocus="clearcheck('KR83_KR84')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>83</sup>Kr / <sup>84</sup>Kr </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="KR83_KR84_gt" id="KR83_KR84_gt" onfocus="clearcheck('KR83_KR84')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="RB87_SR86_check" id="RB87_SR86_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="RB87_SR86_lt" id="RB87_SR86_lt" onfocus="clearcheck('RB87_SR86')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>87</sup>Rb / <sup>86</sup>Sr </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="RB87_SR86_gt" id="RB87_SR86_gt" onfocus="clearcheck('RB87_SR86')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="OS186_OS188_check" id="OS186_OS188_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="OS186_OS188_lt" id="OS186_OS188_lt" onfocus="clearcheck('OS186_OS188')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>186</sup>Os / <sup>188</sup>Os </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="OS186_OS188_gt" id="OS186_OS188_gt" onfocus="clearcheck('OS186_OS188')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="XE136_XE130_check" id="XE136_XE130_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE136_XE130_lt" id="XE136_XE130_lt" onfocus="clearcheck('XE136_XE130')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>136</sup>Xe / <sup>130</sup>Xe </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE136_XE130_gt" id="XE136_XE130_gt" onfocus="clearcheck('XE136_XE130')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="OS184_OS188_check" id="OS184_OS188_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="OS184_OS188_lt" id="OS184_OS188_lt" onfocus="clearcheck('OS184_OS188')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>184</sup>Os / <sup>188</sup>Os </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="OS184_OS188_gt" id="OS184_OS188_gt" onfocus="clearcheck('OS184_OS188')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="XE128_XE132_check" id="XE128_XE132_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE128_XE132_lt" id="XE128_XE132_lt" onfocus="clearcheck('XE128_XE132')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>128</sup>Xe / <sup>132</sup>Xe </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="XE128_XE132_gt" id="XE128_XE132_gt" onfocus="clearcheck('XE128_XE132')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="E_ND_check" id="E_ND_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="E_ND_lt" id="E_ND_lt" onfocus="clearcheck('E_ND')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">E Nd </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="E_ND_gt" id="E_ND_gt" onfocus="clearcheck('E_ND')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="RE187_OS186_check" id="RE187_OS186_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="RE187_OS186_lt" id="RE187_OS186_lt" onfocus="clearcheck('RE187_OS186')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>187</sup>Re / <sup>186</sup>Os </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="RE187_OS186_gt" id="RE187_OS186_gt" onfocus="clearcheck('RE187_OS186')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="AR40_K40_check" id="AR40_K40_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="AR40_K40_lt" id="AR40_K40_lt" onfocus="clearcheck('AR40_K40')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>40</sup>Ar / <sup>40</sup>K </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="AR40_K40_gt" id="AR40_K40_gt" onfocus="clearcheck('AR40_K40')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="AR40_AR39_check" id="AR40_AR39_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="AR40_AR39_lt" id="AR40_AR39_lt" onfocus="clearcheck('AR40_AR39')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>40</sup>Ar / <sup>39</sup>Ar </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="AR40_AR39_gt" id="AR40_AR39_gt" onfocus="clearcheck('AR40_AR39')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="AR38_AR36_check" id="AR38_AR36_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="AR38_AR36_lt" id="AR38_AR36_lt" onfocus="clearcheck('AR38_AR36')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>38</sup>Ar / <sup>36</sup>Ar </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="AR38_AR36_gt" id="AR38_AR36_gt" onfocus="clearcheck('AR38_AR36')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+<tr><td colspan="10" style="border:none;"></td></tr>
+  	<tr>
+  		<td colspan="8" style="border:none;vertical-align:bottom">
+       	<h3>DISEQUILIBRIUM SERIES ISOTOPES</h3>
+  		</td><td style="border:none;vertical-align:bottom" colspan="2"><input class="submitbutton" type="button" name="submit1" value="Submit" onclick="return doSubmit();" ></td>
+  	</tr>
+<tr style="border:1px solid;">
+	<td style="border:none;"><h4>EXISTS</h4></td>
+	<td style="border:none;">&nbsp;</td>
+	<td style="border:none;">&nbsp;</td>
+	<td style="border:none;"></td>
+	<td style="border:none;">&nbsp;</td>
+	<td style="border:none;">&nbsp;</td>
+		<td style="border:none;"></td>
+</tr> 
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="U238_check" id="U238_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="U238_lt" id="U238_lt" onfocus="clearcheck('U238')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>238</sup>U </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="U238_gt" id="U238_gt" onfocus="clearcheck('U238')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="U238_ACTIVITY_check" id="U238_ACTIVITY_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="U238_ACTIVITY_lt" id="U238_ACTIVITY_lt" onfocus="clearcheck('U238_ACTIVITY')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">(<sup>238</sup>U) </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="U238_ACTIVITY_gt" id="U238_ACTIVITY_gt" onfocus="clearcheck('U238_ACTIVITY')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="U234_ACTIVITY_check" id="U234_ACTIVITY_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="U234_ACTIVITY_lt" id="U234_ACTIVITY_lt" onfocus="clearcheck('U234_ACTIVITY')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">(<sup>234</sup>U) </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="U234_ACTIVITY_gt" id="U234_ACTIVITY_gt" onfocus="clearcheck('U234_ACTIVITY')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="TH230_check" id="TH230_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH230_lt" id="TH230_lt" onfocus="clearcheck('TH230')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>230</sup>Th </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH230_gt" id="TH230_gt" onfocus="clearcheck('TH230')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="TH230_ACTIVITY_check" id="TH230_ACTIVITY_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH230_ACTIVITY_lt" id="TH230_ACTIVITY_lt" onfocus="clearcheck('TH230_ACTIVITY')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">(<sup>230</sup>Th) </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH230_ACTIVITY_gt" id="TH230_ACTIVITY_gt" onfocus="clearcheck('TH230_ACTIVITY')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="RA226_check" id="RA226_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="RA226_lt" id="RA226_lt" onfocus="clearcheck('RA226')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>226</sup>Ra </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="RA226_gt" id="RA226_gt" onfocus="clearcheck('RA226')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="RA226_ACTIVITY_check" id="RA226_ACTIVITY_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="RA226_ACTIVITY_lt" id="RA226_ACTIVITY_lt" onfocus="clearcheck('RA226_ACTIVITY')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">(<sup>226</sup>Ra) </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="RA226_ACTIVITY_gt" id="RA226_ACTIVITY_gt" onfocus="clearcheck('RA226_ACTIVITY')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="PO210_ACTIVITY_check" id="PO210_ACTIVITY_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PO210_ACTIVITY_lt" id="PO210_ACTIVITY_lt" onfocus="clearcheck('PO210_ACTIVITY')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">(<sup>210</sup>Po) </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PO210_ACTIVITY_gt" id="PO210_ACTIVITY_gt" onfocus="clearcheck('PO210_ACTIVITY')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="PB210_ACTIVITY_check" id="PB210_ACTIVITY_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PB210_ACTIVITY_lt" id="PB210_ACTIVITY_lt" onfocus="clearcheck('PB210_ACTIVITY')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">(<sup>210</sup>Pb) </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PB210_ACTIVITY_gt" id="PB210_ACTIVITY_gt" onfocus="clearcheck('PB210_ACTIVITY')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="PA231_check" id="PA231_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PA231_lt" id="PA231_lt" onfocus="clearcheck('PA231')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>231</sup>Pa </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PA231_gt" id="PA231_gt" onfocus="clearcheck('PA231')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="PA231_ACTIVITY_check" id="PA231_ACTIVITY_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PA231_ACTIVITY_lt" id="PA231_ACTIVITY_lt" onfocus="clearcheck('PA231_ACTIVITY')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">(<sup>231</sup>Pa) </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PA231_ACTIVITY_gt" id="PA231_ACTIVITY_gt" onfocus="clearcheck('PA231_ACTIVITY')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="TH232_check" id="TH232_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH232_lt" id="TH232_lt" onfocus="clearcheck('TH232')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>232</sup>Th </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH232_gt" id="TH232_gt" onfocus="clearcheck('TH232')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="TH232_ACTIVITY_check" id="TH232_ACTIVITY_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH232_ACTIVITY_lt" id="TH232_ACTIVITY_lt" onfocus="clearcheck('TH232_ACTIVITY')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">(<sup>232</sup>Th) </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH232_ACTIVITY_gt" id="TH232_ACTIVITY_gt" onfocus="clearcheck('TH232_ACTIVITY')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="U234_U238_check" id="U234_U238_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="U234_U238_lt" id="U234_U238_lt" onfocus="clearcheck('U234_U238')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>234</sup>U / <sup>238</sup>U </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="U234_U238_gt" id="U234_U238_gt" onfocus="clearcheck('U234_U238')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="U234_U238_ACTIVITY_check" id="U234_U238_ACTIVITY_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="U234_U238_ACTIVITY_lt" id="U234_U238_ACTIVITY_lt" onfocus="clearcheck('U234_U238_ACTIVITY')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">(<sup>234</sup>U / <sup>238</sup>U) </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="U234_U238_ACTIVITY_gt" id="U234_U238_ACTIVITY_gt" onfocus="clearcheck('U234_U238_ACTIVITY')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="TH230_U238_ACTIVITY_check" id="TH230_U238_ACTIVITY_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH230_U238_ACTIVITY_lt" id="TH230_U238_ACTIVITY_lt" onfocus="clearcheck('TH230_U238_ACTIVITY')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">(<sup>230</sup>Th / <sup>238</sup>U) </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH230_U238_ACTIVITY_gt" id="TH230_U238_ACTIVITY_gt" onfocus="clearcheck('TH230_U238_ACTIVITY')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="TH230_TH232_check" id="TH230_TH232_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH230_TH232_lt" id="TH230_TH232_lt" onfocus="clearcheck('TH230_TH232')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>230</sup>Th / <sup>232</sup>Th </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH230_TH232_gt" id="TH230_TH232_gt" onfocus="clearcheck('TH230_TH232')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="TH230_TH232_ACTIVITY_check" id="TH230_TH232_ACTIVITY_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH230_TH232_ACTIVITY_lt" id="TH230_TH232_ACTIVITY_lt" onfocus="clearcheck('TH230_TH232_ACTIVITY')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">(<sup>230</sup>Th / <sup>232</sup>Th) </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH230_TH232_ACTIVITY_gt" id="TH230_TH232_ACTIVITY_gt" onfocus="clearcheck('TH230_TH232_ACTIVITY')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="TH232_TH230_check" id="TH232_TH230_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH232_TH230_lt" id="TH232_TH230_lt" onfocus="clearcheck('TH232_TH230')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>232</sup>Th / <sup>230</sup>Th </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH232_TH230_gt" id="TH232_TH230_gt" onfocus="clearcheck('TH232_TH230')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="TH232_TH230_ACTIVITY_check" id="TH232_TH230_ACTIVITY_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH232_TH230_ACTIVITY_lt" id="TH232_TH230_ACTIVITY_lt" onfocus="clearcheck('TH232_TH230_ACTIVITY')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">(<sup>232</sup>Th / <sup>230</sup>Th) </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH232_TH230_ACTIVITY_gt" id="TH232_TH230_ACTIVITY_gt" onfocus="clearcheck('TH232_TH230_ACTIVITY')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="U238_TH232_ACTIVITY_check" id="U238_TH232_ACTIVITY_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="U238_TH232_ACTIVITY_lt" id="U238_TH232_ACTIVITY_lt" onfocus="clearcheck('U238_TH232_ACTIVITY')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">(<sup>238</sup>U / <sup>232</sup>Th) </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="U238_TH232_ACTIVITY_gt" id="U238_TH232_ACTIVITY_gt" onfocus="clearcheck('U238_TH232_ACTIVITY')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="RA226_TH230_ACTIVITY_check" id="RA226_TH230_ACTIVITY_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="RA226_TH230_ACTIVITY_lt" id="RA226_TH230_ACTIVITY_lt" onfocus="clearcheck('RA226_TH230_ACTIVITY')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">(<sup>226</sup>Ra / <sup>230</sup>Th) </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="RA226_TH230_ACTIVITY_gt" id="RA226_TH230_ACTIVITY_gt" onfocus="clearcheck('RA226_TH230_ACTIVITY')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="RA226_TH230_ACTIVITY_INITIAL_check" id="RA226_TH230_ACTIVITY_INITIAL_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="RA226_TH230_ACTIVITY_INITIAL_lt" id="RA226_TH230_ACTIVITY_INITIAL_lt" onfocus="clearcheck('RA226_TH230_ACTIVITY_INITIAL')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">(<sup>226</sup>Ra / <sup>230</sup>Th)o </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="RA226_TH230_ACTIVITY_INITIAL_gt" id="RA226_TH230_ACTIVITY_INITIAL_gt" onfocus="clearcheck('RA226_TH230_ACTIVITY_INITIAL')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="PB210_RA226_ACTIVITY_check" id="PB210_RA226_ACTIVITY_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PB210_RA226_ACTIVITY_lt" id="PB210_RA226_ACTIVITY_lt" onfocus="clearcheck('PB210_RA226_ACTIVITY')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">(<sup>210</sup>Pb / <sup>226</sup>Ra) </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PB210_RA226_ACTIVITY_gt" id="PB210_RA226_ACTIVITY_gt" onfocus="clearcheck('PB210_RA226_ACTIVITY')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="PO210_PB210_ACTIVITY_check" id="PO210_PB210_ACTIVITY_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PO210_PB210_ACTIVITY_lt" id="PO210_PB210_ACTIVITY_lt" onfocus="clearcheck('PO210_PB210_ACTIVITY')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">(<sup>210</sup>Po / <sup>210</sup>Pb) </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PO210_PB210_ACTIVITY_gt" id="PO210_PB210_ACTIVITY_gt" onfocus="clearcheck('PO210_PB210_ACTIVITY')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="PA231_U235_ACTIVITY_check" id="PA231_U235_ACTIVITY_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PA231_U235_ACTIVITY_lt" id="PA231_U235_ACTIVITY_lt" onfocus="clearcheck('PA231_U235_ACTIVITY')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">(<sup>231</sup>Pa / <sup>235</sup>U) </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="PA231_U235_ACTIVITY_gt" id="PA231_U235_ACTIVITY_gt" onfocus="clearcheck('PA231_U235_ACTIVITY')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="RA228_RA226_ACTIVITY_check" id="RA228_RA226_ACTIVITY_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="RA228_RA226_ACTIVITY_lt" id="RA228_RA226_ACTIVITY_lt" onfocus="clearcheck('RA228_RA226_ACTIVITY')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">(<sup>228</sup>Ra / <sup>226</sup>Ra) </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="RA228_RA226_ACTIVITY_gt" id="RA228_RA226_ACTIVITY_gt" onfocus="clearcheck('RA228_RA226_ACTIVITY')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="RA228_TH232_ACTIVITY_check" id="RA228_TH232_ACTIVITY_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="RA228_TH232_ACTIVITY_lt" id="RA228_TH232_ACTIVITY_lt" onfocus="clearcheck('RA228_TH232_ACTIVITY')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">(<sup>228</sup>Ra / <sup>232</sup>Th) </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="RA228_TH232_ACTIVITY_gt" id="RA228_TH232_ACTIVITY_gt" onfocus="clearcheck('RA228_TH232_ACTIVITY')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="TH228_TH232_ACTIVITY_check" id="TH228_TH232_ACTIVITY_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH228_TH232_ACTIVITY_lt" id="TH228_TH232_ACTIVITY_lt" onfocus="clearcheck('TH228_TH232_ACTIVITY')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center">(<sup>228</sup>Th / <sup>232</sup>Th) </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH228_TH232_ACTIVITY_gt" id="TH228_TH232_ACTIVITY_gt" onfocus="clearcheck('TH228_TH232_ACTIVITY')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="TH232_U238_check" id="TH232_U238_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH232_U238_lt" id="TH232_U238_lt" onfocus="clearcheck('TH232_U238')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>232</sup>Th / <sup>238</sup>U </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH232_U238_gt" id="TH232_U238_gt" onfocus="clearcheck('TH232_U238')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="U235_PB204_check" id="U235_PB204_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="U235_PB204_lt" id="U235_PB204_lt" onfocus="clearcheck('U235_PB204')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>235</sup>U / <sup>204</sup>Pb </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="U235_PB204_gt" id="U235_PB204_gt" onfocus="clearcheck('U235_PB204')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+
+<tr style="border:1px solid;" bgcolor="#fcfcfc">
+<td style="border-width:0 0 1 1">
+<input type="checkbox" name="TH232_PB204_check" id="TH232_PB204_check" onclick="setclear('CACO3')"></td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH232_PB204_lt" id="TH232_PB204_lt" onfocus="clearcheck('TH232_PB204')" value=""></td>
+<td style="border-width:0 0 1 0">&nbsp;&lt;</td>
+<td style="border-width:0 0 1 0" align="center"><sup>232</sup>Th / <sup>204</sup>Pb </td>
+<td style="border-width:0 0 1 0">&lt;&nbsp;</td>
+<td style="border-width:0 0 1 0"><input type="text" size="5" name="TH232_PB204_gt" id="TH232_PB204_gt" onfocus="clearcheck('TH232_PB204')" value=""></td>
+<td colspan="3" style="border-width:0 0 1 0">&nbsp;</td>
+</tr>
+</tbody></table>
+
+<input type="hidden" name="pkey" value="3539264">
+<input type="hidden" name="glossary_pkey" value="">
+</form>
+
+<br><br>
+
+
+
+			<!-- start footer -->
+		</div>
+	
+	
+	
+	</main>
+  <@_includePlace path="/f95e232b-027b-40ae-9e2d-0a6385f7c418.html"/> <#-- footer -->
+    <script src="${site.dynamicPath}resource/js/cms.analytics.js"></script>
+    <script>
+        var ca = cmsAnalytics();
+        var url='${site.dynamicPath}api/visit/record';
+        if("string" ==typeof itemString){
+            url=url+"?"+itemString;
+        }
+        ca.report(url);
+    </script>
+</body>
+</html>

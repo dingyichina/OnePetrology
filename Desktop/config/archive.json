@@ -1,0 +1,22 @@
+{
+    "档号+室编件号": "dc.identifier.FN",
+    "题名": "dc.title",
+    "创建时间": "dc.date.created",
+    "创建者": "dc.contributor",
+    "摘要": "dc.description.abstract",
+    "语种": "dc.language.iso",
+    "页码范围": "dc.format.extent",
+    "是否原件": "dcterms.provenance.isOriginal",
+    "原件保存地": "dcterms.relation.originalDocumentLocation",
+    "载体代码": "dcterms.format.medium",
+    "存放路径": "dc.description.storagePath",
+    "档案密级": "dc.description.securityLevel",
+
+    "提供者": "dc.description.provider",
+    "提供时间": "dc.date.provided",
+    "备注": "dc.description.comment",
+    "关联科学家": "relation.isScientistOfArchives",
+    "dspace.entity.type": "Archives",
+    "collection_uuid":"f0d33317-2d31-4fda-bb2e-cfea546b7ddd",
+    "savepath":"存放路径"
+}

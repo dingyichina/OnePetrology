@@ -1,0 +1,309 @@
+<@_sampleBasicInfoList sampleId=sampleId originalSampleId=originalSampleId
+countryCode=countryCode location=location lithology=lithology
+rockName=rockName rockCode=rockCode era=era
+geobodyName=geobodyName geobodyCode=geobodyCode tectonicLocation=tectonicLocation
+primaryStructuralUnit=primaryStructuralUnit secondaryStructuralUnit=secondaryStructuralUnit tertiarySturcturalUnit=tertiarySturcturalUnit
+surroundingRockAge=surroundingRockAge surroundingRockLithology=surroundingRockLithology relationshipWithSurroundingRock=relationshipWithSurroundingRock
+form=form isCutAreaConstructionLine=isCutAreaConstructionLine degreeOfDeformation=degreeOfDeformation
+characteristicMinerals=characteristicMinerals geneticType=geneticType tectonicType=tectonicType
+sourceOfStructuralTypeDiscrimination=sourceOfStructuralTypeDiscrimination alkalinity=alkalinity aluminumQuality=aluminumQuality
+collector=collector collectorOrg=collectorOrg reviewer=reviewer
+analyzeOrg=analyzeOrg analyzePerson=analyzePerson testObject=testObject
+testDate=testDate testMethod=testMethod articleDoi=articleDoi
+hasChecked=hasChecked
+orderField=orderField orderType=orderType pageIndex=pageNum pageSize=numPerPage>
+
+<div class="pageHeader">
+    <form class="pagerForm" onsubmit="return navTabSearch(this);" method="post">
+        <#include "../include_page/parameters.html"/>
+        <div class="searchBar">
+            <ul class="searchContent">
+                <li>
+                    <label>样品编码：</label>
+                    <input type="text" name="sampleId" value="${sampleId!}" />
+                </li>
+                <li>
+                    <label>原始样品编码：</label>
+                    <input type="text" name="originalSampleId" value="${originalSampleId!}" />
+                </li>
+                <li>
+                    <label>国家编码：</label>
+                    <input type="text" name="countryCode" value="${countryCode!}" />
+                </li>
+                <li>
+                    <label>所在地区：</label>
+                    <input type="text" name="location" value="${location!}" />
+                </li>
+                <li>
+                    <label>岩性：</label>
+                    <input type="text" name="lithology" value="${lithology!}" />
+                </li>
+                <li>
+                    <label>岩石名称：</label>
+                    <input type="text" name="rockName" value="${rockName!}" />
+                </li>
+                <li>
+                    <label>岩石名称代码：</label>
+                    <input type="text" name="rockCode" value="${rockCode!}" />
+                </li>
+                <li>
+                    <label>地质年代：</label>
+                    <input type="text" name="era" value="${era!}" />
+                </li>
+                <li>
+                    <label>地质体名称：</label>
+                    <input type="text" name="geobodyName" value="${geobodyName!}" />
+                </li>
+                <li>
+                    <label>地质体代码：</label>
+                    <input type="text" name="geobodyCode" value="${geobodyCode!}" />
+                </li>
+                <li>
+                    <label>构造位置：</label>
+                    <input type="text" name="tectonicLocation" value="${tectonicLocation!}" />
+                </li>
+                <li>
+                    <label>一级构造单元：</label>
+                    <input type="text" name="primaryStructuralUnit" value="${primaryStructuralUnit!}" />
+                </li>
+                <li>
+                    <label>二级构造单元：</label>
+                    <input type="text" name="secondaryStructuralUnit" value="${secondaryStructuralUnit!}" />
+                </li>
+                <li>
+                    <label>三级构造单元：</label>
+                    <input type="text" name="tertiarySturcturalUnit" value="${tertiarySturcturalUnit!}" />
+                </li>
+                <li>
+                    <label>围岩时代：</label>
+                    <input type="text" name="surroundingRockAge" value="${surroundingRockAge!}" />
+                </li>
+                <li>
+                    <label>围岩岩性：</label>
+                    <input type="text" name="surroundingRockLithology" value="${surroundingRockLithology!}" />
+                </li>
+                <li>
+                    <label>与围岩关系：</label>
+                    <input type="text" name="relationshipWithSurroundingRock" value="${relationshipWithSurroundingRock!}" />
+                </li>
+                <li>
+                    <label>形态：</label>
+                    <input type="text" name="form" value="${form!}" />
+                </li>
+                <li>
+                    <label>是否切割区域构造线：</label>
+                    <input type="text" name="isCutAreaConstructionLine" value="${isCutAreaConstructionLine!}" />
+                </li>
+                <li>
+                    <label>变形程度：</label>
+                    <input type="text" name="degreeOfDeformation" value="${degreeOfDeformation!}" />
+                </li>
+                <li>
+                    <label>特征矿物：</label>
+                    <input type="text" name="characteristicMinerals" value="${characteristicMinerals!}" />
+                </li>
+                <li>
+                    <label>成因类型：</label>
+                    <input type="text" name="geneticType" value="${geneticType!}" />
+                </li>
+                <li>
+                    <label>构造类型：</label>
+                    <input type="text" name="tectonicType" value="${tectonicType!}" />
+                </li>
+                <li>
+                    <label>构造类型判别来源：</label>
+                    <input type="text" name="sourceOfStructuralTypeDiscrimination" value="${sourceOfStructuralTypeDiscrimination!}" />
+                </li>
+                <li>
+                    <label>碱性程度：</label>
+                    <input type="text" name="alkalinity" value="${alkalinity!}" />
+                </li>
+                <li>
+                    <label>铝质程度：</label>
+                    <input type="text" name="aluminumQuality" value="${aluminumQuality!}" />
+                </li>
+                <li>
+                    <label>样品采集人员：</label>
+                    <input type="text" name="collector" value="${collector!}" />
+                </li>
+                <li>
+                    <label>采集人员单位：</label>
+                    <input type="text" name="collectorOrg" value="${collectorOrg!}" />
+                </li>
+                <li>
+                    <label>样品审核人：</label>
+                    <input type="text" name="reviewer" value="${reviewer!}" />
+                </li>
+                <li>
+                    <label>分析/鉴定单位：</label>
+                    <input type="text" name="analyzeOrg" value="${analyzeOrg!}" />
+                </li>
+                <li>
+                    <label>分析/鉴定人员：</label>
+                    <input type="text" name="analyzePerson" value="${analyzePerson!}" />
+                </li>
+                <li>
+                    <label>测试对象：</label>
+                    <input type="text" name="testObject" value="${testObject!}" />
+                </li>
+                <li>
+                    <label>分析/测定时间：</label>
+                    <input type="text" name="testDate" value="${testDate!}" />
+                </li>
+                <li>
+                    <label>分析/测定方法：</label>
+                    <input type="text" name="testMethod" value="${testMethod!}" />
+                </li>
+                <li>
+                    <label>文章DOI：</label>
+                    <input type="text" name="articleDoi" value="${articleDoi!}" />
+                </li>
+                <li>
+                    <label>审核：</label>
+                    <input type="text" name="hasChecked" value="${hasChecked!}" />
+                </li>
+            </ul>
+            <div class="subBar">
+                <ul>
+                    <li>
+                    	<button type="submit" class="buttonActive"><@t.page 'button.search'/></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<@_sysAuthorized roleIds=admin.roles urls='sampleBasicInfo/add,sampleBasicInfo/delete'><#assign authorizedMap=map/></@_sysAuthorized>
+<div class="pageContent">
+    <div class="panelBar">
+        <ul class="toolBar">
+        <#if authorizedMap['sampleBasicInfo/add']>
+            <li><a href="sampleBasicInfo/add.html" target="navTab" rel="sampleBasicInfo/add"><i class="icon-plus-sign-alt icon-large"></i> <@t.page 'button.add'/>样品</a></li>
+            <li><a href="sampleBasicInfo/add.html?id={sid}" target="navTab" rel="sampleBasicInfo/edit"><i class="icon-edit icon-large"></i> <@t.page 'button.edit'/>样品</a></li>
+            <li class="line">line</li>
+            <li><a href="sampleBasicInfo/import.html" target="dialog" mask="true" width="500" height="200"><i class="icon-plus-sign-alt icon-large"></i> 从excel中导入</a></li>
+            <li class="line">line</li>
+        </#if>
+        <#if authorizedMap['sampleBasicInfo/delete']>
+            <li><a href="sampleBasicInfo/delete.do?_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.batch_delete'/>" target="selectedTodo" rel="ids"><i class="icon-trash icon-large"></i> <@t.page 'button.batch_delete'/></a></li>
+            <li><a href="sampleBasicInfo/check.do?_csrf=<@_csrfToken admin=true/>" title="批量通过审核" target="selectedTodo" rel="ids"><i class="icon-trash icon-large"></i> 批量通过审核</a></li>
+        </#if>
+
+        </ul>
+    </div>
+
+    <table class="list" width="300%" layoutH="92">
+        <thead>
+            <tr>
+                <th width="20"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+                <th>ID</th>
+                <th orderField="sampleId" class="<#if orderField??&&'sampleId'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">样品编码</th>
+                <th orderField="originalSampleId" class="<#if orderField??&&'originalSampleId'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">原始样品编码</th>
+                <th orderField="longitude" class="<#if orderField??&&'longitude'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">地理经度</th>
+                <th orderField="latitude" class="<#if orderField??&&'latitude'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">地理纬度</th>
+                <th orderField="countryCode" class="<#if orderField??&&'countryCode'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">国家编码</th>
+                <th orderField="location" class="<#if orderField??&&'location'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">所在地区</th>
+                <th orderField="lithology" class="<#if orderField??&&'lithology'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">岩性</th>
+                <th orderField="rockName" class="<#if orderField??&&'rockName'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">岩石名称</th>
+                <th orderField="rockCode" class="<#if orderField??&&'rockCode'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">岩石名称代码</th>
+                <th orderField="era" class="<#if orderField??&&'era'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">地质年代</th>
+                <th orderField="geobodyName" class="<#if orderField??&&'geobodyName'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">地质体名称</th>
+                <th orderField="geobodyCode" class="<#if orderField??&&'geobodyCode'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">地质体代码</th>
+                <th orderField="tectonicLocation" class="<#if orderField??&&'tectonicLocation'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">构造位置</th>
+                <th orderField="primaryStructuralUnit" class="<#if orderField??&&'primaryStructuralUnit'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">一级构造单元</th>
+                <th orderField="secondaryStructuralUnit" class="<#if orderField??&&'secondaryStructuralUnit'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">二级构造单元</th>
+                <th orderField="tertiarySturcturalUnit" class="<#if orderField??&&'tertiarySturcturalUnit'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">三级构造单元</th>
+                <th orderField="surroundingRockAge" class="<#if orderField??&&'surroundingRockAge'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">围岩时代</th>
+                <th orderField="surroundingRockLithology" class="<#if orderField??&&'surroundingRockLithology'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">围岩岩性</th>
+                <th orderField="relationshipWithSurroundingRock" class="<#if orderField??&&'relationshipWithSurroundingRock'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">与围岩关系</th>
+                <th orderField="form" class="<#if orderField??&&'form'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">形态</th>
+                <th width="140" orderField="isCutAreaConstructionLine" class="<#if orderField??&&'isCutAreaConstructionLine'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">是否切割区域构造线</th>
+                <th orderField="degreeOfDeformation" class="<#if orderField??&&'degreeOfDeformation'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">变形程度</th>
+                <th orderField="characteristicMinerals" class="<#if orderField??&&'characteristicMinerals'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">特征矿物</th>
+                <th orderField="geneticType" class="<#if orderField??&&'geneticType'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">成因类型</th>
+                <th orderField="tectonicType" class="<#if orderField??&&'tectonicType'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">构造类型</th>
+                <th orderField="sourceOfStructuralTypeDiscrimination" class="<#if orderField??&&'sourceOfStructuralTypeDiscrimination'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">构造类型判别来源</th>
+                <th orderField="alkalinity" class="<#if orderField??&&'alkalinity'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">碱性程度</th>
+                <th orderField="aluminumQuality" class="<#if orderField??&&'aluminumQuality'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铝质程度</th>
+                <th orderField="age" class="<#if orderField??&&'age'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">年龄</th>
+                <th orderField="ageError" class="<#if orderField??&&'ageError'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">年龄误差</th>
+                <th orderField="photo" class="<#if orderField??&&'photo'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">样品照片</th>
+                <th orderField="collector" class="<#if orderField??&&'collector'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">样品采集人员</th>
+                <th orderField="collectorOrg" class="<#if orderField??&&'collectorOrg'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">采集人员单位</th>
+                <th orderField="reviewer" class="<#if orderField??&&'reviewer'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">样品审核人</th>
+                <th orderField="analyzeOrg" class="<#if orderField??&&'analyzeOrg'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">分析/鉴定单位</th>
+                <th orderField="analyzePerson" class="<#if orderField??&&'analyzePerson'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">分析/鉴定人员</th>
+                <th orderField="testObject" class="<#if orderField??&&'testObject'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">测试对象</th>
+                <th orderField="testDate" class="<#if orderField??&&'testDate'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">分析/测定时间</th>
+                <th orderField="testMethod" class="<#if orderField??&&'testMethod'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">分析/测定方法</th>
+                <th orderField="ageSelected" class="<#if orderField??&&'ageSelected'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">选用年龄</th>
+                <th orderField="ageSelectedError" class="<#if orderField??&&'ageSelectedError'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">选用年龄误差</th>
+                <th orderField="articleId" class="<#if orderField??&&'articleId'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">发表文献编号</th>
+                <th orderField="articleDoi" class="<#if orderField??&&'articleDoi'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">文章DOI</th>
+                <th orderField="hasChecked" class="<#if orderField??&&'hasChecked'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">审核</th>
+                <th>备注</th>
+                <th><@t.page 'operate'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.id}">
+                <td><input name="ids" value="${a.id}" type="checkbox"></td>
+                <td>${a.id!}</td>
+                <td>${a.sampleId!}</td>
+                <td>${a.originalSampleId!}</td>
+                <td>${a.longitude!}</td>
+                <td>${a.latitude!}</td>
+                <td>${a.countryCode!}</td>
+                <td>${a.location!}</td>
+                <td>${a.lithology!}</td>
+                <td>${a.rockName!}</td>
+                <td>${a.rockCode!}</td>
+                <td>${a.era!}</td>
+                <td>${a.geobodyName!}</td>
+                <td>${a.geobodyCode!}</td>
+                <td>${a.tectonicLocation!}</td>
+                <td>${a.primaryStructuralUnit!}</td>
+                <td>${a.secondaryStructuralUnit!}</td>
+                <td>${a.tertiarySturcturalUnit!}</td>
+                <td>${a.surroundingRockAge!}</td>
+                <td>${a.surroundingRockLithology!}</td>
+                <td>${a.relationshipWithSurroundingRock!}</td>
+                <td>${a.form!}</td>
+                <td>${a.isCutAreaConstructionLine!}</td>
+                <td>${a.degreeOfDeformation!}</td>
+                <td>${a.characteristicMinerals!}</td>
+                <td>${a.geneticType!}</td>
+                <td>${a.tectonicType!}</td>
+                <td>${a.sourceOfStructuralTypeDiscrimination!}</td>
+                <td>${a.alkalinity!}</td>
+                <td>${a.aluminumQuality!}</td>
+                <td>${a.age!}</td>
+                <td>${a.ageError!}</td>
+                <td>${a.photo!}</td>
+                <td>${a.collector!}</td>
+                <td>${a.collectorOrg!}</td>
+                <td>${a.reviewer!}</td>
+                <td>${a.analyzeOrg!}</td>
+                <td>${a.analyzePerson!}</td>
+                <td>${a.testObject!}</td>
+                <td>${a.testDate!}</td>
+                <td>${a.testMethod!}</td>
+                <td>${a.ageSelected!}</td>
+                <td>${a.ageSelectedError!}</td>
+                <td>${a.articleId!}</td>
+                <td>${a.articleDoi!}</td>
+                <td>${a.hasChecked!}</td>
+                <td>${a.remark!}</td>
+                <td>
+                <#if authorizedMap['sampleBasicInfo/delete']>
+                    <a href="sampleBasicInfo/delete.do?ids=${a.id}&_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.delete'/>"  target="ajaxTodo"><@t.page 'button.delete'/></a>
+                </#if>
+                </td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</@_sampleBasicInfoList>
+</div>

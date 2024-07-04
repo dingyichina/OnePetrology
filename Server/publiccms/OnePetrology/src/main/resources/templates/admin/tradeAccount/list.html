@@ -1,0 +1,48 @@
+<@_tradeAccountList pageIndex=pageNum pageSize=numPerPage>
+<@_sysAuthorized roleIds=admin.roles urls='tradeAccount/add,tradeAccount/rechargeParameters,tradeAccountHistory/list'><#assign authorizedMap=map/></@_sysAuthorized>
+<div class="pageContent">
+    <div class="panelBar">
+        <ul class="toolBar">
+        <#if authorizedMap['tradeAccount/add']>
+            <li><a href="tradeAccount/add.html" target="navTab" rel="tradeAccount/add"><i class="icon-plus-sign-alt icon-large"></i> <@t.page 'account.add'/></a></li>
+        </#if>
+        </ul>
+    </div>
+    <table class="table" width="100%" layoutH>
+        <thead>
+            <tr>
+                <th><@t.page 'id'/></th>
+                <th><@t.page 'user.nickname'/></th>
+                <th><@t.page 'amount'/></th>
+                <th><@t.page 'update_date'/></th>
+                <th><@t.page 'operate'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+                <@t.merge 'userIds' a.id!/>
+            </#list>
+            <@_sysUser ids=t.userIds!><#assign userMap=map!/></@_sysUser>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.id}">
+                <td>${a.id!}</td>
+                <td class="exclude-translate center">
+                    ${(userMap[a.id?string].nickName)!}
+                </td>
+                <td>${a.amount!}</td>
+                <td>${a.updateDate!}</td>
+                <td class="wrap">
+                <#if authorizedMap['tradeAccount/rechargeParameters']>
+                    <a href="tradeAccount/rechargeParameters.html?id=${a.id}" class="btnText green" target="dialog" mask="true"><@t.page 'button.recharge'/></a>
+                </#if>
+                <#if authorizedMap['tradeAccountHistory/list']>
+                    <a href="tradeAccountHistory/list.html?id=${a.id}" class="btnText" target="navTab" rel="tradeAccountHistory/list"><@t.page 'account.history'/></a>
+                </#if>
+                </td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</div>
+</@_tradeAccountList>

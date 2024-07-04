@@ -1,0 +1,39 @@
+<@_sysAppTokenList appId=appId pageIndex=pageNum pageSize=numPerPage>
+<div class="pageHeader">
+    <form class="pagerForm" autocomplete="off" onsubmit="return navTabSearch(this);" method="post">
+        <#include "../include_page/parameters.html"/>
+        <div class="searchBar">
+            <ul class="searchContent">
+                <li>
+                    <label><@t.page 'app.id'/>:</label><label>${appId!}</label>
+                </li>
+            </ul>
+        </div>
+    </form>
+</div>
+<div class="pageContent">
+    <table class="table" width="100%" layoutH>
+        <thead>
+            <tr>
+                <th width="50"><@t.page 'app.token'/></th>
+                <th width="50"><@t.page 'expiry_date'/></th>
+                <th width="50"><@t.page 'authorize_date'/></th>
+                <th width="50"><@t.page 'operate'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.authToken}">
+                <td>${a.authToken!}</td>
+                <td>${a.expiryDate!}</td>
+                <td>${a.createDate!}</td>
+                <td class="wrap">
+                    <a href="sysAppToken/delete?authToken=${a.authToken}&_csrf=<@_csrfToken admin=true/>" class="btnText warn" title="<@t.page 'confirm.delete'/>" target="ajaxTodo"><i class="icon-trash"></i> <@t.page 'button.delete'/></a>
+                </td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</div>
+</@_sysAppTokenList>

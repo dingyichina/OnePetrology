@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	    <title>OnePetrology</title>
+      <@_includePlace path="/Header-link.html"/> <#-- head-link -->
+	<@_includePlace path="/5b99dd64-5fb7-4162-9d00-b2d53e3d1708.html"/> <#-- head-gis-link -->
+
+	
+</head>
+<body class="bc-body">
+  <@_includePlace path="/header.html"/> <#-- header -->
+	<@_includePlace path="/b760d9a6-7494-4b55-9d78-d2f9512c35d7.html"/> <#-- summary -->
+<@_includePlace path="/53bad857-4066-4d50-8d73-5216b8e817ea.html"/> <#-- home-gis-2d3d -->
+	
+	
+	
+ <@_includePlace path="/518db14a-8131-4f54-b528-b96ee10a9a42.html"/> <#-- qna -->
+	 <#--<@_includePlace path="/4c5041b8-28f8-423f-908b-ab8f32c6e35e.html"/>  publishmaps -->
+	
+	<@_includePlace path="/53d9aa26-ab9a-41df-90d5-efc5307c3b3e.html"/> <#-- footer -->
+
+      <@_includePlace path="/4b5cc7e9-59d3-4cdd-ba52-c1ed93cb2c5a.html"/> <#-- 左右浮动窗口 -->
+	
+	<script src="${site.dynamicPath}resource/js/cms.analytics.js"></script>
+	<script>
+		function queryByFilter(num){
+        var k_node, owner, scope;
+		 if(num == 2){
+			  k_node="Zircon_Hf_O_isotopes";
+              owner="GEOWIND@126.COM";
+              scope= "private";
+			  
+			  
+          sessionStorage.setItem("k_node",k_node);
+            sessionStorage.setItem("owner",owner)
+            sessionStorage.setItem("scope",scope)
+			  
+			 
+        //   window.location.href="/search/result.html";  
+       window.location.href="/search/zircon_Hf_O_search.html";
+           
+       }	
+      
+  else 
+      alert("Coming Soon!")
+     
+      return true;
+  }
+	</script>
+	
+	
+	<script>
+		        var ca = cmsAnalytics();
+        var url='${site.dynamicPath}api/visit/record';
+        if("string" ==typeof itemString){
+            url=url+"?"+itemString;
+        }
+        ca.report(url);
+	</script>
+		 	<iframe frameborder="no" border="0" marginwidth="0" marginheight="0"width=298 height=52  src="https://music.163.com/outchain/player?type=2&id=2061935517&auto=1&height=32"></iframe>
+</body>
+</html>
+
+

@@ -1,0 +1,97 @@
+<div class="row"  >
+     
+	 <div class="col-md-12">
+		 <table  border="2">
+			 <tr>
+				 <th>
+					 	Data Count:
+				 </th>	
+				 <td>
+						 <span id="dbDataCount"></span>
+				 </td>
+			 </tr>	 
+			 <tr>  
+			 	<th>
+				   Data  Fields:
+			   	</th>
+				<td>
+					<span id="dbFields" style="display:  width: 100px; word-break: break-all; white-space: normal;"></span>
+				 </td>
+			 </tr>
+			 <tr>
+				 <th>Contact mail：</th>
+				 <td><a href="mailto:${attribute.owner}"> ${attribute.owner}</a></td>
+			 </tr>	
+			 
+		 
+
+		 <!--tr>
+			 <th>Search Method:</th>
+			  <td>
+			 <div class="row" style="padding:0 5%  0 5%">
+					
+                                    <div class="col-md-4 col-12">
+                                        <div class="item plain">
+                                            <div class="img-ctn">
+                                                <a href="/search/bylocation.html" >
+                                                    <img class="img-fluid" src="${site.sitePath!}images/ByLocation.jpg" />
+                                                </a>
+                                            </div>
+                                            <div class="text-ctn">
+                                                <h5 class="art-caption text-center" style="font-size:1.125rem;"><a href="/search/bylocation.html" >By Location</a></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-12">
+                                        <div class="item plain">
+                                            <div class="img-ctn">
+                                                <a href="/search/bycondition.html" >
+                                                    <img class="img-fluid" src="${site.sitePath!}images/ByFeature.jpg" />
+                                                </a>
+                                            </div>
+                                            <div class="text-ctn">
+                                                <h5 class="art-caption text-center" style="font-size:1.125rem;"><a href="/search/bycondition.html" >By Feature</a></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                              
+                                    <p class="art-detail text-center" style="margin-top:3.125rem"><a href="/search/advance.html" >Advanced Search</a></p>
+                 </div>
+			 </td>	 
+		 </tr-->
+	  </table> 
+	 </div>
+	
+</div>
+<script>
+	
+	    // dom加载完成后执行的函数
+		$(document).ready(function(){
+			 //从session中获取之前的设置字段
+			 var k_node = sessionStorage.getItem('k_node');
+		     var owner=  sessionStorage.getItem('owner');
+		     var scope =  sessionStorage.getItem('scope');
+			 //异步请求结构树
+			 $.ajax({
+		          type: "get",        // 请求方式
+                   url: "${site.dynamicPath!}fastapi/kdata/"+k_node+"/"+owner,
+			       data:{'boundary':"",'condition':"",'scope':scope,'start':0,'length':3},
+                  dataType: "json",   // 预期返回一个 json 类型数据
+			     success: function (data) {   // data是形参名，代表返回的数据
+                    //处理返回数据
+					/*var mycolumns =[];
+					for(var i=0;i<data.columns.length;i++){
+							mycolumns.push({'title':data.columns[i],'data':data.columns[i]});
+					}*/
+					//把列名存储到session
+					 var totalCount=data.recordsTotal;
+					 var owner=data.owner;
+			  		  $("#dbDataCount").html('<p >find  <font color="#FF0000"> '+totalCount +' </font>  records. </p>');
+					  $("#dbFields").html('<p >find  <font color="#0000FF"> '+data.columns +' </font>  fields. </p>');
+					   }
+			 });	 
+	
+		});
+</script>

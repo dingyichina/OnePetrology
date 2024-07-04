@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.publiccms.logic.mapper.tools.SqlMapper">
+    <select id="select" parameterType="String" resultType="map">
+        ${sql}
+    </select>
+    <select id="query" parameterType="String" resultType="map">
+        ${sql}
+    </select>
+    <insert id="insert" parameterType="String">
+        ${sql}
+    </insert>
+    <update id="update" parameterType="String">
+        ${sql}
+    </update>
+    <delete id="delete" parameterType="String">
+        ${sql}
+    </delete>
+    <update id="updateContentAttribute" parameterType="map">
+        update cms_content_attribute set text=replace(text,#{oldurl},#{newurl}),data=replace(data,#{oldurl},#{newurl})
+    </update>
+    <update id="updateContentRelated" parameterType="map">
+        update cms_content_related set url=replace(url,#{oldurl},#{newurl})
+    </update>
+    <update id="updatePlaceAttribute" parameterType="map">
+        update cms_place_attribute set data=replace(data,#{oldurl},#{newurl})
+    </update>
+    <update id="updatePlace" parameterType="map">
+        update cms_place set url=replace(url,#{oldurl},#{newurl})
+    </update>
+</mapper>

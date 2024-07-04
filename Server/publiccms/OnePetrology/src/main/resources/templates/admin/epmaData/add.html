@@ -1,0 +1,87 @@
+<@_epmaData id=id><#assign a=object/></@_epmaData>
+<form method="post" action="epmaData/save.do?callbackType=closeCurrent&navTabId=epmaData/list" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <input name="id" type="hidden" value="${id!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+    <div class="pageContent">
+        <div class="pageFormContent" layoutH="56">
+            <dl>
+                <dt>ID：</dt>
+                <dd><input class="required" name="id" type="text" size="30" value="${(a.id)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>样品：</dt>
+                <dd><input class="required" name="sampleId" type="text" size="30" value="${(a.sampleId)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>矿物名称：</dt>
+                <dd><input class="required" name="mineralName" type="text" size="30" value="${(a.mineralName)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>SiO<sub>2</sub>（10<sup>-2</sup>）：</dt>
+                <dd><input class="required" name="siO2" type="text" size="30" value="${(a.siO2)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>TiO<sub>2</sub> (10<sup>-2</sup>）：</dt>
+                <dd><input class="required" name="tiO2" type="text" size="30" value="${(a.tiO2)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Al<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）：</dt>
+                <dd><input class="required" name="al2O3" type="text" size="30" value="${(a.al2O3)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Cr<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）：</dt>
+                <dd><input class="required" name="cr2O3" type="text" size="30" value="${(a.cr2O3)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Fe<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）：</dt>
+                <dd><input class="required" name="fe2O3" type="text" size="30" value="${(a.fe2O3)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>FeO(10<sup>-2</sup>)：</dt>
+                <dd><input class="required" name="feO" type="text" size="30" value="${(a.feO)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>NiO(10<sup>-2</sup>)：</dt>
+                <dd><input class="required" name="niO" type="text" size="30" value="${(a.niO)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>MnO(10<sup>-2</sup>)：</dt>
+                <dd><input class="required" name="mnO" type="text" size="30" value="${(a.mnO)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>MgO(10<sup>-2</sup>)：</dt>
+                <dd><input class="required" name="mgO" type="text" size="30" value="${(a.mgO)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>CaO(10<sup>-2</sup>)：</dt>
+                <dd><input class="required" name="caO" type="text" size="30" value="${(a.caO)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Na<sub>2</sub>O(10<sup>-2</sup>)：</dt>
+                <dd><input class="required" name="na2O" type="text" size="30" value="${(a.na2O)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>K<sub>2</sub>O(10<sup>-2</sup>)：</dt>
+                <dd><input class="required" name="k2O" type="text" size="30" value="${(a.k2O)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>P<sub>2</sub>O<sub>5</sub>(10<sup>-2</sup>)：</dt>
+                <dd><input class="required" name="p2O5" type="text" size="30" value="${(a.p2O5)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>总量(10<sup>-2</sup>)：</dt>
+                <dd><input class="required" name="total" type="text" size="30" value="${(a.total)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>其他(10<sup>-2</sup>)：</dt>
+                <dd><input class="required" name="others" type="text" size="30" value="${(a.others)!}"/></dd>
+            </dl>
+        </div>
+    </div>
+</form>

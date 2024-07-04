@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	
+
+    <title>OnePetrology login</title>
+<script src="${site.sitePath}js/jquery-3.6.0.min.js"></script>
+	<script src="${site.sitePath}js/jquery.cookie.js"></script>
+	
+</head>
+<body  style="background-image: url(${site.sitePath!}images/background.png);position: static;  height: auto;  background-size: cover;  background-attachment: fixed;  background-repeat: no-repeat; min-height: 100%; display: block;">
+
+	 <div class="iam_login_header clear" style="color: #676a6c; font: 12px \5b8b\4f53,arial,sans-serif; letter-spacing: 2px; clear: both;  overflow: hidden;  display: block;  width: 1200px;   height: auto;  font-size: 14px;  margin: auto;  padding: 30px 0;  margin-bottom: 3%;">
+		<img src="${site.sitePath!}images/ddelogo.png" class="fl" style="width: 163px;height: 74px;" alt="logo">
+		 	<img src="${site.sitePath!}images/logo.png" class="fl" style="width: 163px;height: 74px;" alt="logo">
+	</div>
+
+	<div class="fl" style="float:left; margin-left: 10%;max-width: 34%;height: 60%;">
+		<img src="${site.sitePath!}images/worldmap-star.gif" alt="earth" style="width: 100%;height: 100%;">
+	</div>
+
+	<div class="fr iam_login_form" style='    color: #676a6c;
+    font: 12px \5b8b\4f53,arial,sans-serif;
+    font-family: "Microsoft YaHei", 微软雅黑, "Microsoft JhengHei", 华文细黑;
+    letter-spacing: 2px;
+    padding: 0;
+    display: inline;
+    float: right;
+    width: 892px;
+    margin: 0 auto;
+    height: auto;
+    font-size: 14px;
+    max-width: 28%;
+    margin-right: 12%;'>
+		
+		
+		<div class="fr set_language" data-ps="a80b" style='    color: #676a6c;
+    font: 12px \5b8b\4f53,arial,sans-serif;
+    font-family: "Microsoft YaHei", 微软雅黑, "Microsoft JhengHei", 华文细黑;
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin: 0;
+    padding: 0;
+    float: right;
+    margin-top: 40px;
+    display: block;'>
+			<a id="zh" class="languageActive">简体中文</a>
+			<span>|</span>
+			<a id="en" class="i18n" data-name="languageEn" style="letter-spacing: 0px;">English</a>
+       </div>
+		
+	     <div class="loginForm fr" style='    color: #676a6c;
+    font: 12px \5b8b\4f53,arial,sans-serif;
+    font-family: "Microsoft YaHei", 微软雅黑, "Microsoft JhengHei", 华文细黑;
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin: 0;
+    padding: 0;
+    display: inline;
+    float: right;
+    background: #fff;
+    overflow: hidden;
+    border-radius: 6px;
+    zoom: 1;
+    margin-top: 10px;
+    width: 100%;'>
+           <div class="fl loginForm_content pos-r" id="loginForm_content" style='    color: #676a6c;
+    font: 12px \5b8b\4f53,arial,sans-serif;
+    font-family: "Microsoft YaHei", 微软雅黑, "Microsoft JhengHei", 华文细黑;
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin: 0;
+    display: inline;
+    float: left;
+    position: relative;
+    height: auto;
+    background: #fff;
+    padding: 8% 13.3%;
+    width: 73.7%;'>
+              <div class="loginForm_type" id="loginForm_type"  style='    color: #676a6c;
+    font: 12px \5b8b\4f53,arial,sans-serif;
+    font-family: "Microsoft YaHei", 微软雅黑, "Microsoft JhengHei", 华文细黑;
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin: 0;
+    padding: 0;'>
+                <!--密码登录-->
+                <div id="login_pwd">
+                    <h3 class="i18n" data-name="loginTypePWd"  style=' font: 12px \5b8b\4f53,arial,sans-serif; font-family: "Microsoft YaHei", 微软雅黑, "Microsoft JhengHei", 华文细黑;  letter-spacing: 2px;  margin: 0; padding: 0; margin-bottom: 20px;  font-size: 18px; text-align: center; font-weight: 700;color: #999;'>User name password login</h3>
+                    <input type="text"
+                           autocomplete="autocomplete"
+						   placeholder=' please input your id(email) '
+                           id="username"
+                           class="iam_input username i18n-input backgroundP"
+                           data-name="inputName"  style='    letter-spacing: 2px;
+    margin: 0;
+    padding: 0;
+    font: 12px \5b8b\4f53,arial,sans-serif;
+    font-size: 100%;
+    margin-bottom: 20px;
+    height: 40px;
+    line-height: 40px;
+    display: block;
+    width: 100%;
+    text-indent: 35px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: url(${site.sitePath!}images/iam_username.png) 5px center no-repeat;'>
+                    <input type="password"
+                           autocomplete="password"
+                           id="password"
+				 	      placeholder=' please input your password '
+                           name="password"
+                           data-name="inputPwd"
+                           class="password iam_input fl i18n-input backgroundP"  style='    letter-spacing: 2px;
+    margin: 0;
+    padding: 0;
+    font: 12px \5b8b\4f53,arial,sans-serif;
+    font-size: 100%;
+    float: left;
+    margin-bottom: 20px;
+    height: 40px;
+    line-height: 40px;
+    display: block;
+    width: 100%;
+    text-indent: 35px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: url(${site.sitePath!}images/iam_pwd.png) 5px center no-repeat;'>
+					
+                    <div class="clear" style="margin-bottom: 20px;">
+                        
+                        <a    href="/dspace/register" class="iam_register i18n fl languageActive" data-ps="d00c" data-name="registeredUser" style='    font: 12px \5b8b\4f53,arial,sans-serif;
+    font-family: "Microsoft YaHei", 微软雅黑, "Microsoft JhengHei", 华文细黑;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    float: left;
+    cursor: pointer;
+    color: #fc4c02;
+    display: inline;'>Register new user</a>
+                        
+                        <a  href="/dspace/forgot"   class="iam_reset_pwd i18n fr" data-name="forgetPwd" style='    font: 12px \5b8b\4f53,arial,sans-serif;
+    font-family: "Microsoft YaHei", 微软雅黑, "Microsoft JhengHei", 华文细黑;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    display: inline;
+    float: right;
+    cursor: pointer;
+    color: #676a6c;'>Forgot password</a>
+                    </div>
+
+                    <button  type="button" class="iam-login-btn keyDown i18n pos-r" data-name="login" data-ps="d00a" id="loginBtn"  style='    letter-spacing: 2px;
+    margin: 0;
+    padding: 0;
+    font: 12px \5b8b\4f53,arial,sans-serif;
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background: #f9780c;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 3px;
+    border: 0;
+    margin-top: 20px;
+    display: inline-block;'>Login</button>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+</div>
+	<@_includePlace path="/cef104a8-c7aa-4e04-92af-ea94ff7ec76a.html"/> <#-- DSpaceClient -->
+	<script>
+	
+		
+		// -----dom加载完成后执行的函数
+		$(document).ready(function(){
+				//------login按钮处理函数
+				$('#loginBtn').click(function(){
+					// 处理登陆有关逻辑
+					var client= new DSpaceClient(); 
+					//使用ajax向server提交数据
+					var username=$('#username').val();
+					var password=$('#password').val();
+					//console.log(username,password);
+					if(client.login(username,password)){
+					 	window.location.href='${returnUrl!}';
+					}else{
+						console.log("login 返回了非true");	
+						window.location.href='${returnUrl!}';
+					}
+
+				});
+				//----- login 按钮处理函数结束
+			
+			if(hasLogin()){//已经登录了，则直接跳转
+			  window.location.href='${returnUrl!}';
+				return;
+			}
+			//检查cookie
+			//console.log("returnUrl:",'${returnUrl!}' );  //当前需要返回的地址
+		});
+		//-----dom加载函数结束
+		
+		
+		
+		
+	
+	</script>
+	
+
+
+	
+    <script src="${site.dynamicPath}resource/js/cms.analytics.js"></script>
+    <script>
+        var ca = cmsAnalytics();
+        var url='${site.dynamicPath}api/visit/record';
+        if("string" ==typeof itemString){
+            url=url+"?"+itemString;
+        }
+        ca.report(url);
+    </script>
+</body>
+</html>

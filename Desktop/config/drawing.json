@@ -1,0 +1,22 @@
+{
+    "档号+室编件号": "dc.identifier.FN",
+    "题名": "dc.title",
+    "创建时间": "dc.date.created",
+    "创建者": "dc.contributor",
+    "内容摘要": "dc.description.abstract",
+    "比例尺": "dc.description.scale",
+    "语种": "dc.language.iso",
+    "是否原件": "dcterms.provenance.isOriginal",
+    "原件保存地": "dcterms.relation.originalDocumentLocation",
+    "载体代码": "dcterms.format.medium",
+    "存放路径": "dc.description.storagePath",
+
+    "提供者": "dc.description.provider",
+    "提供时间": "dc.date.provided",
+    "密级": "dc.description.securityLevel",
+    "备注": "dc.description.comment",
+    "关联科学家": "relation.isScientistOfDrawing",
+    "dspace.entity.type": "Drawing",
+    "collection_uuid":"b2d8043a-096f-4f84-8abe-0f96aed20af8",
+    "savepath":"存放路径"
+}

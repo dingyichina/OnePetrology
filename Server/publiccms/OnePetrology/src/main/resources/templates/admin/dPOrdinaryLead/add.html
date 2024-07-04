@@ -1,0 +1,67 @@
+<@_dPOrdinaryLead id=id><#assign a=object/></@_dPOrdinaryLead>
+<form method="post" action="dPOrdinaryLead/save.do?callbackType=closeCurrent&navTabId=dPOrdinaryLead/list" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <input name="id" type="hidden" value="${id!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+    <div class="pageContent">
+        <div class="pageFormContent" layoutH="56">
+            <dl>
+                <dt>ID：</dt>
+                <dd><input class="required" name="id" type="text" size="30" value="${(a.id)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>样品：</dt>
+                <dd><input class="required" name="sampleId" type="text" size="30" value="${(a.sampleId)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>矿物特征：</dt>
+                <dd><input class="required" name="mineralCharacter" type="text" size="30" value="${(a.mineralCharacter)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>衰变常数1 （1/年）：</dt>
+                <dd><input class="required" name="decayConst1" type="text" size="30" value="${(a.decayConst1)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>衰变常数2 （1/年）：</dt>
+                <dd><input class="required" name="decayConst2" type="text" size="30" value="${(a.decayConst2)!}"/></dd>
+            </dl>
+            <dl>
+                <dt><sup>206</sup>Pb/<sup>204</sup>Pb：</dt>
+                <dd><input class="required" name="pb206Pb204" type="text" size="30" value="${(a.pb206Pb204)!}"/></dd>
+            </dl>
+            <dl>
+                <dt><sup>207</sup>Pb/<sup>204</sup>Pb：</dt>
+                <dd><input class="required" name="pb207Pb204" type="text" size="30" value="${(a.pb207Pb204)!}"/></dd>
+            </dl>
+            <dl>
+                <dt><sup>208</sup>Pb/<sup>204</sup>Pb：</dt>
+                <dd><input class="required" name="pb208Pb204" type="text" size="30" value="${(a.pb208Pb204)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>模式年龄 1（Ma）：</dt>
+                <dd><input class="required" name="modelAge1" type="text" size="30" value="${(a.modelAge1)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>模式年龄 1误差（Ma）：</dt>
+                <dd><input class="required" name="modelAge1Error" type="text" size="30" value="${(a.modelAge1Error)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>模式年龄2（Ma）：</dt>
+                <dd><input class="required" name="modelAge2" type="text" size="30" value="${(a.modelAge2)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>模式年龄 2误差（Ma）：</dt>
+                <dd><input class="required" name="modelAge2Error" type="text" size="30" value="${(a.modelAge2Error)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>备注：</dt>
+                <dd><input class="required" name="remark" type="text" size="30" value="${(a.remark)!}"/></dd>
+            </dl>
+        </div>
+    </div>
+</form>

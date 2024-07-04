@@ -1,0 +1,54 @@
+<style>
+    .tab-switch{position: relative;}
+    .tab-title{position: absolute;top: 50%;right: 0;}
+    .tab-title ul{list-style: none;padding:0;margin:0;font-size: 0;border: 1px solid #cbcbcb;border-radius: 3px;}
+    .tab-title ul li{width: 50px;display: inline-block;cursor: pointer;padding: 5px 8px;text-align: center;font-size: 14px;}
+    .tab-title ul li:last-child{border-left: 1px solid #cbcbcb;}
+    .tab-title ul li:hover{background-color: #afe6ff;}
+    .tab-item {display: none;height: 800px;}
+    .current {background-color: #90dafd;}
+</style>
+
+<div class="portfolio-block content content-center" id="portfolio">
+    <div class="tab-switch">
+        <div class="container" style="margin-top:50px;">
+            <h2>Data  <strong>On  Map of Magmatic Rocks of World (2022)</strong></h2>
+        </div>
+        <div class="tab-title">
+            <ul>
+                <li class="current">2D </li>
+                <li>3D</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row tab-con">
+        <div class="tab-item" style="display: block;">
+            <@_includePlace path="/9c90f0b1-a8f6-407b-b051-ff7f39bed78e.html"/> <#-- world-gis-div -->
+        </div>
+        <div class="tab-item">
+          <@_includePlace path="/f39a6940-ee2e-4b78-984c-1a91687218eb.html"/> <#-- 3d-cesium -->
+        </div>
+    </div>
+</div>
+
+<script>
+    var lis = document.querySelector('.tab-title ul').querySelectorAll('li');
+    var items = document.querySelector('.tab-con').querySelectorAll('.tab-item');
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].setAttribute('index', i); // 给每个li设置索引号
+        // 导航栏lis点击变色
+        lis[i].onclick = function() {
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].className = '';
+            }
+            this.className = 'current';
+            var index = this.getAttribute('index');
+            // 导航栏对应盒子里的内容
+            for (var i = 0; i < items.length; i++) {
+                items[i].style.display = 'none';
+            }
+            items[index].style.display = 'block';
+        }
+    }
+</script>  

@@ -1,0 +1,127 @@
+<@_dPUraniumThoriumLead id=id><#assign a=object/></@_dPUraniumThoriumLead>
+<form method="post" action="dPUraniumThoriumLead/save.do?callbackType=closeCurrent&navTabId=dPUraniumThoriumLead/list" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <input name="id" type="hidden" value="${id!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+    <div class="pageContent">
+        <div class="pageFormContent" layoutH="56">
+            <dl>
+                <dt>ID：</dt>
+                <dd><input class="required" name="id" type="text" size="30" value="${(a.id)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>样品：</dt>
+                <dd><input class="required" name="sampleId" type="text" size="30" value="${(a.sampleId)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>矿物特征：</dt>
+                <dd><input class="required" name="mineralCharacter" type="text" size="30" value="${(a.mineralCharacter)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>衰变常数1 （1/年）：</dt>
+                <dd><input class="required" name="decayConst1" type="text" size="30" value="${(a.decayConst1)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>衰变常数2 （1/年）：</dt>
+                <dd><input class="required" name="decayConst2" type="text" size="30" value="${(a.decayConst2)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>衰变常数3 （1/年）：</dt>
+                <dd><input class="required" name="decayConst3" type="text" size="30" value="${(a.decayConst3)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铀(10<sup>-6</sup>)：</dt>
+                <dd><input class="required" name="u" type="text" size="30" value="${(a.u)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钍（10<sup>-6</sup>）：</dt>
+                <dd><input class="required" name="th" type="text" size="30" value="${(a.th)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铅（10<sup>-6</sup>）：</dt>
+                <dd><input class="required" name="pb" type="text" size="30" value="${(a.pb)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铅-204（%）：</dt>
+                <dd><input class="required" name="pb204" type="text" size="30" value="${(a.pb204)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铅-206（%）：</dt>
+                <dd><input class="required" name="pb206" type="text" size="30" value="${(a.pb206)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铅-207（%）：</dt>
+                <dd><input class="required" name="pb207" type="text" size="30" value="${(a.pb207)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铅-208（%）：</dt>
+                <dd><input class="required" name="pb208" type="text" size="30" value="${(a.pb208)!}"/></dd>
+            </dl>
+            <dl>
+                <dt><sup>206</sup>Pb/<sup>204</sup>Pb：</dt>
+                <dd><input class="required" name="pb206Pb204" type="text" size="30" value="${(a.pb206Pb204)!}"/></dd>
+            </dl>
+            <dl>
+                <dt><sup>208</sup>Pb/<sup>206</sup>Pb：</dt>
+                <dd><input class="required" name="pb208Pb206" type="text" size="30" value="${(a.pb208Pb206)!}"/></dd>
+            </dl>
+            <dl>
+                <dt><sup>207</sup>Pb/<sup>206</sup>Pb：</dt>
+                <dd><input class="required" name="pb207Pb206" type="text" size="30" value="${(a.pb207Pb206)!}"/></dd>
+            </dl>
+            <dl>
+                <dt><sup>206</sup>Pb/<sup>238</sup>U：</dt>
+                <dd><input class="required" name="pb206U238" type="text" size="30" value="${(a.pb206U238)!}"/></dd>
+            </dl>
+            <dl>
+                <dt><sup>207</sup>Pb/<sup>235</sup>U：</dt>
+                <dd><input class="required" name="pb207U235" type="text" size="30" value="${(a.pb207U235)!}"/></dd>
+            </dl>
+            <dl>
+                <dt><sup>208</sup>Pb/<sup>232</sup>Th：</dt>
+                <dd><input class="required" name="pb208Th232" type="text" size="30" value="${(a.pb208Th232)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铅<sup>-206</sup>-铀<sup>-238</sup> 年龄（Ma）：</dt>
+                <dd><input class="required" name="pb206U238Age" type="text" size="30" value="${(a.pb206U238Age)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铅<sup>-206</sup>-铀<sup>-238</sup> 年龄误差（Ma）：</dt>
+                <dd><input class="required" name="pb206U238AgeError" type="text" size="30" value="${(a.pb206U238AgeError)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铅<sup>-207</sup>-铀<sup>-235</sup> 年龄（Ma）：</dt>
+                <dd><input class="required" name="pb207U235Age" type="text" size="30" value="${(a.pb207U235Age)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铅<sup>-207</sup>-铀<sup>-235</sup> 年龄误差(Ma)：</dt>
+                <dd><input class="required" name="pb207U235AgeError" type="text" size="30" value="${(a.pb207U235AgeError)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铅<sup>-207</sup>-铅<sup>-206</sup> 年龄（Ma）：</dt>
+                <dd><input class="required" name="pb207Pb206Age" type="text" size="30" value="${(a.pb207Pb206Age)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铅<sup>-207</sup>-铅<sup>-206</sup> 年龄误差（Ma）：</dt>
+                <dd><input class="required" name="pb207Pb206AgeError" type="text" size="30" value="${(a.pb207Pb206AgeError)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铅<sup>-208</sup>-钍<sup>-232</sup> 年龄（Ma）：</dt>
+                <dd><input class="required" name="pb208Th232Age" type="text" size="30" value="${(a.pb208Th232Age)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铅<sup>-208</sup>-钍<sup>-232</sup> 年龄误差（Ma）：</dt>
+                <dd><input class="required" name="pb208Th232AgeError" type="text" size="30" value="${(a.pb208Th232AgeError)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>备注：</dt>
+                <dd><input class="required" name="remark" type="text" size="30" value="${(a.remark)!}"/></dd>
+            </dl>
+        </div>
+    </div>
+</form>

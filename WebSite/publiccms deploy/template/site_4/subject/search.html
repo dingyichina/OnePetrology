@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<@_includePlace path="/Header-link.html"/> <#-- head-link -->
+	<@_includePlace path="/5b99dd64-5fb7-4162-9d00-b2d53e3d1708.html"/> <#-- head-gis-link -->
+</head>
+<body>
+<@_includePlace path="/header.html"/> <#-- header -->
+	
+	<div class="locationbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- start location -->
+                    <ul class="breadcrumb pull-left">
+                        <li class="breadcrumb-prefix breadcrumb-item d-none d-md-block">OnePetrology Search: </li>
+
+                        <li class="breadcrumb-item">Find&Search Data</li>
+
+
+                    </ul>
+                    <!-- end location -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div class="section-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="bc-blk-04">
+                        <div class="bc-blk-bd">
+                            <div class="bc-multi-col-pictext-list-01">
+                                <div class="row" style="padding:0 15%">
+                                    <div class="col-md-4 col-12">
+                                        <div class="item plain">
+                                            <div class="img-ctn">
+                                                <a href="/subject/bylocation.html" >
+                                                    <img class="img-fluid" src="${site.sitePath!}images/ByLocation.jpg" />
+                                                </a>
+                                            </div>
+                                            <div class="text-ctn">
+                                                <h5 class="art-caption text-center" style="font-size:1.125rem;"><a href="/subject/bylocation.html" >By Location</a></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-12">
+                                        <div class="item plain">
+                                            <div class="img-ctn">
+                                                <a href="/subject/bycondition.html" >
+                                                    <img class="img-fluid" src="${site.sitePath!}images/ByFeature.jpg" />
+                                                </a>
+                                            </div>
+                                            <div class="text-ctn">
+                                                <h5 class="art-caption text-center" style="font-size:1.125rem;"><a href="/subject/bycondition.html" >By Feature</a></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                              
+                                    <p class="art-detail text-center" style="margin-top:3.125rem"><a href="/subject/advance.html" >Advanced Search</a></p>
+                                </div>
+                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	
+	
+<@_includePlace path="/53d9aa26-ab9a-41df-90d5-efc5307c3b3e.html"/> <#-- footer -->
+	
+	
+	
+	
+    <script src="${site.dynamicPath}resource/js/cms.analytics.js"></script>
+    <script>
+        var ca = cmsAnalytics();
+        var url='${site.dynamicPath}api/visit/record';
+        if("string" ==typeof itemString){
+            url=url+"?"+itemString;
+        }
+        ca.report(url);
+    </script>
+</body>
+</html>

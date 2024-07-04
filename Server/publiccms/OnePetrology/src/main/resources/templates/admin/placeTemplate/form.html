@@ -1,0 +1,82 @@
+<@_placeMetadata path=path>
+    <#assign a=object/>
+<#assign formContent>
+    <#if a.allowContribute>
+        <#assign
+            fieldList=a.fieldList![]
+            requiredFieldList=a.requiredFieldList![]
+        />
+<#if !a.allowAnonymous>
+<#noparse>
+<#if user?has_content>
+</#noparse>
+</#if>
+<form method="post" action="<#noparse>${site.dynamicPath}</#noparse>place/save">
+<#if a.allowAnonymous>
+    <input type="hidden" name="_csrf" value="<#noparse><@_csrfToken/></#noparse>"/>
+</#if>
+    <input name="path" type="hidden" value="${(path)!}" />
+    <input name="returnUrl" type="hidden" value="<#noparse>${site.dynamicPath}</#noparse>" />
+    <p><label>${(a.fieldTextMap['title'])!}:</label><input name="title" type="text" size="60" value=""/></p>
+<#if fieldList?seq_contains('url')>
+    <p><label>${(a.fieldTextMap['url'])!}:</label><input name="url" type="text" size="60" maxlength="1000"/></p>
+</#if>
+<#if fieldList?seq_contains('cover')>
+    <p><label>${(a.fieldTextMap['cover'])!}:</label><input name="cover" type="text" size="60" maxlength="1000" value=""/></p>
+</#if>
+    <#include "../include_page/extendData.html"/>
+    <#assign extendList=(a.extendList)![]/>
+    <#assign extendValues=getPlaceAttribute((a.id)!)!{}/>
+    <@extendData 'extendDataList' extendList extendValues 'customform'/>
+    <p><input type="submit" value="<@t.page 'button.save'/>"/></p>
+</form>
+    ${'<#assign path=\''?no_esc+path+'\'/>'?no_esc}
+<#noparse>
+    <@_placeMetadata path=path><#assign a=object/></@_placeMetadata>
+    <#if user?has_content&&(a.adminIds)?has_content&&a.adminIds?seq_contains(user.id)>
+        <#macro merge name value><#if !.vars[name]??><@"<#assign ${name}=''>"?interpret /></#if><#if value??><@"<#assign ${name}=${name}+'${value},'>"?interpret /></#if></#macro>
+        <@_placeList path=path advanced=true pageIndex=pageNum pageSize=numPerPage>
+            <#list page.list as a>
+                <@merge 'userIds' a.userId!/>
+            </#list>
+            <@_sysUser ids=userIds!><#assign userMap=map!/></@_sysUser>
+            <#list page.list as a>
+                    <p>
+                        <a href="${a.url}" target="_blank">${a.title}</a> ${a.clicks} [${(userMap[a.userId?string].nickName)!}]
+                    <#if 2=a.status>
+                        <a href="${site.dynamicPath}place/check?id=${a.id}&returnUrl=${site.dynamicPath}&_csrf=<@_csrfToken/>">Check</a> 
+                    <#elseif 1=a.status>
+                        <a href="${site.dynamicPath}place/uncheck?id=${a.id}&returnUrl=${site.dynamicPath}&_csrf=<@_csrfToken/>">Uncheck</a> 
+                    </#if>
+                        <a href="${site.dynamicPath}place/delete?id=${a.id}&returnUrl=${site.dynamicPath}&_csrf=<@_csrfToken/>">Delete</a>
+                    </p>
+            </#list>
+        </@_placeList>
+    </#if>
+</#noparse>
+            <#if !a.allowAnonymous>
+<#noparse>
+<#else>
+please <a href="${site.dynamicPath}login.html">login</a>
+</#if>
+</#noparse>
+            </#if>
+        <#else>
+<@t.message 'verify.custom.contribute'/>
+    </#if>
+</#assign>
+</@_placeMetadata>
+<div class="pageFormContent" layoutH>
+    <dl class="nowrap">
+        <dt><@t.page 'place'/>:</dt>
+        <dd>
+            ${(path)!} ${(a.alias)!}
+        </dd>
+    </dl>
+    <dl class="nowrap">
+        <dt><@t.page 'source_code'/>:</dt>
+        <dd>
+            <textarea cols="80" rows="20"><@html_escape>${(formContent)!}</@html_escape></textarea>
+        </dd>
+    </dl>
+</div>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<@_includePlace path="/Header-link.html"/> <#-- head-link -->
+	
+     <!--  单独引进ztree  -->
+	<link href="${site.sitePath}zTree/css/demo.css" rel="stylesheet">
+	<link href="${site.sitePath}zTree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+	<script src="${site.sitePath}zTree/js/jquery.ztree.core.js"></script>
+	<script src="${site.sitePath}zTree/js/jquery.ztree.excheck.js"></script>
+	<!--  单独引进querybuilder  -->
+	<script src="${site.sitePath}querybuilder/js/query-builder.standalone.min.js"></script>
+	<link href="${site.sitePath}querybuilder/css/query-builder.default.css" rel="stylesheet">
+	<!-- 下面是 为了冻结根节点增加的css代码  -->	
+	<style type="text/css">
+			.ztree li span.button.switch.level0 {visibility:hidden; width:1px;}  
+            .ztree li ul.level0 {padding:0; background:none;}
+	</style>  
+</head>
+<body>
+   <@_includePlace path="/header.html"/> <#-- header -->
+	
+	<div class="section-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+					<!-- 左侧展示知识树 -->
+					<h2>The data structure, select the field to filter</h2>
+					<ul id="myKTree" class="ztree" style="width:100%;height:600px;"></ul>
+					
+				</div>
+			
+				<div class="col-md-8" style="width:1000px; height:100%;">
+				   <!-- 搜索条件拼接 -->
+					<h2>Build the filter to find data</h2>
+					<div id="builder" style="display:block;" ></div>
+					 <div class="btn-group">
+						  <button id='btn-reset' class="btn btn-warning reset" data-target="basic">Reset</button>
+						  <button id='btn-set' class="btn btn-success set-json" data-target="basic">Sample </button>
+						  <button id='btn-get' class="btn btn-primary parse-json" data-target="basic">Submit</button>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	
+	
+	
+<@_includePlace path="/53d9aa26-ab9a-41df-90d5-efc5307c3b3e.html"/> <#-- footer -->
+	
+	
+    <script src="${site.dynamicPath}resource/js/cms.analytics.js"></script>
+    <script>
+		//页面访问统计代码
+        var ca = cmsAnalytics();
+        var url='${site.dynamicPath}api/visit/record';
+        if("string" ==typeof itemString){
+            url=url+"?"+itemString;
+        }
+        ca.report(url);
+		
+		// 默认过滤字段
+	    let filter_fields = [ 'Contributor', 'SampleNo', 'Longitude' , 'Latitude' , ];
+		//默认过滤条件
+		var rules_basic = {
+			  condition: 'AND',
+			  rules: [{
+				id: 'Contributor',
+				operator: 'contains',
+				value: 'Zhang'
+			  }, {
+				condition: 'OR',
+				rules: [{
+				  id: 'SampleNo',
+				  operator: 'contains',
+				  value: 'rock'
+				}, {
+				  id: 'Longitude',
+				  operator: 'greater',
+				  value: 20
+				}]
+			  }]
+			};
+
+		//判断是否在过滤数组中，返回true或者false
+		function is_filter_field(field){
+			for (var i=0; i<filter_fields.length;i++){
+				var f = $.trim(filter_fields[i]);
+				if( f.toLowerCase() == field.toLowerCase())
+					return true;
+			}
+			return false;
+		}
+		
+		
+		// 得到一个zTreeNode
+		function buildTree(data){
+			var zNode={ id:data.uuid, name: data.name,open:true,type:data.type,value_type:data.value_type};  //公共的节点属性
+		if( is_filter_field(data.name)){
+				zNode.checked =true;
+			}
+			if (data.type =='PROP'){
+			    //属性结点
+				//根据ValueType设置图标和颜色
+				if (data.value_type == 'Float'){
+					zNode.font="{'color':'red'}";
+					zNode.icon = "${site.sitePath!}zTree/css/zTreeStyle/img/diy/3.png";
+				}else if  (data.value_type == 'String'){
+					zNode.font="{'color':'blue'}";
+					zNode.icon = "${site.sitePath!}zTree/css/zTreeStyle/img/diy/7.png";
+				}else{
+					//引用，或者枚举，暂时前端不用，略去
+						zNode.icon = "${site.sitePath!}zTree/css/zTreeStyle/img/diy/8.png";
+				}
+				return zNode;
+			}else if  (data.type =='RELATION'){
+			    //关联结点，目前直接返回
+				 return zNode;//{ id:data.uuid, pid:0,name: data.name,open:true, iconOpen:"${site.sitePath!}zTree/css/zTreeStyle/img/diy/1_open.png", iconClose:"${site.sitePath!}zTree/css/zTreeStyle/img/diy/1_close.png"};
+			}else if  (data.type =='DIR'){
+			     //目录结点，需要继续往下循环
+				 zNode.children=[];
+			}else if  (data.type =='ENTITY'){
+				//实体结点，需要继续往下递归循环
+				 zNode.iconOpen="${site.sitePath!}zTree/css/zTreeStyle/img/diy/1_open.png";
+				 zNode.iconClose="${site.sitePath!}zTree/css/zTreeStyle/img/diy/1_close.png";
+				 zNode.children=[];
+			}
+			if (data.hasOwnProperty('_children'))	{
+				// 递归构造子节点
+				for(var i =0;i<data._children.length;i++){
+					var child = data._children[i];
+					var childNode=buildTree(child);
+					zNode.children.push(childNode);
+					childNode.pid=zNode.id;
+				}
+			}
+			return zNode;
+		};
+		
+		//  树设置
+		var setting = {
+			view: {
+				dblClickExpand: dblClickExpand,
+			    addDiyDom: addDiyDom
+			},
+			check: {
+				enable: true
+			},
+			data: {
+				simpleData: {
+					enable: true
+				}
+			},
+			callback:{
+			    onCheck: doCheck	
+			}
+		};
+		// 树的选择改变函数		
+		function doCheck(event,treeId, treeNode) {
+			if(treeNode ==null) return; //双击空白处直接返回
+			if(treeNode.checked){
+			    //此时需要增加到filter_fields中
+				if(is_filter_field(treeNode.name))
+					return false;
+				else
+					filter_fields.push(treeNode.name);
+				    //此时应该添加
+			       var node=treeNode;
+				   if (node.value_type == 'Float'){
+						  $('#builder').queryBuilder('addFilter',{ 'id':node.name, 'type':'double','input':'number' ,'operators':['equal', 'less','less_or_equal','greater','greater_or_equal'] },node.name);	
+					}else  if  (node.value_type == 'String'){
+						$('#builder').queryBuilder('addFilter',{ 'id':node.name, 'type':'string','input':'text' ,'operators':[ 'contains','equal'] },node.name);	
+					}
+				 
+				   
+			}else{
+			   //此时需要从filter_fields中移除
+				if(is_filter_field(treeNode.name)){
+				   filter_fields.splice(filter_fields.indexOf(treeNode.name), 1);
+					$('#builder').queryBuilder('removeFilter',treeNode.name);
+				}
+			}
+	   };
+		//刷新构建过滤器
+		function refreshFilter(){
+			//得到所有的选中节点
+			var treeObj = $.fn.zTree.getZTreeObj("myKTree");
+            var nodes = treeObj.transformToArray(treeObj.getNodes());
+			//console.log(nodes);
+			
+			//初始化过滤器
+		    let myfilters=[];
+			for(var i =0;i<nodes.length;i++){
+				var node= nodes[i];
+				if( node.checked ==false ||  is_filter_field(node.name)==false)
+					continue;
+				if (node.type =='PROP'){
+				    if (node.value_type == 'Float'){
+						myfilters.push({ 'id':node.name, 'type':'double','input':'number' ,'operators':['equal', 'less','less_or_equal','greater','greater_or_equal'] });	
+					}else  if  (node.value_type == 'String'){
+						myfilters.push({ 'id':node.name, 'type':'string','input':'text' ,'operators':['contains','equal' ] });	
+					}
+				}
+			}
+			console.log('myfilters: ',myfilters);
+			if(myfilters.length>0){
+				    // 构建查询器 
+				  $('#builder').queryBuilder({
+						 filters: myfilters
+				  });
+				console.log(' 构造函数被调用');
+			}
+		}
+		function dblClickExpand(treeId, treeNode) {
+				return treeNode.level > 0;
+		}
+		//显示子节点数目
+       function addDiyDom(treeId, treeNode){
+            var count;
+            /*判断是不是父节点,是的话找出子节点个数，加一是为了给新增节点*/
+             if(treeNode.isParent) {
+                  count = treeNode.children.length ;
+              } else {
+                  /*如果不是父节点,说明没有子节点,设置为1*/
+                   count = 0;
+				  return ;  // 0就不显示了，作为叶子结点
+              }
+             var aObj = $("#" + treeNode.tId + "_span");
+             var editStr = "<span id='repairtypelist_" +treeNode.tId+ "_count' >("+count+")</span>";
+             aObj.after(editStr);
+        }
+		var k_node = sessionStorage.getItem('k_node');
+		var owner=  sessionStorage.getItem('owner');
+		var scope =  sessionStorage.getItem('scope');
+		
+        //异步请求结构树
+		$.ajax({
+                type: "get",        // 请求方式
+                url: "${site.dynamicPath!}fastapi/ktree/"+owner+"/"+k_node, // 请求路径
+			    data:{'refresh':false,'scope':scope},
+                dataType: "json",   // 预期返回一个 json 类型数据
+                success: function (data) {   // data是形参名，代表返回的数据
+                    //处理返回数据
+					//console.log(data);
+					//根据返回值生成zNodes
+					var zNodes= [buildTree(data) ];
+					$.fn.zTree.init($("#myKTree"), setting, zNodes);
+					//默认执行一次刷新filter
+					refreshFilter();
+                }
+            });
+		//解析生成aql，输入为querybuilder生成的json结果
+		function parse2AQL(obj){
+			if(obj.hasOwnProperty('condition')){
+				//此时应该存在的是condition和rules
+				//判断rules的长度，如果是1，则直接递归；如果大于1则循环拼接
+				if(obj.rules.length ==1)
+					return parse2AQL(obj.rules[0]);
+				else{
+					//首先判断是or 还是 and
+					let  op =' ';
+					if(obj.condition =='OR'){
+						op= ' ||  ';
+					}else if (obj.condition=='AND'){
+						op=' && ';
+					}
+					let myrules = obj.rules.map(x=>parse2AQL(x));
+					return " ( "+ myrules.join(op) + " ) ";
+				}
+				
+			}else if(obj.hasOwnProperty('id')){
+				//此时是具体的过滤字段，需要逐个进行拼接
+				let exp = ' c.`'+obj.id+'` ';  //表达式左侧
+				let value = obj.value ;
+				let op='';
+				if(obj.operator=='equal')
+					op=' == ';
+				else if (obj.operator=='less')
+					op=' < ';
+				else if (obj.operator=='less_or_equal')
+					op=' <= ';
+				else if (obj.operator=='greater')
+					op=' > ';
+				else if (obj.operator=='greater_or_equal')
+					op=' >= ';
+				else if (obj.operator=='contains'){
+					op=' like ';
+					value= '%'+obj.value+'%';  //模糊匹配增加通配符
+				}
+				
+				//根据type判断是否需要加引号
+				if(obj.type == 'string')
+					return exp+op+' "'+value+'" ';
+				else
+					return exp + op+value;
+			}
+		}
+		
+		
+		 //过滤器按钮响应函数
+		$('#btn-reset').on('click', function() {
+  			$('#builder').queryBuilder('reset');
+		});
+
+		$('#btn-set').on('click', function() {
+ 			 $('#builder').queryBuilder('setRules', rules_basic);
+		});
+
+		$('#btn-get').on('click', function() {
+  			var result = $('#builder').queryBuilder('getRules');
+  			 if (!$.isEmptyObject(result)) {
+				 let aql=parse2AQL(result);
+				 console.log(aql);
+				 // 记录到session，然后跳转到advance页面
+				 sessionStorage.setItem("condition",aql);
+				 window.location.href="/search/advance.html";
+				 return true;alert(aql);
+    			//alert(JSON.stringify(result, null, 2));
+  			}
+		});
+    
+		
+    </script>
+</body>
+</html>

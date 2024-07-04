@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<import>
+    <!-- type类型:Byte,Short,Integer,Long,Float,Double,char,String,缺省为String -->
+    <sheet id="样品基本信息" startRow="4" class="cn.ac.cags.vo.SampleInfoVO">
+        <column name="OriginalSampleId"  type="String"></column>
+        <column name="Longitude"  type="Double"></column>
+        <column name="Latitude"  type="Double"></column>
+        <column name="Location" type="String"></column>
+        <column name="TectonicLocation" type="String"></column>
+        <column name="PrimaryStructuralUnit" type="String"></column>
+        <column name="SecondaryStructuralUnit" type="String"></column>
+        <column name="TertiarySturcturalUnit" type="String"></column>
+        <column name="Lithology" type="String"></column>
+        <column name="RockName" type="String"></column>
+        <column name="RockCode" type="String"></column>
+        <column name="Era" type="String"></column>
+        <column name="GeobodyName" type="String"></column>
+        <column name="GeobodyCode" type="String"></column>
+        <column name="SurroundingRockAge" type="String"></column>
+        <column name="SurroundingRockLithology" type="String"></column>
+        <column name="RelationshipWithSurroundingRock" type="String"></column>
+        <column name="Form" type="String"></column>
+        <column name="CutAreaConstructionLine" type="String"></column>
+        <column name="DegreeOfDeformation" type="String"></column>
+        <column name="CharacteristicMinerals" type="String"></column>
+        <column name="GeneticType" type="String"></column>
+        <column name="Age" type="Double"></column>
+        <column name="AgeError" type="Double"></column>
+        <column name="TestObject" type="String"></column>
+        <column name="TestMethod" type="String"></column>
+        <column name="AgeSelected" type="Double"></column>
+        <column name="AgeSelectedError" type="Double"></column>
+        <column name="TectonicType" type="String"></column>
+        <column name="SourceOfStructuralTypeDiscrimination" type="String"></column>
+        <column name="Alkalinity" type="String"></column>
+        <column name="AluminumQuality" type="String"></column>
+        <column name="Photo" type="String"></column>
+        <column name="Collector" type="String"></column>
+        <column name="CollectorOrg" type="String"></column>
+        <column name="Reviewer" type="String"></column>
+        <column name="AnalyzeOrg" type="String"></column>
+        <column name="AnalyzePerson" type="String"></column>
+        <column name="TestDate" type="String"></column>
+        <column name="ArticleDoi" type="String"></column>
+        <column name="Remark" type="String"></column>
+    </sheet>
+</import>

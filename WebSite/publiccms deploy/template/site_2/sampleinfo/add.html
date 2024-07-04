@@ -1,0 +1,714 @@
+<html>
+<head>
+	<@_includePlace path="/63241365-51a7-4903-89e6-7619031fa9fe.html"/> <#-- Header-link -->
+</head>
+<body   class="menu-always-on-top">
+	<@_includePlace path="/c8014652-e25e-4c4d-a3ca-9aad7fa0385c.html"/> <#-- header -->
+	    <main>
+		<div class="services-block content content-center" id="services">
+			<h2>Sample Info.</h2><br/>
+	
+  <@_sampleInfo id=id><#assign a=object/></@_sampleInfo>
+<form method="post" action="/sampleInfo/save" class="pageForm required-validate" >
+    <input name="id" type="hidden" value="${id!}" />
+    <div class="formBar">
+        
+            <button type="submit"  class="button" style="margin-right:20px;">Save & Back</button>
+            <button type="button" class="">Back</button>
+        
+    </div>
+    <div class="ontent content-center" style="margin-top:20px;">
+        <div class="container form-inline" layoutH="56">
+            <input class="required  " name="id" type="hidden" size="30" value="${(a.id)!}"/>
+			<div class="row">
+				<h5>Sample Basic Information:</h5>
+			</div>
+ 			<div class="col-md-6">
+				<div class="form-group pull-right">
+					<label for="sampleId">Sample Id：</label><input id="sampleId" name="sampleId" type="text" size="30" value="${(a.sampleId)!}"/>
+				</div>
+		 	</div>
+			<div class="col-md-6">
+           <div class="form-group pull-right">
+                <label for="oraginalSampleId">Oraginal Sample Id：</label>
+                 <input  name="oraginalSampleId" id="oraginalSampleId" type="text" size="30" value="${(a.oraginalSampleId)!}"/>
+              </div>
+			</div>
+             <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="longitude">Longitude：</label>
+                <input class="required" id="longitude" name="longitude" type="text" size="30" value="${(a.longitude?c)}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="latitude">Latitude：</label>
+                <input class="required" id="latitude" name="latitude" type="text" size="30" value="${(a.latitude?c)}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right ">
+                <label for="location">Location：</label>
+                <input  id="location" name="location" type="text" size="30" value="${(a.location)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="regionLocation">Region Location：</label>
+                <input id="regionLocation" name="regionLocation" type="text" size="30" value="${(a.regionLocation)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="locationType">Location Type：</label>
+                <input id="locationType" name="locationType" type="text" size="30" value="${(a.locationType)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="tectonicLocation">Tectonic Location：</label>
+                <input id="tectonicLocation" name="tectonicLocation" type="text" size="30" value="${(a.tectonicLocation)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="tectonicType">Tectonic Type：</label>
+                <input  id="tectonicType" name="tectonicType" type="text" size="30" value="${(a.tectonicType)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="lithology">Lithology：</label>
+                <input  id="lithology" name="lithology" type="text" size="30" value="${(a.lithology)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="lithologyOrigin">Orginal Lithology：</label>
+                <input id="lithologyOrigin" name="lithologyOrigin" type="text" size="30" value="${(a.lithologyOrigin)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="occurrence">Occurrence：</label>
+                <input id="occurrence" name="occurrence" type="text" size="30" value="${(a.occurrence)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="intrusion">Intrusion：</label>
+                <input id="intrusion" name="intrusion" type="text" size="30" value="${(a.intrusion)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Pluton：</label>
+                <input  name="pluton" type="text" size="30" value="${(a.pluton)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Original Pluton：</label>
+                <input  name="plutonOrigin" type="text" size="30" value="${(a.plutonOrigin)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Rock Name：</label>
+                <input  name="rockName" type="text" size="30" value="${(a.rockName)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Rock Code：</label>
+                <input  name="rockCode" type="text" size="30" value="${(a.rockCode)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Era：</label>
+                <input  name="era" type="text" size="30" value="${(a.era)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Geobody Name：</label>
+                <input  name="geobodyName" type="text" size="30" value="${(a.geobodyName)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Geobody Code：</label>
+                <input  name="geobodyCode" type="text" size="30" value="${(a.geobodyCode)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Surrounding Rock Age：</label>
+                <input  name="surroundingRockAge" type="text" size="30" value="${(a.surroundingRockAge)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Surrounding Rock Lithology：</label>
+                <input  name="surroundingRockLithology" type="text" size="30" value="${(a.surroundingRockLithology)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Relationship with Surrounding Rock：</label>
+                <input  name="relationshipWithSurroundingRock" type="text" size="30" value="${(a.relationshipWithSurroundingRock)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Form：</label>
+                <input  name="form" type="text" size="30" value="${(a.form)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Whether to Cut Area Construction Line：</label>
+                <input  name="whetherToCutAreaConstructionLine" type="text" size="30" value="${(a.whetherToCutAreaConstructionLine)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Degree of Deformation：</label>
+                <input  name="degreeOfDeformation" type="text" size="30" value="${(a.degreeOfDeformation)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Characteristic Minerals：</label>
+                <input  name="characteristicMinerals" type="text" size="30" value="${(a.characteristicMinerals)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Mining Area：</label>
+                <input  name="miningArea" type="text" size="30" value="${(a.miningArea)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Ore Type：</label>
+                <input  name="oreType" type="text" size="30" value="${(a.oreType)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Genetic Type：</label>
+                <input  name="geneticType" type="text" size="30" value="${(a.geneticType)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Age（Ma）：</label>
+                <input  name="age" type="text" size="30" value="${(a.age)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Age Error（Ma）：</label>
+                <input  name="ageError" type="text" size="30" value="${(a.ageError)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Age Selected（Ma）：</label>
+                <input  name="ageSelected" type="text" size="30" value="${(a.ageSelected)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Age Selected Error（Ma）：</label>
+                <input  name="ageSelectedError" type="text" size="30" value="${(a.ageSelectedError)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Test Object：</label>
+                <input  name="testObject" type="text" size="30" value="${(a.testObject)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Test Method：</label>
+                <input  name="testMethod" type="text" size="30" value="${(a.testMethod)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Primary Structural Unit：</label>
+                <input  name="primaryStructuralUnit" type="text" size="30" value="${(a.primaryStructuralUnit)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Secondary Structural Unit：</label>
+                <input  name="secondaryStructuralUnit" type="text" size="30" value="${(a.secondaryStructuralUnit)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Tertiary Structural Unit：</label>
+                <input  name="tertiaryStructuralUnit" type="text" size="30" value="${(a.tertiaryStructuralUnit)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Source of Structural Type Discrimination：</label>
+                <input  name="sourceOfStructuralTypeDiscrimination" type="text" size="30" value="${(a.sourceOfStructuralTypeDiscrimination)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Alkalinity：</label>
+                <input  name="alkalinity" type="text" size="30" value="${(a.alkalinity)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Aluminum Quality：</label>
+                <input  name="aluminumQuality" type="text" size="30" value="${(a.aluminumQuality)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Photo：</label>
+                <input  name="photo" type="text" size="30" value="${(a.photo)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Collector：</label>
+                <input  name="collector" type="text" size="30" value="${(a.collector)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Collector Org：</label>
+                <input  name="collectorOrg" type="text" size="30" value="${(a.collectorOrg)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Reviewer：</label>
+                <input  name="reviewer" type="text" size="30" value="${(a.reviewer)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Analyze Org：</label>
+                <input  name="analyzeOrg" type="text" size="30" value="${(a.analyzeOrg)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Analyze Person：</label>
+                <input  name="analyzePerson" type="text" size="30" value="${(a.analyzePerson)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Test Date：</label>
+                <input  name="testDate" type="text" size="30" value="${(a.testDate)!}"/>
+            </div></div>
+			<div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Remark：</label>
+                <input  name="remark" type="text" size="30" value="${(a.remark)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Ref.Author：</label>
+                <input  name="refAuthor" type="text" size="30" value="${(a.refAuthor)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Ref.Year：</label>
+                <input  name="refYear" type="text" size="30" value="${(a.refYear)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Ref.Magazine：</label>
+                <input  name="refMagazine" type="text" size="30" value="${(a.refMagazine)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Issue Page：</label>
+                <input  name="issuePage" type="text" size="30" value="${(a.issuePage)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Ref.Title：</label>
+                <input  name="refTitle" type="text" size="30" value="${(a.refTitle)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Ref.Origin：</label>
+                <input  name="refOrigin" type="text" size="30" value="${(a.refOrigin)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Ref.Magazine.Origin：</label>
+                <input  name="refMagazineOrigin" type="text" size="30" value="${(a.refMagazineOrigin)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Ref.Title.Origin：</label>
+                <input  name="refTitleOrigin" type="text" size="30" value="${(a.refTitleOrigin)!}"/>
+            </div></div>
+			 <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Article DOI：</label>
+                <input  name="articleDoi" type="text" size="30" value="${(a.articleDoi)!}"/>
+            </div></div>
+			
+			<div class="col-md-6">  <div class="form-group pull-right">
+                <label for=""  style="vertical-align: middle;">Data Source：</label>
+                <textarea  style="vertical-align: middle;"  name="dataSource" cols="30" rows="3"> ${(a.dataSource)!}</textarea>
+            </div></div>
+           <div class="col-md-12">
+				<h5>Major Element :</h5>
+			</div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">S<sub>i</sub>O<sub>2</sub>（10<sup>-2</sup>）：</label>
+                <input  name="sio2" type="text" size="30" value="${(a.sio2)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">T<sub>i</sub>O<sub>2</sub>（10<sup>-2</sup>）：</label>
+                <input  name="tio2" type="text" size="30" value="${(a.tio2)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Al<sub>2</sub>O<sub>3</sub>（10<sup>-2</sup>）：</label>
+                <input  name="al2o3" type="text" size="30" value="${(a.al2o3)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Fe<sub>2</sub>O<sub>3</sub>（10<sup>-2</sup>）：</label>
+                <input  name="fe2o3" type="text" size="30" value="${(a.fe2o3)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">FeO（10<sup>-2</sup>）：</label>
+                <input  name="feo" type="text" size="30" value="${(a.feo)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Fe<sub>2</sub>O<sub>3</sub>T（10<sup>-2</sup>）：</label>
+                <input  name="fe2o3t" type="text" size="30" value="${(a.fe2o3t)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">FeOT（10<sup>-2</sup>）：</label>
+                <input  name="feot" type="text" size="30" value="${(a.feot)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">TFe（10<sup>-2</sup>）：</label>
+                <input  name="tfe" type="text" size="30" value="${(a.tfe)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">MnO（10<sup>-2</sup>）：</label>
+                <input  name="mno" type="text" size="30" value="${(a.mno)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">MgO（10<sup>-2</sup>）：</label>
+                <input  name="mgo" type="text" size="30" value="${(a.mgo)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">CaO（10<sup>-2</sup>）：</label>
+                <input  name="cao" type="text" size="30" value="${(a.cao)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Na<sub>2</sub>O（10<sup>-2</sup>）：</label>
+                <input  name="na2o" type="text" size="30" value="${(a.na2o)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">K<sub>2</sub>O（10<sup>-2</sup>）：</label>
+                <input  name="k2o" type="text" size="30" value="${(a.k2o)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">P<sub>2</sub>O<sub>5</sub>（10<sup>-2</sup>）：</label>
+                <input  name="p2o5" type="text" size="30" value="${(a.p2o5)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">H<sub>2</sub>O<sup>+</sup>（10<sup>-2</sup>）：</label>
+                <input  name="h2op" type="text" size="30" value="${(a.h2op)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">H<sub>2</sub>O<sup>-</sup>（10<sup>-2</sup>）：</label>
+                <input  name="h2on" type="text" size="30" value="${(a.h2on)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">CO<sub>2</sub>（10<sup>-2</sup>）：</label>
+                <input  name="co2" type="text" size="30" value="${(a.co2)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">SO<sub>3</sub>（10<sup>-2</sup>）：</label>
+                <input  name="so3" type="text" size="30" value="${(a.so3)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">F（10<sup>-2</sup>）：</label>
+                <input  name="f" type="text" size="30" value="${(a.f)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Cl（10<sup>-2</sup>）：</label>
+                <input  name="cl" type="text" size="30" value="${(a.cl)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">LOI（10<sup>-2</sup>）：</label>
+                <input  name="loi" type="text" size="30" value="${(a.loi)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Total（10<sup>-2</sup>）：</label>
+                <input  name="total" type="text" size="30" value="${(a.total)!}"/>
+            </div></div>
+			<div class="row">
+				<h5>Rare-Earth Element :</h5>
+			</div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">镧 La（10<sup>-6</sup>）：</label>
+                <input  name="la" type="text" size="30" value="${(a.la)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">铈 Ce（10<sup>-6</sup>）：</label>
+                <input  name="ce" type="text" size="30" value="${(a.ce)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">镨 Pr（10<sup>-6</sup>）：</label>
+                <input  name="pr" type="text" size="30" value="${(a.pr)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">钕 Nd（10<sup>-6</sup>）：</label>
+                <input  name="nd" type="text" size="30" value="${(a.nd)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">钷 Pm（10<sup>-6</sup>）：</label>
+                <input  name="pm" type="text" size="30" value="${(a.pm)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">钐 Sm（10<sup>-6</sup>）：</label>
+                <input  name="sm" type="text" size="30" value="${(a.sm)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">铕 Eu（10<sup>-6</sup>）：</label>
+                <input  name="eu" type="text" size="30" value="${(a.eu)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">钆 Gd（10<sup>-6</sup>）：</label>
+                <input  name="gd" type="text" size="30" value="${(a.gd)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">铽 Tb（10<sup>-6</sup>）：</label>
+                <input  name="tb" type="text" size="30" value="${(a.tb)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">镝 Dy（10<sup>-6</sup>）：</label>
+                <input  name="dy" type="text" size="30" value="${(a.dy)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">钬 Ho（10<sup>-6</sup>）：</label>
+                <input  name="ho" type="text" size="30" value="${(a.ho)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">铒 Er（10<sup>-6</sup>）：</label>
+                <input  name="er" type="text" size="30" value="${(a.er)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">铥 Tm（10<sup>-6</sup>）：</label>
+                <input  name="tm" type="text" size="30" value="${(a.tm)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">镱 Yb（10<sup>-6</sup>）：</label>
+                <input  name="yb" type="text" size="30" value="${(a.yb)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">镥 Lu（10<sup>-6</sup>）：</label>
+                <input  name="lu" type="text" size="30" value="${(a.lu)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">钇 Y（10<sup>-6</sup>）：</label>
+                <input  name="y" type="text" size="30" value="${(a.y)!}"/>
+            </div></div>
+			<div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">钪 Sc（10<sup>-6</sup>）：</label>
+                <input  name="sc" type="text" size="30" value="${(a.sc)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Total Re Element（10<sup>-6</sup>）：</label>
+                <input  name="totalReElement" type="text" size="30" value="${(a.totalReElement)!}"/>
+            </div></div>
+			<div class="row">
+				<h5>MicroElement :</h5>
+			</div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">钒 V（10<sup>-6</sup>）：</label>
+                <input  name="v" type="text" size="30" value="${(a.v)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">铬 Cr（10<sup>-6</sup>）：</label>
+                <input  name="cr" type="text" size="30" value="${(a.cr)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">钴 Co（10<sup>-6</sup>）：</label>
+                <input  name="co" type="text" size="30" value="${(a.co)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">镍 Ni（10<sup>-6</sup>）：</label>
+                <input  name="ni" type="text" size="30" value="${(a.ni)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">锰 Mn（10<sup>-6</sup>）：</label>
+                <input  name="mn" type="text" size="30" value="${(a.mn)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">铜 Cu（10<sup>-6</sup>）：</label>
+                <input  name="cu" type="text" size="30" value="${(a.cu)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">锌 Zn（10<sup>-6</sup>）：</label>
+                <input  name="zn" type="text" size="30" value="${(a.zn)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">镓 Ga（10<sup>-6</sup>）：</label>
+                <input  name="ga" type="text" size="30" value="${(a.ga)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">锗 Ge（10<sup>-6</sup>）：</label>
+                <input  name="ge" type="text" size="30" value="${(a.ge)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">铯 Cs（10<sup>-6</sup>）：</label>
+                <input  name="cs" type="text" size="30" value="${(a.cs)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">铷 Rb（10<sup>-6</sup>）：</label>
+                <input  name="rb" type="text" size="30" value="${(a.rb)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">钡 Ba（10<sup>-6</sup>）：</label>
+                <input  name="ba" type="text" size="30" value="${(a.ba)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">钍 Th（10<sup>-6</sup>）：</label>
+                <input  name="th" type="text" size="30" value="${(a.th)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">铀 U（10<sup>-6</sup>）：</label>
+                <input  name="u" type="text" size="30" value="${(a.u)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">铌 Nb（10<sup>-6</sup>）：</label>
+                <input  name="nb" type="text" size="30" value="${(a.nb)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">钽 Ta（10<sup>-6</sup>）：</label>
+                <input  name="ta" type="text" size="30" value="${(a.ta)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">钛 Ti（10<sup>-6</sup>）：</label>
+                <input  name="ti" type="text" size="30" value="${(a.ti)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">磷 P（10<sup>-6</sup>）：</label>
+                <input  name="p" type="text" size="30" value="${(a.p)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">铅 Pb（10<sup>-6</sup>）：</label>
+                <input  name="pb" type="text" size="30" value="${(a.pb)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">锶 Sr（10<sup>-6</sup>）：</label>
+                <input  name="sr" type="text" size="30" value="${(a.sr)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">锆 Zr（10<sup>-6</sup>）：</label>
+                <input  name="zr" type="text" size="30" value="${(a.zr)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">铪 Hf（10<sup>-6</sup>）：</label>
+                <input  name="hf" type="text" size="30" value="${(a.hf)!}"/>
+            </div></div>
+          <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">锂 Li（10<sup>-6</sup>）：</label>
+                <input  name="li" type="text" size="30" value="${(a.li)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">铍 Be（10<sup>-6</sup>）：</label>
+                <input  name="be" type="text" size="30" value="${(a.be)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">钨 W（10<sup>-6</sup>）：</label>
+                <input  name="w" type="text" size="30" value="${(a.w)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">铂 Pt（10<sup>-6</sup>）：</label>
+                <input  name="pt" type="text" size="30" value="${(a.pt)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">钯 Pd（10<sup>-6</sup>）：</label>
+                <input  name="pd" type="text" size="30" value="${(a.pd)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">锇 Os（10<sup>-6</sup>）：</label>
+                <input  name="os" type="text" size="30" value="${(a.os)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">铱 Ir（10<sup>-6</sup>）：</label>
+                <input  name="ir" type="text" size="30" value="${(a.ir)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">钌 Ru（10<sup>-6</sup>）：</label>
+                <input  name="ru" type="text" size="30" value="${(a.ru)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">铑 Rh（10<sup>-6</sup>）：</label>
+                <input  name="rh" type="text" size="30" value="${(a.rh)!}"/>
+            </div></div>
+			
+			
+			<div class="col-md-12">
+				<h5>Isotope :</h5>
+			</div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Sr Isotope：</label>
+                <input  name="srisotope" type="text" size="30" value="${(a.srisotope)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Nd Isotope：</label>
+                <input  name="ndisotope" type="text" size="30" value="${(a.ndisotope)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for=""><sup>87</sup>Rb/<sup>86</sup>Sr)m：</label>
+                <input  name="rb87Sr86" type="text" size="30" value="${(a.rb87Sr86)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+               <label for=""><sup>87</sup>Sr/<sup>86</sup>Sr)m：</label>
+                <input  name="sr87Sr86M" type="text" size="30" value="${(a.sr87Sr86M)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+               <label for=""><sup>147</sup>Sm/<sup>144</sup>Nd)m：</label>
+                <input  name="sm147Nd144" type="text" size="30" value="${(a.sm147Nd144)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+               <label for=""><sup>143</sup>Nd/<sup>144</sup>Nd)m：</label>
+                <input  name="nd143Nd144" type="text" size="30" value="${(a.nd143Nd144)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Test Rock (Ma)：</label>
+                <input  name="testRockMa" type="text" size="30" value="${(a.testRockMa)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for=""><sup>87</sup>Sr/<sup>86</sup>Sr)i：</label>
+                <input  name="sr87Sr86I" type="text" size="30" value="${(a.sr87Sr86I)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for=""><sup>143</sup>Nd/<sup>144</sup>Nd)t,CHUR：</label>
+                <input  name="nd143Nd144TChur" type="text" size="30" value="${(a.nd143Nd144TChur)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+               <label for=""><sup>143</sup>Nd/<sup>144</sup>Nd)i：</label>
+                <input  name="nd143Nd144I" type="text" size="30" value="${(a.nd143Nd144I)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">f(Sm/Nd)s：</label>
+                <input  name="FSmNdS" type="text" size="30" value="${(a.FSmNdS)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">εNd(0)：</label>
+                <input  name="epsilonNd0" type="text" size="30" value="${(a.epsilonNd0)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">εNd(t)：</label>
+                <input  name="epsilonNdT" type="text" size="30" value="${(a.epsilonNdT)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">TDM(Ma)：</label>
+                <input  name="tdmMa" type="text" size="30" value="${(a.tdmMa)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">TDM2(Ma)：</label>
+                <input  name="tdm2Ma" type="text" size="30" value="${(a.tdm2Ma)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Hf Isotope：</label>
+                <input  name="hfisotope" type="text" size="30" value="${(a.hfisotope)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Hf Point Number：</label>
+                <input  name="hfPointnum" type="text" size="30" value="${(a.hfPointnum)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">Hf Normal Number：</label>
+                <input  name="hfNormalnum" type="text" size="30" value="${(a.hfNormalnum)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">εHft_min：</label>
+                <input  name="epsilonHftMin" type="text" size="30" value="${(a.epsilonHftMin)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">εHft_max：</label>
+                <input  name="epsilonHftMax" type="text" size="30" value="${(a.epsilonHftMax)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">εHft_median：</label>
+                <input  name="epsilonHftMedian" type="text" size="30" value="${(a.epsilonHftMedian)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">εHft_average：</label>
+                <input  name="epsilonHftAverage" type="text" size="30" value="${(a.epsilonHftAverage)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">T<sub>DM</sub><sup>C</sup>_min：</label>
+                <input  name="tdmcMin" type="text" size="30" value="${(a.tdmcMin)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">T<sub>DM</sub><sup>C</sup>_max：</label>
+                <input  name="tdmcMax" type="text" size="30" value="${(a.tdmcMax)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">T<sub>DM</sub><sup>C</sup>_median：</label>
+                <input  name="tdmcMedian" type="text" size="30" value="${(a.tdmcMedian)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">T<sub>DM</sub><sup>C</sup>(Ma)_Average：</label>
+                <input  name="tdmcAverage" type="text" size="30" value="${(a.tdmcAverage)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">HfO Isotope：</label>
+                <input  name="hfoisotope" type="text" size="30" value="${(a.hfoisotope)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">d<sup>18</sup>O_min：</label>
+                <input  name="d18oMin" type="text" size="30" value="${(a.d18oMin)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">d<sup>18</sup>O_max：</label>
+                <input  name="d18oMax" type="text" size="30" value="${(a.d18oMax)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">d<sup>18</sup>O_average：</label>
+                <input  name="d18oAverage" type="text" size="30" value="${(a.d18oAverage)!}"/>
+            </div></div>
+            <div class="col-md-6">  <div class="form-group pull-right">
+                <label for="">d<sup>18</sup>O_median：</label>
+                <input  name="d18oMedian" type="text" size="30" value="${(a.d18oMedian)!}"/>
+            </div></div>
+        </div>
+    </div>
+<script>
+	$(".subAdd").click(function(){
+		$.ajax({
+			url:"/sampleInfo/save.do",
+			data:"",
+			type:"post",
+			succes:function(data){
+				alert(data);
+			}
+		})
+	})
+	
+	</script>
+</form>
+				</div>
+			</main>
+    <footer>
+       <@_includePlace path="/f95e232b-027b-40ae-9e2d-0a6385f7c418.html"/> <#-- footer -->
+    </footer>
+</body>
+</html>

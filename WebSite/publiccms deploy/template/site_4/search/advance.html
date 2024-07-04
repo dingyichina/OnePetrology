@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /> <!--- 强制升级https，避免混合错误  --->	
+	
+<@_includePlace path="/Header-link.html"/> <#-- head-link -->
+	<@_includePlace path="/5b99dd64-5fb7-4162-9d00-b2d53e3d1708.html"/> <#-- head-gis-link -->
+	<style>
+      table,
+      td,
+      th {
+        text-align: center;
+        border: 1px solid #000;
+        border-collapse: collapse;
+      }
+
+      table td {
+        padding: 10px 30px;
+      }
+    </style>
+   
+</head>
+<body>
+    <@_includePlace path="/header.html"/> <#-- header -->
+	<main>
+	    <!--顶部面包屑 -->
+		<div class="locationbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- start location -->
+                    <ul class="breadcrumb pull-left">
+                        <li class="breadcrumb-prefix breadcrumb-item d-none d-md-block">Find Sample :</li>
+
+                        <li class="breadcrumb-item">Advanced Search</li>
+                    </ul>
+                    <!-- end location -->
+                </div>
+            </div>
+             </div>
+         </div>
+    <!--end 顶部面包屑 -->
+		  <div class="container">
+		<h3>The filter conditions listed below include space and field filtering in <span  id='tablename'></span>.</h3>
+			  
+		</div>	  
+     <!--查询条件 -->
+		<table class="ku_grid"  cellspacing="0" cellpadding="10" style="margin:30px 300px ;">
+		   <tbody>
+			   <!-- 空间查询  -->
+			   <tr>
+				   <td id="bylocation">
+			                <!-- 第一列里面放置两个按钮  set  clear  如果session中包含这个数据，则clear显示，否则不显示 -->
+					         <input id='btnByLocationSet'  type="button" value="Set " >	
+					         <input id="btnByLocationClear"  type="button"  value="Clear">
+				   </td>
+                    <td>
+					   <!-- 第二列放置一个checkbox，选中代表参与过滤，不选中则代表不参与过滤。默认是选中的  -->
+						<input type="checkbox"  checked=""  id="chkPolygon"	name='checkbtn' value="">
+				   </td>
+				   <td>
+					   <!-- 第三列放置说明   --> 
+					   <h4>Spatial  ploygon  </h4>
+					   <p> Set the ploygon base on the map    </p>
+				   </td>   
+				   <td id ='mypolygon' >
+					      <@_includePlace path="/33f3f506-fdd2-4bdf-959d-7a6e652c47a4.html"/> <#-- 2d-gis-with-polygon -->
+					       <p id="nosetByLocation">No constraint parameters set</p>
+				   </td>   
+			   </tr>
+			   <!-- 条件查询  -->
+			   <tr>
+				   <td>
+					   <!-- 第一列里面放置两个按钮  set  clear  如果session中包含这个数据，则clear显示，否则不显示 -->
+					   <input id='btnByConditionSet' type="button" value="Set " >	
+					    <input id='btnByConditionClear' type="button" value="Clear"	>
+				   </td>
+                    <td>
+					   <!-- 第二列放置一个checkbox，选中代表参与过滤，不选中则代表不参与过滤。默认是选中的  -->
+						<input type="checkbox" checked=""  id="chkCondition" name='checkbtn'	value="V">
+				   </td>
+				   <td style='width:400px;'>
+					   <!-- 第三列放置说明   --> 
+					   <h4>Field  filtering  </h4>
+					   <p> Filter according to the field value range, and can combine multiple conditions arbitrarily. </p>
+				   </td>   
+				   <td id='myfilter'>
+					   <!--第四列放置值或者没有设置的提示 -->
+					 
+					   <p >No constraint parameters set</p>
+				   </td>   
+			   </tr>
+			   
+		    </tbody>
+		</table>
+	 <!--end查询条件 -->	
+		  <div class="container">
+			   <hr/>
+				<h3> Search Results:  </h3>	 <br/>
+			       <p id='resultCount'>please wait for a moment......       </p> 
+	      		 <table id="searchResult" class="table table-striped table-bordered" style="width:80%;">
+     
+       
+       			 </table>
+		</div>
+    	
+	</main>
+    <@_includePlace path="/53d9aa26-ab9a-41df-90d5-efc5307c3b3e.html"/> <#-- footer -->
+    <script src="${site.dynamicPath}resource/js/cms.analytics.js"></script>
+    <script>
+        var ca = cmsAnalytics();
+        var url='${site.dynamicPath}api/visit/record';
+        if("string" ==typeof itemString){
+            url=url+"?"+itemString;
+        }
+        ca.report(url);
+		// 根据设置的过滤条件获取到结果数量
+		function fetchDataCount(){
+			 $("#resultCount").html('<p > please wait for a moment......</p>');
+			  var ptlist=sessionStorage.getItem("polygon");
+			  var condition=sessionStorage.getItem("condition");
+			  var polygonCheck=$("#chkPolygon").prop("checked"); 
+			  var conditionCheck=$("#chkCondition").prop("checked"); 
+			  var k_node = sessionStorage.getItem('k_node');
+		     var owner=  sessionStorage.getItem('owner');
+		     var scope =  sessionStorage.getItem('scope');
+		     $('#tablename').text(k_node);
+			
+			console.log('复选框',polygonCheck,conditionCheck);
+			  if ((polygonCheck == false || ptlist==null || ptlist=="") && (conditionCheck==false  ||condition==null || condition=="")){
+				   // 此时没有有效条件，需要提示
+				    $("#resultCount").html('<p >please set the filter first.</p>');
+				  return ;
+			  }
+			 //用异步方式查询数据结果
+			if (polygonCheck == false )
+				ptlist='';
+			if (conditionCheck==false)
+				condition='';
+			
+			 $.ajax({
+		          type: "get",        // 请求方式
+                   url: "${site.dynamicPath!}fastapi/kdata/"+k_node+"/"+owner,
+			       data:{'boundary':ptlist,'condition':condition,'scope':scope,'start':0,'length':3},
+                  dataType: "json",   // 预期返回一个 json 类型数据
+			     success: function (data) {   // data是形参名，代表返回的数据
+                    //处理返回数据
+					/*var mycolumns =[];
+					for(var i=0;i<data.columns.length;i++){
+							mycolumns.push({'title':data.columns[i],'data':data.columns[i]});
+					}*/
+					//把列名存储到session
+					 sessionStorage.setItem("mycolumns",data.columns);
+					 var totalCount=data.recordsTotal;
+					 sessionStorage.setItem("totalcount",totalCount); 
+					 sessionStorage.setItem("polygoncheck",polygonCheck); 
+					 sessionStorage.setItem("conditioncheck",conditionCheck); 
+					 if( totalCount<=30000)  //超出浏览器能力时给出提示
+					  		$("#resultCount").html('<p >find  <font color="#FF0000"> '+totalCount +' </font>  records.  <a href="/search/result.html"><font color="#0000FF"> View the Results</a></font></p>');
+					 else
+					 	   $("#resultCount").html('<p >find  <font color="#FF0000"> '+totalCount +' </font>  records.  <a href="/search/result.html"><font color="#0000FF"> View the Results</a></font></p> The result count is more than 30000, please use desktop software to process it.');
+				}
+			 });	 
+		}
+		$("[name='checkbtn']").on("change",
+			function (e) {
+			    fetchDataCount();
+			}
+		);
+		
+		// dom加载完成后执行的函数
+		$(document).ready(function(){
+           console.log("ready 执行");
+			//-----------空间查询----------------------            
+			// 判断是否存在session，如果有，则显示set 和clear，否则只显示set
+		    var ptlist=sessionStorage.getItem("polygon");
+			var  useDefault =0;
+			 if (ptlist==null || ptlist==""){
+				//如果为空，则取默认的extent，然后进行下一步判断	
+				ptlist=sessionStorage.getItem("extent");
+				useDefault =1;
+			}
+			
+			if (ptlist==null || ptlist==""){
+				    console.log('隐藏地图');
+			        $("#btnByLocationSet").show();
+				    $("#btnByLocationClear").hide();
+				    $("#nosetByLocation").show();
+				
+				     //尝试读取extent
+				    /*ptlist=sessionStorage.getItem("extent");
+				    if (ptlist==null || ptlist==""){
+						 $('#map-container').hide();
+					}else{
+					     $('#map-container').show();	
+					}*/
+				
+			 }else{
+				    console.log('显示地图');
+					$("#btnByLocationSet").show();
+				    $("#btnByLocationClear").show();
+				    $("#nosetByLocation").hide();
+				    $('#map-container').show();
+				    if(useDefault==1){
+						sessionStorage.setItem("polygon",ptlist);  //此时把默认的extent作为默认的空间查询条件。//这个如果边界太长会导致错误，暂时屏蔽 todo-------
+					}
+			 }
+			//设置 按钮函数
+			$("#btnByLocationSet").click(function(){
+			  	     //跳转到空间查询页面
+				    $(location).attr('href', '${site.dynamicPath!}search/bylocation.html');
+			  
+			});
+			$("#btnByLocationClear").click(function(){
+			        //清空session中的值
+				    sessionStorage.setItem("polygon",'');
+				    //隐藏map div，然后显示
+			        $("#nosetByLocation").show();
+				    $('#map-container').hide();
+				    //隐藏自己
+				    $("#btnByLocationClear").hide();
+				    ptlist=' ';
+				    fetchDataCount();
+			});
+			
+			//----------- 空间查询结束---------------------
+		    //-----------条件查询
+			 var condition=sessionStorage.getItem("condition");
+			if (condition==null || condition==""){
+				    console.log('隐藏条件');
+			        $("#btnByConditionSet").show();
+				    $("#btnByConditionClear").hide();
+				    $("#myfilter").html('<p >No constraint parameters set</p>');
+			 }else{
+				    console.log('显示条件');
+					$("#btnByConditionSet").show();
+				    $("#btnByConditionClear").show();
+				     $("#myfilter").html('<p >'+condition+'</p>');
+			 }
+				//设置 按钮函数
+			$("#btnByConditionSet").click(function(){
+			  	     //跳转到条件查询查询页面
+				    $(location).attr('href', '${site.dynamicPath!}search/bycondition.html');
+			  
+			});
+			$("#btnByConditionClear").click(function(){
+			        //清空session中的值
+				    sessionStorage.setItem("condition",'');
+				   $("#myfilter").html('<p >No constraint parameters set</p>');
+				    //隐藏自己
+				    $("#btnByConditionClear").hide();
+				    condition=' ';
+					fetchDataCount();
+			});
+			var mycolumns=[];
+			var totalCount=10000;
+			
+			fetchDataCount();
+		 
+		});
+		 
+		
+		
+		
+		
+    </script>
+</body>
+</html>

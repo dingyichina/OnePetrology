@@ -1,0 +1,22 @@
+{
+    "档号+室编件号": "dc.identifier.FN",
+    "题名": "dc.title",
+    "作者": "dc.contributor",
+    "摘要": "dc.description.abstract",
+    "专利申请号": "dc.identifier.ismn",
+    "申请日期": "dc.date.available",
+    "专利公告号": "dc.identifier.issn",
+    "是否原件": "dcterms.provenance.isOriginal",
+    "原件保存地": "dcterms.relation.originalDocumentLocation",
+    "载体代码": "dcterms.format.medium",
+    "存放路径": "dc.description.storagePath",
+    "语种": "dc.language.iso",
+    "提供者": "dc.description.provider",
+    "提供时间": "dc.date.provided",
+    "提供日期": "dc.date.provided",
+    "备注": "dc.description.comment",
+    "关联科学家": "relation.isScientistOfPatent",
+    "dspace.entity.type": "Patent",
+    "collection_uuid":"0968500d-71f9-4268-a916-8811e65d7707",
+    "savepath":"存放路径"
+}

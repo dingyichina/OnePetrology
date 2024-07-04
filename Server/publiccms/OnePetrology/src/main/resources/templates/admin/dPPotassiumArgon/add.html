@@ -1,0 +1,63 @@
+<@_dPPotassiumArgon id=id><#assign a=object/></@_dPPotassiumArgon>
+<form method="post" action="dPPotassiumArgon/save.do?callbackType=closeCurrent&navTabId=dPPotassiumArgon/list" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <input name="id" type="hidden" value="${id!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+    <div class="pageContent">
+        <div class="pageFormContent" layoutH="56">
+            <dl>
+                <dt>ID：</dt>
+                <dd><input class="required" name="id" type="text" size="30" value="${(a.id)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>样品：</dt>
+                <dd><input class="required" name="sampleId" type="text" size="30" value="${(a.sampleId)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>衰变常数 1（1/年）：</dt>
+                <dd><input class="required" name="decayConst1" type="text" size="30" value="${(a.decayConst1)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>衰变常数 2（1/年）：</dt>
+                <dd><input class="required" name="decayConst2" type="text" size="30" value="${(a.decayConst2)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钾（%）：</dt>
+                <dd><input class="required" name="k" type="text" size="30" value="${(a.k)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>氩-40（10<sup>-6</sup>）：</dt>
+                <dd><input class="required" name="ar40" type="text" size="30" value="${(a.ar40)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>大气氩（%）：</dt>
+                <dd><input class="required" name="atmospArgon" type="text" size="30" value="${(a.atmospArgon)!}"/></dd>
+            </dl>
+            <dl>
+                <dt><sup>40</sup>Ar/<sup>40</sup>K：</dt>
+                <dd><input class="required" name="ar40K40" type="text" size="30" value="${(a.ar40K40)!}"/></dd>
+            </dl>
+            <dl>
+                <dt><sup>40</sup>Ar/<sup>36</sup>Ar ：</dt>
+                <dd><input class="required" name="ar40Ar36" type="text" size="30" value="${(a.ar40Ar36)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钾-氩年龄（Ma）：</dt>
+                <dd><input class="required" name="age" type="text" size="30" value="${(a.age)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>年龄误差（Ma）：</dt>
+                <dd><input class="required" name="ageError" type="text" size="30" value="${(a.ageError)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>备注：</dt>
+                <dd><input class="required" name="remark" type="text" size="30" value="${(a.remark)!}"/></dd>
+            </dl>
+        </div>
+    </div>
+</form>

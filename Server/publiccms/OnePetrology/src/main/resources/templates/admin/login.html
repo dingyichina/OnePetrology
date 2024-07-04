@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="<@t.page 'html_lang'/>">
+<head>
+    <meta charset="UTF-8">
+    <title>${site.name} - <@t.page 'management_system'/> - <@t.page 'login_page'/></title>
+    <link rel="stylesheet" href="${base}/resource/login/login.css?1">
+</head>
+<body onload="document.getElementsByTagName('input')[0].focus();" style="background: url('${base}/resource/img-1.png') no-repeat 0px 0px;">
+<div class="login_header" ><img src="${base}/resource/logo-rock.png"></div>
+<div class="login_body">
+    <div class="login_body_left"><img src="${base}/resource/login/img-2.png"/></div>
+    <div class="login_form clearfix">
+        <form action="${base+adminContextPath}/login" method="post" onsubmit="encode()">
+            <p class="logo">${site.name}</p>
+            <p>
+                <i class="iconfont iconfont-user"></i>
+                <input type="text" name="username" placeholder="<@t.page 'user.username'/>" title="<@t.page 'user.username'/>" value="${(user.name)!}"/>
+            </p>
+            <p>
+                <i class="iconfont iconfont-key"></i>
+                <input type="password" name="password" placeholder="<@t.page 'password'/>" title="<@t.page 'password'/>"/>
+            </p>
+            <p class="error_msg">
+                <#if error??>
+                <@t.message error/>
+            </#if>
+            <#if message??>
+            <@t.message "message."+message/>
+        </#if>
+        </p>
+            <p>
+                <i class="iconfont iconfont-key"></i>
+                <input class="verifyInput" name="verifyInput" placeholder="<@t.page 'verificationcode'/>" title="<@t.page 'password'/>"/>
+                <a href="javascript:getCode()">
+                    <img id="yzm_img" class="verifyCode" title="点击刷新验证码" src="${base+adminContextPath}/getCode"/>
+                </a>
+                <script>
+                            function getCode() {
+                                var image = document.getElementById("yzm_img");
+                                image.src = "${base+adminContextPath}/getCode?a="+new Date().getTime();
+                            }
+                </script>
+            </p>
+
+            <p>
+                <input style="margin-top:50px;" type="submit" value="<@t.page 'login'/>"/>
+                <input type="hidden" name="returnUrl" value="${(returnUrl!)}"/>
+                <input type="hidden" name="encoding"/>
+            </p>
+
+        </form>
+        <p>
+            <#list langs as k,v>
+                <a<#if springMacroRequestContext.getMessage('page.lang')=k> class="current-lang"</#if> href="${base+adminContextPath}/changeLocale?lang=${k}&returnUrl=${(adminContextPath+'/')?url}">${v}</a>
+            </#list>
+        </p>
+    </div>
+</div>
+<script src="${base}/resource/js/sha512.min.js"></script>
+<script>
+if(document.getElementsByTagName('input')[0].value){
+    document.getElementsByTagName('input')[1].focus();
+}else{
+    document.getElementsByTagName('input')[0].focus();
+}
+function encode(){
+   // if(document.getElementsByName('secureLogin')[0].checked){
+        document.getElementsByName('password')[0].value = sha512(document.getElementsByName('password')[0].value);
+        document.getElementsByName('encoding')[0].value = 'sha512';
+   // }
+}
+</script>
+</body>
+</html>

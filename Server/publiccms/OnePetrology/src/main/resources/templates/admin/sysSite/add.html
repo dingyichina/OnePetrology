@@ -1,0 +1,113 @@
+<@_sysSite id=id>
+    <#assign a=object/>
+</@_sysSite>
+<@_sysSite id=(a.parentId)!parentId><#assign parent=object/></@_sysSite>
+<script>
+function siteDefaultConfig${id!}(type){
+    if('static'==type){
+        if(!$('input[name=useStatic]',navTab.getCurrentPanel()).is(":checked")){
+            $('input[name=useStatic]',navTab.getCurrentPanel()).click();
+        }
+        if($('input[name=useSsi]',navTab.getCurrentPanel()).is(":checked")){
+            $('input[name=useSsi]',navTab.getCurrentPanel()).click();
+        }
+        $('input[name=sitePath]',navTab.getCurrentPanel()).val("//"+location.host+"${base}/webfile/");
+        $('input[name=dynamicPath]',navTab.getCurrentPanel()).val("//"+location.host+"${base}/");
+    }else{
+        if($('input[name=useStatic]',navTab.getCurrentPanel()).is(":checked")){
+            $('input[name=useStatic]',navTab.getCurrentPanel()).click();
+        }
+        $('input[name=sitePath]',navTab.getCurrentPanel()).val("//"+location.host+"${base}/webfile/");
+        $('input[name=dynamicPath]',navTab.getCurrentPanel()).val("//"+location.host+"${base}/");
+    }
+    <#if !a??>
+        $('input[name=domain]',navTab.getCurrentPanel()).val(location.hostname);
+    </#if>
+    $('.info',navTab.getCurrentPanel()).show();
+}
+</script>
+<form method="post" autocomplete="off" action="sysSite/save?callbackType=closeCurrent&navTabId=sysSite/list" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <input name="id" type="hidden" value="${id!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+            <li><button type="button" class="button" onclick="siteDefaultConfig${id!}('static');return false;"><@t.page 'site.default_static_config'/></button></li>
+            <li><button type="button" class="button" onclick="siteDefaultConfig${id!}();return false;"><@t.page 'site.default_dynamic_config'/></button></li>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+    <div class="pageFormContent" layoutH>
+    <#if parent?has_content>
+        <dl class="nowrap">
+            <dt><@t.page 'site.parent'/>:</dt>
+            <dd>
+                <input class="disabled" type="text" size="30" value="${(parent.name)!}"/>
+                <input name="parentId" type="hidden" value="${(parent.id)!}"/>
+                <span class="info"><@t.page 'site.parent.description'/></span>
+            </dd>
+        </dl>
+    </#if>
+        <dl class="nowrap">
+            <dt><@t.page 'name'/>:</dt>
+            <dd>
+                <input class="required" name="name" type="text" maxlength="255" size="30" value="${(a.name)!}"/>
+                <label><input name="useStatic" type="checkbox"<#if a?has_content&&a.useStatic> checked="checked"</#if>/><@t.page 'site.enable_static'/></label>
+                <span class="info hide"><@t.page 'site.config.description'/></span>
+            </dd>
+        </dl>
+        <dl class="nowrap">
+            <dt><@t.page 'site.dynamic_path'/>:</dt>
+            <dd>
+                <input class="required" name="dynamicPath" type="text" maxlength="255" size="60" value="${(a.dynamicPath)!}"/>
+                <span class="info"><@t.page 'site.site_path.description'/></span>
+            </dd>
+        </dl>
+        <dl class="nowrap">
+            <dt><@t.page 'site.site_path'/>:</dt>
+            <dd>
+                <input name="sitePath" type="text" maxlength="255" size="60" value="${(a.sitePath)!}"/>
+                <label><input name="useSsi" type="checkbox"<#if a?has_content&&a.useSsi> checked="checked"</#if>/><@t.page 'site.enable_ssi'/></label>
+                <span class="info"><@t.page 'site.dynamic_path.description'/></span>
+                <span class="info"><@t.page 'site.enable_ssi.description'/></span>
+            </dd>
+        </dl>
+        <#if !a??>
+            <fieldset>
+                <legend><@t.page 'site.init'/></legend>
+                <dl class="nowrap">
+                    <dt><@t.page 'domain'/>:</dt>
+                    <dd>
+                        <input class="required domain" remote="sysDomain/virify" name="domain" data-msg-remote="<@t.message 'verify.hasExist.domain'/>" type="text" maxlength="50" size="20" value=""/>
+                        <label><input name="wild" type="checkbox"/><@t.page 'domain.wild'/></label>
+                        <span class="info"><@t.page 'domain.description'/></span>
+                    </dd>
+                </dl>
+                <dl class="nowrap">
+                    <dt><@t.page 'role'/>:</dt>
+                    <dd>
+                        <input class="required" name="roleName" type="text" maxlength="50" size="20" value="<@t.page 'site.default_role'/>"/>
+                    </dd>
+                </dl>
+                <dl class="nowrap">
+                    <dt><@t.page 'dept'/>:</dt>
+                    <dd>
+                        <input class="required" name="deptName" type="text" maxlength="50" size="20" value="<@t.page 'site.default_dept'/>"/>
+                    </dd>
+                </dl>
+                <dl class="nowrap">
+                    <dt><@t.page 'user.username'/>:</dt>
+                    <dd>
+                        <input class="required" name="userName" type="text" maxlength="45" size="20" value="admin"/>
+                    </dd>
+                </dl>
+                <dl class="nowrap">
+                    <dt><@t.page 'password'/>:</dt>
+                    <dd>
+                        <input class="required" name="password" type="password" maxlength="255" size="20" value=""/>
+                    </dd>
+                </dl>
+            </fieldset>
+        </#if>
+    </div>
+</form>

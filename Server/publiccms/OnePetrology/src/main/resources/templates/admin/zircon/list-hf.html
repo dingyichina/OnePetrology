@@ -1,0 +1,141 @@
+<div class="pageHeader">
+    <form class="pagerForm" onsubmit="return navTabSearch(this);" method="post">
+        <#include "../include_page/parameters.html"/>
+        <div class="searchBar">
+            <ul class="searchContent">
+                <li>
+                    <label>Sample Id：</label>
+                    <input type="text" name="sampleId" value="${sampleId!}" />
+                </li>
+                <li>
+                    <label>Oraginal Sample Id：</label>
+                    <input type="text" name="oraginalSampleId" value="${oraginalSampleId!}" />
+                </li>
+
+                <li>
+                    <label>Article Ref：</label>
+                    <input type="text" name="articleRef" value="${articleRef!}" />
+                </li>
+                <li>
+                    <label>Article DOI：</label>
+                    <input type="text" name="articleDoi" value="${articleDoi!}" />
+                </li>
+            </ul>
+            <div class="subBar">
+                <ul>
+                    <li>
+                    	<button type="submit" class="buttonActive"><@t.page 'button.search'/></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<@_sysAuthorized roleIds=admin.roles urls='zircon/add,zircon/delete'><#assign authorizedMap=map/></@_sysAuthorized>
+<div class="pageContent">
+    <div class="panelBar">
+        <ul class="toolBar">
+        <#if authorizedMap['zircon/add']>
+            <li><a href="zircon/add.html" target="navTab" rel="zircon/add"><i class="icon-plus-sign-alt icon-large"></i> <@t.page 'button.add'/></a></li>
+            <li><a href="zircon/add.html?id={sid}" target="navTab" rel="zircon/edit"><i class="icon-edit icon-large"></i> <@t.page 'button.edit'/></a></li>
+        </#if>
+        <#if authorizedMap['zircon/delete']>
+            <li><a href="zircon/delete.do?_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.batch_delete'/>" target="selectedTodo" rel="ids"><i class="icon-trash icon-large"></i> <@t.page 'button.batch_delete'/></a></li>
+        </#if>
+        </ul>
+    </div>
+<@_zirconList sampleId=sampleId oraginalSampleId=oraginalSampleId 
+            pointNum=pointNum hfType=hfType testAge=testAge 
+            yb176Hf177=yb176Hf177 lu176Hf177=lu176Hf177 sigma2LuHf=sigma2LuHf 
+            hf176Hf177=hf176Hf177 sigma2HfHf=sigma2HfHf hf176Hf177T=hf176Hf177T 
+            churT=churT dmT=dmT epsilonHfT=epsilonHfT 
+            sigma2EpsilonHfT=sigma2EpsilonHfT FLuHf=FLuHf tdm1=tdm1 
+            sigma2Tdm1=sigma2Tdm1 tdm2=tdm2 sigma2Tdm2=sigma2Tdm2 
+            epsilonHf0=epsilonHf0 d18o=d18o epsilonD180=epsilonD180 
+            epsilonD18oControl=epsilonD18oControl siO2=siO2 lithology=lithology 
+            mineralType=mineralType grainsNumber=grainsNumber chiSquareProbability=chiSquareProbability 
+            centralAge=centralAge centralAgeError=centralAgeError pooledAge=pooledAge 
+            pooledAgeError=pooledAgeError meanTrackLength=meanTrackLength lengthError=lengthError 
+            UThHeAge=UThHeAge UThHeAgeError=UThHeAgeError articleRef=articleRef 
+            articleDoi=articleDoi 
+            orderField=orderField orderType=orderType pageIndex=pageNum pageSize=numPerPage>
+    <table class="list" width="120%" layoutH="92">
+        <thead>
+            <tr>
+                <th orderField="id" class="<#if orderField??&&'id'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">ID</th>
+                <th orderField="sampleId" class="<#if orderField??&&'sampleId'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Sample Id</th>
+                <th orderField="oraginalSampleId" class="<#if orderField??&&'oraginalSampleId'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Oraginal Sample Id</th>
+                <th orderField="pointNum" class="<#if orderField??&&'pointNum'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Point Num</th>
+                <th orderField="hfType" class="<#if orderField??&&'hfType'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Hf Type</th>
+                <th orderField="testAge" class="<#if orderField??&&'testAge'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Test Age（Ma）</th>
+                <th orderField="yb176Hf177" class="<#if orderField??&&'yb176Hf177'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>"><sup>176</sup>Yb/<sup>177</sup>Hf</th>
+                <th orderField="lu176Hf177" class="<#if orderField??&&'lu176Hf177'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>"><sup>176</sup>Lu/<sup>177</sup>Hf</th>
+                <th orderField="sigma2LuHf" class="<#if orderField??&&'sigma2LuHf'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">2σ Error</th>
+                <th orderField="hf176Hf177" class="<#if orderField??&&'hf176Hf177'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>"><sup>176</sup>Hf/<sup>177</sup>Hf</th>
+                <th orderField="sigma2HfHf" class="<#if orderField??&&'sigma2HfHf'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">2σ Error</th>
+                <th orderField="hf176Hf177T" class="<#if orderField??&&'hf176Hf177T'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>"><sup>176</sup>Hf/<sup>177</sup>Hf（t）</th>
+                <th orderField="churT" class="<#if orderField??&&'churT'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">CHUR（t）</th>
+                <th orderField="dmT" class="<#if orderField??&&'dmT'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">DM（t）</th>
+                <th orderField="epsilonHfT" class="<#if orderField??&&'epsilonHfT'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">εHf(t)</th>
+                <th orderField="sigma2EpsilonHfT" class="<#if orderField??&&'sigma2EpsilonHfT'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">2σ Error</th>
+                <th orderField="FLuHf" class="<#if orderField??&&'FLuHf'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">f<sub>Lu/Hf</sub></th>
+                <th orderField="tdm1" class="<#if orderField??&&'tdm1'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">T<sub>DM1</sub></th>
+                <th orderField="sigma2Tdm1" class="<#if orderField??&&'sigma2Tdm1'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">2σ Error</th>
+                <th orderField="tdm2" class="<#if orderField??&&'tdm2'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">T<sub>DM2</sub></th>
+                <th orderField="sigma2Tdm2" class="<#if orderField??&&'sigma2Tdm2'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">2σ Error</th>
+                <th orderField="epsilonHf0" class="<#if orderField??&&'epsilonHf0'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">εHf(0)</th>
+                <th orderField="d18o" class="<#if orderField??&&'d18o'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">d18O</th>
+                <th orderField="epsilonD180" class="<#if orderField??&&'epsilonD180'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">2σ Error</th>
+                <th orderField="epsilonD18oControl" class="<#if orderField??&&'epsilonD18oControl'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">d18O Control</th>
+                <th orderField="siO2" class="<#if orderField??&&'siO2'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">SiO<sub>2</sub></th>
+                <th orderField="lithology" class="<#if orderField??&&'lithology'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">lithology</th>
+                <th orderField="articleRef" class="<#if orderField??&&'articleRef'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Article Ref</th>
+                <th orderField="articleDoi" class="<#if orderField??&&'articleDoi'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Article DOI</th>
+                <th><@t.page 'operate'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.id}">
+                <td>${a.id!}</td>
+                <td>${a.sampleId!}</td>
+                <td>${a.oraginalSampleId!}</td>
+                <td>${a.pointNum!}</td>
+                <td>${a.hfType!}</td>
+                <td>${a.testAge!}</td>
+                <td>${a.yb176Hf177!}</td>
+                <td>${a.lu176Hf177!}</td>
+                <td>${a.sigma2LuHf!}</td>
+                <td>${a.hf176Hf177!}</td>
+                <td>${a.sigma2HfHf!}</td>
+                <td>${a.hf176Hf177T!}</td>
+                <td>${a.churT!}</td>
+                <td>${a.dmT!}</td>
+                <td>${a.epsilonHfT!}</td>
+                <td>${a.sigma2EpsilonHfT!}</td>
+                <td>${a.FLuHf!}</td>
+                <td>${a.tdm1!}</td>
+                <td>${a.sigma2Tdm1!}</td>
+                <td>${a.tdm2!}</td>
+                <td>${a.sigma2Tdm2!}</td>
+                <td>${a.epsilonHf0!}</td>
+                <td>${a.d18o!}</td>
+                <td>${a.epsilonD180!}</td>
+                <td>${a.epsilonD18oControl!}</td>
+                <td>${a.siO2!}</td>
+                <td>${a.lithology!}</td>
+
+                <td>${a.articleRef!}</td>
+                <td>${a.articleDoi!}</td>
+                <td>
+                <#if authorizedMap['zircon/delete']>
+                    <a href="zircon/delete.do?ids=${a.id}&_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.delete'/>"  target="ajaxTodo"><@t.page 'button.delete'/></a>
+                </#if>
+                </td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</@_zirconList>
+</div>

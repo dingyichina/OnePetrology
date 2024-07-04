@@ -1,0 +1,151 @@
+<script>
+	//封装DSpaceClient的访问操作，以类的形式
+	//使用这个片段之前需要先导入jquery ，再引入jquery.cookie
+	  let b64DecodeUnicode = str =>
+	  decodeURIComponent(
+		Array.prototype.map.call(atob(str), c =>
+		  '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+		).join(''))
+
+	  let parseJwt = token =>
+		  JSON.parse(
+			b64DecodeUnicode(
+			  token.split('.')[1].replace('-', '+').replace('_', '/')
+			)
+		  )
+	
+	  //检测是否已经登录
+	 function hasLogin(){
+		var mycookie=$.cookie('dsAuthInfo');
+		if(mycookie==null || mycookie==undefined || mycookie=="")
+			return false;
+		 var dsAuthInfo=JSON.parse(mycookie);
+		 //检测exp是否过期
+		 return true;
+		 
+	 }
+		
+	class  DSpaceClient{
+		 //构造函数
+		constructor( ){
+		    this.server_url='https://petrology.deep-time.org/server2/api';
+			//this.getToken();
+			this.xsrf_token="";
+		}
+		
+		
+		//刷新token，不明白，为啥不返回头，暂时废掉该函数----------------
+	   getToken(){
+		   console.log('刷新token');
+		   console.log(this.server_url);
+		   var _this=this;  //封装this在ajax中调用
+		   $.ajax({
+					url: _this.server_url,
+					type: 'get',
+					async: false,  //特殊情况必须同步????
+					success(result, status, xhr) {
+						_this.refreshToken(xhr); 
+					   console.log('success Token:',_this.xsrf_token);
+					},
+			   		complete(xhr){
+						_this.refreshToken(xhr); 
+					   console.log('刷新 Token:',_this.xsrf_token);
+					}
+				});	   
+		}
+		
+		// 根据返回头更新token
+		refreshToken(xhr){
+			   //更新token
+			 var token=xhr.getResponseHeader('dspace-xsrf-token');
+			 if(token !=null && token!=undefined & token!=""){
+			 	this.xsrf_token=token;
+			 }
+			
+		}
+		
+		//login操作
+		login(username,password){
+		    //if(this.xsrf_token==null ||this.xsrf_token==undefined || this.xsrf_token==""|| this.xsrf_token=="null"){
+			//	   this.getToken();
+			//}
+		     var _this=this;  //封装this在ajax中调用
+			$.ajax({
+					url: _this.server_url+"/authn/login",
+				    data:{'user':username,'password':password },
+				    contentType: "application/x-www-form-urlencoded",
+				    headers:{"X-XSRF-TOKEN": _this.xsrf_token},
+					type: 'post',
+					async: false,  //特殊情况必须同步????
+					success(result, status, xhr) {
+						_this.refreshToken(xhr); //刷新token
+						if(xhr.status ==200){
+							_this.authorization=xhr.getResponseHeader('authorization'); //缓存授权
+							var jwtstr=xhr.getResponseHeader('authorization').replace('Bearer ', '');
+							//console.log('success，authorization：',jwtstr);
+							//console.log('authorization decode：',parseJwt(jwtstr));
+							var tokenClaims=parseJwt(jwtstr);
+							var dsAuthInfo={"accessToken":jwtstr, "expires":  tokenClaims.exp*1000 };
+						    //同步获取eid对应的用户信息
+							_this.getUserInfo(tokenClaims.eid);
+							
+							$.cookie('dsAuthInfo',JSON.stringify(dsAuthInfo));
+							//alert('login success!');
+							return true;
+						}
+					
+					},
+				    error(xhr,status,error){
+						_this.refreshToken(xhr); //刷新token
+						if(xhr.status==401){
+							//此时是因为用户名或者密码错
+							alert('login failed,check your username and password!');
+							return false;
+							
+						}else if (xhr.status==403){
+							//此时是因为参数错，多数是因为没有csrf的token，可以尝试重复一次
+							   _this.login(username,password);
+							
+						}
+					},
+					complete(xhr){
+						_this.refreshToken(xhr); //刷新token
+					}
+			});	   // end ajax
+		}  //  end login
+		
+		//获取用户信息
+		getUserInfo(eid){
+			
+			 var _this=this;  //封装this在ajax中调用
+ 		     $.ajax({
+					url: _this.server_url+'/eperson/epersons/'+eid,
+					type: 'get',
+				    contentType: "application/x-www-form-urlencoded",
+				    headers:{"X-XSRF-TOKEN": _this.xsrf_token  ,'Authorization':_this.authorization},
+					async: false,  //特殊情况必须同步????
+					success(result, status, xhr) {
+						_this.refreshToken(xhr); 
+						_this.firstname=result.metadata['eperson.firstname'][0].value;
+						_this.lastname=result.metadata['eperson.lastname'][0].value;
+						_this.username=result.name;
+						_this.email=result.email;
+					     console.log('success getUserInfo:',_this.firstname,' ',_this.lastname);
+						//写入cookie
+						$.cookie('OnePetrologyUserInfo',	_this.firstname+' '+_this.lastname);
+					},
+			   		complete(xhr){
+						_this.refreshToken(xhr); 
+					   console.log('刷新 Token:',_this.xsrf_token);
+					}
+				});	   
+			
+		}
+	
+		
+		
+	}
+	
+	
+	
+</script>

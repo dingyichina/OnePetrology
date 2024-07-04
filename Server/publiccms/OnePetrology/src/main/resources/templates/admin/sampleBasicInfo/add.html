@@ -1,0 +1,199 @@
+<@_sampleBasicInfo id=id><#assign a=object/></@_sampleBasicInfo>
+<form method="post" action="sampleBasicInfo/save.do?callbackType=closeCurrent&navTabId=sampleBasicInfo/list" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <input name="id" type="hidden" value="${id!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+    <div class="pageContent">
+        <div class="pageFormContent" layoutH="56">
+            <dl>
+                <dt>ID：</dt>
+                <dd><input class="required" name="id" type="text" size="30" value="${(a.id)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>样品编码：</dt>
+                <dd><input class="required" name="sampleId" type="text" size="30" value="${(a.sampleId)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>原始样品编码：</dt>
+                <dd><input class="required" name="originalSampleId" type="text" size="30" value="${(a.originalSampleId)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>地理经度：</dt>
+                <dd><input class="required" name="longitude" type="text" size="30" value="${(a.longitude)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>地理纬度：</dt>
+                <dd><input class="required" name="latitude" type="text" size="30" value="${(a.latitude)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>国家编码：</dt>
+                <dd><input class="required" name="countryCode" type="text" size="30" value="${(a.countryCode)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>所在地区：</dt>
+                <dd><input class="required" name="location" type="text" size="30" value="${(a.location)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>岩性：</dt>
+                <dd><input class="required" name="lithology" type="text" size="30" value="${(a.lithology)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>岩石名称：</dt>
+                <dd><input class="required" name="rockName" type="text" size="30" value="${(a.rockName)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>岩石名称代码：</dt>
+                <dd><input class="required" name="rockCode" type="text" size="30" value="${(a.rockCode)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>地质年代：</dt>
+                <dd><input class="required" name="era" type="text" size="30" value="${(a.era)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>地质体名称：</dt>
+                <dd><input class="required" name="geobodyName" type="text" size="30" value="${(a.geobodyName)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>地质体代码：</dt>
+                <dd><input class="required" name="geobodyCode" type="text" size="30" value="${(a.geobodyCode)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>构造位置：</dt>
+                <dd><input class="required" name="tectonicLocation" type="text" size="30" value="${(a.tectonicLocation)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>一级构造单元：</dt>
+                <dd><input class="required" name="primaryStructuralUnit" type="text" size="30" value="${(a.primaryStructuralUnit)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>二级构造单元：</dt>
+                <dd><input class="required" name="secondaryStructuralUnit" type="text" size="30" value="${(a.secondaryStructuralUnit)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>三级构造单元：</dt>
+                <dd><input class="required" name="tertiarySturcturalUnit" type="text" size="30" value="${(a.tertiarySturcturalUnit)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>围岩时代：</dt>
+                <dd><input class="required" name="surroundingRockAge" type="text" size="30" value="${(a.surroundingRockAge)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>围岩岩性：</dt>
+                <dd><input class="required" name="surroundingRockLithology" type="text" size="30" value="${(a.surroundingRockLithology)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>与围岩关系：</dt>
+                <dd><input class="required" name="relationshipWithSurroundingRock" type="text" size="30" value="${(a.relationshipWithSurroundingRock)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>形态：</dt>
+                <dd><input class="required" name="form" type="text" size="30" value="${(a.form)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>是否切割区域构造线：</dt>
+                <dd><input class="required" name="isCutAreaConstructionLine" type="text" size="30" value="${(a.isCutAreaConstructionLine)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>变形程度：</dt>
+                <dd><input class="required" name="degreeOfDeformation" type="text" size="30" value="${(a.degreeOfDeformation)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>特征矿物：</dt>
+                <dd><input class="required" name="characteristicMinerals" type="text" size="30" value="${(a.characteristicMinerals)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>成因类型：</dt>
+                <dd><input class="required" name="geneticType" type="text" size="30" value="${(a.geneticType)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>构造类型：</dt>
+                <dd><input class="required" name="tectonicType" type="text" size="30" value="${(a.tectonicType)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>构造类型判别来源：</dt>
+                <dd><input class="required" name="sourceOfStructuralTypeDiscrimination" type="text" size="30" value="${(a.sourceOfStructuralTypeDiscrimination)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>碱性程度：</dt>
+                <dd><input class="required" name="alkalinity" type="text" size="30" value="${(a.alkalinity)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铝质程度：</dt>
+                <dd><input class="required" name="aluminumQuality" type="text" size="30" value="${(a.aluminumQuality)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>年龄：</dt>
+                <dd><input class="required" name="age" type="text" size="30" value="${(a.age)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>年龄误差：</dt>
+                <dd><input class="required" name="ageError" type="text" size="30" value="${(a.ageError)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>样品照片：</dt>
+                <dd><input class="required" name="photo" type="text" size="30" value="${(a.photo)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>样品采集人员：</dt>
+                <dd><input class="required" name="collector" type="text" size="30" value="${(a.collector)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>采集人员单位：</dt>
+                <dd><input class="required" name="collectorOrg" type="text" size="30" value="${(a.collectorOrg)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>样品审核人：</dt>
+                <dd><input class="required" name="reviewer" type="text" size="30" value="${(a.reviewer)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>分析/鉴定单位：</dt>
+                <dd><input class="required" name="analyzeOrg" type="text" size="30" value="${(a.analyzeOrg)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>分析/鉴定人员：</dt>
+                <dd><input class="required" name="analyzePerson" type="text" size="30" value="${(a.analyzePerson)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>测试对象：</dt>
+                <dd><input class="required" name="testObject" type="text" size="30" value="${(a.testObject)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>分析/测定时间：</dt>
+                <dd><input class="required" name="testDate" type="text" size="30" value="${(a.testDate)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>分析/测定方法：</dt>
+                <dd><input class="required" name="testMethod" type="text" size="30" value="${(a.testMethod)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>选用年龄：</dt>
+                <dd><input class="required" name="ageSelected" type="text" size="30" value="${(a.ageSelected)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>选用年龄误差：</dt>
+                <dd><input class="required" name="ageSelectedError" type="text" size="30" value="${(a.ageSelectedError)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>发表文献编号：</dt>
+                <dd><input class="required" name="articleId" type="text" size="30" value="${(a.articleId)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>文章DOI：</dt>
+                <dd><input class="required" name="articleDoi" type="text" size="30" value="${(a.articleDoi)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>审核：</dt>
+                <dd><input class="required" name="hasChecked" type="text" size="30" value="${(a.hasChecked)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>备注：</dt>
+                <dd><input class="required" name="remark" type="text" size="30" value="${(a.remark)!}"/></dd>
+            </dl>
+        </div>
+    </div>
+</form>

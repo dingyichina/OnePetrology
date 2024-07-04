@@ -1,0 +1,14 @@
+目前实现的方法是：
+
+1，在dspace中创建一个Item，然后 创建元数据项：  dc.description.version ,dc.description ,  dc.description.uri，分别对应版本号，版本描述，版本对应的附件的uuid
+    每次更新时的步骤：用pyinstaller打包exe之后，压缩成zip，然后上传到这个item的bitstream流里，并修改上述的三个元数据。
+
+2，在pyqt中，写死了item的uuid，检查这个item的元数据中的 dc.description.version ，与本地的版本号进行对比，如果小于服务器的版本号，则提示更新。选择更新之后，调起update.exe进程，关闭应用。
+
+3，update.exe下载zip，并解压，解压完成后关闭自己，调起主应用。
+
+
+btw:
+    两个exe需要分别pyinstaller打包，手工挪到一起去。
+    压缩的时候，应用名称为根目录。
+    没有实现增量更新——pyupdater有些复杂，自己写md5校验和每个文件有些麻烦，暂不弄。

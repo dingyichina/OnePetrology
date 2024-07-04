@@ -1,0 +1,35 @@
+<#macro templateTree filepath>
+    <@_templateList path=filepath>
+        <#list list as a>
+            <li>
+                <#local path=filepath+'/'+a.fileName>
+                <@_metadata path=path>
+                    <a href="cmsTemplate/${a.directory?then('directory','content')}.html?path=${(path?url)!}" target="ajax" rel="cmsTemplateBox">
+                        ${(object.alias)?has_content?then(object.alias+' ('+a.fileName+')',a.fileName)}
+                    </a>
+                </@_metadata>
+            <#if a.directory>
+                <ul>
+                    <@templateTree path/>
+                </ul>
+            </#if>
+            </li>
+        <#else>
+            <li><a><@t.page 'empty_directory'/></a></li>
+        </#list>
+    </@_templateList>
+</#macro>
+<div class="pageContent">
+    <div class="leftPageContent">
+        <h2 class="contentTitle">
+            <a class="button" href="cmsTemplate/metadata.html" target="ajax" rel="cmsTemplateBox"><@t.page 'template.create'/></a>
+            <a class="button" href="cmsTemplate/demo.html" target="dialog" mask="true"><@t.page 'template.example'/></a></li>
+        </h2>
+        <ul layoutH class="tree treeFolder">
+            <@templateTree ''/>
+        </ul>
+    </div>
+    <div id="cmsTemplateBox" class="unitBox rightPageContent">
+        <#include "directory.html"/>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<form method="post" action="cmsTemplate/save" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+        <#if !site.parentId?has_content>
+            <li><a class="button" href="cmsTemplate/delete?path=${(path?url)!}&navTabId=cmsTemplate/list&_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.delete_file'/>" target="ajaxTodo"><i class="icon-trash icon-large"></i> <@t.page 'button.delete'/></a></li>
+        </#if>
+    <@_sysAuthorized roleIds=admin.roles url='cmsPage/metadata'>
+        <@_sysDeptPage deptId=admin.deptId!'' pages=path>
+            <li><a class="button" href="cmsPage/metadata.html?path=${(path?url)!}" target="ajax" rel="cmsTemplateBox"><@t.page 'page.management'/></a></li>
+        </@_sysDeptPage>
+    </@_sysAuthorized>
+            <li><a class="button" href="cmsTemplate/metadata.html?path=${(path?url)!}" target="ajax" rel="cmsTemplateBox"><@t.page 'metadata'/></a></li>
+        <#if site.parentId?has_content>
+            <li><button type="button" class="buttonDisabled"><@t.page 'site.parent_maintain'/></button></li>
+        <#else>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+        </#if>
+        </ul>
+    </div>
+    <h2 class="contentTitle">
+         <a class="button" href="cmsTemplate/ftlLookup.html" target="dialog" mask="true"><@t.page 'template.fragment'/></a>
+         <a class="button" href="placeTemplate/lookup.html" target="dialog" mask="true"><@t.page 'place'/></a>
+         <a class="button" href="cmsWebFile/lookup.html" target="dialog" mask="true"><@t.page 'webfile'/></a>
+         <a class="button" href="cmsTemplate/help.html?path=${(path?url)!}" target="dialog" mask="true"><@t.page 'template.help'/></a>
+         <a class="button" href="<@t.page 'template.manual.url'/>" target="_blank"><@t.page 'template.manual'/></a>
+    </h2>
+    <div class="pageFormContent" layoutH>
+        <div class="exclude-translate">
+            <input name="path" type="hidden" value="${path}"/>
+            <textarea name="content" class="code" escape="true" mode="freemarkermixed"><@_templateContent path=path>${(object)!}</@_templateContent></textarea>
+        </div>
+    </div>
+</form>

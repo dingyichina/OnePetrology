@@ -1,0 +1,191 @@
+<div class="pageHeader">
+    <form class="pagerForm" onsubmit="return navTabSearch(this);" method="post">
+        <#include "../include_page/parameters.html"/>
+        <div class="searchBar">
+            <ul class="searchContent">
+                <li>
+                    <label>Sample Id：</label>
+                    <input type="text" name="sampleId" value="${sampleId!}" />
+                </li>
+                <li>
+                    <label>Oraginal Sample Id：</label>
+                    <input type="text" name="oraginalSampleId" value="${oraginalSampleId!}" />
+                </li>
+                <li>
+                    <label>Location：</label>
+                    <input type="text" name="location" value="${location!}" />
+                </li>
+                <li>
+                    <label>Location Type：</label>
+                    <input type="text" name="locationType" value="${locationType!}" />
+                </li>
+                <li>
+                    <label>Tectonic Location：</label>
+                    <input type="text" name="tectonicLocation" value="${tectonicLocation!}" />
+                </li>
+
+                <li>
+                    <label>Lithology：</label>
+                    <input type="text" name="lithology" value="${lithology!}" />
+                </li>
+                <li>
+                    <label>Occurrence：</label>
+                    <input type="text" name="occurrence" value="${occurrence!}" />
+                </li>
+                <li>
+                    <label>Intrusion：</label>
+                    <input type="text" name="intrusion" value="${intrusion!}" />
+                </li>
+
+            </ul>
+            <div class="subBar">
+                <ul>
+                    <li>
+                    	<button type="submit" class="buttonActive"><@t.page 'button.search'/></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<@_sysAuthorized roleIds=admin.roles urls='sampleInfo/add,sampleInfo/delete'><#assign authorizedMap=map/></@_sysAuthorized>
+<div class="pageContent">
+    <div class="panelBar">
+        <ul class="toolBar">
+        <#if authorizedMap['sampleInfo/add']>
+            <li><a href="sampleInfo/add.html" target="navTab" rel="sampleInfo/add"><i class="icon-plus-sign-alt icon-large"></i> <@t.page 'button.add'/></a></li>
+            <li><a href="sampleInfo/add.html?id={sid}" target="navTab" rel="sampleInfo/edit"><i class="icon-edit icon-large"></i> <@t.page 'button.edit'/></a></li>
+        </#if>
+        <#if authorizedMap['sampleInfo/delete']>
+            <li><a href="sampleInfoAdmin/delete.do?_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.batch_delete'/>" target="selectedTodo" rel="ids"><i class="icon-trash icon-large"></i> <@t.page 'button.batch_delete'/></a></li>
+        </#if>
+        </ul>
+    </div>
+<@_sampleInfoList sampleId=sampleId oraginalSampleId=oraginalSampleId 
+            location=location locationType=locationType tectonicLocation=tectonicLocation 
+            primaryStructuralUnit=primaryStructuralUnit secondaryStructuralUnit=secondaryStructuralUnit tertiaryStructuralUnit=tertiaryStructuralUnit 
+            lithology=lithology occurrence=occurrence intrusion=intrusion 
+            rockName=rockName rockCode=rockCode era=era 
+            geobodyName=geobodyName geobodyCode=geobodyCode surroundingRockAge=surroundingRockAge 
+            surroundingRockLithology=surroundingRockLithology relationshipWithSurroundingRock=relationshipWithSurroundingRock form=form 
+            whetherToCutAreaConstructionLine=whetherToCutAreaConstructionLine degreeOfDeformation=degreeOfDeformation characteristicMinerals=characteristicMinerals 
+            geneticType=geneticType age=age ageError=ageError 
+            testObject=testObject testMethod=testMethod ageSelected=ageSelected 
+            ageSelectedError=ageSelectedError tectonicType=tectonicType sourceOfStructuralTypeDiscrimination=sourceOfStructuralTypeDiscrimination 
+            alkalinity=alkalinity aluminumQuality=aluminumQuality photo=photo 
+            collector=collector collectorOrg=collectorOrg reviewer=reviewer 
+            analyzeOrg=analyzeOrg analyzePerson=analyzePerson testDate=testDate 
+            dataSource=dataSource articleDoi=articleDoi remark=remark 
+            siO2=siO2 tiO2=tiO2 al2o3=al2o3 
+            fe2o3=fe2o3 feO=feO fe2o3t=fe2o3t 
+            feOt=feOt tfe=tfe mnO=mnO 
+            mgO=mgO caO=caO na2o=na2o 
+            k2o=k2o p2o5=p2o5 h2op=h2op 
+            h2on=h2on co2=co2 so3=so3 
+            f=f cl=cl loi=loi 
+            total=total la=la ce=ce 
+            pr=pr nd=nd pm=pm 
+            sm=sm eu=eu gd=gd 
+            tb=tb dy=dy ho=ho 
+            er=er tm=tm yb=yb 
+            lu=lu y=y sc=sc 
+            totalReElement=totalReElement v=v cr=cr 
+            co=co ni=ni mn=mn 
+            cu=cu zn=zn ga=ga 
+            ge=ge cs=cs rb=rb 
+            ba=ba th=th u=u 
+            nb=nb ta=ta ti=ti 
+            p=p pb=pb sr=sr 
+            zr=zr hf=hf li=li 
+            be=be w=w pt=pt 
+            pd=pd os=os ir=ir 
+            ru=ru rh=rh srIsotope=srIsotope 
+            ndIsotope=ndIsotope rb87Sr86=rb87Sr86 sr87Sr86M=sr87Sr86M 
+            sm147Nd144=sm147Nd144 nd143Nd144=nd143Nd144 testRockMa=testRockMa 
+            sr87Sr86I=sr87Sr86I nd143Nd144TChur=nd143Nd144TChur nd143Nd144I=nd143Nd144I 
+            FSmNdS=FSmNdS epsilonNd0=epsilonNd0 epsilonNdT=epsilonNdT 
+            tdmMa=tdmMa tdm2Ma=tdm2Ma hfIsotope=hfIsotope 
+            hfPointNum=hfPointNum hfNormalNum=hfNormalNum epsilonHftMin=epsilonHftMin 
+            epsilonHftMax=epsilonHftMax epsilonHftMedian=epsilonHftMedian epsilonHftAverage=epsilonHftAverage 
+            tdmcMin=tdmcMin tdmcMax=tdmcMax tdmcMedian=tdmcMedian 
+            tdmcAverage=tdmcAverage hfOisotope=hfOisotope d18oMin=d18oMin 
+            d18oMax=d18oMax d18oAverage=d18oAverage d18oMedian=d18oMedian 
+            orderField=orderField orderType=orderType pageIndex=pageNum pageSize=numPerPage>
+    <table class="list" width="160%" layoutH="92">
+        <thead>
+            <tr>
+                <th orderField="id" class="<#if orderField??&&'id'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">ID</th>
+                <th orderField="sampleId" class="<#if orderField??&&'sampleId'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Sample Id</th>
+                <th orderField="oraginalSampleId" class="<#if orderField??&&'oraginalSampleId'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Oraginal Sample Id</th>
+                <th orderField="longitude" class="<#if orderField??&&'longitude'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Longitude</th>
+                <th orderField="latitude" class="<#if orderField??&&'latitude'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Latitude</th>
+                <th orderField="location" class="<#if orderField??&&'location'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Location</th>
+                <th orderField="siO2" class="<#if orderField??&&'siO2'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">S<sub>i</sub>O<sub>2</sub>（10<sup>-2</sup>）</th>
+                <th orderField="tiO2" class="<#if orderField??&&'tiO2'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">T<sub>i</sub>O<sub>2</sub>（10<sup>-2</sup>）</th>
+                <th orderField="al2o3" class="<#if orderField??&&'al2o3'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Al<sub>2</sub>O<sub>3</sub>（10<sup>-2</sup>）</th>
+                <th orderField="fe2o3" class="<#if orderField??&&'fe2o3'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Fe<sub>2</sub>O<sub>3</sub>（10<sup>-2</sup>）</th>
+                <th orderField="feO" class="<#if orderField??&&'feO'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">FeO（10<sup>-2</sup>）</th>
+                <th orderField="fe2o3t" class="<#if orderField??&&'fe2o3t'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Fe<sub>2</sub>O<sub>3</sub>T（10<sup>-2</sup>）</th>
+                <th orderField="feOt" class="<#if orderField??&&'feOt'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">FeOT（10<sup>-2</sup>）</th>
+                <th orderField="tfe" class="<#if orderField??&&'tfe'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">TFe（10<sup>-2</sup>）</th>
+                <th orderField="mnO" class="<#if orderField??&&'mnO'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">MnO（10<sup>-2</sup>）</th>
+                <th orderField="mgO" class="<#if orderField??&&'mgO'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">MgO（10<sup>-2</sup>）</th>
+                <th orderField="caO" class="<#if orderField??&&'caO'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">CaO（10<sup>-2</sup>）</th>
+                <th orderField="na2o" class="<#if orderField??&&'na2o'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Na<sub>2</sub>O（10<sup>-2</sup>）</th>
+                <th orderField="k2o" class="<#if orderField??&&'k2o'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">K<sub>2</sub>O（10<sup>-2</sup>）</th>
+                <th orderField="p2o5" class="<#if orderField??&&'p2o5'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">P<sub>2</sub>O<sub>5</sub>（10<sup>-2</sup>）</th>
+                <th orderField="h2op" class="<#if orderField??&&'h2op'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">H<sub>2</sub>O<sup>+</sup>（10<sup>-2</sup>）</th>
+                <th orderField="h2on" class="<#if orderField??&&'h2on'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">H<sub>2</sub>O<sup>-</sup>（10<sup>-2</sup>）</th>
+                <th orderField="co2" class="<#if orderField??&&'co2'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">CO<sub>2</sub>（10<sup>-2</sup>）</th>
+                <th orderField="so3" class="<#if orderField??&&'so3'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">SO<sub>3</sub>（10<sup>-2</sup>）</th>
+                <th orderField="f" class="<#if orderField??&&'f'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">F（10<sup>-2</sup>）</th>
+                <th orderField="cl" class="<#if orderField??&&'cl'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Cl（10<sup>-2</sup>）</th>
+                <th orderField="loi" class="<#if orderField??&&'loi'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">LOI（10<sup>-2</sup>）</th>
+                <th orderField="total" class="<#if orderField??&&'total'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Total（10<sup>-2</sup>）</th>
+
+                <th><@t.page 'operate'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.id}">
+                <td>${a.id!}</td>
+                <td>${a.sampleId!}</td>
+                <td>${a.oraginalSampleId!}</td>
+                <td>${a.longitude!}</td>
+                <td>${a.latitude!}</td>
+                <td>${a.location!}</td>
+                <td>${a.siO2!}</td>
+                <td>${a.tiO2!}</td>
+                <td>${a.al2o3!}</td>
+                <td>${a.fe2o3!}</td>
+                <td>${a.feO!}</td>
+                <td>${a.fe2o3t!}</td>
+                <td>${a.feOt!}</td>
+                <td>${a.tfe!}</td>
+                <td>${a.mnO!}</td>
+                <td>${a.mgO!}</td>
+                <td>${a.caO!}</td>
+                <td>${a.na2o!}</td>
+                <td>${a.k2o!}</td>
+                <td>${a.p2o5!}</td>
+                <td>${a.h2op!}</td>
+                <td>${a.h2on!}</td>
+                <td>${a.co2!}</td>
+                <td>${a.so3!}</td>
+                <td>${a.f!}</td>
+                <td>${a.cl!}</td>
+                <td>${a.loi!}</td>
+                <td>${a.total!}</td>
+                <td>
+                <#if authorizedMap['sampleInfo/delete']>
+                    <a href="sampleInfo/delete.do?ids=${a.id}&_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.delete'/>"  target="ajaxTodo"><@t.page 'button.delete'/></a>
+                </#if>
+                </td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</@_sampleInfoList>
+</div>

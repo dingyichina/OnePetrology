@@ -1,0 +1,30 @@
+<script>
+	//判断是否需要登录
+		  //检测是否已经登录
+	 function hasLogin(){
+		var mycookie=$.cookie('dsAuthInfo');
+		if(mycookie==null || mycookie==undefined || mycookie=="")
+			return false;
+		 var dsAuthInfo=JSON.parse(mycookie);
+		 //检测exp是否过期
+		 return true;
+		 
+	 }
+	  //文档完成函数
+	  $(function(){
+		  if(hasLogin())
+			  return;
+		  //检测变量是否定义，以及是否需要跳转
+		  if(PAGE_NEED_LOGIN){
+			//获取当前页面的href  
+			 var rtnUrl=window.location.pathname; 
+			  
+			 window.location.href='/login.html?returnUrl='+rtnUrl; 
+		  }
+		  
+		  
+	  });
+	
+
+
+</script>

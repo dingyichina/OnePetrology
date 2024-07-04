@@ -1,0 +1,19 @@
+{
+    "档号+室编件号": "dc.identifier.FN",
+    "名称": "dc.title",
+    "摘要（含时间、地点、事件、人物）": "dc.description.abstract",
+    "颁发时间": "dc.date.avaliable",
+    "颁发单位": "dc.contributor.organization",
+    "是否原件": "dcterms.provenance.isOriginal",
+    "原件保存地": "dcterms.relation.originalDocumentLocation",
+    "载体代码": "dcterms.format.medium",
+    "存放路径": "dc.description.storagePath",
+    "语种": "dc.language.iso",
+    "提供者": "dc.description.provider",
+    "提供时间": "dc.date.provided",
+    "备注": "dc.description.comment",
+    "关联科学家": "relation.isScientistOfCertificatesParts",
+    "dspace.entity.type": "CertificatesParts",
+    "collection_uuid":"0968500d-71f9-4268-a916-8811e65d7707",
+    "savepath":"存放路径"
+}

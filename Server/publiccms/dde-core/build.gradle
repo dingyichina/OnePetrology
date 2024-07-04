@@ -1,0 +1,15 @@
+group = 'com.publiccms'
+
+dependencies {
+    compile project(':publiccms-common')
+    compile (
+        "com.zaxxer:HikariCP:${hikariCPVersion}",
+        "mysql:mysql-connector-java:${mysqlVersion}",
+        "eu.bitwalker:UserAgentUtils:${userAgentUtilsVersion}",
+        "org.hibernate:hibernate-search-elasticsearch:${hibernateSearchVersion}",
+        "javax.annotation:javax.annotation-api:${annotationVersionVersion}",
+        "javax.servlet:javax.servlet-api:${servletVersion}",
+        "org.apache.poi:poi-ooxml:${poiVersion}",
+        "com.drewnoakes:metadata-extractor:${extractorVersion}"
+    )
+}

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<@_includePlace path="/74b37900-545a-4dfa-b1ae-43cf77dd790c.html"/> <#-- 关键金属head -->
+	
+	<link rel="stylesheet" href="${site.sitePath}leaflet/leaflet.css" />
+    <link rel="stylesheet" href="${site.sitePath}leaflet/leaflet-geoman.css" />
+    <link rel="stylesheet" href="${site.sitePath}leaflet/Leaflet.PolylineMeasure.css" />
+    <link rel="stylesheet" href="${site.sitePath}leaflet/leaflet-search.src.css" />
+    <link rel="stylesheet" href="${site.sitePath}leaflet/leaflet.awesome-markers.css">
+    <link href="${site.sitePath}font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="${site.sitePath}font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="${site.sitePath}leaflet/Leaflet.fullscreen.css">
+    <script src="${site.sitePath}leaflet/leaflet.js"></script>
+    <script src="${site.sitePath}leaflet/Leaflet.fullscreen.js"></script>
+    <script src="${site.sitePath}leaflet/leaflet-tilelayer-wmts-src.js"></script>
+    <script src="${site.sitePath}leaflet/leaflet-geoman.min.js"></script>
+    <script src="${site.sitePath}leaflet/Leaflet.PolylineMeasure.js"></script>
+    <script src="${site.sitePath}leaflet/leaflet-search.src.js"></script>
+    <script src="${site.sitePath}leaflet/leaflet.awesome-markers.js"></script>
+    <script src="${site.sitePath}leaflet/leaflet-ant-path.js"></script>
+	   <link rel="stylesheet" href="${site.sitePath}leaflet/pruneCluster.css">
+	<script src="${site.sitePath}leaflet/PruneCluster.js"></script>
+    <script src="${site.sitePath}js/jquery-1.12.4.min.js"></script>
+
+	<script src="${site.sitePath}leaflet/leaflet-providers.js"></script>
+    <script src="${site.sitePath}leaflet/leaflet-bing-layer.js"></script>
+	<script src="${site.sitePath}leaflet/leaflet.ChineseTmsProviders.js"></script>
+	
+	<link href="${site.sitePath}css/earthchem.css" rel="stylesheet">
+</head>
+<body  class="menu-always-on-top" >
+	
+<@_includePlace path="/1ab2995b-a401-4885-8228-402f80be6874.html"/> <#-- 关键金属header -->
+<div class="container">
+	<div class="wrapper" style="margin-top:20px;">
+		<!-- end header -->
+        <h1 id="title">变革性技术专项-数据共享</h1>
+		
+		<div class="mapdetails" style="width:1024px">
+			<@_includePlace path="/10e06c19-2965-41fa-b68b-c823584451c6.html"/> <#-- 变革课题数据共享 -->
+		</div>
+
+        
+		<div style="padding-top:5px;padding-bottom:5px;">
+			<table>
+				<tbody><tr>
+					<td>
+						<form name="mapform" id="mapform" action="/sampleInfo/queryPolygon" method="post">
+							<input type="hidden" name="_csrf" value="<@_csrfToken/>"/>
+							<input name="returnUrl" type="hidden" value="${site.dynamicPath}search/queryResult.html?result=true" />
+							<input type="hidden" name="pageIndex" value="1"/>
+							<input type="hidden" name="pageSize" value="50"/>
+							<input type="hidden" name="orderByField" value="id"/>
+							<input type="hidden" name="orderByType" value="asc"/>							
+							<a name="anchordata">提示：可以通过点击在地图中自定义多边形或矩形区域框选查询数据</a>
+ 						    <div class="form-group">
+									<label for="queryGeojson" style="color:blue;font-weight: bold；">选择查询区域(默认选中北疆地区，其他地区请手动选择)：</label>
+									<textarea style="width: 1024px;height: 61px;" id="queryGeojson"  name="queryGeojson" class="form-control" rows="5" name=textarea>(68.818359,40.513799),(83.408203,40.713956),(97.646484,40.111689),(101.513672,41.112469),(102.392578,45.39845),(89.296875,50.680797),(84.726563,50.34546),(68.818359,40.513799)</textarea>
+							</div>
+							<input type="button" class="submitbutton" onclick="return doSubmit();"  value="查询数据">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<button type="button" class="submitbutton" onclick="clearpoly();">默认坐标</button>
+						</form>
+						
+					</td>
+					<td>
+					
+					</td>
+				</tr>
+			</tbody></table>
+		</div>
+	<div style="width:1024px;height: 768px; margin:0px;" id='map-container' >
+	</div>
+
+	<script language="javascript" type="text/javascript"> 
+		 
+		
+		
+					function doSubmit(){
+						var ptlist=$("#queryGeojson").val();
+						if (ptlist==null || ptlist==""){
+							alert("choose the area first please.");
+							return false;
+						} 
+						sessionStorage.setItem("polygon",ptlist);
+						window.location.href="options.html";
+						return true;
+					}
+					
+					
+					function clearpoly(){
+						$("#queryGeojson").val("");
+						location.reload();
+   				    }
+					
+					$(function() {
+						var currentMap = createMap();//创建地图
+						// var markers = new L.MarkerClusterGroup();
+						addMapPlugs(currentMap); //加载插件
+						//currentMap.setView(L.latLng(34, 108), 4);
+							//缩放到指定位置和放大程度
+						currentMap.setView([47.948911,87.738743],9, { 
+							pan: { animate: true , duration: 0.5 }, 
+							zoom: { animate: true }, 
+							animate: true 
+						});
+
+					})
+					//创建地图
+					function createMap(){
+						var newMap = L.map('map-container', {
+							minZoom: 0,
+							maxZoom: 13,
+							crs: L.CRS.EPSG3857,
+							fullscreenControl: {
+								pseudoFullscreen: false
+							},
+							center: [ 47.848911,88.138743]
+						});
+						var url = 'http://39.107.96.248:8080/geoserver/gwc/service/wmts';
+						var matrixIds = [];
+						for (var i = 0; i < 22; ++i) {
+							matrixIds[i] = {
+								identifier: i,
+								topLeftCorner: new L.LatLng(90, -180)
+							};
+						}
+						 var matrixIds3857 = new Array(16);
+						for (var i= 0; i<16; i++) {
+							matrixIds3857[i]= {
+								identifier    : "" + i,
+								topLeftCorner : new L.LatLng(20037508.3428,-20037508.3428)
+							};
+						}
+
+						var ign = new L.TileLayer.WMTS(url, {
+								minZoom:4,
+							maxZoom:15,
+							layer: 'dde:petrology2020',
+							styles: 'default',
+						   tilematrixset: "EPSG:3857",
+							format: 'image/png',
+							matrixIds: matrixIds3857,
+							attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+						});
+						newMap.addLayer(ign);
+						L.control.scale({'position': 'bottomleft', 'metric': true, 'imperial': false}).addTo(newMap);
+						//背景底图
+						var opacity=0.8; //背景底图透明度
+						//Esri 的世界影像
+						var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+							attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+						});
+						Esri_WorldImagery.setOpacity(opacity);
+						//Osm De的地图，包含中英文两种标注
+						var OpenStreetMap_DE = L.tileLayer('https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png', {
+							maxZoom: 18,
+							attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+						 });
+						//OpenStreetMap_DE.setOpacity(opacity);
+						//微软bing map的影像
+						var BING_KEY = 'AvewBhQcQ8oh_dZ0rYIkYfHrrQdj87mT42i4plCmcqccDe0JXsWaOSNi4NuWvH0Z';
+						var bingLayer = L.tileLayer.bing(BING_KEY);
+						bingLayer.setOpacity(opacity);
+						//高德影像
+						var imgm = L.tileLayer.chinaProvider('GaoDe.Satellite.Map', {
+							maxZoom: 18,
+							minZoom: 3
+						});
+						var imga = L.tileLayer.chinaProvider('GaoDe.Satellite.Annotion', {
+							maxZoom: 18,
+							minZoom: 3
+						});
+						gaodeLayer = L.layerGroup([imgm, imga]);
+						//gaodeLayer.setOpacity(opacity);
+						//组合所有的背景图以供选择
+							var baselayer={"ESRI":Esri_WorldImagery,"OSM":OpenStreetMap_DE,"BING":bingLayer,"高德":gaodeLayer};
+						 L.control.layers(baselayer, null).addTo(newMap);
+						  newMap.addLayer(gaodeLayer); //默认添加Bing Map
+						//加载默认的选择区域：新疆阿尔泰地区
+						var  geojson={
+									"type": "FeatureCollection",
+									"features": [{
+										"type": "Feature",
+										"properties": {
+											"adcode": 654301,
+											"name": "阿勒泰市",
+											"center": [88.138743, 47.848911],
+											"centroid": [87.917843, 47.884663],
+											"childrenNum": 0,
+											"level": "district",
+											"parent": {
+												"adcode": 654300
+											},
+											"subFeatureIndex": 0,
+											"acroutes": [100000, 650000, 654300]
+										},
+										"geometry": {
+											"type": "MultiPolygon",
+											"coordinates": [
+												[
+													[
+														[88.430142, 47.258186],
+														[88.420763, 47.262148],
+														[88.389295, 47.265734],
+														[88.383857, 47.271864],
+														[88.358494, 47.282703],
+														[88.345285, 47.29104],
+														[88.332021, 47.303043],
+														[88.307768, 47.313459],
+														[88.306824, 47.335036],
+														[88.314317, 47.400671],
+														[88.312874, 47.439173],
+														[88.316537, 47.455297],
+														[88.332853, 47.474615],
+														[88.34584, 47.486617],
+														[88.346284, 47.496541],
+														[88.352389, 47.515096],
+														[88.352278, 47.523936],
+														[88.372368, 47.536135],
+														[88.388629, 47.538831],
+														[88.406278, 47.558616],
+														[88.408165, 47.575532],
+														[88.417156, 47.588382],
+														[88.423039, 47.612291],
+														[88.42992, 47.620244],
+														[88.454895, 47.664504],
+														[88.457781, 47.676587],
+														[88.474264, 47.69392],
+														[88.489637, 47.703226],
+														[88.500848, 47.703888],
+														[88.511836, 47.713274],
+														[88.510282, 47.73072],
+														[88.523491, 47.737415],
+														[88.531261, 47.749027],
+														[88.523602, 47.76171],
+														[88.524989, 47.776455],
+														[88.533203, 47.779263],
+														[88.558899, 47.780997],
+														[88.585594, 47.776868],
+														[88.599413, 47.782071],
+														[88.624831, 47.779758],
+														[88.615452, 47.78942],
+														[88.58576, 47.793796],
+														[88.571053, 47.799989],
+														[88.562673, 47.800484],
+														[88.573828, 47.811462],
+														[88.573551, 47.821449],
+														[88.578046, 47.829824],
+														[88.572385, 47.837785],
+														[88.560342, 47.839311],
+														[88.544192, 47.848509],
+														[88.558455, 47.859271],
+														[88.55568, 47.87069],
+														[88.569333, 47.874771],
+														[88.564005, 47.881448],
+														[88.543138, 47.884621],
+														[88.533703, 47.890143],
+														[88.534424, 47.898384],
+														[88.513668, 47.908559],
+														[88.497518, 47.912761],
+														[88.47493, 47.909713],
+														[88.459002, 47.912102],
+														[88.448679, 47.909836],
+														[88.432307, 47.911813],
+														[88.406888, 47.925445],
+														[88.391127, 47.929974],
+														[88.386409, 47.943478],
+														[88.398175, 47.947182],
+														[88.414769, 47.961299],
+														[88.438023, 47.972161],
+														[88.442352, 47.979854],
+														[88.460001, 47.988779],
+														[88.482755, 47.993961],
+														[88.491857, 48.001157],
+														[88.484087, 48.014149],
+														[88.4827, 48.030425],
+														[88.468936, 48.054377],
+														[88.475207, 48.073432],
+														[88.474042, 48.093589],
+														[88.481978, 48.105449],
+														[88.497906, 48.115953],
+														[88.515111, 48.123665],
+														[88.531372, 48.12748],
+														[88.544747, 48.137651],
+														[88.555125, 48.141383],
+														[88.569277, 48.152822],
+														[88.580377, 48.154585],
+														[88.584317, 48.162005],
+														[88.600079, 48.165816],
+														[88.611179, 48.165079],
+														[88.62411, 48.168849],
+														[88.628883, 48.175939],
+														[88.641204, 48.181922],
+														[88.636375, 48.186633],
+														[88.632213, 48.201872],
+														[88.623278, 48.209203],
+														[88.606239, 48.217065],
+														[88.598192, 48.227218],
+														[88.60019, 48.244736],
+														[88.594751, 48.259957],
+														[88.575105, 48.277587],
+														[88.573773, 48.284212],
+														[88.582597, 48.298645],
+														[88.6018, 48.319775],
+														[88.606517, 48.329377],
+														[88.606073, 48.337833],
+														[88.600357, 48.342449],
+														[88.573662, 48.351761],
+														[88.573273, 48.369685],
+														[88.546967, 48.367848],
+														[88.535534, 48.368991],
+														[88.5251, 48.376258],
+														[88.522936, 48.403517],
+														[88.503845, 48.41298],
+														[88.491024, 48.409595],
+														[88.475152, 48.398417],
+														[88.462554, 48.392215],
+														[88.450621, 48.391031],
+														[88.438134, 48.393602],
+														[88.418099, 48.40625],
+														[88.360936, 48.43337],
+														[88.356884, 48.448128],
+														[88.3631, 48.460436],
+														[88.349558, 48.46773],
+														[88.31798, 48.478322],
+														[88.268863, 48.491641],
+														[88.260872, 48.496894],
+														[88.229626, 48.498157],
+														[88.223299, 48.504224],
+														[88.196715, 48.493962],
+														[88.186004, 48.497953],
+														[88.169465, 48.513831],
+														[88.151817, 48.526286],
+														[88.143048, 48.528565],
+														[88.130061, 48.521606],
+														[88.123513, 48.526164],
+														[88.11319, 48.542237],
+														[88.101091, 48.548014],
+														[88.086051, 48.548787],
+														[88.05919, 48.546143],
+														[88.041319, 48.54834],
+														[88.006799, 48.566113],
+														[87.991537, 48.568553],
+														[87.973111, 48.575994],
+														[87.962622, 48.587133],
+														[87.961568, 48.599407],
+														[87.983101, 48.612004],
+														[88.010739, 48.61891],
+														[87.993146, 48.625328],
+														[87.982269, 48.640314],
+														[87.9735, 48.642994],
+														[87.953909, 48.639015],
+														[87.926714, 48.642913],
+														[87.909232, 48.640598],
+														[87.898965, 48.647095],
+														[87.889197, 48.645795],
+														[87.880873, 48.63804],
+														[87.861837, 48.627562],
+														[87.868663, 48.612451],
+														[87.855399, 48.593393],
+														[87.855343, 48.584938],
+														[87.846963, 48.575506],
+														[87.835752, 48.572091],
+														[87.820879, 48.563755],
+														[87.805006, 48.548136],
+														[87.788911, 48.54301],
+														[87.734911, 48.537518],
+														[87.715653, 48.528647],
+														[87.713766, 48.522339],
+														[87.700613, 48.519408],
+														[87.678913, 48.518228],
+														[87.672253, 48.5063],
+														[87.664373, 48.483984],
+														[87.654161, 48.481784],
+														[87.667314, 48.473841],
+														[87.68857, 48.455383],
+														[87.693343, 48.440423],
+														[87.693398, 48.424359],
+														[87.689402, 48.415428],
+														[87.676138, 48.401436],
+														[87.656436, 48.390174],
+														[87.650886, 48.379686],
+														[87.648222, 48.351393],
+														[87.644837, 48.345512],
+														[87.630241, 48.339427],
+														[87.591336, 48.340693],
+														[87.584066, 48.337098],
+														[87.600771, 48.323289],
+														[87.615645, 48.318999],
+														[87.61731, 48.314177],
+														[87.607153, 48.300321],
+														[87.610206, 48.287279],
+														[87.615312, 48.278814],
+														[87.609207, 48.264662],
+														[87.611427, 48.250261],
+														[87.607708, 48.243181],
+														[87.590726, 48.229429],
+														[87.591447, 48.221937],
+														[87.6051, 48.220054],
+														[87.614202, 48.214158],
+														[87.60732, 48.213543],
+														[87.605267, 48.207319],
+														[87.594278, 48.20867],
+														[87.596109, 48.203264],
+														[87.587507, 48.197039],
+														[87.571634, 48.192696],
+														[87.567583, 48.187658],
+														[87.549435, 48.178685],
+														[87.532119, 48.178644],
+														[87.541388, 48.16889],
+														[87.539723, 48.162496],
+														[87.517468, 48.14577],
+														[87.520853, 48.127972],
+														[87.533229, 48.10705],
+														[87.530454, 48.089936],
+														[87.523406, 48.081069],
+														[87.533007, 48.063864],
+														[87.555429, 48.053021],
+														[87.539223, 48.038437],
+														[87.521297, 48.02763],
+														[87.482337, 48.018095],
+														[87.467796, 48.017725],
+														[87.446929, 48.013943],
+														[87.455198, 48.006708],
+														[87.435607, 47.988985],
+														[87.421344, 47.979895],
+														[87.434497, 47.970556],
+														[87.446207, 47.954879],
+														[87.44654, 47.941914],
+														[87.43977, 47.93438],
+														[87.401476, 47.92108],
+														[87.390542, 47.910578],
+														[87.39254, 47.894552],
+														[87.38699, 47.882602],
+														[87.361572, 47.877656],
+														[87.344035, 47.865331],
+														[87.339761, 47.85123],
+														[87.343535, 47.836383],
+														[87.34914, 47.828751],
+														[87.345977, 47.81757],
+														[87.348419, 47.809234],
+														[87.36074, 47.7952],
+														[87.345699, 47.750018],
+														[87.32633, 47.713192],
+														[87.326774, 47.689825],
+														[87.30291, 47.641571],
+														[87.294141, 47.627782],
+														[87.291699, 47.616143],
+														[87.283042, 47.600441],
+														[87.277159, 47.597748],
+														[87.274717, 47.585274],
+														[87.263562, 47.593231],
+														[87.263395, 47.582994],
+														[87.258067, 47.572589],
+														[87.240197, 47.580217],
+														[87.211781, 47.579056],
+														[87.215167, 47.586807],
+														[87.20107, 47.58917],
+														[87.197352, 47.592692],
+														[87.179759, 47.589998],
+														[87.168159, 47.594847],
+														[87.155395, 47.591781],
+														[87.151399, 47.571304],
+														[87.141076, 47.566287],
+														[87.137857, 47.57263],
+														[87.145849, 47.579802],
+														[87.143685, 47.584859],
+														[87.130254, 47.582911],
+														[87.124926, 47.576942],
+														[87.106001, 47.579263],
+														[87.092182, 47.585439],
+														[87.081637, 47.5866],
+														[87.067485, 47.583077],
+														[87.060881, 47.591532],
+														[87.049448, 47.592112],
+														[87.04917, 47.597416],
+														[87.02908, 47.596215],
+														[86.974025, 47.557413],
+														[86.942724, 47.530326],
+														[86.927073, 47.512067],
+														[86.89, 47.462485],
+														[86.933789, 47.45056],
+														[86.965534, 47.439838],
+														[87.006436, 47.421755],
+														[87.026693, 47.4077],
+														[87.042511, 47.391103],
+														[87.042511, 47.382907],
+														[87.048005, 47.381368],
+														[87.047172, 47.365596],
+														[87.053111, 47.345905],
+														[87.047838, 47.333579],
+														[87.032021, 47.319958],
+														[87.025916, 47.30821],
+														[87.070038, 47.3195],
+														[87.092848, 47.328623],
+														[87.151787, 47.344114],
+														[87.218941, 47.354481],
+														[87.25285, 47.36264],
+														[87.290645, 47.375542],
+														[87.312178, 47.385237],
+														[87.342148, 47.392268],
+														[87.385769, 47.39934],
+														[87.388877, 47.403208],
+														[87.428337, 47.434809],
+														[87.460526, 47.433104],
+														[87.467408, 47.431067],
+														[87.531009, 47.432689],
+														[87.540278, 47.429654],
+														[87.554763, 47.421298],
+														[87.567416, 47.421921],
+														[87.570913, 47.411152],
+														[87.579404, 47.406203],
+														[87.577351, 47.391478],
+														[87.563698, 47.372629],
+														[87.547603, 47.356813],
+														[87.55615, 47.356729],
+														[87.771762, 47.357062],
+														[87.772928, 47.349485],
+														[87.781031, 47.34832],
+														[87.780698, 47.367219],
+														[87.774038, 47.371797],
+														[87.761662, 47.372629],
+														[87.753725, 47.38012],
+														[87.760607, 47.386985],
+														[87.770708, 47.380536],
+														[87.788578, 47.383115],
+														[87.793962, 47.379579],
+														[87.803008, 47.382366],
+														[87.822433, 47.365054],
+														[87.833643, 47.365387],
+														[87.831534, 47.357271],
+														[87.849072, 47.361267],
+														[87.853345, 47.36726],
+														[87.869107, 47.360018],
+														[87.865111, 47.357354],
+														[87.87782, 47.350943],
+														[87.873103, 47.346155],
+														[87.853345, 47.346571],
+														[87.828648, 47.351942],
+														[87.828926, 47.337035],
+														[87.844133, 47.325665],
+														[87.862558, 47.317584],
+														[87.88731, 47.329247],
+														[87.887144, 47.339492],
+														[87.906679, 47.341325],
+														[87.93121, 47.334911],
+														[87.935705, 47.331621],
+														[87.972057, 47.322833],
+														[87.98582, 47.316876],
+														[88.013625, 47.315959],
+														[88.038711, 47.312251],
+														[88.063408, 47.297542],
+														[88.088604, 47.287622],
+														[88.098039, 47.280952],
+														[88.116853, 47.276533],
+														[88.223466, 47.245088],
+														[88.262093, 47.238497],
+														[88.299832, 47.246715],
+														[88.304826, 47.256601],
+														[88.312152, 47.25806],
+														[88.320755, 47.24684],
+														[88.33968, 47.239748],
+														[88.382358, 47.242168],
+														[88.400728, 47.247675],
+														[88.414325, 47.248926],
+														[88.430142, 47.258186]
+													]
+												]
+											]
+										}
+
+									}]
+								};
+									//渲染样式
+								 var myStyle = {
+											"color": "#00f",
+											"weight": 3,
+											"opacity": 0.8,
+							};
+
+						var layerGeo = L.geoJSON(geojson, {
+							style:myStyle
+						}).addTo(newMap);
+						ign.setZIndex(9);  //确保岩浆岩图在上面
+					
+						
+						return newMap;
+					}
+
+					//加载插件
+					function addMapPlugs(map){
+						if(!map){
+							return ;
+						}
+						//标记插件--geoman
+						map.pm.addControls({
+							position: 'topleft',
+							drawCircle: false,
+							drawMarker:false,
+							drawPolyline:false,
+							editMode:false,
+							dragMode:false,
+							cutPolygon:false,
+							removalMode:false,
+							drawCircleMarker:false,
+						});
+					//绘制完成事件
+					   map.on('pm:create', e => {
+						let shape = e.shape;
+						//多边形
+						if ('Polygon' === shape || 'Rectangle' === shape ||  'Circle' === shape) {
+						  // 处理绘制完成的逻辑
+							console.log(e);//得到所绘的图形
+							shapes = e.layer.toGeoJSON();
+							pointstr="";
+							var ptlist=shapes.geometry.coordinates[0];
+							str=ptlist.join("),(");
+							str="("+str+")";
+							console.log(str);
+							$("#queryGeojson").val(str);
+							console.log(shapes.geometry.type);//得到所绘的图形
+						   console.log(shapes.geometry.coordinates[0]);//得到所绘的图形
+						}
+					  });
+					}
+				</script>
+			<!-- start footer -->
+		</div>
+
+    </script>
+	</div>
+	<@_includePlace path="/7b419669-3928-4fa3-a405-23f01553ca59.html"/> <#-- 关键金属footer -->
+</body>
+</html>

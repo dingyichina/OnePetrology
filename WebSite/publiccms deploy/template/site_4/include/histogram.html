@@ -1,0 +1,18 @@
+<script>
+var x = [];
+for (var i = 0; i < 500; i ++) {
+	x[i] = Math.random();
+}
+
+var data = [
+  {
+    x: x,
+    type: 'histogram',
+	histnorm: 'probability',
+	marker: {
+        color: 'rgb(27,70,191)',
+     },    
+  }
+];
+Plotly.newPlot('myDiv', data);
+</script>

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>QMapWidget</class>
+ <widget class="QWidget" name="QMapWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>650</width>
+    <height>463</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QToolButton" name="btnWhole">
+       <property name="toolTip">
+        <string>zoom to whole map</string>
+       </property>
+       <property name="text">
+        <string>Whole</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>res/map/Whole.png</normaloff>res/map/Whole.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonIconOnly</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="btnZoomIn">
+       <property name="text">
+        <string>Whole</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>res/map/zoom in.png</normaloff>res/map/zoom in.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonIconOnly</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="btnZoomOut">
+       <property name="text">
+        <string>Whole</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>res/map/zoom out.png</normaloff>res/map/zoom out.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonIconOnly</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="btnMove">
+       <property name="text">
+        <string>Whole</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>res/map/move.png</normaloff>res/map/move.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonIconOnly</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Line" name="line">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="btnIdentify">
+       <property name="text">
+        <string>Whole</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>res/map/infomation.png</normaloff>res/map/infomation.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonIconOnly</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="btnRectangle">
+       <property name="text">
+        <string>Whole</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>res/map/rectangle.png</normaloff>res/map/rectangle.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonIconOnly</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="btnCircle">
+       <property name="text">
+        <string>Whole</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>res/map/circle.png</normaloff>res/map/circle.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonIconOnly</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="btnPolygon">
+       <property name="text">
+        <string>Whole</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>res/map/polygon.png</normaloff>res/map/polygon.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonIconOnly</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QgsMapCanvas" name="mapCanvas"/>
+   </item>
+   <item>
+    <widget class="QLabel" name="lblStatus">
+     <property name="text">
+      <string>(x,y)</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QgsMapCanvas</class>
+   <extends>QGraphicsView</extends>
+   <header>qgis.gui</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<@_includePlace path="/Header-link.html"/> <#-- head-link -->
+</head>
+<body>
+   <@_includePlace path="/header.html"/> <#-- header -->
+	<@_content id=id>
+	<div class="locationbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- start location -->
+                    <ul class="breadcrumb pull-left">
+                        <li class="breadcrumb-prefix breadcrumb-item d-none d-md-block">You Are Here: </li>
+
+                        <li class="breadcrumb-item"><a href="${site.dynamicPath!}">Home</a></li>
+
+                        <li class="breadcrumb-item"><a href="${site.dynamicPath!}workingGroup.html">${object.title}</a></li>
+
+                    </ul>
+                    <!-- end location -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-white">
+        <div class="container">
+             ${(getContentAttribute(id).text?no_esc)!}
+        </div>
+    </div>
+	</@_content>
+    <@_includePlace path="/53d9aa26-ab9a-41df-90d5-efc5307c3b3e.html"/> <#-- footer -->
+</body>
+</html>

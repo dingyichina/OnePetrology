@@ -1,0 +1,64 @@
+<@_sampleList >
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>岩浆岩数据库——样品基本信息</title>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=device-dpi" />
+	<link href="${site.sitePath}leaflet/leaflet.css" rel="stylesheet"/>
+	<script src="${site.sitePath}leaflet/leaflet.js"></script>
+	<script src="${site.sitePath}leaflet/PruneCluster.js"></script>
+    <script src="${site.sitePath}publishdata/samplePoints.js"></script>
+    <link href="${site.sitePath}leaflet/mapview.css" rel="stylesheet"/>
+	
+	<script src="${site.sitePath}js/jquery-1.9.1.min.js"></script>
+	<link href="${site.sitePath}css/jquery.range.css" rel="stylesheet"/>
+	<script src="${site.sitePath}js/jquery.range.js"></script>
+	
+	<script src="${site.sitePath}bootstrap/js/bootstrap.min.js"></script>
+	<link href="${site.sitePath}bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+	
+</head>
+<body>
+
+	
+<div id="map" class="height:100%;width:100%;"></div>
+	
+
+	
+<script>
+    var map = L.map("map", {
+        attributionControl: false,
+        zoomControl: false
+    }).setView(L.latLng(34, 108), 4);
+
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        detectRetina: true,
+        maxNativeZoom: 18
+    }).addTo(map);
+
+    var leafletView = new PruneClusterForLeaflet();
+
+	<#list page as a>
+		<#if (a.longitude)?? &&  (a.latitude)?? && a.longitude  != 0  && a.latitude!=0>
+		 leafletView.RegisterMarker(new PruneCluster.Marker(${(a.latitude)!0},${( a.longitude)!0}, {title:"${ a.originalSampleId!}"}));
+		</#if>
+     </#list>
+   
+    leafletView.PrepareLeafletMarker = function (marker, data) {
+        if (marker.getPopup()) {
+            marker.setPopupContent(data.title);
+        } else {
+            marker.bindPopup(data.title);
+        }
+    };
+
+    map.addLayer(leafletView);
+</script>
+
+</div>
+	
+</body>
+</html>
+</@_sampleList>

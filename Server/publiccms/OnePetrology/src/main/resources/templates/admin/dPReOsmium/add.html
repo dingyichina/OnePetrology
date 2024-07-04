@@ -1,0 +1,47 @@
+<@_dPReOsmium id=id><#assign a=object/></@_dPReOsmium>
+<form method="post" action="dPReOsmium/save.do?callbackType=closeCurrent&navTabId=dPReOsmium/list" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <input name="id" type="hidden" value="${id!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+    <div class="pageContent">
+        <div class="pageFormContent" layoutH="56">
+            <dl>
+                <dt>ID：</dt>
+                <dd><input class="required" name="id" type="text" size="30" value="${(a.id)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>衰变常数 （1/年）：</dt>
+                <dd><input class="required" name="decayConst" type="text" size="30" value="${(a.decayConst)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铼（10<sup>-6</sup>）：</dt>
+                <dd><input class="required" name="re" type="text" size="30" value="${(a.re)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>锇-187（10<sup>-6</sup>）：</dt>
+                <dd><input class="required" name="os187" type="text" size="30" value="${(a.os187)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>模式年龄（Ma）：</dt>
+                <dd><input class="required" name="modelAge" type="text" size="30" value="${(a.modelAge)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>年龄误差(Ma)：</dt>
+                <dd><input class="required" name="ageError" type="text" size="30" value="${(a.ageError)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>备注：</dt>
+                <dd><input class="required" name="remark" type="text" size="30" value="${(a.remark)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>样品：</dt>
+                <dd><input class="required" name="sampleId" type="text" size="30" value="${(a.sampleId)!}"/></dd>
+            </dl>
+        </div>
+    </div>
+</form>

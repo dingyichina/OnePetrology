@@ -1,0 +1,1 @@
+{"email_verification":{"code":"email_verification","description":"用户邮箱验证配置","extendList":[{"id":{"code":"reason"},"required":false,"searchable":false,"maxlength":null,"name":"注册原因","description":"","inputType":"text","defaultValue":"","dictionaryId":"","sort":0}]}}

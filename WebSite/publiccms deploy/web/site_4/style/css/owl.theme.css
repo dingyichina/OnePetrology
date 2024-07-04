@@ -1,0 +1,56 @@
+/**
+ * Owl Carousel v2.3.4
+ * Copyright 2013-2018 David Deutsch
+ * Licensed under: SEE LICENSE IN https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE
+ */
+.owl-theme .owl-dots, .owl-theme .owl-nav {-webkit-tap-highlight-color: transparent;}
+.owl-theme .owl-nav {margin-top:15px;width:100%;text-align:right;}
+.owl-theme .owl-nav .disabled {opacity: .5;cursor: default}
+.owl-theme .owl-nav button{width:2rem;color:#fff;height:2rem;margin-left:.25rem;}
+.owl-nav button:after {font-family: "FontAwesome";font-size:1.125rem;line-height:1.625rem;background-color:#00a3da;color:#fff;padding:.3125rem .6875rem;}
+.owl-nav button:hover:after {background-color:#fdb74b;}
+.owl-prev:after{content: "\f104";}
+.owl-next:after{content: "\f105";}
+
+.owl-theme .owl-dots{text-align:center;margin-top:-1.5625rem;}
+.owl-theme .owl-nav.disabled + .owl-dots {margin-top:.9375rem}
+.owl-theme .owl-dots .owl-dot {display: inline-block;zoom: 1}
+.owl-theme .owl-dots .owl-dot span {width:12px;height: 12px;margin: 5px 5px;background: #ddd;display: block;-webkit-backface-visibility: visible;transition: opacity .2s ease;border-radius: 0;}
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {background: #fdb74b;}
+.owl-theme *:focus {outline: -webkit-focus-ring-color auto 0;}
+
+.bc-slide-12 .owl-dots{position:absolute;margin:0;bottom:20px;text-align:center;width:100%;}
+.bc-slide-12 .owl-nav{margin:0;}
+.bc-slide-12 .owl-nav .owl-next{position:absolute;right:35px;top:50%;margin:-30px 0 0;}
+.bc-slide-12 .owl-nav .owl-prev{position:absolute;left:15px;top:50%;margin:-30px 0 0;}
+.bc-slide-12 .owl-nav button:after{font-family: "FontAwesome";font-size:1.5rem;line-height:1;background:rgba(0,0,0,0.3);color:#fff;padding:0;border-radius:50%;display:inline-block;width:3.25rem;line-height:3.25rem;text-align:center;}
+.bc-slide-12 .owl-nav button:hover:after {opacity:0.6;}
+
+.bc-slide-13 .owl-dots{position:absolute;margin:0;bottom:0;text-align:right;width:100%;padding-right:.5rem;margin-top:0;}
+.bc-slide-13 .owl-nav{margin:0;}
+.bc-slide-13 .owl-nav .owl-next{position:absolute;right:25px;top:50%;margin:-30px 0 0;}
+.bc-slide-13 .owl-nav .owl-prev{position:absolute;left:15px;top:50%;margin:-30px 0 0;}
+.bc-slide-13 .owl-nav button:after{font-family: "FontAwesome";font-size:1.875rem;line-height:1;background:rgba(0,0,0,0.3);color:#fff;padding:10px 15px;border-radius:5px;}
+.bc-slide-13 .owl-nav button:hover:after {opacity:0.6;}
+
+.bc-slide-14 .owl-dots{position:absolute;margin:0;bottom:1rem;width:100%;padding-right:.5rem;margin-top:0;}
+.bc-slide-14 .owl-nav{margin:0;}
+.bc-slide-14 .owl-nav .owl-next{position:absolute;right:25px;top:50%;margin:-30px 0 0;}
+.bc-slide-14 .owl-nav .owl-prev{position:absolute;left:15px;top:50%;margin:-30px 0 0;}
+.bc-slide-14 .owl-nav button:after{font-family: "FontAwesome";font-size:1.5rem;line-height:1;background:rgba(0,0,0,0.3);color:#fff;padding:10px 15px;border-radius:5px;}
+.bc-slide-14 .owl-nav button:hover:after {opacity:0.6;}
+
+.bc-gallery-01 .owl-dots{position:absolute;margin:0;bottom:0;width:100%;padding-right:.5rem;margin-top:0;}
+.bc-gallery-01 .owl-nav{margin:0;}
+.bc-gallery-01 .owl-nav .owl-next{position:absolute;right:0;top:50%;margin:-15px 0 0;}
+.bc-gallery-01 .owl-nav .owl-prev{position:absolute;left:0;top:50%;margin:-15px 0 0;}
+.bc-gallery-01 .owl-nav button:after{font-family:"FontAwesome";font-size:1rem;line-height:1;background:rgba(0,0,0,0.3);color:#fff;padding:.5rem .75rem;border-radius:3px;}
+.bc-gallery-01 .owl-nav button:hover:after {opacity:0.6;}
+
+.bc-article-01 .art-slide-simple .owl-dots{position:absolute;margin:0;bottom:0;width:100%;text-align:center;}
+.bc-article-01 .art-slide-standard .owl-dots{position:absolute;margin:0;bottom:-40px;width:100%;text-align:center;}
+.bc-article-01 .art-slide-simple .owl-nav,.bc-article-01 .art-slide-standard .owl-nav{margin:0;}
+.bc-article-01 .art-slide-simple .owl-nav .owl-next,.bc-article-01 .art-slide-standard .owl-nav .owl-next{position:absolute;right:25px;top:50%;margin:-30px 0 0;}
+.bc-article-01 .art-slide-simple .owl-nav .owl-prev,.bc-article-01 .art-slide-standard .owl-nav .owl-prev{position:absolute;left:15px;top:50%;margin:-30px 0 0;}
+.bc-article-01 .art-slide-simple .owl-nav button:after,.bc-article-01 .art-slide-standard .owl-nav button:after{font-family: "FontAwesome";font-size:1.875rem;line-height:1;background:rgba(0,0,0,0.3);color:#fff;padding:10px 15px;border-radius:5px;}
+.bc-article-01 .art-slide-simple .owl-nav button:hover:after,.bc-article-01 .art-slide-standard .owl-nav button:hover:after{opacity:0.6;}

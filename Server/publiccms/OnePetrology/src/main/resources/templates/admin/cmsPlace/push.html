@@ -1,0 +1,44 @@
+<#macro placeTree filepath=''>
+    <@_templateList path='/include'+filepath orderField='createDate'>
+        <#list list as a>
+            <@t.merge 'pages' '/include'+filepath+'/'+a.fileName/>
+        </#list>
+        <@_sysDeptPage deptId=admin.deptId!'' pages=t.pages!><#assign deptPageMap=map!/></@_sysDeptPage>
+        <#list list as a>
+            <#local path=filepath+'/'+a.fileName>
+            <#if (deptPageMap['/include'+path])?has_content&&deptPageMap['/include'+path]>
+                <@_placeMetadata path=path>
+                    <#if a.directory>
+                        <li>
+                            <a href="javascript:;" onclick="return false;">${a.fileName}</a>
+                            <ul><@placeTree path/></ul>
+                        </li>
+                    <#elseif (object.size)?has_content&&0!=object.size&&(!(object.acceptItemTypes)?has_content||object.acceptItemTypes?seq_contains(itemType))>
+                        <li>
+                            <a href="cmsPlace/add.html?path=${path?url}&itemType=${itemType}&itemId=${itemId!}" target="navTab" rel="cmsPlace/add">${(object.alias)!a.fileName}</a>
+                        </li>
+                    </#if>
+                </@_placeMetadata>
+            </#if>
+        <#else>
+            <li><a><@t.page 'empty_directory'/></a></li>
+        </#list>
+    </@_templateList>
+</#macro>
+<script>
+$('ul li a',$.pdialog.getCurrent()).click(function(){
+    if($(this).attr('href')!='javascript:;'){
+        $.pdialog.closeCurrent();
+    }
+});
+</script>
+<div class="pageFormContent" layoutH>
+    <ul class="tree treeFolder expand">
+        <@placeTree/>
+    </ul>
+</div>
+<div class="formBar">
+    <ul>
+        <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+    </ul>
+</div>

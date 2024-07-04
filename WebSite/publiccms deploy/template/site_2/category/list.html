@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta name="keywords" content="${(attribute.keywords)!}"/>
+	<meta name="description" content="${(attribute.description)!}"/>
+<@_includePlace path="/63241365-51a7-4903-89e6-7619031fa9fe.html"/> <#-- Header-link -->
+</head>
+<body class="menu-always-on-top">
+<@_includePlace path="/c8014652-e25e-4c4d-a3ca-9aad7fa0385c.html"/> <#-- header -->
+<main>
+	<@_category id=categoryId>
+			<#assign category=object !/>
+	</@_category>
+	
+	<div class="container bread">
+		<@include path="/ftl/echoBread.ftl"/>
+		<@echoBread category.id/>
+	</div>
+	<div class="row content " style="margin:100px;">
+
+		<div class="container  col-md-8"">
+			<@_contentList categoryId=category.id containChild=category.containChild pageIndex=pageIndex count=category.pageSize>
+				<@import path="/ftl/tools.ftl" namespace="t"/>
+						<ul>
+				<#list page.list as a>
+					<@include path="/ftl/data-list.ftl"/>
+				</#list>
+				</ul>
+				<#if !(pageIndex??)>
+
+						<#assign pageIndex=1/>
+				</#if>
+
+				<#if 1=pageIndex>
+						<div class="page">
+						<#if !page.lastPage>
+							<a href="${getPage(url,page.nextPage)}">查看更多</a>
+						<#else>
+							<span>查看更多</span>
+						</#if>
+						</div>
+					<#else>
+					<@include path="/ftl/category_page.ftl"/>
+				</#if>
+			</@_contentList>
+		</div>
+		<aside>
+			<div class="container  col-md-4">
+				<h3>热门排行</h3>
+				<ul class="rank">
+					<@_contentList categoryId=category.id  orderField='clicks' count=10>
+						<#list page.list as a>
+										<li><span>${a.clicks}</span><a href="${a.url!}" target="_blank">${a.title}</a></li>
+						</#list>
+					</@_contentList>
+				</ul>
+			</div>
+		</aside>
+	</div>
+</main>
+<script>
+	var itemString="itemType=category&itemId=${category.id}";
+</script>
+<@_includePlace path="/f95e232b-027b-40ae-9e2d-0a6385f7c418.html"/> <#-- footer -->
+</body>
+</html>

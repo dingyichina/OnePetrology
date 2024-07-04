@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <@_includePlace path="/63241365-51a7-4903-89e6-7619031fa9fe.html"/> <#-- Header-link -->
+</head>
+<body  class="menu-always-on-top">
+ <@_includePlace path="/c8014652-e25e-4c4d-a3ca-9aad7fa0385c.html"/> <#-- header -->
+
+    <main>
+		<div class="services-block content content-center"  style=" margin-top:100px;" id="services">
+			<h2>Welcome to OnePetrology.</h2><br/>
+        <#if user?has_content>
+            <p>${user.nickName},You are already logged in!<a href="javascript:logout();">You can logout</a></p>
+            <form action="${site.dynamicPath}doLogout" method="post">
+                <input type="hidden" name="userId" value="${(user.id)!}"/>
+                <input type="hidden" name="returnUrl" value="${returnUrl!site.dynamicPath!}"/>
+            </form>
+        <#else>
+            <form action="${site.dynamicPath}doLogin" method="post">
+                <#if error??>
+                    <p class="red">${springMacroRequestContext.getMessage(error,error)}</p>
+                </#if>
+                <p><input type="text" name="username" placeholder="User name" title="User name"/></p>
+                <p><input type="password" name="password" placeholder="Password" title="Password"/></p>
+                <p>
+                    <input type="hidden" name="returnUrl" value="${returnUrl!}"/>
+                    <input type="hidden" name="clientId" value="${clientId!}"/>
+                    <input type="hidden" name="uuid" value="${uuid!}"/>
+                    <input type="submit" value="Login"/>
+                </p>
+                <#if _oauthList?has_content&&_oauthList?is_directive>
+                    <p><#list list as o><a href="${site.dynamicPath}/oauth/login/${o}">Login by ${o}</a><#sep> </#list></p>
+                </#if>
+                <p>No account?<!--a href="register.html?clientId=${clientId!}&uuid=${uuid!}&returnUrl=${returnUrl!}"-->Please wait, register will be open soon....</a></p>
+            </form>
+        </#if>
+		</div>
+    </main>
+  <@_includePlace path="/f95e232b-027b-40ae-9e2d-0a6385f7c418.html"/> <#-- footer -->
+    <script src="${site.dynamicPath!}resource/js/jquery-1.9.1.min.js"></script>
+<script>
+function logout(){
+    $("form").submit();
+}
+</script>
+</body>
+</html>

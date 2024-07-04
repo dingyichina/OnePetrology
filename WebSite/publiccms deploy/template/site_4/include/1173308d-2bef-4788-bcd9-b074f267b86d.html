@@ -1,0 +1,959 @@
+<div class="container">
+      <div class="row">
+        <div class="col-md-10" id="fig_container">
+          <div id="fig_main_2ddensity" style="height:700px;"></div>
+        </div>
+		  
+        <div class="col-md-2">
+			 <div class="form-check">
+            <input class="form-check-input" type="checkbox"  value="" id="chkShowPoint4density" checked >
+            <label class="form-check-label" for="chkShowPoint4density">
+              Show Points
+            </label>
+          </div>
+			
+           <div class="form-check" style="margin-left:10px;">
+            <input class="form-check-input" type="checkbox" checked  value="" id="chkLegend4density" checked>
+            <label class="form-check-label" for="chkLegend4density">
+              Show Legend
+            </label>
+          </div>
+		 <div class="form-check">
+            <input class="form-check-input" type="checkbox"  value="" id="chkShow2density" checked>
+            <label class="form-check-label" for="chkShow2density">
+              Show Density
+            </label>
+          </div>	
+		  <div class="form-check"  style="margin-left:10px;">
+            <input class="form-check-input" type="checkbox"  value="" id="chkShowScale4density">
+            <label class="form-check-label" for="chkShowScale4density">
+              ShowScale
+            </label>
+          </div>
+			<div class="form-check"  style="margin-left:10px;">
+            <input class="form-check-input" type="checkbox"  value="" id="chkShowlines4density">
+            <label class="form-check-label" for="chkShowlines4density">
+              ShowLines
+            </label>
+          </div>
+		 
+		  <div class="form-check"  style="margin-left:10px;">
+            <input class="form-check-input" type="checkbox"  value="" id="chkShowHistogram4density" checked>
+            <label class="form-check-label" for="chkShowHistogram4density">
+              Show Histogram
+            </label>
+          </div>
+			
+		  <div class="form-check"  style="margin-left:10px;">
+            <input class="form-check-input" type="checkbox"  value="" id="chkReverse4density"  checked>
+            <label class="form-check-label" for="chkReverse4density">
+              Reverse Scale
+            </label>
+          </div>
+		  <div class="row">
+            	<label class="form-check-label" for="xaxis4density">
+                   n-contours:
+      			  </label>
+				<input type="number" step="1" id="defaultncontours"   style="width:60px;margin-left:10px;"  min="3" max="100" value="20" title="set the default count of contours" />
+         </div>
+		  <div class="row">
+            	<label class="form-check-label" for="coloringtype">
+                  coloringtype:
+      			  </label>
+				<select class="form-select" id="coloringtype" >
+					 <option selected value="0">fill</option>
+					<option  value="1">heatmap</option>
+					<option  value="2">lines</option>
+					<option  value="3">none</option>
+				</select>
+          </div>
+
+			<!--  用来填充密度图的x和y轴的选择，只填充类型为float的字段，其它字段不需要-->
+		  <div class="row">
+            	<label class="form-check-label" for="xaxis4density">
+                   X Axis:
+      			  </label>
+				<select class="form-select" id="xaxis4density" >
+					
+				</select>
+          </div>
+		   <div class="row">
+            	<label class="form-check-label" for="yaxis4density">
+                   Y Axis:
+      			  </label>
+				<select class="form-select" id="yaxis4density" >
+					
+				</select>
+          </div>
+
+		<label class="form-check-label" for="groupField2density">
+              Group by:
+        </label>
+		<select class="form-select" id="groupField2density" >
+		      <option selected value="-1">No Group</option>
+        </select>
+	   <div  id="numberConfig4density"   class="group" style="width:300px; display:none;">
+             <div  id='groupNumberConfig4density' >
+				 
+			  </div>	 
+          </div>	
+		<div class="row">
+			<button id="btnReDraw4density">ReDraw</button>	
+		</div>	
+		  <!--   一个是分组设置，一个是分组点的设置 (只有当选择show points时才会显示这个)  -->	
+		   <div id='groupSetting2density' class="group"  style="width:300px;">
+             
+
+          </div>	
+          <div id='groupSetting2densitypoint' class="group"  style="width:300px;">
+             
+
+          </div>
+     
+        </div>
+      </div>
+      <hr>
+    </div> 
+	<script src="${site.sitePath}js/plotly-2.18.0.min.js"></script>
+	<script>
+        //尝试绘制二维核密度图
+		var lineDiv2density = document.getElementById('fig_main_2ddensity');
+ 	    var data2density=buildData();
+         $('#btnReDraw4density').click(function(){
+			  drawMap2ddensity();  //调用函数绘图
+		 });
+		// 图的layout设置
+		var layout2density = {
+			  title:{
+				  text:'2D  Density',
+				  font:{
+					size:40,  
+				  },},
+			  xaxis: {
+				 domain:[0,0.85],
+				rangemode: 'normal',
+				 title:{
+					text: 'select your x axis', 
+				    font:{
+							size:20,  
+					},
+				 },
+				 linewidth:3, 
+				 tickmode:'array',
+				 tickvals:[40,50,60,70,80,90] ,
+				 showgrid:false, 
+				 range:[30,90],
+				 showline:true,
+				  ticklen:8,
+			  },
+			  yaxis: {
+				rangemode: 'normal',
+				   title:{
+					text: 'select your y axis', 
+					font:{
+							size:20,  
+				  		},
+				 },
+				  linewidth:3, 
+		  	     tickmode:'array',
+				 tickvals:[0,5,10,15,20] ,
+				  showgrid:false,
+				  range:[0,20],
+			      showline:true,
+				    ticklen:8,
+			  }
+			};
+ 
+			Plotly.newPlot( lineDiv2density, data2density, layout2density );
+		   
+		  // 构造基础data中的trace
+		  function buildData(){
+			    var model = $('input:radio[name="model"]:checked').val();
+			    var detail = $('#chkDetail4density').prop("checked");
+			   // console.log('detail:',detail);
+			   var mapdata=[];  //初始化数组
+		
+			  return mapdata;
+			  
+		  }
+		
+		
+		  // 判断记录是否有效，参数filedsList是数组
+		   function isValidItem2density(item,fieldsList){
+			      
+			      for(var i =0;i<fieldsList.length;i++){
+					//console.log(fieldsList[i], item.hasOwnProperty(fieldsList[i]),item[fieldsList[i]], isNaN(item[fieldsList[i]]) );
+					  if( (item.hasOwnProperty(fieldsList[i])==false) ||
+						  (item[fieldsList[i]]==null) )// ||
+						  //(isNaN(item[fieldsList[i]]) ==false))   不知道为什么判断是否是数字的功能不好使，暂时不判断。todo*****
+						  return false;
+				  }
+			   return true;
+		   }
+		    //格式化字符串函数
+			String.format = function() {
+				if (arguments.length == 0)
+					return null;
+				var str = arguments[0];
+				for ( var i = 1; i < arguments.length; i++) {
+					var re = new RegExp('\\{' + (i - 1) + '\\}', 'gm');
+					str = str.replace(re, arguments[i]);
+				}
+				return str;
+			};
+           //全局变量
+		    var rtnColumns4density=[];  //返回得列名数组
+		    var rtnData4density;//返回的数据
+		    var numberColumns4density=[];
+		    var traceList4density=[]; //缓存所有的trace（只是二维核密度的）
+		    var traceList4densityhistogram=[]; //缓存所有的trace（上方和右侧的直方图的）
+		    //  默认的色标
+	  	    var colorScaleList=[ 'Blackbody','Bluered','Blues','Cividis','Earth','Electric','Greens','Hot','Jet','Picnic','Portland','Rainbow','RdBu','Reds','Viridis','YlGnBu','YlOrRd','Greys' ];
+		    // 默认颜色
+		    var colorTable2density=['#00008B','#00FEFE','#E00098','#00EE00','#121212','#212121'];  //此处内置允许的的颜色查找表，回头补充科研时常用的颜色。 *************todo************
+					
+		//  构建layout参数
+		 function buildLayout(xtitle,ytitle,xmin,xmax,ymin,ymax){
+			 
+			 var layout4Density = {
+				  title: {
+					  text: '2D Density ( '+xtitle+' , '+ytitle+" )",
+					  font:{
+							size:30,  
+				  		},
+				  },
+				  showlegend: $('#chkLegend4density').prop('checked'),
+				  autosize: true,
+			     // width: 1600,
+				 // height: 850,
+				  margin: {t: 50},
+				  hovermode: 'closest',
+				  bargap: 0,
+				  xaxis: {
+					domain: [0, 0.85],
+					showgrid: false,
+					showline: true,
+					linewidth:3,  
+					zeroline: false,
+					tickfont:{
+							size:20,  
+				  	 },
+				    title:{
+						text: xtitle,
+						font:{
+							size:26,  
+				  		},
+				     },
+				  },
+				  yaxis: {
+					domain: [0, 0.85],
+					showgrid: false,
+					zeroline: false,
+					showline: true,
+					linewidth:3,
+				    tickfont:{
+							size:20,  
+				  	 },
+					title:{
+						text: ytitle,
+						font:{
+							size:26,  
+				  		},
+				     },
+				  },
+				  xaxis2: {
+					domain: [0.85, 1],
+					showgrid: false,
+					zeroline: false
+				  },
+				  yaxis2: {
+					domain: [0.85, 1],
+					showgrid: false,
+					zeroline: false
+				  }
+				};
+			 return layout4Density;
+		 }
+		    // 构造数字分组的html页面
+		    function buildNumberGroupHtml4density(groupName,index=0){
+				 var html=' <div class="row"  id="numberSpan4density-{1}"   data-label="{1}"  >\
+                                                <label for="color" style="font-size:0.5em;margin-right:10px; width:70px;">{0}：</label> \
+				                                 <input  type="number"  step="0.01" name="numberStart4density"  data-label="{0}"  style="width:60px;"   title="the start value"> \
+				                                 <label>-</label> \
+				                                <input  type="number"   step="0.01"  name="numberEnd4density"  data-label="{0}"  style="width:60px;"   title="the end value"> \
+  												<button  id="btnRemoveSpan4density-{1}"  onclick="removeNumberGroupHtml4density({1});"  style="margin-left:10px; width:30px;">  - </button> \
+												<button  id="btnAddSpan4density-{1}"  onclick="addNumberGroupHtml4density(\'{0}\',{1}); "  style="margin-left:10px; width:30px;">  + </button> \
+                                  </div>';
+				 return String.format(html,groupName,index);
+				
+			} //函数结束---构造数字分组的html页面
+        // 添加一个新的数字分组html组件
+		    function addNumberGroupHtml4density(groupName,index){
+				 var myhtml=buildNumberGroupHtml4density(groupName.toString(),index+1);
+			    // console.log($('#numberConfig4ACNK').css('display'),'构造数字分组：',myhtml);
+			    $('#groupNumberConfig4density').append(myhtml);
+				//把上一个的+按钮禁用掉
+				var myAdd=String.format("#btnAddSpan4density-{0}",index);
+				$(myAdd).hide();
+				
+				
+			}//函数结束——添加一个新的数字分组html组件
+		
+		  //移除一个数字分组html组件
+		  function removeNumberGroupHtml4density(index){
+			   if ($('#groupNumberConfig4density').children().length<=1){
+				   alert("the last one can't be removed");
+				   return true;
+			   }
+			  var myId=String.format("#numberSpan4density-{0}",index);
+			  $(myId).empty();
+			  $(myId).remove();
+			  //把最后一个的添加按钮显示出来
+			  var lastDiv= $('#groupNumberConfig4density').children().last();
+			  var lastIndex=lastDiv.data('label');
+			  var myAdd=String.format("#btnAddSpan4density-{0}",lastIndex);
+			   $(myAdd).show();
+		  }
+		
+		  //构建数字型分组ui
+		  function buildNumberGroup4density(filterField){
+			  //清空旧的
+			   $('#numberConfig4density').show();
+			   $('#groupNumberConfig4density').empty();
+			  var myhtml=buildNumberGroupHtml4density(filterField,0);
+			  // console.log($('#numberConfig4ACNK').css('display'),'构造数字分组：',myhtml);
+			   $('#groupNumberConfig4density').append(myhtml);
+		  }// 函数结束——构建数字型分组ui
+		
+		
+		
+		  // 绘制图
+		 function  drawMap2ddensity(){
+			//首先根据group 计算分组值，然后显示分组设置的相关html组件，然后根据分组结果绘制 
+			 var xaxis=$("#xaxis4density").find("option:selected").text();
+			 var yaxis=$("#yaxis4density").find("option:selected").text();
+			 if( xaxis.length==0 || yaxis.length==0){
+				 alert('please select x and y axis.'); 
+				 return ;
+			 }
+			 var selIndex= $("#groupField2density").val();
+			 
+			 console.log("当前选择：",selIndex);
+			 //清空分组的设置
+		    //清空所有的筛选字段子元素，然后重新添加
+			 $('#groupSetting2density').empty();
+			 $('#groupSetting2densitypoint').empty();
+				  
+			 //清空缓存
+			 traceList4density=[];
+			 traceList4densityhistogram=[];
+		     var xMin=0,xMax=0,yMin=0,yMax=0; //坐标轴范围
+			 // 分组与否不影响二维密度图，只影响散点
+			 // 因此先把二维密度图拿出来
+			 var xlist =[],ylist=[];
+				 
+			 for(var i=0;i<rtnData4density.length;i++){
+					var item=rtnData4density[i];
+				    if(isValidItem2density(item,[xaxis,yaxis])){
+							  // console.log(item);   
+							   var xValue=item[xaxis];
+							   var yValue=item[yaxis];
+							   xlist.push(xValue);
+							   ylist.push(yValue); 
+							   if(xMin >xValue)
+								   xMin=xValue;
+							   if(xMax<xValue)
+								   xMax=xValue;
+							   if(yMin>yValue)
+								   yMin=yValue;
+							   if(yMax<yValue)
+								   yMax=yValue;
+				   }
+			  }				  
+			 //不分组的情况下，生成trace
+			 if($('#chkShow2density').prop('checked')){  // 判断是否显示2d密度图
+				     var traceLayer={
+							  x: xlist,
+							  y: ylist,
+							  type: 'histogram2dcontour',
+				              name:'No Group'+" ("+ xlist.length+" )",
+				              ncontours: $('#defaultncontours').val(),  //用默认的分层数
+				              contours:{
+							       coloring:$("#coloringtype").find("option:selected").text(),
+								  showlines:$('#chkShowlines4density').prop('checked'),
+								  showlabels:false,
+								  type:'constraint',
+							  },
+				             legendwidth:20,
+							 colorscale: 'Hot',
+ 							 reversescale: $('#chkReverse4density').prop('checked'),
+  							showscale: $('#chkShowScale4density').prop('checked'),
+						    title:{
+								text:'No Group'	
+							}
+				      };
+				      traceList4density.push(traceLayer);
+					  	 var html= buildhtml4group2density('No Group','Hot');
+						 $('#groupSetting2density').append(html);
+						 //添加后对shape设置默认选择值
+						selectGroup2density('No Group',7); //hot对应的索引
+					    //监听事件
+					    registerListener4Group2density();
+					  
+			  } // 2d密度图结束
+			 //判断是否需要生成上和右的 直方图
+			 if($('#chkShowHistogram4density').prop('checked')){  // 判断是否统计直方图
+						var trace3 = {
+							  x: xlist,
+							  name: 'x density',
+							  marker: {color: 'rgb(102,0,0)'},
+							  yaxis: 'y2',
+							  type: 'histogram',
+							  showlegend:false
+							};
+						var trace4 = {
+							  y: ylist,
+							  name: 'y density',
+							  marker: {color: 'rgb(102,0,0)'},
+							  xaxis: 'x2',
+							  type: 'histogram',
+							  showlegend:false
+							  
+							};
+						traceList4density.push(trace3);
+						traceList4density.push(trace4);
+					}
+				  //根据参数设置layout  
+			 
+			  if(selIndex ==-1) {  //此时不分组
+				  //判断是否显示上方和右方的直方图，如果需要，则生成的trace多；
+	                //先得到所有坐标 
+				  
+				  // 判断是否显示点chkShowPoint4density
+				    if($('#chkShowPoint4density').prop('checked')){  // 判断是否显示点
+						 var traceLayer={
+							 x: xlist,
+							  y: ylist,
+						      name:"No Group ("+ xlist.length+" )",
+							  type: 'scatter',
+						      showlegend: $('#chkLegend4density').prop('checked'),
+							//  fill: 'none',
+							  textposition:'top left',
+							  mode:'markers',	
+							  marker:{
+								 color: 'rgb(102,0,0)',
+   								 size: 2,
+   							     opacity: 0.4
+							  },
+							  title:{
+								  text:'No Group'
+							  }
+					     };
+						 traceList4density.push(traceLayer);
+						 var html= buildhtml4group2densitypoint('No Group'	,colorTable2density[1]);
+							 $('#groupSetting2densitypoint').append(html);
+							 //添加后对shape设置默认选择值
+							selectGroup2densitypoint('No Group',1);
+						//监听事件
+						registerListener4Group2densitypoint();
+						
+					}// 点显示结束
+				  
+				  layout2density=buildLayout(xaxis,yaxis,xMin,xMax,yMin,yMax);
+				  //绘图
+				  Plotly.newPlot( lineDiv2density, traceList4density, layout2density );
+				  
+			  }else{ //此时分组  
+			     var filterField=rtnColumns[selIndex];
+                  //判断是否是数字分组
+				 var index=numberColumns4density.indexOf(filterField);
+				 //首先进行分组
+		     	//置空 分组名称及分组结果的数组
+				 var  groupNames=[], groupValues=[];
+				  
+				  if  (index >-1) {
+					      //数字字段，对数字字段进行分组
+						 var numberSpanConfig4density=[];  ////清空旧的，从ui中重新获取
+						   $.each( $('#groupNumberConfig4density').children(),function (index,item){
+								let numSpan={};
+							  // console.log(index, ":", $(item).data("label"));
+							   //从item中进一步查找子元素
+							   var startitem=$(item).find("input[name='numberStart4density']");
+							   var enditem=$(item).find("input[name='numberEnd4density']");
+							   //判断是否是有效的设置，如果全空则无效
+							   numSpan.startValue=$(startitem).val().trim();
+							   numSpan.endValue=$(enditem).val().trim();
+							   if(numSpan.startValue ==""  && numSpan.endValue=="")
+								   return false ;
+							   //记录一下field
+							   numSpan["field"]=$(startitem).data("label");
+
+							   numberSpanConfig4density.push(numSpan);
+						   });
+							   //console.log("Number Span:",numberSpanConfig4ACNK);
+
+							   //如果没有有效分组，则按照不分组进行处理
+							   if(numberSpanConfig4density.length ==0){
+									   console.log("没有有效数字分组，直接按照不分组重绘" );
+									//此时需要执行不分组动作---todo 
+								   return true;  //直接退出
+							   }
+ 							for(var i=0;i<rtnData4density.length;i++){
+								var item=rtnData4density[i];
+								//只有有效的数据才需要分组
+								if(isValidItem2density(item,[xaxis,yaxis])){
+									   var x=item[xaxis];
+									   var y=item[yaxis];
+									//下面是简单复制的边界代码
+									 var xValue=item[xaxis];
+									 var yValue=item[yaxis];
+									 if(xMin >xValue)
+										   xMin=xValue;
+									 if(xMax<xValue)
+										   xMax=xValue;
+									 if(yMin>yValue)
+										   yMin=yValue;
+									 if(yMax<yValue)
+										   yMax=yValue;
+
+
+									 var hasMatched=false;
+									 // 对所有数字分组进行筛选，看看当前数据是否在某一个分组范围内，如果在，则加入到对应的groupList中
+									 for(var j=0; j<numberSpanConfig4density.length;j++) {
+											 let myNumSpan=numberSpanConfig4density[j];
+											 let filterKey=myNumSpan.field.trim();
+
+											 if(item.hasOwnProperty(myNumSpan.field.trim()) ==false || item[myNumSpan.field]=="undefined" )
+												 break;  //没有这个字段，则直接当作others处理
+
+											 //console.log("初始化filterKey:",myNumSpan.field,"   ,  numberSpan:",myNumSpan," 类型",typeof(myNumSpan.startValue));
+											 //var flag =false;
+											 if( myNumSpan.hasOwnProperty("startValue")  &&  typeof(myNumSpan.startValue)=="string" && myNumSpan.startValue !=""){
+												  //console.log("进入startValue逻辑",item,myNumSpan.field,item[myNumSpan.field]);
+												  filterKey = myNumSpan.startValue+"&lt;"+filterKey;
+												  if(item[myNumSpan.field]<=parseFloat(myNumSpan.startValue)) {// 如果比起始值还小
+													  //console.log("小于最小：",item,myNumSpan.field,item[myNumSpan.field]);
+													  continue;   //继续下一轮
+												  }
+											 }
+											 if(myNumSpan.hasOwnProperty("endValue")  &&  typeof(myNumSpan.endValue)=="string" && myNumSpan.endValue !=""){
+												  //console.log("进入endValue逻辑",item[myNumSpan.field] , parseFloat(myNumSpan.endValue), item,myNumSpan.field,item[myNumSpan.field]);
+												  filterKey=filterKey+"&le;"+myNumSpan.endValue;
+												  if(parseFloat(item[myNumSpan.field] )>parseFloat(myNumSpan.endValue)){ // 如果比起始值还小
+													  //console.log("大于最大：",item,myNumSpan.field,item[myNumSpan.field]);
+													  continue;   //继续下一轮
+												  }
+											 }
+											//console.log("filterKey:",filterKey,myNumSpan);
+											 //满足条件
+											 hasMatched=true;   // 已经匹配上了，不会出现在Others中
+											//检查是否已经在分组名称里，如果不在则添加
+											 var  groupValueList={'x':[ ],'y':[ ] };
+											 if(  groupNames.indexOf(filterKey) >=0){
+												 groupValueList = groupValues[filterKey];
+												// console.log('取出来的:',groupValueList);
+											 }else{
+												//把自己添加进去
+												groupNames.push(filterKey);
+												groupValues[filterKey]= groupValueList;
+											 }
+											 groupValueList['x'].push(x);
+											 groupValueList['y'].push(y);
+									 } //分组循环结束
+									 //如果没有匹配上的，则统一加到Other中
+									 if(hasMatched ==false){
+										 // console.log("进入others逻辑");
+										 let  keystr="Others";
+										 var groupValueList={'x':[ ],'y':[ ] };
+										  if(  groupNames.indexOf(keystr) >=0){
+											 groupValueList = groupValues[keystr];
+											// console.log('取出来的:',groupValueList);
+										 }else{
+											//把自己添加进去
+											groupNames.push(keystr);
+											groupValues[keystr]= groupValueList;
+										 }
+										 groupValueList['x'].push(x);
+										 groupValueList['y'].push(y);
+									 }
+								 } // end --if 有效
+							 }// end -for  遍历所有数据
+					  
+					  
+					  
+					 }else{
+					       //字符串字段
+					   	 	 for(var i=0;i<rtnData4density.length;i++){
+					  			var item=rtnData4density[i];
+								if(isValidItem2density(item,[xaxis,yaxis])){
+									 //有效数据则进行处理，无效则掠过
+									 //获取分组字段的值
+									 var filterValue=item[filterField];
+									 //console.log('filterValue',filterValue);
+									 //null或者‘’认为是 null
+									 if( filterValue ==null || filterValue=='')
+										 filterValue='null';
+									 filterValue=filterValue.replace(/\s*/g,""); //去除所有空格，包括头尾和中间的。中间的容易导致jquery定位错误
+
+									 //检查是否已经在分组名称里，如果不在则添加
+									 var groupValueList={'x':[ ],'y':[ ] };
+									 if(  groupNames.indexOf(filterValue) >=0){
+										 groupValueList = groupValues[filterValue];
+										// console.log('取出来的:',groupValueList);
+									 }else{
+										//把自己添加进去
+										groupNames.push(filterValue);
+										groupValues[filterValue]= groupValueList;
+									 }
+									 groupValueList['x'].push(item[xaxis]);
+									 groupValueList['y'].push(item[yaxis]);
+									 var xValue=item[xaxis];
+									 var yValue=item[yaxis];
+									 if(xMin >xValue)
+										   xMin=xValue;
+									 if(xMax<xValue)
+										   xMax=xValue;
+									 if(yMin>yValue)
+										   yMin=yValue;
+									 if(yMax<yValue)
+										   yMax=yValue;
+
+								 }// end if
+							 }// end for	  
+				 }
+				  
+		
+			
+				 //判断是否显示上方和右方的直方图
+				/*  if($('#chkShow2density').prop('checked')){  // 判断是否显示2d密度图
+					 //循环分组
+					   for(var i=0;i<groupNames.length;i++){
+							 var groupName=groupNames[i];
+							 var html= buildhtml4group2density(groupName,colorScaleList[i%colorScaleList.length]);
+							 $('#groupSetting2density').append(html);
+							 //添加后对shape设置默认选择值
+							selectGroup2density(groupName,i);
+
+							 var traceLayer={
+								 x: groupValues[groupName]['x'],
+								  y: groupValues[groupName]['y'],
+								  type: 'histogram2dcontour',
+								  name:groupName+" ("+ groupValues[groupName]['x'].length+" )",
+								  ncontours: $('#defaultncontours').val(),  //用默认的分层数
+								  contours:{
+									   coloring:$("#coloringtype").find("option:selected").text(),
+									  showlines:$('#chkShowlines4density').prop('checked'),
+									  showlabels:false,
+									  type:'constraint',
+								  },
+								 legendwidth:20,
+								 colorscale: colorScaleList[i%colorScaleList.length],
+								 reversescale: $('#chkReverse4density').prop('checked'),
+								 showscale: $('#chkShowScale4density').prop('checked'),
+							     title:{
+									 text:groupName
+								 }
+						  };
+						  traceList4density.push(traceLayer);
+					   } // end for
+					  //注册事件监听器
+					  registerListener4Group2density();
+					  
+			 	    } // 2d密度图结束  */
+			 
+				 //对分组点循环生成trace
+			     if($('#chkShowPoint4density').prop('checked')){  // 判断是否显示点
+					     for(var i=0;i<groupNames.length;i++){
+							 var groupName=groupNames[i];
+							 var html= buildhtml4group2densitypoint(groupName,colorTable2density[i%colorTable2density.length]);
+							 $('#groupSetting2densitypoint').append(html);
+							 //添加后对shape设置默认选择值
+							selectGroup2densitypoint(groupName,i);
+
+							  // 生成trace list
+								//生成trace，并加进去，然后更新图
+							 var traceLayer={
+									 x: groupValues[groupName]['x'],
+									  y: groupValues[groupName]['y'],
+									  type: 'scatter',
+									  fill: 'none',
+									  showlegend: $('#chkLegend4density').prop('checked'),
+									 name:groupName.replace('&le;',"≤")+" ("+ groupValues[groupName]['x'].length+" )",
+									  textposition:'top left',
+									  mode:'markers',	
+									  marker:{
+										  'symbol': i %19,
+										  'size':2,
+										  'color':colorTable2density[i%colorTable2density.length],
+										  opacity: 0.4,
+									  },
+								      title:{
+										  text:groupName
+									  }
+						     };
+							 traceList4density.push(traceLayer);
+						 }// end for
+						//注册事件监听
+					    registerListener4Group2densitypoint();
+						 
+			  	   }//end 分组点循环
+				  
+				  //判断是否显示边缘直方图，如果显示，循环生成点的trace
+				 /* if($('#chkShowHistogram4density').prop('checked')){  // 判断是否统计直方图
+					     for(var i=0;i<groupNames.length;i++){
+							 var groupName=groupNames[i];
+							var trace3 = {
+								  x: groupValues[groupName]['x'],
+								  name: groupName +' x  density',
+								  marker: {color: colorTable2density[i%colorTable2density.length]},
+								  yaxis: 'y2',
+								  type: 'histogram',
+								  showlegend:false,
+								};
+							var trace4 = {
+								  y: groupValues[groupName]['y'],
+								  name: groupName+' y density',
+								  marker: {color: colorTable2density[i%colorTable2density.length]},
+								  xaxis: 'x2',
+								  type: 'histogram',
+								  showlegend:false,
+								};
+							traceList4density.push(trace3);
+							traceList4density.push(trace4);
+					   }//end for 
+		 		    } // end if  */
+				  
+				  //根据参数设置layout
+				   layout2density=buildLayout(xaxis,yaxis,xMin,xMax,yMin,yMax);
+				  //绘图
+				  Plotly.newPlot( lineDiv2density, traceList4density, layout2density );
+			  }
+			 
+		 }
+		
+		  // 构建html组件，核密度图层设置，返回构造好的html串
+		function  buildhtml4group2density(groupname,groupcolor){
+				var html= ' <div class="row" >\
+                                                <label for="color" style="font-size:0.5em;margin-right:10px; width:90px;">{0}</label> \
+				                                   <select   style="width:80px;margin-right:10px;" id="colorscale2density-{0}" name="colorScaleSelector"   data-label="{0}" title="choose the shape"> \
+														<option  value="0">Blackbody</option> \
+														<option  value="1">Bluered</option> \
+														<option value="2">Blues</option> \
+														<option value="3">Cividis</option> \
+														<option value="4">Earth</option> \
+														<option value="5">Electric</option> \
+														<option value="6">Greens</option> \
+														<option value="7">Hot</option> \
+														<option value="8">Jet</option> \
+														<option value="9">Picnic</option> \
+														<option value="10">Portland</option> \
+														<option value="11">Rainbow</option> \
+														<option value="12">RdBu</option> \
+														<option value="13">Reds</option> \
+														<option value="14">Viridis</option> \
+														<option value="15">YlGnBu</option> \
+														<option value="16">YlOrRd</option> \
+														<option value="17">Greys</option> \
+				                                </select>\
+				                                <input  type="checkbox" name="chkReverseScale2density"  data-label="{0}"  style="width:40px;margin-left:10px;"   title="reverse the color scale."> <label>Reverse</label>\
+                                             </div>';
+						 html=String.format(html,groupname.replace(/\s*/g,""));	//groupname里面可能有空格，做Id时需要去掉空格
+						return html;
+			}//  buildhtml4group2density结束
+		 
+		// 构建html组件，点图层设置，返回构造好的html串
+	  	   function  buildhtml4group2densitypoint(groupname,groupcolor){
+				var html= ' <div class="row" >\
+                                                <label for="color" style="font-size:0.5em;margin-right:10px; width:90px;">{0}</label> \
+				                                <input  name="colorSelector" id="color-{0}"  type="color"   style="width:30px;margin-right:10px;" data-label="{0}" value="{1}" title="Choose color "> \
+				                                <select   style="width:80px;margin-right:10px;" id="shape-{0}" name="shapeSelector"   data-label="{0}" title="choose the shape"> \
+														<option  value="0">circle</option> \
+														<option  value="1">square</option> \
+														<option value="2">diamond</option> \
+														<option value="3">cross</option> \
+														<option value="4">x</option> \
+														<option value="5">triangle-up</option> \
+														<option value="6">triangle-down</option> \
+														<option value="7">triangle-left</option> \
+														<option value="8">triangle-right</option> \
+														<option value="9">triangle-ne</option> \
+														<option value="10">triangle-se</option> \
+														<option value="11">triangle-sw</option> \
+														<option value="12">triangle-nw</option> \
+														<option value="13">pentagon</option> \
+														<option value="14">hexagon</option> \
+														<option value="15">hexagon2</option> \
+														<option value="16">octagon</option> \
+														<option value="17">star</option> \
+														<option value="18">hexagram</option> \
+				                                </select>\
+				                                <input  type="number" step="1" name="sizeSelector"  data-label="{0}"  style="width:40px;margin-left:10px;"  min="1" max="15" value="2" title="set the size of shape"> \
+                                             </div>';
+						 html=String.format(html,groupname.replace(/\s*/g,""),groupcolor);	//groupname里面可能有空格，做Id时需要去掉空格
+						return html;
+			}//  buildhtml4group2density结束
+		  
+		 //  点 形状的选择设置（分组）
+		    function selectGroup2densitypoint(groupname,selectIndex){
+				 var myid=String.format('#shape-{0}',groupname.replace(/\s*/g,"") );
+				 try{
+						$(myid).val(selectIndex %19);  //此时是为了规避特殊字符导致无法初始化这个。19与select的选项总数呼应
+				 } catch (e) {
+						console.log("发生异常:" + e)
+				 }
+			}// selectGroup2densityPoint 结束
+		
+		
+		    //核密度的色标选择设置（分组）
+		    function selectGroup2density(groupname,selectIndex){
+				 var myid=String.format('#colorscale2density-{0}',groupname.replace(/\s*/g,"") );
+				 try{
+						$(myid).val(selectIndex % colorScaleList.length);  //此时是为了规避特殊字符导致无法初始化这个。
+				 } catch (e) {
+						console.log("发生异常:" + e)
+				 }
+			}// selectGroup2density 结束
+
+		
+		//注册分组id变化事件
+		//注册分组id变化事件
+		     $("#groupField2density").change(function(){
+				 var selIndex=($(this).val());  
+				 $('#numberConfig4density').hide(); //默认隐藏起来，如果是数字再打开
+				 
+				 if(selIndex ==-1) {  //此时不分组
+					
+				 }else{ //按照所选字段进行分组
+					 var filterField=rtnColumns4density[selIndex];
+					 //此时需要判断是数字字段还是文本字段，如果是数字字段，则需要弹出新的ui来进行设置分段取值
+					 var index=numberColumns4density.indexOf(filterField);
+					 if  (index >-1) {
+					       //数字字段
+					  	 buildNumberGroup4density(filterField);
+					 }				 }
+					 //重绘全图
+				 //redrawMap4ACNK();
+			 });
+		
+		
+		   // 重绘所有图
+		    function redrawMap(){
+					Plotly.newPlot( lineDiv2density, traceList4density, layout2density );
+			};
+		
+		  
+		  
+		
+		 //注册分组Marker有关点图层属性的事件监听
+		function registerListener4Group2densitypoint(){
+			 $("input[name='colorSelector']").change(function(){
+					var title=$(this).data('label');
+					//console.log(title,$(this).val());
+				    //遍历查找对应的图层进行修改
+				    for (trace of  traceList4density){
+						console.log('重绘', trace.title.text);
+					    if(trace.title.text.replace(/\s*/g,"") ==title){
+							trace.marker.color=$(this).val();
+							redrawMap();//改变之后重绘
+							console.log('重绘', trace.title.text);
+							return true;
+						}
+					}
+			 });
+			 $("select[name='shapeSelector']").change(function(){
+					var title=$(this).data('label');
+					//console.log(title,$(this).val());
+				    //遍历查找对应的图层进行修改
+				    for (trace of  traceList4density){
+						console.log('重绘', trace.title.text);
+					    if(trace.title.text.replace(/\s*/g,"") ==title){
+							trace.marker.symbol=$(this).val();
+							redrawMap();//改变之后重绘
+							console.log('重绘', trace.title.text);
+							return true;
+						}
+					}
+			 });
+			$("input[name='sizeSelector']").change(function(){
+					var title=$(this).data('label');
+					console.log(title,$(this).val());
+				    //遍历查找对应的图层进行修改
+				    for (trace of  traceList4density){
+					   if(trace.title.text.replace(/\s*/g,"") ==title){
+							trace.marker.size=$(this).val();
+							redrawMap();//改变之后重绘
+							console.log('重绘', trace.title.text);
+							return true;
+						}
+					}
+			 });
+		};
+		 //注册分组 有关核密度图层属性的事件监听
+		function registerListener4Group2density(){
+			 $("select[name='colorScaleSelector']").change(function(){
+					var title=$(this).data('label');
+					console.log(title,$(this).val());
+				    //遍历查找对应的图层进行修改
+				    for (trace of  traceList4density){
+						console.log('重绘', trace.title);
+					    if(  trace.hasOwnProperty('title') && trace.hasOwnProperty('type') &&  trace.title.text.replace(/\s*/g,"") ==title &&  trace.type=='histogram2dcontour'){
+							trace.colorscale=colorScaleList[$(this).val()];
+							redrawMap();//改变之后重绘
+							console.log('重绘', trace.title.text);
+							return true;
+						}
+					}
+			 });
+			$("input[name='chkReverseScale2density']").change(function(){
+					var title=$(this).data('label');
+					console.log(title,$(this).val());
+				    //遍历查找对应的图层进行修改
+				    for (trace of  traceList4density){
+						//console.log('重绘', trace.title);
+					    if(trace.hasOwnProperty('title') && trace.hasOwnProperty('type') && trace.title.text.replace(/\s*/g,"")==title  &&  trace.type=='histogram2dcontour'){
+							trace.reversescale=$(this).prop('checked');
+							redrawMap();//改变之后重绘
+							console.log('重绘', trace.title.text);
+							return true;
+						}
+					}
+			 });
+		};
+
+
+		//外部设置数据的主函数
+		function setData2Density(columns,numbercolumns,data){
+			rtnColumns4density=columns;
+			rtnData4density=data; //把返回值赋予全局变量
+			numberColumns4density=numbercolumns;
+			//把列名添加到分组列表
+			//清空列名列表
+		     $("#groupField2density").empty();
+			//添加一个不分组
+			$("#groupField2density").append('<option selected value="-1">No Group</option>');
+	
+			for(var i=0;i<rtnColumns.length;i++){
+			      $("#groupField2density").append("<option value="+i+">"+rtnColumns[i]+"</option>");  
+			 }
+			
+			//添加x轴和y轴的选项，只有可计算列
+		    $("#xaxis4density").empty();
+            $("#yaxis4density").empty();
+
+			for(var i=0;i<numbercolumns.length;i++){
+			      $("#xaxis4density").append("<option value="+i+">"+numbercolumns[i]+"</option>");  
+			      $("#yaxis4density").append("<option value="+i+">"+numbercolumns[i]+"</option>");  
+			 }
+			//设置一下默认的选项，避免为空导致不知道后续该怎么计算
+			 $("#xaxis4density").val(2);  
+			$("#yaxis4density").val(3);
+			
+			//执行默认绘制函数
+			drawMap2ddensity();
+		}  //setdata2density 函数结束
+		
+		
+		
+	</script>
+	
+	

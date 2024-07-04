@@ -1,0 +1,306 @@
+<div class="pageHeader">
+    <form class="pagerForm" onsubmit="return navTabSearch(this);" method="post">
+        <#include "../include_page/parameters.html"/>
+        <div class="searchBar">
+            <ul class="searchContent">
+                <li>
+                    <label>Sample Id：</label>
+                    <input type="text" name="sampleId" value="${sampleId!}" />
+                </li>
+                <li>
+                    <label>Oraginal Sample Id：</label>
+                    <input type="text" name="oraginalSampleId" value="${oraginalSampleId!}" />
+                </li>
+                <li>
+                    <label>Location：</label>
+                    <input type="text" name="location" value="${location!}" />
+                </li>
+                <li>
+                    <label>Location Type：</label>
+                    <input type="text" name="locationType" value="${locationType!}" />
+                </li>
+                <li>
+                    <label>Tectonic Location：</label>
+                    <input type="text" name="tectonicLocation" value="${tectonicLocation!}" />
+                </li>
+
+                <li>
+                    <label>Lithology：</label>
+                    <input type="text" name="lithology" value="${lithology!}" />
+                </li>
+                <li>
+                    <label>Occurrence：</label>
+                    <input type="text" name="occurrence" value="${occurrence!}" />
+                </li>
+                <li>
+                    <label>Intrusion：</label>
+                    <input type="text" name="intrusion" value="${intrusion!}" />
+                </li>
+                <li>
+                    <label>Rock Name：</label>
+                    <input type="text" name="rockName" value="${rockName!}" />
+                </li>
+                <li>
+                    <label>Era：</label>
+                    <input type="text" name="era" value="${era!}" />
+                </li>
+                <li>
+                    <label>Form：</label>
+                    <input type="text" name="form" value="${form!}" />
+                </li>
+
+                <li>
+                    <label>Degree of Deformation：</label>
+                    <input type="text" name="degreeOfDeformation" value="${degreeOfDeformation!}" />
+                </li>
+                <li>
+                    <label>Characteristic Minerals：</label>
+                    <input type="text" name="characteristicMinerals" value="${characteristicMinerals!}" />
+                </li>
+                <li>
+                    <label>Genetic Type：</label>
+                    <input type="text" name="geneticType" value="${geneticType!}" />
+                </li>
+
+
+                <li>
+                    <label>Test Object：</label>
+                    <input type="text" name="testObject" value="${testObject!}" />
+                </li>
+                <li>
+                    <label>Test Method：</label>
+                    <input type="text" name="testMethod" value="${testMethod!}" />
+                </li>
+                <li>
+                    <label>Age Selected（Ma）：</label>
+                    <input type="text" name="ageSelected" value="${ageSelected!}" />
+                </li>
+
+                <li>
+                    <label>Tectonic Type：</label>
+                    <input type="text" name="tectonicType" value="${tectonicType!}" />
+                </li>
+
+                <li>
+                    <label>Collector：</label>
+                    <input type="text" name="collector" value="${collector!}" />
+                </li>
+                <li>
+                    <label>Collector Org：</label>
+                    <input type="text" name="collectorOrg" value="${collectorOrg!}" />
+                </li>
+                <li>
+                    <label>Reviewer：</label>
+                    <input type="text" name="reviewer" value="${reviewer!}" />
+                </li>
+                <li>
+                    <label>Analyze Org：</label>
+                    <input type="text" name="analyzeOrg" value="${analyzeOrg!}" />
+                </li>
+                <li>
+                    <label>Analyze Person：</label>
+                    <input type="text" name="analyzePerson" value="${analyzePerson!}" />
+                </li>
+                <li>
+                    <label>Test Date：</label>
+                    <input type="text" name="testDate" value="${testDate!}" />
+                </li>
+                <li>
+                    <label>Data Source：</label>
+                    <input type="text" name="dataSource" value="${dataSource!}" />
+                </li>
+                <li>
+                    <label>Article DOI：</label>
+                    <input type="text" name="articleDoi" value="${articleDoi!}" />
+                </li>
+                <li>
+                    <label>Remark：</label>
+                    <input type="text" name="remark" value="${remark!}" />
+                </li>
+
+            </ul>
+            <div class="subBar">
+                <ul>
+                    <li>
+                    	<button type="submit" class="buttonActive"><@t.page 'button.search'/></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<@_sysAuthorized roleIds=admin.roles urls='sampleInfo/add,sampleInfo/delete'><#assign authorizedMap=map/></@_sysAuthorized>
+<div class="pageContent">
+    <div class="panelBar">
+        <ul class="toolBar">
+        <#if authorizedMap['sampleInfo/add']>
+            <li><a href="sampleInfo/add.html" target="navTab" rel="sampleInfo/add"><i class="icon-plus-sign-alt icon-large"></i> <@t.page 'button.add'/></a></li>
+            <li><a href="sampleInfo/add.html?id={sid}" target="navTab" rel="sampleInfo/edit"><i class="icon-edit icon-large"></i> <@t.page 'button.edit'/></a></li>
+        </#if>
+        <#if authorizedMap['sampleInfo/delete']>
+            <li><a href="sampleInfoAdmin/delete.do?_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.batch_delete'/>" target="selectedTodo" rel="ids"><i class="icon-trash icon-large"></i> <@t.page 'button.batch_delete'/></a></li>
+        </#if>
+        </ul>
+    </div>
+<@_sampleInfoList sampleId=sampleId oraginalSampleId=oraginalSampleId 
+            location=location locationType=locationType tectonicLocation=tectonicLocation 
+            primaryStructuralUnit=primaryStructuralUnit secondaryStructuralUnit=secondaryStructuralUnit tertiaryStructuralUnit=tertiaryStructuralUnit 
+            lithology=lithology occurrence=occurrence intrusion=intrusion 
+            rockName=rockName rockCode=rockCode era=era 
+            geobodyName=geobodyName geobodyCode=geobodyCode surroundingRockAge=surroundingRockAge 
+            surroundingRockLithology=surroundingRockLithology relationshipWithSurroundingRock=relationshipWithSurroundingRock form=form 
+            whetherToCutAreaConstructionLine=whetherToCutAreaConstructionLine degreeOfDeformation=degreeOfDeformation characteristicMinerals=characteristicMinerals 
+            geneticType=geneticType age=age ageError=ageError 
+            testObject=testObject testMethod=testMethod ageSelected=ageSelected 
+            ageSelectedError=ageSelectedError tectonicType=tectonicType sourceOfStructuralTypeDiscrimination=sourceOfStructuralTypeDiscrimination 
+            alkalinity=alkalinity aluminumQuality=aluminumQuality photo=photo 
+            collector=collector collectorOrg=collectorOrg reviewer=reviewer 
+            analyzeOrg=analyzeOrg analyzePerson=analyzePerson testDate=testDate 
+            dataSource=dataSource articleDoi=articleDoi remark=remark 
+            siO2=siO2 tiO2=tiO2 al2o3=al2o3 
+            fe2o3=fe2o3 feO=feO fe2o3t=fe2o3t 
+            feOt=feOt tfe=tfe mnO=mnO 
+            mgO=mgO caO=caO na2o=na2o 
+            k2o=k2o p2o5=p2o5 h2op=h2op 
+            h2on=h2on co2=co2 so3=so3 
+            f=f cl=cl loi=loi 
+            total=total la=la ce=ce 
+            pr=pr nd=nd pm=pm 
+            sm=sm eu=eu gd=gd 
+            tb=tb dy=dy ho=ho 
+            er=er tm=tm yb=yb 
+            lu=lu y=y sc=sc 
+            totalReElement=totalReElement v=v cr=cr 
+            co=co ni=ni mn=mn 
+            cu=cu zn=zn ga=ga 
+            ge=ge cs=cs rb=rb 
+            ba=ba th=th u=u 
+            nb=nb ta=ta ti=ti 
+            p=p pb=pb sr=sr 
+            zr=zr hf=hf li=li 
+            be=be w=w pt=pt 
+            pd=pd os=os ir=ir 
+            ru=ru rh=rh srIsotope=srIsotope 
+            ndIsotope=ndIsotope rb87Sr86=rb87Sr86 sr87Sr86M=sr87Sr86M 
+            sm147Nd144=sm147Nd144 nd143Nd144=nd143Nd144 testRockMa=testRockMa 
+            sr87Sr86I=sr87Sr86I nd143Nd144TChur=nd143Nd144TChur nd143Nd144I=nd143Nd144I 
+            FSmNdS=FSmNdS epsilonNd0=epsilonNd0 epsilonNdT=epsilonNdT 
+            tdmMa=tdmMa tdm2Ma=tdm2Ma hfIsotope=hfIsotope 
+            hfPointNum=hfPointNum hfNormalNum=hfNormalNum epsilonHftMin=epsilonHftMin 
+            epsilonHftMax=epsilonHftMax epsilonHftMedian=epsilonHftMedian epsilonHftAverage=epsilonHftAverage 
+            tdmcMin=tdmcMin tdmcMax=tdmcMax tdmcMedian=tdmcMedian 
+            tdmcAverage=tdmcAverage hfOisotope=hfOisotope d18oMin=d18oMin 
+            d18oMax=d18oMax d18oAverage=d18oAverage d18oMedian=d18oMedian 
+            orderField=orderField orderType=orderType pageIndex=pageNum pageSize=numPerPage>
+    <table class="list" width="400%" layoutH="92">
+        <thead>
+            <tr>
+                <th orderField="id" class="<#if orderField??&&'id'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">ID</th>
+                <th orderField="sampleId" class="<#if orderField??&&'sampleId'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Sample Id</th>
+                <th orderField="oraginalSampleId" class="<#if orderField??&&'oraginalSampleId'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Oraginal Sample Id</th>
+                <th orderField="longitude" class="<#if orderField??&&'longitude'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Longitude</th>
+                <th orderField="latitude" class="<#if orderField??&&'latitude'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Latitude</th>
+                <th orderField="location" class="<#if orderField??&&'location'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Location</th>
+                <th orderField="locationType" class="<#if orderField??&&'locationType'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Location Type</th>
+                <th orderField="tectonicLocation" class="<#if orderField??&&'tectonicLocation'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Tectonic Location</th>
+                <th orderField="lithology" class="<#if orderField??&&'lithology'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Lithology</th>
+                <th orderField="age" class="<#if orderField??&&'age'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Age（Ma）</th>
+                <th orderField="ageError" class="<#if orderField??&&'ageError'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Age Error（Ma）</th>
+                <th orderField="ageSelected" class="<#if orderField??&&'ageSelected'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Age Selected（Ma）</th>
+                <th orderField="ageSelectedError" class="<#if orderField??&&'ageSelectedError'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Age Selected Error（Ma）</th>
+
+                <th orderField="occurrence" class="<#if orderField??&&'occurrence'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Occurrence</th>
+                <th orderField="intrusion" class="<#if orderField??&&'intrusion'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Intrusion</th>
+                <th orderField="rockName" class="<#if orderField??&&'rockName'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Rock Name</th>
+                <th orderField="rockCode" class="<#if orderField??&&'rockCode'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Rock Code</th>
+                <th orderField="era" class="<#if orderField??&&'era'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Era</th>
+                <th orderField="geobodyName" class="<#if orderField??&&'geobodyName'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Geobody Name</th>
+                <th orderField="geobodyCode" class="<#if orderField??&&'geobodyCode'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Geobody Code</th>
+                <th orderField="surroundingRockAge" class="<#if orderField??&&'surroundingRockAge'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Surrounding Rock Age</th>
+                <th orderField="surroundingRockLithology" class="<#if orderField??&&'surroundingRockLithology'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Surrounding Rock Lithology</th>
+                <th orderField="relationshipWithSurroundingRock" class="<#if orderField??&&'relationshipWithSurroundingRock'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Relationship with Surrounding Rock</th>
+                <th orderField="form" class="<#if orderField??&&'form'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Form</th>
+                <th orderField="whetherToCutAreaConstructionLine" class="<#if orderField??&&'whetherToCutAreaConstructionLine'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Whether to Cut Area Construction Line</th>
+                <th orderField="degreeOfDeformation" class="<#if orderField??&&'degreeOfDeformation'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Degree of Deformation</th>
+                <th orderField="characteristicMinerals" class="<#if orderField??&&'characteristicMinerals'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Characteristic Minerals</th>
+                <th orderField="geneticType" class="<#if orderField??&&'geneticType'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Genetic Type</th>
+                <th orderField="testObject" class="<#if orderField??&&'testObject'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Test Object</th>
+                <th orderField="testMethod" class="<#if orderField??&&'testMethod'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Test Method</th>
+               <th orderField="tectonicType" class="<#if orderField??&&'tectonicType'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Tectonic Type</th>
+                <th orderField="sourceOfStructuralTypeDiscrimination" class="<#if orderField??&&'sourceOfStructuralTypeDiscrimination'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Source of Structural Type Discrimination</th>
+                <th orderField="alkalinity" class="<#if orderField??&&'alkalinity'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Alkalinity</th>
+                <th orderField="aluminumQuality" class="<#if orderField??&&'aluminumQuality'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Aluminum Quality</th>
+                <th orderField="photo" class="<#if orderField??&&'photo'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Photo</th>
+                <th orderField="collector" class="<#if orderField??&&'collector'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Collector</th>
+                <th orderField="collectorOrg" class="<#if orderField??&&'collectorOrg'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Collector Org</th>
+                <th orderField="reviewer" class="<#if orderField??&&'reviewer'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Reviewer</th>
+                <th orderField="analyzeOrg" class="<#if orderField??&&'analyzeOrg'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Analyze Org</th>
+                <th orderField="analyzePerson" class="<#if orderField??&&'analyzePerson'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Analyze Person</th>
+                <th orderField="testDate" class="<#if orderField??&&'testDate'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Test Date</th>
+                <th orderField="dataSource" class="<#if orderField??&&'dataSource'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Data Source</th>
+                <th orderField="articleDoi" class="<#if orderField??&&'articleDoi'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Article DOI</th>
+                <th orderField="remark" class="<#if orderField??&&'remark'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Remark</th>
+
+                <th><@t.page 'operate'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.id}">
+                <td>${a.id!}</td>
+                <td>${a.sampleId!}</td>
+                <td>${a.oraginalSampleId!}</td>
+                <td>${(a.longitude?c)!}</td>
+                <td>${(a.latitude?c)!}</td>
+                <td>${a.location!}</td>
+                <td>${a.locationType!}</td>
+                <td>${a.tectonicLocation!}</td>
+                <td>${a.lithology!}</td>
+                <td>${(a.age?c)!}</td>
+                <td>${(a.ageError?c)!}</td>
+                <td>${(a.ageSelected?c)!}</td>
+                <td>${(a.ageSelectedError?c)!}</td>
+                <td>${a.occurrence!}</td>
+                <td>${a.intrusion!}</td>
+                <td>${a.rockName!}</td>
+                <td>${a.rockCode!}</td>
+                <td>${a.era!}</td>
+                <td>${a.geobodyName!}</td>
+                <td>${a.geobodyCode!}</td>
+                <td>${a.surroundingRockAge!}</td>
+                <td>${a.surroundingRockLithology!}</td>
+                <td>${a.relationshipWithSurroundingRock!}</td>
+                <td>${a.form!}</td>
+                <td>${a.whetherToCutAreaConstructionLine!}</td>
+                <td>${a.degreeOfDeformation!}</td>
+                <td>${a.characteristicMinerals!}</td>
+                <td>${a.geneticType!}</td>
+
+                <td>${a.testObject!}</td>
+                <td>${a.testMethod!}</td>
+                <td>${a.tectonicType!}</td>
+                <td>${a.sourceOfStructuralTypeDiscrimination!}</td>
+                <td>${a.alkalinity!}</td>
+                <td>${a.aluminumQuality!}</td>
+                <td>${a.photo!}</td>
+                <td>${a.collector!}</td>
+                <td>${a.collectorOrg!}</td>
+                <td>${a.reviewer!}</td>
+                <td>${a.analyzeOrg!}</td>
+                <td>${a.analyzePerson!}</td>
+                <td>${a.testDate!}</td>
+                <td>${a.dataSource!}</td>
+                <td>${a.articleDoi!}</td>
+                <td>${a.remark!}</td>
+                <td>
+                <#if authorizedMap['sampleInfo/delete']>
+                    <a href="sampleInfo/delete.do?ids=${a.id}&_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.delete'/>"  target="ajaxTodo"><@t.page 'button.delete'/></a>
+                </#if>
+                </td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</@_sampleInfoList>
+</div>

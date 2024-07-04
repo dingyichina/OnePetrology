@@ -1,0 +1,59 @@
+<@_dPFissionTrack id=id><#assign a=object/></@_dPFissionTrack>
+<form method="post" action="dPFissionTrack/save.do?callbackType=closeCurrent&navTabId=dPFissionTrack/list" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <input name="id" type="hidden" value="${id!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+    <div class="pageContent">
+        <div class="pageFormContent" layoutH="56">
+            <dl>
+                <dt>ID：</dt>
+                <dd><input class="required" name="id" type="text" size="30" value="${(a.id)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>衰变常数 （1/年）：</dt>
+                <dd><input class="required" name="decayConst" type="text" size="30" value="${(a.decayConst)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>裂变常数：</dt>
+                <dd><input class="required" name="fissionConst" type="text" size="30" value="${(a.fissionConst)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>径迹长度（cm）：</dt>
+                <dd><input class="required" name="trackLength" type="text" size="30" value="${(a.trackLength)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>自发裂变径迹密度（条/cm<sup>2</sup>）：</dt>
+                <dd><input class="required" name="spontaneFissionTrackDensity" type="text" size="30" value="${(a.spontaneFissionTrackDensity)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>热中子剂量（1/cm<sup>2</sup>））：</dt>
+                <dd><input class="required" name="thermalDose" type="text" size="30" value="${(a.thermalDose)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>人工诱发裂变径迹密度（条/cm<sup>2</sup>））：</dt>
+                <dd><input class="required" name="artificialFissionTrackDensity" type="text" size="30" value="${(a.artificialFissionTrackDensity)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>裂变径迹年龄（Ma）：</dt>
+                <dd><input class="required" name="fissionTrackAge" type="text" size="30" value="${(a.fissionTrackAge)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>年龄误差（Ma）：</dt>
+                <dd><input class="required" name="ageError" type="text" size="30" value="${(a.ageError)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>备注：</dt>
+                <dd><input class="required" name="remark" type="text" size="30" value="${(a.remark)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>样品：</dt>
+                <dd><input class="required" name="sampleId" type="text" size="30" value="${(a.sampleId)!}"/></dd>
+            </dl>
+        </div>
+    </div>
+</form>

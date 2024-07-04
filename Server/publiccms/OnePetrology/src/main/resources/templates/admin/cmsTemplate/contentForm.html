@@ -1,0 +1,72 @@
+<@_category id=categoryId!>
+    <#assign category=object/>
+    <@_model id=modelId!>
+        <#assign
+            model=object
+            fieldList=model.fieldList![]
+            requiredFieldList=model.requiredFfieldList![]
+        />
+<#assign formContent>
+    <#if category.allowContribute>
+<#noparse><#if user?has_content></#noparse>
+<form method="post" action="<#noparse>${site.dynamicPath}</#noparse>content/save">
+    <input type="hidden" name="_csrf" value="<#noparse><@_csrfToken/></#noparse>"/>
+    <input name="returnUrl" type="hidden" value="${site.dynamicPath}" />
+    <input name="categoryId" type="hidden" value="${category.id!}"/>
+    <input name="modelId" type="hidden" value="${model.id!}"/>
+<#if fieldList?seq_contains('author')>
+    <input name="author" type="hidden" value="<#noparse>${(user.nickName)!}</#noparse>"/>
+</#if>
+    <p><label>${(model.fieldTextMap['title'])!}:</label><input name="title" type="text" size="60" maxlength="255"/></p>
+<#if model.onlyUrl>
+    <p><label>${(model.fieldTextMap['url'])!}:</label><input name="url" type="text" size="60" maxlength="1000"/></p>
+</#if>
+<#if fieldList?seq_contains('content')>
+    <p><label>${(model.fieldTextMap['content'])!}:</label><textarea name="text" cols="80" rows="20"></textarea></p>
+</#if>
+    <#include "../include_page/extendData.html"/>
+    <@_sysExtendFieldList extendId=category.extendId>
+        <#assign extendList=list![]/>
+        <#assign extendValue=attribute!{}/>
+        <@extendData 'categoryExtendDataList' extendList extendValue 'customform'/>
+    </@_sysExtendFieldList>
+    <#assign extendList=model.extendList![]/>
+    <#assign extendValue=attribute!{}/>
+    <@extendData 'modelExtendDataList' extendList extendValue 'customform'/>
+    <p><input type="submit" value="<@t.page 'button.save'/>"/></p>
+</form>
+<#noparse>
+<#else>
+please <a href="${site.dynamicPath}login.html">login</a>
+</#if></#noparse>
+    <#else>
+<@t.message 'verify.custom.contribute'/>
+    </#if>
+</#assign>
+    </@_model>
+</@_category>
+<div class="pageFormContent" layoutH>
+    <dl>
+        <dt><@t.page 'category'/>:</dt>
+        <dd>
+            ${(category.name)!}
+        </dd>
+    </dl>
+    <dl>
+        <dt><@t.page 'model'/>:</dt>
+        <dd>
+            ${(model.name)!}
+        </dd>
+    </dl>
+    <dl class="nowrap">
+        <dt><@t.page 'source_code'/>:</dt>
+        <dd>
+            <textarea cols="80" rows="20"><@html_escape>${(formContent)!}</@html_escape></textarea>
+        </dd>
+    </dl>
+</div>
+<div class="formBar">
+    <ul>
+        <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+    </ul>
+</div>

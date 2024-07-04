@@ -1,0 +1,230 @@
+<@_sampleList   >
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>OnePetrology——Sample infomation</title>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=device-dpi" />
+	<link href="${site.sitePath}leaflet/leaflet.css" rel="stylesheet"/>
+	<script src="${site.sitePath}leaflet/leaflet.js"></script>
+	<script src="${site.sitePath}leaflet/PruneCluster.js"></script>
+    <script src="${site.sitePath}publishdata/samplePoints.js"></script>
+    <link href="${site.sitePath}leaflet/pruneCluster-examples.css" rel="stylesheet"/>
+	
+	<script src="${site.sitePath}js/jquery-1.9.1.min.js"></script>
+	<link href="${site.sitePath}css/jquery.range.css" rel="stylesheet"/>
+	<script src="${site.sitePath}js/jquery.range.js"></script>
+	
+	<script src="${site.sitePath}bootstrap/js/bootstrap.min.js"></script>
+	<link href="${site.sitePath}bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+	
+</head>
+<body>
+
+	
+<div id="map"></div>
+	
+	  <div class="row show-grid">
+		<div class="col-md-2 " >
+			<p style="text-align: left;">
+				  Input Sample Code please(<span> ${count} </span>):
+			  </p>
+			<input type="text"  placeholder="sample code"/>
+		</div>
+		  
+	   <div  class="col-md-2 "  >
+			  <p style="text-align: center;">
+				  Age Error
+			  </p>
+			<input type="hidden" value="0.05, 0.70" id="range"  class="slider-input"/>
+		</div>
+		   <div  class="col-md-2 "  >
+			  <p style="text-align: center;">
+				  Age
+			  </p>
+			<input type="hidden" value="0.05, 0.70" id="range"  class="slider-input"/>
+		</div>
+		   <div  class="col-md-2 "  >
+			  <p style="text-align: center;">
+				  Sample Date
+			  </p>
+			<input type="hidden" value="0.05, 0.70" id="range"  class="slider-input"/>
+		</div>
+		   <div  class="col-md-2 "  >
+			  <p style="text-align: center;">
+				  Similarity
+			  </p>
+			<input type="hidden" value="0.05, 0.70" id="range"  class="slider-input"/>
+		</div>
+		   <div  class="col-md-2 "  >
+			  <p style="text-align: center;">
+				  Error Choosen
+			  </p>
+			<input type="hidden" value="0.05, 0.70" id="range"  class="slider-input"/>
+		</div>
+	</div>
+
+
+	
+<script>
+    var map = L.map("map", {
+        attributionControl: false,
+        zoomControl: false
+    }).setView(L.latLng(34, 108), 4);
+
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        detectRetina: true,
+        maxNativeZoom: 18
+    }).addTo(map);
+
+    var leafletView = new PruneClusterForLeaflet();
+
+	<#list page as a>
+		<#if a.longitude  != 0  && a.latitude!=0>
+		 leafletView.RegisterMarker(new PruneCluster.Marker(${a.latitude},${ a.longitude}, {title:"${ a.originalSampleId!}"}));
+		</#if>
+     </#list>
+   
+    leafletView.PrepareLeafletMarker = function (marker, data) {
+        if (marker.getPopup()) {
+            marker.setPopupContent(data.title);
+        } else {
+            marker.bindPopup(data.title);
+        }
+    };
+
+    map.addLayer(leafletView);
+</script>
+<script>
+		$('.slider-input').jRange({
+		        from: 0.00,   				//滑块范围的初始值
+		        to: 1.00,    				//滑块范围的终止值
+		        step: 0.01,   				//设置步长
+		        scale: [0,1], //滑动条下方的尺度变标签
+		        format: '%s',  			//数值格式
+		        width: 300, 			//进度条的宽度
+		        showLabels: true,  		//是否显示滑动条下方的尺寸标签
+		        showScale: true,  		//是否显示滑块上方的数值标签
+		        isRange: true,     		//是否为选取范围
+		        onstatechange: function(e){    //滑块范围改变时触发的方法
+		            console.log(e);
+		        }
+		    });
+			
+		$('.slider-input').jRange('setValue', '0.05, 0.70'); 
+		
+	</script>	
+	
+	<@_sampleInfoList sampleId=sampleId originalSampleId=originalSampleId
+countryCode=countryCode location=location lithology=lithology
+rockName=rockName rockCode=rockCode era=era
+geobodyName=geobodyName geobodyCode=geobodyCode tectonicLocation=tectonicLocation
+primaryStructuralUnit=primaryStructuralUnit secondaryStructuralUnit=secondaryStructuralUnit tertiarySturcturalUnit=tertiarySturcturalUnit
+surroundingRockAge=surroundingRockAge surroundingRockLithology=surroundingRockLithology relationshipWithSurroundingRock=relationshipWithSurroundingRock
+form=form isCutAreaConstructionLine=isCutAreaConstructionLine degreeOfDeformation=degreeOfDeformation
+characteristicMinerals=characteristicMinerals geneticType=geneticType tectonicType=tectonicType
+sourceOfStructuralTypeDiscrimination=sourceOfStructuralTypeDiscrimination alkalinity=alkalinity aluminumQuality=aluminumQuality
+collector=collector collectorOrg=collectorOrg reviewer=reviewer
+analyzeOrg=analyzeOrg analyzePerson=analyzePerson testObject=testObject
+testDate=testDate testMethod=testMethod articleDoi=articleDoi
+hasChecked=hasChecked
+orderField=orderField orderType=orderType pageIndex=pageNum pageSize=numPerPage>
+
+
+<div class="pageContent">
+
+    <table class="list" width="300%" layoutH="80">
+        <thead>
+            <tr>
+                <th width="20"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+                <th>ID</th>
+                <th orderField="sampleId" class="<#if orderField??&&'sampleId'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Sample Code</th>
+                <th orderField="originalSampleId" class="<#if orderField??&&'originalSampleId'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Original Code</th>
+                <th orderField="longitude" class="<#if orderField??&&'longitude'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Longitude</th>
+                <th orderField="latitude" class="<#if orderField??&&'latitude'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Latitude</th>
+                <th orderField="countryCode" class="<#if orderField??&&'countryCode'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Country</th>
+                <th orderField="location" class="<#if orderField??&&'location'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Area</th>
+                <th orderField="lithology" class="<#if orderField??&&'lithology'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">lithology</th>
+                <th orderField="rockName" class="<#if orderField??&&'rockName'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Rock name</th>
+                <th orderField="rockCode" class="<#if orderField??&&'rockCode'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Rock Code</th>
+                <th orderField="era" class="<#if orderField??&&'era'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Geology Era</th>
+                <th orderField="geobodyName" class="<#if orderField??&&'geobodyName'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Geobody name</th>
+                <th orderField="geobodyCode" class="<#if orderField??&&'geobodyCode'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Geobody Code</th>
+                <th orderField="tectonicLocation" class="<#if orderField??&&'tectonicLocation'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">ectonic position</th>
+                <th orderField="primaryStructuralUnit" class="<#if orderField??&&'primaryStructuralUnit'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Primary Struction</th>
+                <th orderField="secondaryStructuralUnit" class="<#if orderField??&&'secondaryStructuralUnit'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Secondary Struction</th>
+                <th orderField="tertiarySturcturalUnit" class="<#if orderField??&&'tertiarySturcturalUnit'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Third Struction</th>
+                <th orderField="surroundingRockAge" class="<#if orderField??&&'surroundingRockAge'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Surrounding Age</th>
+                <th orderField="surroundingRockLithology" class="<#if orderField??&&'surroundingRockLithology'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Surrounding Lithology</th>
+                <th orderField="relationshipWithSurroundingRock" class="<#if orderField??&&'relationshipWithSurroundingRock'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Relation with Surrounding</th>
+                <th orderField="form" class="<#if orderField??&&'form'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Form</th>
+                <th width="140" orderField="isCutAreaConstructionLine" class="<#if orderField??&&'isCutAreaConstructionLine'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Whether to cut</th>
+                <th orderField="degreeOfDeformation" class="<#if orderField??&&'degreeOfDeformation'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Deformation degree</th>
+                <th orderField="characteristicMinerals" class="<#if orderField??&&'characteristicMinerals'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Main mineral</th>
+                <th orderField="geneticType" class="<#if orderField??&&'geneticType'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Genetic type</th>
+                <th orderField="tectonicType" class="<#if orderField??&&'tectonicType'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Tectonic type</th>
+                <th orderField="sourceOfStructuralTypeDiscrimination" class="<#if orderField??&&'sourceOfStructuralTypeDiscrimination'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Source of Tectonic type</th>
+                <th orderField="alkalinity" class="<#if orderField??&&'alkalinity'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Alkalinity</th>
+                <th orderField="aluminumQuality" class="<#if orderField??&&'aluminumQuality'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Aluminum degree</th>
+                <th orderField="age" class="<#if orderField??&&'age'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Age</th>
+                <th orderField="ageError" class="<#if orderField??&&'ageError'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Age Error</th>
+                <th orderField="articleId" class="<#if orderField??&&'articleId'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">发表文献编号</th>
+                <th orderField="articleDoi" class="<#if orderField??&&'articleDoi'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">文章DOI</th>
+                <th orderField="hasChecked" class="<#if orderField??&&'hasChecked'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">审核</th>
+                <th>备注</th>
+              
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.id}">
+                <td><input name="ids" value="${a.id}" type="checkbox"></td>
+                <td>${a.id!}</td>
+                <td>${a.sampleId!}</td>
+                <td>${a.originalSampleId!}</td>
+                 <td>${(a.longitude?string('.000000'))!}</td>
+                <td>${(a.latitude?string('.000000'))!}</td>
+                <td>${a.countryCode!}</td>
+                <td>${a.location!}</td>
+                <td>${a.lithology!}</td>
+                <td>${a.rockName!}</td>
+                <td>${a.rockCode!}</td>
+                <td>${a.era!}</td>
+                <td>${a.geobodyName!}</td>
+                <td>${a.geobodyCode!}</td>
+                <td>${a.tectonicLocation!}</td>
+                <td>${a.primaryStructuralUnit!}</td>
+                <td>${a.secondaryStructuralUnit!}</td>
+                <td>${a.tertiarySturcturalUnit!}</td>
+                <td>${a.surroundingRockAge!}</td>
+                <td>${a.surroundingRockLithology!}</td>
+                <td>${a.relationshipWithSurroundingRock!}</td>
+                <td>${a.form!}</td>
+                <td>${a.isCutAreaConstructionLine!}</td>
+                <td>${a.degreeOfDeformation!}</td>
+                <td>${a.characteristicMinerals!}</td>
+                <td>${a.geneticType!}</td>
+                <td>${a.tectonicType!}</td>
+                <td>${a.sourceOfStructuralTypeDiscrimination!}</td>
+                <td>${a.alkalinity!}</td>
+                <td>${a.aluminumQuality!}</td>
+                <td>${a.age!}</td>
+                <td>${a.ageError!}</td>
+                <td>${a.articleId!}</td>
+                <td>${a.articleDoi!}</td>
+                <td>${a.hasChecked!}</td>
+                <td>${a.remark!}</td>
+                <td>
+              
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</@_sampleInfoList>
+</div>
+	
+</body>
+</html>
+</@_sampleList>

@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OperPanel</class>
+ <widget class="QWidget" name="OperPanel">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>190</width>
+    <height>701</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Operate Panel</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QToolBox" name="toolBox">
+     <property name="currentIndex">
+      <number>3</number>
+     </property>
+     <widget class="QWidget" name="knowledgeTree">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>172</width>
+        <height>473</height>
+       </rect>
+      </property>
+      <attribute name="icon">
+       <iconset>
+        <normaloff>res/community.png</normaloff>res/community.png</iconset>
+      </attribute>
+      <attribute name="label">
+       <string>Knowledge Tree</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
+        <number>30</number>
+       </property>
+       <property name="topMargin">
+        <number>30</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QToolButton" name="tbtnKb">
+           <property name="minimumSize">
+            <size>
+             <width>91</width>
+             <height>91</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>120</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>One Petrology</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>res/DDE-logo.png</normaloff>res/DDE-logo.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>48</width>
+             <height>48</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QToolButton" name="tbtnKbMy">
+           <property name="minimumSize">
+            <size>
+             <width>91</width>
+             <height>91</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>120</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>My Knowledge</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>res/tree.png</normaloff>res/tree.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>48</width>
+             <height>48</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget" native="true"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="DataTransceiverRoot">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>172</width>
+        <height>473</height>
+       </rect>
+      </property>
+      <attribute name="icon">
+       <iconset>
+        <normaloff>res/files.png</normaloff>res/files.png</iconset>
+      </attribute>
+      <attribute name="label">
+       <string>Data Transceiver Room</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <property name="spacing">
+        <number>30</number>
+       </property>
+       <property name="topMargin">
+        <number>30</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QToolButton" name="tbtnUpload">
+           <property name="minimumSize">
+            <size>
+             <width>91</width>
+             <height>91</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>120</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Upload Files</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>res/upload.png</normaloff>res/upload.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>48</width>
+             <height>48</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QToolButton" name="tbtnProcessFile">
+           <property name="minimumSize">
+            <size>
+             <width>91</width>
+             <height>91</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>120</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Process Files</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>res/process.png</normaloff>res/process.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>48</width>
+             <height>48</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QToolButton" name="tbtnBrowseFiles">
+           <property name="minimumSize">
+            <size>
+             <width>91</width>
+             <height>91</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>120</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Browse Files</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>res/files.png</normaloff>res/files.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>48</width>
+             <height>48</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_2" native="true"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="page_3">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>172</width>
+        <height>473</height>
+       </rect>
+      </property>
+      <attribute name="icon">
+       <iconset>
+        <normaloff>res/pdf-batch.png</normaloff>res/pdf-batch.png</iconset>
+      </attribute>
+      <attribute name="label">
+       <string>Paper and Report</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <property name="spacing">
+        <number>30</number>
+       </property>
+       <property name="topMargin">
+        <number>30</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QToolButton" name="tbtnPublicPaper">
+           <property name="minimumSize">
+            <size>
+             <width>91</width>
+             <height>91</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>120</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Submit Paper</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>res/Public.png</normaloff>res/Public.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>48</width>
+             <height>48</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_8">
+         <item>
+          <widget class="QToolButton" name="tbtnMyPaper">
+           <property name="minimumSize">
+            <size>
+             <width>91</width>
+             <height>91</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>120</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Browse Papers</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>res/private.png</normaloff>res/private.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>48</width>
+             <height>48</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_3" native="true"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="page_4">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>172</width>
+        <height>473</height>
+       </rect>
+      </property>
+      <attribute name="icon">
+       <iconset>
+        <normaloff>res/PDF.png</normaloff>res/PDF.png</iconset>
+      </attribute>
+      <attribute name="label">
+       <string>PDF Process</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,0,1">
+       <property name="spacing">
+        <number>30</number>
+       </property>
+       <property name="topMargin">
+        <number>30</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="QToolButton" name="tbtnPdfOne">
+           <property name="minimumSize">
+            <size>
+             <width>91</width>
+             <height>91</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>120</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>One by One</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>res/PDF.png</normaloff>res/PDF.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>48</width>
+             <height>48</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_9">
+         <item>
+          <widget class="QToolButton" name="tbtnPdfBatch">
+           <property name="minimumSize">
+            <size>
+             <width>91</width>
+             <height>91</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>120</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Batch process</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>res/pdf-batch.png</normaloff>res/pdf-batch.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>48</width>
+             <height>48</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_4" native="true"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="page_5">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>172</width>
+        <height>473</height>
+       </rect>
+      </property>
+      <attribute name="icon">
+       <iconset>
+        <normaloff>res/Public.png</normaloff>res/Public.png</iconset>
+      </attribute>
+      <attribute name="label">
+       <string>Data View and Analysis</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_6" stretch="0,0,0,1">
+       <property name="spacing">
+        <number>30</number>
+       </property>
+       <property name="topMargin">
+        <number>30</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_10">
+         <item>
+          <widget class="QToolButton" name="tbtnPublicData">
+           <property name="minimumSize">
+            <size>
+             <width>91</width>
+             <height>91</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>120</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Public Data</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>res/Open Data.png</normaloff>res/Open Data.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>48</width>
+             <height>48</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_11">
+         <item>
+          <widget class="QToolButton" name="tbtnMyData">
+           <property name="minimumSize">
+            <size>
+             <width>91</width>
+             <height>91</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>120</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>My Data</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>res/DATA.png</normaloff>res/DATA.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>48</width>
+             <height>48</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_12">
+         <item>
+          <widget class="QToolButton" name="tbtnDataPlot">
+           <property name="minimumSize">
+            <size>
+             <width>91</width>
+             <height>91</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>120</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Anaylisis  plot</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>res/scatter-plot.png</normaloff>res/scatter-plot.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>48</width>
+             <height>48</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_5" native="true"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="page_6">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>172</width>
+        <height>473</height>
+       </rect>
+      </property>
+      <attribute name="icon">
+       <iconset>
+        <normaloff>res/GIS.png</normaloff>res/GIS.png</iconset>
+      </attribute>
+      <attribute name="label">
+       <string>GIS Mapping and Spatial Analysis</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_7">
+       <property name="spacing">
+        <number>30</number>
+       </property>
+       <property name="topMargin">
+        <number>30</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_13">
+         <item>
+          <widget class="QToolButton" name="tbtnPostGis">
+           <property name="minimumSize">
+            <size>
+             <width>91</width>
+             <height>91</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>120</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>PostGIS</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>res/postGis.png</normaloff>res/postGis.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>48</width>
+             <height>48</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_14">
+         <item>
+          <widget class="QToolButton" name="tbtnGeoPlot">
+           <property name="minimumSize">
+            <size>
+             <width>91</width>
+             <height>91</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>120</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Geo Plot</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>res/GIS2.png</normaloff>res/GIS2.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>48</width>
+             <height>48</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_6" native="true"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="page_7">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>172</width>
+        <height>473</height>
+       </rect>
+      </property>
+      <attribute name="icon">
+       <iconset>
+        <normaloff>res/profile.png</normaloff>res/profile.png</iconset>
+      </attribute>
+      <attribute name="label">
+       <string>Config and Setting</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_8">
+       <property name="spacing">
+        <number>30</number>
+       </property>
+       <property name="topMargin">
+        <number>30</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_15">
+         <item>
+          <widget class="QToolButton" name="tbtnMyProfile">
+           <property name="minimumSize">
+            <size>
+             <width>91</width>
+             <height>91</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>120</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>My Profile</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>res/profile.png</normaloff>res/profile.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>48</width>
+             <height>48</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_7" native="true"/>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

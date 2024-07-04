@@ -1,0 +1,126 @@
+<div class="pageHeader">
+    <form class="pagerForm" onsubmit="return navTabSearch(this);" method="post">
+        <#include "../include_page/parameters.html"/>
+        <div class="searchBar">
+            <ul class="searchContent">
+                <li>
+                    <label>Sample Id：</label>
+                    <input type="text" name="sampleId" value="${sampleId!}" />
+                </li>
+                <li>
+                    <label>Oraginal Sample Id：</label>
+                    <input type="text" name="oraginalSampleId" value="${oraginalSampleId!}" />
+                </li>
+                <li>
+                    <label>Point Num：</label>
+                    <input type="text" name="pointNum" value="${pointNum!}" />
+                </li>
+                <li>
+                    <label>Hf Type：</label>
+                    <input type="text" name="hfType" value="${hfType!}" />
+                </li>
+
+                <li>
+                    <label>Article Ref：</label>
+                    <input type="text" name="articleRef" value="${articleRef!}" />
+                </li>
+                <li>
+                    <label>Article DOI：</label>
+                    <input type="text" name="articleDoi" value="${articleDoi!}" />
+                </li>
+            </ul>
+            <div class="subBar">
+                <ul>
+                    <li>
+                    	<button type="submit" class="buttonActive"><@t.page 'button.search'/></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<@_sysAuthorized roleIds=admin.roles urls='zircon/add,zircon/delete'><#assign authorizedMap=map/></@_sysAuthorized>
+<div class="pageContent">
+    <div class="panelBar">
+        <ul class="toolBar">
+        <#if authorizedMap['zircon/add']>
+            <li><a href="zircon/add.html" target="navTab" rel="zircon/add"><i class="icon-plus-sign-alt icon-large"></i> <@t.page 'button.add'/></a></li>
+            <li><a href="zircon/add.html?id={sid}" target="navTab" rel="zircon/edit"><i class="icon-edit icon-large"></i> <@t.page 'button.edit'/></a></li>
+        </#if>
+        <#if authorizedMap['zircon/delete']>
+            <li><a href="zircon/delete.do?_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.batch_delete'/>" target="selectedTodo" rel="ids"><i class="icon-trash icon-large"></i> <@t.page 'button.batch_delete'/></a></li>
+        </#if>
+        </ul>
+    </div>
+<@_zirconList sampleId=sampleId oraginalSampleId=oraginalSampleId 
+            pointNum=pointNum hfType=hfType testAge=testAge 
+            yb176Hf177=yb176Hf177 lu176Hf177=lu176Hf177 sigma2LuHf=sigma2LuHf 
+            hf176Hf177=hf176Hf177 sigma2HfHf=sigma2HfHf hf176Hf177T=hf176Hf177T 
+            churT=churT dmT=dmT epsilonHfT=epsilonHfT 
+            sigma2EpsilonHfT=sigma2EpsilonHfT FLuHf=FLuHf tdm1=tdm1 
+            sigma2Tdm1=sigma2Tdm1 tdm2=tdm2 sigma2Tdm2=sigma2Tdm2 
+            epsilonHf0=epsilonHf0 d18o=d18o epsilonD180=epsilonD180 
+            epsilonD18oControl=epsilonD18oControl siO2=siO2 lithology=lithology 
+            mineralType=mineralType grainsNumber=grainsNumber chiSquareProbability=chiSquareProbability 
+            centralAge=centralAge centralAgeError=centralAgeError pooledAge=pooledAge 
+            pooledAgeError=pooledAgeError meanTrackLength=meanTrackLength lengthError=lengthError 
+            UThHeAge=UThHeAge UThHeAgeError=UThHeAgeError articleRef=articleRef 
+            articleDoi=articleDoi 
+            orderField=orderField orderType=orderType pageIndex=pageNum pageSize=numPerPage>
+    <table class="list" width="180%" layoutH="92">
+        <thead>
+            <tr>
+                <th orderField="id" class="<#if orderField??&&'id'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">ID</th>
+                <th orderField="sampleId" class="<#if orderField??&&'sampleId'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Sample Id</th>
+                <th orderField="oraginalSampleId" class="<#if orderField??&&'oraginalSampleId'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Oraginal Sample Id</th>
+                <th orderField="pointNum" class="<#if orderField??&&'pointNum'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Point Num</th>
+                <th orderField="lithology" class="<#if orderField??&&'lithology'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">lithology</th>
+                <th orderField="mineralType" class="<#if orderField??&&'mineralType'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Mineral Type</th>
+                <th orderField="grainsNumber" class="<#if orderField??&&'grainsNumber'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Number of Grains</th>
+                <th orderField="chiSquareProbability" class="<#if orderField??&&'chiSquareProbability'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">P(χ2) (%)</th>
+                <th orderField="centralAge" class="<#if orderField??&&'centralAge'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Central Age(Ma)</th>
+                <th orderField="centralAgeError" class="<#if orderField??&&'centralAgeError'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Central Age Error (Ma)</th>
+                <th orderField="pooledAge" class="<#if orderField??&&'pooledAge'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Pooled Age (Ma)</th>
+                <th orderField="pooledAgeError" class="<#if orderField??&&'pooledAgeError'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Pooled Age Error (Ma)</th>
+                <th orderField="meanTrackLength" class="<#if orderField??&&'meanTrackLength'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Mean Track Length (cm)</th>
+                <th orderField="lengthError" class="<#if orderField??&&'lengthError'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Length Error (cm)</th>
+                <th orderField="UThHeAge" class="<#if orderField??&&'UThHeAge'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">(U-Th)/He（Ma）</th>
+                <th orderField="UThHeAgeError" class="<#if orderField??&&'UThHeAgeError'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">(U-Th)/He Error（Ma）</th>
+                <th orderField="articleRef" class="<#if orderField??&&'articleRef'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Article Ref</th>
+                <th orderField="articleDoi" class="<#if orderField??&&'articleDoi'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Article DOI</th>
+                <th><@t.page 'operate'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.id}">
+                <td>${a.id!}</td>
+                <td>${a.sampleId!}</td>
+                <td>${a.oraginalSampleId!}</td>
+                <td>${a.pointNum!}</td>
+                <td>${a.lithology!}</td>
+                <td>${a.mineralType!}</td>
+                <td>${a.grainsNumber!}</td>
+                <td>${a.chiSquareProbability!}</td>
+                <td>${a.centralAge!}</td>
+                <td>${a.centralAgeError!}</td>
+                <td>${a.pooledAge!}</td>
+                <td>${a.pooledAgeError!}</td>
+                <td>${a.meanTrackLength!}</td>
+                <td>${a.lengthError!}</td>
+                <td>${a.UThHeAge!}</td>
+                <td>${a.UThHeAgeError!}</td>
+                <td>${a.articleRef!}</td>
+                <td>${a.articleDoi!}</td>
+                <td>
+                <#if authorizedMap['zircon/delete']>
+                    <a href="zircon/delete.do?ids=${a.id}&_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.delete'/>"  target="ajaxTodo"><@t.page 'button.delete'/></a>
+                </#if>
+                </td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</@_zirconList>
+</div>

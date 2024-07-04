@@ -1,0 +1,4 @@
+<#if articleId?has_content><@_article id=articleId><#assign article=object/></@_article></#if>
+<input name="articleId" value="${(article.id)!}" type="hidden"/>
+<input name="articleName" readonly="readonly" size="10" value="${(article.articleName)!}" type="text"/>
+<a class="btnLook" href="article/lookup.html" width="920" lookupGroup="">选择文章</a>

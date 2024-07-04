@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Random recommendation</title>
+</head>
+<body>
+    <main>
+<@_contentList pageSize=10>
+    <@_contentList pageIndex=getRandom(page.totalPage) pageSize=10>
+        <ul>
+        <#list page.list as a>
+            <li>
+                <h3><a href="<#if a.onlyUrl>${site.dynamicPath}content/redirect?id=${a.id}<#else>${a.url!}</#if>" target="_blank">${a.title}</a></h3>
+                <p>
+                    <#if a.cover?has_content><img src="${a.cover}" alt="${a.title}"/></#if>
+                    ${a.description!}
+                </p>
+            </li>
+        </#list>
+        </ul>
+    </@_contentList>
+</@_contentList>
+    </main>
+    <footer>
+        Copyright &copy; ${.now?string('yyyy')}
+    </footer>
+    <script src="${site.dynamicPath}resource/js/cms.analytics.js"></script>
+    <script>
+        var ca = cmsAnalytics();
+        var url='${site.dynamicPath}api/visit/record';
+        if("string" ==typeof itemString){
+            url=url+"?"+itemString;
+        }
+        ca.report(url);
+    </script>
+</body>
+</html>

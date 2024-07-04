@@ -1,0 +1,51 @@
+<@_artificialHeavyMineralBasicinfo id=id><#assign a=object/></@_artificialHeavyMineralBasicinfo>
+<form method="post" action="artificialHeavyMineralBasicinfo/save.do?callbackType=closeCurrent&navTabId=artificialHeavyMineralBasicinfo/list" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <input name="id" type="hidden" value="${id!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+    <div class="pageContent">
+        <div class="pageFormContent" layoutH="56">
+            <dl>
+                <dt>ID：</dt>
+                <dd><input class="required" name="id" type="text" size="30" value="${(a.id)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>样品：</dt>
+                <dd><input class="required" name="sampleId" type="text" size="30" value="${(a.sampleId)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>样品重量(Kg)：</dt>
+                <dd><input class="required" name="sampleWeight" type="text" size="30" value="${(a.sampleWeight)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>重砂总重量(g)：</dt>
+                <dd><input class="required" name="heavySandWeight" type="text" size="30" value="${(a.heavySandWeight)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>磁性部分重量(g)：</dt>
+                <dd><input class="required" name="magnetCompoWeight" type="text" size="30" value="${(a.magnetCompoWeight)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>电磁性部分重量(g)：</dt>
+                <dd><input class="required" name="electromagCompoWeight" type="text" size="30" value="${(a.electromagCompoWeight)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>重部分重量(g)：</dt>
+                <dd><input class="required" name="heavyCompoWeight" type="text" size="30" value="${(a.heavyCompoWeight)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>轻部分重量(g)：</dt>
+                <dd><input class="required" name="lightCompoWeight" type="text" size="30" value="${(a.lightCompoWeight)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>备注：</dt>
+                <dd><input class="required" name="remark" type="text" size="30" value="${(a.remark)!}"/></dd>
+            </dl>
+        </div>
+    </div>
+</form>

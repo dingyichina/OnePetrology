@@ -1,0 +1,4 @@
+baidu-aip==4.16.13
+flet==0.22.0
+chardet==5.2.0
+requests_toolbelt==1.0.0

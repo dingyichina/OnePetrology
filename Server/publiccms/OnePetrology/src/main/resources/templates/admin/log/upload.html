@@ -1,0 +1,93 @@
+<@_logUploadList userId=userId channel=channel fileTypes=fileTypes originalName=originalName filePath=filePath orderField=orderField orderType=orderType pageIndex=pageNum pageSize=numPerPage>
+<div class="pageHeader">
+    <form class="pagerForm" autocomplete="off" onsubmit="return navTabSearch(this);" method="post">
+        <#include "../include_page/parameters.html"/>
+        <div class="searchBar">
+            <ul class="searchContent">
+                <li>
+                    <label><@t.page 'user'/>:</label>
+                    <#include "../include_page/userId.html"/>
+                </li>
+                <li>
+                    <label><@t.page 'channel'/>:</label>
+                    <input type="text" name="channel" value="${channel!}" />
+                </li>
+                <li>
+                    <label><@t.page 'file_type'/>:</label>
+                    <#list ['image','video','audio','other'] as a>
+                        <label style="width:auto">
+                            <input <@t.compare fileTypes a 'checked="checked"'/> name="fileTypes" value="${a}" type="checkbox"/>
+                            <@t.page 'file_type.'+a/>
+                        </label>
+                    </#list>
+                </li>
+                <li>
+                    <label><@t.page 'file.original_name'/>:</label>
+                    <input type="text" name="originalName" value="${originalName!}" />
+                </li>
+                <li>
+                    <label><@t.page 'file_path'/>:</label>
+                    <input type="text" name="filePath" value="${filePath!}" />
+                </li>
+            </ul>
+            <div class="subBar">
+                <ul>
+                    <li>
+                        <button type="submit" class="buttonActive"><@t.page 'button.search'/></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="pageContent">
+    <div class="panelBar">
+        <ul class="toolBar">
+            <li><a href="logUpload/delete?_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.batch_delete'/>" target="selectedTodo" rel="ids"><i class="icon-trash icon-large"></i> <@t.page 'button.batch_delete'/></a></li>
+        </ul>
+    </div>
+    <table class="table" width="100%" layoutH>
+        <thead>
+            <tr>
+                <th width="20"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+                <th><@t.page 'user.id'/></th>
+                <th><@t.page 'user.nickname'/></th>
+                <th><@t.page 'channel'/></th>
+                <th><@t.page 'file_type'/></th>
+                <th><@t.page 'file.original_name'/></th>
+                <th orderField="fileSize" class="<#if orderField??&&'fileSize'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>"><@t.page 'file.size'/></th>
+                <th>IP</th>
+                <th orderField="createDate" class="<#if orderField??&&'createDate'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>"><@t.page 'log.create_date'/></th>
+                <th><@t.page 'file_path'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+                <@t.merge 'userIds' a.userId!/>
+            </#list>
+            <@_sysUser ids=t.userIds!><#assign userMap=map!/></@_sysUser>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.id}">
+                <td><input name="ids" value="${a.id}" type="checkbox"></td>
+                <td>${a.userId!}</td>
+                <td>
+                    ${(userMap[a.userId?string].nickName)!}
+                </td>
+                <td>
+                    ${a.channel!}
+                </td>
+                <td>
+                    <@t.page 'file_type.'+a.fileType/>
+                </td>
+                <td>${a.originalName!}</td>
+                <td><@t.fileSize a.fileSize/><#if a.width?has_content&&a.height?has_content>(${a.width}*${a.height})</#if></td>
+                <td>${a.ip!}</td>
+                <td>${a.createDate!}</td>
+                <td>${(a.filePath)!}</td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</div>
+</@_logUploadList>

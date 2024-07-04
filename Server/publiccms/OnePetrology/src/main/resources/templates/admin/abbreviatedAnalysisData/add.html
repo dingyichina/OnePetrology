@@ -1,0 +1,35 @@
+<@_abbreviatedAnalysisData id=id><#assign a=object/></@_abbreviatedAnalysisData>
+<form method="post" action="abbreviatedAnalysisData/save.do?callbackType=closeCurrent&navTabId=abbreviatedAnalysisData/list" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <input name="id" type="hidden" value="${id!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+    <div class="pageContent">
+        <div class="pageFormContent" layoutH="56">
+            <dl>
+                <dt>ID：</dt>
+                <dd><input class="required" name="id" type="text" size="30" value="${(a.id)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>样品：</dt>
+                <dd><input class="required" name="sampleId" type="text" size="30" value="${(a.sampleId)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>分析项目：</dt>
+                <dd><input class="required" name="analyzeItem" type="text" size="30" value="${(a.analyzeItem)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>分析值：</dt>
+                <dd><input class="required" name="analyzeValue" type="text" size="30" value="${(a.analyzeValue)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>备注：</dt>
+                <dd><input class="required" name="remark" type="text" size="30" value="${(a.remark)!}"/></dd>
+            </dl>
+        </div>
+    </div>
+</form>

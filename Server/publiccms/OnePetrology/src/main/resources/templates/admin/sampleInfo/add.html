@@ -1,0 +1,665 @@
+<@_sampleInfo id=id><#assign a=object/></@_sampleInfo>
+<form method="post" action="sampleInfoAdmin/save.do?callbackType=closeCurrent&navTabId=sampleInfo/list" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <input name="id" type="hidden" value="${id!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+    <div class="pageContent">
+        <div class="pageFormContent" layoutH="56">
+            <input class="required  " name="id" type="hidden" size="30" value="${(a.id)!}"/>
+
+            <dl>
+                <dt>Sample Id：</dt>
+                <dd><input  name="sampleId" type="text" size="30" value="${(a.sampleId)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Oraginal Sample Id：</dt>
+                <dd><input  name="oraginalSampleId" type="text" size="30" value="${(a.oraginalSampleId)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Longitude：</dt>
+                <dd><input class="required" name="longitude" type="text" size="30" value="${(a.longitude?c)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Latitude：</dt>
+                <dd><input class="required" name="latitude" type="text" size="30" value="${(a.latitude?c)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Location：</dt>
+                <dd><input  name="location" type="text" size="30" value="${(a.location)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Region Location：</dt>
+                <dd><input name="regionLocation" type="text" size="30" value="${(a.regionLocation)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Location Type：</dt>
+                <dd><input  name="locationType" type="text" size="30" value="${(a.locationType)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Tectonic Location：</dt>
+                <dd><input name="tectonicLocation" type="text" size="30" value="${(a.tectonicLocation)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Tectonic Type：</dt>
+                <dd><input  name="tectonicType" type="text" size="30" value="${(a.tectonicType)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Lithology：</dt>
+                <dd><input  name="lithology" type="text" size="30" value="${(a.lithology)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Orginal Lithology：</dt>
+                <dd><input  name="lithologyOrigin" type="text" size="30" value="${(a.lithologyOrigin)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Occurrence：</dt>
+                <dd><input  name="occurrence" type="text" size="30" value="${(a.occurrence)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Intrusion：</dt>
+                <dd><input  name="intrusion" type="text" size="30" value="${(a.intrusion)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Pluton：</dt>
+                <dd><input  name="pluton" type="text" size="30" value="${(a.pluton)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Original Pluton：</dt>
+                <dd><input  name="plutonOrigin" type="text" size="30" value="${(a.plutonOrigin)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Rock Name：</dt>
+                <dd><input  name="rockName" type="text" size="30" value="${(a.rockName)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Rock Code：</dt>
+                <dd><input  name="rockCode" type="text" size="30" value="${(a.rockCode)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Era：</dt>
+                <dd><input  name="era" type="text" size="30" value="${(a.era)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Geobody Name：</dt>
+                <dd><input  name="geobodyName" type="text" size="30" value="${(a.geobodyName)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Geobody Code：</dt>
+                <dd><input  name="geobodyCode" type="text" size="30" value="${(a.geobodyCode)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Surrounding Rock Age：</dt>
+                <dd><input  name="surroundingRockAge" type="text" size="30" value="${(a.surroundingRockAge)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Surrounding Rock Lithology：</dt>
+                <dd><input  name="surroundingRockLithology" type="text" size="30" value="${(a.surroundingRockLithology)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Relationship with Surrounding Rock：</dt>
+                <dd><input  name="relationshipWithSurroundingRock" type="text" size="30" value="${(a.relationshipWithSurroundingRock)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Form：</dt>
+                <dd><input  name="form" type="text" size="30" value="${(a.form)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Whether to Cut Area Construction Line：</dt>
+                <dd><input  name="whetherToCutAreaConstructionLine" type="text" size="30" value="${(a.whetherToCutAreaConstructionLine)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Degree of Deformation：</dt>
+                <dd><input  name="degreeOfDeformation" type="text" size="30" value="${(a.degreeOfDeformation)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Characteristic Minerals：</dt>
+                <dd><input  name="characteristicMinerals" type="text" size="30" value="${(a.characteristicMinerals)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Mining Area：</dt>
+                <dd><input  name="miningArea" type="text" size="30" value="${(a.miningArea)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Ore Type：</dt>
+                <dd><input  name="oreType" type="text" size="30" value="${(a.oreType)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Genetic Type：</dt>
+                <dd><input  name="geneticType" type="text" size="30" value="${(a.geneticType)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Age（Ma）：</dt>
+                <dd><input  name="age" type="text" size="30" value="${(a.age)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Age Error（Ma）：</dt>
+                <dd><input  name="ageError" type="text" size="30" value="${(a.ageError)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Age Selected（Ma）：</dt>
+                <dd><input  name="ageSelected" type="text" size="30" value="${(a.ageSelected)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Age Selected Error（Ma）：</dt>
+                <dd><input  name="ageSelectedError" type="text" size="30" value="${(a.ageSelectedError)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Test Object：</dt>
+                <dd><input  name="testObject" type="text" size="30" value="${(a.testObject)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Test Method：</dt>
+                <dd><input  name="testMethod" type="text" size="30" value="${(a.testMethod)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Primary Structural Unit：</dt>
+                <dd><input  name="primaryStructuralUnit" type="text" size="30" value="${(a.primaryStructuralUnit)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Secondary Structural Unit：</dt>
+                <dd><input  name="secondaryStructuralUnit" type="text" size="30" value="${(a.secondaryStructuralUnit)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Tertiary Structural Unit：</dt>
+                <dd><input  name="tertiaryStructuralUnit" type="text" size="30" value="${(a.tertiaryStructuralUnit)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Source of Structural Type Discrimination：</dt>
+                <dd><input  name="sourceOfStructuralTypeDiscrimination" type="text" size="30" value="${(a.sourceOfStructuralTypeDiscrimination)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Alkalinity：</dt>
+                <dd><input  name="alkalinity" type="text" size="30" value="${(a.alkalinity)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Aluminum Quality：</dt>
+                <dd><input  name="aluminumQuality" type="text" size="30" value="${(a.aluminumQuality)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Photo：</dt>
+                <dd><input  name="photo" type="text" size="30" value="${(a.photo)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Collector：</dt>
+                <dd><input  name="collector" type="text" size="30" value="${(a.collector)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Collector Org：</dt>
+                <dd><input  name="collectorOrg" type="text" size="30" value="${(a.collectorOrg)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Reviewer：</dt>
+                <dd><input  name="reviewer" type="text" size="30" value="${(a.reviewer)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Analyze Org：</dt>
+                <dd><input  name="analyzeOrg" type="text" size="30" value="${(a.analyzeOrg)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Analyze Person：</dt>
+                <dd><input  name="analyzePerson" type="text" size="30" value="${(a.analyzePerson)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Test Date：</dt>
+                <dd><input  name="testDate" type="text" size="30" value="${(a.testDate)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Data Source：</dt>
+                <dd><input  name="dataSource" type="text" size="30" value="${(a.dataSource)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Article DOI：</dt>
+                <dd><input  name="articleDoi" type="text" size="30" value="${(a.articleDoi)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Remark：</dt>
+                <dd><input  name="remark" type="text" size="30" value="${(a.remark)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Ref.Author：</dt>
+                <dd><input  name="refAuthor" type="text" size="30" value="${(a.refAuthor)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Ref.Year：</dt>
+                <dd><input  name="refYear" type="text" size="30" value="${(a.refYear)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Ref.Magazine：</dt>
+                <dd><input  name="refMagazine" type="text" size="30" value="${(a.refMagazine)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Issue Page：</dt>
+                <dd><input  name="issuePage" type="text" size="30" value="${(a.issuePage)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Ref.Title：</dt>
+                <dd><input  name="refTitle" type="text" size="30" value="${(a.refTitle)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Ref.Origin：</dt>
+                <dd><input  name="refOrigin" type="text" size="30" value="${(a.refOrigin)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Ref.Magazine.Origin：</dt>
+                <dd><input  name="refMagazineOrigin" type="text" size="30" value="${(a.refMagazineOrigin)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Ref.Title.Origin：</dt>
+                <dd><input  name="refTitleOrigin" type="text" size="30" value="${(a.refTitleOrigin)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>S<sub>i</sub>O<sub>2</sub>（10<sup>-2</sup>）：</dt>
+                <dd><input  name="sio2" type="text" size="30" value="${(a.sio2)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>T<sub>i</sub>O<sub>2</sub>（10<sup>-2</sup>）：</dt>
+                <dd><input  name="tio2" type="text" size="30" value="${(a.tio2)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Al<sub>2</sub>O<sub>3</sub>（10<sup>-2</sup>）：</dt>
+                <dd><input  name="al2o3" type="text" size="30" value="${(a.al2o3)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Fe<sub>2</sub>O<sub>3</sub>（10<sup>-2</sup>）：</dt>
+                <dd><input  name="fe2o3" type="text" size="30" value="${(a.fe2o3)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>FeO（10<sup>-2</sup>）：</dt>
+                <dd><input  name="feo" type="text" size="30" value="${(a.feo)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Fe<sub>2</sub>O<sub>3</sub>T（10<sup>-2</sup>）：</dt>
+                <dd><input  name="fe2o3t" type="text" size="30" value="${(a.fe2o3t)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>FeOT（10<sup>-2</sup>）：</dt>
+                <dd><input  name="feot" type="text" size="30" value="${(a.feot)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>TFe（10<sup>-2</sup>）：</dt>
+                <dd><input  name="tfe" type="text" size="30" value="${(a.tfe)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>MnO（10<sup>-2</sup>）：</dt>
+                <dd><input  name="mno" type="text" size="30" value="${(a.mno)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>MgO（10<sup>-2</sup>）：</dt>
+                <dd><input  name="mgo" type="text" size="30" value="${(a.mgo)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>CaO（10<sup>-2</sup>）：</dt>
+                <dd><input  name="cao" type="text" size="30" value="${(a.cao)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Na<sub>2</sub>O（10<sup>-2</sup>）：</dt>
+                <dd><input  name="na2o" type="text" size="30" value="${(a.na2o)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>K<sub>2</sub>O（10<sup>-2</sup>）：</dt>
+                <dd><input  name="k2o" type="text" size="30" value="${(a.k2o)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>P<sub>2</sub>O<sub>5</sub>（10<sup>-2</sup>）：</dt>
+                <dd><input  name="p2o5" type="text" size="30" value="${(a.p2o5)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>H<sub>2</sub>O<sup>+</sup>（10<sup>-2</sup>）：</dt>
+                <dd><input  name="h2op" type="text" size="30" value="${(a.h2op)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>H<sub>2</sub>O<sup>-</sup>（10<sup>-2</sup>）：</dt>
+                <dd><input  name="h2on" type="text" size="30" value="${(a.h2on)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>CO<sub>2</sub>（10<sup>-2</sup>）：</dt>
+                <dd><input  name="co2" type="text" size="30" value="${(a.co2)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>SO<sub>3</sub>（10<sup>-2</sup>）：</dt>
+                <dd><input  name="so3" type="text" size="30" value="${(a.so3)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>F（10<sup>-2</sup>）：</dt>
+                <dd><input  name="f" type="text" size="30" value="${(a.f)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Cl（10<sup>-2</sup>）：</dt>
+                <dd><input  name="cl" type="text" size="30" value="${(a.cl)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>LOI（10<sup>-2</sup>）：</dt>
+                <dd><input  name="loi" type="text" size="30" value="${(a.loi)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Total（10<sup>-2</sup>）：</dt>
+                <dd><input  name="total" type="text" size="30" value="${(a.total)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>镧 La（10<sup>-6</sup>）：</dt>
+                <dd><input  name="la" type="text" size="30" value="${(a.la)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铈 Ce（10<sup>-6</sup>）：</dt>
+                <dd><input  name="ce" type="text" size="30" value="${(a.ce)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>镨 Pr（10<sup>-6</sup>）：</dt>
+                <dd><input  name="pr" type="text" size="30" value="${(a.pr)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钕 Nd（10<sup>-6</sup>）：</dt>
+                <dd><input  name="nd" type="text" size="30" value="${(a.nd)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钷 Pm（10<sup>-6</sup>）：</dt>
+                <dd><input  name="pm" type="text" size="30" value="${(a.pm)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钐 Sm（10<sup>-6</sup>）：</dt>
+                <dd><input  name="sm" type="text" size="30" value="${(a.sm)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铕 Eu（10<sup>-6</sup>）：</dt>
+                <dd><input  name="eu" type="text" size="30" value="${(a.eu)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钆 Gd（10<sup>-6</sup>）：</dt>
+                <dd><input  name="gd" type="text" size="30" value="${(a.gd)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铽 Tb（10<sup>-6</sup>）：</dt>
+                <dd><input  name="tb" type="text" size="30" value="${(a.tb)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>镝 Dy（10<sup>-6</sup>）：</dt>
+                <dd><input  name="dy" type="text" size="30" value="${(a.dy)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钬 Ho（10<sup>-6</sup>）：</dt>
+                <dd><input  name="ho" type="text" size="30" value="${(a.ho)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铒 Er（10<sup>-6</sup>）：</dt>
+                <dd><input  name="er" type="text" size="30" value="${(a.er)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铥 Tm（10<sup>-6</sup>）：</dt>
+                <dd><input  name="tm" type="text" size="30" value="${(a.tm)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>镱 Yb（10<sup>-6</sup>）：</dt>
+                <dd><input  name="yb" type="text" size="30" value="${(a.yb)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>镥 Lu（10<sup>-6</sup>）：</dt>
+                <dd><input  name="lu" type="text" size="30" value="${(a.lu)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钇 Y（10<sup>-6</sup>）：</dt>
+                <dd><input  name="y" type="text" size="30" value="${(a.y)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钪 Sc（10<sup>-6</sup>）：</dt>
+                <dd><input  name="sc" type="text" size="30" value="${(a.sc)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Total Re Element（10<sup>-6</sup>）：</dt>
+                <dd><input  name="totalReElement" type="text" size="30" value="${(a.totalReElement)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钒 V（10<sup>-6</sup>）：</dt>
+                <dd><input  name="v" type="text" size="30" value="${(a.v)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铬 Cr（10<sup>-6</sup>）：</dt>
+                <dd><input  name="cr" type="text" size="30" value="${(a.cr)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钴 Co（10<sup>-6</sup>）：</dt>
+                <dd><input  name="co" type="text" size="30" value="${(a.co)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>镍 Ni（10<sup>-6</sup>）：</dt>
+                <dd><input  name="ni" type="text" size="30" value="${(a.ni)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>锰 Mn（10<sup>-6</sup>）：</dt>
+                <dd><input  name="mn" type="text" size="30" value="${(a.mn)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铜 Cu（10<sup>-6</sup>）：</dt>
+                <dd><input  name="cu" type="text" size="30" value="${(a.cu)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>锌 Zn（10<sup>-6</sup>）：</dt>
+                <dd><input  name="zn" type="text" size="30" value="${(a.zn)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>镓 Ga（10<sup>-6</sup>）：</dt>
+                <dd><input  name="ga" type="text" size="30" value="${(a.ga)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>锗 Ge（10<sup>-6</sup>）：</dt>
+                <dd><input  name="ge" type="text" size="30" value="${(a.ge)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铯 Cs（10<sup>-6</sup>）：</dt>
+                <dd><input  name="cs" type="text" size="30" value="${(a.cs)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铷 Rb（10<sup>-6</sup>）：</dt>
+                <dd><input  name="rb" type="text" size="30" value="${(a.rb)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钡 Ba（10<sup>-6</sup>）：</dt>
+                <dd><input  name="ba" type="text" size="30" value="${(a.ba)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钍 Th（10<sup>-6</sup>）：</dt>
+                <dd><input  name="th" type="text" size="30" value="${(a.th)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铀 U（10<sup>-6</sup>）：</dt>
+                <dd><input  name="u" type="text" size="30" value="${(a.u)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铌 Nb（10<sup>-6</sup>）：</dt>
+                <dd><input  name="nb" type="text" size="30" value="${(a.nb)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钽 Ta（10<sup>-6</sup>）：</dt>
+                <dd><input  name="ta" type="text" size="30" value="${(a.ta)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钛 Ti（10<sup>-6</sup>）：</dt>
+                <dd><input  name="ti" type="text" size="30" value="${(a.ti)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>磷 P（10<sup>-6</sup>）：</dt>
+                <dd><input  name="p" type="text" size="30" value="${(a.p)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铅 Pb（10<sup>-6</sup>）：</dt>
+                <dd><input  name="pb" type="text" size="30" value="${(a.pb)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>锶 Sr（10<sup>-6</sup>）：</dt>
+                <dd><input  name="sr" type="text" size="30" value="${(a.sr)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>锆 Zr（10<sup>-6</sup>）：</dt>
+                <dd><input  name="zr" type="text" size="30" value="${(a.zr)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铪 Hf（10<sup>-6</sup>）：</dt>
+                <dd><input  name="hf" type="text" size="30" value="${(a.hf)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>锂 Li（10<sup>-6</sup>）：</dt>
+                <dd><input  name="li" type="text" size="30" value="${(a.li)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铍 Be（10<sup>-6</sup>）：</dt>
+                <dd><input  name="be" type="text" size="30" value="${(a.be)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钨 W（10<sup>-6</sup>）：</dt>
+                <dd><input  name="w" type="text" size="30" value="${(a.w)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铂 Pt（10<sup>-6</sup>）：</dt>
+                <dd><input  name="pt" type="text" size="30" value="${(a.pt)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钯 Pd（10<sup>-6</sup>）：</dt>
+                <dd><input  name="pd" type="text" size="30" value="${(a.pd)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>锇 Os（10<sup>-6</sup>）：</dt>
+                <dd><input  name="os" type="text" size="30" value="${(a.os)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铱 Ir（10<sup>-6</sup>）：</dt>
+                <dd><input  name="ir" type="text" size="30" value="${(a.ir)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钌 Ru（10<sup>-6</sup>）：</dt>
+                <dd><input  name="ru" type="text" size="30" value="${(a.ru)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铑 Rh（10<sup>-6</sup>）：</dt>
+                <dd><input  name="rh" type="text" size="30" value="${(a.rh)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Sr Isotope：</dt>
+                <dd><input  name="srisotope" type="text" size="30" value="${(a.srisotope)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Nd Isotope：</dt>
+                <dd><input  name="ndisotope" type="text" size="30" value="${(a.ndisotope)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>(<sup>87</sup>Rb/<sup>86</sup>Sr)m：</dt>
+                <dd><input  name="rb87Sr86" type="text" size="30" value="${(a.rb87Sr86)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>(<sup>87</sup>Sr/<sup>86</sup>Sr)m：</dt>
+                <dd><input  name="sr87Sr86M" type="text" size="30" value="${(a.sr87Sr86M)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>(<sup>147</sup>Sm/<sup>144</sup>Nd)m：</dt>
+                <dd><input  name="sm147Nd144" type="text" size="30" value="${(a.sm147Nd144)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>(<sup>143</sup>Nd/<sup>144</sup>Nd)m：</dt>
+                <dd><input  name="nd143Nd144" type="text" size="30" value="${(a.nd143Nd144)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Test Rock (Ma)：</dt>
+                <dd><input  name="testRockMa" type="text" size="30" value="${(a.testRockMa)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>(<sup>87</sup>Sr/<sup>86</sup>Sr)i：</dt>
+                <dd><input  name="sr87Sr86I" type="text" size="30" value="${(a.sr87Sr86I)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>(<sup>143</sup>Nd/<sup>144</sup>Nd)t,CHUR：</dt>
+                <dd><input  name="nd143Nd144TChur" type="text" size="30" value="${(a.nd143Nd144TChur)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>(<sup>143</sup>Nd/<sup>144</sup>Nd)i：</dt>
+                <dd><input  name="nd143Nd144I" type="text" size="30" value="${(a.nd143Nd144I)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>f(Sm/Nd)s：</dt>
+                <dd><input  name="FSmNdS" type="text" size="30" value="${(a.FSmNdS)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>εNd(0)：</dt>
+                <dd><input  name="epsilonNd0" type="text" size="30" value="${(a.epsilonNd0)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>εNd(t)：</dt>
+                <dd><input  name="epsilonNdT" type="text" size="30" value="${(a.epsilonNdT)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>TDM(Ma)：</dt>
+                <dd><input  name="tdmMa" type="text" size="30" value="${(a.tdmMa)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>TDM2(Ma)：</dt>
+                <dd><input  name="tdm2Ma" type="text" size="30" value="${(a.tdm2Ma)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Hf Isotope：</dt>
+                <dd><input  name="hfisotope" type="text" size="30" value="${(a.hfisotope)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Hf Point Number：</dt>
+                <dd><input  name="hfPointnum" type="text" size="30" value="${(a.hfPointnum)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Hf Normal Number：</dt>
+                <dd><input  name="hfNormalnum" type="text" size="30" value="${(a.hfNormalnum)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>εHft_min：</dt>
+                <dd><input  name="epsilonHftMin" type="text" size="30" value="${(a.epsilonHftMin)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>εHft_max：</dt>
+                <dd><input  name="epsilonHftMax" type="text" size="30" value="${(a.epsilonHftMax)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>εHft_median：</dt>
+                <dd><input  name="epsilonHftMedian" type="text" size="30" value="${(a.epsilonHftMedian)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>εHft_average：</dt>
+                <dd><input  name="epsilonHftAverage" type="text" size="30" value="${(a.epsilonHftAverage)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>T<sub>DM</sub><sup>C</sup>_min：</dt>
+                <dd><input  name="tdmcMin" type="text" size="30" value="${(a.tdmcMin)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>T<sub>DM</sub><sup>C</sup>_max：</dt>
+                <dd><input  name="tdmcMax" type="text" size="30" value="${(a.tdmcMax)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>T<sub>DM</sub><sup>C</sup>_median：</dt>
+                <dd><input  name="tdmcMedian" type="text" size="30" value="${(a.tdmcMedian)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>T<sub>DM</sub><sup>C</sup>(Ma)_Average：</dt>
+                <dd><input  name="tdmcAverage" type="text" size="30" value="${(a.tdmcAverage)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>HfO Isotope：</dt>
+                <dd><input  name="hfoisotope" type="text" size="30" value="${(a.hfoisotope)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>d<sup>18</sup>O_min：</dt>
+                <dd><input  name="d18oMin" type="text" size="30" value="${(a.d18oMin)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>d<sup>18</sup>O_max：</dt>
+                <dd><input  name="d18oMax" type="text" size="30" value="${(a.d18oMax)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>d<sup>18</sup>O_average：</dt>
+                <dd><input  name="d18oAverage" type="text" size="30" value="${(a.d18oAverage)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>d<sup>18</sup>O_median：</dt>
+                <dd><input  name="d18oMedian" type="text" size="30" value="${(a.d18oMedian)!}"/></dd>
+            </dl>
+        </div>
+    </div>
+</form>

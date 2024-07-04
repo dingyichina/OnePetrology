@@ -1,0 +1,75 @@
+<#if siteId?has_content>
+    <@_sysSite id=siteId>
+        <#assign sysSite=object/>
+    </@_sysSite>
+</#if>
+<@_sysDomainList advanced=true siteId=siteId wild=wild pageIndex=pageNum pageSize=numPerPage>
+<div class="pageHeader">
+    <form class="pagerForm" autocomplete="off" onsubmit="return navTabSearch(this);" method="post">
+        <#include "../include_page/parameters.html"/>
+        <div class="searchBar">
+            <ul class="searchContent">
+                <#if sysSite?has_content>
+                    <li>
+                        <label><@t.page 'site'/>:</label><label>${sysSite.name}</label>
+                    </li>
+                </#if>
+                <li>
+                    <select class="combox" name="wild">
+                        <option value=""${(!wild?has_content)?then(' selected="true"','')?no_esc}><@t.page 'domain.type'/></option>
+                        <option value="false"${(wild??&&"false"=wild)?then(' selected="true"','')?no_esc}><@t.page 'domain.normal'/></option>
+                        <option value="true"${(wild??&&"true"=wild)?then(' selected="true"','')?no_esc}><@t.page 'domain.wild'/></option>
+                    </select>
+                </li>
+            </ul>
+            <div class="subBar">
+                <ul>
+                    <li>
+                        <button type="submit" class="buttonActive"><@t.page 'button.search'/></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="pageContent">
+    <div class="panelBar">
+        <ul class="toolBar">
+            <#if sysSite?has_content>
+                <li><a href="sysDomain/add.html?siteId=${siteId!}" target="navTab" rel="sysDomain/add"><i class="icon-plus-sign-alt icon-large"></i> <@t.page 'domain.add'/></a></li>
+            </#if>
+        </ul>
+    </div>
+    <table class="table" width="100%" layoutH>
+        <thead>
+            <tr>
+                <th><@t.page 'domain'/></th>
+                <th><@t.page 'site.id'/></th>
+                <th><@t.page 'site'/></th>
+                <th><@t.page 'domain.template_directory'/></th>
+                <th><@t.page 'operate'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+                <@t.merge 'siteIds' a.siteId!/>
+            </#list>
+
+            <@_sysSite ids=t.siteIds!><#assign siteMap=map!/></@_sysSite>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.name}">
+                <td>${(a.name)!} ${a.wild?then('['+t.pageMessage('domain.wild')+']','')}</td>
+                <td>${a.siteId!}</td>
+                <td class="exclude-translate">${(siteMap[a.siteId?string].name)!}</td>
+                <td>${(a.path)!}</td>
+                <td class="wrap">
+                    <a href="sysDomain/add.html?id=${a.name}" class="edit btnText blue" target="navTab" rel="sysDomain/edit"><i class="icon-edit"></i> <@t.page 'domain.edit'/></a>
+                    <a href="sysDomain/delete?id=${a.name}&_csrf=<@_csrfToken admin=true/>" class="btnText warn" title="<@t.page 'confirm.delete'/>" target="ajaxTodo"><i class="icon-trash"></i> <@t.page 'button.delete'/></a>
+                </td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</div>
+</@_sysDomainList>

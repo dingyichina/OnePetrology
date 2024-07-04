@@ -1,0 +1,135 @@
+<@_contentList advanced=true status=status categoryId=categoryId containChild=containChild disabled=true
+            modelId=modelId parentId=parentId title=title userId=userId
+            startPublishDate=startPublishDate endPublishDate=endPublishDate
+            orderField=orderField orderType=orderType pageIndex=pageNum pageSize=numPerPage>
+<#macro modelList parentId=''>
+<@_modelList parentId=parentId>
+    <#list page.list as a>
+        <label style="width:auto">
+            <input <@t.compare modelId!'' a.id?string 'checked="checked"'/> name="modelId" value="${a.id}" type="checkbox"/>
+            ${(a.name)!}
+        </label>
+        <#if a.hasChild>
+            <@modelList a.id/>
+        </#if>
+    </#list>
+</@_modelList>
+</#macro>
+<div class="pageHeader">
+    <form class="pagerForm" autocomplete="off" onsubmit="return navTabSearch(this);" method="post">
+        <#include "../include_page/parameters.html"/>
+        <div class="searchBar">
+            <ul class="searchContent">
+                <li class="width:auto">
+                    <#include "../include_page/status.html"/>
+                </li>
+                <li>
+                    <label><@t.page 'content.promulgator'/>:</label>
+                    <#include "../include_page/userId.html"/>
+                </li>
+                <li>
+                    <label><@t.page 'publish_date'/>:</label>
+                    <input type="text" name="startPublishDate" class="date" size="10" autocomplete="off" dateFmt="yyyy-MM-dd" value="${startPublishDate!}" />
+                    <span>-</span>
+                    <input type="text" name="endPublishDate" class="date" size="10" autocomplete="off" dateFmt="yyyy-MM-dd" value="${endPublishDate!}" />
+                </li>
+                <li>
+                    <label><@t.page 'title'/>:</label><input type="text" size="20" name="title" value="${title!}" />
+                </li>
+                <li style="width:auto">
+                    <label><@t.page 'model'/>:</label>
+                    <@modelList/>
+                </li>
+            </ul>
+            <div class="subBar">
+                <ul>
+                    <li>
+                        <button type="submit" class="buttonActive"><@t.page 'button.search'/></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<@_sysAuthorized roleIds=admin.roles urls='cmsContent/realDelete,cmsContent/recycle'><#assign authorizedMap=map/></@_sysAuthorized>
+<div class="pageContent">
+    <div class="panelBar">
+        <ul class="toolBar">
+        <#if authorizedMap['cmsContent/recycle']>
+            <li><a href="cmsContent/recycle?_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.batch_recycle'/>" target="selectedTodo" rel="ids"><i class="icon-reply-all icon-large"></i> <@t.page 'button.batch_recycle'/></a></li>
+        </#if>
+        <#if authorizedMap['cmsContent/realDelete']>
+            <li class="line">line</li>
+            <li><a href="cmsContent/realDelete?_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.delete'/>" target="selectedTodo" rel="ids"><i class="icon-trash icon-large"></i> <@t.page 'button.batch_delete'/></a></li>
+        </#if>
+        </ul>
+    </div>
+    <table class="table" width="100%" layoutH>
+        <thead>
+            <tr>
+                <th width="20"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+                <th width="30"><@t.page 'id'/></th>
+                <th width="250"><@t.page 'title'/></th>
+                <th width="40"><@t.page 'content.promulgator'/></th>
+                <th width="30"><@t.page 'category'/></th>
+                <th width="30"><@t.page 'model'/></th>
+                <th width="30" orderField="scores" class="<#if orderField??&&'scores'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>"><@t.page 'content.score'/></th>
+                <th width="30" orderField="comments" class="<#if orderField??&&'comments'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>"><@t.page 'content.comments'/></th>
+                <th width="30" orderField="clicks" class="<#if orderField??&&'clicks'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>"><@t.page 'clicks'/></th>
+                <th width="70" orderField="publishDate" class="<#if orderField??&&'publishDate'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>"><@t.page 'publish_date'/></th>
+                <th width="70"><@t.page 'create_date'/></th>
+                <th width="50"><@t.page 'status'/>/<@t.page 'inspector'/></th>
+                <th width="100"><@t.page 'operate'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+                <@t.merge 'userIds' a.userId!/>
+                <@t.merge 'checkUserIds' a.checkUserId!/>
+                <@t.merge 'categoryIds' a.categoryId!/>
+                <@t.merge 'modelIds' a.modelId!/>
+            </#list>
+
+            <@_sysUser ids=t.userIds!><#assign userMap=map!/></@_sysUser>
+            <@_sysUser ids=t.checkUserIds!><#assign checkUserMap=map!/></@_sysUser>
+            <@_category ids=t.categoryIds!><#assign categoryMap=map!/></@_category>
+            <@_model ids=t.modelIds!><#assign modelMap=map!/></@_model>
+
+            <#list page.list as a>
+            <tr target="sid" rel="${a.id}">
+                <td><input name="ids" value="${a.id}" type="checkbox"></td>
+                <td>${a.id}</td>
+                <td>${(a.copied?then('['+t.pageMessage('copied')+']',''))!}<a href="cmsContent/view.html?id=${a.id}" class="exclude-translate" target="dialog" rel="viewContent${a.id}">${(a.title)!}</a></td>
+                <td>
+                    ${(userMap[a.userId?string].nickName)!}
+                </td>
+                <td>
+                    ${(categoryMap[a.categoryId?string].name)!}
+                </td>
+                <td>
+                    ${(modelMap[a.modelId].name)!}
+                </td>
+                <td>${a.scores!}</td>
+                <td>${a.comments!}</td>
+                <td>${a.clicks!}</td>
+                <td>${a.publishDate!}</td>
+                <td>${a.createDate!}</td>
+                <td>
+                    <@t.page 'status.content.'+a.status/>
+                    <#if 1=a.status>/ ${(checkUserMap[a.checkUserId?string].nickName)!}</#if>
+                </td>
+                <td class="wrap">
+                    <#if authorizedMap['cmsContent/recycle']>
+                        <a href="cmsContent/recycle?ids=${a.id}&_csrf=<@_csrfToken admin=true/>" class="btnText green" title="<@t.page 'confirm.recycle'/>" target="ajaxTodo"><@t.page 'button.recycle'/></a>
+                    </#if>
+                    <#if authorizedMap['cmsContent/realDelete']>
+                        <a href="cmsContent/realDelete?ids=${a.id}&_csrf=<@_csrfToken admin=true/>" class="btnText warn" title="<@t.page 'confirm.delete'/>" target="ajaxTodo"><i class="icon-trash"></i> <@t.page 'button.delete'/></a>
+                    </#if>
+                </td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</div>
+</@_contentList>

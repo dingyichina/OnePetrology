@@ -1,0 +1,43 @@
+<@_dPCarbon14 id=id><#assign a=object/></@_dPCarbon14>
+<form method="post" action="dPCarbon14/save.do?callbackType=closeCurrent&navTabId=dPCarbon14/list" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <input name="id" type="hidden" value="${id!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+    <div class="pageContent">
+        <div class="pageFormContent" layoutH="56">
+            <dl>
+                <dt>ID：</dt>
+                <dd><input class="required" name="id" type="text" size="30" value="${(a.id)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>衰变常数 （1/年）：</dt>
+                <dd><input class="required" name="decayConst" type="text" size="30" value="${(a.decayConst)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>放射性比度（dpm/g）：</dt>
+                <dd><input class="required" name="radioActivSpecific" type="text" size="30" value="${(a.radioActivSpecific)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>碳-14 年龄（万年）：</dt>
+                <dd><input class="required" name="c14Age" type="text" size="30" value="${(a.c14Age)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>年龄误差(Ma)：</dt>
+                <dd><input class="required" name="ageError" type="text" size="30" value="${(a.ageError)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>备注：</dt>
+                <dd><input class="required" name="remark" type="text" size="30" value="${(a.remark)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>样品：</dt>
+                <dd><input class="required" name="sampleId" type="text" size="30" value="${(a.sampleId)!}"/></dd>
+            </dl>
+        </div>
+    </div>
+</form>

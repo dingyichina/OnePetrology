@@ -1,0 +1,92 @@
+<@_logLoginList result=result userId=userId channel=channel
+            name=name startCreateDate=startCreateDate endCreateDate=endCreateDate ip=ip
+            orderField=orderField orderType=orderType pageIndex=pageNum pageSize=numPerPage>
+<div class="pageHeader">
+    <form class="pagerForm" autocomplete="off" onsubmit="return navTabSearch(this);" method="post">
+        <#include "../include_page/parameters.html"/>
+        <div class="searchBar">
+            <ul class="searchContent">
+                <li>
+                    <label><@t.page 'channel'/>:</label>
+                    <input type="text" name="channel" value="${channel!}" />
+                </li>
+                <li>
+                    <label><@t.page 'user'/>:</label>
+                    <#include "../include_page/userId.html"/>
+                </li>
+                <li>
+                    <label><@t.page 'user.username'/>:</label>
+                    <input type="text" name="name" value="${name!}" />
+                </li>
+                <li>
+                    <label><@t.page 'log.login_date'/>:</label>
+                    <input type="text" name="startCreateDate" class="date" size="10" autocomplete="off" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="${startCreateDate!}" />
+                    <span>-</span>
+                    <input type="text" name="endCreateDate" class="date" size="10" autocomplete="off" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d+1}" value="${endCreateDate!}" />
+                </li>
+                <li>
+                    <label><@t.page 'result'/>:</label>
+                    <select class="combox" name="result">
+                        <option value=""${(!result?has_content)?then(' selected="true"','')?no_esc}><@t.page 'unrestricted'/></option>
+                        <option value="true"${(result?has_content&&"true"==result)?then(' selected="true"','')?no_esc}><@t.page 'success'/></option>
+                        <option value="false"${(result?has_content&&"false"==result)?then(' selected="true"','')?no_esc}><@t.page 'fail'/></option>
+                    </select>
+                </li>
+                <li>
+                    <label><@t.page 'log.login_ip'/>:</label>
+                    <input type="text" name="ip" value="${ip!}" />
+                </li>
+            </ul>
+            <div class="subBar">
+                <ul>
+                    <li>
+                        <button type="submit" class="buttonActive"><@t.page 'button.search'/></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="pageContent">
+    <div class="panelBar">
+        <ul class="toolBar">
+            <li><a href="logLogin/delete?_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.batch_delete'/>" target="selectedTodo" rel="ids"><i class="icon-trash icon-large"></i> <@t.page 'button.batch_delete'/></a></li>
+        </ul>
+    </div>
+    <table class="table" width="100%" layoutH>
+        <thead>
+            <tr>
+                <th width="20"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+                <th><@t.page 'user.username'/></th>
+                <th><@t.page 'user.id'/></th>
+                <th><@t.page 'channel'/></th>
+                <th><@t.page 'log.login_ip'/></th>
+                <th><@t.page 'result'/></th>
+                <th orderField="createDate" class="<#if orderField??&&'createDate'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>"><@t.page 'log.login_date'/></th>
+                <th><@t.page 'log.error_password'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.id}">
+                <td><input name="ids" value="${a.id}" type="checkbox"></td>
+                <td class="exclude-translate">${(a.name)!}</td>
+                <td>
+                    ${a.userId!}
+                </td>
+                <td class="exclude-translate">
+                    ${a.channel!}
+                </td>
+                <td>${a.ip!}</td>
+                <td>
+                    ${a.result?then(t.pageMessage('success'),t.pageMessage('fail'))}
+                </td>
+                <td>${a.createDate!}</td>
+                <td><#if !a.result><@t.secrecy a.errorPassword 2/></#if></td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</div>
+</@_logLoginList>

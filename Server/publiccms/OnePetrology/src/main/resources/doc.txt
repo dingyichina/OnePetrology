@@ -1,0 +1,7446 @@
+-- TradeAccountHistory ---
+Field list:
+
+    id:ID
+    siteId:站点ID
+    serialNumber:流水号
+    accountId:账户ID
+    userId:用户ID
+    amountChange:变动
+    amount:金额
+    balance:余额
+    status:状态
+    description:描述
+    createDate:创建日期
+
+Module list:
+
+    Name:List
+        ID:tradeAccountHistory_list
+        URL：tradeAccountHistory/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:tradeAccountHistory_add
+        URL：tradeAccountHistory/add
+        Authorized Url：tradeAccountHistory/save
+    
+    Name:Delete
+        ID:tradeAccountHistory_delete
+        URL:
+        Authorized Url：tradeAccountHistory/delete-- TradeOrderHistory ---
+Field list:
+
+    id:ID
+    siteId:站点ID
+    orderId:订单ID
+    createDate:创建日期
+    operate:操作
+    content:内容
+
+Module list:
+
+    Name:List
+        ID:tradeOrderHistory_list
+        URL：tradeOrderHistory/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:tradeOrderHistory_add
+        URL：tradeOrderHistory/add
+        Authorized Url：tradeOrderHistory/save
+    
+    Name:Delete
+        ID:tradeOrderHistory_delete
+        URL:
+        Authorized Url：tradeOrderHistory/delete-- TradeAccount ---
+Field list:
+
+    id:用户ID
+    siteId:站点ID
+    amount:金额
+    updateDate:更新日期
+
+Module list:
+
+    Name:List
+        ID:tradeAccount_list
+        URL：tradeAccount/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:tradeAccount_add
+        URL：tradeAccount/add
+        Authorized Url：tradeAccount/save
+    
+    Name:Delete
+        ID:tradeAccount_delete
+        URL:
+        Authorized Url：tradeAccount/delete-- TradeRefund ---
+Field list:
+
+    id:ID
+    orderId:订单ID
+    amount:申请退款金额
+    reason:原因
+    updateDate:更新日期
+    refundUserId:退款操作用户
+    refundAmount:退款金额
+    status:状态
+    reply:回复
+    createDate:创建日期
+    processingDate:处理日期
+
+Module list:
+
+    Name:List
+        ID:tradeRefund_list
+        URL：tradeRefund/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:tradeRefund_add
+        URL：tradeRefund/add
+        Authorized Url：tradeRefund/save
+    
+    Name:Delete
+        ID:tradeRefund_delete
+        URL:
+        Authorized Url：tradeRefund/delete-- TradeOrder ---
+Field list:
+
+    id:ID
+    siteId:站点
+    userId:用户
+    amount:金额
+    description:描述
+    tradeType:订单类型
+    serialNumber:订单流水
+    accountType:账户类型
+    accountSerialNumber:账户流水
+    ip:IP
+    status:状态
+    processed:已处理
+    updateDate:更新日期
+    createDate:创建日期
+    processDate:处理日期
+    paymentDate:支付日期
+
+Module list:
+
+    Name:List
+        ID:tradeOrder_list
+        URL：tradeOrder/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:tradeOrder_add
+        URL：tradeOrder/add
+        Authorized Url：tradeOrder/save
+    
+    Name:Delete
+        ID:tradeOrder_delete
+        URL:
+        Authorized Url：tradeOrder/delete-- ArtificialHeavyMineralBasicinfo ---
+Field list:
+
+    id:ID
+    sampleBasicInfo:sampleBasicInfo
+    sampleWeight:样品重量(Kg)
+    heavySandWeight:重砂总重量(g)
+    magnetCompoWeight:磁性部分重量(g)
+    electromagCompoWeight:电磁性部分重量(g)
+    heavyCompoWeight:重部分重量(g)
+    lightCompoWeight:轻部分重量(g)
+    remark:备注
+    artificialHeavyMineralDatas:artificialHeavyMineralDatas
+
+Module list:
+
+    Name:List
+        ID:artificialHeavyMineralBasicinfo_list
+        URL：artificialHeavyMineralBasicinfo/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:artificialHeavyMineralBasicinfo_add
+        URL：artificialHeavyMineralBasicinfo/add
+        Authorized Url：artificialHeavyMineralBasicinfo/save
+    
+    Name:Delete
+        ID:artificialHeavyMineralBasicinfo_delete
+        URL:
+        Authorized Url：artificialHeavyMineralBasicinfo/delete-- DPReOsmium ---
+Field list:
+
+    id:ID
+    sampleBasicInfo:sampleBasicInfo
+    decayConst:衰变常数 （1/年）
+    re:铼（10-6）
+    os187:锇-187（10-6）
+    modelAge:模式年龄（Ma）
+    ageError:年龄误差(Ma)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPReOsmium_list
+        URL：dPReOsmium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPReOsmium_add
+        URL：dPReOsmium/add
+        Authorized Url：dPReOsmium/save
+    
+    Name:Delete
+        ID:dPReOsmium_delete
+        URL:
+        Authorized Url：dPReOsmium/delete-- AbbreviatedAnalysisData ---
+Field list:
+
+    id:ID
+    sampleBasicInfo:sampleBasicInfo
+    analyzeItem:analyzeItem
+    analyzeValue:analyzeValue
+    remark:remark
+
+Module list:
+
+    Name:List
+        ID:abbreviatedAnalysisData_list
+        URL：abbreviatedAnalysisData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:abbreviatedAnalysisData_add
+        URL：abbreviatedAnalysisData/add
+        Authorized Url：abbreviatedAnalysisData/save
+    
+    Name:Delete
+        ID:abbreviatedAnalysisData_delete
+        URL:
+        Authorized Url：abbreviatedAnalysisData/delete-- StableIsotopeAnalyse ---
+Field list:
+
+    id:ID
+    sampleBasicInfo:sampleBasicInfo
+    analyzeItem:分析项目
+    analyzeValue:分析值
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:stableIsotopeAnalyse_list
+        URL：stableIsotopeAnalyse/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:stableIsotopeAnalyse_add
+        URL：stableIsotopeAnalyse/add
+        Authorized Url：stableIsotopeAnalyse/save
+    
+    Name:Delete
+        ID:stableIsotopeAnalyse_delete
+        URL:
+        Authorized Url：stableIsotopeAnalyse/delete-- DPOsmium ---
+Field list:
+
+    id:ID
+    sampleBasicInfo:sampleBasicInfo
+    decayConst:衰变常数 （1/年）
+    os187Os186:187Os/186Os
+    os187Os188:187Os/188Os
+    modelAge1:模式年龄1（Ma）
+    modelAge1Error:模式年龄1误差(Ma)
+    modelAge2:模式年龄2（Ma）
+    modelAge2Error:模式年龄2误差(Ma)
+    acceptedAge:采用年龄（Ma）
+    acceptedAgeError:采用年龄误差(Ma)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPOsmium_list
+        URL：dPOsmium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPOsmium_add
+        URL：dPOsmium/add
+        Authorized Url：dPOsmium/save
+    
+    Name:Delete
+        ID:dPOsmium_delete
+        URL:
+        Authorized Url：dPOsmium/delete-- RockSectionIdentify ---
+Field list:
+
+    id:ID
+    sampleBasicInfo:sampleBasicInfo
+    fieldRockName:野外名称
+    microScopicDescribe:镜下描述
+    authorizedRockName:鉴定名称
+    microscopicPhoto:镜下照片
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:rockSectionIdentify_list
+        URL：rockSectionIdentify/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:rockSectionIdentify_add
+        URL：rockSectionIdentify/add
+        Authorized Url：rockSectionIdentify/save
+    
+    Name:Delete
+        ID:rockSectionIdentify_delete
+        URL:
+        Authorized Url：rockSectionIdentify/delete-- TraceElementData ---
+Field list:
+
+    id:ID
+    sampleBasicInfo:sampleBasicInfo
+    analyzeElement:ID
+    analyzeData:ID
+
+Module list:
+
+    Name:List
+        ID:traceElementData_list
+        URL：traceElementData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:traceElementData_add
+        URL：traceElementData/add
+        Authorized Url：traceElementData/save
+    
+    Name:Delete
+        ID:traceElementData_delete
+        URL:
+        Authorized Url：traceElementData/delete-- DPOrdinaryLead ---
+Field list:
+
+    id:ID
+    sampleBasicInfo:sampleBasicInfo
+    mineralCharacter:矿物特征
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    pb206Pb204:206Pb/204Pb
+    pb207Pb204:207Pb/204Pb
+    pb208Pb204:208Pb/204Pb
+    modelAge1:模式年龄 1（Ma）
+    modelAge1Error:模式年龄 1误差（Ma）
+    modelAge2:模式年龄2（Ma）
+    modelAge2Error:模式年龄 2误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPOrdinaryLead_list
+        URL：dPOrdinaryLead/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPOrdinaryLead_add
+        URL：dPOrdinaryLead/add
+        Authorized Url：dPOrdinaryLead/save
+    
+    Name:Delete
+        ID:dPOrdinaryLead_delete
+        URL:
+        Authorized Url：dPOrdinaryLead/delete-- DPUraniumThoriumLead ---
+Field list:
+
+    id:ID
+    sampleBasicInfo:sampleBasicInfo
+    mineralCharacter:矿物特征
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    decayConst3:衰变常数3 （1/年）
+    u:铀(10-6)
+    th:钍（10-6）
+    pb:铅（10-6）
+    pb204:铅-204（%）
+    pb206:铅-206（%）
+    pb207:铅-207（%）
+    pb208:铅-208（%）
+    pb206Pb204:206Pb/204Pb
+    pb208Pb206:208Pb/206Pb
+    pb207Pb206:207Pb/206Pb
+    pb206U238:206Pb/238U
+    pb207U235:207Pb/235U
+    pb208Th232:208Pb/232Th
+    pb206U238Age:铅-206-铀-238 年龄（Ma）
+    pb206U238AgeError:铅-206-铀-238 年龄误差（Ma）
+    pb207U235Age:铅-207-铀-235 年龄（Ma）
+    pb207U235AgeError:铅-207-铀-235 年龄误差(Ma)
+    pb207Pb206Age:铅-207-铅-206 年龄（Ma）
+    pb207Pb206AgeError:铅-207-铅-206 年龄误差（Ma）
+    pb208Th232Age:铅-208-钍-232 年龄（Ma）
+    pb208Th232AgeError:铅-208-钍-232 年龄误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPUraniumThoriumLead_list
+        URL：dPUraniumThoriumLead/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPUraniumThoriumLead_add
+        URL：dPUraniumThoriumLead/add
+        Authorized Url：dPUraniumThoriumLead/save
+    
+    Name:Delete
+        ID:dPUraniumThoriumLead_delete
+        URL:
+        Authorized Url：dPUraniumThoriumLead/delete-- DPSamariumNeodymium ---
+Field list:
+
+    id:ID
+    sampleBasicInfo:sampleBasicInfo
+    decayConst:衰变常数 （1/年）
+    sm:钐(10-6)
+    nd:钕（10-6）
+    sm147Nd144:147Sm／144Nd
+    nd143Nd144:143Nd／144Nd
+    modelAge:模式年龄（Ma）
+    ageError:年龄误差(Ma)
+    epsilonNdO:εNd(o)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPSamariumNeodymium_list
+        URL：dPSamariumNeodymium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPSamariumNeodymium_add
+        URL：dPSamariumNeodymium/add
+        Authorized Url：dPSamariumNeodymium/save
+    
+    Name:Delete
+        ID:dPSamariumNeodymium_delete
+        URL:
+        Authorized Url：dPSamariumNeodymium/delete-- EpmaData ---
+Field list:
+
+    id:ID
+    sampleBasicInfo:sampleBasicInfo
+    mineralName:矿物名称
+    siO2:SiO2（10-2）
+    tiO2:TiO2 (10-2）
+    al2O3:Al2O3(10-2）
+    cr2O3:Cr2O3(10-2）
+    fe2O3:Fe2O3(10-2）
+    feO:FeO(10-2)
+    niO:NiO(10-2)
+    mnO:MnO(10-2)
+    mgO:MgO(10-2)
+    caO:CaO(10-2)
+    na2O:Na2O(10-2)
+    k2O:K2O(10-2)
+    p2O5:P2O5(10-2)
+    total:总量(10-2)
+    others:其他(10-2)
+
+Module list:
+
+    Name:List
+        ID:epmaData_list
+        URL：epmaData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:epmaData_add
+        URL：epmaData/add
+        Authorized Url：epmaData/save
+    
+    Name:Delete
+        ID:epmaData_delete
+        URL:
+        Authorized Url：epmaData/delete-- DPPotassiumArgon ---
+Field list:
+
+    id:ID
+    sampleBasicInfo:sampleBasicInfo
+    decayConst1:衰变常数 1（1/年）
+    decayConst2:衰变常数 2（1/年）
+    k:钾（%）
+    ar40:氩-40（10-6）
+    atmospArgon:大气氩（%）
+    ar40K40:40Ar/40K
+    ar40Ar36:40Ar/36Ar 
+    age:钾-氩年龄（Ma）
+    ageError:年龄误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPPotassiumArgon_list
+        URL：dPPotassiumArgon/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPPotassiumArgon_add
+        URL：dPPotassiumArgon/add
+        Authorized Url：dPPotassiumArgon/save
+    
+    Name:Delete
+        ID:dPPotassiumArgon_delete
+        URL:
+        Authorized Url：dPPotassiumArgon/delete-- REElement ---
+Field list:
+
+    id:ID
+    sampleBasicInfo:sampleBasicInfo
+    la:镧(10-6)
+    ce:铈(10-6)
+    pr:镨(10-6)
+    nd:钕(10-6)
+    sm:钐(10-6)
+    eu:铕(10-6)
+    gd:钆(10-6)
+    tb:铽(10-6)
+    dy:镝(10-6)
+    ho:钬(10-6)
+    er:铒(10-6)
+    tm:铥(10-6)
+    yb:镱(10-6)
+    lu:镥(10-6)
+    y:钇(10-6)
+    sc:钪(10-6)
+    totalReElement:稀土总量(10-6)
+    dataType:数据形式
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:rEElement_list
+        URL：rEElement/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:rEElement_add
+        URL：rEElement/add
+        Authorized Url：rEElement/save
+    
+    Name:Delete
+        ID:rEElement_delete
+        URL:
+        Authorized Url：rEElement/delete-- MajorElement ---
+Field list:
+
+    id:ID
+    sampleBasicInfo:sampleBasicInfo
+    siO2:SiO2（10-2）
+    tiO2:TiO2 (10-2）
+    al2O3:Al2O3(10-2）
+    fe2O3:Fe2O3(10-2）
+    feO:FeO(10-2)
+    tfe:Tfe(10-2)
+    mnO:MnO(10-2)
+    mgO:MgO(10-2)
+    caO:CaO(10-2)
+    na2O:Na2O(10-2)
+    k2O:K2O(10-2)
+    p2O5:P2O5(10-2)
+    h2OP:H2 O+(10-2)
+    h2ON:H2 O-(10-2)
+    CO2:CO2(10-2)
+    SO3:SO3(10-2)
+    f:F(10-2)
+    ci:Cl(10-2)
+    ignitionLoss:烧失量(10-2)
+    total:总量(10-2)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:majorElement_list
+        URL：majorElement/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:majorElement_add
+        URL：majorElement/add
+        Authorized Url：majorElement/save
+    
+    Name:Delete
+        ID:majorElement_delete
+        URL:
+        Authorized Url：majorElement/delete-- DPRbSr ---
+Field list:
+
+    id:ID
+    sampleBasicInfo:sampleBasicInfo
+    decayConst:衰变常数 （1/年）
+    rb:铷(10-6)
+    sr:锶（10-6）
+    rb87Sr86:87Rb／86Sr
+    sr87Sr86:87Sr／86Sr
+    surfaceAge:表面年龄（Ma）
+    surfaceAgeError:表面年龄误差（Ma）
+    modelAge:模式年龄（Ma）
+    modelAgeError:模式年龄误差(Ma)
+    epsilonSrO:εSr(o)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPRbSr_list
+        URL：dPRbSr/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPRbSr_add
+        URL：dPRbSr/add
+        Authorized Url：dPRbSr/save
+    
+    Name:Delete
+        ID:dPRbSr_delete
+        URL:
+        Authorized Url：dPRbSr/delete-- SampleBasicInfo ---
+Field list:
+
+    id:ID
+    sampleId:样品编码
+    originalSampleId:原始样品编码
+    longitude:地理经度
+    latitude:地理纬度
+    countryCode:国家编码
+    location:所在地区
+    lithology:岩性
+    rockName:岩石名称
+    rockCode:岩石名称代码
+    era:地质年代
+    geobodyName:地质体名称
+    geobodyCode:地质体代码
+    photo:样品照片
+    collector:样品采集人员
+    collectorOrg:采集人员单位
+    reviewer:样品审核人
+    analyzeOrg:分析/鉴定单位
+    analyzePerson:分析/鉴定人员
+    testDate:分析/测定时间
+    testMethod:分析/测定方法
+    articleId:发表文献编号
+    remark:备注
+    DPSamariumNeodymiums:DPSamariumNeodymiums
+    DPUraniumThoriumLeads:DPUraniumThoriumLeads
+    DPOrdinaryLeads:DPOrdinaryLeads
+    DPThermoluminescences:DPThermoluminescences
+    traceElementDatas:traceElementDatas
+    DPPotassiumArgons:DPPotassiumArgons
+    DPLeadLeadEvaporations:DPLeadLeadEvaporations
+    rockSectionIdentifies:rockSectionIdentifies
+    REElements:REElements
+    DPReOsmiums:DPReOsmiums
+    DPArgonArgons:DPArgonArgons
+    stableIsotopeAnalyses:stableIsotopeAnalyses
+    abbreviatedAnalysisDatas:abbreviatedAnalysisDatas
+    DPRbSrs:DPRbSrs
+    DPFissionTracks:DPFissionTracks
+    epmaDatas:epmaDatas
+    artificialHeavyMineralBasicinfos:artificialHeavyMineralBasicinfos
+    granularityDatas:granularityDatas
+    DPCarbon14s:DPCarbon14s
+    majorElements:majorElements
+    DPOsmiums:DPOsmiums
+
+Module list:
+
+    Name:List
+        ID:sampleBasicInfo_list
+        URL：sampleBasicInfo/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:sampleBasicInfo_add
+        URL：sampleBasicInfo/add
+        Authorized Url：sampleBasicInfo/save
+    
+    Name:Delete
+        ID:sampleBasicInfo_delete
+        URL:
+        Authorized Url：sampleBasicInfo/delete-- DPArgonArgon ---
+Field list:
+
+    id:ID
+    NHeatStage:加热阶段次数（次）
+    sampleBasicInfo:sampleBasicInfo
+    cecayconst:衰变常数 （1/年）
+    JValue:J 值
+    fullmeltAge:全熔融年龄（Ma）
+    ageError1:年龄误差1（Ma）
+    plateauAge:坪年龄（Ma）
+    ageError2:年龄误差2（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPArgonArgon_list
+        URL：dPArgonArgon/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPArgonArgon_add
+        URL：dPArgonArgon/add
+        Authorized Url：dPArgonArgon/save
+    
+    Name:Delete
+        ID:dPArgonArgon_delete
+        URL:
+        Authorized Url：dPArgonArgon/delete-- DPFissionTrack ---
+Field list:
+
+    id:ID
+    sampleBasicInfo:sampleBasicInfo
+    decayConst:衰变常数 （1/年）
+    fissionConst:裂变常数
+    trackLength:径迹长度（cm）
+    spontaneFissionTrackDensity:自发裂变径迹密度（条/cm2）
+    thermalDose:热中子剂量（1/cm2）
+    artificialFissionTrackDensity:人工诱发裂变径迹密度（条/cm2）
+    fissionTrackAge:裂变径迹年龄（Ma）
+    ageError:年龄误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPFissionTrack_list
+        URL：dPFissionTrack/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPFissionTrack_add
+        URL：dPFissionTrack/add
+        Authorized Url：dPFissionTrack/save
+    
+    Name:Delete
+        ID:dPFissionTrack_delete
+        URL:
+        Authorized Url：dPFissionTrack/delete-- DPLeadLeadEvaporation ---
+Field list:
+
+    id:ID
+    sampleBasicInfo:sampleBasicInfo
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    pb207Pb206r:(Pb207/Pb206)r
+    measureError1:测定误差 1
+    pb204Pb206m:(Pb204/Pb206)m
+    measureError2:测定误差 2
+    pb207Pb206Age:铅 207-铅 206 年龄（Ma）
+    ageError:年龄误差(Ma)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPLeadLeadEvaporation_list
+        URL：dPLeadLeadEvaporation/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPLeadLeadEvaporation_add
+        URL：dPLeadLeadEvaporation/add
+        Authorized Url：dPLeadLeadEvaporation/save
+    
+    Name:Delete
+        ID:dPLeadLeadEvaporation_delete
+        URL:
+        Authorized Url：dPLeadLeadEvaporation/delete-- DPThermoluminescence ---
+Field list:
+
+    id:ID
+    sampleBasicInfo:sampleBasicInfo
+    u:U（10-6）
+    th:Th（10-6）
+    k:K(%)
+    paleoDose:古剂量（Gy）
+    annualDoseRate:年剂量率(Gy/a)
+    tiAge:热释光年龄(ka)
+    ageError:年龄误差(ka)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPThermoluminescence_list
+        URL：dPThermoluminescence/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPThermoluminescence_add
+        URL：dPThermoluminescence/add
+        Authorized Url：dPThermoluminescence/save
+    
+    Name:Delete
+        ID:dPThermoluminescence_delete
+        URL:
+        Authorized Url：dPThermoluminescence/delete-- GranularityData ---
+Field list:
+
+    id:ID
+    sampleBasicInfo:sampleBasicInfo
+    phiValueGroup:φ 值分组
+    particleNumber:颗粒数
+    percentage:百分含量（%）
+
+Module list:
+
+    Name:List
+        ID:granularityData_list
+        URL：granularityData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:granularityData_add
+        URL：granularityData/add
+        Authorized Url：granularityData/save
+    
+    Name:Delete
+        ID:granularityData_delete
+        URL:
+        Authorized Url：granularityData/delete-- Article ---
+Field list:
+
+    id:ID
+    articleName:文章名称
+    reference:引用格式
+    doi:DOI
+
+Module list:
+
+    Name:List
+        ID:article_list
+        URL：article/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:article_add
+        URL：article/add
+        Authorized Url：article/save
+    
+    Name:Delete
+        ID:article_delete
+        URL:
+        Authorized Url：article/delete-- ArtificialHeavyMineralData ---
+Field list:
+
+    id:ID
+    artificialHeavyMineralBasicinfo:artificialHeavyMineralBasicinfo
+    mineralName:矿物名称
+    mineralCode:矿物名称代号
+    mineralMagneticContent:矿物（磁性）含量
+    mineralElectromagContent:矿物（电磁性）含量
+    mineralHeavyContent:矿物（重部分）含量
+    mineralLightContent:矿物（轻部分）含量
+    mineralCharacter:矿物特征描述
+    crystalShapeFigure:晶形图
+
+Module list:
+
+    Name:List
+        ID:artificialHeavyMineralData_list
+        URL：artificialHeavyMineralData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:artificialHeavyMineralData_add
+        URL：artificialHeavyMineralData/add
+        Authorized Url：artificialHeavyMineralData/save
+    
+    Name:Delete
+        ID:artificialHeavyMineralData_delete
+        URL:
+        Authorized Url：artificialHeavyMineralData/delete-- DPCarbon14 ---
+Field list:
+
+    id:ID
+    sampleBasicInfo:sampleBasicInfo
+    decayConst:衰变常数 （1/年）
+    radioActivSpecific:放射性比度（dpm/g）
+    c14Age:碳-14 年龄（万年）
+    ageError:年龄误差(Ma)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPCarbon14_list
+        URL：dPCarbon14/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPCarbon14_add
+        URL：dPCarbon14/add
+        Authorized Url：dPCarbon14/save
+    
+    Name:Delete
+        ID:dPCarbon14_delete
+        URL:
+        Authorized Url：dPCarbon14/delete-- DPReOsmium ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    re:铼（10-6）
+    os187:锇-187（10-6）
+    modelAge:模式年龄（Ma）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPReOsmium_list
+        URL：dPReOsmium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPReOsmium_add
+        URL：dPReOsmium/add
+        Authorized Url：dPReOsmium/save
+    
+    Name:Delete
+        ID:dPReOsmium_delete
+        URL:
+        Authorized Url：dPReOsmium/delete-- StableIsotopeAnalyse ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    analyzeItem:分析项目
+    analyzeValue:分析值
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:stableIsotopeAnalyse_list
+        URL：stableIsotopeAnalyse/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:stableIsotopeAnalyse_add
+        URL：stableIsotopeAnalyse/add
+        Authorized Url：stableIsotopeAnalyse/save
+    
+    Name:Delete
+        ID:stableIsotopeAnalyse_delete
+        URL:
+        Authorized Url：stableIsotopeAnalyse/delete-- DPLeadLeadEvaporation ---
+Field list:
+
+    id:ID
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    pb207Pb206r:(Pb207/Pb206)r
+    measureError1:测定误差 1
+    pb204Pb206m:(Pb204/Pb206)m
+    measureError2:测定误差 2
+    pb207Pb206Age:铅 207-铅 206 年龄（Ma）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPLeadLeadEvaporation_list
+        URL：dPLeadLeadEvaporation/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPLeadLeadEvaporation_add
+        URL：dPLeadLeadEvaporation/add
+        Authorized Url：dPLeadLeadEvaporation/save
+    
+    Name:Delete
+        ID:dPLeadLeadEvaporation_delete
+        URL:
+        Authorized Url：dPLeadLeadEvaporation/delete-- REElement ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    la:镧(10-6)
+    ce:铈(10-6)
+    pr:镨(10-6)
+    nd:钕(10-6)
+    sm:钐(10-6)
+    eu:铕(10-6)
+    gd:钆(10-6)
+    tb:铽(10-6)
+    dy:镝(10-6)
+    ho:钬(10-6)
+    er:铒(10-6)
+    tm:铥(10-6)
+    yb:镱(10-6)
+    lu:镥(10-6)
+    y:钇(10-6)
+    sc:钪(10-6)
+    totalReElement:稀土总量(10-6)
+    dataType:数据形式
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:rEElement_list
+        URL：rEElement/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:rEElement_add
+        URL：rEElement/add
+        Authorized Url：rEElement/save
+    
+    Name:Delete
+        ID:rEElement_delete
+        URL:
+        Authorized Url：rEElement/delete-- Article ---
+Field list:
+
+    id:ID
+    articleName:文章名称
+    reference:引用格式
+    doi:DOI
+
+Module list:
+
+    Name:List
+        ID:article_list
+        URL：article/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:article_add
+        URL：article/add
+        Authorized Url：article/save
+    
+    Name:Delete
+        ID:article_delete
+        URL:
+        Authorized Url：article/delete-- DPPotassiumArgon ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst1:衰变常数 1（1/年）
+    decayConst2:衰变常数 2（1/年）
+    k:钾（%）
+    ar40:氩-40（10-6）
+    atmospArgon:大气氩（%）
+    ar40K40:40Ar/40K
+    ar40Ar36:40Ar/36Ar 
+    age:钾-氩年龄（Ma）
+    ageError:年龄误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPPotassiumArgon_list
+        URL：dPPotassiumArgon/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPPotassiumArgon_add
+        URL：dPPotassiumArgon/add
+        Authorized Url：dPPotassiumArgon/save
+    
+    Name:Delete
+        ID:dPPotassiumArgon_delete
+        URL:
+        Authorized Url：dPPotassiumArgon/delete-- MajorElement ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    siO2:SiO2（10-2）
+    tiO2:TiO2 (10-2）
+    al2O3:Al2O3(10-2）
+    fe2O3:Fe2O3(10-2）
+    feO:FeO(10-2)
+    tfe:Tfe(10-2)
+    mnO:MnO(10-2)
+    mgO:MgO(10-2)
+    caO:CaO(10-2)
+    na2O:Na2O(10-2)
+    k2O:K2O(10-2)
+    p2O5:P2O5(10-2)
+    h2OP:H2 O+(10-2)
+    h2ON:H2 O-(10-2)
+    CO2:CO2(10-2)
+    SO3:SO3(10-2)
+    f:F(10-2)
+    ci:Cl(10-2)
+    ignitionLoss:烧失量(10-2)
+    total:总量(10-2)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:majorElement_list
+        URL：majorElement/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:majorElement_add
+        URL：majorElement/add
+        Authorized Url：majorElement/save
+    
+    Name:Delete
+        ID:majorElement_delete
+        URL:
+        Authorized Url：majorElement/delete-- AbbreviatedAnalysisData ---
+Field list:
+
+    id:ID
+    sampleBasicInfo:sampleBasicInfo
+    analyzeItem:analyzeItem
+    analyzeValue:analyzeValue
+    remark:remark
+
+Module list:
+
+    Name:List
+        ID:abbreviatedAnalysisData_list
+        URL：abbreviatedAnalysisData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:abbreviatedAnalysisData_add
+        URL：abbreviatedAnalysisData/add
+        Authorized Url：abbreviatedAnalysisData/save
+    
+    Name:Delete
+        ID:abbreviatedAnalysisData_delete
+        URL:
+        Authorized Url：abbreviatedAnalysisData/delete-- TraceElementData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    analyzeElement:ID
+    analyzeData:ID
+
+Module list:
+
+    Name:List
+        ID:traceElementData_list
+        URL：traceElementData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:traceElementData_add
+        URL：traceElementData/add
+        Authorized Url：traceElementData/save
+    
+    Name:Delete
+        ID:traceElementData_delete
+        URL:
+        Authorized Url：traceElementData/delete-- ArtificialHeavyMineralData ---
+Field list:
+
+    id:ID
+    mineralName:矿物名称
+    mineralCode:矿物名称代号
+    mineralMagneticContent:矿物（磁性）含量
+    mineralElectromagContent:矿物（电磁性）含量
+    mineralHeavyContent:矿物（重部分）含量
+    mineralLightContent:矿物（轻部分）含量
+    mineralCharacter:矿物特征描述
+    crystalShapeFigure:晶形图
+    relId:基本信息
+
+Module list:
+
+    Name:List
+        ID:artificialHeavyMineralData_list
+        URL：artificialHeavyMineralData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:artificialHeavyMineralData_add
+        URL：artificialHeavyMineralData/add
+        Authorized Url：artificialHeavyMineralData/save
+    
+    Name:Delete
+        ID:artificialHeavyMineralData_delete
+        URL:
+        Authorized Url：artificialHeavyMineralData/delete-- RockSectionIdentify ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    fieldRockName:野外名称
+    microScopicDescribe:镜下描述
+    authorizedRockName:鉴定名称
+    microscopicPhoto:镜下照片
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:rockSectionIdentify_list
+        URL：rockSectionIdentify/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:rockSectionIdentify_add
+        URL：rockSectionIdentify/add
+        Authorized Url：rockSectionIdentify/save
+    
+    Name:Delete
+        ID:rockSectionIdentify_delete
+        URL:
+        Authorized Url：rockSectionIdentify/delete-- SampleBasicInfo ---
+Field list:
+
+    id:ID
+    sampleId:样品编码
+    originalSampleId:原始样品编码
+    longitude:地理经度
+    latitude:地理纬度
+    countryCode:国家编码
+    location:所在地区
+    lithology:岩性
+    rockName:岩石名称
+    rockCode:岩石名称代码
+    era:地质年代
+    geobodyName:地质体名称
+    geobodyCode:地质体代码
+    photo:样品照片
+    collector:样品采集人员
+    collectorOrg:采集人员单位
+    reviewer:样品审核人
+    analyzeOrg:分析/鉴定单位
+    analyzePerson:分析/鉴定人员
+    testDate:分析/测定时间
+    testMethod:分析/测定方法
+    articleId:发表文献编号
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:sampleBasicInfo_list
+        URL：sampleBasicInfo/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:sampleBasicInfo_add
+        URL：sampleBasicInfo/add
+        Authorized Url：sampleBasicInfo/save
+    
+    Name:Delete
+        ID:sampleBasicInfo_delete
+        URL:
+        Authorized Url：sampleBasicInfo/delete-- DPThermoluminescence ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    u:U（10-6）
+    th:Th（10-6）
+    k:K(%)
+    paleoDose:古剂量（Gy）
+    annualDoseRate:年剂量率(Gy/a)
+    tiAge:热释光年龄(ka)
+    ageError:年龄误差(ka)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPThermoluminescence_list
+        URL：dPThermoluminescence/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPThermoluminescence_add
+        URL：dPThermoluminescence/add
+        Authorized Url：dPThermoluminescence/save
+    
+    Name:Delete
+        ID:dPThermoluminescence_delete
+        URL:
+        Authorized Url：dPThermoluminescence/delete-- EpmaData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralName:矿物名称
+    siO2:SiO2（10-2）
+    tiO2:TiO2 (10-2）
+    al2O3:Al2O3(10-2）
+    cr2O3:Cr2O3(10-2）
+    fe2O3:Fe2O3(10-2）
+    feO:FeO(10-2)
+    niO:NiO(10-2)
+    mnO:MnO(10-2)
+    mgO:MgO(10-2)
+    caO:CaO(10-2)
+    na2O:Na2O(10-2)
+    k2O:K2O(10-2)
+    p2O5:P2O5(10-2)
+    total:总量(10-2)
+    others:其他(10-2)
+
+Module list:
+
+    Name:List
+        ID:epmaData_list
+        URL：epmaData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:epmaData_add
+        URL：epmaData/add
+        Authorized Url：epmaData/save
+    
+    Name:Delete
+        ID:epmaData_delete
+        URL:
+        Authorized Url：epmaData/delete-- GranularityData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    phiValueGroup:φ 值分组
+    particleNumber:颗粒数
+    percentage:百分含量（%）
+
+Module list:
+
+    Name:List
+        ID:granularityData_list
+        URL：granularityData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:granularityData_add
+        URL：granularityData/add
+        Authorized Url：granularityData/save
+    
+    Name:Delete
+        ID:granularityData_delete
+        URL:
+        Authorized Url：granularityData/delete-- DPArgonArgon ---
+Field list:
+
+    id:ID
+    NHeatStage:加热阶段次数（次）
+    cecayconst:衰变常数 （1/年）
+    JValue:J 值
+    fullmeltAge:全熔融年龄（Ma）
+    ageError1:年龄误差1（Ma）
+    plateauAge:坪年龄（Ma）
+    ageError2:年龄误差2（Ma）
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPArgonArgon_list
+        URL：dPArgonArgon/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPArgonArgon_add
+        URL：dPArgonArgon/add
+        Authorized Url：dPArgonArgon/save
+    
+    Name:Delete
+        ID:dPArgonArgon_delete
+        URL:
+        Authorized Url：dPArgonArgon/delete-- DPCarbon14 ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    radioActivSpecific:放射性比度（dpm/g）
+    c14Age:碳-14 年龄（万年）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPCarbon14_list
+        URL：dPCarbon14/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPCarbon14_add
+        URL：dPCarbon14/add
+        Authorized Url：dPCarbon14/save
+    
+    Name:Delete
+        ID:dPCarbon14_delete
+        URL:
+        Authorized Url：dPCarbon14/delete-- DPOrdinaryLead ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralCharacter:矿物特征
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    pb206Pb204:206Pb/204Pb
+    pb207Pb204:207Pb/204Pb
+    pb208Pb204:208Pb/204Pb
+    modelAge1:模式年龄 1（Ma）
+    modelAge1Error:模式年龄 1误差（Ma）
+    modelAge2:模式年龄2（Ma）
+    modelAge2Error:模式年龄 2误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPOrdinaryLead_list
+        URL：dPOrdinaryLead/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPOrdinaryLead_add
+        URL：dPOrdinaryLead/add
+        Authorized Url：dPOrdinaryLead/save
+    
+    Name:Delete
+        ID:dPOrdinaryLead_delete
+        URL:
+        Authorized Url：dPOrdinaryLead/delete-- DPSamariumNeodymium ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    sm:钐(10-6)
+    nd:钕（10-6）
+    sm147Nd144:147Sm／144Nd
+    nd143Nd144:143Nd／144Nd
+    modelAge:模式年龄（Ma）
+    ageError:年龄误差(Ma)
+    epsilonNdO:εNd(o)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPSamariumNeodymium_list
+        URL：dPSamariumNeodymium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPSamariumNeodymium_add
+        URL：dPSamariumNeodymium/add
+        Authorized Url：dPSamariumNeodymium/save
+    
+    Name:Delete
+        ID:dPSamariumNeodymium_delete
+        URL:
+        Authorized Url：dPSamariumNeodymium/delete-- ArtificialHeavyMineralBasicinfo ---
+Field list:
+
+    id:ID
+    sampleId:文章Id
+    sampleWeight:样品重量(Kg)
+    heavySandWeight:重砂总重量(g)
+    magnetCompoWeight:磁性部分重量(g)
+    electromagCompoWeight:电磁性部分重量(g)
+    heavyCompoWeight:重部分重量(g)
+    lightCompoWeight:轻部分重量(g)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:artificialHeavyMineralBasicinfo_list
+        URL：artificialHeavyMineralBasicinfo/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:artificialHeavyMineralBasicinfo_add
+        URL：artificialHeavyMineralBasicinfo/add
+        Authorized Url：artificialHeavyMineralBasicinfo/save
+    
+    Name:Delete
+        ID:artificialHeavyMineralBasicinfo_delete
+        URL:
+        Authorized Url：artificialHeavyMineralBasicinfo/delete-- DPRbSr ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    rb:铷(10-6)
+    sr:锶（10-6）
+    rb87Sr86:87Rb／86Sr
+    sr87Sr86:87Sr／86Sr
+    surfaceAge:表面年龄（Ma）
+    surfaceAgeError:表面年龄误差（Ma）
+    modelAge:模式年龄（Ma）
+    modelAgeError:模式年龄误差(Ma)
+    epsilonSrO:εSr(o)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPRbSr_list
+        URL：dPRbSr/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPRbSr_add
+        URL：dPRbSr/add
+        Authorized Url：dPRbSr/save
+    
+    Name:Delete
+        ID:dPRbSr_delete
+        URL:
+        Authorized Url：dPRbSr/delete-- DPOsmium ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    os187Os186:187Os/186Os
+    os187Os188:187Os/188Os
+    modelAge1:模式年龄1（Ma）
+    modelAge1Error:模式年龄1误差(Ma)
+    modelAge2:模式年龄2（Ma）
+    modelAge2Error:模式年龄2误差(Ma)
+    acceptedAge:采用年龄（Ma）
+    acceptedAgeError:采用年龄误差(Ma)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPOsmium_list
+        URL：dPOsmium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPOsmium_add
+        URL：dPOsmium/add
+        Authorized Url：dPOsmium/save
+    
+    Name:Delete
+        ID:dPOsmium_delete
+        URL:
+        Authorized Url：dPOsmium/delete-- DPFissionTrack ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    fissionConst:裂变常数
+    trackLength:径迹长度（cm）
+    spontaneFissionTrackDensity:自发裂变径迹密度（条/cm2）
+    thermalDose:热中子剂量（1/cm2）
+    artificialFissionTrackDensity:人工诱发裂变径迹密度（条/cm2）
+    fissionTrackAge:裂变径迹年龄（Ma）
+    ageError:年龄误差（Ma）
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPFissionTrack_list
+        URL：dPFissionTrack/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPFissionTrack_add
+        URL：dPFissionTrack/add
+        Authorized Url：dPFissionTrack/save
+    
+    Name:Delete
+        ID:dPFissionTrack_delete
+        URL:
+        Authorized Url：dPFissionTrack/delete-- DPUraniumThoriumLead ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralCharacter:矿物特征
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    decayConst3:衰变常数3 （1/年）
+    u:铀(10-6)
+    th:钍（10-6）
+    pb:铅（10-6）
+    pb204:铅-204（%）
+    pb206:铅-206（%）
+    pb207:铅-207（%）
+    pb208:铅-208（%）
+    pb206Pb204:206Pb/204Pb
+    pb208Pb206:208Pb/206Pb
+    pb207Pb206:207Pb/206Pb
+    pb206U238:206Pb/238U
+    pb207U235:207Pb/235U
+    pb208Th232:208Pb/232Th
+    pb206U238Age:铅-206-铀-238 年龄（Ma）
+    pb206U238AgeError:铅-206-铀-238 年龄误差（Ma）
+    pb207U235Age:铅-207-铀-235 年龄（Ma）
+    pb207U235AgeError:铅-207-铀-235 年龄误差(Ma)
+    pb207Pb206Age:铅-207-铅-206 年龄（Ma）
+    pb207Pb206AgeError:铅-207-铅-206 年龄误差（Ma）
+    pb208Th232Age:铅-208-钍-232 年龄（Ma）
+    pb208Th232AgeError:铅-208-钍-232 年龄误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPUraniumThoriumLead_list
+        URL：dPUraniumThoriumLead/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPUraniumThoriumLead_add
+        URL：dPUraniumThoriumLead/add
+        Authorized Url：dPUraniumThoriumLead/save
+    
+    Name:Delete
+        ID:dPUraniumThoriumLead_delete
+        URL:
+        Authorized Url：dPUraniumThoriumLead/delete-- DPReOsmium ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    re:铼（10-6）
+    os187:锇-187（10-6）
+    modelAge:模式年龄（Ma）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPReOsmium_list
+        URL：dPReOsmium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPReOsmium_add
+        URL：dPReOsmium/add
+        Authorized Url：dPReOsmium/save
+    
+    Name:Delete
+        ID:dPReOsmium_delete
+        URL:
+        Authorized Url：dPReOsmium/delete-- StableIsotopeAnalyse ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    analyzeItem:分析项目
+    analyzeValue:分析值
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:stableIsotopeAnalyse_list
+        URL：stableIsotopeAnalyse/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:stableIsotopeAnalyse_add
+        URL：stableIsotopeAnalyse/add
+        Authorized Url：stableIsotopeAnalyse/save
+    
+    Name:Delete
+        ID:stableIsotopeAnalyse_delete
+        URL:
+        Authorized Url：stableIsotopeAnalyse/delete-- DPLeadLeadEvaporation ---
+Field list:
+
+    id:ID
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    pb207Pb206r:(Pb207/Pb206)r
+    measureError1:测定误差 1
+    pb204Pb206m:(Pb204/Pb206)m
+    measureError2:测定误差 2
+    pb207Pb206Age:铅 207-铅 206 年龄（Ma）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPLeadLeadEvaporation_list
+        URL：dPLeadLeadEvaporation/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPLeadLeadEvaporation_add
+        URL：dPLeadLeadEvaporation/add
+        Authorized Url：dPLeadLeadEvaporation/save
+    
+    Name:Delete
+        ID:dPLeadLeadEvaporation_delete
+        URL:
+        Authorized Url：dPLeadLeadEvaporation/delete-- REElement ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    la:镧(10-6)
+    ce:铈(10-6)
+    pr:镨(10-6)
+    nd:钕(10-6)
+    sm:钐(10-6)
+    eu:铕(10-6)
+    gd:钆(10-6)
+    tb:铽(10-6)
+    dy:镝(10-6)
+    ho:钬(10-6)
+    er:铒(10-6)
+    tm:铥(10-6)
+    yb:镱(10-6)
+    lu:镥(10-6)
+    y:钇(10-6)
+    sc:钪(10-6)
+    totalReElement:稀土总量(10-6)
+    dataType:数据形式
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:rEElement_list
+        URL：rEElement/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:rEElement_add
+        URL：rEElement/add
+        Authorized Url：rEElement/save
+    
+    Name:Delete
+        ID:rEElement_delete
+        URL:
+        Authorized Url：rEElement/delete-- Article ---
+Field list:
+
+    id:ID
+    articleName:文章名称
+    reference:引用格式
+    doi:DOI
+
+Module list:
+
+    Name:List
+        ID:article_list
+        URL：article/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:article_add
+        URL：article/add
+        Authorized Url：article/save
+    
+    Name:Delete
+        ID:article_delete
+        URL:
+        Authorized Url：article/delete-- DPPotassiumArgon ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst1:衰变常数 1（1/年）
+    decayConst2:衰变常数 2（1/年）
+    k:钾（%）
+    ar40:氩-40（10-6）
+    atmospArgon:大气氩（%）
+    ar40K40:40Ar/40K
+    ar40Ar36:40Ar/36Ar 
+    age:钾-氩年龄（Ma）
+    ageError:年龄误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPPotassiumArgon_list
+        URL：dPPotassiumArgon/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPPotassiumArgon_add
+        URL：dPPotassiumArgon/add
+        Authorized Url：dPPotassiumArgon/save
+    
+    Name:Delete
+        ID:dPPotassiumArgon_delete
+        URL:
+        Authorized Url：dPPotassiumArgon/delete-- MajorElement ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    siO2:SiO2（10-2）
+    tiO2:TiO2 (10-2）
+    al2O3:Al2O3(10-2）
+    fe2O3:Fe2O3(10-2）
+    feO:FeO(10-2)
+    tfe:Tfe(10-2)
+    mnO:MnO(10-2)
+    mgO:MgO(10-2)
+    caO:CaO(10-2)
+    na2O:Na2O(10-2)
+    k2O:K2O(10-2)
+    p2O5:P2O5(10-2)
+    h2OP:H2 O+(10-2)
+    h2ON:H2 O-(10-2)
+    CO2:CO2(10-2)
+    SO3:SO3(10-2)
+    f:F(10-2)
+    ci:Cl(10-2)
+    ignitionLoss:烧失量(10-2)
+    total:总量(10-2)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:majorElement_list
+        URL：majorElement/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:majorElement_add
+        URL：majorElement/add
+        Authorized Url：majorElement/save
+    
+    Name:Delete
+        ID:majorElement_delete
+        URL:
+        Authorized Url：majorElement/delete-- AbbreviatedAnalysisData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    analyzeItem:分析项目
+    analyzeValue:分析值
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:abbreviatedAnalysisData_list
+        URL：abbreviatedAnalysisData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:abbreviatedAnalysisData_add
+        URL：abbreviatedAnalysisData/add
+        Authorized Url：abbreviatedAnalysisData/save
+    
+    Name:Delete
+        ID:abbreviatedAnalysisData_delete
+        URL:
+        Authorized Url：abbreviatedAnalysisData/delete-- TraceElementData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    analyzeElement:分析元素
+    analyzeData:分析数据(10<sup>-6</sup>）
+
+Module list:
+
+    Name:List
+        ID:traceElementData_list
+        URL：traceElementData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:traceElementData_add
+        URL：traceElementData/add
+        Authorized Url：traceElementData/save
+    
+    Name:Delete
+        ID:traceElementData_delete
+        URL:
+        Authorized Url：traceElementData/delete-- ArtificialHeavyMineralData ---
+Field list:
+
+    id:ID
+    mineralName:矿物名称
+    mineralCode:矿物名称代号
+    mineralMagneticContent:矿物（磁性）含量
+    mineralElectromagContent:矿物（电磁性）含量
+    mineralHeavyContent:矿物（重部分）含量
+    mineralLightContent:矿物（轻部分）含量
+    mineralCharacter:矿物特征描述
+    crystalShapeFigure:晶形图
+    relId:基本信息
+
+Module list:
+
+    Name:List
+        ID:artificialHeavyMineralData_list
+        URL：artificialHeavyMineralData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:artificialHeavyMineralData_add
+        URL：artificialHeavyMineralData/add
+        Authorized Url：artificialHeavyMineralData/save
+    
+    Name:Delete
+        ID:artificialHeavyMineralData_delete
+        URL:
+        Authorized Url：artificialHeavyMineralData/delete-- RockSectionIdentify ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    fieldRockName:野外名称
+    microScopicDescribe:镜下描述
+    authorizedRockName:鉴定名称
+    microscopicPhoto:镜下照片
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:rockSectionIdentify_list
+        URL：rockSectionIdentify/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:rockSectionIdentify_add
+        URL：rockSectionIdentify/add
+        Authorized Url：rockSectionIdentify/save
+    
+    Name:Delete
+        ID:rockSectionIdentify_delete
+        URL:
+        Authorized Url：rockSectionIdentify/delete-- SampleBasicInfo ---
+Field list:
+
+    id:ID
+    sampleId:样品编码
+    originalSampleId:原始样品编码
+    longitude:地理经度
+    latitude:地理纬度
+    countryCode:国家编码
+    location:所在地区
+    lithology:岩性
+    rockName:岩石名称
+    rockCode:岩石名称代码
+    era:地质年代
+    geobodyName:地质体名称
+    geobodyCode:地质体代码
+    photo:样品照片
+    collector:样品采集人员
+    collectorOrg:采集人员单位
+    reviewer:样品审核人
+    analyzeOrg:分析/鉴定单位
+    analyzePerson:分析/鉴定人员
+    testDate:分析/测定时间
+    testMethod:分析/测定方法
+    articleId:发表文献编号
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:sampleBasicInfo_list
+        URL：sampleBasicInfo/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:sampleBasicInfo_add
+        URL：sampleBasicInfo/add
+        Authorized Url：sampleBasicInfo/save
+    
+    Name:Delete
+        ID:sampleBasicInfo_delete
+        URL:
+        Authorized Url：sampleBasicInfo/delete-- DPThermoluminescence ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    u:U（10-6）
+    th:Th（10-6）
+    k:K(%)
+    paleoDose:古剂量（Gy）
+    annualDoseRate:年剂量率(Gy/a)
+    tiAge:热释光年龄(ka)
+    ageError:年龄误差(ka)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPThermoluminescence_list
+        URL：dPThermoluminescence/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPThermoluminescence_add
+        URL：dPThermoluminescence/add
+        Authorized Url：dPThermoluminescence/save
+    
+    Name:Delete
+        ID:dPThermoluminescence_delete
+        URL:
+        Authorized Url：dPThermoluminescence/delete-- EpmaData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralName:矿物名称
+    siO2:SiO2（10-2）
+    tiO2:TiO2 (10-2）
+    al2O3:Al2O3(10-2）
+    cr2O3:Cr2O3(10-2）
+    fe2O3:Fe2O3(10-2）
+    feO:FeO(10-2)
+    niO:NiO(10-2)
+    mnO:MnO(10-2)
+    mgO:MgO(10-2)
+    caO:CaO(10-2)
+    na2O:Na2O(10-2)
+    k2O:K2O(10-2)
+    p2O5:P2O5(10-2)
+    total:总量(10-2)
+    others:其他(10-2)
+
+Module list:
+
+    Name:List
+        ID:epmaData_list
+        URL：epmaData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:epmaData_add
+        URL：epmaData/add
+        Authorized Url：epmaData/save
+    
+    Name:Delete
+        ID:epmaData_delete
+        URL:
+        Authorized Url：epmaData/delete-- GranularityData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    phiValueGroup:φ 值分组
+    particleNumber:颗粒数
+    percentage:百分含量（%）
+
+Module list:
+
+    Name:List
+        ID:granularityData_list
+        URL：granularityData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:granularityData_add
+        URL：granularityData/add
+        Authorized Url：granularityData/save
+    
+    Name:Delete
+        ID:granularityData_delete
+        URL:
+        Authorized Url：granularityData/delete-- DPArgonArgon ---
+Field list:
+
+    id:ID
+    NHeatStage:加热阶段次数（次）
+    cecayconst:衰变常数 （1/年）
+    JValue:J 值
+    fullmeltAge:全熔融年龄（Ma）
+    ageError1:年龄误差1（Ma）
+    plateauAge:坪年龄（Ma）
+    ageError2:年龄误差2（Ma）
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPArgonArgon_list
+        URL：dPArgonArgon/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPArgonArgon_add
+        URL：dPArgonArgon/add
+        Authorized Url：dPArgonArgon/save
+    
+    Name:Delete
+        ID:dPArgonArgon_delete
+        URL:
+        Authorized Url：dPArgonArgon/delete-- DPCarbon14 ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    radioActivSpecific:放射性比度（dpm/g）
+    c14Age:碳-14 年龄（万年）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPCarbon14_list
+        URL：dPCarbon14/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPCarbon14_add
+        URL：dPCarbon14/add
+        Authorized Url：dPCarbon14/save
+    
+    Name:Delete
+        ID:dPCarbon14_delete
+        URL:
+        Authorized Url：dPCarbon14/delete-- DPOrdinaryLead ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralCharacter:矿物特征
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    pb206Pb204:206Pb/204Pb
+    pb207Pb204:207Pb/204Pb
+    pb208Pb204:208Pb/204Pb
+    modelAge1:模式年龄 1（Ma）
+    modelAge1Error:模式年龄 1误差（Ma）
+    modelAge2:模式年龄2（Ma）
+    modelAge2Error:模式年龄 2误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPOrdinaryLead_list
+        URL：dPOrdinaryLead/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPOrdinaryLead_add
+        URL：dPOrdinaryLead/add
+        Authorized Url：dPOrdinaryLead/save
+    
+    Name:Delete
+        ID:dPOrdinaryLead_delete
+        URL:
+        Authorized Url：dPOrdinaryLead/delete-- DPSamariumNeodymium ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    sm:钐(10-6)
+    nd:钕（10-6）
+    sm147Nd144:147Sm／144Nd
+    nd143Nd144:143Nd／144Nd
+    modelAge:模式年龄（Ma）
+    ageError:年龄误差(Ma)
+    epsilonNdO:εNd(o)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPSamariumNeodymium_list
+        URL：dPSamariumNeodymium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPSamariumNeodymium_add
+        URL：dPSamariumNeodymium/add
+        Authorized Url：dPSamariumNeodymium/save
+    
+    Name:Delete
+        ID:dPSamariumNeodymium_delete
+        URL:
+        Authorized Url：dPSamariumNeodymium/delete-- ArtificialHeavyMineralBasicinfo ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    sampleWeight:样品重量(Kg)
+    heavySandWeight:重砂总重量(g)
+    magnetCompoWeight:磁性部分重量(g)
+    electromagCompoWeight:电磁性部分重量(g)
+    heavyCompoWeight:重部分重量(g)
+    lightCompoWeight:轻部分重量(g)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:artificialHeavyMineralBasicinfo_list
+        URL：artificialHeavyMineralBasicinfo/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:artificialHeavyMineralBasicinfo_add
+        URL：artificialHeavyMineralBasicinfo/add
+        Authorized Url：artificialHeavyMineralBasicinfo/save
+    
+    Name:Delete
+        ID:artificialHeavyMineralBasicinfo_delete
+        URL:
+        Authorized Url：artificialHeavyMineralBasicinfo/delete-- DPRbSr ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    rb:铷(10-6)
+    sr:锶（10-6）
+    rb87Sr86:87Rb／86Sr
+    sr87Sr86:87Sr／86Sr
+    surfaceAge:表面年龄（Ma）
+    surfaceAgeError:表面年龄误差（Ma）
+    modelAge:模式年龄（Ma）
+    modelAgeError:模式年龄误差(Ma)
+    epsilonSrO:εSr(o)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPRbSr_list
+        URL：dPRbSr/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPRbSr_add
+        URL：dPRbSr/add
+        Authorized Url：dPRbSr/save
+    
+    Name:Delete
+        ID:dPRbSr_delete
+        URL:
+        Authorized Url：dPRbSr/delete-- DPOsmium ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    os187Os186:187Os/186Os
+    os187Os188:187Os/188Os
+    modelAge1:模式年龄1（Ma）
+    modelAge1Error:模式年龄1误差(Ma)
+    modelAge2:模式年龄2（Ma）
+    modelAge2Error:模式年龄2误差(Ma)
+    acceptedAge:采用年龄（Ma）
+    acceptedAgeError:采用年龄误差(Ma)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPOsmium_list
+        URL：dPOsmium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPOsmium_add
+        URL：dPOsmium/add
+        Authorized Url：dPOsmium/save
+    
+    Name:Delete
+        ID:dPOsmium_delete
+        URL:
+        Authorized Url：dPOsmium/delete-- DPFissionTrack ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    fissionConst:裂变常数
+    trackLength:径迹长度（cm）
+    spontaneFissionTrackDensity:自发裂变径迹密度（条/cm2）
+    thermalDose:热中子剂量（1/cm2）
+    artificialFissionTrackDensity:人工诱发裂变径迹密度（条/cm2）
+    fissionTrackAge:裂变径迹年龄（Ma）
+    ageError:年龄误差（Ma）
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPFissionTrack_list
+        URL：dPFissionTrack/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPFissionTrack_add
+        URL：dPFissionTrack/add
+        Authorized Url：dPFissionTrack/save
+    
+    Name:Delete
+        ID:dPFissionTrack_delete
+        URL:
+        Authorized Url：dPFissionTrack/delete-- DPUraniumThoriumLead ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralCharacter:矿物特征
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    decayConst3:衰变常数3 （1/年）
+    u:铀(10-6)
+    th:钍（10-6）
+    pb:铅（10-6）
+    pb204:铅-204（%）
+    pb206:铅-206（%）
+    pb207:铅-207（%）
+    pb208:铅-208（%）
+    pb206Pb204:206Pb/204Pb
+    pb208Pb206:208Pb/206Pb
+    pb207Pb206:207Pb/206Pb
+    pb206U238:206Pb/238U
+    pb207U235:207Pb/235U
+    pb208Th232:208Pb/232Th
+    pb206U238Age:铅-206-铀-238 年龄（Ma）
+    pb206U238AgeError:铅-206-铀-238 年龄误差（Ma）
+    pb207U235Age:铅-207-铀-235 年龄（Ma）
+    pb207U235AgeError:铅-207-铀-235 年龄误差(Ma)
+    pb207Pb206Age:铅-207-铅-206 年龄（Ma）
+    pb207Pb206AgeError:铅-207-铅-206 年龄误差（Ma）
+    pb208Th232Age:铅-208-钍-232 年龄（Ma）
+    pb208Th232AgeError:铅-208-钍-232 年龄误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPUraniumThoriumLead_list
+        URL：dPUraniumThoriumLead/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPUraniumThoriumLead_add
+        URL：dPUraniumThoriumLead/add
+        Authorized Url：dPUraniumThoriumLead/save
+    
+    Name:Delete
+        ID:dPUraniumThoriumLead_delete
+        URL:
+        Authorized Url：dPUraniumThoriumLead/delete-- DPReOsmium ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    re:铼（10-6）
+    os187:锇-187（10-6）
+    modelAge:模式年龄（Ma）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPReOsmium_list
+        URL：dPReOsmium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPReOsmium_add
+        URL：dPReOsmium/add
+        Authorized Url：dPReOsmium/save
+    
+    Name:Delete
+        ID:dPReOsmium_delete
+        URL:
+        Authorized Url：dPReOsmium/delete-- StableIsotopeAnalyse ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    analyzeItem:分析项目
+    analyzeValue:分析值
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:stableIsotopeAnalyse_list
+        URL：stableIsotopeAnalyse/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:stableIsotopeAnalyse_add
+        URL：stableIsotopeAnalyse/add
+        Authorized Url：stableIsotopeAnalyse/save
+    
+    Name:Delete
+        ID:stableIsotopeAnalyse_delete
+        URL:
+        Authorized Url：stableIsotopeAnalyse/delete-- DPLeadLeadEvaporation ---
+Field list:
+
+    id:ID
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    pb207Pb206r:(Pb207/Pb206)r
+    measureError1:测定误差 1
+    pb204Pb206m:(Pb204/Pb206)m
+    measureError2:测定误差 2
+    pb207Pb206Age:铅 207-铅 206 年龄（Ma）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPLeadLeadEvaporation_list
+        URL：dPLeadLeadEvaporation/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPLeadLeadEvaporation_add
+        URL：dPLeadLeadEvaporation/add
+        Authorized Url：dPLeadLeadEvaporation/save
+    
+    Name:Delete
+        ID:dPLeadLeadEvaporation_delete
+        URL:
+        Authorized Url：dPLeadLeadEvaporation/delete-- REElement ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    la:镧(10-6)
+    ce:铈(10-6)
+    pr:镨(10-6)
+    nd:钕(10-6)
+    sm:钐(10-6)
+    eu:铕(10-6)
+    gd:钆(10-6)
+    tb:铽(10-6)
+    dy:镝(10-6)
+    ho:钬(10-6)
+    er:铒(10-6)
+    tm:铥(10-6)
+    yb:镱(10-6)
+    lu:镥(10-6)
+    y:钇(10-6)
+    sc:钪(10-6)
+    totalReElement:稀土总量(10-6)
+    dataType:数据形式
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:rEElement_list
+        URL：rEElement/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:rEElement_add
+        URL：rEElement/add
+        Authorized Url：rEElement/save
+    
+    Name:Delete
+        ID:rEElement_delete
+        URL:
+        Authorized Url：rEElement/delete-- Article ---
+Field list:
+
+    id:ID
+    articleName:文章名称
+    reference:引用格式
+    doi:DOI
+
+Module list:
+
+    Name:List
+        ID:article_list
+        URL：article/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:article_add
+        URL：article/add
+        Authorized Url：article/save
+    
+    Name:Delete
+        ID:article_delete
+        URL:
+        Authorized Url：article/delete-- DPPotassiumArgon ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst1:衰变常数 1（1/年）
+    decayConst2:衰变常数 2（1/年）
+    k:钾（%）
+    ar40:氩-40（10-6）
+    atmospArgon:大气氩（%）
+    ar40K40:40Ar/40K
+    ar40Ar36:40Ar/36Ar 
+    age:钾-氩年龄（Ma）
+    ageError:年龄误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPPotassiumArgon_list
+        URL：dPPotassiumArgon/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPPotassiumArgon_add
+        URL：dPPotassiumArgon/add
+        Authorized Url：dPPotassiumArgon/save
+    
+    Name:Delete
+        ID:dPPotassiumArgon_delete
+        URL:
+        Authorized Url：dPPotassiumArgon/delete-- MajorElement ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    siO2:SiO2（10-2）
+    tiO2:TiO2 (10-2）
+    al2O3:Al2O3(10-2）
+    fe2O3:Fe2O3(10-2）
+    feO:FeO(10-2)
+    tfe:Tfe(10-2)
+    mnO:MnO(10-2)
+    mgO:MgO(10-2)
+    caO:CaO(10-2)
+    na2O:Na2O(10-2)
+    k2O:K2O(10-2)
+    p2O5:P2O5(10-2)
+    h2OP:H2 O+(10-2)
+    h2ON:H2 O-(10-2)
+    CO2:CO2(10-2)
+    SO3:SO3(10-2)
+    f:F(10-2)
+    ci:Cl(10-2)
+    ignitionLoss:烧失量(10-2)
+    total:总量(10-2)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:majorElement_list
+        URL：majorElement/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:majorElement_add
+        URL：majorElement/add
+        Authorized Url：majorElement/save
+    
+    Name:Delete
+        ID:majorElement_delete
+        URL:
+        Authorized Url：majorElement/delete-- AbbreviatedAnalysisData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    analyzeItem:分析项目
+    analyzeValue:分析值
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:abbreviatedAnalysisData_list
+        URL：abbreviatedAnalysisData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:abbreviatedAnalysisData_add
+        URL：abbreviatedAnalysisData/add
+        Authorized Url：abbreviatedAnalysisData/save
+    
+    Name:Delete
+        ID:abbreviatedAnalysisData_delete
+        URL:
+        Authorized Url：abbreviatedAnalysisData/delete-- TraceElementData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    analyzeElement:分析元素
+    analyzeData:分析数据(10<sup>-6</sup>）
+
+Module list:
+
+    Name:List
+        ID:traceElementData_list
+        URL：traceElementData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:traceElementData_add
+        URL：traceElementData/add
+        Authorized Url：traceElementData/save
+    
+    Name:Delete
+        ID:traceElementData_delete
+        URL:
+        Authorized Url：traceElementData/delete-- ArtificialHeavyMineralData ---
+Field list:
+
+    id:ID
+    mineralName:矿物名称
+    mineralCode:矿物名称代号
+    mineralMagneticContent:矿物（磁性）含量
+    mineralElectromagContent:矿物（电磁性）含量
+    mineralHeavyContent:矿物（重部分）含量
+    mineralLightContent:矿物（轻部分）含量
+    mineralCharacter:矿物特征描述
+    crystalShapeFigure:晶形图
+    relId:基本信息
+
+Module list:
+
+    Name:List
+        ID:artificialHeavyMineralData_list
+        URL：artificialHeavyMineralData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:artificialHeavyMineralData_add
+        URL：artificialHeavyMineralData/add
+        Authorized Url：artificialHeavyMineralData/save
+    
+    Name:Delete
+        ID:artificialHeavyMineralData_delete
+        URL:
+        Authorized Url：artificialHeavyMineralData/delete-- RockSectionIdentify ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    fieldRockName:野外名称
+    microScopicDescribe:镜下描述
+    authorizedRockName:鉴定名称
+    microscopicPhoto:镜下照片
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:rockSectionIdentify_list
+        URL：rockSectionIdentify/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:rockSectionIdentify_add
+        URL：rockSectionIdentify/add
+        Authorized Url：rockSectionIdentify/save
+    
+    Name:Delete
+        ID:rockSectionIdentify_delete
+        URL:
+        Authorized Url：rockSectionIdentify/delete-- SampleBasicInfo ---
+Field list:
+
+    id:ID
+    sampleId:样品编码
+    originalSampleId:原始样品编码
+    longitude:地理经度
+    latitude:地理纬度
+    countryCode:国家编码
+    location:所在地区
+    lithology:岩性
+    rockName:岩石名称
+    rockCode:岩石名称代码
+    era:地质年代
+    geobodyName:地质体名称
+    geobodyCode:地质体代码
+    photo:样品照片
+    collector:样品采集人员
+    collectorOrg:采集人员单位
+    reviewer:样品审核人
+    analyzeOrg:分析/鉴定单位
+    analyzePerson:分析/鉴定人员
+    testDate:分析/测定时间
+    testMethod:分析/测定方法
+    articleId:发表文献编号
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:sampleBasicInfo_list
+        URL：sampleBasicInfo/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:sampleBasicInfo_add
+        URL：sampleBasicInfo/add
+        Authorized Url：sampleBasicInfo/save
+    
+    Name:Delete
+        ID:sampleBasicInfo_delete
+        URL:
+        Authorized Url：sampleBasicInfo/delete-- DPThermoluminescence ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    u:U（10-6）
+    th:Th（10-6）
+    k:K(%)
+    paleoDose:古剂量（Gy）
+    annualDoseRate:年剂量率(Gy/a)
+    tiAge:热释光年龄(ka)
+    ageError:年龄误差(ka)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPThermoluminescence_list
+        URL：dPThermoluminescence/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPThermoluminescence_add
+        URL：dPThermoluminescence/add
+        Authorized Url：dPThermoluminescence/save
+    
+    Name:Delete
+        ID:dPThermoluminescence_delete
+        URL:
+        Authorized Url：dPThermoluminescence/delete-- EpmaData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralName:矿物名称
+    siO2:SiO2（10-2）
+    tiO2:TiO2 (10-2）
+    al2O3:Al2O3(10-2）
+    cr2O3:Cr2O3(10-2）
+    fe2O3:Fe2O3(10-2）
+    feO:FeO(10-2)
+    niO:NiO(10-2)
+    mnO:MnO(10-2)
+    mgO:MgO(10-2)
+    caO:CaO(10-2)
+    na2O:Na2O(10-2)
+    k2O:K2O(10-2)
+    p2O5:P2O5(10-2)
+    total:总量(10-2)
+    others:其他(10-2)
+
+Module list:
+
+    Name:List
+        ID:epmaData_list
+        URL：epmaData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:epmaData_add
+        URL：epmaData/add
+        Authorized Url：epmaData/save
+    
+    Name:Delete
+        ID:epmaData_delete
+        URL:
+        Authorized Url：epmaData/delete-- GranularityData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    phiValueGroup:φ 值分组
+    particleNumber:颗粒数
+    percentage:百分含量（%）
+
+Module list:
+
+    Name:List
+        ID:granularityData_list
+        URL：granularityData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:granularityData_add
+        URL：granularityData/add
+        Authorized Url：granularityData/save
+    
+    Name:Delete
+        ID:granularityData_delete
+        URL:
+        Authorized Url：granularityData/delete-- DPArgonArgon ---
+Field list:
+
+    id:ID
+    NHeatStage:加热阶段次数（次）
+    cecayconst:衰变常数 （1/年）
+    JValue:J 值
+    fullmeltAge:全熔融年龄（Ma）
+    ageError1:年龄误差1（Ma）
+    plateauAge:坪年龄（Ma）
+    ageError2:年龄误差2（Ma）
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPArgonArgon_list
+        URL：dPArgonArgon/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPArgonArgon_add
+        URL：dPArgonArgon/add
+        Authorized Url：dPArgonArgon/save
+    
+    Name:Delete
+        ID:dPArgonArgon_delete
+        URL:
+        Authorized Url：dPArgonArgon/delete-- DPCarbon14 ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    radioActivSpecific:放射性比度（dpm/g）
+    c14Age:碳-14 年龄（万年）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPCarbon14_list
+        URL：dPCarbon14/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPCarbon14_add
+        URL：dPCarbon14/add
+        Authorized Url：dPCarbon14/save
+    
+    Name:Delete
+        ID:dPCarbon14_delete
+        URL:
+        Authorized Url：dPCarbon14/delete-- DPOrdinaryLead ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralCharacter:矿物特征
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    pb206Pb204:206Pb/204Pb
+    pb207Pb204:207Pb/204Pb
+    pb208Pb204:208Pb/204Pb
+    modelAge1:模式年龄 1（Ma）
+    modelAge1Error:模式年龄 1误差（Ma）
+    modelAge2:模式年龄2（Ma）
+    modelAge2Error:模式年龄 2误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPOrdinaryLead_list
+        URL：dPOrdinaryLead/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPOrdinaryLead_add
+        URL：dPOrdinaryLead/add
+        Authorized Url：dPOrdinaryLead/save
+    
+    Name:Delete
+        ID:dPOrdinaryLead_delete
+        URL:
+        Authorized Url：dPOrdinaryLead/delete-- DPSamariumNeodymium ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    sm:钐(10-6)
+    nd:钕（10-6）
+    sm147Nd144:147Sm／144Nd
+    nd143Nd144:143Nd／144Nd
+    modelAge:模式年龄（Ma）
+    ageError:年龄误差(Ma)
+    epsilonNdO:εNd(o)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPSamariumNeodymium_list
+        URL：dPSamariumNeodymium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPSamariumNeodymium_add
+        URL：dPSamariumNeodymium/add
+        Authorized Url：dPSamariumNeodymium/save
+    
+    Name:Delete
+        ID:dPSamariumNeodymium_delete
+        URL:
+        Authorized Url：dPSamariumNeodymium/delete-- ArtificialHeavyMineralBasicinfo ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    sampleWeight:样品重量(Kg)
+    heavySandWeight:重砂总重量(g)
+    magnetCompoWeight:磁性部分重量(g)
+    electromagCompoWeight:电磁性部分重量(g)
+    heavyCompoWeight:重部分重量(g)
+    lightCompoWeight:轻部分重量(g)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:artificialHeavyMineralBasicinfo_list
+        URL：artificialHeavyMineralBasicinfo/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:artificialHeavyMineralBasicinfo_add
+        URL：artificialHeavyMineralBasicinfo/add
+        Authorized Url：artificialHeavyMineralBasicinfo/save
+    
+    Name:Delete
+        ID:artificialHeavyMineralBasicinfo_delete
+        URL:
+        Authorized Url：artificialHeavyMineralBasicinfo/delete-- DPRbSr ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    rb:铷(10-6)
+    sr:锶（10-6）
+    rb87Sr86:87Rb／86Sr
+    sr87Sr86:87Sr／86Sr
+    surfaceAge:表面年龄（Ma）
+    surfaceAgeError:表面年龄误差（Ma）
+    modelAge:模式年龄（Ma）
+    modelAgeError:模式年龄误差(Ma)
+    epsilonSrO:εSr(o)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPRbSr_list
+        URL：dPRbSr/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPRbSr_add
+        URL：dPRbSr/add
+        Authorized Url：dPRbSr/save
+    
+    Name:Delete
+        ID:dPRbSr_delete
+        URL:
+        Authorized Url：dPRbSr/delete-- DPOsmium ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    os187Os186:187Os/186Os
+    os187Os188:187Os/188Os
+    modelAge1:模式年龄1（Ma）
+    modelAge1Error:模式年龄1误差(Ma)
+    modelAge2:模式年龄2（Ma）
+    modelAge2Error:模式年龄2误差(Ma)
+    acceptedAge:采用年龄（Ma）
+    acceptedAgeError:采用年龄误差(Ma)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPOsmium_list
+        URL：dPOsmium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPOsmium_add
+        URL：dPOsmium/add
+        Authorized Url：dPOsmium/save
+    
+    Name:Delete
+        ID:dPOsmium_delete
+        URL:
+        Authorized Url：dPOsmium/delete-- DPFissionTrack ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    fissionConst:裂变常数
+    trackLength:径迹长度（cm）
+    spontaneFissionTrackDensity:自发裂变径迹密度（条/cm2）
+    thermalDose:热中子剂量（1/cm2）
+    artificialFissionTrackDensity:人工诱发裂变径迹密度（条/cm2）
+    fissionTrackAge:裂变径迹年龄（Ma）
+    ageError:年龄误差（Ma）
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPFissionTrack_list
+        URL：dPFissionTrack/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPFissionTrack_add
+        URL：dPFissionTrack/add
+        Authorized Url：dPFissionTrack/save
+    
+    Name:Delete
+        ID:dPFissionTrack_delete
+        URL:
+        Authorized Url：dPFissionTrack/delete-- DPUraniumThoriumLead ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralCharacter:矿物特征
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    decayConst3:衰变常数3 （1/年）
+    u:铀(10-6)
+    th:钍（10-6）
+    pb:铅（10-6）
+    pb204:铅-204（%）
+    pb206:铅-206（%）
+    pb207:铅-207（%）
+    pb208:铅-208（%）
+    pb206Pb204:206Pb/204Pb
+    pb208Pb206:208Pb/206Pb
+    pb207Pb206:207Pb/206Pb
+    pb206U238:206Pb/238U
+    pb207U235:207Pb/235U
+    pb208Th232:208Pb/232Th
+    pb206U238Age:铅-206-铀-238 年龄（Ma）
+    pb206U238AgeError:铅-206-铀-238 年龄误差（Ma）
+    pb207U235Age:铅-207-铀-235 年龄（Ma）
+    pb207U235AgeError:铅-207-铀-235 年龄误差(Ma)
+    pb207Pb206Age:铅-207-铅-206 年龄（Ma）
+    pb207Pb206AgeError:铅-207-铅-206 年龄误差（Ma）
+    pb208Th232Age:铅-208-钍-232 年龄（Ma）
+    pb208Th232AgeError:铅-208-钍-232 年龄误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPUraniumThoriumLead_list
+        URL：dPUraniumThoriumLead/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPUraniumThoriumLead_add
+        URL：dPUraniumThoriumLead/add
+        Authorized Url：dPUraniumThoriumLead/save
+    
+    Name:Delete
+        ID:dPUraniumThoriumLead_delete
+        URL:
+        Authorized Url：dPUraniumThoriumLead/delete-- DPThermoluminescence ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    u:U（10<sup>-6</sup>）
+    th:Th（10<sup>-6</sup>）
+    k:K(%)
+    paleoDose:古剂量（Gy）
+    annualDoseRate:年剂量率(Gy/a)
+    tiAge:热释光年龄(ka)
+    ageError:年龄误差(ka)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPThermoluminescence_list
+        URL：dPThermoluminescence/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPThermoluminescence_add
+        URL：dPThermoluminescence/add
+        Authorized Url：dPThermoluminescence/save
+    
+    Name:Delete
+        ID:dPThermoluminescence_delete
+        URL:
+        Authorized Url：dPThermoluminescence/delete-- DPOsmium ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    os187Os186:<sup>187</sup>Os/<sup>186</sup>Os
+    os187Os188:<sup>187</sup>Os/<sup>188</sup>Os
+    modelAge1:模式年龄1（Ma）
+    modelAge1Error:模式年龄1误差(Ma)
+    modelAge2:模式年龄2（Ma）
+    modelAge2Error:模式年龄2误差(Ma)
+    acceptedAge:采用年龄（Ma）
+    acceptedAgeError:采用年龄误差(Ma)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPOsmium_list
+        URL：dPOsmium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPOsmium_add
+        URL：dPOsmium/add
+        Authorized Url：dPOsmium/save
+    
+    Name:Delete
+        ID:dPOsmium_delete
+        URL:
+        Authorized Url：dPOsmium/delete-- SampleBasicInfo ---
+Field list:
+
+    id:ID
+    sampleId:样品编码
+    originalSampleId:原始样品编码
+    longitude:地理经度
+    latitude:地理纬度
+    countryCode:国家编码
+    location:所在地区
+    lithology:岩性
+    rockName:岩石名称
+    rockCode:岩石名称代码
+    era:地质年代
+    geobodyName:地质体名称
+    geobodyCode:地质体代码
+    photo:样品照片
+    collector:样品采集人员
+    collectorOrg:采集人员单位
+    reviewer:样品审核人
+    analyzeOrg:分析/鉴定单位
+    analyzePerson:分析/鉴定人员
+    testDate:分析/测定时间
+    testMethod:分析/测定方法
+    articleId:发表文献编号
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:sampleBasicInfo_list
+        URL：sampleBasicInfo/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:sampleBasicInfo_add
+        URL：sampleBasicInfo/add
+        Authorized Url：sampleBasicInfo/save
+    
+    Name:Delete
+        ID:sampleBasicInfo_delete
+        URL:
+        Authorized Url：sampleBasicInfo/delete-- ArtificialHeavyMineralData ---
+Field list:
+
+    id:ID
+    mineralName:矿物名称
+    mineralCode:矿物名称代号
+    mineralMagneticContent:矿物（磁性）含量
+    mineralElectromagContent:矿物（电磁性）含量
+    mineralHeavyContent:矿物（重部分）含量
+    mineralLightContent:矿物（轻部分）含量
+    mineralCharacter:矿物特征描述
+    crystalShapeFigure:晶形图
+    relId:基本信息
+
+Module list:
+
+    Name:List
+        ID:artificialHeavyMineralData_list
+        URL：artificialHeavyMineralData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:artificialHeavyMineralData_add
+        URL：artificialHeavyMineralData/add
+        Authorized Url：artificialHeavyMineralData/save
+    
+    Name:Delete
+        ID:artificialHeavyMineralData_delete
+        URL:
+        Authorized Url：artificialHeavyMineralData/delete-- DPReOsmium ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    re:铼（10<sup>-6</sup>）
+    os187:锇-187（10<sup>-6</sup>）
+    modelAge:模式年龄（Ma）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPReOsmium_list
+        URL：dPReOsmium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPReOsmium_add
+        URL：dPReOsmium/add
+        Authorized Url：dPReOsmium/save
+    
+    Name:Delete
+        ID:dPReOsmium_delete
+        URL:
+        Authorized Url：dPReOsmium/delete-- RockSectionIdentify ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    fieldRockName:野外名称
+    microScopicDescribe:镜下描述
+    authorizedRockName:鉴定名称
+    microscopicPhoto:镜下照片
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:rockSectionIdentify_list
+        URL：rockSectionIdentify/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:rockSectionIdentify_add
+        URL：rockSectionIdentify/add
+        Authorized Url：rockSectionIdentify/save
+    
+    Name:Delete
+        ID:rockSectionIdentify_delete
+        URL:
+        Authorized Url：rockSectionIdentify/delete-- ArtificialHeavyMineralBasicinfo ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    sampleWeight:样品重量(Kg)
+    heavySandWeight:重砂总重量(g)
+    magnetCompoWeight:磁性部分重量(g)
+    electromagCompoWeight:电磁性部分重量(g)
+    heavyCompoWeight:重部分重量(g)
+    lightCompoWeight:轻部分重量(g)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:artificialHeavyMineralBasicinfo_list
+        URL：artificialHeavyMineralBasicinfo/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:artificialHeavyMineralBasicinfo_add
+        URL：artificialHeavyMineralBasicinfo/add
+        Authorized Url：artificialHeavyMineralBasicinfo/save
+    
+    Name:Delete
+        ID:artificialHeavyMineralBasicinfo_delete
+        URL:
+        Authorized Url：artificialHeavyMineralBasicinfo/delete-- DPCarbon14 ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    radioActivSpecific:放射性比度（dpm/g）
+    c14Age:碳-14 年龄（万年）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPCarbon14_list
+        URL：dPCarbon14/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPCarbon14_add
+        URL：dPCarbon14/add
+        Authorized Url：dPCarbon14/save
+    
+    Name:Delete
+        ID:dPCarbon14_delete
+        URL:
+        Authorized Url：dPCarbon14/delete-- StableIsotopeAnalyse ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    analyzeItem:分析项目
+    analyzeValue:分析值
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:stableIsotopeAnalyse_list
+        URL：stableIsotopeAnalyse/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:stableIsotopeAnalyse_add
+        URL：stableIsotopeAnalyse/add
+        Authorized Url：stableIsotopeAnalyse/save
+    
+    Name:Delete
+        ID:stableIsotopeAnalyse_delete
+        URL:
+        Authorized Url：stableIsotopeAnalyse/delete-- TraceElementData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    analyzeElement:分析元素
+    analyzeData:分析数据(10<sup>-6</sup>）
+
+Module list:
+
+    Name:List
+        ID:traceElementData_list
+        URL：traceElementData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:traceElementData_add
+        URL：traceElementData/add
+        Authorized Url：traceElementData/save
+    
+    Name:Delete
+        ID:traceElementData_delete
+        URL:
+        Authorized Url：traceElementData/delete-- EpmaData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralName:矿物名称
+    siO2:SiO<sub>2</sub>（10<sup>-2</sup>）
+    tiO2:TiO<sub>2</sub> (10<sup>-2</sup>）
+    al2O3:Al<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    cr2O3:Cr<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    fe2O3:Fe<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    feO:FeO(10<sup>-2</sup>)
+    niO:NiO(10<sup>-2</sup>)
+    mnO:MnO(10<sup>-2</sup>)
+    mgO:MgO(10<sup>-2</sup>)
+    caO:CaO(10<sup>-2</sup>)
+    na2O:Na<sub>2</sub>O(10<sup>-2</sup>)
+    k2O:K<sub>2</sub>O(10<sup>-2</sup>)
+    p2O5:P<sub>2</sub>O<sub>5</sub>(10<sup>-2</sup>)
+    total:总量(10<sup>-2</sup>)
+    others:其他(10<sup>-2</sup>)
+
+Module list:
+
+    Name:List
+        ID:epmaData_list
+        URL：epmaData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:epmaData_add
+        URL：epmaData/add
+        Authorized Url：epmaData/save
+    
+    Name:Delete
+        ID:epmaData_delete
+        URL:
+        Authorized Url：epmaData/delete-- MajorElement ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    siO2:SiO<sub>2</sub>（10<sup>-2</sup>）
+    tiO2:TiO<sub>2</sub> (10<sup>-2</sup>）
+    al2O3:Al<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    fe2O3:Fe<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    feO:FeO(10<sup>-2</sup>)
+    tfe:Tfe(10<sup>-2</sup>)
+    mnO:MnO(10<sup>-2</sup>)
+    mgO:MgO(10<sup>-2</sup>)
+    caO:CaO(10<sup>-2</sup>)
+    na2O:Na<sub>2</sub>O(10<sup>-2</sup>)
+    k2O:K<sub>2</sub>O(10<sup>-2</sup>)
+    p2O5:P<sub>2</sub>O<sub>5</sub>(10<sup>-2</sup>)
+    h2OP:H<sub>2</sub>O<sub>+(10<sup>-2</sup>)
+    h2ON:H<sub>2</sub>O-(10<sup>-2</sup>)
+    CO2:CO<sub>2</sub>(10<sup>-2</sup>)
+    SO3:SO<sub>3</sub>(10<sup>-2</sup>)
+    f:F(10<sup>-2</sup>)
+    ci:Cl(10<sup>-2</sup>)
+    ignitionLoss:烧失量(10<sup>-2</sup>)
+    total:总量(10<sup>-2</sup>)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:majorElement_list
+        URL：majorElement/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:majorElement_add
+        URL：majorElement/add
+        Authorized Url：majorElement/save
+    
+    Name:Delete
+        ID:majorElement_delete
+        URL:
+        Authorized Url：majorElement/delete-- REElement ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    la:镧(10<sup>-6</sup>)
+    ce:铈(10<sup>-6</sup>)
+    pr:镨(10<sup>-6</sup>)
+    nd:钕(10<sup>-6</sup>)
+    sm:钐(10<sup>-6</sup>)
+    eu:铕(10<sup>-6</sup>)
+    gd:钆(10<sup>-6</sup>)
+    tb:铽(10<sup>-6</sup>)
+    dy:镝(10<sup>-6</sup>)
+    ho:钬(10<sup>-6</sup>)
+    er:铒(10<sup>-6</sup>)
+    tm:铥(10<sup>-6</sup>)
+    yb:镱(10<sup>-6</sup>)
+    lu:镥(10<sup>-6</sup>)
+    y:钇(10<sup>-6</sup>)
+    sc:钪(10<sup>-6</sup>)
+    totalReElement:稀土总量(10<sup>-6</sup>)
+    dataType:数据形式
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:rEElement_list
+        URL：rEElement/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:rEElement_add
+        URL：rEElement/add
+        Authorized Url：rEElement/save
+    
+    Name:Delete
+        ID:rEElement_delete
+        URL:
+        Authorized Url：rEElement/delete-- DPFissionTrack ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    fissionConst:裂变常数
+    trackLength:径迹长度（cm）
+    spontaneFissionTrackDensity:自发裂变径迹密度（条/cm<sup>2</sup>）
+    thermalDose:热中子剂量（1/cm<sup>2</sup>））
+    artificialFissionTrackDensity:人工诱发裂变径迹密度（条/cm<sup>2</sup>））
+    fissionTrackAge:裂变径迹年龄（Ma）
+    ageError:年龄误差（Ma）
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPFissionTrack_list
+        URL：dPFissionTrack/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPFissionTrack_add
+        URL：dPFissionTrack/add
+        Authorized Url：dPFissionTrack/save
+    
+    Name:Delete
+        ID:dPFissionTrack_delete
+        URL:
+        Authorized Url：dPFissionTrack/delete-- Article ---
+Field list:
+
+    id:ID
+    articleName:文章名称
+    reference:引用格式
+    doi:DOI
+
+Module list:
+
+    Name:List
+        ID:article_list
+        URL：article/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:article_add
+        URL：article/add
+        Authorized Url：article/save
+    
+    Name:Delete
+        ID:article_delete
+        URL:
+        Authorized Url：article/delete-- DPLeadLeadEvaporation ---
+Field list:
+
+    id:ID
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    pb207Pb206r:(Pb<sup>207</sup>/Pb<sup>206</sup>)<sub>r</sub>
+    measureError1:测定误差 1
+    pb204Pb206m:(Pb<sup>204</sup>/Pb<sup>206</sup>)<sub>m</sub>
+    measureError2:测定误差 2
+    pb207Pb206Age:铅 <sup>207</sup>-铅 <sup>206</sup> 年龄（Ma）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPLeadLeadEvaporation_list
+        URL：dPLeadLeadEvaporation/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPLeadLeadEvaporation_add
+        URL：dPLeadLeadEvaporation/add
+        Authorized Url：dPLeadLeadEvaporation/save
+    
+    Name:Delete
+        ID:dPLeadLeadEvaporation_delete
+        URL:
+        Authorized Url：dPLeadLeadEvaporation/delete-- DPPotassiumArgon ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst1:衰变常数 1（1/年）
+    decayConst2:衰变常数 2（1/年）
+    k:钾（%）
+    ar40:氩-40（10<sup>-6</sup>）
+    atmospArgon:大气氩（%）
+    ar40K40:<sup>40</sup>Ar/<sup>40</sup>K
+    ar40Ar36:<sup>40</sup>Ar/<sup>36</sup>Ar 
+    age:钾-氩年龄（Ma）
+    ageError:年龄误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPPotassiumArgon_list
+        URL：dPPotassiumArgon/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPPotassiumArgon_add
+        URL：dPPotassiumArgon/add
+        Authorized Url：dPPotassiumArgon/save
+    
+    Name:Delete
+        ID:dPPotassiumArgon_delete
+        URL:
+        Authorized Url：dPPotassiumArgon/delete-- DPUraniumThoriumLead ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralCharacter:矿物特征
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    decayConst3:衰变常数3 （1/年）
+    u:铀(10<sup>-6</sup>)
+    th:钍（10<sup>-6</sup>）
+    pb:铅（10<sup>-6</sup>）
+    pb204:铅-204（%）
+    pb206:铅-206（%）
+    pb207:铅-207（%）
+    pb208:铅-208（%）
+    pb206Pb204:<sup>206</sup>Pb/<sup>204</sup>Pb
+    pb208Pb206:<sup>208</sup>Pb/<sup>206</sup>Pb
+    pb207Pb206:<sup>207</sup>Pb/<sup>206</sup>Pb
+    pb206U238:<sup>206</sup>Pb/<sup>238</sup>U
+    pb207U235:<sup>207</sup>Pb/<sup>235</sup>U
+    pb208Th232:<sup>208</sup>Pb/<sup>232</sup>Th
+    pb206U238Age:铅<sup>-206</sup>-铀<sup>-238</sup> 年龄（Ma）
+    pb206U238AgeError:铅<sup>-206</sup>-铀<sup>-238</sup> 年龄误差（Ma）
+    pb207U235Age:铅<sup>-207</sup>-铀<sup>-235</sup> 年龄（Ma）
+    pb207U235AgeError:铅<sup>-207</sup>-铀<sup>-235</sup> 年龄误差(Ma)
+    pb207Pb206Age:铅<sup>-207</sup>-铅<sup>-206</sup> 年龄（Ma）
+    pb207Pb206AgeError:铅<sup>-207</sup>-铅<sup>-206</sup> 年龄误差（Ma）
+    pb208Th232Age:铅<sup>-208</sup>-钍<sup>-232</sup> 年龄（Ma）
+    pb208Th232AgeError:铅<sup>-208</sup>-钍<sup>-232</sup> 年龄误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPUraniumThoriumLead_list
+        URL：dPUraniumThoriumLead/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPUraniumThoriumLead_add
+        URL：dPUraniumThoriumLead/add
+        Authorized Url：dPUraniumThoriumLead/save
+    
+    Name:Delete
+        ID:dPUraniumThoriumLead_delete
+        URL:
+        Authorized Url：dPUraniumThoriumLead/delete-- DPArgonArgon ---
+Field list:
+
+    id:ID
+    NHeatStage:加热阶段次数（次）
+    cecayconst:衰变常数 （1/年）
+    JValue:J 值
+    fullmeltAge:全熔融年龄（Ma）
+    ageError1:年龄误差1（Ma）
+    plateauAge:坪年龄（Ma）
+    ageError2:年龄误差2（Ma）
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPArgonArgon_list
+        URL：dPArgonArgon/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPArgonArgon_add
+        URL：dPArgonArgon/add
+        Authorized Url：dPArgonArgon/save
+    
+    Name:Delete
+        ID:dPArgonArgon_delete
+        URL:
+        Authorized Url：dPArgonArgon/delete-- DPSamariumNeodymium ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    sm:钐(10<sup>-6</sup>)
+    nd:钕（10<sup>-6</sup>）
+    sm147Nd144:<sup>147</sup>Sm／<sup>144</sup>Nd
+    nd143Nd144:<sup>143</sup>Nd／<sup>144</sup>Nd
+    modelAge:模式年龄（Ma）
+    ageError:年龄误差(Ma)
+    epsilonNdO:εNd(o)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPSamariumNeodymium_list
+        URL：dPSamariumNeodymium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPSamariumNeodymium_add
+        URL：dPSamariumNeodymium/add
+        Authorized Url：dPSamariumNeodymium/save
+    
+    Name:Delete
+        ID:dPSamariumNeodymium_delete
+        URL:
+        Authorized Url：dPSamariumNeodymium/delete-- DPRbSr ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    rb:铷(10<sup>-6</sup>)
+    sr:锶（10<sup>-6</sup>）
+    rb87Sr86:<sup>87</sup>Rb／<sup>86</sup>Sr
+    sr87Sr86:<sup>87</sup>Sr／<sup>86</sup>Sr
+    surfaceAge:表面年龄（Ma）
+    surfaceAgeError:表面年龄误差（Ma）
+    modelAge:模式年龄（Ma）
+    modelAgeError:模式年龄误差(Ma)
+    epsilonSrO:εSr(o)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPRbSr_list
+        URL：dPRbSr/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPRbSr_add
+        URL：dPRbSr/add
+        Authorized Url：dPRbSr/save
+    
+    Name:Delete
+        ID:dPRbSr_delete
+        URL:
+        Authorized Url：dPRbSr/delete-- AbbreviatedAnalysisData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    analyzeItem:分析项目
+    analyzeValue:分析值
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:abbreviatedAnalysisData_list
+        URL：abbreviatedAnalysisData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:abbreviatedAnalysisData_add
+        URL：abbreviatedAnalysisData/add
+        Authorized Url：abbreviatedAnalysisData/save
+    
+    Name:Delete
+        ID:abbreviatedAnalysisData_delete
+        URL:
+        Authorized Url：abbreviatedAnalysisData/delete-- DPOrdinaryLead ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralCharacter:矿物特征
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    pb206Pb204:<sup>206</sup>Pb/<sup>204</sup>Pb
+    pb207Pb204:<sup>207</sup>Pb/<sup>204</sup>Pb
+    pb208Pb204:<sup>208</sup>Pb/<sup>204</sup>Pb
+    modelAge1:模式年龄 1（Ma）
+    modelAge1Error:模式年龄 1误差（Ma）
+    modelAge2:模式年龄2（Ma）
+    modelAge2Error:模式年龄 2误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPOrdinaryLead_list
+        URL：dPOrdinaryLead/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPOrdinaryLead_add
+        URL：dPOrdinaryLead/add
+        Authorized Url：dPOrdinaryLead/save
+    
+    Name:Delete
+        ID:dPOrdinaryLead_delete
+        URL:
+        Authorized Url：dPOrdinaryLead/delete-- GranularityData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    phiValueGroup:φ 值分组
+    particleNumber:颗粒数
+    percentage:百分含量（%）
+
+Module list:
+
+    Name:List
+        ID:granularityData_list
+        URL：granularityData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:granularityData_add
+        URL：granularityData/add
+        Authorized Url：granularityData/save
+    
+    Name:Delete
+        ID:granularityData_delete
+        URL:
+        Authorized Url：granularityData/delete-- DPThermoluminescence ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    u:U（10<sup>-6</sup>）
+    th:Th（10<sup>-6</sup>）
+    k:K(%)
+    paleoDose:古剂量（Gy）
+    annualDoseRate:年剂量率(Gy/a)
+    tiAge:热释光年龄(ka)
+    ageError:年龄误差(ka)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPThermoluminescence_list
+        URL：dPThermoluminescence/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPThermoluminescence_add
+        URL：dPThermoluminescence/add
+        Authorized Url：dPThermoluminescence/save
+    
+    Name:Delete
+        ID:dPThermoluminescence_delete
+        URL:
+        Authorized Url：dPThermoluminescence/delete-- DPOsmium ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    os187Os186:<sup>187</sup>Os/<sup>186</sup>Os
+    os187Os188:<sup>187</sup>Os/<sup>188</sup>Os
+    modelAge1:模式年龄1（Ma）
+    modelAge1Error:模式年龄1误差(Ma)
+    modelAge2:模式年龄2（Ma）
+    modelAge2Error:模式年龄2误差(Ma)
+    acceptedAge:采用年龄（Ma）
+    acceptedAgeError:采用年龄误差(Ma)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPOsmium_list
+        URL：dPOsmium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPOsmium_add
+        URL：dPOsmium/add
+        Authorized Url：dPOsmium/save
+    
+    Name:Delete
+        ID:dPOsmium_delete
+        URL:
+        Authorized Url：dPOsmium/delete-- SampleBasicInfo ---
+Field list:
+
+    id:ID
+    sampleId:样品编码
+    originalSampleId:原始样品编码
+    longitude:地理经度
+    latitude:地理纬度
+    countryCode:国家编码
+    location:所在地区
+    lithology:岩性
+    rockName:岩石名称
+    rockCode:岩石名称代码
+    era:地质年代
+    geobodyName:地质体名称
+    geobodyCode:地质体代码
+    photo:样品照片
+    collector:样品采集人员
+    collectorOrg:采集人员单位
+    reviewer:样品审核人
+    analyzeOrg:分析/鉴定单位
+    analyzePerson:分析/鉴定人员
+    testDate:分析/测定时间
+    testMethod:分析/测定方法
+    articleId:发表文献编号
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:sampleBasicInfo_list
+        URL：sampleBasicInfo/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:sampleBasicInfo_add
+        URL：sampleBasicInfo/add
+        Authorized Url：sampleBasicInfo/save
+    
+    Name:Delete
+        ID:sampleBasicInfo_delete
+        URL:
+        Authorized Url：sampleBasicInfo/delete-- ArtificialHeavyMineralData ---
+Field list:
+
+    id:ID
+    mineralName:矿物名称
+    mineralCode:矿物名称代号
+    mineralMagneticContent:矿物（磁性）含量
+    mineralElectromagContent:矿物（电磁性）含量
+    mineralHeavyContent:矿物（重部分）含量
+    mineralLightContent:矿物（轻部分）含量
+    mineralCharacter:矿物特征描述
+    crystalShapeFigure:晶形图
+    relId:基本信息
+
+Module list:
+
+    Name:List
+        ID:artificialHeavyMineralData_list
+        URL：artificialHeavyMineralData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:artificialHeavyMineralData_add
+        URL：artificialHeavyMineralData/add
+        Authorized Url：artificialHeavyMineralData/save
+    
+    Name:Delete
+        ID:artificialHeavyMineralData_delete
+        URL:
+        Authorized Url：artificialHeavyMineralData/delete-- DPReOsmium ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    re:铼（10<sup>-6</sup>）
+    os187:锇-187（10<sup>-6</sup>）
+    modelAge:模式年龄（Ma）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPReOsmium_list
+        URL：dPReOsmium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPReOsmium_add
+        URL：dPReOsmium/add
+        Authorized Url：dPReOsmium/save
+    
+    Name:Delete
+        ID:dPReOsmium_delete
+        URL:
+        Authorized Url：dPReOsmium/delete-- RockSectionIdentify ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    fieldRockName:野外名称
+    microScopicDescribe:镜下描述
+    authorizedRockName:鉴定名称
+    microscopicPhoto:镜下照片
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:rockSectionIdentify_list
+        URL：rockSectionIdentify/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:rockSectionIdentify_add
+        URL：rockSectionIdentify/add
+        Authorized Url：rockSectionIdentify/save
+    
+    Name:Delete
+        ID:rockSectionIdentify_delete
+        URL:
+        Authorized Url：rockSectionIdentify/delete-- ArtificialHeavyMineralBasicinfo ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    sampleWeight:样品重量(Kg)
+    heavySandWeight:重砂总重量(g)
+    magnetCompoWeight:磁性部分重量(g)
+    electromagCompoWeight:电磁性部分重量(g)
+    heavyCompoWeight:重部分重量(g)
+    lightCompoWeight:轻部分重量(g)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:artificialHeavyMineralBasicinfo_list
+        URL：artificialHeavyMineralBasicinfo/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:artificialHeavyMineralBasicinfo_add
+        URL：artificialHeavyMineralBasicinfo/add
+        Authorized Url：artificialHeavyMineralBasicinfo/save
+    
+    Name:Delete
+        ID:artificialHeavyMineralBasicinfo_delete
+        URL:
+        Authorized Url：artificialHeavyMineralBasicinfo/delete-- DPCarbon14 ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    radioActivSpecific:放射性比度（dpm/g）
+    c14Age:碳-14 年龄（万年）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPCarbon14_list
+        URL：dPCarbon14/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPCarbon14_add
+        URL：dPCarbon14/add
+        Authorized Url：dPCarbon14/save
+    
+    Name:Delete
+        ID:dPCarbon14_delete
+        URL:
+        Authorized Url：dPCarbon14/delete-- StableIsotopeAnalyse ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    analyzeItem:分析项目
+    analyzeValue:分析值
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:stableIsotopeAnalyse_list
+        URL：stableIsotopeAnalyse/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:stableIsotopeAnalyse_add
+        URL：stableIsotopeAnalyse/add
+        Authorized Url：stableIsotopeAnalyse/save
+    
+    Name:Delete
+        ID:stableIsotopeAnalyse_delete
+        URL:
+        Authorized Url：stableIsotopeAnalyse/delete-- TraceElementData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    analyzeElement:分析元素
+    analyzeData:分析数据(10<sup>-6</sup>）
+
+Module list:
+
+    Name:List
+        ID:traceElementData_list
+        URL：traceElementData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:traceElementData_add
+        URL：traceElementData/add
+        Authorized Url：traceElementData/save
+    
+    Name:Delete
+        ID:traceElementData_delete
+        URL:
+        Authorized Url：traceElementData/delete-- EpmaData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralName:矿物名称
+    siO2:SiO<sub>2</sub>（10<sup>-2</sup>）
+    tiO2:TiO<sub>2</sub> (10<sup>-2</sup>）
+    al2O3:Al<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    cr2O3:Cr<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    fe2O3:Fe<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    feO:FeO(10<sup>-2</sup>)
+    niO:NiO(10<sup>-2</sup>)
+    mnO:MnO(10<sup>-2</sup>)
+    mgO:MgO(10<sup>-2</sup>)
+    caO:CaO(10<sup>-2</sup>)
+    na2O:Na<sub>2</sub>O(10<sup>-2</sup>)
+    k2O:K<sub>2</sub>O(10<sup>-2</sup>)
+    p2O5:P<sub>2</sub>O<sub>5</sub>(10<sup>-2</sup>)
+    total:总量(10<sup>-2</sup>)
+    others:其他(10<sup>-2</sup>)
+
+Module list:
+
+    Name:List
+        ID:epmaData_list
+        URL：epmaData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:epmaData_add
+        URL：epmaData/add
+        Authorized Url：epmaData/save
+    
+    Name:Delete
+        ID:epmaData_delete
+        URL:
+        Authorized Url：epmaData/delete-- MajorElement ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    siO2:SiO<sub>2</sub>（10<sup>-2</sup>）
+    tiO2:TiO<sub>2</sub> (10<sup>-2</sup>）
+    al2O3:Al<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    fe2O3:Fe<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    feO:FeO(10<sup>-2</sup>)
+    tfe:Tfe(10<sup>-2</sup>)
+    mnO:MnO(10<sup>-2</sup>)
+    mgO:MgO(10<sup>-2</sup>)
+    caO:CaO(10<sup>-2</sup>)
+    na2O:Na<sub>2</sub>O(10<sup>-2</sup>)
+    k2O:K<sub>2</sub>O(10<sup>-2</sup>)
+    p2O5:P<sub>2</sub>O<sub>5</sub>(10<sup>-2</sup>)
+    h2OP:H<sub>2</sub>O<sub>+(10<sup>-2</sup>)
+    h2ON:H<sub>2</sub>O-(10<sup>-2</sup>)
+    CO2:CO<sub>2</sub>(10<sup>-2</sup>)
+    SO3:SO<sub>3</sub>(10<sup>-2</sup>)
+    f:F(10<sup>-2</sup>)
+    ci:Cl(10<sup>-2</sup>)
+    ignitionLoss:烧失量(10<sup>-2</sup>)
+    total:总量(10<sup>-2</sup>)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:majorElement_list
+        URL：majorElement/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:majorElement_add
+        URL：majorElement/add
+        Authorized Url：majorElement/save
+    
+    Name:Delete
+        ID:majorElement_delete
+        URL:
+        Authorized Url：majorElement/delete-- REElement ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    la:镧(10<sup>-6</sup>)
+    ce:铈(10<sup>-6</sup>)
+    pr:镨(10<sup>-6</sup>)
+    nd:钕(10<sup>-6</sup>)
+    sm:钐(10<sup>-6</sup>)
+    eu:铕(10<sup>-6</sup>)
+    gd:钆(10<sup>-6</sup>)
+    tb:铽(10<sup>-6</sup>)
+    dy:镝(10<sup>-6</sup>)
+    ho:钬(10<sup>-6</sup>)
+    er:铒(10<sup>-6</sup>)
+    tm:铥(10<sup>-6</sup>)
+    yb:镱(10<sup>-6</sup>)
+    lu:镥(10<sup>-6</sup>)
+    y:钇(10<sup>-6</sup>)
+    sc:钪(10<sup>-6</sup>)
+    totalReElement:稀土总量(10<sup>-6</sup>)
+    dataType:数据形式
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:rEElement_list
+        URL：rEElement/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:rEElement_add
+        URL：rEElement/add
+        Authorized Url：rEElement/save
+    
+    Name:Delete
+        ID:rEElement_delete
+        URL:
+        Authorized Url：rEElement/delete-- DPFissionTrack ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    fissionConst:裂变常数
+    trackLength:径迹长度（cm）
+    spontaneFissionTrackDensity:自发裂变径迹密度（条/cm<sup>2</sup>）
+    thermalDose:热中子剂量（1/cm<sup>2</sup>））
+    artificialFissionTrackDensity:人工诱发裂变径迹密度（条/cm<sup>2</sup>））
+    fissionTrackAge:裂变径迹年龄（Ma）
+    ageError:年龄误差（Ma）
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPFissionTrack_list
+        URL：dPFissionTrack/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPFissionTrack_add
+        URL：dPFissionTrack/add
+        Authorized Url：dPFissionTrack/save
+    
+    Name:Delete
+        ID:dPFissionTrack_delete
+        URL:
+        Authorized Url：dPFissionTrack/delete-- Article ---
+Field list:
+
+    id:ID
+    articleName:文章名称
+    reference:引用格式
+    doi:DOI
+
+Module list:
+
+    Name:List
+        ID:article_list
+        URL：article/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:article_add
+        URL：article/add
+        Authorized Url：article/save
+    
+    Name:Delete
+        ID:article_delete
+        URL:
+        Authorized Url：article/delete-- DPLeadLeadEvaporation ---
+Field list:
+
+    id:ID
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    pb207Pb206r:(Pb<sup>207</sup>/Pb<sup>206</sup>)<sub>r</sub>
+    measureError1:测定误差 1
+    pb204Pb206m:(Pb<sup>204</sup>/Pb<sup>206</sup>)<sub>m</sub>
+    measureError2:测定误差 2
+    pb207Pb206Age:铅 <sup>207</sup>-铅 <sup>206</sup> 年龄（Ma）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPLeadLeadEvaporation_list
+        URL：dPLeadLeadEvaporation/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPLeadLeadEvaporation_add
+        URL：dPLeadLeadEvaporation/add
+        Authorized Url：dPLeadLeadEvaporation/save
+    
+    Name:Delete
+        ID:dPLeadLeadEvaporation_delete
+        URL:
+        Authorized Url：dPLeadLeadEvaporation/delete-- DPPotassiumArgon ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst1:衰变常数 1（1/年）
+    decayConst2:衰变常数 2（1/年）
+    k:钾（%）
+    ar40:氩-40（10<sup>-6</sup>）
+    atmospArgon:大气氩（%）
+    ar40K40:<sup>40</sup>Ar/<sup>40</sup>K
+    ar40Ar36:<sup>40</sup>Ar/<sup>36</sup>Ar 
+    age:钾-氩年龄（Ma）
+    ageError:年龄误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPPotassiumArgon_list
+        URL：dPPotassiumArgon/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPPotassiumArgon_add
+        URL：dPPotassiumArgon/add
+        Authorized Url：dPPotassiumArgon/save
+    
+    Name:Delete
+        ID:dPPotassiumArgon_delete
+        URL:
+        Authorized Url：dPPotassiumArgon/delete-- DPUraniumThoriumLead ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralCharacter:矿物特征
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    decayConst3:衰变常数3 （1/年）
+    u:铀(10<sup>-6</sup>)
+    th:钍（10<sup>-6</sup>）
+    pb:铅（10<sup>-6</sup>）
+    pb204:铅-204（%）
+    pb206:铅-206（%）
+    pb207:铅-207（%）
+    pb208:铅-208（%）
+    pb206Pb204:<sup>206</sup>Pb/<sup>204</sup>Pb
+    pb208Pb206:<sup>208</sup>Pb/<sup>206</sup>Pb
+    pb207Pb206:<sup>207</sup>Pb/<sup>206</sup>Pb
+    pb206U238:<sup>206</sup>Pb/<sup>238</sup>U
+    pb207U235:<sup>207</sup>Pb/<sup>235</sup>U
+    pb208Th232:<sup>208</sup>Pb/<sup>232</sup>Th
+    pb206U238Age:铅<sup>-206</sup>-铀<sup>-238</sup> 年龄（Ma）
+    pb206U238AgeError:铅<sup>-206</sup>-铀<sup>-238</sup> 年龄误差（Ma）
+    pb207U235Age:铅<sup>-207</sup>-铀<sup>-235</sup> 年龄（Ma）
+    pb207U235AgeError:铅<sup>-207</sup>-铀<sup>-235</sup> 年龄误差(Ma)
+    pb207Pb206Age:铅<sup>-207</sup>-铅<sup>-206</sup> 年龄（Ma）
+    pb207Pb206AgeError:铅<sup>-207</sup>-铅<sup>-206</sup> 年龄误差（Ma）
+    pb208Th232Age:铅<sup>-208</sup>-钍<sup>-232</sup> 年龄（Ma）
+    pb208Th232AgeError:铅<sup>-208</sup>-钍<sup>-232</sup> 年龄误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPUraniumThoriumLead_list
+        URL：dPUraniumThoriumLead/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPUraniumThoriumLead_add
+        URL：dPUraniumThoriumLead/add
+        Authorized Url：dPUraniumThoriumLead/save
+    
+    Name:Delete
+        ID:dPUraniumThoriumLead_delete
+        URL:
+        Authorized Url：dPUraniumThoriumLead/delete-- DPArgonArgon ---
+Field list:
+
+    id:ID
+    NHeatStage:加热阶段次数（次）
+    cecayconst:衰变常数 （1/年）
+    JValue:J 值
+    fullmeltAge:全熔融年龄（Ma）
+    ageError1:年龄误差1（Ma）
+    plateauAge:坪年龄（Ma）
+    ageError2:年龄误差2（Ma）
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPArgonArgon_list
+        URL：dPArgonArgon/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPArgonArgon_add
+        URL：dPArgonArgon/add
+        Authorized Url：dPArgonArgon/save
+    
+    Name:Delete
+        ID:dPArgonArgon_delete
+        URL:
+        Authorized Url：dPArgonArgon/delete-- DPSamariumNeodymium ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    sm:钐(10<sup>-6</sup>)
+    nd:钕（10<sup>-6</sup>）
+    sm147Nd144:<sup>147</sup>Sm／<sup>144</sup>Nd
+    nd143Nd144:<sup>143</sup>Nd／<sup>144</sup>Nd
+    modelAge:模式年龄（Ma）
+    ageError:年龄误差(Ma)
+    epsilonNdO:εNd(o)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPSamariumNeodymium_list
+        URL：dPSamariumNeodymium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPSamariumNeodymium_add
+        URL：dPSamariumNeodymium/add
+        Authorized Url：dPSamariumNeodymium/save
+    
+    Name:Delete
+        ID:dPSamariumNeodymium_delete
+        URL:
+        Authorized Url：dPSamariumNeodymium/delete-- DPRbSr ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    rb:铷(10<sup>-6</sup>)
+    sr:锶（10<sup>-6</sup>）
+    rb87Sr86:<sup>87</sup>Rb／<sup>86</sup>Sr
+    sr87Sr86:<sup>87</sup>Sr／<sup>86</sup>Sr
+    surfaceAge:表面年龄（Ma）
+    surfaceAgeError:表面年龄误差（Ma）
+    modelAge:模式年龄（Ma）
+    modelAgeError:模式年龄误差(Ma)
+    epsilonSrO:εSr(o)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPRbSr_list
+        URL：dPRbSr/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPRbSr_add
+        URL：dPRbSr/add
+        Authorized Url：dPRbSr/save
+    
+    Name:Delete
+        ID:dPRbSr_delete
+        URL:
+        Authorized Url：dPRbSr/delete-- AbbreviatedAnalysisData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    analyzeItem:分析项目
+    analyzeValue:分析值
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:abbreviatedAnalysisData_list
+        URL：abbreviatedAnalysisData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:abbreviatedAnalysisData_add
+        URL：abbreviatedAnalysisData/add
+        Authorized Url：abbreviatedAnalysisData/save
+    
+    Name:Delete
+        ID:abbreviatedAnalysisData_delete
+        URL:
+        Authorized Url：abbreviatedAnalysisData/delete-- DPOrdinaryLead ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralCharacter:矿物特征
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    pb206Pb204:<sup>206</sup>Pb/<sup>204</sup>Pb
+    pb207Pb204:<sup>207</sup>Pb/<sup>204</sup>Pb
+    pb208Pb204:<sup>208</sup>Pb/<sup>204</sup>Pb
+    modelAge1:模式年龄 1（Ma）
+    modelAge1Error:模式年龄 1误差（Ma）
+    modelAge2:模式年龄2（Ma）
+    modelAge2Error:模式年龄 2误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPOrdinaryLead_list
+        URL：dPOrdinaryLead/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPOrdinaryLead_add
+        URL：dPOrdinaryLead/add
+        Authorized Url：dPOrdinaryLead/save
+    
+    Name:Delete
+        ID:dPOrdinaryLead_delete
+        URL:
+        Authorized Url：dPOrdinaryLead/delete-- GranularityData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    phiValueGroup:φ 值分组
+    particleNumber:颗粒数
+    percentage:百分含量（%）
+
+Module list:
+
+    Name:List
+        ID:granularityData_list
+        URL：granularityData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:granularityData_add
+        URL：granularityData/add
+        Authorized Url：granularityData/save
+    
+    Name:Delete
+        ID:granularityData_delete
+        URL:
+        Authorized Url：granularityData/delete-- DPThermoluminescence ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    u:U（10<sup>-6</sup>）
+    th:Th（10<sup>-6</sup>）
+    k:K(%)
+    paleoDose:古剂量（Gy）
+    annualDoseRate:年剂量率(Gy/a)
+    tiAge:热释光年龄(ka)
+    ageError:年龄误差(ka)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPThermoluminescence_list
+        URL：dPThermoluminescence/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPThermoluminescence_add
+        URL：dPThermoluminescence/add
+        Authorized Url：dPThermoluminescence/save
+    
+    Name:Delete
+        ID:dPThermoluminescence_delete
+        URL:
+        Authorized Url：dPThermoluminescence/delete-- DPOsmium ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    os187Os186:<sup>187</sup>Os/<sup>186</sup>Os
+    os187Os188:<sup>187</sup>Os/<sup>188</sup>Os
+    modelAge1:模式年龄1（Ma）
+    modelAge1Error:模式年龄1误差(Ma)
+    modelAge2:模式年龄2（Ma）
+    modelAge2Error:模式年龄2误差(Ma)
+    acceptedAge:采用年龄（Ma）
+    acceptedAgeError:采用年龄误差(Ma)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPOsmium_list
+        URL：dPOsmium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPOsmium_add
+        URL：dPOsmium/add
+        Authorized Url：dPOsmium/save
+    
+    Name:Delete
+        ID:dPOsmium_delete
+        URL:
+        Authorized Url：dPOsmium/delete-- SampleBasicInfo ---
+Field list:
+
+    id:ID
+    sampleId:样品编码
+    originalSampleId:原始样品编码
+    longitude:地理经度
+    latitude:地理纬度
+    countryCode:国家编码
+    location:所在地区
+    lithology:岩性
+    rockName:岩石名称
+    rockCode:岩石名称代码
+    era:地质年代
+    geobodyName:地质体名称
+    geobodyCode:地质体代码
+    photo:样品照片
+    collector:样品采集人员
+    collectorOrg:采集人员单位
+    reviewer:样品审核人
+    analyzeOrg:分析/鉴定单位
+    analyzePerson:分析/鉴定人员
+    testDate:分析/测定时间
+    testMethod:分析/测定方法
+    articleId:发表文献编号
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:sampleBasicInfo_list
+        URL：sampleBasicInfo/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:sampleBasicInfo_add
+        URL：sampleBasicInfo/add
+        Authorized Url：sampleBasicInfo/save
+    
+    Name:Delete
+        ID:sampleBasicInfo_delete
+        URL:
+        Authorized Url：sampleBasicInfo/delete-- ArtificialHeavyMineralData ---
+Field list:
+
+    id:ID
+    mineralName:矿物名称
+    mineralCode:矿物名称代号
+    mineralMagneticContent:矿物（磁性）含量
+    mineralElectromagContent:矿物（电磁性）含量
+    mineralHeavyContent:矿物（重部分）含量
+    mineralLightContent:矿物（轻部分）含量
+    mineralCharacter:矿物特征描述
+    crystalShapeFigure:晶形图
+    relId:基本信息
+
+Module list:
+
+    Name:List
+        ID:artificialHeavyMineralData_list
+        URL：artificialHeavyMineralData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:artificialHeavyMineralData_add
+        URL：artificialHeavyMineralData/add
+        Authorized Url：artificialHeavyMineralData/save
+    
+    Name:Delete
+        ID:artificialHeavyMineralData_delete
+        URL:
+        Authorized Url：artificialHeavyMineralData/delete-- DPReOsmium ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    re:铼（10<sup>-6</sup>）
+    os187:锇-187（10<sup>-6</sup>）
+    modelAge:模式年龄（Ma）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPReOsmium_list
+        URL：dPReOsmium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPReOsmium_add
+        URL：dPReOsmium/add
+        Authorized Url：dPReOsmium/save
+    
+    Name:Delete
+        ID:dPReOsmium_delete
+        URL:
+        Authorized Url：dPReOsmium/delete-- RockSectionIdentify ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    fieldRockName:野外名称
+    microScopicDescribe:镜下描述
+    authorizedRockName:鉴定名称
+    microscopicPhoto:镜下照片
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:rockSectionIdentify_list
+        URL：rockSectionIdentify/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:rockSectionIdentify_add
+        URL：rockSectionIdentify/add
+        Authorized Url：rockSectionIdentify/save
+    
+    Name:Delete
+        ID:rockSectionIdentify_delete
+        URL:
+        Authorized Url：rockSectionIdentify/delete-- ArtificialHeavyMineralBasicinfo ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    sampleWeight:样品重量(Kg)
+    heavySandWeight:重砂总重量(g)
+    magnetCompoWeight:磁性部分重量(g)
+    electromagCompoWeight:电磁性部分重量(g)
+    heavyCompoWeight:重部分重量(g)
+    lightCompoWeight:轻部分重量(g)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:artificialHeavyMineralBasicinfo_list
+        URL：artificialHeavyMineralBasicinfo/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:artificialHeavyMineralBasicinfo_add
+        URL：artificialHeavyMineralBasicinfo/add
+        Authorized Url：artificialHeavyMineralBasicinfo/save
+    
+    Name:Delete
+        ID:artificialHeavyMineralBasicinfo_delete
+        URL:
+        Authorized Url：artificialHeavyMineralBasicinfo/delete-- DPCarbon14 ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    radioActivSpecific:放射性比度（dpm/g）
+    c14Age:碳-14 年龄（万年）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPCarbon14_list
+        URL：dPCarbon14/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPCarbon14_add
+        URL：dPCarbon14/add
+        Authorized Url：dPCarbon14/save
+    
+    Name:Delete
+        ID:dPCarbon14_delete
+        URL:
+        Authorized Url：dPCarbon14/delete-- StableIsotopeAnalyse ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    analyzeItem:分析项目
+    analyzeValue:分析值
+
+Module list:
+
+    Name:List
+        ID:stableIsotopeAnalyse_list
+        URL：stableIsotopeAnalyse/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:stableIsotopeAnalyse_add
+        URL：stableIsotopeAnalyse/add
+        Authorized Url：stableIsotopeAnalyse/save
+    
+    Name:Delete
+        ID:stableIsotopeAnalyse_delete
+        URL:
+        Authorized Url：stableIsotopeAnalyse/delete-- TraceElementData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    analyzeElement:分析元素
+    analyzeData:分析数据(10<sup>-6</sup>）
+
+Module list:
+
+    Name:List
+        ID:traceElementData_list
+        URL：traceElementData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:traceElementData_add
+        URL：traceElementData/add
+        Authorized Url：traceElementData/save
+    
+    Name:Delete
+        ID:traceElementData_delete
+        URL:
+        Authorized Url：traceElementData/delete-- EpmaData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralName:矿物名称
+    siO2:SiO<sub>2</sub>（10<sup>-2</sup>）
+    tiO2:TiO<sub>2</sub> (10<sup>-2</sup>）
+    al2O3:Al<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    cr2O3:Cr<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    fe2O3:Fe<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    feO:FeO(10<sup>-2</sup>)
+    niO:NiO(10<sup>-2</sup>)
+    mnO:MnO(10<sup>-2</sup>)
+    mgO:MgO(10<sup>-2</sup>)
+    caO:CaO(10<sup>-2</sup>)
+    na2O:Na<sub>2</sub>O(10<sup>-2</sup>)
+    k2O:K<sub>2</sub>O(10<sup>-2</sup>)
+    p2O5:P<sub>2</sub>O<sub>5</sub>(10<sup>-2</sup>)
+    total:总量(10<sup>-2</sup>)
+    others:其他(10<sup>-2</sup>)
+
+Module list:
+
+    Name:List
+        ID:epmaData_list
+        URL：epmaData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:epmaData_add
+        URL：epmaData/add
+        Authorized Url：epmaData/save
+    
+    Name:Delete
+        ID:epmaData_delete
+        URL:
+        Authorized Url：epmaData/delete-- MajorElement ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    siO2:SiO<sub>2</sub>（10<sup>-2</sup>）
+    tiO2:TiO<sub>2</sub> (10<sup>-2</sup>）
+    al2O3:Al<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    fe2O3:Fe<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    feO:FeO(10<sup>-2</sup>)
+    tfe:Tfe(10<sup>-2</sup>)
+    mnO:MnO(10<sup>-2</sup>)
+    mgO:MgO(10<sup>-2</sup>)
+    caO:CaO(10<sup>-2</sup>)
+    na2O:Na<sub>2</sub>O(10<sup>-2</sup>)
+    k2O:K<sub>2</sub>O(10<sup>-2</sup>)
+    p2O5:P<sub>2</sub>O<sub>5</sub>(10<sup>-2</sup>)
+    h2OP:H<sub>2</sub>O<sub>+(10<sup>-2</sup>)
+    h2ON:H<sub>2</sub>O-(10<sup>-2</sup>)
+    CO2:CO<sub>2</sub>(10<sup>-2</sup>)
+    SO3:SO<sub>3</sub>(10<sup>-2</sup>)
+    f:F(10<sup>-2</sup>)
+    ci:Cl(10<sup>-2</sup>)
+    ignitionLoss:烧失量(10<sup>-2</sup>)
+    total:总量(10<sup>-2</sup>)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:majorElement_list
+        URL：majorElement/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:majorElement_add
+        URL：majorElement/add
+        Authorized Url：majorElement/save
+    
+    Name:Delete
+        ID:majorElement_delete
+        URL:
+        Authorized Url：majorElement/delete-- REElement ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    la:镧(10<sup>-6</sup>)
+    ce:铈(10<sup>-6</sup>)
+    pr:镨(10<sup>-6</sup>)
+    nd:钕(10<sup>-6</sup>)
+    sm:钐(10<sup>-6</sup>)
+    eu:铕(10<sup>-6</sup>)
+    gd:钆(10<sup>-6</sup>)
+    tb:铽(10<sup>-6</sup>)
+    dy:镝(10<sup>-6</sup>)
+    ho:钬(10<sup>-6</sup>)
+    er:铒(10<sup>-6</sup>)
+    tm:铥(10<sup>-6</sup>)
+    yb:镱(10<sup>-6</sup>)
+    lu:镥(10<sup>-6</sup>)
+    y:钇(10<sup>-6</sup>)
+    sc:钪(10<sup>-6</sup>)
+    totalReElement:稀土总量(10<sup>-6</sup>)
+    dataType:数据形式
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:rEElement_list
+        URL：rEElement/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:rEElement_add
+        URL：rEElement/add
+        Authorized Url：rEElement/save
+    
+    Name:Delete
+        ID:rEElement_delete
+        URL:
+        Authorized Url：rEElement/delete-- DPFissionTrack ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    fissionConst:裂变常数
+    trackLength:径迹长度（cm）
+    spontaneFissionTrackDensity:自发裂变径迹密度（条/cm<sup>2</sup>）
+    thermalDose:热中子剂量（1/cm<sup>2</sup>））
+    artificialFissionTrackDensity:人工诱发裂变径迹密度（条/cm<sup>2</sup>））
+    fissionTrackAge:裂变径迹年龄（Ma）
+    ageError:年龄误差（Ma）
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPFissionTrack_list
+        URL：dPFissionTrack/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPFissionTrack_add
+        URL：dPFissionTrack/add
+        Authorized Url：dPFissionTrack/save
+    
+    Name:Delete
+        ID:dPFissionTrack_delete
+        URL:
+        Authorized Url：dPFissionTrack/delete-- Article ---
+Field list:
+
+    id:ID
+    articleName:文章名称
+    reference:引用格式
+    doi:DOI
+
+Module list:
+
+    Name:List
+        ID:article_list
+        URL：article/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:article_add
+        URL：article/add
+        Authorized Url：article/save
+    
+    Name:Delete
+        ID:article_delete
+        URL:
+        Authorized Url：article/delete-- DPLeadLeadEvaporation ---
+Field list:
+
+    id:ID
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    pb207Pb206r:(Pb<sup>207</sup>/Pb<sup>206</sup>)<sub>r</sub>
+    measureError1:测定误差 1
+    pb204Pb206m:(Pb<sup>204</sup>/Pb<sup>206</sup>)<sub>m</sub>
+    measureError2:测定误差 2
+    pb207Pb206Age:铅 <sup>207</sup>-铅 <sup>206</sup> 年龄（Ma）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPLeadLeadEvaporation_list
+        URL：dPLeadLeadEvaporation/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPLeadLeadEvaporation_add
+        URL：dPLeadLeadEvaporation/add
+        Authorized Url：dPLeadLeadEvaporation/save
+    
+    Name:Delete
+        ID:dPLeadLeadEvaporation_delete
+        URL:
+        Authorized Url：dPLeadLeadEvaporation/delete-- DPPotassiumArgon ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst1:衰变常数 1（1/年）
+    decayConst2:衰变常数 2（1/年）
+    k:钾（%）
+    ar40:氩-40（10<sup>-6</sup>）
+    atmospArgon:大气氩（%）
+    ar40K40:<sup>40</sup>Ar/<sup>40</sup>K
+    ar40Ar36:<sup>40</sup>Ar/<sup>36</sup>Ar 
+    age:钾-氩年龄（Ma）
+    ageError:年龄误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPPotassiumArgon_list
+        URL：dPPotassiumArgon/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPPotassiumArgon_add
+        URL：dPPotassiumArgon/add
+        Authorized Url：dPPotassiumArgon/save
+    
+    Name:Delete
+        ID:dPPotassiumArgon_delete
+        URL:
+        Authorized Url：dPPotassiumArgon/delete-- DPUraniumThoriumLead ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralCharacter:矿物特征
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    decayConst3:衰变常数3 （1/年）
+    u:铀(10<sup>-6</sup>)
+    th:钍（10<sup>-6</sup>）
+    pb:铅（10<sup>-6</sup>）
+    pb204:铅-204（%）
+    pb206:铅-206（%）
+    pb207:铅-207（%）
+    pb208:铅-208（%）
+    pb206Pb204:<sup>206</sup>Pb/<sup>204</sup>Pb
+    pb208Pb206:<sup>208</sup>Pb/<sup>206</sup>Pb
+    pb207Pb206:<sup>207</sup>Pb/<sup>206</sup>Pb
+    pb206U238:<sup>206</sup>Pb/<sup>238</sup>U
+    pb207U235:<sup>207</sup>Pb/<sup>235</sup>U
+    pb208Th232:<sup>208</sup>Pb/<sup>232</sup>Th
+    pb206U238Age:铅<sup>-206</sup>-铀<sup>-238</sup> 年龄（Ma）
+    pb206U238AgeError:铅<sup>-206</sup>-铀<sup>-238</sup> 年龄误差（Ma）
+    pb207U235Age:铅<sup>-207</sup>-铀<sup>-235</sup> 年龄（Ma）
+    pb207U235AgeError:铅<sup>-207</sup>-铀<sup>-235</sup> 年龄误差(Ma)
+    pb207Pb206Age:铅<sup>-207</sup>-铅<sup>-206</sup> 年龄（Ma）
+    pb207Pb206AgeError:铅<sup>-207</sup>-铅<sup>-206</sup> 年龄误差（Ma）
+    pb208Th232Age:铅<sup>-208</sup>-钍<sup>-232</sup> 年龄（Ma）
+    pb208Th232AgeError:铅<sup>-208</sup>-钍<sup>-232</sup> 年龄误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPUraniumThoriumLead_list
+        URL：dPUraniumThoriumLead/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPUraniumThoriumLead_add
+        URL：dPUraniumThoriumLead/add
+        Authorized Url：dPUraniumThoriumLead/save
+    
+    Name:Delete
+        ID:dPUraniumThoriumLead_delete
+        URL:
+        Authorized Url：dPUraniumThoriumLead/delete-- DPArgonArgon ---
+Field list:
+
+    id:ID
+    NHeatStage:加热阶段次数（次）
+    cecayconst:衰变常数 （1/年）
+    JValue:J 值
+    fullmeltAge:全熔融年龄（Ma）
+    ageError1:年龄误差1（Ma）
+    plateauAge:坪年龄（Ma）
+    ageError2:年龄误差2（Ma）
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPArgonArgon_list
+        URL：dPArgonArgon/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPArgonArgon_add
+        URL：dPArgonArgon/add
+        Authorized Url：dPArgonArgon/save
+    
+    Name:Delete
+        ID:dPArgonArgon_delete
+        URL:
+        Authorized Url：dPArgonArgon/delete-- DPSamariumNeodymium ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    sm:钐(10<sup>-6</sup>)
+    nd:钕（10<sup>-6</sup>）
+    sm147Nd144:<sup>147</sup>Sm／<sup>144</sup>Nd
+    nd143Nd144:<sup>143</sup>Nd／<sup>144</sup>Nd
+    modelAge:模式年龄（Ma）
+    ageError:年龄误差(Ma)
+    epsilonNdO:εNd(o)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPSamariumNeodymium_list
+        URL：dPSamariumNeodymium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPSamariumNeodymium_add
+        URL：dPSamariumNeodymium/add
+        Authorized Url：dPSamariumNeodymium/save
+    
+    Name:Delete
+        ID:dPSamariumNeodymium_delete
+        URL:
+        Authorized Url：dPSamariumNeodymium/delete-- DPRbSr ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    rb:铷(10<sup>-6</sup>)
+    sr:锶（10<sup>-6</sup>）
+    rb87Sr86:<sup>87</sup>Rb／<sup>86</sup>Sr
+    sr87Sr86:<sup>87</sup>Sr／<sup>86</sup>Sr
+    surfaceAge:表面年龄（Ma）
+    surfaceAgeError:表面年龄误差（Ma）
+    modelAge:模式年龄（Ma）
+    modelAgeError:模式年龄误差(Ma)
+    epsilonSrO:εSr(o)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPRbSr_list
+        URL：dPRbSr/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPRbSr_add
+        URL：dPRbSr/add
+        Authorized Url：dPRbSr/save
+    
+    Name:Delete
+        ID:dPRbSr_delete
+        URL:
+        Authorized Url：dPRbSr/delete-- AbbreviatedAnalysisData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    analyzeItem:分析项目
+    analyzeValue:分析值
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:abbreviatedAnalysisData_list
+        URL：abbreviatedAnalysisData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:abbreviatedAnalysisData_add
+        URL：abbreviatedAnalysisData/add
+        Authorized Url：abbreviatedAnalysisData/save
+    
+    Name:Delete
+        ID:abbreviatedAnalysisData_delete
+        URL:
+        Authorized Url：abbreviatedAnalysisData/delete-- DPOrdinaryLead ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralCharacter:矿物特征
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    pb206Pb204:<sup>206</sup>Pb/<sup>204</sup>Pb
+    pb207Pb204:<sup>207</sup>Pb/<sup>204</sup>Pb
+    pb208Pb204:<sup>208</sup>Pb/<sup>204</sup>Pb
+    modelAge1:模式年龄 1（Ma）
+    modelAge1Error:模式年龄 1误差（Ma）
+    modelAge2:模式年龄2（Ma）
+    modelAge2Error:模式年龄 2误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPOrdinaryLead_list
+        URL：dPOrdinaryLead/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPOrdinaryLead_add
+        URL：dPOrdinaryLead/add
+        Authorized Url：dPOrdinaryLead/save
+    
+    Name:Delete
+        ID:dPOrdinaryLead_delete
+        URL:
+        Authorized Url：dPOrdinaryLead/delete-- GranularityData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    phiValueGroup:φ 值分组
+    particleNumber:颗粒数
+    percentage:百分含量（%）
+
+Module list:
+
+    Name:List
+        ID:granularityData_list
+        URL：granularityData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:granularityData_add
+        URL：granularityData/add
+        Authorized Url：granularityData/save
+    
+    Name:Delete
+        ID:granularityData_delete
+        URL:
+        Authorized Url：granularityData/delete-- DPReOsmium ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    re:铼（10<sup>-6</sup>）
+    os187:锇-187（10<sup>-6</sup>）
+    modelAge:模式年龄（Ma）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPReOsmium_list
+        URL：dPReOsmium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPReOsmium_add
+        URL：dPReOsmium/add
+        Authorized Url：dPReOsmium/save
+    
+    Name:Delete
+        ID:dPReOsmium_delete
+        URL:
+        Authorized Url：dPReOsmium/delete-- StableIsotopeAnalyse ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    analyzeItem:分析项目
+    analyzeValue:分析值
+
+Module list:
+
+    Name:List
+        ID:stableIsotopeAnalyse_list
+        URL：stableIsotopeAnalyse/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:stableIsotopeAnalyse_add
+        URL：stableIsotopeAnalyse/add
+        Authorized Url：stableIsotopeAnalyse/save
+    
+    Name:Delete
+        ID:stableIsotopeAnalyse_delete
+        URL:
+        Authorized Url：stableIsotopeAnalyse/delete-- DPLeadLeadEvaporation ---
+Field list:
+
+    id:ID
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    pb207Pb206r:(Pb<sup>207</sup>/Pb<sup>206</sup>)<sub>r</sub>
+    measureError1:测定误差 1
+    pb204Pb206m:(Pb<sup>204</sup>/Pb<sup>206</sup>)<sub>m</sub>
+    measureError2:测定误差 2
+    pb207Pb206Age:铅 <sup>207</sup>-铅 <sup>206</sup> 年龄（Ma）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPLeadLeadEvaporation_list
+        URL：dPLeadLeadEvaporation/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPLeadLeadEvaporation_add
+        URL：dPLeadLeadEvaporation/add
+        Authorized Url：dPLeadLeadEvaporation/save
+    
+    Name:Delete
+        ID:dPLeadLeadEvaporation_delete
+        URL:
+        Authorized Url：dPLeadLeadEvaporation/delete-- REElement ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    la:镧(10<sup>-6</sup>)
+    ce:铈(10<sup>-6</sup>)
+    pr:镨(10<sup>-6</sup>)
+    nd:钕(10<sup>-6</sup>)
+    sm:钐(10<sup>-6</sup>)
+    eu:铕(10<sup>-6</sup>)
+    gd:钆(10<sup>-6</sup>)
+    tb:铽(10<sup>-6</sup>)
+    dy:镝(10<sup>-6</sup>)
+    ho:钬(10<sup>-6</sup>)
+    er:铒(10<sup>-6</sup>)
+    tm:铥(10<sup>-6</sup>)
+    yb:镱(10<sup>-6</sup>)
+    lu:镥(10<sup>-6</sup>)
+    y:钇(10<sup>-6</sup>)
+    sc:钪(10<sup>-6</sup>)
+    totalReElement:稀土总量(10<sup>-6</sup>)
+    dataType:数据形式
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:rEElement_list
+        URL：rEElement/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:rEElement_add
+        URL：rEElement/add
+        Authorized Url：rEElement/save
+    
+    Name:Delete
+        ID:rEElement_delete
+        URL:
+        Authorized Url：rEElement/delete-- Article ---
+Field list:
+
+    id:ID
+    articleName:文章名称
+    reference:引用格式
+    doi:DOI
+
+Module list:
+
+    Name:List
+        ID:article_list
+        URL：article/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:article_add
+        URL：article/add
+        Authorized Url：article/save
+    
+    Name:Delete
+        ID:article_delete
+        URL:
+        Authorized Url：article/delete-- DPPotassiumArgon ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst1:衰变常数 1（1/年）
+    decayConst2:衰变常数 2（1/年）
+    k:钾（%）
+    ar40:氩-40（10<sup>-6</sup>）
+    atmospArgon:大气氩（%）
+    ar40K40:<sup>40</sup>Ar/<sup>40</sup>K
+    ar40Ar36:<sup>40</sup>Ar/<sup>36</sup>Ar 
+    age:钾-氩年龄（Ma）
+    ageError:年龄误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPPotassiumArgon_list
+        URL：dPPotassiumArgon/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPPotassiumArgon_add
+        URL：dPPotassiumArgon/add
+        Authorized Url：dPPotassiumArgon/save
+    
+    Name:Delete
+        ID:dPPotassiumArgon_delete
+        URL:
+        Authorized Url：dPPotassiumArgon/delete-- MajorElement ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    siO2:SiO<sub>2</sub>（10<sup>-2</sup>）
+    tiO2:TiO<sub>2</sub> (10<sup>-2</sup>）
+    al2O3:Al<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    fe2O3:Fe<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    feO:FeO(10<sup>-2</sup>)
+    tfe:Tfe(10<sup>-2</sup>)
+    mnO:MnO(10<sup>-2</sup>)
+    mgO:MgO(10<sup>-2</sup>)
+    caO:CaO(10<sup>-2</sup>)
+    na2O:Na<sub>2</sub>O(10<sup>-2</sup>)
+    k2O:K<sub>2</sub>O(10<sup>-2</sup>)
+    p2O5:P<sub>2</sub>O<sub>5</sub>(10<sup>-2</sup>)
+    h2OP:H<sub>2</sub>O<sub>+(10<sup>-2</sup>)
+    h2ON:H<sub>2</sub>O-(10<sup>-2</sup>)
+    CO2:CO<sub>2</sub>(10<sup>-2</sup>)
+    SO3:SO<sub>3</sub>(10<sup>-2</sup>)
+    f:F(10<sup>-2</sup>)
+    ci:Cl(10<sup>-2</sup>)
+    ignitionLoss:烧失量(10<sup>-2</sup>)
+    total:总量(10<sup>-2</sup>)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:majorElement_list
+        URL：majorElement/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:majorElement_add
+        URL：majorElement/add
+        Authorized Url：majorElement/save
+    
+    Name:Delete
+        ID:majorElement_delete
+        URL:
+        Authorized Url：majorElement/delete-- AbbreviatedAnalysisData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    analyzeItem:分析项目
+    analyzeValue:分析值
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:abbreviatedAnalysisData_list
+        URL：abbreviatedAnalysisData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:abbreviatedAnalysisData_add
+        URL：abbreviatedAnalysisData/add
+        Authorized Url：abbreviatedAnalysisData/save
+    
+    Name:Delete
+        ID:abbreviatedAnalysisData_delete
+        URL:
+        Authorized Url：abbreviatedAnalysisData/delete-- TraceElementData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    analyzeElement:分析元素
+    analyzeData:分析数据(10<sup>-6</sup>）
+
+Module list:
+
+    Name:List
+        ID:traceElementData_list
+        URL：traceElementData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:traceElementData_add
+        URL：traceElementData/add
+        Authorized Url：traceElementData/save
+    
+    Name:Delete
+        ID:traceElementData_delete
+        URL:
+        Authorized Url：traceElementData/delete-- ArtificialHeavyMineralData ---
+Field list:
+
+    id:ID
+    mineralName:矿物名称
+    mineralCode:矿物名称代号
+    mineralMagneticContent:矿物（磁性）含量
+    mineralElectromagContent:矿物（电磁性）含量
+    mineralHeavyContent:矿物（重部分）含量
+    mineralLightContent:矿物（轻部分）含量
+    mineralCharacter:矿物特征描述
+    crystalShapeFigure:晶形图
+    relId:基本信息
+
+Module list:
+
+    Name:List
+        ID:artificialHeavyMineralData_list
+        URL：artificialHeavyMineralData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:artificialHeavyMineralData_add
+        URL：artificialHeavyMineralData/add
+        Authorized Url：artificialHeavyMineralData/save
+    
+    Name:Delete
+        ID:artificialHeavyMineralData_delete
+        URL:
+        Authorized Url：artificialHeavyMineralData/delete-- RockSectionIdentify ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    fieldRockName:野外名称
+    microScopicDescribe:镜下描述
+    authorizedRockName:鉴定名称
+    microscopicPhoto:镜下照片
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:rockSectionIdentify_list
+        URL：rockSectionIdentify/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:rockSectionIdentify_add
+        URL：rockSectionIdentify/add
+        Authorized Url：rockSectionIdentify/save
+    
+    Name:Delete
+        ID:rockSectionIdentify_delete
+        URL:
+        Authorized Url：rockSectionIdentify/delete-- SampleBasicInfo ---
+Field list:
+
+    id:ID
+    sampleId:样品编码
+    originalSampleId:原始样品编码
+    longitude:地理经度
+    latitude:地理纬度
+    countryCode:国家编码
+    location:所在地区
+    lithology:岩性
+    rockName:岩石名称
+    rockCode:岩石名称代码
+    era:地质年代
+    geobodyName:地质体名称
+    geobodyCode:地质体代码
+    photo:样品照片
+    collector:样品采集人员
+    collectorOrg:采集人员单位
+    reviewer:样品审核人
+    analyzeOrg:分析/鉴定单位
+    analyzePerson:分析/鉴定人员
+    testDate:分析/测定时间
+    testMethod:分析/测定方法
+    articleId:发表文献编号
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:sampleBasicInfo_list
+        URL：sampleBasicInfo/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:sampleBasicInfo_add
+        URL：sampleBasicInfo/add
+        Authorized Url：sampleBasicInfo/save
+    
+    Name:Delete
+        ID:sampleBasicInfo_delete
+        URL:
+        Authorized Url：sampleBasicInfo/delete-- DPThermoluminescence ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    u:U（10<sup>-6</sup>）
+    th:Th（10<sup>-6</sup>）
+    k:K(%)
+    paleoDose:古剂量（Gy）
+    annualDoseRate:年剂量率(Gy/a)
+    tiAge:热释光年龄(ka)
+    ageError:年龄误差(ka)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPThermoluminescence_list
+        URL：dPThermoluminescence/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPThermoluminescence_add
+        URL：dPThermoluminescence/add
+        Authorized Url：dPThermoluminescence/save
+    
+    Name:Delete
+        ID:dPThermoluminescence_delete
+        URL:
+        Authorized Url：dPThermoluminescence/delete-- EpmaData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralName:矿物名称
+    siO2:SiO<sub>2</sub>（10<sup>-2</sup>）
+    tiO2:TiO<sub>2</sub> (10<sup>-2</sup>）
+    al2O3:Al<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    cr2O3:Cr<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    fe2O3:Fe<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    feO:FeO(10<sup>-2</sup>)
+    niO:NiO(10<sup>-2</sup>)
+    mnO:MnO(10<sup>-2</sup>)
+    mgO:MgO(10<sup>-2</sup>)
+    caO:CaO(10<sup>-2</sup>)
+    na2O:Na<sub>2</sub>O(10<sup>-2</sup>)
+    k2O:K<sub>2</sub>O(10<sup>-2</sup>)
+    p2O5:P<sub>2</sub>O<sub>5</sub>(10<sup>-2</sup>)
+    total:总量(10<sup>-2</sup>)
+    others:其他(10<sup>-2</sup>)
+
+Module list:
+
+    Name:List
+        ID:epmaData_list
+        URL：epmaData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:epmaData_add
+        URL：epmaData/add
+        Authorized Url：epmaData/save
+    
+    Name:Delete
+        ID:epmaData_delete
+        URL:
+        Authorized Url：epmaData/delete-- GranularityData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    phiValueGroup:φ 值分组
+    particleNumber:颗粒数
+    percentage:百分含量（%）
+
+Module list:
+
+    Name:List
+        ID:granularityData_list
+        URL：granularityData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:granularityData_add
+        URL：granularityData/add
+        Authorized Url：granularityData/save
+    
+    Name:Delete
+        ID:granularityData_delete
+        URL:
+        Authorized Url：granularityData/delete-- DPArgonArgon ---
+Field list:
+
+    id:ID
+    NHeatStage:加热阶段次数（次）
+    cecayconst:衰变常数 （1/年）
+    JValue:J 值
+    fullmeltAge:全熔融年龄（Ma）
+    ageError1:年龄误差1（Ma）
+    plateauAge:坪年龄（Ma）
+    ageError2:年龄误差2（Ma）
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPArgonArgon_list
+        URL：dPArgonArgon/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPArgonArgon_add
+        URL：dPArgonArgon/add
+        Authorized Url：dPArgonArgon/save
+    
+    Name:Delete
+        ID:dPArgonArgon_delete
+        URL:
+        Authorized Url：dPArgonArgon/delete-- DPCarbon14 ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    radioActivSpecific:放射性比度（dpm/g）
+    c14Age:碳-14 年龄（万年）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPCarbon14_list
+        URL：dPCarbon14/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPCarbon14_add
+        URL：dPCarbon14/add
+        Authorized Url：dPCarbon14/save
+    
+    Name:Delete
+        ID:dPCarbon14_delete
+        URL:
+        Authorized Url：dPCarbon14/delete-- DPOrdinaryLead ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralCharacter:矿物特征
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    pb206Pb204:<sup>206</sup>Pb/<sup>204</sup>Pb
+    pb207Pb204:<sup>207</sup>Pb/<sup>204</sup>Pb
+    pb208Pb204:<sup>208</sup>Pb/<sup>204</sup>Pb
+    modelAge1:模式年龄 1（Ma）
+    modelAge1Error:模式年龄 1误差（Ma）
+    modelAge2:模式年龄2（Ma）
+    modelAge2Error:模式年龄 2误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPOrdinaryLead_list
+        URL：dPOrdinaryLead/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPOrdinaryLead_add
+        URL：dPOrdinaryLead/add
+        Authorized Url：dPOrdinaryLead/save
+    
+    Name:Delete
+        ID:dPOrdinaryLead_delete
+        URL:
+        Authorized Url：dPOrdinaryLead/delete-- DPSamariumNeodymium ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    sm:钐(10<sup>-6</sup>)
+    nd:钕（10<sup>-6</sup>）
+    sm147Nd144:<sup>147</sup>Sm／<sup>144</sup>Nd
+    nd143Nd144:<sup>143</sup>Nd／<sup>144</sup>Nd
+    modelAge:模式年龄（Ma）
+    ageError:年龄误差(Ma)
+    epsilonNdO:εNd(o)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPSamariumNeodymium_list
+        URL：dPSamariumNeodymium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPSamariumNeodymium_add
+        URL：dPSamariumNeodymium/add
+        Authorized Url：dPSamariumNeodymium/save
+    
+    Name:Delete
+        ID:dPSamariumNeodymium_delete
+        URL:
+        Authorized Url：dPSamariumNeodymium/delete-- ArtificialHeavyMineralBasicinfo ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    sampleWeight:样品重量(Kg)
+    heavySandWeight:重砂总重量(g)
+    magnetCompoWeight:磁性部分重量(g)
+    electromagCompoWeight:电磁性部分重量(g)
+    heavyCompoWeight:重部分重量(g)
+    lightCompoWeight:轻部分重量(g)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:artificialHeavyMineralBasicinfo_list
+        URL：artificialHeavyMineralBasicinfo/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:artificialHeavyMineralBasicinfo_add
+        URL：artificialHeavyMineralBasicinfo/add
+        Authorized Url：artificialHeavyMineralBasicinfo/save
+    
+    Name:Delete
+        ID:artificialHeavyMineralBasicinfo_delete
+        URL:
+        Authorized Url：artificialHeavyMineralBasicinfo/delete-- DPRbSr ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    rb:铷(10<sup>-6</sup>)
+    sr:锶（10<sup>-6</sup>）
+    rb87Sr86:<sup>87</sup>Rb／<sup>86</sup>Sr
+    sr87Sr86:<sup>87</sup>Sr／<sup>86</sup>Sr
+    surfaceAge:表面年龄（Ma）
+    surfaceAgeError:表面年龄误差（Ma）
+    modelAge:模式年龄（Ma）
+    modelAgeError:模式年龄误差(Ma)
+    epsilonSrO:εSr(o)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPRbSr_list
+        URL：dPRbSr/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPRbSr_add
+        URL：dPRbSr/add
+        Authorized Url：dPRbSr/save
+    
+    Name:Delete
+        ID:dPRbSr_delete
+        URL:
+        Authorized Url：dPRbSr/delete-- DPOsmium ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    os187Os186:<sup>187</sup>Os/<sup>186</sup>Os
+    os187Os188:<sup>187</sup>Os/<sup>188</sup>Os
+    modelAge1:模式年龄1（Ma）
+    modelAge1Error:模式年龄1误差(Ma)
+    modelAge2:模式年龄2（Ma）
+    modelAge2Error:模式年龄2误差(Ma)
+    acceptedAge:采用年龄（Ma）
+    acceptedAgeError:采用年龄误差(Ma)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPOsmium_list
+        URL：dPOsmium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPOsmium_add
+        URL：dPOsmium/add
+        Authorized Url：dPOsmium/save
+    
+    Name:Delete
+        ID:dPOsmium_delete
+        URL:
+        Authorized Url：dPOsmium/delete-- DPFissionTrack ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    fissionConst:裂变常数
+    trackLength:径迹长度（cm）
+    spontaneFissionTrackDensity:自发裂变径迹密度（条/cm<sup>2</sup>）
+    thermalDose:热中子剂量（1/cm<sup>2</sup>））
+    artificialFissionTrackDensity:人工诱发裂变径迹密度（条/cm<sup>2</sup>））
+    fissionTrackAge:裂变径迹年龄（Ma）
+    ageError:年龄误差（Ma）
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPFissionTrack_list
+        URL：dPFissionTrack/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPFissionTrack_add
+        URL：dPFissionTrack/add
+        Authorized Url：dPFissionTrack/save
+    
+    Name:Delete
+        ID:dPFissionTrack_delete
+        URL:
+        Authorized Url：dPFissionTrack/delete-- DPUraniumThoriumLead ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralCharacter:矿物特征
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    decayConst3:衰变常数3 （1/年）
+    u:铀(10<sup>-6</sup>)
+    th:钍（10<sup>-6</sup>）
+    pb:铅（10<sup>-6</sup>）
+    pb204:铅-204（%）
+    pb206:铅-206（%）
+    pb207:铅-207（%）
+    pb208:铅-208（%）
+    pb206Pb204:<sup>206</sup>Pb/<sup>204</sup>Pb
+    pb208Pb206:<sup>208</sup>Pb/<sup>206</sup>Pb
+    pb207Pb206:<sup>207</sup>Pb/<sup>206</sup>Pb
+    pb206U238:<sup>206</sup>Pb/<sup>238</sup>U
+    pb207U235:<sup>207</sup>Pb/<sup>235</sup>U
+    pb208Th232:<sup>208</sup>Pb/<sup>232</sup>Th
+    pb206U238Age:铅<sup>-206</sup>-铀<sup>-238</sup> 年龄（Ma）
+    pb206U238AgeError:铅<sup>-206</sup>-铀<sup>-238</sup> 年龄误差（Ma）
+    pb207U235Age:铅<sup>-207</sup>-铀<sup>-235</sup> 年龄（Ma）
+    pb207U235AgeError:铅<sup>-207</sup>-铀<sup>-235</sup> 年龄误差(Ma)
+    pb207Pb206Age:铅<sup>-207</sup>-铅<sup>-206</sup> 年龄（Ma）
+    pb207Pb206AgeError:铅<sup>-207</sup>-铅<sup>-206</sup> 年龄误差（Ma）
+    pb208Th232Age:铅<sup>-208</sup>-钍<sup>-232</sup> 年龄（Ma）
+    pb208Th232AgeError:铅<sup>-208</sup>-钍<sup>-232</sup> 年龄误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPUraniumThoriumLead_list
+        URL：dPUraniumThoriumLead/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPUraniumThoriumLead_add
+        URL：dPUraniumThoriumLead/add
+        Authorized Url：dPUraniumThoriumLead/save
+    
+    Name:Delete
+        ID:dPUraniumThoriumLead_delete
+        URL:
+        Authorized Url：dPUraniumThoriumLead/delete-- DPReOsmium ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    re:铼（10<sup>-6</sup>）
+    os187:锇-187（10<sup>-6</sup>）
+    modelAge:模式年龄（Ma）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPReOsmium_list
+        URL：dPReOsmium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPReOsmium_add
+        URL：dPReOsmium/add
+        Authorized Url：dPReOsmium/save
+    
+    Name:Delete
+        ID:dPReOsmium_delete
+        URL:
+        Authorized Url：dPReOsmium/delete-- StableIsotopeAnalyse ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    analyzeItem:分析项目
+    analyzeValue:分析值
+
+Module list:
+
+    Name:List
+        ID:stableIsotopeAnalyse_list
+        URL：stableIsotopeAnalyse/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:stableIsotopeAnalyse_add
+        URL：stableIsotopeAnalyse/add
+        Authorized Url：stableIsotopeAnalyse/save
+    
+    Name:Delete
+        ID:stableIsotopeAnalyse_delete
+        URL:
+        Authorized Url：stableIsotopeAnalyse/delete-- DPLeadLeadEvaporation ---
+Field list:
+
+    id:ID
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    pb207Pb206r:(Pb<sup>207</sup>/Pb<sup>206</sup>)<sub>r</sub>
+    measureError1:测定误差 1
+    pb204Pb206m:(Pb<sup>204</sup>/Pb<sup>206</sup>)<sub>m</sub>
+    measureError2:测定误差 2
+    pb207Pb206Age:铅 <sup>207</sup>-铅 <sup>206</sup> 年龄（Ma）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPLeadLeadEvaporation_list
+        URL：dPLeadLeadEvaporation/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPLeadLeadEvaporation_add
+        URL：dPLeadLeadEvaporation/add
+        Authorized Url：dPLeadLeadEvaporation/save
+    
+    Name:Delete
+        ID:dPLeadLeadEvaporation_delete
+        URL:
+        Authorized Url：dPLeadLeadEvaporation/delete-- REElement ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    la:镧(10<sup>-6</sup>)
+    ce:铈(10<sup>-6</sup>)
+    pr:镨(10<sup>-6</sup>)
+    nd:钕(10<sup>-6</sup>)
+    sm:钐(10<sup>-6</sup>)
+    eu:铕(10<sup>-6</sup>)
+    gd:钆(10<sup>-6</sup>)
+    tb:铽(10<sup>-6</sup>)
+    dy:镝(10<sup>-6</sup>)
+    ho:钬(10<sup>-6</sup>)
+    er:铒(10<sup>-6</sup>)
+    tm:铥(10<sup>-6</sup>)
+    yb:镱(10<sup>-6</sup>)
+    lu:镥(10<sup>-6</sup>)
+    y:钇(10<sup>-6</sup>)
+    sc:钪(10<sup>-6</sup>)
+    totalReElement:稀土总量(10<sup>-6</sup>)
+    dataType:数据形式
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:rEElement_list
+        URL：rEElement/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:rEElement_add
+        URL：rEElement/add
+        Authorized Url：rEElement/save
+    
+    Name:Delete
+        ID:rEElement_delete
+        URL:
+        Authorized Url：rEElement/delete-- Article ---
+Field list:
+
+    id:ID
+    articleName:文章名称
+    reference:引用格式
+    doi:DOI
+
+Module list:
+
+    Name:List
+        ID:article_list
+        URL：article/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:article_add
+        URL：article/add
+        Authorized Url：article/save
+    
+    Name:Delete
+        ID:article_delete
+        URL:
+        Authorized Url：article/delete-- DPPotassiumArgon ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst1:衰变常数 1（1/年）
+    decayConst2:衰变常数 2（1/年）
+    k:钾（%）
+    ar40:氩-40（10<sup>-6</sup>）
+    atmospArgon:大气氩（%）
+    ar40K40:<sup>40</sup>Ar/<sup>40</sup>K
+    ar40Ar36:<sup>40</sup>Ar/<sup>36</sup>Ar 
+    age:钾-氩年龄（Ma）
+    ageError:年龄误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPPotassiumArgon_list
+        URL：dPPotassiumArgon/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPPotassiumArgon_add
+        URL：dPPotassiumArgon/add
+        Authorized Url：dPPotassiumArgon/save
+    
+    Name:Delete
+        ID:dPPotassiumArgon_delete
+        URL:
+        Authorized Url：dPPotassiumArgon/delete-- MajorElement ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    siO2:SiO<sub>2</sub>（10<sup>-2</sup>）
+    tiO2:TiO<sub>2</sub> (10<sup>-2</sup>）
+    al2O3:Al<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    fe2O3:Fe<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    feO:FeO(10<sup>-2</sup>)
+    tfe:Tfe(10<sup>-2</sup>)
+    mnO:MnO(10<sup>-2</sup>)
+    mgO:MgO(10<sup>-2</sup>)
+    caO:CaO(10<sup>-2</sup>)
+    na2O:Na<sub>2</sub>O(10<sup>-2</sup>)
+    k2O:K<sub>2</sub>O(10<sup>-2</sup>)
+    p2O5:P<sub>2</sub>O<sub>5</sub>(10<sup>-2</sup>)
+    h2OP:H<sub>2</sub>O<sub>+(10<sup>-2</sup>)
+    h2ON:H<sub>2</sub>O-(10<sup>-2</sup>)
+    CO2:CO<sub>2</sub>(10<sup>-2</sup>)
+    SO3:SO<sub>3</sub>(10<sup>-2</sup>)
+    f:F(10<sup>-2</sup>)
+    ci:Cl(10<sup>-2</sup>)
+    ignitionLoss:烧失量(10<sup>-2</sup>)
+    total:总量(10<sup>-2</sup>)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:majorElement_list
+        URL：majorElement/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:majorElement_add
+        URL：majorElement/add
+        Authorized Url：majorElement/save
+    
+    Name:Delete
+        ID:majorElement_delete
+        URL:
+        Authorized Url：majorElement/delete-- AbbreviatedAnalysisData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    analyzeItem:分析项目
+    analyzeValue:分析值
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:abbreviatedAnalysisData_list
+        URL：abbreviatedAnalysisData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:abbreviatedAnalysisData_add
+        URL：abbreviatedAnalysisData/add
+        Authorized Url：abbreviatedAnalysisData/save
+    
+    Name:Delete
+        ID:abbreviatedAnalysisData_delete
+        URL:
+        Authorized Url：abbreviatedAnalysisData/delete-- TraceElementData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    analyzeElement:分析元素
+    analyzeData:分析数据(10<sup>-6</sup>）
+
+Module list:
+
+    Name:List
+        ID:traceElementData_list
+        URL：traceElementData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:traceElementData_add
+        URL：traceElementData/add
+        Authorized Url：traceElementData/save
+    
+    Name:Delete
+        ID:traceElementData_delete
+        URL:
+        Authorized Url：traceElementData/delete-- ArtificialHeavyMineralData ---
+Field list:
+
+    id:ID
+    mineralName:矿物名称
+    mineralCode:矿物名称代号
+    mineralMagneticContent:矿物（磁性）含量
+    mineralElectromagContent:矿物（电磁性）含量
+    mineralHeavyContent:矿物（重部分）含量
+    mineralLightContent:矿物（轻部分）含量
+    mineralCharacter:矿物特征描述
+    crystalShapeFigure:晶形图
+    relId:基本信息
+
+Module list:
+
+    Name:List
+        ID:artificialHeavyMineralData_list
+        URL：artificialHeavyMineralData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:artificialHeavyMineralData_add
+        URL：artificialHeavyMineralData/add
+        Authorized Url：artificialHeavyMineralData/save
+    
+    Name:Delete
+        ID:artificialHeavyMineralData_delete
+        URL:
+        Authorized Url：artificialHeavyMineralData/delete-- RockSectionIdentify ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    fieldRockName:野外名称
+    microScopicDescribe:镜下描述
+    authorizedRockName:鉴定名称
+    microscopicPhoto:镜下照片
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:rockSectionIdentify_list
+        URL：rockSectionIdentify/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:rockSectionIdentify_add
+        URL：rockSectionIdentify/add
+        Authorized Url：rockSectionIdentify/save
+    
+    Name:Delete
+        ID:rockSectionIdentify_delete
+        URL:
+        Authorized Url：rockSectionIdentify/delete-- SampleBasicInfo ---
+Field list:
+
+    id:ID
+    sampleId:样品编码
+    originalSampleId:原始样品编码
+    longitude:地理经度
+    latitude:地理纬度
+    countryCode:国家编码
+    location:所在地区
+    lithology:岩性
+    rockName:岩石名称
+    rockCode:岩石名称代码
+    era:地质年代
+    geobodyName:地质体名称
+    geobodyCode:地质体代码
+    tectonicLocation:构造位置
+    primaryStructuralUnit:一级构造单元
+    secondaryStructuralUnit:二级构造单元
+    tertiarySturcturalUnit:三级构造单元
+    surroundingRockAge:围岩时代
+    surroundingRockLithology:围岩岩性
+    relationshipWithSurroundingRock:与围岩关系
+    form:形态
+    isCutAreaConstructionLine:是否切割区域构造线
+    degreeOfDeformation:变形程度
+    characteristicMinerals:特征矿物
+    geneticType:成因类型
+    tectonicType:构造类型
+    sourceOfStructuralTypeDiscrimination:构造类型判别来源
+    alkalinity:碱性程度
+    aluminumQuality:铝质程度
+    age:年龄
+    ageError:年龄误差
+    photo:样品照片
+    collector:样品采集人员
+    collectorOrg:采集人员单位
+    reviewer:样品审核人
+    analyzeOrg:分析/鉴定单位
+    analyzePerson:分析/鉴定人员
+    testObject:测试对象
+    testDate:分析/测定时间
+    testMethod:分析/测定方法
+    ageSelected:选用年龄
+    ageSelectedError:选用年龄误差
+    articleId:发表文献编号
+    articleDoi:文章DOI
+    hasChecked:审核
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:sampleBasicInfo_list
+        URL：sampleBasicInfo/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:sampleBasicInfo_add
+        URL：sampleBasicInfo/add
+        Authorized Url：sampleBasicInfo/save
+    
+    Name:Delete
+        ID:sampleBasicInfo_delete
+        URL:
+        Authorized Url：sampleBasicInfo/delete-- DPThermoluminescence ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    u:U（10<sup>-6</sup>）
+    th:Th（10<sup>-6</sup>）
+    k:K(%)
+    paleoDose:古剂量（Gy）
+    annualDoseRate:年剂量率(Gy/a)
+    tiAge:热释光年龄(ka)
+    ageError:年龄误差(ka)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPThermoluminescence_list
+        URL：dPThermoluminescence/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPThermoluminescence_add
+        URL：dPThermoluminescence/add
+        Authorized Url：dPThermoluminescence/save
+    
+    Name:Delete
+        ID:dPThermoluminescence_delete
+        URL:
+        Authorized Url：dPThermoluminescence/delete-- EpmaData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralName:矿物名称
+    siO2:SiO<sub>2</sub>（10<sup>-2</sup>）
+    tiO2:TiO<sub>2</sub> (10<sup>-2</sup>）
+    al2O3:Al<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    cr2O3:Cr<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    fe2O3:Fe<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）
+    feO:FeO(10<sup>-2</sup>)
+    niO:NiO(10<sup>-2</sup>)
+    mnO:MnO(10<sup>-2</sup>)
+    mgO:MgO(10<sup>-2</sup>)
+    caO:CaO(10<sup>-2</sup>)
+    na2O:Na<sub>2</sub>O(10<sup>-2</sup>)
+    k2O:K<sub>2</sub>O(10<sup>-2</sup>)
+    p2O5:P<sub>2</sub>O<sub>5</sub>(10<sup>-2</sup>)
+    total:总量(10<sup>-2</sup>)
+    others:其他(10<sup>-2</sup>)
+
+Module list:
+
+    Name:List
+        ID:epmaData_list
+        URL：epmaData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:epmaData_add
+        URL：epmaData/add
+        Authorized Url：epmaData/save
+    
+    Name:Delete
+        ID:epmaData_delete
+        URL:
+        Authorized Url：epmaData/delete-- GranularityData ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    phiValueGroup:φ 值分组
+    particleNumber:颗粒数
+    percentage:百分含量（%）
+
+Module list:
+
+    Name:List
+        ID:granularityData_list
+        URL：granularityData/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:granularityData_add
+        URL：granularityData/add
+        Authorized Url：granularityData/save
+    
+    Name:Delete
+        ID:granularityData_delete
+        URL:
+        Authorized Url：granularityData/delete-- DPArgonArgon ---
+Field list:
+
+    id:ID
+    NHeatStage:加热阶段次数（次）
+    cecayconst:衰变常数 （1/年）
+    JValue:J 值
+    fullmeltAge:全熔融年龄（Ma）
+    ageError1:年龄误差1（Ma）
+    plateauAge:坪年龄（Ma）
+    ageError2:年龄误差2（Ma）
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPArgonArgon_list
+        URL：dPArgonArgon/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPArgonArgon_add
+        URL：dPArgonArgon/add
+        Authorized Url：dPArgonArgon/save
+    
+    Name:Delete
+        ID:dPArgonArgon_delete
+        URL:
+        Authorized Url：dPArgonArgon/delete-- DPCarbon14 ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    radioActivSpecific:放射性比度（dpm/g）
+    c14Age:碳-14 年龄（万年）
+    ageError:年龄误差(Ma)
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPCarbon14_list
+        URL：dPCarbon14/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPCarbon14_add
+        URL：dPCarbon14/add
+        Authorized Url：dPCarbon14/save
+    
+    Name:Delete
+        ID:dPCarbon14_delete
+        URL:
+        Authorized Url：dPCarbon14/delete-- DPOrdinaryLead ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralCharacter:矿物特征
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    pb206Pb204:<sup>206</sup>Pb/<sup>204</sup>Pb
+    pb207Pb204:<sup>207</sup>Pb/<sup>204</sup>Pb
+    pb208Pb204:<sup>208</sup>Pb/<sup>204</sup>Pb
+    modelAge1:模式年龄 1（Ma）
+    modelAge1Error:模式年龄 1误差（Ma）
+    modelAge2:模式年龄2（Ma）
+    modelAge2Error:模式年龄 2误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPOrdinaryLead_list
+        URL：dPOrdinaryLead/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPOrdinaryLead_add
+        URL：dPOrdinaryLead/add
+        Authorized Url：dPOrdinaryLead/save
+    
+    Name:Delete
+        ID:dPOrdinaryLead_delete
+        URL:
+        Authorized Url：dPOrdinaryLead/delete-- DPSamariumNeodymium ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    sm:钐(10<sup>-6</sup>)
+    nd:钕（10<sup>-6</sup>）
+    sm147Nd144:<sup>147</sup>Sm／<sup>144</sup>Nd
+    nd143Nd144:<sup>143</sup>Nd／<sup>144</sup>Nd
+    modelAge:模式年龄（Ma）
+    ageError:年龄误差(Ma)
+    epsilonNdO:εNd(o)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPSamariumNeodymium_list
+        URL：dPSamariumNeodymium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPSamariumNeodymium_add
+        URL：dPSamariumNeodymium/add
+        Authorized Url：dPSamariumNeodymium/save
+    
+    Name:Delete
+        ID:dPSamariumNeodymium_delete
+        URL:
+        Authorized Url：dPSamariumNeodymium/delete-- ArtificialHeavyMineralBasicinfo ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    sampleWeight:样品重量(Kg)
+    heavySandWeight:重砂总重量(g)
+    magnetCompoWeight:磁性部分重量(g)
+    electromagCompoWeight:电磁性部分重量(g)
+    heavyCompoWeight:重部分重量(g)
+    lightCompoWeight:轻部分重量(g)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:artificialHeavyMineralBasicinfo_list
+        URL：artificialHeavyMineralBasicinfo/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:artificialHeavyMineralBasicinfo_add
+        URL：artificialHeavyMineralBasicinfo/add
+        Authorized Url：artificialHeavyMineralBasicinfo/save
+    
+    Name:Delete
+        ID:artificialHeavyMineralBasicinfo_delete
+        URL:
+        Authorized Url：artificialHeavyMineralBasicinfo/delete-- DPRbSr ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    rb:铷(10<sup>-6</sup>)
+    sr:锶（10<sup>-6</sup>）
+    rb87Sr86:<sup>87</sup>Rb／<sup>86</sup>Sr
+    sr87Sr86:<sup>87</sup>Sr／<sup>86</sup>Sr
+    surfaceAge:表面年龄（Ma）
+    surfaceAgeError:表面年龄误差（Ma）
+    modelAge:模式年龄（Ma）
+    modelAgeError:模式年龄误差(Ma)
+    epsilonSrO:εSr(o)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPRbSr_list
+        URL：dPRbSr/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPRbSr_add
+        URL：dPRbSr/add
+        Authorized Url：dPRbSr/save
+    
+    Name:Delete
+        ID:dPRbSr_delete
+        URL:
+        Authorized Url：dPRbSr/delete-- DPOsmium ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    decayConst:衰变常数 （1/年）
+    os187Os186:<sup>187</sup>Os/<sup>186</sup>Os
+    os187Os188:<sup>187</sup>Os/<sup>188</sup>Os
+    modelAge1:模式年龄1（Ma）
+    modelAge1Error:模式年龄1误差(Ma)
+    modelAge2:模式年龄2（Ma）
+    modelAge2Error:模式年龄2误差(Ma)
+    acceptedAge:采用年龄（Ma）
+    acceptedAgeError:采用年龄误差(Ma)
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPOsmium_list
+        URL：dPOsmium/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPOsmium_add
+        URL：dPOsmium/add
+        Authorized Url：dPOsmium/save
+    
+    Name:Delete
+        ID:dPOsmium_delete
+        URL:
+        Authorized Url：dPOsmium/delete-- DPFissionTrack ---
+Field list:
+
+    id:ID
+    decayConst:衰变常数 （1/年）
+    fissionConst:裂变常数
+    trackLength:径迹长度（cm）
+    spontaneFissionTrackDensity:自发裂变径迹密度（条/cm<sup>2</sup>）
+    thermalDose:热中子剂量（1/cm<sup>2</sup>））
+    artificialFissionTrackDensity:人工诱发裂变径迹密度（条/cm<sup>2</sup>））
+    fissionTrackAge:裂变径迹年龄（Ma）
+    ageError:年龄误差（Ma）
+    remark:备注
+    sampleId:样品
+
+Module list:
+
+    Name:List
+        ID:dPFissionTrack_list
+        URL：dPFissionTrack/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPFissionTrack_add
+        URL：dPFissionTrack/add
+        Authorized Url：dPFissionTrack/save
+    
+    Name:Delete
+        ID:dPFissionTrack_delete
+        URL:
+        Authorized Url：dPFissionTrack/delete-- DPUraniumThoriumLead ---
+Field list:
+
+    id:ID
+    sampleId:样品
+    mineralCharacter:矿物特征
+    decayConst1:衰变常数1 （1/年）
+    decayConst2:衰变常数2 （1/年）
+    decayConst3:衰变常数3 （1/年）
+    u:铀(10<sup>-6</sup>)
+    th:钍（10<sup>-6</sup>）
+    pb:铅（10<sup>-6</sup>）
+    pb204:铅-204（%）
+    pb206:铅-206（%）
+    pb207:铅-207（%）
+    pb208:铅-208（%）
+    pb206Pb204:<sup>206</sup>Pb/<sup>204</sup>Pb
+    pb208Pb206:<sup>208</sup>Pb/<sup>206</sup>Pb
+    pb207Pb206:<sup>207</sup>Pb/<sup>206</sup>Pb
+    pb206U238:<sup>206</sup>Pb/<sup>238</sup>U
+    pb207U235:<sup>207</sup>Pb/<sup>235</sup>U
+    pb208Th232:<sup>208</sup>Pb/<sup>232</sup>Th
+    pb206U238Age:铅<sup>-206</sup>-铀<sup>-238</sup> 年龄（Ma）
+    pb206U238AgeError:铅<sup>-206</sup>-铀<sup>-238</sup> 年龄误差（Ma）
+    pb207U235Age:铅<sup>-207</sup>-铀<sup>-235</sup> 年龄（Ma）
+    pb207U235AgeError:铅<sup>-207</sup>-铀<sup>-235</sup> 年龄误差(Ma)
+    pb207Pb206Age:铅<sup>-207</sup>-铅<sup>-206</sup> 年龄（Ma）
+    pb207Pb206AgeError:铅<sup>-207</sup>-铅<sup>-206</sup> 年龄误差（Ma）
+    pb208Th232Age:铅<sup>-208</sup>-钍<sup>-232</sup> 年龄（Ma）
+    pb208Th232AgeError:铅<sup>-208</sup>-钍<sup>-232</sup> 年龄误差（Ma）
+    remark:备注
+
+Module list:
+
+    Name:List
+        ID:dPUraniumThoriumLead_list
+        URL：dPUraniumThoriumLead/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:dPUraniumThoriumLead_add
+        URL：dPUraniumThoriumLead/add
+        Authorized Url：dPUraniumThoriumLead/save
+    
+    Name:Delete
+        ID:dPUraniumThoriumLead_delete
+        URL:
+        Authorized Url：dPUraniumThoriumLead/delete-- SampleInfo ---
+Field list:
+
+    id:ID
+    sampleId:Sample Id
+    oraginalSampleId:Oraginal Sample Id
+    longitude:Longitude
+    latitude:Latitude
+    location:Location
+    locationType:Location Type
+    tectonicLocation:Tectonic Location
+    primaryStructuralUnit:Primary Structural Unit
+    secondaryStructuralUnit:Secondary Structural Unit
+    tertiaryStructuralUnit:Tertiary Structural Unit
+    lithology:Lithology
+    occurrence:Occurrence
+    intrusion:Intrusion
+    rockName:Rock Name
+    rockCode:Rock Code
+    era:Era
+    geobodyName:Geobody Name
+    geobodyCode:Geobody Code
+    surroundingRockAge:Surrounding Rock Age
+    surroundingRockLithology:Surrounding Rock Lithology
+    relationshipWithSurroundingRock:Relationship with Surrounding Rock
+    form:Form
+    whetherToCutAreaConstructionLine:Whether to Cut Area Construction Line
+    degreeOfDeformation:Degree of Deformation
+    characteristicMinerals:Characteristic Minerals
+    geneticType:Genetic Type
+    age:Age（Ma）
+    ageError:Age Error（Ma）
+    testObject:Test Object
+    testMethod:Test Method
+    ageSelected:Age Selected（Ma）
+    ageSelectedError:Age Selected Error（Ma）
+    tectonicType:Tectonic Type
+    sourceOfStructuralTypeDiscrimination:Source of Structural Type Discrimination
+    alkalinity:Alkalinity
+    aluminumQuality:Aluminum Quality
+    photo:Photo
+    collector:Collector
+    collectorOrg:Collector Org
+    reviewer:Reviewer
+    analyzeOrg:Analyze Org
+    analyzePerson:Analyze Person
+    testDate:Test Date
+    dataSource:Data Source
+    articleDoi:Article DOI
+    remark:Remark
+    siO2:S<sub>i</sub>O<sub>2</sub>（10<sup>-2</sup>）
+    tiO2:T<sub>i</sub>O<sub>2</sub>（10<sup>-2</sup>）
+    al2o3:Al<sub>2</sub>O<sub>3</sub>（10<sup>-2</sup>）
+    fe2o3:Fe<sub>2</sub>O<sub>3</sub>（10<sup>-2</sup>）
+    feO:FeO（10<sup>-2</sup>）
+    fe2o3t:Fe<sub>2</sub>O<sub>3</sub>T（10<sup>-2</sup>）
+    feOt:FeOT（10<sup>-2</sup>）
+    tfe:TFe（10<sup>-2</sup>）
+    mnO:MnO（10<sup>-2</sup>）
+    mgO:MgO（10<sup>-2</sup>）
+    caO:CaO（10<sup>-2</sup>）
+    na2o:Na<sub>2</sub>O（10<sup>-2</sup>）
+    k2o:K<sub>2</sub>O（10<sup>-2</sup>）
+    p2o5:P<sub>2</sub>O<sub>5</sub>（10<sup>-2</sup>）
+    h2op:H<sub>2</sub>O<sup>+</sup>（10<sup>-2</sup>）
+    h2on:H<sub>2</sub>O<sup>-</sup>（10<sup>-2</sup>）
+    co2:CO<sub>2</sub>（10<sup>-2</sup>）
+    so3:SO<sub>3</sub>（10<sup>-2</sup>）
+    f:F（10<sup>-2</sup>）
+    cl:Cl（10<sup>-2</sup>）
+    loi:LOI（10<sup>-2</sup>）
+    total:Total（10<sup>-2</sup>）
+    la:镧 La（10<sup>-6</sup>）
+    ce:铈 Ce（10<sup>-6</sup>）
+    pr:镨 Pr（10<sup>-6</sup>）
+    nd:钕 Nd（10<sup>-6</sup>）
+    pm:钷 Pm（10<sup>-6</sup>）
+    sm:钐 Sm（10<sup>-6</sup>）
+    eu:铕 Eu（10<sup>-6</sup>）
+    gd:钆 Gd（10<sup>-6</sup>）
+    tb:铽 Tb（10<sup>-6</sup>）
+    dy:镝 Dy（10<sup>-6</sup>）
+    ho:钬 Ho（10<sup>-6</sup>）
+    er:铒 Er（10<sup>-6</sup>）
+    tm:铥 Tm（10<sup>-6</sup>）
+    yb:镱 Yb（10<sup>-6</sup>）
+    lu:镥 Lu（10<sup>-6</sup>）
+    y:钇 Y（10<sup>-6</sup>）
+    sc:钪 Sc（10<sup>-6</sup>）
+    totalReElement:Total Re Element（10<sup>-6</sup>）
+    v:钒 V（10<sup>-6</sup>）
+    cr:铬 Cr（10<sup>-6</sup>）
+    co:钴 Co（10<sup>-6</sup>）
+    ni:镍 Ni（10<sup>-6</sup>）
+    mn:锰 Mn（10<sup>-6</sup>）
+    cu:铜 Cu（10<sup>-6</sup>）
+    zn:锌 Zn（10<sup>-6</sup>）
+    ga:镓 Ga（10<sup>-6</sup>）
+    ge:锗 Ge（10<sup>-6</sup>）
+    cs:铯 Cs（10<sup>-6</sup>）
+    rb:铷 Rb（10<sup>-6</sup>）
+    ba:钡 Ba（10<sup>-6</sup>）
+    th:钍 Th（10<sup>-6</sup>）
+    u:铀 U（10<sup>-6</sup>）
+    nb:铌 Nb（10<sup>-6</sup>）
+    ta:钽 Ta（10<sup>-6</sup>）
+    ti:钛 Ti（10<sup>-6</sup>）
+    p:磷 P（10<sup>-6</sup>）
+    pb:铅 Pb（10<sup>-6</sup>）
+    sr:锶 Sr（10<sup>-6</sup>）
+    zr:锆 Zr（10<sup>-6</sup>）
+    hf:铪 Hf（10<sup>-6</sup>）
+    li:锂 Li（10<sup>-6</sup>）
+    be:铍 Be（10<sup>-6</sup>）
+    w:钨 W（10<sup>-6</sup>）
+    pt:铂 Pt（10<sup>-6</sup>）
+    pd:钯 Pd（10<sup>-6</sup>）
+    os:锇 Os（10<sup>-6</sup>）
+    ir:铱 Ir（10<sup>-6</sup>）
+    ru:钌 Ru（10<sup>-6</sup>）
+    rh:铑 Rh（10<sup>-6</sup>）
+    srIsotope:Sr Isotope
+    ndIsotope:Nd Isotope
+    rb87Sr86:(<sup>87</sup>Rb/<sup>86</sup>Sr)m
+    sr87Sr86M:(<sup>87</sup>Sr/<sup>86</sup>Sr)m
+    sm147Nd144:(<sup>147</sup>Sm/<sup>144</sup>Nd)m
+    nd143Nd144:(<sup>143</sup>Nd/<sup>144</sup>Nd)m
+    testRockMa:Test Rock (Ma)
+    sr87Sr86I:(<sup>87</sup>Sr/<sup>86</sup>Sr)i
+    nd143Nd144TChur:(<sup>143</sup>Nd/<sup>144</sup>Nd)t,CHUR
+    nd143Nd144I:(<sup>143</sup>Nd/<sup>144</sup>Nd)i
+    FSmNdS:f(Sm/Nd)s
+    epsilonNd0:εNd(0)
+    epsilonNdT:εNd(t)
+    tdmMa:TDM(Ma)
+    tdm2Ma:TDM2(Ma)
+    hfIsotope:Hf Isotope
+    hfPointNum:Hf Point Number
+    hfNormalNum:Hf Normal Number
+    epsilonHftMin:εHft_min
+    epsilonHftMax:εHft_max
+    epsilonHftMedian:εHft_median
+    epsilonHftAverage:εHft_average
+    tdmcMin:T<sub>DM</sub><sup>C</sup>_min
+    tdmcMax:T<sub>DM</sub><sup>C</sup>_max
+    tdmcMedian:T<sub>DM</sub><sup>C</sup>_median
+    tdmcAverage:T<sub>DM</sub><sup>C</sup>(Ma)_Average
+    hfOisotope:HfO Isotope
+    d18oMin:d<sup>18</sup>O_min
+    d18oMax:d<sup>18</sup>O_max
+    d18oAverage:d<sup>18</sup>O_average
+    d18oMedian:d<sup>18</sup>O_median
+
+Module list:
+
+    Name:List
+        ID:sampleInfo_list
+        URL：sampleInfo/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:sampleInfo_add
+        URL：sampleInfo/add
+        Authorized Url：sampleInfo/save
+    
+    Name:Delete
+        ID:sampleInfo_delete
+        URL:
+        Authorized Url：sampleInfo/delete-- Zircon ---
+Field list:
+
+    id:ID
+    sampleId:Sample Id
+    oraginalSampleId:Oraginal Sample Id
+    pointNum:Point Num
+    hfType:Hf Type
+    testAge:Test Age（Ma）
+    yb176Hf177:<sup>176</sup>Yb/<sup>177</sup>Hf
+    lu176Hf177:<sup>176</sup>Lu/<sup>177</sup>Hf
+    sigma2LuHf:2σ Error
+    hf176Hf177:<sup>176</sup>Hf/<sup>177</sup>Hf
+    sigma2HfHf:2σ Error
+    hf176Hf177T:<sup>176</sup>Hf/<sup>177</sup>Hf（t）
+    churT:CHUR（t）
+    dmT:DM（t）
+    epsilonHfT:εHf(t)
+    sigma2EpsilonHfT:2σ Error
+    FLuHf:f<sub>Lu/Hf</sub>
+    tdm1:T<sub>DM1</sub>
+    sigma2Tdm1:2σ Error
+    tdm2:T<sub>DM2</sub>
+    sigma2Tdm2:2σ Error
+    epsilonHf0:εHf(0)
+    d18o:d18O
+    epsilonD180:2σ Error
+    epsilonD18oControl:d18O Control
+    siO2:SiO<sub>2</sub>
+    lithology:lithology
+    mineralType:Mineral Type
+    grainsNumber:Number of Grains
+    chiSquareProbability:P(χ2) (%)
+    centralAge:Central Age(Ma)
+    centralAgeError:Central Age Error (Ma)
+    pooledAge:Pooled Age (Ma)
+    pooledAgeError:Pooled Age Error (Ma)
+    meanTrackLength:Mean Track Length (cm)
+    lengthError:Length Error (cm)
+    UThHeAge:(U-Th)/He（Ma）
+    UThHeAgeError:(U-Th)/He Error（Ma）
+    articleRef:Article Ref
+    articleDoi:Article DOI
+
+Module list:
+
+    Name:List
+        ID:zircon_list
+        URL：zircon/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:zircon_add
+        URL：zircon/add
+        Authorized Url：zircon/save
+    
+    Name:Delete
+        ID:zircon_delete
+        URL:
+        Authorized Url：zircon/delete-- SampleInfo ---
+Field list:
+
+    id:ID
+    sampleId:Sample Id
+    oraginalSampleId:Oraginal Sample Id
+    longitude:Longitude
+    latitude:Latitude
+    location:Location
+    locationType:Location Type
+    tectonicLocation:Tectonic Location
+    primaryStructuralUnit:Primary Structural Unit
+    secondaryStructuralUnit:Secondary Structural Unit
+    tertiaryStructuralUnit:Tertiary Structural Unit
+    lithology:Lithology
+    occurrence:Occurrence
+    intrusion:Intrusion
+    rockName:Rock Name
+    rockCode:Rock Code
+    era:Era
+    geobodyName:Geobody Name
+    geobodyCode:Geobody Code
+    surroundingRockAge:Surrounding Rock Age
+    surroundingRockLithology:Surrounding Rock Lithology
+    relationshipWithSurroundingRock:Relationship with Surrounding Rock
+    form:Form
+    whetherToCutAreaConstructionLine:Whether to Cut Area Construction Line
+    degreeOfDeformation:Degree of Deformation
+    characteristicMinerals:Characteristic Minerals
+    geneticType:Genetic Type
+    age:Age（Ma）
+    ageError:Age Error（Ma）
+    testObject:Test Object
+    testMethod:Test Method
+    ageSelected:Age Selected（Ma）
+    ageSelectedError:Age Selected Error（Ma）
+    tectonicType:Tectonic Type
+    sourceOfStructuralTypeDiscrimination:Source of Structural Type Discrimination
+    alkalinity:Alkalinity
+    aluminumQuality:Aluminum Quality
+    photo:Photo
+    collector:Collector
+    collectorOrg:Collector Org
+    reviewer:Reviewer
+    analyzeOrg:Analyze Org
+    analyzePerson:Analyze Person
+    testDate:Test Date
+    dataSource:Data Source
+    articleDoi:Article DOI
+    remark:Remark
+    siO2:S<sub>i</sub>O<sub>2</sub>（10<sup>-2</sup>）
+    tiO2:T<sub>i</sub>O<sub>2</sub>（10<sup>-2</sup>）
+    al2o3:Al<sub>2</sub>O<sub>3</sub>（10<sup>-2</sup>）
+    fe2o3:Fe<sub>2</sub>O<sub>3</sub>（10<sup>-2</sup>）
+    feO:FeO（10<sup>-2</sup>）
+    fe2o3t:Fe<sub>2</sub>O<sub>3</sub>T（10<sup>-2</sup>）
+    feOt:FeOT（10<sup>-2</sup>）
+    tfe:TFe（10<sup>-2</sup>）
+    mnO:MnO（10<sup>-2</sup>）
+    mgO:MgO（10<sup>-2</sup>）
+    caO:CaO（10<sup>-2</sup>）
+    na2o:Na<sub>2</sub>O（10<sup>-2</sup>）
+    k2o:K<sub>2</sub>O（10<sup>-2</sup>）
+    p2o5:P<sub>2</sub>O<sub>5</sub>（10<sup>-2</sup>）
+    h2op:H<sub>2</sub>O<sup>+</sup>（10<sup>-2</sup>）
+    h2on:H<sub>2</sub>O<sup>-</sup>（10<sup>-2</sup>）
+    co2:CO<sub>2</sub>（10<sup>-2</sup>）
+    so3:SO<sub>3</sub>（10<sup>-2</sup>）
+    f:F（10<sup>-2</sup>）
+    cl:Cl（10<sup>-2</sup>）
+    loi:LOI（10<sup>-2</sup>）
+    total:Total（10<sup>-2</sup>）
+    la:镧 La（10<sup>-6</sup>）
+    ce:铈 Ce（10<sup>-6</sup>）
+    pr:镨 Pr（10<sup>-6</sup>）
+    nd:钕 Nd（10<sup>-6</sup>）
+    pm:钷 Pm（10<sup>-6</sup>）
+    sm:钐 Sm（10<sup>-6</sup>）
+    eu:铕 Eu（10<sup>-6</sup>）
+    gd:钆 Gd（10<sup>-6</sup>）
+    tb:铽 Tb（10<sup>-6</sup>）
+    dy:镝 Dy（10<sup>-6</sup>）
+    ho:钬 Ho（10<sup>-6</sup>）
+    er:铒 Er（10<sup>-6</sup>）
+    tm:铥 Tm（10<sup>-6</sup>）
+    yb:镱 Yb（10<sup>-6</sup>）
+    lu:镥 Lu（10<sup>-6</sup>）
+    y:钇 Y（10<sup>-6</sup>）
+    sc:钪 Sc（10<sup>-6</sup>）
+    totalReElement:Total Re Element（10<sup>-6</sup>）
+    v:钒 V（10<sup>-6</sup>）
+    cr:铬 Cr（10<sup>-6</sup>）
+    co:钴 Co（10<sup>-6</sup>）
+    ni:镍 Ni（10<sup>-6</sup>）
+    mn:锰 Mn（10<sup>-6</sup>）
+    cu:铜 Cu（10<sup>-6</sup>）
+    zn:锌 Zn（10<sup>-6</sup>）
+    ga:镓 Ga（10<sup>-6</sup>）
+    ge:锗 Ge（10<sup>-6</sup>）
+    cs:铯 Cs（10<sup>-6</sup>）
+    rb:铷 Rb（10<sup>-6</sup>）
+    ba:钡 Ba（10<sup>-6</sup>）
+    th:钍 Th（10<sup>-6</sup>）
+    u:铀 U（10<sup>-6</sup>）
+    nb:铌 Nb（10<sup>-6</sup>）
+    ta:钽 Ta（10<sup>-6</sup>）
+    ti:钛 Ti（10<sup>-6</sup>）
+    p:磷 P（10<sup>-6</sup>）
+    pb:铅 Pb（10<sup>-6</sup>）
+    sr:锶 Sr（10<sup>-6</sup>）
+    zr:锆 Zr（10<sup>-6</sup>）
+    hf:铪 Hf（10<sup>-6</sup>）
+    li:锂 Li（10<sup>-6</sup>）
+    be:铍 Be（10<sup>-6</sup>）
+    w:钨 W（10<sup>-6</sup>）
+    pt:铂 Pt（10<sup>-6</sup>）
+    pd:钯 Pd（10<sup>-6</sup>）
+    os:锇 Os（10<sup>-6</sup>）
+    ir:铱 Ir（10<sup>-6</sup>）
+    ru:钌 Ru（10<sup>-6</sup>）
+    rh:铑 Rh（10<sup>-6</sup>）
+    srIsotope:Sr Isotope
+    ndIsotope:Nd Isotope
+    rb87Sr86:(<sup>87</sup>Rb/<sup>86</sup>Sr)m
+    sr87Sr86M:(<sup>87</sup>Sr/<sup>86</sup>Sr)m
+    sm147Nd144:(<sup>147</sup>Sm/<sup>144</sup>Nd)m
+    nd143Nd144:(<sup>143</sup>Nd/<sup>144</sup>Nd)m
+    testRockMa:Test Rock (Ma)
+    sr87Sr86I:(<sup>87</sup>Sr/<sup>86</sup>Sr)i
+    nd143Nd144TChur:(<sup>143</sup>Nd/<sup>144</sup>Nd)t,CHUR
+    nd143Nd144I:(<sup>143</sup>Nd/<sup>144</sup>Nd)i
+    FSmNdS:f(Sm/Nd)s
+    epsilonNd0:εNd(0)
+    epsilonNdT:εNd(t)
+    tdmMa:TDM(Ma)
+    tdm2Ma:TDM2(Ma)
+    hfIsotope:Hf Isotope
+    hfPointNum:Hf Point Number
+    hfNormalNum:Hf Normal Number
+    epsilonHftMin:εHft_min
+    epsilonHftMax:εHft_max
+    epsilonHftMedian:εHft_median
+    epsilonHftAverage:εHft_average
+    tdmcMin:T<sub>DM</sub><sup>C</sup>_min
+    tdmcMax:T<sub>DM</sub><sup>C</sup>_max
+    tdmcMedian:T<sub>DM</sub><sup>C</sup>_median
+    tdmcAverage:T<sub>DM</sub><sup>C</sup>(Ma)_Average
+    hfOisotope:HfO Isotope
+    d18oMin:d<sup>18</sup>O_min
+    d18oMax:d<sup>18</sup>O_max
+    d18oAverage:d<sup>18</sup>O_average
+    d18oMedian:d<sup>18</sup>O_median
+
+Module list:
+
+    Name:List
+        ID:sampleInfo_list
+        URL：sampleInfo/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:sampleInfo_add
+        URL：sampleInfo/add
+        Authorized Url：sampleInfo/save
+    
+    Name:Delete
+        ID:sampleInfo_delete
+        URL:
+        Authorized Url：sampleInfo/delete-- Zircon ---
+Field list:
+
+    id:ID
+    sampleId:Sample Id
+    oraginalSampleId:Oraginal Sample Id
+    pointNum:Point Num
+    hfType:Hf Type
+    testAge:Test Age（Ma）
+    yb176Hf177:<sup>176</sup>Yb/<sup>177</sup>Hf
+    lu176Hf177:<sup>176</sup>Lu/<sup>177</sup>Hf
+    sigma2LuHf:2σ Error
+    hf176Hf177:<sup>176</sup>Hf/<sup>177</sup>Hf
+    sigma2HfHf:2σ Error
+    hf176Hf177T:<sup>176</sup>Hf/<sup>177</sup>Hf（t）
+    churT:CHUR（t）
+    dmT:DM（t）
+    epsilonHfT:εHf(t)
+    sigma2EpsilonHfT:2σ Error
+    FLuHf:f<sub>Lu/Hf</sub>
+    tdm1:T<sub>DM1</sub>
+    sigma2Tdm1:2σ Error
+    tdm2:T<sub>DM2</sub>
+    sigma2Tdm2:2σ Error
+    epsilonHf0:εHf(0)
+    d18o:d18O
+    epsilonD180:2σ Error
+    epsilonD18oControl:d18O Control
+    siO2:SiO<sub>2</sub>
+    lithology:lithology
+    mineralType:Mineral Type
+    grainsNumber:Number of Grains
+    chiSquareProbability:P(χ2) (%)
+    centralAge:Central Age(Ma)
+    centralAgeError:Central Age Error (Ma)
+    pooledAge:Pooled Age (Ma)
+    pooledAgeError:Pooled Age Error (Ma)
+    meanTrackLength:Mean Track Length (cm)
+    lengthError:Length Error (cm)
+    UThHeAge:(U-Th)/He（Ma）
+    UThHeAgeError:(U-Th)/He Error（Ma）
+    articleRef:Article Ref
+    articleDoi:Article DOI
+
+Module list:
+
+    Name:List
+        ID:zircon_list
+        URL：zircon/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:zircon_add
+        URL：zircon/add
+        Authorized Url：zircon/save
+    
+    Name:Delete
+        ID:zircon_delete
+        URL:
+        Authorized Url：zircon/delete-- SampleInfo ---
+Field list:
+
+    id:ID
+    sampleId:Sample Id
+    oraginalSampleId:Oraginal Sample Id
+    longitude:Longitude
+    latitude:Latitude
+    location:Location
+    regionLocation:Region Location
+    locationType:Location Type
+    tectonicLocation:Tectonic Location
+    tectonicType:Tectonic Type
+    lithology:Lithology
+    lithologyOrigin:Orginal Lithology
+    occurrence:Occurrence
+    intrusion:Intrusion
+    pluton:Pluton
+    plutonOrigin:Original Pluton
+    rockName:Rock Name
+    rockCode:Rock Code
+    era:Era
+    geobodyName:Geobody Name
+    geobodyCode:Geobody Code
+    surroundingRockAge:Surrounding Rock Age
+    surroundingRockLithology:Surrounding Rock Lithology
+    relationshipWithSurroundingRock:Relationship with Surrounding Rock
+    form:Form
+    whetherToCutAreaConstructionLine:Whether to Cut Area Construction Line
+    degreeOfDeformation:Degree of Deformation
+    characteristicMinerals:Characteristic Minerals
+    miningArea:Mining Area
+    oreType:Ore Type
+    geneticType:Genetic Type
+    age:Age（Ma）
+    ageError:Age Error（Ma）
+    ageSelected:Age Selected（Ma）
+    ageSelectedError:Age Selected Error（Ma）
+    testObject:Test Object
+    testMethod:Test Method
+    primaryStructuralUnit:Primary Structural Unit
+    secondaryStructuralUnit:Secondary Structural Unit
+    tertiaryStructuralUnit:Tertiary Structural Unit
+    sourceOfStructuralTypeDiscrimination:Source of Structural Type Discrimination
+    alkalinity:Alkalinity
+    aluminumQuality:Aluminum Quality
+    photo:Photo
+    collector:Collector
+    collectorOrg:Collector Org
+    reviewer:Reviewer
+    analyzeOrg:Analyze Org
+    analyzePerson:Analyze Person
+    testDate:Test Date
+    dataSource:Data Source
+    articleDoi:Article DOI
+    remark:Remark
+    refAuthor:Ref.Author
+    refYear:Ref.Year
+    refMagazine:Ref.Magazine
+    issuePage:Issue Page
+    refTitle:Ref.Title
+    refOrigin:Ref.Origin
+    refMagazineOrigin:Ref.Magazine.Origin
+    refTitleOrigin:Ref.Title.Origin
+    sio2:S<sub>i</sub>O<sub>2</sub>（10<sup>-2</sup>）
+    tio2:T<sub>i</sub>O<sub>2</sub>（10<sup>-2</sup>）
+    al2o3:Al<sub>2</sub>O<sub>3</sub>（10<sup>-2</sup>）
+    fe2o3:Fe<sub>2</sub>O<sub>3</sub>（10<sup>-2</sup>）
+    feo:FeO（10<sup>-2</sup>）
+    fe2o3t:Fe<sub>2</sub>O<sub>3</sub>T（10<sup>-2</sup>）
+    feot:FeOT（10<sup>-2</sup>）
+    tfe:TFe（10<sup>-2</sup>）
+    mno:MnO（10<sup>-2</sup>）
+    mgo:MgO（10<sup>-2</sup>）
+    cao:CaO（10<sup>-2</sup>）
+    na2o:Na<sub>2</sub>O（10<sup>-2</sup>）
+    k2o:K<sub>2</sub>O（10<sup>-2</sup>）
+    p2o5:P<sub>2</sub>O<sub>5</sub>（10<sup>-2</sup>）
+    h2op:H<sub>2</sub>O<sup>+</sup>（10<sup>-2</sup>）
+    h2on:H<sub>2</sub>O<sup>-</sup>（10<sup>-2</sup>）
+    co2:CO<sub>2</sub>（10<sup>-2</sup>）
+    so3:SO<sub>3</sub>（10<sup>-2</sup>）
+    f:F（10<sup>-2</sup>）
+    cl:Cl（10<sup>-2</sup>）
+    loi:LOI（10<sup>-2</sup>）
+    total:Total（10<sup>-2</sup>）
+    la:镧 La（10<sup>-6</sup>）
+    ce:铈 Ce（10<sup>-6</sup>）
+    pr:镨 Pr（10<sup>-6</sup>）
+    nd:钕 Nd（10<sup>-6</sup>）
+    pm:钷 Pm（10<sup>-6</sup>）
+    sm:钐 Sm（10<sup>-6</sup>）
+    eu:铕 Eu（10<sup>-6</sup>）
+    gd:钆 Gd（10<sup>-6</sup>）
+    tb:铽 Tb（10<sup>-6</sup>）
+    dy:镝 Dy（10<sup>-6</sup>）
+    ho:钬 Ho（10<sup>-6</sup>）
+    er:铒 Er（10<sup>-6</sup>）
+    tm:铥 Tm（10<sup>-6</sup>）
+    yb:镱 Yb（10<sup>-6</sup>）
+    lu:镥 Lu（10<sup>-6</sup>）
+    y:钇 Y（10<sup>-6</sup>）
+    sc:钪 Sc（10<sup>-6</sup>）
+    totalReElement:Total Re Element（10<sup>-6</sup>）
+    v:钒 V（10<sup>-6</sup>）
+    cr:铬 Cr（10<sup>-6</sup>）
+    co:钴 Co（10<sup>-6</sup>）
+    ni:镍 Ni（10<sup>-6</sup>）
+    mn:锰 Mn（10<sup>-6</sup>）
+    cu:铜 Cu（10<sup>-6</sup>）
+    zn:锌 Zn（10<sup>-6</sup>）
+    ga:镓 Ga（10<sup>-6</sup>）
+    ge:锗 Ge（10<sup>-6</sup>）
+    cs:铯 Cs（10<sup>-6</sup>）
+    rb:铷 Rb（10<sup>-6</sup>）
+    ba:钡 Ba（10<sup>-6</sup>）
+    th:钍 Th（10<sup>-6</sup>）
+    u:铀 U（10<sup>-6</sup>）
+    nb:铌 Nb（10<sup>-6</sup>）
+    ta:钽 Ta（10<sup>-6</sup>）
+    ti:钛 Ti（10<sup>-6</sup>）
+    p:磷 P（10<sup>-6</sup>）
+    pb:铅 Pb（10<sup>-6</sup>）
+    sr:锶 Sr（10<sup>-6</sup>）
+    zr:锆 Zr（10<sup>-6</sup>）
+    hf:铪 Hf（10<sup>-6</sup>）
+    li:锂 Li（10<sup>-6</sup>）
+    be:铍 Be（10<sup>-6</sup>）
+    w:钨 W（10<sup>-6</sup>）
+    pt:铂 Pt（10<sup>-6</sup>）
+    pd:钯 Pd（10<sup>-6</sup>）
+    os:锇 Os（10<sup>-6</sup>）
+    ir:铱 Ir（10<sup>-6</sup>）
+    ru:钌 Ru（10<sup>-6</sup>）
+    rh:铑 Rh（10<sup>-6</sup>）
+    srisotope:Sr Isotope
+    ndisotope:Nd Isotope
+    rb87Sr86:(<sup>87</sup>Rb/<sup>86</sup>Sr)m
+    sr87Sr86M:(<sup>87</sup>Sr/<sup>86</sup>Sr)m
+    sm147Nd144:(<sup>147</sup>Sm/<sup>144</sup>Nd)m
+    nd143Nd144:(<sup>143</sup>Nd/<sup>144</sup>Nd)m
+    testRockMa:Test Rock (Ma)
+    sr87Sr86I:(<sup>87</sup>Sr/<sup>86</sup>Sr)i
+    nd143Nd144TChur:(<sup>143</sup>Nd/<sup>144</sup>Nd)t,CHUR
+    nd143Nd144I:(<sup>143</sup>Nd/<sup>144</sup>Nd)i
+    FSmNdS:f(Sm/Nd)s
+    epsilonNd0:εNd(0)
+    epsilonNdT:εNd(t)
+    tdmMa:TDM(Ma)
+    tdm2Ma:TDM2(Ma)
+    hfisotope:Hf Isotope
+    hfPointnum:Hf Point Number
+    hfNormalnum:Hf Normal Number
+    epsilonHftMin:εHft_min
+    epsilonHftMax:εHft_max
+    epsilonHftMedian:εHft_median
+    epsilonHftAverage:εHft_average
+    tdmcMin:T<sub>DM</sub><sup>C</sup>_min
+    tdmcMax:T<sub>DM</sub><sup>C</sup>_max
+    tdmcMedian:T<sub>DM</sub><sup>C</sup>_median
+    tdmcAverage:T<sub>DM</sub><sup>C</sup>(Ma)_Average
+    hfoisotope:HfO Isotope
+    d18oMin:d<sup>18</sup>O_min
+    d18oMax:d<sup>18</sup>O_max
+    d18oAverage:d<sup>18</sup>O_average
+    d18oMedian:d<sup>18</sup>O_median
+
+Module list:
+
+    Name:List
+        ID:sampleInfo_list
+        URL：sampleInfo/list
+        Authorized Url：
+
+    Name:Add/Edit
+        ID:sampleInfo_add
+        URL：sampleInfo/add
+        Authorized Url：sampleInfo/save
+    
+    Name:Delete
+        ID:sampleInfo_delete
+        URL:
+        Authorized Url：sampleInfo/delete

@@ -1,0 +1,199 @@
+<div class="pageHeader">
+    <form class="pagerForm" onsubmit="return navTabSearch(this);" method="post">
+        <#include "../include_page/parameters.html"/>
+        <div class="searchBar">
+            <ul class="searchContent">
+                <li>
+                    <label>Sample Id：</label>
+                    <input type="text" name="sampleId" value="${sampleId!}" />
+                </li>
+                <li>
+                    <label>Oraginal Sample Id：</label>
+                    <input type="text" name="oraginalSampleId" value="${oraginalSampleId!}" />
+                </li>
+                <li>
+                    <label>Location：</label>
+                    <input type="text" name="location" value="${location!}" />
+                </li>
+                <li>
+                    <label>Location Type：</label>
+                    <input type="text" name="locationType" value="${locationType!}" />
+                </li>
+                <li>
+                    <label>Tectonic Location：</label>
+                    <input type="text" name="tectonicLocation" value="${tectonicLocation!}" />
+                </li>
+
+            </ul>
+            <div class="subBar">
+                <ul>
+                    <li>
+                    	<button type="submit" class="buttonActive"><@t.page 'button.search'/></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<@_sysAuthorized roleIds=admin.roles urls='sampleInfo/add,sampleInfo/delete'><#assign authorizedMap=map/></@_sysAuthorized>
+<div class="pageContent">
+    <div class="panelBar">
+        <ul class="toolBar">
+        <#if authorizedMap['sampleInfo/add']>
+            <li><a href="sampleInfo/add.html" target="navTab" rel="sampleInfo/add"><i class="icon-plus-sign-alt icon-large"></i> <@t.page 'button.add'/></a></li>
+            <li><a href="sampleInfo/add.html?id={sid}" target="navTab" rel="sampleInfo/edit"><i class="icon-edit icon-large"></i> <@t.page 'button.edit'/></a></li>
+        </#if>
+        <#if authorizedMap['sampleInfo/delete']>
+            <li><a href="sampleInfoAdmin/delete.do?_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.batch_delete'/>" target="selectedTodo" rel="ids"><i class="icon-trash icon-large"></i> <@t.page 'button.batch_delete'/></a></li>
+        </#if>
+        </ul>
+    </div>
+<@_sampleInfoList sampleId=sampleId oraginalSampleId=oraginalSampleId 
+            location=location locationType=locationType tectonicLocation=tectonicLocation 
+            primaryStructuralUnit=primaryStructuralUnit secondaryStructuralUnit=secondaryStructuralUnit tertiaryStructuralUnit=tertiaryStructuralUnit 
+            lithology=lithology occurrence=occurrence intrusion=intrusion 
+            rockName=rockName rockCode=rockCode era=era 
+            geobodyName=geobodyName geobodyCode=geobodyCode surroundingRockAge=surroundingRockAge 
+            surroundingRockLithology=surroundingRockLithology relationshipWithSurroundingRock=relationshipWithSurroundingRock form=form 
+            whetherToCutAreaConstructionLine=whetherToCutAreaConstructionLine degreeOfDeformation=degreeOfDeformation characteristicMinerals=characteristicMinerals 
+            geneticType=geneticType age=age ageError=ageError 
+            testObject=testObject testMethod=testMethod ageSelected=ageSelected 
+            ageSelectedError=ageSelectedError tectonicType=tectonicType sourceOfStructuralTypeDiscrimination=sourceOfStructuralTypeDiscrimination 
+            alkalinity=alkalinity aluminumQuality=aluminumQuality photo=photo 
+            collector=collector collectorOrg=collectorOrg reviewer=reviewer 
+            analyzeOrg=analyzeOrg analyzePerson=analyzePerson testDate=testDate 
+            dataSource=dataSource articleDoi=articleDoi remark=remark 
+            siO2=siO2 tiO2=tiO2 al2o3=al2o3 
+            fe2o3=fe2o3 feO=feO fe2o3t=fe2o3t 
+            feOt=feOt tfe=tfe mnO=mnO 
+            mgO=mgO caO=caO na2o=na2o 
+            k2o=k2o p2o5=p2o5 h2op=h2op 
+            h2on=h2on co2=co2 so3=so3 
+            f=f cl=cl loi=loi 
+            total=total la=la ce=ce 
+            pr=pr nd=nd pm=pm 
+            sm=sm eu=eu gd=gd 
+            tb=tb dy=dy ho=ho 
+            er=er tm=tm yb=yb 
+            lu=lu y=y sc=sc 
+            totalReElement=totalReElement v=v cr=cr 
+            co=co ni=ni mn=mn 
+            cu=cu zn=zn ga=ga 
+            ge=ge cs=cs rb=rb 
+            ba=ba th=th u=u 
+            nb=nb ta=ta ti=ti 
+            p=p pb=pb sr=sr 
+            zr=zr hf=hf li=li 
+            be=be w=w pt=pt 
+            pd=pd os=os ir=ir 
+            ru=ru rh=rh srIsotope=srIsotope 
+            ndIsotope=ndIsotope rb87Sr86=rb87Sr86 sr87Sr86M=sr87Sr86M 
+            sm147Nd144=sm147Nd144 nd143Nd144=nd143Nd144 testRockMa=testRockMa 
+            sr87Sr86I=sr87Sr86I nd143Nd144TChur=nd143Nd144TChur nd143Nd144I=nd143Nd144I 
+            FSmNdS=FSmNdS epsilonNd0=epsilonNd0 epsilonNdT=epsilonNdT 
+            tdmMa=tdmMa tdm2Ma=tdm2Ma hfIsotope=hfIsotope 
+            hfPointNum=hfPointNum hfNormalNum=hfNormalNum epsilonHftMin=epsilonHftMin 
+            epsilonHftMax=epsilonHftMax epsilonHftMedian=epsilonHftMedian epsilonHftAverage=epsilonHftAverage 
+            tdmcMin=tdmcMin tdmcMax=tdmcMax tdmcMedian=tdmcMedian 
+            tdmcAverage=tdmcAverage hfOisotope=hfOisotope d18oMin=d18oMin 
+            d18oMax=d18oMax d18oAverage=d18oAverage d18oMedian=d18oMedian 
+            orderField=orderField orderType=orderType pageIndex=pageNum pageSize=numPerPage>
+    <table class="list" width="200%" layoutH="92">
+        <thead>
+            <tr>
+                <th orderField="id" class="<#if orderField??&&'id'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">ID</th>
+                <th orderField="sampleId" class="<#if orderField??&&'sampleId'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Sample Id</th>
+                <th orderField="oraginalSampleId" class="<#if orderField??&&'oraginalSampleId'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Oraginal Sample Id</th>
+                <th orderField="longitude" class="<#if orderField??&&'longitude'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Longitude</th>
+                <th orderField="latitude" class="<#if orderField??&&'latitude'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Latitude</th>
+                <th orderField="location" class="<#if orderField??&&'location'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Location</th>
+                <th orderField="locationType" class="<#if orderField??&&'locationType'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Location Type</th>
+                <th orderField="v" class="<#if orderField??&&'v'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钒 V（10<sup>-6</sup>）</th>
+                <th orderField="cr" class="<#if orderField??&&'cr'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铬 Cr（10<sup>-6</sup>）</th>
+                <th orderField="co" class="<#if orderField??&&'co'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钴 Co（10<sup>-6</sup>）</th>
+                <th orderField="ni" class="<#if orderField??&&'ni'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">镍 Ni（10<sup>-6</sup>）</th>
+                <th orderField="mn" class="<#if orderField??&&'mn'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">锰 Mn（10<sup>-6</sup>）</th>
+                <th orderField="cu" class="<#if orderField??&&'cu'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铜 Cu（10<sup>-6</sup>）</th>
+                <th orderField="zn" class="<#if orderField??&&'zn'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">锌 Zn（10<sup>-6</sup>）</th>
+                <th orderField="ga" class="<#if orderField??&&'ga'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">镓 Ga（10<sup>-6</sup>）</th>
+                <th orderField="ge" class="<#if orderField??&&'ge'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">锗 Ge（10<sup>-6</sup>）</th>
+                <th orderField="cs" class="<#if orderField??&&'cs'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铯 Cs（10<sup>-6</sup>）</th>
+                <th orderField="rb" class="<#if orderField??&&'rb'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铷 Rb（10<sup>-6</sup>）</th>
+                <th orderField="ba" class="<#if orderField??&&'ba'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钡 Ba（10<sup>-6</sup>）</th>
+                <th orderField="th" class="<#if orderField??&&'th'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钍 Th（10<sup>-6</sup>）</th>
+                <th orderField="u" class="<#if orderField??&&'u'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铀 U（10<sup>-6</sup>）</th>
+                <th orderField="nb" class="<#if orderField??&&'nb'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铌 Nb（10<sup>-6</sup>）</th>
+                <th orderField="ta" class="<#if orderField??&&'ta'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钽 Ta（10<sup>-6</sup>）</th>
+                <th orderField="ti" class="<#if orderField??&&'ti'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钛 Ti（10<sup>-6</sup>）</th>
+                <th orderField="p" class="<#if orderField??&&'p'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">磷 P（10<sup>-6</sup>）</th>
+                <th orderField="pb" class="<#if orderField??&&'pb'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铅 Pb（10<sup>-6</sup>）</th>
+                <th orderField="sr" class="<#if orderField??&&'sr'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">锶 Sr（10<sup>-6</sup>）</th>
+                <th orderField="zr" class="<#if orderField??&&'zr'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">锆 Zr（10<sup>-6</sup>）</th>
+                <th orderField="hf" class="<#if orderField??&&'hf'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铪 Hf（10<sup>-6</sup>）</th>
+                <th orderField="li" class="<#if orderField??&&'li'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">锂 Li（10<sup>-6</sup>）</th>
+                <th orderField="be" class="<#if orderField??&&'be'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铍 Be（10<sup>-6</sup>）</th>
+                <th orderField="w" class="<#if orderField??&&'w'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钨 W（10<sup>-6</sup>）</th>
+                <th orderField="pt" class="<#if orderField??&&'pt'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铂 Pt（10<sup>-6</sup>）</th>
+                <th orderField="pd" class="<#if orderField??&&'pd'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钯 Pd（10<sup>-6</sup>）</th>
+                <th orderField="os" class="<#if orderField??&&'os'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">锇 Os（10<sup>-6</sup>）</th>
+                <th orderField="ir" class="<#if orderField??&&'ir'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铱 Ir（10<sup>-6</sup>）</th>
+                <th orderField="ru" class="<#if orderField??&&'ru'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钌 Ru（10<sup>-6</sup>）</th>
+                <th orderField="rh" class="<#if orderField??&&'rh'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铑 Rh（10<sup>-6</sup>）</th>
+                <th><@t.page 'operate'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.id}">
+                <td>${a.id!}</td>
+                <td>${a.sampleId!}</td>
+                <td>${a.oraginalSampleId!}</td>
+                <td>${a.longitude!}</td>
+                <td>${a.latitude!}</td>
+                <td>${a.location!}</td>
+                <td>${a.locationType!}</td>
+
+                <td>${a.v!}</td>
+                <td>${a.cr!}</td>
+                <td>${a.co!}</td>
+                <td>${a.ni!}</td>
+                <td>${a.mn!}</td>
+                <td>${a.cu!}</td>
+                <td>${a.zn!}</td>
+                <td>${a.ga!}</td>
+                <td>${a.ge!}</td>
+                <td>${a.cs!}</td>
+                <td>${a.rb!}</td>
+                <td>${a.ba!}</td>
+                <td>${a.th!}</td>
+                <td>${a.u!}</td>
+                <td>${a.nb!}</td>
+                <td>${a.ta!}</td>
+                <td>${a.ti!}</td>
+                <td>${a.p!}</td>
+                <td>${a.pb!}</td>
+                <td>${a.sr!}</td>
+                <td>${a.zr!}</td>
+                <td>${a.hf!}</td>
+                <td>${a.li!}</td>
+                <td>${a.be!}</td>
+                <td>${a.w!}</td>
+                <td>${a.pt!}</td>
+                <td>${a.pd!}</td>
+                <td>${a.os!}</td>
+                <td>${a.ir!}</td>
+                <td>${a.ru!}</td>
+                <td>${a.rh!}</td>
+
+                <td>
+                <#if authorizedMap['sampleInfo/delete']>
+                    <a href="sampleInfo/delete.do?ids=${a.id}&_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.delete'/>"  target="ajaxTodo"><@t.page 'button.delete'/></a>
+                </#if>
+                </td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</@_sampleInfoList>
+</div>

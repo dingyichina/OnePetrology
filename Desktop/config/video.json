@@ -1,0 +1,21 @@
+{
+    "档号+室编件号": "dc.identifier.FN",
+    "题名": "dc.title",
+    "拍摄人": "dc.contributor.author",
+    "创建时间": "dc.date.created",
+    "创建地点": "dc.contributor.location",,,
+    "主要人物": "dc.description.mainCharacters",
+    "内容摘要": "dc.description.abstract",
+    "载体代码": "dcterms.format.medium",
+    "存放路径": "dc.description.storagePath",
+    "是否原件": "dcterms.provenance.isOriginal",
+    "原件保存地": "dcterms.relation.originalDocumentLocation",
+    "时长(分钟）": "dc.format.extent",
+    "提供者": "dc.description.provider",
+    "提供时间": "dc.date.provided",
+    "备注": "dc.description.comment",
+    "关联科学家": "relation.isScientistOfVideo",
+    "dspace.entity.type": "Video",
+    "collection_uuid":"7cc6d103-3ff1-485e-9e20-e51edda094d8",
+    "savepath":"存放路径"
+}

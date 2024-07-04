@@ -1,0 +1,258 @@
+<@_content id=id>
+    <#assign
+        a=object
+        parentId=a.parentId!''
+        categoryId=a.categoryId!''
+        modelId=a.modelId!''
+        safe=true
+        attribute=getContentAttribute(a.id)!{}
+    />
+    <#if a.contribute && a.status != 1><#assign safe=false/></#if>
+</@_content>
+<@_category id=categoryId!><#assign category=object/></@_category>
+<@_model id=modelId!><#assign model=object/></@_model>
+<div class="pageFormContent" layoutH>
+    <#if model?has_content>
+        <#assign fieldList=model.fieldList![]/>
+        <@_content id=parentId>
+            <dl class="nowrap">
+                <dt><@t.page 'content.parent'/>:</dt>
+                <dd>
+                    ${(object.title)!}
+                </dd>
+            </dl>
+        </@_content>
+            <dl>
+                <dt><@t.page 'category'/>:</dt>
+                <dd class="exclude-translate">
+                    ${(category.name)!}
+                </dd>
+            </dl>
+            <dl>
+                <dt><@t.page 'model'/>:</dt>
+                <dd class="exclude-translate">
+                    ${(model.name)!}
+                </dd>
+            </dl>
+            <dl class="nowrap">
+                <dt>${(model.fieldTextMap['title'])!}:</dt>
+                <dd>
+                    ${(a.copied?then('['+t.pageMessage('copied')+']',''))!}<span class="exclude-translate">${(a.title)!}</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt><@t.page 'status'/>:</dt>
+                <dd>
+                    <@t.page 'status.content.'+(a.status)!/>
+                </dd>
+            </dl>
+        <#if 1=a.status>
+            <dl>
+                <dt><@t.page 'inspector'/>:</dt>
+                <dd class="exclude-translate">
+                     <@_sysUser id=a.checkUserId>${(object.nickName)!}</@_sysUser>
+                </dd>
+            </dl>
+        </#if>
+            <dl class="nowrap">
+                <dt><#if model.onlyUrl>${(model.fieldTextMap['url'])!}<#else><@t.page 'url'/></#if>:</dt>
+                <dd class="exclude-translate">
+                    <a href="${(a.url)!}" target="_blank">${(a.url)!}</a>
+                </dd>
+            </dl>
+        <#if a?has_content&&a.copied>
+            <dl>
+                <dt>${(model.fieldTextMap['source'])!}:</dt>
+                <dd class="exclude-translate">${(attribute.source)!}</dd>
+            </dl>
+            <dl>
+                <dt>${(model.fieldTextMap['sourceUrl'])!}:</dt>
+                <dd class="exclude-translate">
+                    <a href="${(attribute.sourceUrl)!}" target="_blank">${(attribute.sourceUrl)!}</a>
+                </dd>
+            </dl>
+        </#if>
+        <#if fieldList?seq_contains('author')>
+            <dl>
+                <dt>${(model.fieldTextMap['author'])!}:</dt>
+                <dd class="exclude-translate">${(a.author)!}</dd>
+            </dl>
+        </#if>
+        <#if fieldList?seq_contains('editor')>
+            <dl>
+                <dt>${(model.fieldTextMap['editor'])!}:</dt>
+                <dd class="exclude-translate">${(a.editor)!}</dd>
+            </dl>
+        </#if>
+        <#if category?has_content && (a.tagIds)?has_content>
+<#if category.tagTypeIds?has_content>
+    <@_tagType ids=category.tagTypeIds>
+        <#list map as k,tagType>
+            <dl class="nowrap">
+                <dt>${tagType.name}:</dt>
+                <dd class="exclude-translate">
+                    <@_tag ids=a.tagIds>
+                        <#list map as j,tag>
+                            <#if tag.typeId=k>
+                                ${tag.name},
+                            </#if>
+                        </#list>
+                    </@_tag>
+                </dd>
+            </dl>
+        </#list>
+    </@_tagType>
+<#else>
+            <dl class="nowrap">
+                <dt>${(model.fieldTextMap['tag'])!}:</dt>
+                <dd class="exclude-translate">
+                    <@_tag ids=a.tagIds>
+                        <#list map as j,tag>
+                            ${tag.name}<#sep>,
+                        </#list>
+                    </@_tag>
+                </dd>
+            </dl>
+</#if>
+        </#if>
+        <#if fieldList?seq_contains('description')>
+            <dl class="nowrap">
+                <dt>${(model.fieldTextMap['description'])!}:</dt>
+                <dd class="exclude-translate">
+                    ${(a.description)!}
+                </dd>
+            </dl>
+        </#if>
+            <dl>
+                <dt><@t.page 'publish_date'/>:</dt>
+                <dd>
+                    ${(a.publishDate)!}
+                </dd>
+            </dl>
+        <#if fieldList?seq_contains('cover')&&a.cover?has_content>
+            <dl class="nowrap">
+                <dt>${(model.fieldTextMap['cover'])!}:</dt>
+                <dd>
+                    <div class="thumbnail">
+                        <img src="${(a.cover)!}"/>
+                    </div>
+                </dd>
+            </dl>
+        </#if>
+        <#include "../include_page/extendData.html"/>
+        <#if category?has_content&&category.extendId?has_content>
+            <@_sysExtendFieldList extendId=category.extendId>
+                <#assign
+                    extendList=list![]
+                    extendValue=attribute!{}
+                />
+                <@extendData 'categoryExtendDataList' extendList extendValue 'view' safe/>
+            </@_sysExtendFieldList>
+        </#if>
+        <#if model?has_content>
+            <#assign
+                extendList=model.extendList![]
+                extendValue=attribute!{}
+            />
+            <@extendData 'modelExtendDataList' extendList extendValue 'view' safe/>
+        </#if>
+        <#if a?has_content&&(a.hasImages||a.hasFiles)>
+            <#if a.hasImages>
+            <dl class="nowrap">
+                <dt><@t.page 'image_list'/>:</dt>
+                <dd>
+            <@_contentFileList contentId=a.id fileTypes='image'>
+                <#list page.list as file>
+                    <div class="thumbnail">
+                        <img src="${(file.filePath)!}"/>
+                    </div>
+                </#list>
+            </@_contentFileList>
+                </dd>
+            </dl>
+            </#if>
+            <#if a.hasFiles>
+                <dl class="nowrap">
+                    <dt><@t.page 'attach_list'/>:</dt>
+                    <dd>
+                <@_contentFileList contentId=a.id fileTypes='video,audio,other'>
+                    <#list page.list as file>
+                        <a href="${(file.filePath)!}" target="_blank">${(file.filePath)!}</a>
+                    </#list>
+                </@_contentFileList>
+                    </dd>
+                </dl>
+            </#if>
+        </#if>
+        <#if a.hasProducts>
+            <dl class="nowrap">
+                <dt><@t.page 'product_list'/>:</dt>
+                <dd>
+            <@_contentProductList contentId=a.id>
+                <#list page.list as product>
+                    <div class="unit">
+                        <#if product.cover?has_content>
+                            <p class="thumbnail">
+                                <img src="${(product.cover)!}"/>
+                            </p>
+                        </#if>
+                        <p><label><@t.page 'title'/>:</label>${product.title}</p>
+                        <p><label><@t.page 'product.price'/>:</label>${product.price}</p>
+                        <p><label><@t.page 'product.inventory'/>:</label>${product.inventory}</p>
+                        <p><label><@t.page 'product.sales'/>:</label>${product.sales}</p>
+                    </div>
+                    <div class="divider"></div>
+                </#list>
+            </@_contentProductList>
+                </dd>
+            </dl>
+        </#if>
+        <#if fieldList?seq_contains('content')>
+            <dl class="nowrap">
+                <dt>${(model.fieldTextMap['content'])!}:</dt>
+                <dd id="content" class="exclude-translate">
+                    <#if safe>${(attribute.text?no_esc)!}<#else>${(attribute.text)!}</#if>
+                </dd>
+            </dl>
+        </#if>
+    </#if>
+    <#if a?has_content>
+        <@_contentRelatedList contentId=a.id>
+            <#if page.totalCount gt 0>
+            <dl class="nowrap">
+                <dt><@t.page 'recommend_info'/>:</dt>
+                <dd class="exclude-translate">
+                    <#list page.list as a>
+                        <a href="${(a.url)!}" target="_blank">${(a.title)!}</a>
+                    </#list>
+                </dd>
+            </dl>
+            </#if>
+        </@_contentRelatedList>
+        <@_sysAuthorized roleIds=admin.roles urls='cmsComment/list,cmsComment/edit'><#assign authorizedMap=map/></@_sysAuthorized>
+        <@_commentList advanced=true contentId=a.id pageSize=0>
+            <dl class="nowrap">
+                <dt>
+                    <#if authorizedMap['cmsComment/edit']>
+                        <a href="cmsComment/edit.html?contentId=${a.id}"  target="dialog" mask="true"><@t.page 'comment'/></a>
+                    <#else>
+                        <@t.page 'comment'/>
+                    </#if>
+                    :
+                </dt>
+                <dd class="exclude-translate">
+                    <#if authorizedMap['cmsComment/list']>
+                        <a href="cmsComment/list.html?contentId=${a.id}" target="navTab" rel="cmsComment/list" icon="<i class='icon-comment icon-large'></i>" title="<@t.page 'comment.management'/>">${page.totalCount!}</a>
+                    <#else>
+                        ${page.totalCount!}
+                    </#if>
+                </dd>
+            </dl>
+        </@_commentList>
+    </#if>
+</div>
+<div class="formBar">
+    <ul>
+        <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+    </ul>
+</div>

@@ -1,6 +1,8 @@
 # OnePetrology
-Belonging to the DDE International Big Science Program, it focuses on the research of igneous rock discipline and adopts a "library graphics and text" three in one approach to conduct discipline research by building databases and conducting mapping. 
 
-[visit OnePetrology](https://dde.igeodata.org)
+![OnePetrology Igneous Database ](../images/logo.png) 
+![DDE of IUGS](../images/ddelogo.png)
 
-![Structure](images/structure.png)
+Currently, the desktop software is developed using pyqt and qgis.
+
+the main entry point is AppMain.py . please use qgis 3.22.8 or higher's python environment to run it.

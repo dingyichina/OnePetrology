@@ -1,0 +1,26 @@
+<div class="service-area bg2 sp">
+        <div class="container">
+            <div class="section-title">
+                     <h2>项目要闻</h2>
+            </div>
+			
+			<@_contentList  categoryId=138  pageIndex=0  pageSize=5 > 
+            <ul class="list-unstyled">
+                
+                    <ul class="list-group">
+                        	<#list page.list as a>
+                           <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <a href="${site.dynamicPath!}bgxjs/news.html?id=${(a.id)!}" }>
+                                    <h5 class="mt-0 mb-1">
+                                          ${(a.title)!}
+                                    </h5>
+                                </a>
+                                <span class="badge badge-primary badge-pill">${a.createDate?date} </span>
+                            </li>
+                        	</#list>		
+                    </ul>
+            </ul>
+				</@_contentList>
+
+        </div>
+    </div>

@@ -1,0 +1,289 @@
+<@_content id=id!copyId absoluteURL=false>
+    <#assign
+        a=object
+        parentId=a.parentId!''
+        categoryId=a.categoryId!''
+        modelId=a.modelId!''
+        attribute=getContentAttribute(a.id)!{}
+    />
+</@_content>
+<@_category id=categoryId!><#assign category=object/></@_category>
+<@_model id=modelId!><#assign model=object/></@_model>
+<script>
+</script>
+<form method="post" autocomplete="off" action="cmsContent/save?callbackType=closeCurrent&navTabId=cmsContent/list&forwardUrl=" class="pageForm required-validate" onsubmit="clickAddTag(); return validateCallback(this,navTabAjaxDone);">
+    <input name="id" type="hidden" value="${id!}" />
+    <input name="parentId" type="hidden" value="${parentId!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+            <li>
+                <label><input type="checkbox" name="draft"/><@t.page 'draft'/></label>
+            </li>
+        <@_sysAuthorized roleIds=admin.roles url='cmsContent/check'>
+            <li>
+                <label>
+                    <input type="checkbox" name="checked" onclick="if($(this).is(':checked')){$('input[name=draft]',navTab.getCurrentPanel()).parent().parent().hide();}else{$('input[name=draft]',navTab.getCurrentPanel()).parent().parent().show();}"/>
+                    <@t.page 'check_passed'/>
+                </label>
+            </li>
+        <#if a?has_content&&1=a.status><script>$('input[name=checked]',navTab.getCurrentPanel()).click();</script></#if>
+        </@_sysAuthorized>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+    <div class="tabs">
+        <div class="tabsHeader">
+            <div class="tabsHeaderContent">
+                <ul>
+                    <li><a href="javascript:;" onclick="return false;"><@t.page 'base_info'/></a></li>
+                    <li><a href="javascript:;" onclick="return false;"><@t.page 'recommend_info'/></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="tabsContent unitBox">
+            <div class="pageFormContent" layoutH>
+        <#if model?has_content>
+            <#assign fieldList=model.fieldList![]/>
+            <#assign requiredFieldList=model.requiredFieldList![]/>
+            <@_content id=parentId>
+                <dl class="nowrap">
+                    <dt><@t.page 'content.parent'/>:</dt>
+                    <dd>
+                        ${(object.title)!}
+                    </dd>
+                </dl>
+            </@_content>
+                <dl class="nowrap">
+                    <dt><@t.page 'category'/>:</dt>
+                    <dd>
+                        <input name="categoryId" type="hidden" value="${categoryId!}"/>
+                        <label style="width:auto">${(category.name)!}</label>
+                   <#if !parentId?has_content>
+                        <input name="quoteCategoryId" type="hidden"/>
+                        <input name="categoryName" type="hidden"/>
+                        <div class="tagsBox categoryIds"></div>
+                        <a class="btnLook" href="cmsCategory/lookupByModelId.html?field=quoteCategoryId&modelId=${modelId!}&currentCategoryId=${categoryId!}" width="920" lookupGroup=""><@t.page 'category.select'/></a>
+                    </#if>
+                    </dd>
+                </dl>
+                    <#if !parentId?has_content>
+<script>
+$('input[name=\'categoryName\']',navTab.getCurrentPanel()).on('change',function(){
+    addCategory($('input[name=\'quoteCategoryId\']',navTab.getCurrentPanel()).val(), $(this).val(), null);
+});
+<#assign copy=false/>
+<#if a?has_content>
+<@_contentQuoteList quoteId=a.id>
+    <#list list as a>
+    <@_category id=a.categoryId>
+    addCategory('${a.categoryId}','${object.name}','${a.id}');
+    </@_category>
+    </#list>
+</@_contentQuoteList>
+<#if copyId?has_content && !id?has_content><#assign copy=true/></#if>
+</#if>
+</script>
+                    </#if>
+                <dl>
+                    <dt><@t.page 'model'/>:</dt>
+                    <dd>
+                        <input name="modelId" type="hidden" value="${modelId!}"/>
+                        ${(model.name)!}
+                    </dd>
+                </dl>
+                <dl class="nowrap">
+                    <dt>${(model.fieldTextMap['title'])!t.pageMessage('title')}:</dt>
+                    <dd>
+                        <input class="required" name="title" type="text" maxlength="250" size="60" value="${(a.title)!}"/>
+            <#if fieldList?seq_contains('copied')>
+                        <label><input name="copied" type="checkbox"/>${(model.fieldTextMap['copied'])!}</label>
+<script>
+$('input[name=copied]',navTab.getCurrentPanel()).click(function(){
+    if($(this).is(':checked')) {
+        $('.copied',navTab.getCurrentPanel()).show();
+        $('.copied input[data-required=true]',navTab.getCurrentPanel()).addClass('required');
+    } else {
+        $('.copied',navTab.getCurrentPanel()).hide();
+        $('.copied input[data-required=true]',navTab.getCurrentPanel()).removeClass('required').val('');
+    }
+});
+</script>
+            </#if>
+                    </dd>
+                </dl>
+                <dl class="copied hide">
+                    <dt>${(model.fieldTextMap['source'])!}:</dt>
+                    <dd><input name="source" autocomplete="on" type="text"<#if requiredFieldList?seq_contains('source')> data-required="true"</#if> maxlength="50" size="20" value="${(attribute.source)!}"/></dd>
+                </dl>
+                <dl class="copied hide">
+                    <dt>${(model.fieldTextMap['sourceUrl'])!}:</dt>
+                    <dd><input class="url" name="sourceUrl" autocomplete="on" type="text"<#if requiredFieldList?seq_contains('sourceUrl')> data-required="true"</#if> maxlength="250" size="20" value="${(attribute.sourceUrl)!}"/></dd>
+                </dl>
+            <#if a?has_content&&a.copied&&fieldList?seq_contains('copied')>
+<script>
+$('input[name=copied]',navTab.getCurrentPanel()).click();
+</script>
+            </#if>
+            <#if model.onlyUrl>
+                <dl class="nowrap">
+                    <dt>${(model.fieldTextMap['url'])!}:</dt>
+                    <dd>
+                        <input name="url" class="required" type="text" maxlength="1000" size="60" value="${(a.url)!}"/>
+                    </dd>
+                </dl>
+            </#if>
+            <#if fieldList?seq_contains('tag')>
+                 <#include "../include_page/tags.html"/>
+                 <#assign
+                     tagTypeIds=(category.tagTypeIds)!''
+                     tagIds=(a.tagIds)!''
+                     tagText=(model.fieldTextMap['tag'])!''
+                 >
+                 <@tags tagText tagTypeIds tagIds/>
+            </#if>
+            <#if fieldList?seq_contains('author')>
+                <dl>
+                    <dt>${(model.fieldTextMap['author'])!}:</dt>
+                    <dd><input name="author"<#if requiredFieldList?seq_contains('author')> class="required"</#if> autocomplete="on" type="text" maxlength="50" size="20" value="${(a.author)!}"/></dd>
+                </dl>
+            </#if>
+            <#if fieldList?seq_contains('editor')>
+                <dl>
+                    <dt>${(model.fieldTextMap['editor'])!}:</dt>
+                    <dd><input name="editor"<#if requiredFieldList?seq_contains('editor')> class="required"</#if> autocomplete="on" type="text" maxlength="50" size="20" value="${(a.editor)!}"/></dd>
+                </dl>
+            </#if>
+            <#if fieldList?seq_contains('description')>
+                <dl class="nowrap">
+                    <dt>${(model.fieldTextMap['description'])!}:</dt>
+                    <dd>
+                        <textarea name="description"<#if requiredFieldList?seq_contains('description')> class="required"</#if> maxlength="150" cols="80" rows="4">${(a.description)!}</textarea>
+                    </dd>
+                </dl>
+            </#if>
+                <dl>
+                    <dt><@t.page 'content.timming'/>:</dt>
+                    <dd>
+                      <input name="timing" type="checkbox" onclick="if($(this).is(':checked')){$('.publishDate',navTab.getCurrentPanel()).show();$('input[name=publishDate]',navTab.getCurrentPanel()).addClass('required').addClass('valid')}else{$('.publishDate',navTab.getCurrentPanel()).hide();$('input[name=publishDate]',navTab.getCurrentPanel()).removeClass('required').removeClass('valid')}"/>
+                    </dd>
+                </dl>
+                <dl class="publishDate hide">
+                    <dt><@t.page 'publish_date'/>:</dt>
+                    <dd>
+                        <input type="text" name="publishDate" class="date" size="20" autocomplete="off" dateFmt="yyyy-MM-dd HH:mm:ss" value="${(a.publishDate)!}"/>
+                    </dd>
+                </dl>
+                <dl class="publishDate hide">
+                    <dt><@t.page 'expiry_date'/>:</dt>
+                    <dd>
+                        <input type="text" name="expiryDate" class="date" size="20" autocomplete="off" dateFmt="yyyy-MM-dd HH:mm:ss" value="${(a.expiryDate)!}"/>
+                    </dd>
+                </dl>
+            <#if a?has_content&&(a.publishDate gt .now || a.expiryDate?has_content)>
+<script>
+$('input[name=timing]',navTab.getCurrentPanel()).click();
+</script>
+            </#if>
+            <#if fieldList?seq_contains('cover')>
+                <dl class="nowrap">
+                    <dt>${(model.fieldTextMap['cover'])!}:</dt>
+                    <dd>
+                        <input name="cover"<#if requiredFieldList?seq_contains('cover')> class="required"</#if> value="${(a.cover)!}" maxlength="300" size="50" type="text"/>
+                        <a class="btnAttach" href="common/upload.html?field=cover&fileTypes=image" lookupGroup="" width="1000" height="600">${(model.fieldTextMap['cover'])!}</a>
+                        <#include "../include_page/preview.html"/>
+                        <@preview 'content' 'input[name=cover]'/>
+                    </dd>
+                </dl>
+            </#if>
+            <#include "../include_page/extendData.html"/>
+            <#if category?has_content&&category.extendId?has_content>
+                 <@_sysExtendFieldList extendId=category.extendId>
+                    <#assign extendList=list![]/>
+                    <#assign extendValue=attribute!{}/>
+                    <@extendData 'categoryExtendDataList' extendList extendValue/>
+                 </@_sysExtendFieldList>
+            </#if>
+            <#assign
+                extendList=model.extendList![]
+                extendValue=attribute!{}
+            />
+            <@extendData 'modelExtendDataList' extendList extendValue/>
+            <#if fieldList?seq_contains('content')>
+                <dl class="nowrap">
+                    <dt>${(model.fieldTextMap['content'])!}:</dt>
+                    <dd>
+                        <textarea name="text" class="editor<#if requiredFieldList?seq_contains('content')> required</#if>" escape="true" editorType="${model.editorType!}">${(attribute.text)!}</textarea>
+                    </dd>
+                </dl>
+            </#if>
+            <div class="clearfix"></div>
+            <#if model.hasImages||model.hasFiles>
+                <#include "../include_page/contentFiles.html"/>
+                <#if model.hasImages>
+                <fieldset>
+                    <legend><@t.page 'image_list'/></legend>
+                    <@contentFiles true id!copyId copy/>
+                </fieldset>
+                </#if>
+                <#if model.hasFiles>
+                <fieldset>
+                    <legend><@t.page 'attach_list'/></legend>
+                    <@contentFiles false id!copyId copy/>
+                </fieldset>
+                </#if>
+            </#if>
+            <#if model.hasProducts>
+                <#include "../include_page/contentProducts.html"/>
+                <fieldset>
+                    <legend><@t.page 'product_list'/></legend>
+                    <@contentProducts id!copyId copy/>
+                </fieldset>
+            </#if>
+        </#if>
+            </div>
+            <div class="pageFormContent" layoutH>
+                <table class="list nowrap itemDetail" addButton="<@t.page 'button.new_line'/>" width="100%">
+                    <thead>
+                        <tr>
+                            <th type="lookup" name="contentRelateds[#index#].title" size="30" fieldClass="required" fieldAttrs="{maxlength:255,width:1200,height:580}" lookupGroup="contentRelateds[#index#]" lookupUrl="cmsContent/lookup.html" lookupPk="relatedContentId"><@t.page 'content.select'/></th>
+                            <th type="text" name="contentRelateds[#index#].url" size="40" fieldClass="required" fieldAttrs="{maxlength:2048}"><@t.page 'address'/></th>
+                            <th type="textarea" name="contentRelateds[#index#].description" fieldAttrs="{maxlength:150,rows:2,cols:60}"><@t.page 'description'/></th>
+                            <th type="text" name="contentRelateds[#index#].sort" fieldClass="required digits" defaultval="#index#" size="5"><@t.page 'sort'/></th>
+                            <th type="del" width="100"><@t.page 'operate'/></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        <#if id?has_content>
+            <@_contentRelatedList contentId=id>
+                <#list page.list as related>
+                        <tr>
+                            <td>
+                                <input type="hidden" name="contentRelateds[${related?index}].id" value="${related.id}"/>
+                                <input type="hidden" name="contentRelateds[${related?index}].relatedContentId" value="${related.relatedContentId!}"/>
+                                <input class="required" type="text" name="contentRelateds[${related?index}].title" value="${related.title}" size="30" maxlength="255" class="required" />
+                                <a class="btnLook" href="cmsContent/lookup.html" lookupGroup="contentRelateds[${related?index}]" lookupPk="relatedContentId" width="1200" height="580"><@t.page 'content.select'/></a>
+                            </td>
+                            <td>
+                                <input class="required" type="text" name="contentRelateds[${related?index}].url" value="${(related.url)!}" size="40" maxlength="2048"/>
+                            </td>
+                            <td>
+                                <textarea name="contentRelateds[${related?index}].description" rows="2" cols="60" maxlength="150">${(related.description)!}</textarea>
+                            </td>
+                            <td>
+                                <input class="required digits" type="text" name="contentRelateds[${related?index}].sort" value="${related.sort!}" size="5" maxlength="5"/>
+                            </td>
+                            <td>
+                                <a href="javascript:;" class="btnDel"><@t.page 'button.delete'/></a>
+                            </td>
+                        </tr>
+                </#list>
+            </@_contentRelatedList>
+        </#if>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>

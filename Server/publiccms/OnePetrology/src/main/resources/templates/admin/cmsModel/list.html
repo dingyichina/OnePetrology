@@ -1,0 +1,65 @@
+<#if parentId?has_content>
+    <@_model id=parentId>
+        <#assign parent=object/>
+    </@_model>
+</#if>
+<div class="pageHeader">
+    <form class="pagerForm" autocomplete="off" onsubmit="return navTabSearch(this);" method="post">
+        <div class="searchBar">
+            <ul class="searchContent">
+                <li>
+                    <#if parent?has_content>
+                       <label><@t.page 'model.parent'/>:</label><label>${(parent.name)!}</label>
+                    </#if>
+                </li>
+            </ul>
+        </div>
+    </form>
+</div>
+<div class="pageContent">
+    <div class="panelBar">
+        <ul class="toolBar">
+            <#if parent?has_content>
+                <li><a href="cmsModel/list.html?parentId=${(parent.parentId?url)!}" target="navTab" rel="cmsModel/list"><i class="icon-circle-arrow-up icon-large"></i> <@t.page 'button.return'/></a></li>
+                <li class="line">line</li>
+            </#if>
+            <li><a href="cmsModel/add.html?parentId=${(parent.id?url)!}" target="navTab" rel="cmsModel/add"><i class="icon-plus-sign-alt icon-large"></i> <@t.page 'model.add'/></a></li>
+        </ul>
+    </div>
+<@_modelList parentId=parentId hasChild=hasChild>
+    <table class="table" width="100%" layoutH>
+        <thead>
+            <tr>
+                <th width="80"><@t.page 'id'/></th>
+                <th><@t.page 'name'/></th>
+                <th><@t.page 'url'/></th>
+                <th><@t.page 'model.has_images'/></th>
+                <th><@t.page 'model.has_attachs'/></th>
+                <th><@t.page 'operate'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.id?url}">
+                <td>${a.id!}</td>
+                <td class="exclude-translate">${(a.name)!}</td>
+                <td>${a.onlyUrl?then(t.pageMessage('yes'),'')}</td>
+                <td>${a.hasImages?then(t.pageMessage('yes'),'')}</td>
+                <td>${a.hasFiles?then(t.pageMessage('yes'),'')}</td>
+                <td class="wrap">
+                    <a href="cmsModel/add.html?id=${a.id?url}" class="edit btnText blue" target="navTab" rel="cmsModel/edit"><i class="icon-edit"></i> <@t.page 'model.edit'/></a>
+                    <#if a.hasChild>
+                        <a href="cmsModel/list.html?parentId=${a.id?url}" class="btnText" target="navTab" rel="cmsModel/list"><@t.page 'model.child_management'/></a>
+                    </#if>
+                    <#if !site.parentId?has_content>
+                        <@_sysAuthorized roleIds=admin.roles url='cmsModel/delete'>
+                            <a href="cmsModel/delete?id=${a.id?url}&_csrf=<@_csrfToken admin=true/>" class="btnText warn" ttitle="<@t.page 'confirm.delete'/>" target="ajaxTodo"><i class="icon-trash"></i> <@t.page 'button.delete'/></a>
+                        </@_sysAuthorized>
+                    </#if>
+                </td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+</@_modelList>
+</div>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	    <title>OnePetrology：Our team scientists</title>
+	<@_includePlace path="/Header-link.html"/> <#-- head-link -->
+
+</head>
+<body>
+    <main>
+	<@_includePlace path="/header.html"/> <#-- header -->
+	
+		<div class="locationbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- start location -->
+                    <ul class="breadcrumb pull-left">
+                        <li class="breadcrumb-prefix breadcrumb-item d-none d-md-block">You Are Here: </li>
+
+                        <li class="breadcrumb-item"><a href="${site.dynamicPath!}">Home</a></li>
+
+                        <li class="breadcrumb-item"><a href="${site.dynamicPath!}ourteam.html">Our Team</a></li>
+
+                    </ul>
+                    <!-- end location -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="bc-blk-07">
+                        <div class="bc-blk-hd">
+                            <h4 class="bc-blk-hd-title"><span>Our Team</span></h4>
+                            <p class="bc-blk-hd-desc">
+                                We warmly welcome all experts in the field of petrology to join us. At present, our team members are mainly from the Institute of Geology of the Chinese Academy of Geological Sciences, the Development and Research Center of the Chinese Geological Survey, the Deep Exploration Center of the Chinese Academy of Geological Sciences, the Beijing Example Probe Center and other units. We warmly welcome experts from all walks of life to exchange letters.
+                            </p>
+                        </div>
+                        <div class="bc-blk-bd">
+                            <div class="bc-multi-col-pictext-list-06">
+                                <div class="row">
+									<!--  此处循环所有的科学家--->
+									   <@_category code="team-scientist">
+						                  <@_contentList categoryId=object.id containChild=true hasCover=true pageSize=120>
+									
+									            <#list page.list as a>
+												<div class="col-md-4 col-12">
+													<div class="item top-space-clear top-space-clear-sm">
+														<div class="img-ctn">
+															<a href="/person/detail.html?id=${a.id}" target="_blank">
+																<img class="img-fluid" src="${a.cover}" />
+															</a>
+														</div>
+														<div class="text-ctn">
+															<h4 class="art-caption"><a href="/person/detail.html?id=${a.id}" title="${a.title}" target="_blank">${a.title!}</a></h4>
+															<p class="art-abstract">${a.description!}</p>
+														</div>
+													</div>
+												</div>
+                                               </#list>
+									      </@_contentList>
+                                    </@_category> 			  
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+		
+		
+		
+	</main>
+    <footer>
+ <@_includePlace path="/53d9aa26-ab9a-41df-90d5-efc5307c3b3e.html"/> <#-- footer -->
+    </footer>
+    <script src="${site.dynamicPath}resource/js/cms.analytics.js"></script>
+    <script>
+        var ca = cmsAnalytics();
+        var url='${site.dynamicPath}api/visit/record';
+        if("string" ==typeof itemString){
+            url=url+"?"+itemString;
+        }
+        ca.report(url);
+    </script>
+</body>
+</html>

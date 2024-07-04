@@ -1,0 +1,43 @@
+<@_contentProduct id=id><#assign a=object/></@_contentProduct>
+<form method="post" autocomplete="off" action="cmsContentProduct/save?callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+    <input name="id" type="hidden" value="${id!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="pageFormContent" layoutH>
+        <dl class="nowrap">
+            <dt><@t.page 'title'/>:</dt>
+            <dd>${(a.title)!}</dd>
+        </dl>
+    <#if (a.cover)?has_content>
+        <dl>
+            <dt><@t.page 'cover'/>:</dt>
+            <dd>
+                <div class="thumbnail">
+                    <img src="${(a.cover)!}"/>
+                </div>
+            </dd>
+        </dl>
+    </#if>
+        <dl>
+            <dt><@t.page 'product.price'/>:</dt>
+            <dd><input class="required number" name="price" type="text" size="10" maxlength="20" value="${(a.price)!}"/></dd>
+        </dl>
+        <dl>
+            <dt><@t.page 'product.inventory'/>:</dt>
+            <dd><input class="required digits" name="inventory" type="text" size="10" maxlength="20" value="${(a.inventory)!}"/></dd>
+        </dl>
+        <dl>
+            <dt><@t.page 'product.quantity_limit'/>:</dt>
+            <dd>
+                <input class="digits"  name="minQuantity" type="text" size="10" maxlength="20" value="${(a.minQuantity)!}"/>
+                <span>-</span>
+                <input class="digits" name="maxQuantity" type="text" size="10" maxlength="20" value="${(a.maxQuantity)!}"/>
+            </dd>
+        </dl>
+    </div>
+    <div class="formBar">
+        <ul>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+</form>

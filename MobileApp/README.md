@@ -1,2 +1,7 @@
 # OnePetrology
-Belonging to the DDE International Big Science Program, it focuses on the research of igneous rock discipline and adopts a "library graphics and text" three in one approach to conduct discipline research by building databases and conducting mapping. 
+# OnePetrology
+
+![OnePetrology Igneous Database ](../images/logo.png) 
+![DDE of IUGS](../images/ddelogo.png)
+
+Currently, the mobile app is developped based flet, just a demo, more funtions is adding.

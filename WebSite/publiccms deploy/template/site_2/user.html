@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<@_includePlace path="/63241365-51a7-4903-89e6-7619031fa9fe.html"/> <#-- Header-link -->
+</head>
+<body class="menu-always-on-top">
+	<@_includePlace path="/c8014652-e25e-4c4d-a3ca-9aad7fa0385c.html"/> <#-- header -->
+	<main>
+		<div class="container clearfix-after" style="margin:100px;">
+			<h1><a href="${site.dynamicPath}user.html?id=${user.id}">${user.nickName!}的个人页面</a><#if user.superuserAccess>[管理员]</#if></h1>
+			<div class="comment-box">
+				<@_commentList contentId=contentId userId=id pageIndex=pageIndex pageSize=10>
+					<@import path="/ftl/tools.ftl" namespace="t"/><#-- 工具 -->
+					<#list page.list as a>
+						<@t.merge 'userIds' a.replyUserId!/>
+						<@t.merge 'contentIds' a.contentId!/>
+					</#list>
+					<@_sysUser ids=t.userIds!><#assign userMap=map!/></@_sysUser>
+					<@_content ids=t.contentIds!><#assign contentMap=map!/></@_content>
+					<#if page.totalCount gt 0>
+						<h3>内容评论</h3>
+						<ul>
+							<#list page.list as a>
+							<li class="underline">
+								<p>${a.createDate?string('yyyy-MM-dd hh:mm')} 评论《<a href="${contentMap[a.contentId?string].url}" target="_blank">${contentMap[a.contentId?string].title}</a>》</p>
+								<#if a.replyId?has_content>
+									<@_comment id=a.replyId>
+										<p class="reply"><a href="${site.dynamicPath}user.html?id=${(a.replyUserId)!}" target="_blank">@${userMap[(a.replyUserId)?string].nickName}</a> : ${object.text!}</p>
+									</@_comment>
+								</#if>
+								<p>${a.text!}</p>
+							</li>
+							</#list>
+						</ul>
+					</#if>
+					<#if page??>
+					<div class="page">
+						<#if !page.firstPage>
+						<a href="${site.dynamicPath}user.html?id=${user.id!}&pageIndex=${page.prePage}">上一页</a>
+						<#else>
+						<span>上一页</span>
+						</#if>
+						<#assign start=1/>
+						<#if (page.pageIndex-5) gt start>
+						<#assign start=page.pageIndex-4/>
+						</#if>
+						<#assign end=page.totalPage/>
+						<#if (page.pageIndex+5) lt end>
+						<#assign end=page.pageIndex+4/>
+						</#if>
+						<#if start gt 1>
+						<a href="${site.dynamicPath}user.html?id=${user.id!}&pageIndex=1">1</a> ...
+						</#if>
+						<#list start..end as n><a href="${site.dynamicPath}user.html?id=${user.id!}&pageIndex=${n}"<#if n=page.pageIndex> class="selected"</#if>>${n}</a></#list>
+						<#if end lt page.totalPage>
+						... <a href="${site.dynamicPath}user.html?id=${user.id!}&pageIndex=${page.totalPage}">${page.totalPage}</a>
+						</#if>
+						<#if !page.lastPage>
+						<a href="${site.dynamicPath}user.html?id=${user.id!}&pageIndex=${page.nextPage}">下一页</a>
+						<#else>
+						<span>下一页</span>
+						</#if>
+					</div>
+					</#if>
+				</@_commentList>
+			</div>
+		</div>
+	</main>
+	<script>
+		var itemString="itemType=user&itemId=${user.id}";
+	</script>
+	<@_includePlace path="/f95e232b-027b-40ae-9e2d-0a6385f7c418.html"/> <#-- footer -->
+</body>
+</html>

@@ -1,0 +1,12 @@
+name: flet_map
+description: "flutter_map wrapper"
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: '>=3.3.3 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter_map: ^7.0.1
+  flet: ^0.22.0

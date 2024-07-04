@@ -1,0 +1,99 @@
+<@_rEElement id=id><#assign a=object/></@_rEElement>
+<form method="post" action="rEElement/save.do?callbackType=closeCurrent&navTabId=rEElement/list" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <input name="id" type="hidden" value="${id!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+    <div class="pageContent">
+        <div class="pageFormContent" layoutH="56">
+            <dl>
+                <dt>ID：</dt>
+                <dd><input class="required" name="id" type="text" size="30" value="${(a.id)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>样品：</dt>
+                <dd><input class="required" name="sampleId" type="text" size="30" value="${(a.sampleId)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>镧(10<sup>-6</sup>)：</dt>
+                <dd><input class="required" name="la" type="text" size="30" value="${(a.la)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铈(10<sup>-6</sup>)：</dt>
+                <dd><input class="required" name="ce" type="text" size="30" value="${(a.ce)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>镨(10<sup>-6</sup>)：</dt>
+                <dd><input class="required" name="pr" type="text" size="30" value="${(a.pr)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钕(10<sup>-6</sup>)：</dt>
+                <dd><input class="required" name="nd" type="text" size="30" value="${(a.nd)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钐(10<sup>-6</sup>)：</dt>
+                <dd><input class="required" name="sm" type="text" size="30" value="${(a.sm)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铕(10<sup>-6</sup>)：</dt>
+                <dd><input class="required" name="eu" type="text" size="30" value="${(a.eu)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钆(10<sup>-6</sup>)：</dt>
+                <dd><input class="required" name="gd" type="text" size="30" value="${(a.gd)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铽(10<sup>-6</sup>)：</dt>
+                <dd><input class="required" name="tb" type="text" size="30" value="${(a.tb)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>镝(10<sup>-6</sup>)：</dt>
+                <dd><input class="required" name="dy" type="text" size="30" value="${(a.dy)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钬(10<sup>-6</sup>)：</dt>
+                <dd><input class="required" name="ho" type="text" size="30" value="${(a.ho)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铒(10<sup>-6</sup>)：</dt>
+                <dd><input class="required" name="er" type="text" size="30" value="${(a.er)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铥(10<sup>-6</sup>)：</dt>
+                <dd><input class="required" name="tm" type="text" size="30" value="${(a.tm)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>镱(10<sup>-6</sup>)：</dt>
+                <dd><input class="required" name="yb" type="text" size="30" value="${(a.yb)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>镥(10<sup>-6</sup>)：</dt>
+                <dd><input class="required" name="lu" type="text" size="30" value="${(a.lu)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钇(10<sup>-6</sup>)：</dt>
+                <dd><input class="required" name="y" type="text" size="30" value="${(a.y)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>钪(10<sup>-6</sup>)：</dt>
+                <dd><input class="required" name="sc" type="text" size="30" value="${(a.sc)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>稀土总量(10<sup>-6</sup>)：</dt>
+                <dd><input class="required" name="totalReElement" type="text" size="30" value="${(a.totalReElement)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>数据形式：</dt>
+                <dd><input class="required" name="dataType" type="text" size="30" value="${(a.dataType)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>备注：</dt>
+                <dd><input class="required" name="remark" type="text" size="30" value="${(a.remark)!}"/></dd>
+            </dl>
+        </div>
+    </div>
+</form>

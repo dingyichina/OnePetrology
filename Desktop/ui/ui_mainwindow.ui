@@ -1,0 +1,2016 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>976</width>
+    <height>710</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Microsoft YaHei</family>
+    <pointsize>-1</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>DDE-OnePetrology</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>res/DDE-logo.png</normaloff>res/DDE-logo.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">font-family:&quot;Microsoft YaHei&quot;;
+font-size: 14px;
+QGroupBox{
+    font-family:&quot;Microsoft YaHei&quot;;
+    font-size: 14px;
+    font-weight: bold;
+    color:#f0f0f0;
+	background:#125b4e;
+   border: 1px solid #228c84;
+}
+
+QMainWindow{
+    font-family:&quot;Microsoft YaHei&quot;;
+    font-size: 14px;
+    font-weight: bold;
+    color:#f0f0f0;
+	background:#125b4e;
+}
+QMainWindow#MainWindow{
+    background:#125b4e;
+}
+
+QMenu
+{
+	background-color:#125b4e;
+
+   color:#f0f0f0;
+
+ 
+}
+QMenu::item
+{
+	background-color:#125b4e;
+
+   color:#f0f0f0;
+	border:2px solid rgb(55,55,55);
+	border-radius:3px;
+	padding: 0px 0px 0px 20px;
+	margin:3px 3px 3px 3px;
+}					
+QMenu::item:selected
+{
+    background: #1f6155;
+	color:#f2f2f2;
+}		
+
+QStatusBar{
+	color:#fff;
+}
+QStatusBar QLabel{
+	color:#fff;
+}
+QStatusBar::item{
+	border: 0px
+}
+
+QCheckBox{
+	color:#fff;
+}
+
+QDateTimeEdit, QLineEdit, QTextEdit, QPlainTextEdit{
+	color:#fff;
+	height:20px;
+	padding-left:10px; 
+	background:transparent;
+	border:none;
+	border:1px solid #67968d;
+}
+
+QDateTimeEdit::focus, QLineEdit::focus, QTextEdit::focus, QPlainTextEdit::focus{
+	border:1px solid #00fffb;
+}
+
+QDateTimeEdit:hover{
+    background: #1f6155;
+	color:#f2f2f2;
+}
+
+QCalendarWidget QTableView {
+    alternate-background-color: #125b4e;
+    background-color: #67968d;
+}
+QToolButton#qt_calendar_monthbutton,#qt_calendar_yearbutton{
+    color: #67968d;
+    font: 9px simHei;
+}
+QCalendarWidget QWidget#qt_calendar_navigationbar{
+    background-color: #FFF;
+}
+
+QTextEdit::focus{
+	border:1px solid #00fffb;
+}
+QGroupBox::title {
+	color:#fff;
+}
+QGroupBox QLineEdit{
+    height:20px;
+	padding-left:10px; 
+	background:transparent;
+	border:none;
+	border-bottom:1px solid #67968d;
+}
+
+QDialog{
+    background:#125b4e;
+}
+QDialog QLabel{
+    color:#f0f0f0;
+}
+
+QSplitter::handle{
+	background-color:#125b4e;
+}
+
+QComboBox{
+	color:#fff;
+	height:20px;
+	padding-left:10px; 
+	background:transparent;
+	border: 1px solid #67968d; 
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;   
+    subcontrol-position: top right; 
+    width: 15px; 
+    border-left: 1px solid #67968d; 
+	image: url(&quot;res/qss/combo_drop.png&quot;) 
+}
+QComboBox::drop-down:hover {
+    background: #00fffb;
+}
+
+QComboBox QAbstractItemView {
+    outline: 0px solid gray;
+    border: 1px solid #228c84;
+    color: #FFFFFF;
+    background-color: #07816e;
+    selection-background-color: #1f6155; 
+}
+QComboBox QAbstractItemView::item {
+    padding: 5px 10px; 
+}
+QComboBox QAbstractItemView::item:hover {
+    color: #FFFFFF;
+    background-color: #1f6155;
+}
+
+
+QToolButton{
+	padding:5px;
+	border:none;
+	background:transparent;
+	color:#bebebe;
+}
+QToolButton:hover{
+	background: #1f6155;
+	color:#f2f2f2;
+}
+QToolButton:pressed{
+	background: #34a897;
+	color:#f2f2f2;
+	border-radius: 3px;
+}
+
+QPushButton{
+	border:1px solid #4daa99;
+	color:#e3e3e3;
+	padding:4px 20px;
+}
+QPushButton:hover{
+	background: #1f6155;
+	color:#f2f2f2;
+}
+QPushButton:pressed{
+	background: #34a897;
+	color:#f2f2f2;
+	border-radius: 3px;
+}
+
+
+QToolButton{
+	border:1px solid #4daa99;
+	color:#e3e3e3;
+	padding:4px 20px;
+}
+QToolButton:hover{
+	background: #1f6155;
+	color:#f2f2f2;
+}
+QToolButton:pressed{
+	background: #34a897;
+	color:#f2f2f2;
+	border-radius: 3px;
+}
+
+
+
+QListView{
+	background:transparent;
+	border:1px solid #228c84;
+}
+QListWidget{
+	background:transparent;
+	border:1px solid #228c84;
+	color:#fff;
+}
+
+QToolBox::tab{
+	padding:3px;
+	border-radius:5px;
+	color:#04ddd7;
+	font:15px &quot;Microsoft YaHei&quot;;
+
+}
+QToolTip{
+	border:0px solid #F0F0F0;
+	padding:1px;
+	color:#04ddd7;
+
+}
+
+/*===================================== Radio Button =================================*/
+QRadioButton{
+    color:#f0f0f0;
+    font:12px &quot;Microsoft YaHei&quot;;
+}
+/*===================================== Label =================================*/
+
+QLabel{
+    color:#f0f0f0;
+    font:12px &quot;Microsoft YaHei&quot;;
+}
+
+
+/*===================================== 表格 =================================*/
+QTableView{
+    outline:none;
+    border-top:none;
+    border-bottom-left-radius:4px;
+    border-bottom-right-radius:4px;
+    alternate-background-color:#1b7065; 
+    selection-background-color:#01ae97;
+    gridline-color:#0fa48e;
+   /* color:#f2f2f2;
+    background:transparent;  8*/
+}
+QHeaderView{
+    border:none;
+    border-bottom:1px solid #125b4e;
+    background:#367b6e;
+}
+QHeaderView::section{
+    background:transparent;
+    color:#f2f2f2;
+}
+
+
+/*===================================== 树 =================================*/
+QTreeView{
+	show-decoration-selected:1;
+	border:none; 
+	background:transparent;
+}
+QTreeView::item{
+	height: 25px;
+	color:#eaecec;	
+	border:none;
+	background:transparent;
+}
+
+QTreeView::item:selected:active{  
+	color:f2f2f2;
+}
+
+QTreeView::item:selected:!active{   
+	color:#f2f2f2;	
+}
+QTreeView::branch:has-children:!has-siblings:closed,
+QTreeView::branch:closed:has-children:has-siblings{
+    border-image:none;
+    image:url(&quot;res/qss/tree_right.png&quot;);
+}
+QTreeView::branch:open:has-children:!has-siblings,
+QTreeView::branch:open:has-children:has-siblings{
+    border-image:none;
+    image:url(&quot;res/qss/tree_bottom.png&quot;);
+}
+
+QTreeView::indicator:unchecked {
+	image: url(&quot;res/qss/tree_uncheck.png&quot;);
+}
+QTreeView::indicator:checked {
+	image: url(&quot;res/qss/tree_check.png&quot;);
+}
+QTreeView::item:hover, QTreeView::branch:hover{
+	background:#1f6155;
+}
+QTreeView::item:selected, QTreeView::branch:selected{
+	background:#34a897;
+	color:f2f2f2;
+}
+
+
+/*===================================== Tab =================================*/
+QTabWidget#tabWidget{
+    background:transparent;
+}
+QTabWidget::pane{
+    border-top: 1px solid;
+    border-color: transparent;
+    top:-1px;
+}
+QTabBar::tab {
+    min-width:85px;
+    min-height:26px;
+    color: #FFFFFF;
+    border: 1px solid #e2e2e2; 
+    font:16px &quot;Microsoft YaHei&quot; ;
+}
+QTabBar::tab:selected{
+    min-width:85px;
+    min-height:25px;
+    color: #000;
+    border: 0px solid;
+    background:#00fffb;
+    font:20px &quot;Microsoft YaHei&quot; ;
+}
+
+/*===================================== 垂直滚动条 =================================*/
+/*设置垂直滚动条基本样式*/
+QScrollBar:vertical {
+    width: 14px;
+    background: rgba(0,0,0,0%);
+    margin: 0px,0px,0px,0px;
+    /*留出9px给上面和下面的箭头*/
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
+QScrollBar::handle:vertical {
+    width: 14px;
+    background: #238d71; /* #176857;rgba(0,0,0,25%); */
+    /*滚动条两端变成椭圆 */
+    border-radius: 14px;
+    min-height: 20;
+}
+
+QScrollBar::handle:vertical:hover {
+    width: 14px;
+    /*鼠标放到滚动条上的时候，颜色变深*/
+    background:  #238d71;  /*rgba(0,0,0,50%);*/
+    border-radius: 12px;
+    min-height: 20;
+}
+
+/*这个应该是设置下箭头的，3.png就是箭头*/
+QScrollBar::add-line:vertical 
+{
+    height: 9px;
+    width: 14px;
+    border-image: url(&quot;res/qss/down-arrow.png&quot;);
+    subcontrol-position: bottom;
+}
+
+/*设置上箭头 */
+QScrollBar::sub-line:vertical 
+{
+    height: 9px;
+    width: 14px;
+    border-image: url(&quot;res/qss/up-arrow.png&quot;);
+    subcontrol-position: top;
+}
+
+/*当鼠标放到下箭头上的时候 */
+QScrollBar::add-line:vertical:hover 
+{
+    height: 9px;
+    width: 14px;
+    border-image: url(&quot;res/qss/down-arrow.png&quot;);
+    subcontrol-position: bottom;
+}
+
+/*当鼠标放到下箭头上的时候*/
+QScrollBar::sub-line:vertical:hover 
+{
+    height: 9px;
+    width: 14px;
+    border-image: url(&quot;res/qss/up-arrow.png&quot;);
+    subcontrol-position: top;
+}
+
+/*当滚动条滚动的时候，上面的部分和下面的部分*/
+QScrollBar::sub-page:vertical {
+    background: #176857;
+    border-radius: 12px;
+}
+
+QScrollBar::add-page:vertical 
+{
+    background: #176857; /* #238d71;*/
+    border-radius: 12px;
+}
+
+QScrollArea#scrollArea{
+	background:transparent;
+	border:none;
+}
+
+
+QWidget#scrollAreaWidgetContents{
+	background: transparent;
+}
+
+
+
+
+/*===================================== 水平滚动条 =================================*/
+/*设置垂直滚动条基本样式*/
+QScrollBar::horizontal {
+    height: 14px;
+    background: rgba(0,0,0,0%);
+    margin: 0px,0px,0px,0px;
+    /*留出9px给上面和下面的箭头*/
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+QScrollBar::handle:horizontal {
+    width: 14px;
+    background: #238d71; /* #176857;rgba(0,0,0,25%); */
+    /*滚动条两端变成椭圆 */
+    border-radius: 14px;
+    min-height: 20;
+}
+
+QScrollBar::handle:horizontal:hover {
+    width: 14px;
+    /*鼠标放到滚动条上的时候，颜色变深*/
+    background:  #238d71;  /*rgba(0,0,0,50%);*/
+    border-radius: 12px;
+    min-height: 20;
+}
+
+/*这个应该是设置下箭头的，3.png就是箭头*/
+QScrollBar::add-line:horizontal 
+{
+    height:14px;
+    width: 9px;
+    border-image: url(&quot;res/qss/right-arrow.png&quot;);
+    subcontrol-position: right;
+}
+
+/*设置上箭头 */
+QScrollBar::sub-line:horizontal 
+{
+    height: 14px;
+    width: 9px;
+    border-image: url(&quot;res/qss/left-arrow.png&quot;);
+    subcontrol-position: left;
+}
+
+/*当鼠标放到下箭头上的时候 */
+QScrollBar::add-line:horizontal:hover 
+{
+    height: 14px;
+    width: 9px;
+    border-image: url(&quot;res/qss/right-arrow.png&quot;);
+    subcontrol-position: right;
+}
+
+/*当鼠标放到下箭头上的时候*/
+QScrollBar::sub-line:horizontal:hover 
+{
+    height: 14px;
+    width: 9px;
+    border-image: url(&quot;res/qss/left-arrow.png&quot;);
+    subcontrol-position: left;
+}
+
+/*当滚动条滚动的时候，上面的部分和下面的部分*/
+QScrollBar::sub-page:horizontal {
+    background: #176857;
+    border-radius: 12px;
+}
+
+QScrollBar::add-page:horizontal 
+{
+    background: #176857; /* #238d71;*/
+    border-radius: 12px;
+}
+
+QScrollArea#scrollArea{
+	background:transparent;
+	border:none;
+}
+
+
+QWidget#scrollAreaWidgetContents{
+	background: transparent;
+}
+
+QScrollArea#scrollArea{
+    background:transparent;
+
+    QScrollBar:horizontal{  /*//滚动条主体部分(滑道)*/
+        min-height: 10;/*//滑道最小宽度*/
+        min-width:100;/*//滑道最小高度*/
+        border-radius:5px;/*//滑道圆角*/
+        background-color:rgb(200,200,200);/*//滑轨的颜色*/
+    }
+
+    QScrollBar::handle:horizontal{  /*//滑块主体*/
+        border-radius:5px;/*//滑块圆形角度*/
+        height: 10;/*//滑块宽度*/
+        border-radius:5px;/*//滑道圆角*/
+        background-color:rgb(50,50,20);/*//滑块颜色*/
+    }  
+
+    QScrollBar::handle:horizontal:hover{  /*//鼠标放在上面时*/
+        width: 10;/*//滑块宽度*/
+        border-radius:5px;/*//滑道圆角*/
+        background-color:rgba(0,0,0,50%);/*//滑块颜色变化*/
+    }
+    
+}
+
+</string>
+  </property>
+  <property name="dockNestingEnabled">
+   <bool>true</bool>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>1</horstretch>
+     <verstretch>1</verstretch>
+    </sizepolicy>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="font">
+       <font>
+        <family>Microsoft YaHei</family>
+        <pointsize>-1</pointsize>
+       </font>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>24</width>
+        <height>24</height>
+       </size>
+      </property>
+      <property name="tabsClosable">
+       <bool>true</bool>
+      </property>
+      <property name="movable">
+       <bool>true</bool>
+      </property>
+      <widget class="WelcomeWidget" name="tab">
+       <attribute name="icon">
+        <iconset>
+         <normaloff>res/welcome.png</normaloff>res/welcome.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Welcome</string>
+       </attribute>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QDockWidget" name="dockInfo">
+   <property name="styleSheet">
+    <string notr="true">QDockWidget {
+    border: 1px solid red;
+    titlebar-close-icon: url(res/title/btn-close.png);
+    titlebar-normal-icon: url(res/title/btn-max.png);
+    color:#f0f0f0;
+	background:#125b4e;
+}
+
+/* 标题设置 */
+QDockWidget::title {
+    text-align: right;
+    background: lightgray;
+    padding-left: 35px;
+}
+
+/* 关闭和显示按钮 */
+QDockWidget::close-button, QDockWidget::float-button {
+    border: 2px solid transparent;
+    background: darkgray;
+    padding: 2px;
+    icon-size: 14px; /* maximum icon size */
+}
+
+/* 鼠标悬浮状态 */
+QDockWidget::close-button:hover, QDockWidget::float-button:hover {
+    background: red;
+}
+
+/* 鼠标按下状态 */
+QDockWidget::close-button:pressed, QDockWidget::float-button:pressed {
+    padding: 1px -1px -1px 1px;
+}
+
+/* 把按钮移到左上角 */
+QDockWidget::close-button {
+    subcontrol-position: top left;
+    subcontrol-origin: margin;
+    position: absolute;
+    top: 0px; left: 0px; bottom: 0px;
+    width: 14px;
+}
+
+QDockWidget::float-button {
+    subcontrol-position: top left;
+    subcontrol-origin: margin;
+    position: absolute;
+    top: 0px; left: 16px; bottom: 0px;
+    width: 14px;
+}
+
+
+QMainWindow{
+    font-family:&quot;Microsoft YaHei&quot;;
+    font-size: 14px;
+    font-weight: bold;
+    color:#f0f0f0;
+	background:#125b4e;
+}
+QMainWindow#MainWindow{
+    background:#125b4e;
+}
+
+QMenu
+{
+	background-color:#125b4e;
+
+   color:#f0f0f0;
+
+ 
+}
+QMenu::item
+{
+	background-color:#125b4e;
+
+   color:#f0f0f0;
+	border:2px solid rgb(55,55,55);
+	border-radius:3px;
+	padding: 0px 0px 0px 20px;
+	margin:3px 3px 3px 3px;
+}					
+QMenu::item:selected
+{
+    background: #1f6155;
+	color:#f2f2f2;
+}		
+
+QStatusBar{
+	color:#fff;
+}
+QStatusBar QLabel{
+	color:#fff;
+}
+QStatusBar::item{
+	border: 0px
+}
+
+QCheckBox{
+	color:#fff;
+}
+
+QDateTimeEdit, QLineEdit, QTextEdit, QPlainTextEdit{
+	color:#fff;
+	height:20px;
+	padding-left:10px; 
+	background:transparent;
+	border:none;
+	border:1px solid #67968d;
+}
+
+QDateTimeEdit::focus, QLineEdit::focus, QTextEdit::focus, QPlainTextEdit::focus{
+	border:1px solid #00fffb;
+}
+
+QDateTimeEdit:hover{
+    background: #1f6155;
+	color:#f2f2f2;
+}
+
+QCalendarWidget QTableView {
+    alternate-background-color: #125b4e;
+    background-color: #67968d;
+}
+QToolButton#qt_calendar_monthbutton,#qt_calendar_yearbutton{
+    color: #67968d;
+    font: 9px simHei;
+}
+QCalendarWidget QWidget#qt_calendar_navigationbar{
+    background-color: #FFF;
+}
+
+QTextEdit::focus{
+	border:1px solid #00fffb;
+}
+QGroupBox::title {
+	color:#fff;
+}
+QGroupBox QLineEdit{
+    height:20px;
+	padding-left:10px; 
+	background:transparent;
+	border:none;
+	border-bottom:1px solid #67968d;
+}
+
+QDialog{
+    background:#125b4e;
+}
+QDialog QLabel{
+    color:#f0f0f0;
+}
+
+QSplitter::handle{
+	background-color:#125b4e;
+}
+
+QComboBox{
+	color:#fff;
+	height:20px;
+	padding-left:10px; 
+	background:transparent;
+	border: 1px solid #67968d; 
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;   
+    subcontrol-position: top right; 
+    width: 15px; 
+    border-left: 1px solid #67968d; 
+	image: url(&quot;res/qss/combo_drop.png&quot;) 
+}
+QComboBox::drop-down:hover {
+    background: #00fffb;
+}
+
+QComboBox QAbstractItemView {
+    outline: 0px solid gray;
+    border: 1px solid #228c84;
+    color: #FFFFFF;
+    background-color: #07816e;
+    selection-background-color: #1f6155; 
+}
+QComboBox QAbstractItemView::item {
+    padding: 5px 10px; 
+}
+QComboBox QAbstractItemView::item:hover {
+    color: #FFFFFF;
+    background-color: #1f6155;
+}
+
+
+QToolButton{
+	padding:5px;
+	border:none;
+	background:transparent;
+	color:#bebebe;
+}
+QToolButton:hover{
+	background: #1f6155;
+	color:#f2f2f2;
+}
+QToolButton:pressed{
+	background: #34a897;
+	color:#f2f2f2;
+	border-radius: 3px;
+}
+
+QPushButton{
+	border:1px solid #4daa99;
+	color:#e3e3e3;
+	padding:4px 20px;
+}
+QPushButton:hover{
+	background: #1f6155;
+	color:#f2f2f2;
+}
+QPushButton:pressed{
+	background: #34a897;
+	color:#f2f2f2;
+	border-radius: 3px;
+}
+
+
+QToolButton{
+	border:1px solid #4daa99;
+	color:#e3e3e3;
+	padding:4px 20px;
+}
+QToolButton:hover{
+	background: #1f6155;
+	color:#f2f2f2;
+}
+QToolButton:pressed{
+	background: #34a897;
+	color:#f2f2f2;
+	border-radius: 3px;
+}
+
+
+
+QListView{
+	background:transparent;
+	border:1px solid #228c84;
+}
+QListWidget{
+	background:transparent;
+	border:1px solid #228c84;
+	color:#fff;
+}
+
+QToolBox::tab{
+	padding:3px;
+	border-radius:5px;
+	color:#04ddd7;
+	font:15px &quot;Microsoft YaHei&quot;;
+
+}
+QToolTip{
+	border:0px solid #F0F0F0;
+	padding:1px;
+	color:#04ddd7;
+
+}
+
+/*===================================== Radio Button =================================*/
+QRadioButton{
+    color:#f0f0f0;
+    font:12px &quot;Microsoft YaHei&quot;;
+}
+/*===================================== Label =================================*/
+
+QLabel{
+    color:#f0f0f0;
+    font:12px &quot;Microsoft YaHei&quot;;
+}
+
+
+/*===================================== 表格 =================================*/
+QTableView{
+    outline:none;
+    border-top:none;
+    border-bottom-left-radius:4px;
+    border-bottom-right-radius:4px;
+    alternate-background-color:#1b7065; 
+    selection-background-color:#01ae97;
+    gridline-color:#0fa48e;
+   /* color:#f2f2f2;
+    background:transparent;  8*/
+}
+QHeaderView{
+    border:none;
+    border-bottom:1px solid #125b4e;
+    background:#367b6e;
+}
+QHeaderView::section{
+    background:transparent;
+    color:#f2f2f2;
+}
+
+
+/*===================================== 树 =================================*/
+QTreeView{
+	show-decoration-selected:1;
+	border:none; 
+	background:transparent;
+}
+QTreeView::item{
+	height: 25px;
+	color:#eaecec;	
+	border:none;
+	background:transparent;
+}
+
+QTreeView::item:selected:active{  
+	color:f2f2f2;
+}
+
+QTreeView::item:selected:!active{   
+	color:#f2f2f2;	
+}
+QTreeView::branch:has-children:!has-siblings:closed,
+QTreeView::branch:closed:has-children:has-siblings{
+    border-image:none;
+    image:url(&quot;res/qss/tree_right.png&quot;);
+}
+QTreeView::branch:open:has-children:!has-siblings,
+QTreeView::branch:open:has-children:has-siblings{
+    border-image:none;
+    image:url(&quot;res/qss/tree_bottom.png&quot;);
+}
+
+QTreeView::indicator:unchecked {
+	image: url(&quot;res/qss/tree_uncheck.png&quot;);
+}
+QTreeView::indicator:checked {
+	image: url(&quot;res/qss/tree_check.png&quot;);
+}
+QTreeView::item:hover, QTreeView::branch:hover{
+	background:#1f6155;
+}
+QTreeView::item:selected, QTreeView::branch:selected{
+	background:#34a897;
+	color:f2f2f2;
+}
+
+
+/*===================================== Tab =================================*/
+QTabWidget#tabWidget{
+    background:transparent;
+}
+QTabWidget::pane{
+    border-top: 1px solid;
+    border-color: transparent;
+    top:-1px;
+}
+QTabBar::tab {
+    min-width:85px;
+    min-height:26px;
+    color: #FFFFFF;
+    border: 1px solid #e2e2e2; 
+    font:16px &quot;Microsoft YaHei&quot; ;
+}
+QTabBar::tab:selected{
+    min-width:85px;
+    min-height:25px;
+    color: #000;
+    border: 0px solid;
+    background:#00fffb;
+    font:20px &quot;Microsoft YaHei&quot; ;
+}
+
+/*===================================== 垂直滚动条 =================================*/
+/*设置垂直滚动条基本样式*/
+QScrollBar:vertical {
+    width: 14px;
+    background: rgba(0,0,0,0%);
+    margin: 0px,0px,0px,0px;
+    /*留出9px给上面和下面的箭头*/
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
+QScrollBar::handle:vertical {
+    width: 14px;
+    background: #238d71; /* #176857;rgba(0,0,0,25%); */
+    /*滚动条两端变成椭圆 */
+    border-radius: 14px;
+    min-height: 20;
+}
+
+QScrollBar::handle:vertical:hover {
+    width: 14px;
+    /*鼠标放到滚动条上的时候，颜色变深*/
+    background:  #238d71;  /*rgba(0,0,0,50%);*/
+    border-radius: 12px;
+    min-height: 20;
+}
+
+/*这个应该是设置下箭头的，3.png就是箭头*/
+QScrollBar::add-line:vertical 
+{
+    height: 9px;
+    width: 14px;
+    border-image: url(&quot;res/qss/down-arrow.png&quot;);
+    subcontrol-position: bottom;
+}
+
+/*设置上箭头 */
+QScrollBar::sub-line:vertical 
+{
+    height: 9px;
+    width: 14px;
+    border-image: url(&quot;res/qss/up-arrow.png&quot;);
+    subcontrol-position: top;
+}
+
+/*当鼠标放到下箭头上的时候 */
+QScrollBar::add-line:vertical:hover 
+{
+    height: 9px;
+    width: 14px;
+    border-image: url(&quot;res/qss/down-arrow.png&quot;);
+    subcontrol-position: bottom;
+}
+
+/*当鼠标放到下箭头上的时候*/
+QScrollBar::sub-line:vertical:hover 
+{
+    height: 9px;
+    width: 14px;
+    border-image: url(&quot;res/qss/up-arrow.png&quot;);
+    subcontrol-position: top;
+}
+
+/*当滚动条滚动的时候，上面的部分和下面的部分*/
+QScrollBar::sub-page:vertical {
+    background: #176857;
+    border-radius: 12px;
+}
+
+QScrollBar::add-page:vertical 
+{
+    background: #176857; /* #238d71;*/
+    border-radius: 12px;
+}
+
+QScrollArea#scrollArea{
+	background:transparent;
+	border:none;
+}
+
+
+QWidget#scrollAreaWidgetContents{
+	background: transparent;
+}
+
+
+
+
+/*===================================== 水平滚动条 =================================*/
+/*设置垂直滚动条基本样式*/
+QScrollBar::horizontal {
+    height: 14px;
+    background: rgba(0,0,0,0%);
+    margin: 0px,0px,0px,0px;
+    /*留出9px给上面和下面的箭头*/
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+QScrollBar::handle:horizontal {
+    width: 14px;
+    background: #238d71; /* #176857;rgba(0,0,0,25%); */
+    /*滚动条两端变成椭圆 */
+    border-radius: 14px;
+    min-height: 20;
+}
+
+QScrollBar::handle:horizontal:hover {
+    width: 14px;
+    /*鼠标放到滚动条上的时候，颜色变深*/
+    background:  #238d71;  /*rgba(0,0,0,50%);*/
+    border-radius: 12px;
+    min-height: 20;
+}
+
+/*这个应该是设置下箭头的，3.png就是箭头*/
+QScrollBar::add-line:horizontal 
+{
+    height:14px;
+    width: 9px;
+    border-image: url(&quot;res/qss/right-arrow.png&quot;);
+    subcontrol-position: right;
+}
+
+/*设置上箭头 */
+QScrollBar::sub-line:horizontal 
+{
+    height: 14px;
+    width: 9px;
+    border-image: url(&quot;res/qss/left-arrow.png&quot;);
+    subcontrol-position: left;
+}
+
+/*当鼠标放到下箭头上的时候 */
+QScrollBar::add-line:horizontal:hover 
+{
+    height: 14px;
+    width: 9px;
+    border-image: url(&quot;res/qss/right-arrow.png&quot;);
+    subcontrol-position: right;
+}
+
+/*当鼠标放到下箭头上的时候*/
+QScrollBar::sub-line:horizontal:hover 
+{
+    height: 14px;
+    width: 9px;
+    border-image: url(&quot;res/qss/left-arrow.png&quot;);
+    subcontrol-position: left;
+}
+
+/*当滚动条滚动的时候，上面的部分和下面的部分*/
+QScrollBar::sub-page:horizontal {
+    background: #176857;
+    border-radius: 12px;
+}
+
+QScrollBar::add-page:horizontal 
+{
+    background: #176857; /* #238d71;*/
+    border-radius: 12px;
+}
+
+QScrollArea#scrollArea{
+	background:transparent;
+	border:none;
+}
+
+
+QWidget#scrollAreaWidgetContents{
+	background: transparent;
+}
+
+QScrollArea#scrollArea{
+    background:transparent;
+
+    QScrollBar:horizontal{  /*//滚动条主体部分(滑道)*/
+        min-height: 10;/*//滑道最小宽度*/
+        min-width:100;/*//滑道最小高度*/
+        border-radius:5px;/*//滑道圆角*/
+        background-color:rgb(200,200,200);/*//滑轨的颜色*/
+    }
+
+    QScrollBar::handle:horizontal{  /*//滑块主体*/
+        border-radius:5px;/*//滑块圆形角度*/
+        height: 10;/*//滑块宽度*/
+        border-radius:5px;/*//滑道圆角*/
+        background-color:rgb(50,50,20);/*//滑块颜色*/
+    }  
+
+    QScrollBar::handle:horizontal:hover{  /*//鼠标放在上面时*/
+        width: 10;/*//滑块宽度*/
+        border-radius:5px;/*//滑道圆角*/
+        background-color:rgba(0,0,0,50%);/*//滑块颜色变化*/
+    }
+    
+}
+
+</string>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>User Log</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QTableWidget" name="tableWidget"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockTop">
+   <property name="minimumSize">
+    <size>
+     <width>99</width>
+     <height>225</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>524287</width>
+     <height>225</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QMainWindow{
+    font-family:&quot;Microsoft YaHei&quot;;
+    font-size: 14px;
+    font-weight: bold;
+    color:#f0f0f0;
+	background:#125b4e;
+}
+QMainWindow#MainWindow{
+    background:#125b4e;
+}
+
+
+/* 自定义 */
+QMainWindow#MainWindow QWidget#widgetMap, QMainWindow#MainWindow QWidget#widgetProgManage, QMainWindow#MainWindow QWidget#widgetTimeEvent, QWidget#QAmbientPlanOne QFrame#frame, QWidget#QAmbientPlanTwo QFrame#frame, QWidget#QAmbientPlanThree QFrame#frame, QWidget#QPlanTraining QFrame#frame, QWidget#QTimeLineInfo{
+    border:1px solid #228c84;
+}
+
+QWidget#QAmbientPlanOne QLabel#lblTitle, QWidget#QAmbientPlanTwo QLabel#lblTitle, QWidget#QAmbientPlanThree QLabel#lblTitle, QWidget#QPlanTraining QLabel#lblATitle{
+    padding:10px 20px;
+    border:1px solid #228c84;
+    color:#fff;
+    font:20px bold &quot;Microsoft YaHei&quot;;
+    background-color:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #1e5d62,stop:1 #27987c);
+}
+
+QWidget#QAmbientCasts QLable#lblPixmap, QWidget#QAmbientCasts QLable#lblTreeTitle{
+    border:none;
+}
+
+QWidget#QTimeLineInfo QScrollArea#scrollArea QWidget#widgetLog{
+	border:none;
+	border-top:1px solid #228c84;
+	background:transparent;
+}
+
+QWidget#QAmbientCasts QLineEdit#lineEdit{
+    height:25px;
+    padding-left:10px; 
+    background:transparent;
+    border:1px solid #228c84;
+}
+
+QWidget#QLogMsg{
+	background-color:#125b4e;
+}
+
+QWidget#QLogMsg QWidget#widget{
+	border:none;
+	border-bottom:1px solid #279f7f;
+}
+
+QWidget#QLogMsg QLabel#lblMsg{
+    color:white;
+    border-bottom:2px solid #fff;
+}
+
+QWidget#QLogMsg QLabel#lblTime{
+    color:#00fffb
+}
+
+QWidget#QActionAddDlg{
+	border-image:none;
+}
+
+QWidget#QProgrammeManage QFrame#frame, QWidget#QProgrammeManage QFrame#frame_2, QWidget#QProgrammeManage QFrame#frame_3{
+	border:none;
+	border:1px solid #228c84;
+}
+
+QMyToolBar#toobarWidget QFrame#frame{
+    border-image: url(&quot;:/res/toolbar/background.png&quot;);
+}
+QMyToolBar#toobarWidget QLabel#lblBattleTime{
+    border-image:none;
+    color:rgb(255, 0, 0);
+    border:none;
+}
+QMyToolBar#toobarWidget QLabel#lblTime{
+    border-image:none;
+    color:rgb(0, 255, 251);
+    border:none;
+}
+QMyToolBar#toobarWidget QTabWidget::pane{
+    border-top: 1px solid;
+    border-color: #279892;
+    top:-1px;
+}
+QMyToolBar#toobarWidget QTabBar::tab {
+    min-width:120px;
+    min-height:26px;
+    color: #FFFFFF;
+    font:19px &quot;Microsoft YaHei&quot; ;
+    border: 0px solid;
+}
+QMyToolBar#toobarWidget QTabBar::tab:selected{
+    min-width:120px;
+    margin-left:10px;
+    margin-right:10px;
+    min-height:25px;
+    color: #00fffb;
+    font:20px &quot;Microsoft YaHei&quot; ;
+    border: 0px solid;
+    border-bottom: 6px solid;
+    border-color: #00fffb;
+    background:#279892;
+}
+QMyToolBar#toobarWidget QToolButton{
+	padding:5px;
+	border:none;
+	background:transparent;
+	color:#fff;
+}
+QMyToolBar#toobarWidget QToolButton:hover{
+	background: #1f6155;
+	color:#f2f2f2;
+}
+QMyToolBar#toobarWidget QToolButton:pressed{
+	background: #34a897;
+	color:#f2f2f2;
+	border-radius: 3px;
+}
+
+QMyToolBar#toobarWidget QToolButton#tbtnSetting::menu-indicator{
+    subcontrol-position: right center;
+}
+
+
+QTitleWidget#titleWidget{
+    background-color:rgb(2,27,16);
+}
+QTitleWidget#titleWidget QFrame#frame{
+    border-image: url(&quot;:/res/title/title-background.png&quot;);
+}
+
+
+QWidget#QTimeLineInfo QWidget#widgetInfo{
+	border:none;
+}
+QWidget#QTimeLineInfo QTreeView, QWidget#QTimeLineInfo QListView{
+    background:transparent;
+	border:none;
+	border-right:1px solid #228c84;
+}
+QWidget#QTimeInfo QMySlider#horizontalSlider{
+    border:none;
+}
+
+
+QWidget#QSchemeToolPage{
+    background:transparent;
+}
+
+QWidget#QSchemeToolPage QPushButton#pushButtonFold{
+    color:#00fffb;
+    font:15px &quot;Microsoft YaHei&quot;;
+    text-align:left;
+    height:24;
+}
+
+QWidget#QSchemeDetailForm QLabel{
+	color:#fff;
+}
+QWidget#QSchemeDetailForm QLineEdit{
+	height:20px;
+	padding-left:10px; 
+	background:transparent;
+	border:none;
+	border-bottom:1px solid #67968d;
+}
+
+QWidget#QSchemeDetailForm QLineEdit::focus{
+	border-bottom:1px solid #00fffb;
+}
+
+
+
+QWidget#QPlanTraining QLabel{
+	color:#fff;
+}
+
+QWidget#QPlanTraining QLineEdit{
+	color:#fff;
+	height:20px;
+	padding-left:10px; 
+	background:transparent;
+	border:none;
+	border-bottom:1px solid #67968d;
+}
+QWidget#QPlanTraining QTextEdit{
+	color:#fff;
+    padding-left: 0;
+	background:transparent;
+	border:none;
+}
+QWidget#QPlanTraining QLabel#label{
+    border:1px solid #156859;
+    padding:5px 3px;color:#e3e3e3;
+}
+
+
+QWidget#QProgrammeManage QLabel{
+	color:#fff;
+}
+QWidget#QProgrammeManage QLineEdit{
+	height:20px;
+	padding-left:10px; 
+	background:transparent;
+	border:1px solid #67968d;
+}
+
+QWidget#QProgrammeManage QLineEdit::focus{
+	border:1px solid #00fffb;
+}
+QWidget#QProgrammeManage QFrame#frame, QFrame#frame_2,QFrame#frame_3 {
+	border:1px solid #228c84;
+	background:#1f6155;
+}
+QWidget#QProgrammeManage QFrame {
+	background:#1f6155;
+}
+
+
+
+
+
+
+
+
+
+QStatusBar{
+	color:#fff;
+}
+QStatusBar QLabel{
+	color:#fff;
+}
+QStatusBar::item{
+	border: 0px
+}
+
+QCheckBox{
+	color:#fff;
+}
+
+QDateTimeEdit, QLineEdit, QTextEdit, QPlainTextEdit{
+	color:#fff;
+	height:20px;
+	padding-left:10px; 
+	background:transparent;
+	border:none;
+	border:1px solid #67968d;
+}
+
+QDateTimeEdit::focus, QLineEdit::focus, QTextEdit::focus, QPlainTextEdit::focus{
+	border:1px solid #00fffb;
+}
+
+QDateTimeEdit:hover{
+    background: #1f6155;
+	color:#f2f2f2;
+}
+
+QCalendarWidget QTableView {
+    alternate-background-color: #125b4e;
+    background-color: #67968d;
+}
+QToolButton#qt_calendar_monthbutton,#qt_calendar_yearbutton{
+    color: #67968d;
+    font: 9pt simHei;
+}
+QCalendarWidget QWidget#qt_calendar_navigationbar{
+    background-color: #FFF;
+}
+
+QTextEdit::focus{
+	border:1px solid #00fffb;
+}
+QGroupBox::title {
+	color:#fff;
+}
+QGroupBox QLineEdit{
+    height:20px;
+	padding-left:10px; 
+	background:transparent;
+	border:none;
+	border-bottom:1px solid #67968d;
+}
+
+QDialog{
+    background:#125b4e;
+}
+QDialog QLabel{
+    color:#f0f0f0;
+}
+
+QSplitter::handle{
+	background-color:#125b4e;
+}
+
+QComboBox{
+	color:#fff;
+	height:20px;
+	padding-left:10px; 
+	background:transparent;
+	border: 1px solid #67968d; 
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;   
+    subcontrol-position: top right; 
+    width: 15px; 
+    border-left: 1px solid #67968d; 
+	image: url(&quot;:/res/home/combo_drop.png&quot;) 
+}
+QComboBox::drop-down:hover {
+    background: #00fffb;
+}
+
+QComboBox QAbstractItemView {
+    outline: 0px solid gray;
+    border: 1px solid #228c84;
+    color: #FFFFFF;
+    background-color: #07816e;
+    selection-background-color: #1f6155; 
+}
+QComboBox QAbstractItemView::item {
+    padding: 5px 10px; 
+}
+QComboBox QAbstractItemView::item:hover {
+    color: #FFFFFF;
+    background-color: #1f6155;
+}
+
+
+QToolButton{
+	padding:5px;
+	border:none;
+	background:transparent;
+	color:#bebebe;
+}
+QToolButton:hover{
+	background: #1f6155;
+	color:#f2f2f2;
+}
+QToolButton:pressed{
+	background: #34a897;
+	color:#f2f2f2;
+	border-radius: 3px;
+}
+
+QPushButton{
+	border:1px solid #4daa99;
+	color:#e3e3e3;
+	padding:4px 20px;
+}
+QPushButton:hover{
+	background: #1f6155;
+	color:#f2f2f2;
+}
+QPushButton:pressed{
+	background: #34a897;
+	color:#f2f2f2;
+	border-radius: 3px;
+}
+
+
+QListView{
+	background:transparent;
+	border:1px solid #228c84;
+}
+QListWidget{
+	background:transparent;
+	border:1px solid #228c84;
+	color:#fff;
+}
+
+QToolBox::tab{
+	padding:3px;
+	border-radius:5px;
+	color:#04ddd7;
+	font:15px &quot;Microsoft YaHei&quot;;
+
+}
+QToolTip{
+	border:0px solid #F0F0F0;
+	padding:1px;
+	color:#04ddd7;
+
+}
+
+
+/*===================================== 表格 =================================*/
+QTableView{
+    outline:none;
+    border-top:none;
+    border-bottom-left-radius:4px;
+    border-bottom-right-radius:4px;
+    alternate-background-color:#1b7065; 
+    selection-background-color:#01ae97;
+    gridline-color:#0fa48e;
+    color:#f2f2f2;
+    background:transparent;
+}
+QHeaderView{
+    border:none;
+    border-bottom:1px solid #125b4e;
+    background:#367b6e;
+}
+QHeaderView::section{
+    background:transparent;
+    color:#f2f2f2;
+}
+
+
+/*===================================== 树 =================================*/
+QTreeView{
+	show-decoration-selected:1;
+	border:none; 
+	background:transparent;
+}
+QTreeView::item{
+	height: 25px;
+	color:#eaecec;	
+	border:none;
+	background:transparent;
+}
+
+QTreeView::item:selected:active{  
+	color:f2f2f2;
+}
+
+QTreeView::item:selected:!active{   
+	color:#f2f2f2;	
+}
+QTreeView::branch:has-children:!has-siblings:closed,
+QTreeView::branch:closed:has-children:has-siblings{
+    border-image:none;
+    image:url(&quot;:/res/home/tree_right.png&quot;);
+}
+QTreeView::branch:open:has-children:!has-siblings,
+QTreeView::branch:open:has-children:has-siblings{
+    border-image:none;
+    image:url(&quot;:/res/home/tree_bottom.png&quot;);
+}
+
+QTreeView::indicator:unchecked {
+	image: url(&quot;:/res/home/tree_uncheck.png&quot;);
+}
+QTreeView::indicator:checked {
+	image: url(&quot;:/res/home/tree_check.png&quot;);
+}
+QTreeView::item:hover, QTreeView::branch:hover{
+	background:#1f6155;
+}
+QTreeView::item:selected, QTreeView::branch:selected{
+	background:#34a897;
+	color:f2f2f2;
+}
+
+
+/*===================================== Tab =================================*/
+QTabWidget#tabWidget{
+    background:transparent;
+}
+QTabWidget::pane{
+    border-top: 1px solid;
+    border-color: transparent;
+    top:-1px;
+}
+QTabBar::tab {
+    min-width:85px;
+    min-height:26px;
+    color: #FFFFFF;
+    border: 1px solid #e2e2e2;
+    font:20px &quot;Microsoft YaHei&quot; ;
+}
+QTabBar::tab:selected{
+    min-width:85px;
+    min-height:25px;
+    color: #000;
+    border: 0px solid;
+    background:#00fffb;
+    font:20px &quot;Microsoft YaHei&quot; ;
+}
+
+  
+/*===================================== 垂直滚动条 =================================*/
+/*设置垂直滚动条基本样式*/
+QScrollBar:vertical {
+    width: 14px;
+    background: rgba(0,0,0,0%);
+    margin: 0px,0px,0px,0px;
+    /*留出9px给上面和下面的箭头*/
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
+QScrollBar::handle:vertical {
+    width: 14px;
+    background: #238d71; /* #176857;rgba(0,0,0,25%); */
+    /*滚动条两端变成椭圆 */
+    border-radius: 14px;
+    min-height: 20;
+}
+
+QScrollBar::handle:vertical:hover {
+    width: 14px;
+    /*鼠标放到滚动条上的时候，颜色变深*/
+    background:  #238d71;  /*rgba(0,0,0,50%);*/
+    border-radius: 12px;
+    min-height: 20;
+}
+
+/*这个应该是设置下箭头的，3.png就是箭头*/
+QScrollBar::add-line:vertical 
+{
+    height: 9px;
+    width: 14px;
+    border-image: url(:/res/down-arrow.png);
+    subcontrol-position: bottom;
+}
+
+/*设置上箭头 */
+QScrollBar::sub-line:vertical 
+{
+    height: 9px;
+    width: 14px;
+    border-image: url(:/res/up-arrow.png);
+    subcontrol-position: top;
+}
+
+/*当鼠标放到下箭头上的时候 */
+QScrollBar::add-line:vertical:hover 
+{
+    height: 9px;
+    width: 14px;
+    border-image: url(:/res/down-arrow.png);
+    subcontrol-position: bottom;
+}
+
+/*当鼠标放到下箭头上的时候*/
+QScrollBar::sub-line:vertical:hover 
+{
+    height: 9px;
+    width: 14px;
+    border-image: url(:/res/up-arrow.png);
+    subcontrol-position: top;
+}
+
+/*当滚动条滚动的时候，上面的部分和下面的部分*/
+QScrollBar::sub-page:vertical {
+    background: #176857;
+    border-radius: 12px;
+}
+
+QScrollBar::add-page:vertical 
+{
+    background: #176857; /* #238d71;*/
+    border-radius: 12px;
+}
+
+QScrollArea#scrollArea{
+	background:transparent;
+	border:none;
+}
+
+
+QWidget#scrollAreaWidgetContents{
+	background: transparent;
+}
+
+QScrollArea#scrollArea{
+    background:transparent;
+
+    QScrollBar:vertical{  /*//滚动条主体部分(滑道)*/
+        min-width: 10;/*//滑道最小宽度*/
+        min-height:100;/*//滑道最小高度*/
+        border-radius:5px;/*//滑道圆角*/
+        background-color:rgb(200,200,200);/*//滑轨的颜色*/
+    }
+
+    QScrollBar::handle:vertical{  /*//滑块主体*/
+        border-radius:5px;/*//滑块圆形角度*/
+        width: 10;/*//滑块宽度*/
+        border-radius:5px;/*//滑道圆角*/
+        background-color:rgb(50,50,20);/*//滑块颜色*/
+    }  
+
+    QScrollBar::handle:vertical:hover{  /*//鼠标放在上面时*/
+        width: 10;/*//滑块宽度*/
+        border-radius:5px;/*//滑道圆角*/
+        background-color:rgba(0,0,0,50%);/*//滑块颜色变化*/
+    }
+    
+}
+</string>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::TopDockWidgetArea</set>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>4</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="TitleWidget" name="title" native="true"/>
+     </item>
+     <item>
+      <widget class="MyToolBarWidget" name="toolbar" native="true"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <action name="actionSaveState">
+   <property name="icon">
+    <iconset>
+     <normaloff>res/layout.png</normaloff>
+     <normalon>res/add.png</normalon>res/layout.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save Layout</string>
+   </property>
+   <property name="toolTip">
+    <string>OpenFile</string>
+   </property>
+  </action>
+  <action name="actionRootKnowledge">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normalon>res/entity.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Knowledge</string>
+   </property>
+   <property name="toolTip">
+    <string>Root knowledge tree edit</string>
+   </property>
+  </action>
+  <action name="actionOperPanel">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normalon>res/dir.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>OperPanel</string>
+   </property>
+   <property name="toolTip">
+    <string>Operate Panel</string>
+   </property>
+  </action>
+  <action name="actionLog">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normalon>res/log.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Log</string>
+   </property>
+   <property name="toolTip">
+    <string>Log Window</string>
+   </property>
+  </action>
+  <action name="actionRestoreState">
+   <property name="icon">
+    <iconset>
+     <normaloff>res/restore.png</normaloff>res/restore.png</iconset>
+   </property>
+   <property name="text">
+    <string>Restore Layout</string>
+   </property>
+   <property name="toolTip">
+    <string>Restore window layout state</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="icon">
+    <iconset>
+     <normaloff>res/exit.png</normaloff>res/exit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Exit</string>
+   </property>
+   <property name="toolTip">
+    <string>Exit Application</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="icon">
+    <iconset>
+     <normaloff>res/about.png</normaloff>res/about.png</iconset>
+   </property>
+   <property name="text">
+    <string>About</string>
+   </property>
+   <property name="toolTip">
+    <string>Information abuout application</string>
+   </property>
+  </action>
+  <action name="actionCheck_update">
+   <property name="icon">
+    <iconset>
+     <normaloff>res/update.png</normaloff>res/update.png</iconset>
+   </property>
+   <property name="text">
+    <string>Check update</string>
+   </property>
+   <property name="toolTip">
+    <string>Check and update version</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>WelcomeWidget</class>
+   <extends>QWidget</extends>
+   <header>WelcomeWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TitleWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">TitleWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MyToolBarWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">MyToolBarWidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>dockInfo</sender>
+   <signal>visibilityChanged(bool)</signal>
+   <receiver>actionLog</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>469</x>
+     <y>568</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionLog</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>dockInfo</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>469</x>
+     <y>568</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

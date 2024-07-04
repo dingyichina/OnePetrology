@@ -1,0 +1,34 @@
+<@_sysDomain id=id><#assign a=object/></@_sysDomain>
+<form method="post" autocomplete="off" action="sysDomain/save?callbackType=closeCurrent&navTabId=sysDomain/list" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <input name="oldName" type="hidden" value="${id!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+    <div class="pageFormContent" layoutH>
+        <dl class="nowrap">
+            <dt><@t.page 'site'/>:</dt>
+            <dd>
+                <input name="siteId" type="hidden" value="${(a.siteId)!siteId!site.id}" />
+                <@_sysSite id=(a.siteId)!siteId!site.id>${(object.name)!}</@_sysSite>
+            </dd>
+        </dl>
+        <dl class="nowrap">
+            <dt><@t.page 'domain'/>:</dt>
+            <dd>
+                <input class="required domain" remote="sysDomain/virify?oldName=${id!}" name="name" data-msg-remote="<@t.message 'verify.hasExist.domain'/>" type="text" size="20" maxlength="255" value="${(a.name)!}"/>
+                <label><input name="wild" type="checkbox"${(a?has_content&&a.wild)?then(' checked="checked"','')?no_esc}/><@t.page 'domain.wild'/></label>
+                <span class="info"><@t.page 'domain.description'/></span>
+            </dd>
+        </dl>
+        <dl class="nowrap">
+            <dt><@t.page 'domain.template_directory'/>:</dt>
+            <dd>
+                <input name="path" type="text" size="50" maxlength="255" value="${(a.path)!}"/>
+            </dd>
+        </dl>
+    </div>
+</form>

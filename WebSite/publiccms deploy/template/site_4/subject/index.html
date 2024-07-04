@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /> <!--- 强制升级https，避免混合错误  --->	
+	
+<@_includePlace path="/Header-link.html"/> <#-- head-link -->
+</head>
+<body>
+<@_includePlace path="/header.html"/> <#-- header -->
+	
+	
+	 <div class="section-white">
+        <div class="container">
+			 <div class="row">
+                <div class="col-md-12">
+                    <!-- start location -->
+                    <ul class="breadcrumb pull-left">
+						 <li class="breadcrumb-prefix breadcrumb-item d-none d-md-block">You Are Here: </li>
+
+                        <li class="breadcrumb-item"><a href="${site.dynamicPath!}">Home</a></li>
+     
+                        <li class="breadcrumb-item"><a href="${site.dynamicPath!}subject/index.html">  Thematic  database</a></li>
+
+
+                    </ul>
+                    <!-- end location -->
+                </div>
+            </div>
+			
+			
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="bc-blk-07">
+                        <div class="bc-blk-hd">
+                            <h4 class="bc-blk-hd-title"><span>Thematic   Database in One Petrology</span></h4>
+                            <p class="bc-blk-hd-desc">
+                               Through the working platform of magmatic rock database, scientists have established thematic databases focusing on different research fields and different spatial areas. The magmatic rock database provides technical support for the establishment of these thematic databases.
+                            </p>
+                        </div>
+						
+						<script>   var  requsetList=[];  //缓存所有请求的｛｝值 </script>						
+                        <div class="bc-blk-bd">
+                            <div class="bc-multi-col-pictext-list-06">
+                       		     <@_category code="subject">
+						                  <@_contentList categoryId=object.id containChild=true hasCover=true pageSize=120>
+							                   <div class="row">
+								                      <#list page.list as a>
+								                              <div class="col-md-3 col-12">
+                          			                                 <div class="item top-space-clear top-space-clear-sm">
+                                                                            <div class="img-ctn">
+																				 <#assign attribute=getContentAttribute(a.id)/> 			<#-- 参数:内容Id -->
+																				 
+																				<!-- 如果有外部链接，则跳转到外部链接；如果没有外部链接，则进入内部流程   --> 
+																                  <#if  (attribute.external_link) ?? &&  attribute.external_link!="">
+																		                 <a href="${attribute.external_link}" title=${a.title}  target="_blank"> <img class="img-fluid" src="${a.cover!}" /></a>
+																			  </div>
+																		    <div class="text-ctn">
+                                                                                   <a href="${attribute.external_link}" title=${a.title}  target="_blank"> <h4 class="art-caption">
+																						  ${a.title}<font color="Green">(external)</font>
+																					 </h4>
+																					  <p class="art-abstract">${a.description}  ...</p>
+																					  <p class="art-detail text-center">
+																						  See  details</p></a>
+																																								
+                                                                            </div>
+																 		
+																           <#else>
+																			     <a href="/subject/detail.html?id=${a.id}" > <img class="img-fluid" src="${a.cover}" /></a>
+																		 	  </div>
+																		   <div class="text-ctn">
+                                                                                    <a href="/subject/detail.html?id=${a.id}" >  <h4 class="art-caption">
+																						${a.title} <font color="red">(<span  id="totalnum_${a.id}">  </span>)</font>
+																					 </h4>
+																						<script>
+																							    let  temp_${a.id}={};
+																							     temp_${a.id}.k_node = '${(attribute.k_node)!}';
+																							     temp_${a.id}.owner=  '${(attribute.owner)!}';
+																								 temp_${a.id}.scope =   '${(attribute.scope)!}' ;
+																								 temp_${a.id}.extent ='${(attribute.extent)!}' ;
+																								 temp_${a.id}.myid="#totalnum_${a.id}";
+																							     //把自己添加到列表中
+																							     requsetList.push(temp_${a.id});
+																							
+																							    
+																						</script>
+																						
+																					  <p class="art-abstract">${a.description}  ...</p>
+																					  <p class="art-detail text-center">
+																						  See  details</p></a>
+																																								
+                                                                            </div>
+																           </#if>
+																			
+																  </div>
+                                            
+                                                           
+                                                              </div>
+                          	                           </#list>
+							                   </div>
+							            </@_contentList>
+					 				</@_category>
+					            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	<script>
+		//刷新单个专题库数量的函数
+		 function  refreshNum( obj){
+		   	   //把这个专题库参数缓存到全局变量中
+	            var k_node = obj.k_node;
+			    var owner=  obj.owner;
+                var scope =  obj.scope ;
+			    var extent =obj.extent ;
+			    var myid=obj.myid;
+				 //判断条件，是否需要请求服务器
+				 if(owner=="" || k_node==""){
+				        $(myid).html("未认领" );
+						 return false;
+				}else if(owner.toUpperCase()=="GEOWIND@126.COM"  && k_node=="IGNEOUS_ROCK"  && extent==""){
+				        //与主库一致，但未设置空间范围
+					    $(myid).html("未认领" );
+						 return false;
+				 }
+				 //请服务器 																					   
+			     $.ajax({
+					   type: "get",        // 请求方式
+					   async:true,  // 非异步
+					   url: "https://petrology.deep-time.org${site.dynamicPath!}fastapi/kdata/"+k_node+"/"+owner,
+					   data:{'boundary':extent,'condition':'','scope':scope,'start':0,'length':3},
+					   dataType: "json",   // 预期返回一个 json 类型数据
+					   success: function (data) {   // data是形参名，代表返回的数据
+							 var totalCount=data.recordsTotal;
+						     $(myid).html(totalCount );
+						},
+					    error:function(e){
+							 $(myid).html("出错" );
+						}
+				 });	 //ajax结束   
+	        };  //函数结束
+														
+		function sleep(ms) {
+             return new Promise(resolve => setTimeout(resolve, ms || 1000))
+        }
+	       // 页面加载完成后，循环执行请求
+		$(document).ready(function(){
+			   //循环遍历请求列表
+			  //console.log("请求列表：",requsetList);
+			  requsetList.forEach(e=>{
+				    // console.log(e);
+				      refreshNum(e);
+				     //休眠一会？？？
+				     //sleep(1000); //
+				  });
+			});
+	</script>	
+	
+	
+	
+<@_includePlace path="/53d9aa26-ab9a-41df-90d5-efc5307c3b3e.html"/> <#-- footer -->
+ 
+	<script src="${site.dynamicPath}resource/js/cms.analytics.js"></script>
+   	<script>
+        var ca = cmsAnalytics();
+        var url='${site.dynamicPath}api/visit/record';
+        if("string" ==typeof itemString){
+            url=url+"?"+itemString;
+        }
+        ca.report(url);
+    </script>
+</body>
+</html>

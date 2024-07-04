@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<@_includePlace path="/940fd251-b42a-4d62-a863-106b41db3b21.html"/> <#-- 变革Head -->
+	<link href="${site.sitePath}css/earthchem.css" rel="stylesheet">
+
+<link href="${site.sitePath}datatables/DataTables-1.10.25/css/dataTables.bootstrap4.css" rel="stylesheet">
+	<script src="${site.sitePath}datatables/datatables.js"></script>
+	<link href="${site.sitePath}datatables/Buttons-1.7.1/css/buttons.bootstrap4.css" rel="stylesheet">
+	<script src="${site.sitePath}datatables/Buttons-1.7.1/js/buttons.bootstrap4.min.js"></script>
+	<script src="${site.sitePath}datatables/JSZip-2.5.0/jszip.min.js"></script>
+
+	<style>
+	div.dt-buttons {
+        clear: both;
+    }
+	</style>
+	
+</head>
+<body class="menu-always-on-top">
+ <@_includePlace path="/501dbfda-4c14-4841-8c70-cfb693c2f3b1.html"/> <#-- 变革header -->
+	<input type="hidden" name="_csrf" value="<@_csrfToken/>"/>
+	<div class="wrapper" style="margin-top:5px;">
+		<div style="width:80%;">
+			<h3>查询结果:</h3>
+			<p>您可以单击“保存…” 按钮下载并保存为excel文件</p>
+		</div>
+		<!-- end header -->
+       <table id="example" class="table table-striped table-bordered" style="width:80%;">
+     
+       
+       </table>
+
+    </div>
+
+<@_includePlace path="/95481b45-919b-413f-bbfb-9493ad16d93e.html"/> <#-- 变革footer -->
+<script>
+	$(document).ready(function() {
+			var map=JSON.parse(sessionStorage.getItem("options"));
+		     console.log(map);
+		    mycolumns=new Array();
+		   
+		
+			 for(var prop in map){
+				   var temp={ "data": prop,"title":map[prop] };
+					mycolumns.push(temp);
+			}
+		   console.log(mycolumns);
+		  
+		
+			$('#example').DataTable( {
+				"pageLength":25,
+				 "responsive": true,
+				"processing": true,
+				"serverSide": false,
+				"ajax":  {
+					"type":"post",
+					"url": "/sampleInfo/getSampleList",
+					"data": function ( d ) {
+						d.polygon = sessionStorage.getItem("polygon");
+						d.csrf=$("#_csrf").val();
+					}
+				},
+				dom: 'Blfrtip',
+					   "buttons": [  
+				 			    {
+									extend: 'excel',
+									text:"保存...",
+									messageTop: 'The copyright of the data you downloaded belongs to the DDE onepetroleum team. Please abide by the relevant DDE regulations and the team agreement when using the data, and please quote it from this website when publishing.<br>您下载的数据版权属于DDE-OnePetrology团队，请您在使用数据时遵守相关DDE的规定以及团队的约定，并请在发表时一定标注上引自于本网站。'
+								}
+						   //'colvis'
+					   ],
+				 "columns":mycolumns
+			} );
+		
+		
+	} );
+</script>
+
+
+</body>
+</html>

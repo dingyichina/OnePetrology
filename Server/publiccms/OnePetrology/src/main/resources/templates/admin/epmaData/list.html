@@ -1,0 +1,94 @@
+<div class="pageHeader">
+    <form class="pagerForm" onsubmit="return navTabSearch(this);" method="post">
+        <#include "../include_page/parameters.html"/>
+        <div class="searchBar">
+            <ul class="searchContent">
+                <li>
+                    <label>样品：</label>
+                    <input type="text" name="sampleId" value="${sampleId!}" />
+                </li>
+            </ul>
+            <div class="subBar">
+                <ul>
+                    <li>
+                    	<button type="submit" class="buttonActive"><@t.page 'button.search'/></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<@_sysAuthorized roleIds=admin.roles urls='epmaData/add,epmaData/delete'><#assign authorizedMap=map/></@_sysAuthorized>
+<div class="pageContent">
+    <div class="panelBar">
+        <ul class="toolBar">
+        <#if authorizedMap['epmaData/add']>
+            <li><a href="epmaData/add.html" target="navTab" rel="epmaData/add"><i class="icon-plus-sign-alt icon-large"></i> <@t.page 'button.add'/></a></li>
+            <li><a href="epmaData/add.html?id={sid}" target="navTab" rel="epmaData/edit"><i class="icon-edit icon-large"></i> <@t.page 'button.edit'/></a></li>
+        </#if>
+        <#if authorizedMap['epmaData/delete']>
+            <li><a href="epmaData/delete.do?_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.batch_delete'/>" target="selectedTodo" rel="ids"><i class="icon-trash icon-large"></i> <@t.page 'button.batch_delete'/></a></li>
+        </#if>
+        </ul>
+    </div>
+<@_epmaDataList sampleId=sampleId 
+            orderType=orderType pageIndex=pageNum pageSize=numPerPage>
+    <table class="list" width="100%" layoutH="92">
+        <thead>
+            <tr>
+                <th width="20"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+                <th>ID</th>
+                <th orderField="sampleId" class="<#if orderField??&&'sampleId'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">样品</th>
+                <th>矿物名称</th>
+                <th>SiO<sub>2</sub>（10<sup>-2</sup>）</th>
+                <th>TiO<sub>2</sub> (10<sup>-2</sup>）</th>
+                <th>Al<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）</th>
+                <th>Cr<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）</th>
+                <th>Fe<sub>2</sub>O<sub>3</sub>(10<sup>-2</sup>）</th>
+                <th>FeO(10<sup>-2</sup>)</th>
+                <th>NiO(10<sup>-2</sup>)</th>
+                <th>MnO(10<sup>-2</sup>)</th>
+                <th>MgO(10<sup>-2</sup>)</th>
+                <th>CaO(10<sup>-2</sup>)</th>
+                <th>Na<sub>2</sub>O(10<sup>-2</sup>)</th>
+                <th>K<sub>2</sub>O(10<sup>-2</sup>)</th>
+                <th>P<sub>2</sub>O<sub>5</sub>(10<sup>-2</sup>)</th>
+                <th>总量(10<sup>-2</sup>)</th>
+                <th>其他(10<sup>-2</sup>)</th>
+                <th><@t.page 'operate'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.id}">
+                <td><input name="ids" value="${a.id}" type="checkbox"></td>
+                <td>${a.id!}</td>
+                <td>${a.sampleId!}</td>
+                <td>${a.mineralName!}</td>
+                <td>${a.siO2!}</td>
+                <td>${a.tiO2!}</td>
+                <td>${a.al2O3!}</td>
+                <td>${a.cr2O3!}</td>
+                <td>${a.fe2O3!}</td>
+                <td>${a.feO!}</td>
+                <td>${a.niO!}</td>
+                <td>${a.mnO!}</td>
+                <td>${a.mgO!}</td>
+                <td>${a.caO!}</td>
+                <td>${a.na2O!}</td>
+                <td>${a.k2O!}</td>
+                <td>${a.p2O5!}</td>
+                <td>${a.total!}</td>
+                <td>${a.others!}</td>
+                <td>
+                <#if authorizedMap['epmaData/delete']>
+                    <a href="epmaData/delete.do?ids=${a.id}&_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.delete'/>"  target="ajaxTodo"><@t.page 'button.delete'/></a>
+                </#if>
+                </td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</@_epmaDataList>
+</div>

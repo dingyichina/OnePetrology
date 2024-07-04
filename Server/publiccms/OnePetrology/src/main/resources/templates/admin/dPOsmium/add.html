@@ -1,0 +1,63 @@
+<@_dPOsmium id=id><#assign a=object/></@_dPOsmium>
+<form method="post" action="dPOsmium/save.do?callbackType=closeCurrent&navTabId=dPOsmium/list" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <input name="id" type="hidden" value="${id!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+    <div class="pageContent">
+        <div class="pageFormContent" layoutH="56">
+            <dl>
+                <dt>ID：</dt>
+                <dd><input class="required" name="id" type="text" size="30" value="${(a.id)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>样品：</dt>
+                <dd><input class="required" name="sampleId" type="text" size="30" value="${(a.sampleId)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>衰变常数 （1/年）：</dt>
+                <dd><input class="required" name="decayConst" type="text" size="30" value="${(a.decayConst)!}"/></dd>
+            </dl>
+            <dl>
+                <dt><sup>187</sup>Os/<sup>186</sup>Os：</dt>
+                <dd><input class="required" name="os187Os186" type="text" size="30" value="${(a.os187Os186)!}"/></dd>
+            </dl>
+            <dl>
+                <dt><sup>187</sup>Os/<sup>188</sup>Os：</dt>
+                <dd><input class="required" name="os187Os188" type="text" size="30" value="${(a.os187Os188)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>模式年龄1（Ma）：</dt>
+                <dd><input class="required" name="modelAge1" type="text" size="30" value="${(a.modelAge1)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>模式年龄1误差(Ma)：</dt>
+                <dd><input class="required" name="modelAge1Error" type="text" size="30" value="${(a.modelAge1Error)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>模式年龄2（Ma）：</dt>
+                <dd><input class="required" name="modelAge2" type="text" size="30" value="${(a.modelAge2)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>模式年龄2误差(Ma)：</dt>
+                <dd><input class="required" name="modelAge2Error" type="text" size="30" value="${(a.modelAge2Error)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>采用年龄（Ma）：</dt>
+                <dd><input class="required" name="acceptedAge" type="text" size="30" value="${(a.acceptedAge)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>采用年龄误差(Ma)：</dt>
+                <dd><input class="required" name="acceptedAgeError" type="text" size="30" value="${(a.acceptedAgeError)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>备注：</dt>
+                <dd><input class="required" name="remark" type="text" size="30" value="${(a.remark)!}"/></dd>
+            </dl>
+        </div>
+    </div>
+</form>

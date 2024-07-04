@@ -1,0 +1,50 @@
+<#macro contentProducts contentId='' copy=false>
+<table class="list nowrap itemDetail products" addButton="<@t.page 'button.new_line'/>" batchUploadUrl="common/batchUpload.html?field=cover&fileTypes=image" width="100%">
+    <thead>
+        <tr>
+            <th type="attach" name="products[#index#].cover" size="50" lookupGroup="products[#index#]" lookupUrl="common/upload.html?field=cover&fileTypes=image"><@t.page 'cover'/></th>
+            <th type="text" name="products[#index#].title" fieldClass="required"  size="50" fieldAttrs="{'maxlength':100}"><@t.page 'title'/></th>
+            <th type="text" name="products[#index#].price" fieldClass="required number" size="10" fieldAttrs="{'maxlength':20}"><@t.page 'product.price'/></th>
+            <th type="text" name="products[#index#].inventory" fieldClass="required digits" fieldAttrs="{'maxlength':20,min:1}" size="10"><@t.page 'product.inventory'/></th>
+            <th type="text" name="products[#index#].minQuantity" fieldClass="digits" size="10" fieldAttrs="{'maxlength':20}"><@t.page 'product.quantity_limit.min'/></th>
+            <th type="text" name="products[#index#].maxQuantity" fieldClass="digits" size="10" fieldAttrs="{'maxlength':20}"><@t.page 'product.quantity_limit.max'/></th>
+            <th type="del" width="60"><@t.page 'operate'/></th>
+        </tr>
+    </thead>
+    <tbody>
+<#if contentId?has_content>
+    <@_contentProductList contentId=contentId absoluteURL=false pageSize=100>
+        <#list page.list as product>
+            <tr>
+                <td>
+                    <#if !copy><input type="hidden" name="products[${product?index}].id" value="${product.id}"/></#if>
+                    <input type="text" name="products[${product?index}].cover" value="${(product.cover)!}" size="50"/>
+                    <a class="btnAttach" lookupGroup="products[${product?index}]" href="common/upload.html?field=cover&productTypes=image" width="1000" height="600"><@t.page 'cover'/></a>
+                </td>
+                <td>
+                    <input type="text" name="products[${product?index}].title" class="required" maxlength="100" size="50" value="${(product.title)!}">
+                </td>
+                <td>
+                    <input type="text" name="products[${product?index}].price" class="required number" value="${(product.price)!}" size="10" maxlength="20"/>
+                </td>
+                <td>
+                    <input type="text" name="products[${product?index}].inventory" class="required digits" value="${product.inventory!100}" min="1" size="10" maxlength="20"/>
+                </td>
+                <td>
+                    <input type="text" name="products[${product?index}].minQuantity" class="digits" value="${(product.minQuantity)!}" size="10" maxlength="20"/>
+                </td>
+                <td>
+                    <input type="text" name="products[${product?index}].maxQuantity" class="digits" value="${(product.maxQuantity)!}" size="10" maxlength="20"/>
+                </td>
+                <td>
+                    <a href="javascript:;" class="btnDel"><@t.page 'button.delete'/></a>
+                </td>
+            </tr>
+        </#list>
+    </@_contentProductList>
+</#if>
+    </tbody>
+</table>
+<#include "../include_page/preview.html"/>
+<@preview 'product' '.products' 'tr td input[name$=cover]'/>
+</#macro>

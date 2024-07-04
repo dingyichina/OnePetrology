@@ -1,0 +1,58 @@
+<@_articleList articleName=articleName
+orderType=orderType pageIndex=pageNum pageSize=numPerPage>
+<div class="pageHeader">
+    <form class="pagerForm" onsubmit="return dialogSearch(this);" action="article/lookup.html" method="post">
+        <#include "../include_page/parameters.html"/>
+        <input type="hidden" name="field" value="${field!'articleId'}"/>
+        <input type="hidden" name="nickNameField" value="${nickNameField!'articleName'}"/>
+        <div class="searchBar">
+            <table class="searchContent">
+                <tr>
+                    <td>
+                        <label><@t.page 'name'/>:</label>
+                        <input type="text" name="name" value="${(name)!}" />
+                    </td>
+
+                </tr>
+
+            </table>
+            <div class="subBar">
+                <ul>
+                    <li>
+                        <button type="button" class="button" onclick="$.bringBack({'${field!'articleId'}':'','${nickNameField!'articleName'}':''});return false;"><@t.page 'button.clear_select'/></button>
+                        <button type="submit" class="buttonActive"><@t.page 'button.search'/></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="pageContent">
+    <table class="list" width="100%" layoutH="96">
+        <thead>
+            <tr>
+                <th>选择</th>
+                <th>ID</th>
+                <th orderField="articleName" class="<#if orderField??&&'articleName'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">文章名称</th>
+                <th>引用格式</th>
+                <th>DOI</th>
+                <th><@t.page 'operate'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.id}">
+                <td>
+                    <a href="javascript:;" onclick="$.bringBack({'${field!'articleId'}':'${a.id}','${nickNameField!'articleName'}':'${(a.articleName?js_string)!}'});return false;"><i class="icon-check-sign icon-large"></i> <@t.page 'select'/></a>
+                </td>
+                <td>${a.id!}</td>
+                <td>${a.articleName!}</td>
+                <td>${a.reference!}</td>
+                <td>${a.doi!}</td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/pageDialog.html"/>
+</div>
+</@_articleList>

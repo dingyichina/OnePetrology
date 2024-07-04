@@ -1,0 +1,61 @@
+<@_tradePaymentHistoryList paymentId=paymentId!queryPaymentId operate=operate
+            startCreateDate=startCreateDate endCreateDate=endCreateDate 
+            orderType=orderType pageIndex=pageNum pageSize=numPerPage>
+<div class="pageHeader">
+    <form class="pagerForm" autocomplete="off" onsubmit="return navTabSearch(this);" method="post">
+        <#include "../include_page/parameters.html"/>
+        <div class="searchBar">
+            <ul class="searchContent">
+                <li>
+                    <label><@t.page 'payment.id'/>:</label>
+                    <input type="text" name="paymentId" value="${paymentId!queryPaymentId!}" />
+                </li>
+                <li>
+                    <label><@t.page 'operate'/>:</label>
+                    <input type="text" name="operate" value="${operate!}" />
+                </li>
+                <li class="colspan">
+                    <label><@t.page 'create_date'/>:</label>
+                    <input type="text" name="startCreateDate" class="date" size="10" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="${startCreateDate!}" />
+                    <span>-</span>
+                    <input type="text" name="endCreateDate" class="date" size="10" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="${endCreateDate!}" />
+                </li>
+            </ul>
+            <div class="subBar">
+                <ul>
+                    <li>
+                        <button type="submit" class="buttonActive"><@t.page 'button.search'/></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="pageContent">
+    <table class="table" width="100%" layoutH>
+        <thead>
+            <tr>
+                <th><@t.page 'id'/></th>
+                <th><@t.page 'payment.id'/></th>
+                <th><@t.page 'operate'/></th>
+                <th orderField="createDate" class="<#if orderField??&&'createDate'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>"><@t.page 'create_date'/></th>
+                <th><@t.page 'content'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.id}">
+                <td>${a.id!}</td>
+                <td>${a.paymentId!}</td>
+                <td>${a.operate!}</td>
+                <td>${a.createDate!}</td>
+                <td class="exclude-translate">
+                    <@t.cut a.content!'' 60 '...<a href="tradePaymentHistory/view.html?id=${a.id}" class="btnText" target="dialog" rel="tradePaymentHistoryView">'?no_esc+t.pageMessage('button.view_more')+'</a>'?no_esc/>
+                </td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</div>
+</@_tradePaymentHistoryList>

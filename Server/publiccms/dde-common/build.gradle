@@ -1,0 +1,43 @@
+dependencies {
+    compile (
+        "commons-fileupload:commons-fileupload:${fileuploadVersion}",
+        "org.apache.commons:commons-collections4:${collectionsVersion}",
+        "org.apache.commons:commons-lang3:${langVersion}",
+        "commons-codec:commons-codec:${codecVersion}",
+
+        "org.apache.httpcomponents:httpmime:${httpclientVersion}",
+        "org.apache.httpcomponents:httpclient-cache:${httpclientVersion}",
+
+        "org.apache.ant:ant:${antVersion}",
+
+        "org.freemarker:freemarker:${freemarkerVersion}",
+
+        "org.springframework:spring-context-support:${springVersion}",
+        "org.springframework:spring-orm:${springVersion}",
+        "org.springframework:spring-webmvc:${springVersion}",
+
+        "org.mybatis:mybatis:${mybatisVersion}",
+        "org.mybatis:mybatis-spring:${mybatisSpringVersion}",
+
+        "org.hibernate:hibernate-search-orm:${hibernateSearchVersion}",
+        "org.hibernate:hibernate-jcache:${hibernateVersion}",
+
+        "org.ehcache:ehcache:${ehcacheVersion}",
+
+        "org.apache.lucene:lucene-analyzers-smartcn:${luceneVersion}",
+        "org.apache.lucene:lucene-backward-codecs:${luceneVersion}",
+
+        "com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}",
+        "com.fasterxml.jackson.core:jackson-databind:${jacksonDatabindVersion}",
+
+	    "javax.transaction:jta:${jtaVersion}",
+	    "javax.mail:javax.mail-api:${mailVersion}",
+	    "com.sun.mail:javax.mail:${mailVersion}",
+        "javax.servlet:javax.servlet-api:${servletVersion}"
+    )
+    compile(
+        "org.quartz-scheduler:quartz:${quartzVersion}") {
+        exclude group:"com.mchange"
+        exclude group:"com.zaxxer" 
+    }
+}

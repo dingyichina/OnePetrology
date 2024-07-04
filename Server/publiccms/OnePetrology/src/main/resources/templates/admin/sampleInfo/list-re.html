@@ -1,0 +1,180 @@
+<div class="pageHeader">
+    <form class="pagerForm" onsubmit="return navTabSearch(this);" method="post">
+        <#include "../include_page/parameters.html"/>
+        <div class="searchBar">
+            <ul class="searchContent">
+                <li>
+                    <label>Sample Id：</label>
+                    <input type="text" name="sampleId" value="${sampleId!}" />
+                </li>
+                <li>
+                    <label>Oraginal Sample Id：</label>
+                    <input type="text" name="oraginalSampleId" value="${oraginalSampleId!}" />
+                </li>
+                <li>
+                    <label>Location：</label>
+                    <input type="text" name="location" value="${location!}" />
+                </li>
+                <li>
+                    <label>Location Type：</label>
+                    <input type="text" name="locationType" value="${locationType!}" />
+                </li>
+                <li>
+                    <label>Tectonic Location：</label>
+                    <input type="text" name="tectonicLocation" value="${tectonicLocation!}" />
+                </li>
+
+                <li>
+                    <label>Lithology：</label>
+                    <input type="text" name="lithology" value="${lithology!}" />
+                </li>
+                <li>
+                    <label>Occurrence：</label>
+                    <input type="text" name="occurrence" value="${occurrence!}" />
+                </li>
+
+            </ul>
+            <div class="subBar">
+                <ul>
+                    <li>
+                    	<button type="submit" class="buttonActive"><@t.page 'button.search'/></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<@_sysAuthorized roleIds=admin.roles urls='sampleInfo/add,sampleInfo/delete'><#assign authorizedMap=map/></@_sysAuthorized>
+<div class="pageContent">
+    <div class="panelBar">
+        <ul class="toolBar">
+        <#if authorizedMap['sampleInfo/add']>
+            <li><a href="sampleInfo/add.html" target="navTab" rel="sampleInfo/add"><i class="icon-plus-sign-alt icon-large"></i> <@t.page 'button.add'/></a></li>
+            <li><a href="sampleInfo/add.html?id={sid}" target="navTab" rel="sampleInfo/edit"><i class="icon-edit icon-large"></i> <@t.page 'button.edit'/></a></li>
+        </#if>
+        <#if authorizedMap['sampleInfo/delete']>
+            <li><a href="sampleInfoAdmin/delete.do?_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.batch_delete'/>" target="selectedTodo" rel="ids"><i class="icon-trash icon-large"></i> <@t.page 'button.batch_delete'/></a></li>
+        </#if>
+        </ul>
+    </div>
+<@_sampleInfoList sampleId=sampleId oraginalSampleId=oraginalSampleId 
+            location=location locationType=locationType tectonicLocation=tectonicLocation 
+            primaryStructuralUnit=primaryStructuralUnit secondaryStructuralUnit=secondaryStructuralUnit tertiaryStructuralUnit=tertiaryStructuralUnit 
+            lithology=lithology occurrence=occurrence intrusion=intrusion 
+            rockName=rockName rockCode=rockCode era=era 
+            geobodyName=geobodyName geobodyCode=geobodyCode surroundingRockAge=surroundingRockAge 
+            surroundingRockLithology=surroundingRockLithology relationshipWithSurroundingRock=relationshipWithSurroundingRock form=form 
+            whetherToCutAreaConstructionLine=whetherToCutAreaConstructionLine degreeOfDeformation=degreeOfDeformation characteristicMinerals=characteristicMinerals 
+            geneticType=geneticType age=age ageError=ageError 
+            testObject=testObject testMethod=testMethod ageSelected=ageSelected 
+            ageSelectedError=ageSelectedError tectonicType=tectonicType sourceOfStructuralTypeDiscrimination=sourceOfStructuralTypeDiscrimination 
+            alkalinity=alkalinity aluminumQuality=aluminumQuality photo=photo 
+            collector=collector collectorOrg=collectorOrg reviewer=reviewer 
+            analyzeOrg=analyzeOrg analyzePerson=analyzePerson testDate=testDate 
+            dataSource=dataSource articleDoi=articleDoi remark=remark 
+            siO2=siO2 tiO2=tiO2 al2o3=al2o3 
+            fe2o3=fe2o3 feO=feO fe2o3t=fe2o3t 
+            feOt=feOt tfe=tfe mnO=mnO 
+            mgO=mgO caO=caO na2o=na2o 
+            k2o=k2o p2o5=p2o5 h2op=h2op 
+            h2on=h2on co2=co2 so3=so3 
+            f=f cl=cl loi=loi 
+            total=total la=la ce=ce 
+            pr=pr nd=nd pm=pm 
+            sm=sm eu=eu gd=gd 
+            tb=tb dy=dy ho=ho 
+            er=er tm=tm yb=yb 
+            lu=lu y=y sc=sc 
+            totalReElement=totalReElement v=v cr=cr 
+            co=co ni=ni mn=mn 
+            cu=cu zn=zn ga=ga 
+            ge=ge cs=cs rb=rb 
+            ba=ba th=th u=u 
+            nb=nb ta=ta ti=ti 
+            p=p pb=pb sr=sr 
+            zr=zr hf=hf li=li 
+            be=be w=w pt=pt 
+            pd=pd os=os ir=ir 
+            ru=ru rh=rh srIsotope=srIsotope 
+            ndIsotope=ndIsotope rb87Sr86=rb87Sr86 sr87Sr86M=sr87Sr86M 
+            sm147Nd144=sm147Nd144 nd143Nd144=nd143Nd144 testRockMa=testRockMa 
+            sr87Sr86I=sr87Sr86I nd143Nd144TChur=nd143Nd144TChur nd143Nd144I=nd143Nd144I 
+            FSmNdS=FSmNdS epsilonNd0=epsilonNd0 epsilonNdT=epsilonNdT 
+            tdmMa=tdmMa tdm2Ma=tdm2Ma hfIsotope=hfIsotope 
+            hfPointNum=hfPointNum hfNormalNum=hfNormalNum epsilonHftMin=epsilonHftMin 
+            epsilonHftMax=epsilonHftMax epsilonHftMedian=epsilonHftMedian epsilonHftAverage=epsilonHftAverage 
+            tdmcMin=tdmcMin tdmcMax=tdmcMax tdmcMedian=tdmcMedian 
+            tdmcAverage=tdmcAverage hfOisotope=hfOisotope d18oMin=d18oMin 
+            d18oMax=d18oMax d18oAverage=d18oAverage d18oMedian=d18oMedian 
+            orderField=orderField orderType=orderType pageIndex=pageNum pageSize=numPerPage>
+    <table class="list" width="150%" layoutH="92">
+        <thead>
+            <tr>
+                <th orderField="id" class="<#if orderField??&&'id'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">ID</th>
+                <th orderField="sampleId" class="<#if orderField??&&'sampleId'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Sample Id</th>
+                <th orderField="oraginalSampleId" class="<#if orderField??&&'oraginalSampleId'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Oraginal Sample Id</th>
+                <th orderField="longitude" class="<#if orderField??&&'longitude'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Longitude</th>
+                <th orderField="latitude" class="<#if orderField??&&'latitude'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Latitude</th>
+                <th orderField="location" class="<#if orderField??&&'location'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Location</th>
+                <th orderField="locationType" class="<#if orderField??&&'locationType'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Location Type</th>
+                <th orderField="la" class="<#if orderField??&&'la'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">镧 La（10<sup>-6</sup>）</th>
+                <th orderField="ce" class="<#if orderField??&&'ce'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铈 Ce（10<sup>-6</sup>）</th>
+                <th orderField="pr" class="<#if orderField??&&'pr'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">镨 Pr（10<sup>-6</sup>）</th>
+                <th orderField="nd" class="<#if orderField??&&'nd'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钕 Nd（10<sup>-6</sup>）</th>
+                <th orderField="pm" class="<#if orderField??&&'pm'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钷 Pm（10<sup>-6</sup>）</th>
+                <th orderField="sm" class="<#if orderField??&&'sm'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钐 Sm（10<sup>-6</sup>）</th>
+                <th orderField="eu" class="<#if orderField??&&'eu'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铕 Eu（10<sup>-6</sup>）</th>
+                <th orderField="gd" class="<#if orderField??&&'gd'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钆 Gd（10<sup>-6</sup>）</th>
+                <th orderField="tb" class="<#if orderField??&&'tb'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铽 Tb（10<sup>-6</sup>）</th>
+                <th orderField="dy" class="<#if orderField??&&'dy'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">镝 Dy（10<sup>-6</sup>）</th>
+                <th orderField="ho" class="<#if orderField??&&'ho'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钬 Ho（10<sup>-6</sup>）</th>
+                <th orderField="er" class="<#if orderField??&&'er'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铒 Er（10<sup>-6</sup>）</th>
+                <th orderField="tm" class="<#if orderField??&&'tm'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铥 Tm（10<sup>-6</sup>）</th>
+                <th orderField="yb" class="<#if orderField??&&'yb'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">镱 Yb（10<sup>-6</sup>）</th>
+                <th orderField="lu" class="<#if orderField??&&'lu'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">镥 Lu（10<sup>-6</sup>）</th>
+                <th orderField="y" class="<#if orderField??&&'y'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钇 Y（10<sup>-6</sup>）</th>
+                <th orderField="sc" class="<#if orderField??&&'sc'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钪 Sc（10<sup>-6</sup>）</th>
+                <th orderField="totalReElement" class="<#if orderField??&&'totalReElement'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Total Re Element（10<sup>-6</sup>）</th>
+                <th><@t.page 'operate'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.id}">
+                <td>${a.id!}</td>
+                <td>${a.sampleId!}</td>
+                <td>${a.oraginalSampleId!}</td>
+                <td>${a.longitude!}</td>
+                <td>${a.latitude!}</td>
+                <td>${a.location!}</td>
+                <td>${a.locationType!}</td>
+                <td>${a.la!}</td>
+                <td>${a.ce!}</td>
+                <td>${a.pr!}</td>
+                <td>${a.nd!}</td>
+                <td>${a.pm!}</td>
+                <td>${a.sm!}</td>
+                <td>${a.eu!}</td>
+                <td>${a.gd!}</td>
+                <td>${a.tb!}</td>
+                <td>${a.dy!}</td>
+                <td>${a.ho!}</td>
+                <td>${a.er!}</td>
+                <td>${a.tm!}</td>
+                <td>${a.yb!}</td>
+                <td>${a.lu!}</td>
+                <td>${a.y!}</td>
+                <td>${a.sc!}</td>
+                <td>${a.totalReElement!}</td>
+                <td>
+                <#if authorizedMap['sampleInfo/delete']>
+                    <a href="sampleInfo/delete.do?ids=${a.id}&_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.delete'/>"  target="ajaxTodo"><@t.page 'button.delete'/></a>
+                </#if>
+                </td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</@_sampleInfoList>
+</div>

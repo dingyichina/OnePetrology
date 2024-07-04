@@ -1,0 +1,19 @@
+<#macro lookupTree parentId='' deep=1>
+    <@_sysModuleList advanced=true parentId=parentId pageSize=500>
+        <#list page.list as a>
+            <li>
+                <a href="javascript:;" onclick="$.bringBack({parentId:'${a.id?js_string}',parentName:'<@t.menu a.id/>'});return false;"><#if (a.attached)?has_content><i class="${a.attached} icon-large"></i></#if> <@t.menu a.id/></a>
+                <#if deep lte 2>
+                    <ul>
+                        <@lookupTree a.id deep+1/>
+                    </ul>
+                </#if>
+            </li>
+        </#list>
+    </@_sysModuleList>
+</#macro>
+<div class="pageFormContent" layoutH>
+    <ul class="tree treeFolder expand">
+        <@lookupTree/>
+    </ul>
+</div>

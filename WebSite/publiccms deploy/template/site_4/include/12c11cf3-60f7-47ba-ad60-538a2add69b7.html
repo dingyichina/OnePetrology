@@ -1,0 +1,1140 @@
+<div class="container">
+      <div class="row">
+        <div class="col-md-10" id="fig_container">
+          <div id="fig_main4pearce" style="height:900px;width:100%;"></div>
+        </div>
+		  
+        <div class="col-md-2">
+			
+
+           <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="chkLegend4pearce" checked>
+            <label class="form-check-label" for="chkLegend4pearce">
+              Legend
+            </label>
+          </div>
+         
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" checked value="" id="chkDetail4pearce">
+            <label class="form-check-label" for="chkDetail4pearce">
+              Detail
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="chkShowindex4pearce">
+            <label class="form-check-label" for="chkShowindex4pearce">
+              Show Index
+            </label>
+          </div>
+		<label class="form-check-label" for="groupField4pearce">
+              Group by:
+        </label>
+		<select class="form-select" id="groupField4pearce" >
+		      <option selected value="-1">No Group</option>
+        </select>
+		 <div  id="numberConfig4pearce"   class="group" style="width:300px; display:none;">
+             <div  id='groupNumberConfig4pearce' >
+				 
+			  </div>	 
+              <button  onclick="redrawNumberGroup4pearce();"  style="margin-top:30px;margin-left:50px;"> ReDraw  </button>
+          </div>	
+			
+          <div id='groupSetting4pearce' class="group"  style="width:300px;">
+             
+
+          </div>
+          <div class="d-grid gap-2">
+            
+          </div>
+        </div>
+      </div>
+
+    </div> 
+		<script src="${site.sitePath}js/plotly-2.18.0.min.js"></script>
+	<script>
+        //尝试绘制Pearce图
+		var lineDiv4pearce = document.getElementById('fig_main4pearce');
+       
+				
+		 var data4pearce=buildData4pearce();
+         // 图的layout设置
+		var layout4pearce = {
+			grid: {rows: 2, columns: 2, pattern: 'independent' ,domain:{x:[0,2],y:[0,2] } , },
+              
+			  title:{
+				  text:'Pearce diagram (after Julian A. Pearce et al., 1984).',
+				  font:{
+					  size:30,
+					  family:'arial'},},
+			  xaxis: {
+				rangemode: 'normal',
+				 title:{
+					text: 'Y+Nb (PPM)', 
+					font:{
+					  size:20,
+					  family:'arial'},
+				 },
+				 type:'log',
+				 tickmode:'array',
+				 tickvals:[10,100,1000] ,
+				 showgrid:false, 
+				 range:[0.3,3.1],
+				 showline:true,
+				  ticklen:8,
+				  tickfont:{
+					size:18,  
+				  },
+				  anchor:'y1'
+			  },
+			  yaxis: {
+				rangemode: 'normal',
+				   title:{
+					text: 'Rb (PPM） ', 
+					font:{
+					  size:20,
+					  family:'arial'},
+				 },
+				  type:'log',
+				  
+		  	     tickmode:'array',
+				 tickvals:[1,10,100,1000] ,
+				  showgrid:false,
+				  range:[0,3.2],
+			      showline:true,
+				    ticklen:8,
+				  tickfont:{
+					size:18,  
+				  },
+				  anchor:'x1'
+			  },
+			  xaxis2: {
+				rangemode: 'normal',
+				 title:{
+					text: 'Yb +Ta (PPM)', 
+					font:{
+					  size:20,
+					  family:'arial'},
+				 },
+				  type:'log',
+				 tickmode:'array',
+				 tickvals:[1,10,100] ,
+				 showgrid:false, 
+				 range:[-0.2,2.2],
+				 showline:true,
+				  ticklen:8,
+				  tickfont:{
+					size:18,  
+				  },
+				    anchor:'y2'
+			  },
+			  yaxis2: {
+				rangemode: 'normal',
+				   title:{
+					text: 'Rb (PPM)', 
+					font:{
+					  size:20,
+					  family:'arial'},
+				 },
+				  type:'log',
+		  	     tickmode:'array',
+				 tickvals:[1,10,100,1000] ,
+				  showgrid:false,
+				  range:[0,3.2],
+			      showline:true,
+				    ticklen:8,
+				  tickfont:{
+					size:18,  
+				  },
+				    anchor:'x2'
+			  }, 
+			xaxis3: {
+				rangemode: 'normal',
+				 title:{
+					text: 'Y (PPM)', 
+					font:{
+					  size:20,
+					  family:'arial'},
+				 },
+				type:'log',
+				 tickmode:'array',
+				 tickvals:[1,10,100,1000] ,
+				 showgrid:false, 
+				 range:[0,3.1],
+				 showline:true,
+				  ticklen:8,
+				tickfont:{
+					size:18,  
+				  },
+			  anchor:'y3'
+			},
+			  yaxis3: {
+				rangemode: 'normal',
+				   title:{
+					text: 'Nb (PPM)', 
+				   	font:{
+					  size:20,
+					  family:'arial'},
+				 },
+				  type:'log',
+		  	     tickmode:'array',
+				 tickvals:[1,10,100,1000] ,
+				  showgrid:false,
+				  range:[0,3.2],
+			      showline:true,
+				    ticklen:8,
+				  tickfont:{
+					size:18,  
+				  },
+				    anchor:'x3'
+			  },
+			xaxis4: {
+				rangemode: 'normal',
+				 title:{
+					text: 'Yb (PPM)', 
+					font:{
+					  size:20,
+					  family:'arial'},
+				 },
+				type:'log',
+				 tickmode:'array',
+				 tickvals:[0.1,1,10,100] ,
+				 showgrid:false, 
+				 range:[-1,2.1],
+				 showline:true,
+				  ticklen:8,
+				tickfont:{
+					size:18,  
+				  },
+			  anchor:'y4'
+			},
+			  yaxis4: {
+				rangemode: 'normal',
+				   title:{
+					text: 'Ta (PPM)', 
+					font:{
+					  size:20,
+					  family:'arial'},
+				 },
+				  type:'log',
+		  	     tickmode:'array',
+				 tickvals:[0.1 ,1,10,100] ,
+				  showgrid:false,
+				  range:[-1.2,2.2],
+			      showline:true,
+				    ticklen:8,
+				  tickfont:{
+					size:18,  
+				  },
+				    anchor:'x4'
+			  }
+			};
+ 	    var config4pearce = {
+				  toImageButtonOptions: {
+					format: 'svg', // one of png, svg, jpeg, webp
+					filename: 'Pearce',
+					height: 900,
+					width: 1300,
+					scale: 1 // Multiply title/legend/axis/canvas sizes by this factor
+				  }
+				};
+ 
+			Plotly.newPlot( lineDiv4pearce, data4pearce, layout4pearce,config4pearce );
+		   
+		  // 构造基础data中的trace
+		  function buildData4pearce(){
+			  //获取参数
+			  var showLegend = $('#chkLegend4pearce').prop("checked");
+			  var detail = $('#chkDetail4pearce').prop("checked");
+			  var showIndex=$('#chkShowindex4pearce').prop("checked");
+			  var mapdata=[];  //初始化数组
+			 
+			  //构建背景线
+			  var baseline0=[[[2, 80], [55, 300]],
+                                [[55, 300], [400, 2000]],
+                                [[55, 300], [51.5, 8]],
+                                [[51.5, 8], [50, 1]],
+                                [[51.5, 8], [2000, 400]] ];
+			  
+			  for( var line of baseline0) {
+						  var xlist=[],ylist=[];
+						  for(var i=0; i<line.length;i++){
+								xlist.push(line[i][0]);
+								ylist.push(line[i][1]);
+						  }
+						  var traceA = {
+							  x: xlist,
+							  y: ylist,
+							  type: 'scatter',
+							  fill: 'none',
+							  mode:'lines',	
+							  line: {
+								color: 'rgb(128, 128, 128)',
+							  },
+							  xaxis:'x1',
+							  yaxis:'y1',
+							  showlegend:false,
+							};
+						  mapdata.push(traceA);
+			  }
+			  
+			  var baseline1=[[[0.5, 140], [6, 200]],
+                                [[6, 200], [50, 2000]],
+                                [[6, 200], [6, 8]],
+                                [[6, 8], [6, 1]],
+                                [[6, 8], [200, 400]]];
+			  for( var line of baseline1) {
+						  var xlist=[],ylist=[];
+						  for(var i=0; i<line.length;i++){
+								xlist.push(line[i][0]);
+								ylist.push(line[i][1]);
+						  }
+						  var traceA = {
+							  x: xlist,
+							  y: ylist,
+							  type: 'scatter',
+							  fill: 'none',
+							  mode:'lines',	
+							  line: {
+								color: 'rgb(128, 128, 128)',
+							  },
+							  xaxis:'x2',
+							  yaxis:'y2',
+							  showlegend:false,
+							};
+						  mapdata.push(traceA);
+				  }
+			     var baseline2=[[[1, 2000], [50, 10]],
+                                [[40, 1], [50, 10]],
+                                [[50, 10], [1000, 100]],
+                                [[25, 25], [1000, 400]]];
+			    for( var line of baseline2) {
+						  var xlist=[],ylist=[];
+						  for(var i=0; i<line.length;i++){
+								xlist.push(line[i][0]);
+								ylist.push(line[i][1]);
+						  }
+						  var traceA = {
+							  x: xlist,
+							  y: ylist,
+							  type: 'scatter',
+							  fill: 'none',
+							  mode:'lines',	
+							  line: {
+								color: 'rgb(128, 128, 128)',
+							  },
+							  xaxis:'x3',
+							  yaxis:'y3',
+							  showlegend:false,
+							};
+						  mapdata.push(traceA);
+				  }
+				var baseline3= [[[0.55, 20], [3, 2]],
+                                [[0.1, 0.35], [3, 2]],
+                                [[3, 2], [5, 1]],
+                                [[5, 0.05], [5, 1]],
+                                [[5, 1], [100, 7]],
+                                [[3, 2], [100, 20]]];
+			   for( var line of baseline3) {
+						  var xlist=[],ylist=[];
+						  for(var i=0; i<line.length;i++){
+								xlist.push(line[i][0]);
+								ylist.push(line[i][1]);
+						  }
+						  var traceA = {
+							  x: xlist,
+							  y: ylist,
+							  type: 'scatter',
+							  fill: 'none',
+							  mode:'lines',	
+							  line: {
+								color: 'rgb(128, 128, 128)',
+							  },
+							  xaxis:'x4',
+							  yaxis:'y4',
+							  showlegend:false,
+							};
+						  mapdata.push(traceA);
+				  }
+			  
+				  //分界线添加完毕
+				  if(detail == true){
+					   var locations= [[10, 1000], [10, 10], [251, 251], [1000, 10]];
+					   var  labels= ['syn-COLG', 'VAG', 'WPG', 'ORG'];
+						var xlist=[],ylist=[];
+						  for(var i=0;i<locations.length;i++){
+							 xlist.push(locations[i][0]);
+							 ylist.push(locations[i][1]);
+						  }
+						 var traceLabel={
+								 x: xlist,
+								  y: ylist,
+								  type: 'scatter',
+								  fill: 'none',
+								  textposition:'top left',
+								  mode:'text',	
+								  text:labels,
+								  showlegend:false,
+							     xaxis: 'x1',
+ 								 yaxis: 'y1'
+						 };
+						 mapdata.push(traceLabel);
+					  
+					  locations= [[3.2, 1000], [3.2, 10], [32, 251], [100, 10]];
+					     labels= ['syn-COLG', 'VAG', 'WPG', 'ORG'];
+						 xlist=[];
+					     ylist=[];
+						  for(var i=0;i<locations.length;i++){
+							 xlist.push(locations[i][0]);
+							 ylist.push(locations[i][1]);
+						  }
+						 var traceLabel={
+								 x: xlist,
+								  y: ylist,
+								  type: 'scatter',
+								  fill: 'none',
+								  textposition:'top left',
+								  mode:'text',	
+								  text:labels,
+								  showlegend:false,
+							     xaxis: 'x2',
+ 								 yaxis: 'y2'
+						 };
+						 mapdata.push(traceLabel);
+					  
+					    locations= [[3.2, 32], [3.2, 100], [100, 100], [158, 3.2]];
+					     labels= ['syn-COLG', 'VAG', 'WPG', 'ORG'];
+						 xlist=[];
+					     ylist=[];
+						  for(var i=0;i<locations.length;i++){
+							 xlist.push(locations[i][0]);
+							 ylist.push(locations[i][1]);
+						  }
+						 var traceLabel={
+								 x: xlist,
+								  y: ylist,
+								  type: 'scatter',
+								  fill: 'none',
+								  textposition:'top left',
+								  mode:'text',	
+								  text:labels,
+								  showlegend:false,
+							     xaxis: 'x3',
+ 								 yaxis: 'y3'
+						 };
+						 mapdata.push(traceLabel);
+					  
+					  locations= [[0.32, 1.26], [0.32, 0.1], [5.0, 10], [32, 1]];
+					     labels= ['syn-COLG', 'VAG', 'WPG', 'ORG'];
+						 xlist=[];
+					     ylist=[];
+						  for(var i=0;i<locations.length;i++){
+							 xlist.push(locations[i][0]);
+							 ylist.push(locations[i][1]);
+						  }
+						 var traceLabel={
+								 x: xlist,
+								  y: ylist,
+								  type: 'scatter',
+								  fill: 'none',
+								  textposition:'top left',
+								  mode:'text',	
+								  text:labels,
+								  showlegend:false,
+							     xaxis: 'x4',
+ 								 yaxis: 'y4'
+						 };
+						 mapdata.push(traceLabel);
+				  }
+		  	     return mapdata;
+		  }
+		
+		
+		  // 判断记录是否有效
+		   function isValidItem1(item){
+			      if(item.hasOwnProperty('Y') && item.hasOwnProperty('Nb') 
+							  && item.Y !=null && item.Nb !=null){
+					  return true;  
+				  }else{
+					 
+					  return false;
+				  }
+		   }
+		 // 判断记录是否有效
+		   function isValidItem2(item){
+			      if(item.hasOwnProperty('Yb') && item.hasOwnProperty('Ta') && item.hasOwnProperty('Rb') 
+							  && item.Yb !=null && item.Ta !=null  && item.Rb !=null){
+					  return true;  
+				  }else{
+					 
+					  return false;
+				  }
+		   }
+		// 判断记录是否有效
+		   function isValidItem3(item){
+			      if(item.hasOwnProperty('Y') &&  item.hasOwnProperty('Nb') 
+							  && item.Y !=null && item.Nb !=null ){
+					  return true;  
+				  }else{
+					 
+					  return false;
+				  }
+		   }
+		// 判断记录是否有效
+		   function isValidItem4(item){
+			      if(item.hasOwnProperty('Yb') &&  item.hasOwnProperty('Ta') 
+							  && item.Yb !=null && item.Ta !=null ){
+					  return true;  
+				  }else{
+					 
+					  return false;
+				  }
+		   }
+		    //格式化字符串函数
+			String.format = function() {
+				if (arguments.length == 0)
+					return null;
+				var str = arguments[0];
+				for ( var i = 1; i < arguments.length; i++) {
+					var re = new RegExp('\\{' + (i - 1) + '\\}', 'gm');
+					str = str.replace(re, arguments[i]);
+				}
+				return str;
+			};
+
+		    var rtnColumns4pearce=[];  //返回得列名数组
+		    var numberColumns4pearce=[];  //返回的数字列名数组
+		    var rtnData4pearce;//返回的数据
+		    var traceList4pearce=[]; //缓存所有的trace（不包括底图的）
+		    var numberSpanConfig4pearce=[ ];   //缓存所有的数字字段的分段设置
+		 
+		   // 重绘所有图
+		    function redrawMap4pearce(){
+			    var mydata=buildData4pearce();
+				//添加traceLayer
+				var drawdata=mydata.concat(traceList4pearce);
+				Plotly.newPlot( lineDiv4pearce, drawdata, layout4pearce,config4pearce );
+			};
+		
+		   // 生成分组的html界面
+		    function buildGroupHtml4pearce(groupName,color,index=0){
+				 var html= ' <div class="row" >\
+                                                <label for="color" style="font-size:0.5em;margin-right:10px; width:90px;">{0}</label> \
+				                                <input  name="colorSelector4pearce" id="color-{0}"  type="color"   style="width:30px;margin-right:10px;" data-label="{0}" value="{1}" title="Choose color "> \
+				                                <select   style="width:80px;margin-right:10px;" id="shape-pearce-{2}" name="shapeSelector4pearce"  data-label="{0}"  title="choose the shape"> \
+														<option  value="0">circle</option> \
+														<option value="1">square</option> \
+														<option value="2">diamond</option> \
+														<option value="3">cross</option> \
+														<option value="4">x</option> \
+														<option selected value="5">triangle-up</option> \
+														<option value="6">triangle-down</option> \
+														<option value="7">triangle-left</option> \
+														<option value="8">triangle-right</option> \
+														<option value="9">triangle-ne</option> \
+														<option value="10">triangle-se</option> \
+														<option value="11">triangle-sw</option> \
+														<option value="12">triangle-nw</option> \
+														<option value="13">pentagon</option> \
+														<option value="14">hexagon</option> \
+														<option value="15">hexagon2</option> \
+														<option value="16">octagon</option> \
+														<option value="17">star</option> \
+														<option value="18">hexagram</option> \
+				                                </select>\
+				                                <input  type="number" step="1" name="sizeSelector4pearce"  data-label="{0}"  style="width:40px;margin-left:10px;"  min="3" max="15" value="5" title="set the size of shape"> \
+                                             </div>';
+						 return String.format(html,groupName,color,index);
+			}
+		    
+		    // 构造数字分组的html页面
+		    function buildNumberGroupHtml4pearce(groupName,index=0){
+				 var html=' <div class="row"  id="numberSpan4pearce-{1}"   data-label="{1}"  >\
+                                                <label for="color" style="font-size:0.5em;margin-right:10px; width:70px;">{0}：</label> \
+				                                 <input  type="number"  step="0.01" name="numberStart4pearce"  data-label="{0}"  style="width:60px;"   title="the start value"> \
+				                                 <label>-</label> \
+				                                <input  type="number"   step="0.01"  name="numberEnd4pearce"  data-label="{0}"  style="width:60px;"   title="the end value"> \
+  												<button  id="btnRemoveSpan4pearce-{1}"  onclick="removeNumberGroupHtml4pearce({1});"  style="margin-left:10px; width:30px;">  - </button> \
+												<button  id="btnAddSpan4pearce-{1}"  onclick="addNumberGroupHtml4pearce(\'{0}\',{1}); "  style="margin-left:10px; width:30px;">  + </button> \
+                                  </div>';
+				 return String.format(html,groupName,index);
+				
+			} //函数结束---构造数字分组的html页面
+		
+		  //构建数字型分组ui
+		  function buildNumberGroup4pearce(filterField){
+			  //清空旧的
+			   $('#numberConfig4pearce').show();
+			   $('#groupNumberConfig4pearce').empty();
+			  var myhtml=buildNumberGroupHtml4pearce(filterField,0);
+		   $('#groupNumberConfig4pearce').append(myhtml);
+		  }// 函数结束——构建数字型分组ui
+		
+		    // 添加一个新的数字分组html组件
+		    function addNumberGroupHtml4pearce(groupName,index){
+				 var myhtml=buildNumberGroupHtml4pearce(groupName.toString(),index+1);
+			    $('#groupNumberConfig4pearce').append(myhtml);
+				//把上一个的+按钮禁用掉
+				var myAdd=String.format("#btnAddSpan4pearce-{0}",index);
+				$(myAdd).hide();
+				
+				
+			}//函数结束——添加一个新的数字分组html组件
+		
+		  //移除一个数字分组html组件
+		  function removeNumberGroupHtml4pearce(index){
+			   if ($('#groupNumberConfig4pearce').children().length<=1){
+				   alert("the last one can't be removed");
+				   return true;
+			   }
+			  var myId=String.format("#numberSpan4pearce-{0}",index);
+			  $(myId).empty();
+			  $(myId).remove();
+			  //把最后一个的添加按钮显示出来
+			  var lastDiv= $('#groupNumberConfig4pearce').children().last();
+			  var lastIndex=lastDiv.data('label');
+			  var myAdd=String.format("#btnAddSpan4pearce-{0}",lastIndex);
+			   $(myAdd).show();
+		  }
+		
+		     //  构建不分组数据
+		    function buildNoGroup4pearce(){
+				 //console.log('不分组');
+				 //此时需要清空分组选项，然后直接显示trace数据
+					  $('#groupSetting4pearce').empty();
+					  html=buildGroupHtml4pearce("No Group","#00008B",5);
+					 $('#groupSetting4pearce').append(html);
+					//生成trace    
+							//按照不分组先显示所有数据
+					var xlist1 =[],ylist1=[];
+					var xlist2 =[],ylist2=[];
+					var xlist3 =[],ylist3=[];
+					var xlist4 =[],ylist4=[];
+					for(var i=0;i<rtnData4pearce.length;i++){
+						var item=rtnData4pearce[i];
+					   if(isValidItem1(item)){
+							   xlist1.push(item.Y+item.Nb);
+							   ylist1.push(item.Rb); 
+					   }
+						if(isValidItem2(item)){
+							   xlist2.push(item.Yb+item.Ta);
+							   ylist2.push(item.Rb); 
+					   }
+						if(isValidItem3(item)){
+							   xlist3.push(item.Y);
+							   ylist3.push(item.Nb); 
+					   }
+						if(isValidItem4(item)){
+							   xlist4.push(item.Yb);
+							   ylist4.push(item.Ta); 
+					   }
+					}
+					//console.log(xlist1,ylist1);
+					//生成trace，并加进去，然后更新图
+					 var traceLayer1={
+									 x: xlist1,
+									  y: ylist1,
+									  name:"No Group ("+ xlist1.length+" )",
+									  type: 'scatter',
+									  showlegend: $('#chkLegend4pearce').prop('checked'),
+									  fill: 'none',
+									  textposition:'top left',
+									  mode:'markers',	
+									  marker:{
+										  'symbol':5,
+										  'size':5,
+										  'color':'rgb(0,0,139)',
+									  },
+									  title:'No Group',
+									 xaxis:'x1',
+									yaxis:'y1'
+					 };
+					 var traceLayer2={
+									 x: xlist2,
+									  y: ylist2,
+									  name:"No Group ("+ xlist1.length+" )",
+									  type: 'scatter',
+									  showlegend: $('#chkLegend4pearce').prop('checked'),
+									  fill: 'none',
+									  textposition:'top left',
+									  mode:'markers',	
+									  marker:{
+										  'symbol':5,
+										  'size':5,
+  											'color':'rgb(0,0,139)',
+									  },
+									  title:'No Group',
+									 xaxis:'x2',
+									yaxis:'y2'
+					 };
+					 var traceLayer3={
+									 x: xlist3,
+									  y: ylist3,
+									  name:"No Group ("+ xlist1.length+" )",
+									  type: 'scatter',
+									  showlegend: $('#chkLegend4pearce').prop('checked'),
+									  fill: 'none',
+									  textposition:'top left',
+									  mode:'markers',	
+									  marker:{
+										  'symbol':5,
+										  'size':5,
+										    'color':'rgb(0,0,139)',
+									  },
+									  title:'No Group',
+									 xaxis:'x3',
+									yaxis:'y3'
+					 };
+					 var traceLayer4={
+									 x: xlist4,
+									  y: ylist4,
+									  name:"No Group ("+ xlist1.length+" )",
+									  type: 'scatter',
+									  showlegend: $('#chkLegend4pearce').prop('checked'),
+									  fill: 'none',
+									  textposition:'top left',
+									  mode:'markers',	
+									  marker:{
+										  'symbol':5,
+										  'size':5,
+										   'color':'rgb(0,0,139)',
+									  },
+									  title:'No Group',
+									 xaxis:'x4',
+									yaxis:'y4'
+					 };
+					traceList4pearce=[];
+					traceList4pearce.push(traceLayer1);
+					traceList4pearce.push(traceLayer2);
+					traceList4pearce.push(traceLayer3);
+					traceList4pearce.push(traceLayer4);
+					registerListener4GroupPearce();// 注册监听器
+	   		         return false; //直接退出
+			}  // 不分组函数结束
+		
+		   // 按照字符分组
+		  	    function buildStrGroup4pearce(filterField){
+					// console.log('分组字段：',filterField);
+					 //置空 分组名称及分组结果的数组
+					 var  groupNames=[], groupValues=[];
+					 for(var i=0;i<rtnData4pearce.length;i++){
+						var item=rtnData4pearce[i];
+						 if(isValidItem1(item) || isValidItem2(item) || isValidItem3(item) || isValidItem4(item)  ){
+							 //有效数据则进行处理，无效则掠过
+							 //获取分组字段的值
+							 var filterValue=item[filterField];
+							 //console.log('filterValue',filterValue);
+							 //null或者‘’认为是 null
+							 if( filterValue ==null || filterValue=='')
+								 filterValue='null';
+							 filterValue=filterValue.replace(/\s*/g,""); //去除所有空格，包括头尾和中间的。中间的容易导致jquery定位错误
+							
+							 //检查是否已经在分组名称里，如果不在则添加
+							 var groupValueList={'x1':[ ],'y1':[ ] ,'x2':[ ],'y2':[ ] ,'x3':[ ],'y3':[ ] ,'x4':[ ],'y4':[ ] };
+							 if(  groupNames.indexOf(filterValue) >=0){
+								 groupValueList = groupValues[filterValue];
+								// console.log('取出来的:',groupValueList);
+							 }else{
+								//把自己添加进去
+								groupNames.push(filterValue);
+								groupValues[filterValue]= groupValueList;
+							 }
+							 
+							if(isValidItem1(item)){
+							    groupValueList['x1'].push(item.Y+item.Nb);
+							    groupValueList['y1'].push(item.Rb); 
+						   }
+							if(isValidItem2(item)){
+								   groupValueList['x2'].push(item.Yb+item.Ta);
+								    groupValueList['y2'].push(item.Rb); 
+						   }
+							if(isValidItem3(item)){
+								   groupValueList['x3'].push(item.Y);
+								    groupValueList['y3'].push(item.Nb); 
+						   }
+							if(isValidItem4(item)){
+								   groupValueList['x4'].push(item.Yb);
+							      groupValueList['y4'].push(item.Ta); 
+						   }
+						
+					   }
+					 }
+					 //循环结束
+					//console.log('group:',groupNames);
+					//console.log('values',groupValues); 
+					 //清空所有的筛选字段子元素，然后重新添加
+					
+					buildGroupData4pearce(groupNames, groupValues);
+		
+					
+			} // 字符分组结束
+		
+		
+		   // 数字字段引发的重绘
+		   function  redrawNumberGroup4pearce( ){
+			    //首先得到数字字段分组的设置
+			   numberSpanConfig4pearce=[];  ////清空旧的，从ui中重新获取
+			   $.each( $('#groupNumberConfig4pearce').children(),function (index,item){
+					let numSpan={};
+				  // console.log(index, ":", $(item).data("label"));
+				   //从item中进一步查找子元素
+				   var startitem=$(item).find("input[name='numberStart4pearce']");
+				   var enditem=$(item).find("input[name='numberEnd4pearce']");
+				   //判断是否是有效的设置，如果全空则无效
+				   numSpan.startValue=$(startitem).val().trim();
+				   numSpan.endValue=$(enditem).val().trim();
+				   if(numSpan.startValue ==""  && numSpan.endValue=="")
+					   return false ;
+				   //记录一下field
+				   numSpan["field"]=$(startitem).data("label");
+				
+				   numberSpanConfig4pearce.push(numSpan);
+			   });
+			 
+			   //如果没有有效分组，则按照不分组进行处理
+			   if(numberSpanConfig4pearce.length ==0){
+				       console.log("没有有效数字分组，直接按照不分组重绘" );
+					   buildNoGroup4pearce();
+				   		 //重绘全图
+				       redrawMap4pearce();
+				       return true;  //直接退出
+			   }
+			   // 按照数值字段进行分组
+			   //置空 分组名称及分组结果的数组
+  			   var  groupNames=[], groupValues=[];  // 置空
+			   for(var i=0;i<rtnData4pearce.length;i++){
+						var item=rtnData4pearce[i];
+				   
+				        //只有有效的数据才需要分组
+					   if(isValidItem1(item) || isValidItem2(item) || isValidItem3(item) || isValidItem4(item)  ){
+							   var x=(item.Al2O3/101.96)/(item.CaO/56.08+item.Na2O/61.98+item.K2O/94.2);
+					           var y=(item.Al2O3/101.96)/(item.Na2O/61.98+item.K2O/94.2);
+					           if(x<0.5 || x>2 || y<0.4 || y>3)   //忽略掉不合规的非法数据
+								   continue;
+							 
+							 var hasMatched=false;
+							 // 对所有数字分组进行筛选，看看当前数据是否在某一个分组范围内，如果在，则加入到对应的groupList中
+							 for(var j=0; j<numberSpanConfig4pearce.length;j++) {
+									 let myNumSpan=numberSpanConfig4pearce[j];
+									 let filterKey=myNumSpan.field.trim();
+
+									 if(item.hasOwnProperty(myNumSpan.field.trim()) ==false || item[myNumSpan.field]=="undefined" )
+										 break;  //没有这个字段，则直接当作others处理
+
+									 //console.log("初始化filterKey:",myNumSpan.field,"   ,  numberSpan:",myNumSpan," 类型",typeof(myNumSpan.startValue));
+									 //var flag =false;
+									 if( myNumSpan.hasOwnProperty("startValue")  &&  typeof(myNumSpan.startValue)=="string" && myNumSpan.startValue !=""){
+										  //console.log("进入startValue逻辑",item,myNumSpan.field,item[myNumSpan.field]);
+										  filterKey = myNumSpan.startValue+"&lt;"+filterKey;
+										  if(item[myNumSpan.field]<=parseFloat(myNumSpan.startValue)) {// 如果比起始值还小
+											  //console.log("小于最小：",item,myNumSpan.field,item[myNumSpan.field]);
+											  continue;   //继续下一轮
+										  }
+									 }
+									 if(myNumSpan.hasOwnProperty("endValue")  &&  typeof(myNumSpan.endValue)=="string" && myNumSpan.endValue !=""){
+										  //console.log("进入endValue逻辑",item[myNumSpan.field] , parseFloat(myNumSpan.endValue), item,myNumSpan.field,item[myNumSpan.field]);
+										  filterKey=filterKey+"&le;"+myNumSpan.endValue;
+										  if(parseFloat(item[myNumSpan.field] )>parseFloat(myNumSpan.endValue)){ // 如果比起始值还小
+											  //console.log("大于最大：",item,myNumSpan.field,item[myNumSpan.field]);
+											  continue;   //继续下一轮
+										  }
+									 }
+									//console.log("filterKey:",filterKey,myNumSpan);
+									 //满足条件
+									 hasMatched=true;   // 已经匹配上了，不会出现在Others中
+									//检查是否已经在分组名称里，如果不在则添加
+									 var groupValueList={'x1':[ ],'y1':[ ] ,'x2':[ ],'y2':[ ] ,'x3':[ ],'y3':[ ] ,'x4':[ ],'y4':[ ] };
+									 if(  groupNames.indexOf(filterKey) >=0){
+										 groupValueList = groupValues[filterKey];
+										// console.log('取出来的:',groupValueList);
+									 }else{
+										//把自己添加进去
+										groupNames.push(filterKey);
+										groupValues[filterKey]= groupValueList;
+									 }
+									if(isValidItem1(item)){
+										groupValueList['x1'].push(item.Y+item.Nb);
+										groupValueList['y1'].push(item.Rb); 
+								   }
+									if(isValidItem2(item)){
+										   groupValueList['x2'].push(item.Yb+item.Ta);
+											groupValueList['y2'].push(item.Rb); 
+								   }
+									if(isValidItem3(item)){
+										   groupValueList['x3'].push(item.Y);
+											groupValueList['y3'].push(item.Nb); 
+								   }
+									if(isValidItem4(item)){
+										   groupValueList['x4'].push(item.Yb);
+										  groupValueList['y4'].push(item.Ta); 
+								   }
+							 } //分组循环结束
+							 //如果没有匹配上的，则统一加到Other中
+							 if(hasMatched ==false){
+								 // console.log("进入others逻辑");
+								 let  keystr="Others";
+								 var groupValueList={'x1':[ ],'y1':[ ] ,'x2':[ ],'y2':[ ] ,'x3':[ ],'y3':[ ] ,'x4':[ ],'y4':[ ] };
+								  if(  groupNames.indexOf(keystr) >=0){
+									 groupValueList = groupValues[keystr];
+									// console.log('取出来的:',groupValueList);
+								 }else{
+									//把自己添加进去
+									groupNames.push(keystr);
+									groupValues[keystr]= groupValueList;
+								 }
+									if(isValidItem1(item)){
+										groupValueList['x1'].push(item.Y+item.Nb);
+										groupValueList['y1'].push(item.Rb); 
+								   }
+									if(isValidItem2(item)){
+										   groupValueList['x2'].push(item.Yb+item.Ta);
+											groupValueList['y2'].push(item.Rb); 
+								   }
+									if(isValidItem3(item)){
+										   groupValueList['x3'].push(item.Y);
+											groupValueList['y3'].push(item.Nb); 
+								   }
+									if(isValidItem4(item)){
+										   groupValueList['x4'].push(item.Yb);
+										  groupValueList['y4'].push(item.Ta); 
+								   }
+							 }
+						 } // end --if 有效
+					 }// end -for  遍历所有数据
+			   
+					 //循环结束
+					//console.log('group:',groupNames);
+					//console.log('values',groupValues); 
+					 //清空所有的筛选字段子元素，然后重新添加
+					buildGroupData4pearce(groupNames, groupValues);
+			     	 //重绘全图
+				 	redrawMap4pearce();
+			   
+		   }// 函数结束
+		   
+		   // 根据分组结果构建trace
+		   function buildGroupData4pearce(groupNames, groupValues){
+			       $('#groupSetting4pearce').empty();
+					 var colorTable=['#00008B','#00FEFE','#E00098','#00EE00','#121212','#212121'];  //此处内置允许的的颜色查找表，回头补充科研时常用的颜色。 *************todo************
+					
+					 traceList4pearce=[];//清空已有的traceList
+					 
+					 for(var i=0;i<groupNames.length;i++){
+					     var groupName=groupNames[i];
+						 var html=buildGroupHtml4pearce(groupName,colorTable[i%colorTable.length], i+5);
+						 $('#groupSetting4pearce').append(html);
+						 //添加后对shape设置默认选择值
+						 var myid=String.format('#shape-pearce-{0}',i+5);
+						 try{
+						 		$(myid).val((i+5) %19);  //此时是为了规避特殊字符导致无法初始化这个。todo*****后期应该把空格给去掉
+						 } catch (e) {
+								console.log("发生异常:" + e)
+						}
+						 
+						  // 生成trace list
+						 	//生成trace，并加进去，然后更新图
+						 var traceLayer1={
+								 x: groupValues[groupName]['x1'],
+								  y: groupValues[groupName]['y1'],
+								  type: 'scatter',
+								  fill: 'none',
+							      showlegend: $('#chkLegend4pearce').prop('checked'),
+							     name:groupName.replace('&le;',"≤")+" ("+ groupValues[groupName]['x1'].length+" )",
+								  textposition:'top left',
+								  mode:'markers',	
+								  marker:{
+									  'symbol': (i+5) %19,
+									  'size':5,
+									  'color':colorTable[i%colorTable.length],
+								  },
+							     title:groupName,
+							     xaxis:'x1',
+							     yaxis:'y1'
+						 };
+						 var traceLayer2={
+								 x: groupValues[groupName]['x2'],
+								  y: groupValues[groupName]['y2'],
+								  type: 'scatter',
+								  fill: 'none',
+							      showlegend: $('#chkLegend4pearce').prop('checked'),
+							     name:groupName.replace('&le;',"≤")+" ("+ groupValues[groupName]['x2'].length+" )",
+								  textposition:'top left',
+								  mode:'markers',	
+								  marker:{
+									  'symbol':(i+5) %19,
+									  'size':5,
+									  'color':colorTable[i%colorTable.length],
+								  },
+							     title:groupName,
+							     xaxis:'x2',
+							     yaxis:'y2'
+						 };
+						 var traceLayer3={
+								 x: groupValues[groupName]['x3'],
+								  y: groupValues[groupName]['y3'],
+								  type: 'scatter',
+								  fill: 'none',
+							      showlegend: $('#chkLegend4pearce').prop('checked'),
+							     name:groupName.replace('&le;',"≤")+" ("+ groupValues[groupName]['x3'].length+" )",
+								  textposition:'top left',
+								  mode:'markers',	
+								  marker:{
+									  'symbol':(i+5)%19,
+									  'size':5,
+									  'color':colorTable[i%colorTable.length],
+								  },
+							     title:groupName,
+							     xaxis:'x3',
+							     yaxis:'y3'
+						 };
+						 var traceLayer4={
+								 x: groupValues[groupName]['x4'],
+								  y: groupValues[groupName]['y4'],
+								  type: 'scatter',
+								  fill: 'none',
+							      showlegend: $('#chkLegend4pearce').prop('checked'),
+							     name:groupName.replace('&le;',"≤")+" ("+ groupValues[groupName]['x4'].length+" )",
+								  textposition:'top left',
+								  mode:'markers',	
+								  marker:{
+									  'symbol':(i+5) %19,
+									  'size':5,
+									  'color':colorTable[i%colorTable.length],
+								  },
+							     title:groupName,
+							     xaxis:'x4',
+							     yaxis:'y4'
+						 };
+						 traceList4pearce.push(traceLayer1);
+						 traceList4pearce.push(traceLayer2);
+						 traceList4pearce.push(traceLayer3);
+						 traceList4pearce.push(traceLayer4);
+					 }
+					//注册事件监听器
+					registerListener4GroupPearce();
+			   
+		   }
+		
+		
+		
+		    //注册分组id变化事件
+		     $("#groupField4pearce").change(function(){
+				 var selIndex=($(this).val());  
+				    $('#numberConfig4pearce').hide(); //隐藏数字分组
+				 if(selIndex ==-1) {  //此时不分组
+					buildNoGroup4pearce();
+
+					 redrawMap4pearce();
+		
+					 return false; //直接退出
+					 
+				 }else{ //按照所选字段进行分组
+					 var filterField=rtnColumns4pearce[selIndex];
+					 var index=numberColumns4pearce.indexOf(filterField);
+					 if  (index >-1) {
+					       //数字字段
+					  	 buildNumberGroup4pearce(filterField);
+						 return false;
+					 }else{
+					       //字符串字段
+					   	  buildStrGroup4pearce(filterField);
+					 }
+					 //筛选条件结束
+					
+					 //重绘全图
+					 redrawMap4pearce();
+				//	 registerListener4Group();// 注册监听器
+					
+				 }
+			 });
+		
+		 //注册分组Marker有关属性的事件监听
+		function registerListener4GroupPearce(){
+			 $("input[name='colorSelector4pearce']").change(function(){
+					var title=$(this).data('label');
+					console.log(title,$(this).val());
+				    //遍历查找对应的图层进行修改
+				    for (trace of  traceList4pearce){
+						console.log('重绘', trace.title.text);
+					    if(trace.title.text.replace("&le;","≤").replace("&lt;","<") ==title ){
+							trace.marker.color=$(this).val();
+						}
+					}
+					redrawMap4pearce();//改变之后重绘
+					console.log('重绘', trace.title.text);
+					return true;
+			 });
+			 $("select[name='shapeSelector4pearce']").change(function(){
+					var title=$(this).data('label');
+					console.log(title,$(this).val());
+				    //遍历查找对应的图层进行修改
+				    for (trace of  traceList4pearce){
+					    if(trace.title.text.replace("&le;","≤").replace("&lt;","<") ==title){
+							trace.marker.symbol=$(this).val();
+							console.log('symbol:',$(this).val());
+						}
+					}
+				 	redrawMap4pearce();//改变之后重绘
+					console.log('重绘', trace.title.text);
+					return true;
+			 });
+			$("input[name='sizeSelector4pearce']").change(function(){
+					var title=$(this).data('label');
+					console.log(title,$(this).val());
+				    //遍历查找对应的图层进行修改
+				    for (trace of  traceList4pearce){
+						console.log('重绘', trace.title.text);
+					    if(trace.title.text.replace("&le;","≤").replace("&lt;","<")==title){
+							trace.marker.size=$(this).val();
+						}
+					}
+					redrawMap4pearce();//改变之后重绘
+					console.log('重绘', trace.title.text);
+					return true;
+			 });
+		};
+		
+		
+		   // 注册事件，模型切换
+		$("input:radio[name='model']").change(function (){
+				redrawMap4pearce();
+		});
+		
+		// 注册事件，是否显示图例
+		$('#chkLegend4pearce').change(function(){
+			  var show= $(this).prop('checked');
+			  for (trace of traceList4pearce){
+			  	   trace.showlegend=show;
+			  }
+			  //redrawMap4pearce();	  //刷新很消耗资源，暂时注掉
+			Plotly.react();//刷新图
+			  //  console.log(show);
+		});
+         
+
+		
+		
+		//外部设置数据的主函数
+		
+		function setData2Pearce(columns,data,numbercolumns){
+			rtnColumns4pearce=columns;
+			rtnData4pearce=data; //把返回值赋予全局变量
+			numberColumns4pearce=numbercolumns;
+			//把列名添加到分组列表
+			//清空列名列表
+		     $("#groupField4pearce").empty();
+			//添加一个不分组
+			$("#groupField4pearce").append('<option selected value="-1">No Group</option>');
+	
+			for(var i=0;i<rtnColumns4pearce.length;i++){
+			      $("#groupField4pearce").append("<option value="+i+">"+rtnColumns4pearce[i]+"</option>");  
+			 }
+		
+			buildNoGroup4pearce();
+			redrawMap4pearce();
+		}  //setdata2Pearce 函数结束
+		
+		
+		
+	</script>
+	
+	

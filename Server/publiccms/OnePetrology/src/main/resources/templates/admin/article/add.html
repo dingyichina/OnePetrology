@@ -1,0 +1,31 @@
+<@_article id=id><#assign a=object/></@_article>
+<form method="post" action="article/save.do?callbackType=closeCurrent&navTabId=article/list" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <input name="id" type="hidden" value="${id!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+    <div class="pageContent">
+        <div class="pageFormContent" layoutH="56">
+            <dl>
+                <dt>ID：</dt>
+                <dd><input class="required" name="id" type="text" size="30" value="${(a.id)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>文章名称：</dt>
+                <dd><input class="required" name="articleName" type="text" size="30" value="${(a.articleName)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>引用格式：</dt>
+                <dd><input class="required" name="reference" type="text" size="30" value="${(a.reference)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>DOI：</dt>
+                <dd><input class="required" name="doi" type="text" size="30" value="${(a.doi)!}"/></dd>
+            </dl>
+        </div>
+    </div>
+</form>

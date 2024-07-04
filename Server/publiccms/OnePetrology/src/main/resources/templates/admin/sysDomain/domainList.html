@@ -1,0 +1,28 @@
+<@_sysDomainList pageIndex=pageNum pageSize=numPerPage>
+<form class="pagerForm" autocomplete="off" onsubmit="return navTabSearch(this);" method="post">
+    <#include "../include_page/parameters.html"/>
+</form>
+<div class="pageContent">
+    <table class="table" width="100%" layoutH>
+        <thead>
+            <tr>
+                <th width="200"><@t.page 'domain'/></th>
+                <th width="100"><@t.page 'domain.template_directory'/></th>
+                <th width="50"><@t.page 'operate'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.name!}">
+                <td><a href="http://${(a.name)!}">${(a.name)!}</a></td>
+                <td>${(a.path)!}</td>
+                <td class="wrap">
+                    <a href="sysDomain/config.html?id=${a.name!}" class="edit btnText blue" target="navTab" rel="sysDomain/config"><i class="icon-edit"></i> <@t.page 'domain.edit'/></a>
+                </td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</div>
+</@_sysDomainList>

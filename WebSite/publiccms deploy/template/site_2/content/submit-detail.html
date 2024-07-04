@@ -1,0 +1,166 @@
+		<!-- 根据参数获取对象 -->
+		<@_content id=id containsAttribute=true>
+			<#assign content=object/>
+			<@_category id=object.categoryId>
+				<#assign category=object/>
+			</@_category>
+			<#assign 
+				temp=getContentPage(attribute.text!'',pageIndex)
+				
+				text=temp.text
+   			/>
+
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<@_includePlace path="/63241365-51a7-4903-89e6-7619031fa9fe.html"/> <#-- Header-link -->
+	
+</head>
+<body class="menu-always-on-top">
+	<@_includePlace path="/c8014652-e25e-4c4d-a3ca-9aad7fa0385c.html"/> <#-- header -->
+
+	<main>
+
+		<div class=" row" style="margin:100px">
+		  <!-- 左侧  -->
+		  <div class="container  clearfix-after col-md-9">
+			<article class="left-content">
+				<header>
+					<h1><a href="${url!}">${content.title}</a></h1>
+					<p class="author">${content.author!} ${content.editor!} ${content.publishDate?datetime} 阅读:<em>loading...</em></p>
+					<#if content.copied><p class="author">来源：${(attribute.source)!} ${(attribute.sourceUrl)!}</p></#if>
+				</header>
+				<div id="content">
+					${(text)?no_esc!}
+					<div class="clearfix-before"></div>
+					<#if content.hasFiles>
+						<@_contentFileList contentId=content.id fileTypes='video,audio,other'>
+							<#list page.list as file>
+						<p><a href="${(file.filePath)!}" target="_blank">${(file.description)!}</a> </p>
+							</#list>
+						</@_contentFileList>
+					</#if>
+					<#if content.hasImages>
+						 <@_contentFileList contentId=content.id fileTypes='image'>
+							 <#list page.list as file>
+								 <figure class="text-center">
+									 <img src="${(file.filePath)!}" alt="${(file.description)!}"/>
+									 <p>图${file?counter} ${(file.description)!}</p>
+								</figure>					
+							 </#list>
+						 </@_contentFileList>
+					</#if>
+				</div>
+				<div>
+						<@_tag ids=content.tagIds>
+						<#if map?has_content>
+							标签:
+					     </#if>
+					     <#list map?keys as k>
+								<a href="//search.publiccms.com/?tagId=${k}" target="_blank">${map[k].name}</a><#sep>,
+					     </#list>
+					     </@_tag>
+				</div>
+						<@include path="/ftl/content_page.ftl"/>
+				<div class="content-related clearfix-after">
+					<div class="prev">
+						<@_contentList categoryId=content.categoryId endPublishDate=content.publishDate orderField='publishDate' orderType='desc'  pageIndex=2 count=1>
+							<#if 2=page.pageIndex>
+									<#list page.list as a>
+										<span class="float-right">《上一篇</span><a href="${a.url!}">${a.title}</a>
+									</#list>
+							<#else>
+								 <span>没有了</span>
+						    </#if>
+						</@_contentList>
+					</div>
+					<div class="next float-right text-right">
+						<@_contentList categoryId=content.categoryId startPublishDate=content.publishDate orderField='publishDate' orderType='asc' pageIndex=1 count=1>
+								<#list page.list as a>
+									 <span>下一篇》</span><a href="${a.url!}">${a.title}</a>
+						        <#else>
+						   			 <span>没有了</span>
+								</#list>
+						</@_contentList>
+					</div>
+
+						
+				</div>
+			    <@import path="/ftl/tools.ftl" namespace="t"/>
+				<@include path="/ftl/comment.ftl"/><#-- 评论 -->
+			  </article>
+			</div>
+			<aside>
+			<div class="col-md-3">
+					<a href="${siteAttribute.searchPath!}?tagId=${content.tagIds!}" target="_blank"><h3>相关推荐</h3></a>
+					<ul class="hoverShadow">
+							<@_contentRelatedList contentId=content.id pageSize=10>
+								<#list page.list as a>
+												<li><a href="${a.url!}" target="_blank" title="${a.title}">${a.title}</a></li>
+								</#list>
+							</@_contentRelatedList>
+							<#if content.tagIds?has_content>
+								<@_search tagId=content.tagIds count=10>
+									<#list page.list as a>
+												<#if content.id!=a.id>
+													<li><a href="<#if a.onlyUrl>${site.dynamicPath}content/redirect?id=${a.id}<#else>${a.url}</#if>" title="${a.title}">${a.title}</a></li>
+												</#if>
+									</#list>
+								</@_search>
+							<#else>
+									<@_contentList categoryId=content.categoryId endPublishDate=content.publishDate pageSize=10>
+										<#list page.list as a>
+											<#if !a?is_first>
+												<li><a href="<#if a.onlyUrl>${site.dynamicPath}content/redirect?id=${a.id}<#else>${a.url}</#if>" title="${a.title}">${a.title}</a></li>
+											</#if>
+										</#list>
+									</@_contentList>
+							</#if>
+					</ul>
+			</div>
+			</aside>
+		</div>
+
+	</main>
+	
+<@_includePlace path="/f95e232b-027b-40ae-9e2d-0a6385f7c418.html"/> <#-- footer -->
+	<script>
+		var itemString="itemType=content&itemId=${content.id}";
+	</script>
+
+	<div class="image-preview">
+		<div class="background"></div>
+		<div class="box"></div>
+	</div>
+	
+	<script>
+		//uParse('#content',{rootPath: '${site.sitePath!}assets/ueditor'});
+		$('article #content img').each(function(){
+			if(!$(this).parent('a').length) {			
+				$(this).wrapAll("<a href=\"javascript:preview('" + $(this).attr("src") + "');\" title=\"点击查看图片\"></a>");
+			}
+		});
+		function preview(url){
+			var $img = $('.image-preview .box img');
+			if(0 == $img.length ){
+				$img=$('<img title="点击关闭预览"/>').appendTo($('.image-preview .box'));
+			}
+			$img.attr('src',url);
+			$('.image-preview').show();
+			return false;
+		}
+		$('.image-preview .box').click(function(){
+			$('.image-preview').hide();
+		});
+		$('.image-preview .background').click(function(){
+			$('.image-preview').hide();
+		});
+		$.getJSON('${site.dynamicPath!}api/contentClick?id=${content.id}', function(data){
+			$('article .author em').text(data.clicks);
+		});
+	</script>
+</body>
+</html>
+
+		</@_content>

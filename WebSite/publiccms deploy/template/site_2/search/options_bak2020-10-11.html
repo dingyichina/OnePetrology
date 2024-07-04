@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<@_includePlace path="/63241365-51a7-4903-89e6-7619031fa9fe.html" />
+	<#-- Header-link -->
+		<link href="${site.sitePath}css/earthchem.css" rel="stylesheet">
+		<style>
+			td,
+			th {
+				padding: 3px;
+			}
+		</style>
+
+</head>
+
+<body class="menu-always-on-top">
+	<@_includePlace path="/c8014652-e25e-4c4d-a3ca-9aad7fa0385c.html" />
+	<#-- header -->
+		<div class="wrapper" style="margin-top:100px;">
+			<!-- end header -->
+
+
+			<h1>CONFIGURE OUTPUT</h1>
+
+			<script type="text/javascript">
+				function SetAllCheckBoxes(FormName, className, CheckValue) {
+					var all = document.all ? document.all : document.getElementsByTagName('*');
+					var elements = new Array();
+					for (var e = 0; e < all.length; e++) {
+						if (all[e].className == className) {
+							elements[elements.length] = all[e];
+						}
+					}
+					var countCheckBoxes = elements.length;
+					for (var i = 0; i < countCheckBoxes; i++) {
+						elements[i].checked = CheckValue;
+					}
+				}
+
+
+				function ShowStandard() {
+
+
+					SetAllCheckBoxes('myform', 'Basic_Info', false);
+					SetAllCheckBoxes('myform', 'Collector_Info', false);
+					SetAllCheckBoxes('myform', 'Ref_Info', false);
+					SetAllCheckBoxes('myform', 'Major_Element', false);
+					SetAllCheckBoxes('myform', 'Rare_Element', false);
+					SetAllCheckBoxes('myform', 'Trace_Element', false);
+					SetAllCheckBoxes('myform', 'Isotopes', false);
+		
+
+
+					var myitems = ["sampleId", "oraginalSampleId", "longitude", "latitude", "lithology","age","ageError", "tectonicLocation", "era", "dataSource", "articleDoi", "sio2", "tio2", "al2o3",
+						"fe2o3", "feo", "fe2o3t", "feot", "mno", "mgo", "cao", "na2o", "k2o", "p2o5", "h2op", "h2on", "co2", "so3", "f",
+						"cl", "loi", "total", "la", "ce", "pr", "nd", "pm", "sm", "eu", "gd", "tb", "dy", "ho", "er", "tm", "yb","lu","y","sc","totalReElement",
+						"v", "cr", "co", "ni", "mn", "cu", "zn", "ga", "ge", "cs", "rb", "ba", "th", "u", "nb", "ta", "ti","p","pb","sr","zr","hf","li","be","w","pt","pd","os","ir","ru","rh",
+						"rb87Sr86", "sr87Sr86M", "sm147Nd144", "nd143Nd144", "testRockMa", "sr87Sr86I", "nd143Nd144TChur", "nd143Nd144I", "epsilonNd0", "epsilonNdT", "tdmMa", "tdm2Ma",//"fSmNdS", 
+						// "hfPointnum", "hfNormalnum", "epsilonHftMin", "epsilon_Hft_max", "epsilon_Hft_median","epsilonHftAverage", "tdmcMin", "tdmcMax", "tdmcMedian", "tdmcAverage",
+						//  "d18oMin", "d18oMax", "d18oAverage", "d18oMedian"
+					
+					];
+
+					for (var i = 0; i < myitems.length; i++) {
+						//console.log(myitems[i]);
+						document.getElementById(myitems[i]).checked = true;
+						//去掉经纬度，使之不可选
+						//document.getElementById("longitude").checked = false;
+						//document.getElementById("latitude").checked = false;
+						//document.getElementById("longitude").disabled = true;
+						//document.getElementById("latitude").disabled = true;
+					}
+				}
+
+			
+
+				function ClearAll() {
+
+					SetAllCheckBoxes('myform', 'Basic_Info', false);
+					SetAllCheckBoxes('myform', 'Collector_Info', false);
+					SetAllCheckBoxes('myform', 'Ref_Info', false);
+					SetAllCheckBoxes('myform', 'Major_Element', false);
+					SetAllCheckBoxes('myform', 'Rare_Element', false);
+					SetAllCheckBoxes('myform', 'Trace_Element', false);
+					SetAllCheckBoxes('myform', 'Isotopes', false);
+
+				}
+			</script>
+
+			<form name="myform" id="myform" action="updatesearch.php" method="post">
+
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								<table border="0" cellspacing="0" cellpadding="5">
+									<tbody>
+										<tr valign="top">
+											<td>
+												<h3>Samples to Display:</h3>
+											</td>
+											<td>
+												<!--<input type="radio" name="searchopt" value="alldata" checked>&nbsp;Show all samples.<br>-->
+												<input type="radio" name="searchopt" value="anyopt"
+													checked="">&nbsp;Show samples with any of the checked values
+												defined.<br>
+												<input type="radio" name="searchopt" value="exactopt">&nbsp;Show samples
+												with all of the below values defined.
+											</td>
+										</tr>
+										<!--tr>
+											<td>
+												<h3>File Type to Display:</h3>
+											</td>
+											<td>
+												<input type="radio" name="dispmode" value="html" checked="">&nbsp;HTML
+												Table &nbsp;
+												<input type="radio" name="dispmode" value="text">&nbsp;Text File &nbsp;
+												<input type="radio" name="dispmode" value="xlsx">&nbsp;XLSX
+												Spreadsheet&nbsp;
+											</td>
+										</tr-->
+
+									</tbody>
+								</table>
+							</td>
+							<td>
+								<div style="width:100px;"></div>
+							</td>
+							<td>
+								<div name="message" id="message" value=""><input style="float:right" type="submit"
+										class="submitbuttonlarge" style="background:blue;" value="View and Download Results"><br clear="all">
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<h2 style="margin-left:5px">Choose Chemical Data to Display:</h2>
+
+				<div class="optionsbox">
+					Note: The items shown in bold below actually have values that lie within your search criteria.
+					You can use the buttons below to choose a set of standard output items to use with multiple
+					downloads.
+				</div>
+
+				<br>
+				<div style="width:650px;color:#FF0000;padding-left:0px;">
+					<input type="button" class="submitbutton" style="background:blue;" value="Include Standard Output Items"
+						onclick="javascript:ShowStandard();return false">
+					
+					<input type="button" class="submitbutton" style="background:blue;" value="Clear All Items"
+						onclick="javascript:ClearAll();return false">
+					<!--<input type="button" class="submitbutton" value="Test" onClick="javascript:$('#AG').prop('checked', true);return false">-->
+				</div>
+
+				<br>
+
+				<table border="1" cellpadding="5" cellspacing="0">
+					<tbody>
+						<tr>
+							<td>Basic Info:</td>
+							<td>Collector Info:</td>
+							<td>Ref Info:</td>
+							<td>Major Earth Element:</td>
+							<td>Rare Earth Element:</td>
+							<td>Trace Element:</td>
+							<td>Isotopes:</td>
+						
+						</tr>
+						<tr valign="top">
+							<td style="white-space:nowrap">
+								<input type="button" value="Mark All" onclick="javascript:SetAllCheckBoxes('myform', 'Basic_Info', true);return false">	<br>
+								
+								<input type="button" value="Clear All"	onclick="javascript:SetAllCheckBoxes('myform', 'Basic_Info', false);return false"><br>
+								
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[0]" id="sampleId"	value="Sample Id">&nbsp;<b>Sample Id</b><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[1]" id="oraginalSampleId"	value="Oraginal Sample Id">&nbsp;<b>Oraginal Sample Id</b><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[2]" id="longitude"	value="Longitude">&nbsp;<b>Longitude</b><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[3]" id="latitude" 	value="Latitude">&nbsp;<b>Latitude</b><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[4]" id="location"	value="Location">&nbsp;<b>Location</b><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[16]" id="lithology"	value="Lithology">&nbsp;<b>Lithology</b><br>
+								
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[32]" id="age"	value="Age(Ma)">&nbsp;<b>Age(Ma)</b><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[33]" id="ageError"	value="Age Error (Ma)">&nbsp;<b>Age Erro (Ma)r</b><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[36]" id="ageSelected"	value="Age Selected (Ma)">&nbsp;<b>Age Selected (Ma)</b><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[37]" id="ageSelectedError"	value="Age Selected Error">&nbsp;<b>Age Selected Error(Ma)</b><br>
+
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[5]" id="regionLocation"	value="Region Location">&nbsp;<b>Region Location</b><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[8]" id="locationType"	value="Location Type">&nbsp;<b>Location Type</b><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[9]" id="tectonicLocation"	value="Tectonic Location">&nbsp;<b>Tectonic Location</b><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[38]" id="tectonicType"	value="Tectonic Type">&nbsp;<b>Tectonic Type</b><br>
+
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[13]" id="occurrence"	value="Occurrence">&nbsp;<b>Occurrence</b><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[14]" id="pluton"	value="Pluton">&nbsp;<b>Pluton</b><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[15]" id="plutonOrigin"	value="Pluton Origin">&nbsp;<b>Pluton Origin</b><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[17]" id="lithologyOrigin"	value="Lithology Origin">&nbsp;<b>Lithology Origin</b><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[18]" id="intrusion"	value="Intrusion">&nbsp;<b>Intrusion</b><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[19]" id="rockName"	value="Rock Name">&nbsp;<b>Rock Name</b><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[20]" id="rockCode"	value="Rock Code">&nbsp;<b>Rock Code</b><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[21]" id="era"	value="Era">&nbsp;<b>Era</b><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[22]" id="geobodyName"	value="Geobody Name">&nbsp;<b>Geobody Name</b><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[23]" id="geobodyCode"	value="Geobody Code">&nbsp;<b>Geobody Code</b><br>
+								
+
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[24]" id="surroundingRockAge"	value="Surrounding Rock Age">&nbsp;Surrounding Rock Age><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[25]" id="surroundingRockLithology"	value="Surrounding Rock Lithology">&nbsp;Surrounding Rock Lithology<br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[26]" id="relationshipWithSurroundingRock"	value="Relationship with Surrounding_Rock">&nbsp;Relationship with Surrounding Rock<br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[27]" id="form"	value="Form">&nbsp;<b>Form</b><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[28]" id="whetherToCutAreaConstructionLine"	value="Whether to cut area construction line">&nbsp;Whether to cut area construction line<br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[29]" id="degreeOfDeformation"	value="Degree of deformation">&nbsp;Degree of deformation<br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[30]" id="characteristicMinerals"	value="Characteristic Minerals">&nbsp;Characteristic Minerals<br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[6]" id="miningArea"	value="Mining Area">&nbsp;<b>Mining Area</b><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[7]" id="oreType"	value="Ore Type">&nbsp;<b>Ore Type</b><br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[31]" id="geneticType"	value="Genetic Type">&nbsp;<b>Genetic Type</b><br>
+							
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[34]" id="testMethod"	value="Test Method">&nbsp;Test Method<br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[35]" id="testObject"	value="Test Object">&nbsp;Test Object<br>
+															
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[39]" id="sourceOfStructuralTypeDiscrimination"	value="Source of Structural Type Discrimination">&nbsp;Source of Structural Type Discrimination<br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[40]" id="alkalinity"	value="Alkalinity">&nbsp;Alkalinity<br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[41]" id="aluminumQuality"	value="Aluminum Quality">&nbsp;Aluminum Quality<br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[42]" id="photo"	value="Photo">&nbsp;Photo<br>
+
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[10]" id="primaryStructuralUnit"	value="Primary Structural Unit">&nbsp;Primary Structural Unit<br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[11]" id="secondaryStructuralUnit"	value="Secondary Structural Unit">&nbsp;Secondary Structural Unit<br>
+								<input type="checkbox" class="Basic_Info" checked="" name="Basic_Info[12]" id="tertiaryStructuralUnit"	value="Tertiary Structural Unit">&nbsp;Tertiary Structural Unit<br>
+								
+							</td>
+							<td style="white-space:nowrap">
+								<input type="button" value="Mark All" onclick="javascript:SetAllCheckBoxes('myform', 'Collector_Info', true);return false">	<br>
+								
+								<input type="button" value="Clear All"	onclick="javascript:SetAllCheckBoxes('myform', 'Collector_Info', false);return false"><br>
+								
+								<input type="checkbox" class="Collector_Info" checked="" name="Collector_Info[0]" id="collector"	value="Collector">&nbsp;Collector<br>
+								<input type="checkbox" class="Collector_Info" checked="" name="Collector_Info[1]" id="collectorOrg"	value="Collector Org">&nbsp;Collector Org<br>
+								<input type="checkbox" class="Collector_Info" checked="" name="Collector_Info[2]" id="reviewer"	value="Reviewer">&nbsp;Reviewer<br>
+								<input type="checkbox" class="Collector_Info" checked="" name="Collector_Info[3]" id="analyzeOrg" 	value="Analyze Org">&nbsp;Analyze Org<br>
+								<input type="checkbox" class="Collector_Info" checked="" name="Collector_Info[4]" id="analyzePerson"	value="Analyze Person">&nbsp;Analyze Person<br>
+								<input type="checkbox" class="Collector_Info" checked="" name="Collector_Info[5]" id="testDate"	value="Test Date">&nbsp;Test Date<br>
+								
+							</td>
+							<td style="white-space:nowrap">
+								<input type="button" value="Mark All" onclick="javascript:SetAllCheckBoxes('myform', 'Ref_Info', true);return false">	<br>
+								<input type="button" value="Clear All"	onclick="javascript:SetAllCheckBoxes('myform', 'Ref_Info', false);return false"><br>
+								
+								<input type="checkbox" class="Ref_Info" checked="" name="Ref_Info[0]" id="dataSource"	value="Data Source">&nbsp;Data Source<br>
+								<input type="checkbox" class="Ref_Info" checked="" name="Ref_Info[1]" id="refAuthor"	value="Ref.Author">&nbsp;Ref.Author<br>
+								<input type="checkbox" class="Ref_Info" checked="" name="Ref_Info[2]" id="refYear"	value="Ref.Year">&nbsp;Ref.Year<br>
+								<input type="checkbox" class="Ref_Info" checked="" name="Ref_Info[3]" id="refMagazine" 	value="Ref.Magazine">&nbsp;Ref.Magazine<br>
+								<input type="checkbox" class="Ref_Info" checked="" name="Ref_Info[4]" id="issuePage"	value="Issue Page">&nbsp;Issue Page<br>
+								<input type="checkbox" class="Ref_Info" checked="" name="Ref_Info[5]" id="refTitle"	value="Ref.Title">&nbsp;Ref.Title<br>
+								<input type="checkbox" class="Ref_Info" checked="" name="Ref_Info[6]" id="articleDoi"	value="Article DOI">&nbsp;<b>Article DOI</b><br>
+								<input type="checkbox" class="Ref_Info" checked="" name="Ref_Info[7]" id="refOrigin"	value="Ref.Origin">&nbsp;Ref.Origin<br>
+								<input type="checkbox" class="Ref_Info" checked="" name="Ref_Info[8]" id="refMagazineOrigin" 	value="Ref.Magazine.Origin">&nbsp;Ref.Magazine.Origin<br>
+								<input type="checkbox" class="Ref_Info" checked="" name="Ref_Info[9]" id="refTitleOrigin"	value="Ref.Title.Origin">&nbsp;Ref.Title.Origin<br>
+								<input type="checkbox" class="Ref_Info" checked="" name="Ref_Info[10]" id="remark"	value="Remark">&nbsp;Remark<br>
+								
+							</td>
+							<td style="white-space:nowrap">
+								<input type="button" value="Mark All" onclick="javascript:SetAllCheckBoxes('myform', 'Major_Element', true);return false">	<br>
+								<input type="button" value="Clear All"	onclick="javascript:SetAllCheckBoxes('myform', 'Major_Element', false);return false"><br>
+								
+								<input type="checkbox" class="Major_Element" checked="" name="Major_Element[0]" id="sio2"	value="SiO2">&nbsp;<b>S<sub>i</sub> O<sub>2</sub></b><br>
+								<input type="checkbox" class="Major_Element" checked="" name="Major_Element[1]" id="tio2"	value="TiO2">&nbsp;<b>T<sub>i</sub>O<sub>2</sub></b><br>
+								<input type="checkbox" class="Major_Element" checked="" name="Major_Element[2]" id="al2o3"	value="Al2O3">&nbsp;<b>Al<sub>2</sub>O<sub>3</sub></b><br>
+								<input type="checkbox" class="Major_Element" checked="" name="Major_Element[3]" id="fe2o3" 	value="Fe2O3">&nbsp;<b>Fe<sub>2</sub>O<sub>3</sub></b><br>
+								<input type="checkbox" class="Major_Element" checked="" name="Major_Element[4]" id="feo"	value="FeO">&nbsp;<b>FeO</b><br>
+								<input type="checkbox" class="Major_Element" checked="" name="Major_Element[5]" id="fe2o3t"	value="Fe2O3 Total">&nbsp;<b>Fe<sub>2</sub>O<sub>3</sub> Total</b><br>
+								<input type="checkbox" class="Major_Element" checked="" name="Major_Element[6]" id="feot"	value="FeOT">&nbsp;<b>FeOT</b><br>
+								<input type="checkbox" class="Major_Element" checked="" name="Major_Element[7]" id="tfe"	value="Tfe">&nbsp;Tfe<br>
+								<input type="checkbox" class="Major_Element" checked="" name="Major_Element[8]" id="mno" 	value="MnO">&nbsp;<b>MnO</b><br>
+								<input type="checkbox" class="Major_Element" checked="" name="Major_Element[9]" id="mgo"	value="MgO">&nbsp;<b>MgO</b><br>
+								<input type="checkbox" class="Major_Element" checked="" name="Major_Element[10]" id="cao"	value="CaO">&nbsp;<b>CaO</b><br>
+
+								<input type="checkbox" class="Major_Element" checked="" name="Major_Element[11]" id="na2o"	value="Na2O">&nbsp;<b>Na<sub>2</sub>O</b><br>
+								<input type="checkbox" class="Major_Element" checked="" name="Major_Element[12]" id="k2o"	value="K2O">&nbsp;<b>K<sub>2</sub>O</b><br>
+								<input type="checkbox" class="Major_Element" checked="" name="Major_Element[13]" id="p2o5" 	value="P2O5">&nbsp;<b>P<sub>2</sub>O<sub>5</sub></b><br>
+								<input type="checkbox" class="Major_Element" checked="" name="Major_Element[14]" id="h2op"	value="H2OP">&nbsp;<b>H<sub>2</sub>O<sup>+</sup></b><br>
+								<input type="checkbox" class="Major_Element" checked="" name="Major_Element[15]" id="h2on"	value="H2ON">&nbsp;<b>H<sub>2</sub>O<sup>-</sup></b><br>
+								<input type="checkbox" class="Major_Element" checked="" name="Major_Element[16]" id="co2"	value="CO2">&nbsp;<b>CO<sub>2</sub></b><br>
+								<input type="checkbox" class="Major_Element" checked="" name="Major_Element[17]" id="so3"	value="SO3">&nbsp;<b>SO<sub>3</sub></b><br>
+								<input type="checkbox" class="Major_Element" checked="" name="Major_Element[18]" id="f" 	value="F">&nbsp;<b>F</b><br>
+								<input type="checkbox" class="Major_Element" checked="" name="Major_Element[19]" id="cl"	value="Cl">&nbsp;<b>Cl</b><br>
+								<input type="checkbox" class="Major_Element" checked="" name="Major_Element[20]" id="loi"	value="LOI">&nbsp;<b>LOI</b><br>
+								<input type="checkbox" class="Major_Element" checked="" name="Major_Element[21]" id="total"	value="Total">&nbsp;<b>Total</b><br>
+								
+							</td>
+							<td style="white-space:nowrap">
+								<input type="button" value="Mark All" onclick="javascript:SetAllCheckBoxes('myform', 'Rare_Element', true);return false">	<br>
+								<input type="button" value="Clear All"	onclick="javascript:SetAllCheckBoxes('myform', 'Rare_Element', false);return false"><br>
+								
+								<input type="checkbox" class="Rare_Element" checked="" name="Rare_Element[0]" id="la"	value="La">&nbsp;<b>La </b><br>
+								<input type="checkbox" class="Rare_Element" checked="" name="Rare_Element[1]" id="ce"	value="Ce">&nbsp;<b>Ce</b><br>
+								<input type="checkbox" class="Rare_Element" checked="" name="Rare_Element[2]" id="pr"	value="Pr">&nbsp;<b>Pr</b><br>
+								<input type="checkbox" class="Rare_Element" checked="" name="Rare_Element[3]" id="nd" 	value="Nd">&nbsp;<b>Nd</b><br>
+								<input type="checkbox" class="Rare_Element" checked="" name="Rare_Element[4]" id="pm"	value="Pm">&nbsp;Pm<br>
+								<input type="checkbox" class="Rare_Element" checked="" name="Rare_Element[5]" id="sm"	value="Sm">&nbsp;<b>Sm</b><br>
+								<input type="checkbox" class="Rare_Element" checked="" name="Rare_Element[6]" id="eu"	value="Eu">&nbsp;<b>Eu</b><br>
+								<input type="checkbox" class="Rare_Element" checked="" name="Rare_Element[7]" id="gd"	value="Gd">&nbsp;<b>Gd</b><br>
+								<input type="checkbox" class="Rare_Element" checked="" name="Rare_Element[8]" id="tb" 	value="Tb">&nbsp;<b>Tb</b><br>
+								<input type="checkbox" class="Rare_Element" checked="" name="Rare_Element[9]" id="dy"	value="Dy">&nbsp;<b>Dy</b><br>
+								<input type="checkbox" class="Rare_Element" checked="" name="Rare_Element[10]" id="ho"	value="Ho">&nbsp;<b>Ho</b><br>
+								<input type="checkbox" class="Rare_Element" checked="" name="Rare_Element[11]" id="er"	value="Er">&nbsp;<b>Er</b><br>
+								<input type="checkbox" class="Rare_Element" checked="" name="Rare_Element[12]" id="tm"	value="Tm">&nbsp;<b>Tm</b><br>
+								<input type="checkbox" class="Rare_Element" checked="" name="Rare_Element[13]" id="yb" 	value="Yb">&nbsp;<b>Yb</b><br>
+								<input type="checkbox" class="Rare_Element" checked="" name="Rare_Element[14]" id="lu"	value="Lu">&nbsp;<b>Lu</b><br>
+								<input type="checkbox" class="Rare_Element" checked="" name="Rare_Element[15]" id="y"	value="Y">&nbsp;<b>Y</b><br>
+								<input type="checkbox" class="Rare_Element" checked="" name="Rare_Element[16]" id="sc"	value="Sc">&nbsp;<b>Sc</b><br>
+								<input type="checkbox" class="Rare_Element" checked="" name="Rare_Element[17]" id="totalReElement"	value="Total Rare Element">&nbsp;<b>Total Rare Element</b><br>
+												
+							</td>
+							<td style="white-space:nowrap">
+								<input type="button" value="Mark All" onclick="javascript:SetAllCheckBoxes('myform', 'Trace_Element', true);return false">	<br>
+								<input type="button" value="Clear All"	onclick="javascript:SetAllCheckBoxes('myform', 'Trace_Element', false);return false"><br>
+								
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[0]" id="v"	value="V">&nbsp;<b>V</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[1]" id="cr"	value="Cr">&nbsp;<b>Cr</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[2]" id="co"	value="Co">&nbsp;<b>Co</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[3]" id="ni" 	value="Ni">&nbsp;<b>Ni</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[4]" id="mn"	value="Mn">&nbsp;<b>Mn</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[5]" id="cu"	value="Cu">&nbsp;<b>Cu</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[6]" id="zn"	value="Zn">&nbsp;<b>Zn</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[7]" id="ga"	value="Ga">&nbsp;<b>Ga</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[8]" id="ge" 	value="Ge">&nbsp;<b>Ge</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[9]" id="cs"	value="Cs">&nbsp;<b>Cs</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[10]" id="rb"	value="Rb">&nbsp;<b>Rb</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[11]" id="ba"	value="Ba">&nbsp;<b>Ba</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[12]" id="th"	value="Th">&nbsp;<b>Th</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[13]" id="u" 	value="U">&nbsp;<b>U</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[14]" id="nb"	value="Nb">&nbsp;<b>Nb</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[15]" id="ta"	value="Ta">&nbsp;<b>Ta</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[16]" id="ti"	value="Ti">&nbsp;<b>Ti</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[17]" id="p"	value="P">&nbsp;<b>P</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[18]" id="pb"	value="Pb">&nbsp;<b>Pb</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[19]" id="sr"	value="Sr">&nbsp;<b>Sr</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[20]" id="zr" 	value="Zr">&nbsp;<b>Zr</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[21]" id="hf"	value="Hf">&nbsp;<b>Hf</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[22]" id="li"	value="Li">&nbsp;<b>Li</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[23]" id="be"	value="Be">&nbsp;<b>Be</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[24]" id="w"	value="W">&nbsp;<b>W</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[25]" id="pt"	value="Pt">&nbsp;<b>Pt</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[26]" id="pd"	value="Pd">&nbsp;<b>Pd</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[27]" id="os"	value="Os">&nbsp;<b>Os</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[28]" id="ir"	value="Ir">&nbsp;<b>Ir</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[29]" id="ru"	value="Ru">&nbsp;<b>Ru</b><br>
+								<input type="checkbox" class="Trace_Element" checked="" name="Trace_Element[30]" id="rh"	value="Rh">&nbsp;<b>Rh</b><br>
+							</td>
+							<td style="white-space:nowrap">
+								<input type="button" value="Mark All" onclick="javascript:SetAllCheckBoxes('myform', 'Isotopes', true);return false">	<br>
+								<input type="button" value="Clear All"	onclick="javascript:SetAllCheckBoxes('myform', 'Isotopes', false);return false"><br>
+								
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[0]" id="srisotope"	value="Is Sr Isotope">&nbsp;Is Sr Isotope <br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[1]" id="ndisotope"	value="Is Nd Isotope">&nbsp;Is Nd Isotope<br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[2]" id="rb87Sr86"	value="Rb87_Sr86">&nbsp;<b>(<sup>87</sup>Rb/<sup>86</sup>Sr)m</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[3]" id="sr87Sr86M" 	value="Sr87_Sr86_m">&nbsp;<b>(<sup>87</sup>Sr/<sup>86</sup>Sr)m</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[4]" id="sm147Nd144"	value="Sm147_Nd144">&nbsp;<b>(<sup>147</sup>Sm/<sup>144</sup>Nd)m</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[5]" id="nd143Nd144"	value="Nd143_Nd144">&nbsp;<b>(<sup>143</sup>Nd/<sup>144</sup>Nd)m</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[6]" id="testRockMa"	value="Test_Rock_Ma">&nbsp;<b>Test Rock(Ma)</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[7]" id="sr87Sr86I"	value="Sr87_Sr86_i">&nbsp;<b>(<sup>87</sup>Sr/<sup>86</sup>Sr)i</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[8]" id="nd143Nd144TChur" 	value="Nd143_Nd144_t_CHUR">&nbsp;<b>(<sup>143</sup>Nd/<sup>144</sup>Nd)t,CHUR</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[9]" id="nd143Nd144I"	value="Nd143_Nd144_i">&nbsp;<b>(<sup>143</sup>Nd/<sup>144</sup>Nd)i</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[10]" id="fSmNdS"	value="F_Sm_Nd_s">&nbsp;<b>f(Sm/Nd)s</b><br>
+
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[11]" id="epsilonNd0"	value="epsilon_Nd_0">&nbsp;<b>εNd(0)</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[12]" id="epsilonNdT"	value="epsilon_Nd_t">&nbsp;<b>εNd(t)</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[13]" id="tdmMa" 	value="TDM_Ma">&nbsp;<b>TDM_Ma</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[14]" id="tdm2Ma"	value="TDM2_Ma">&nbsp;<b>TDM<sub>2</sub>(Ma)</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[15]" id="hfisotope"	value="Is Hf Isotope">&nbsp;Is Hf Isotope<br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[16]" id="hfPointnum"	value="Hf_PointNum">&nbsp;<b>Hf_PointNum</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[17]" id="hfNormalnum"	value="Hf_normalNum">&nbsp;<b>Hf_normalNum</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[18]" id="epsilonHftMin" 	value="εHft_min">&nbsp;<b>εHft_min</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[19]" id="epsilon_Hft_max"	value="εHft_max">&nbsp;<b>εHft_max</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[20]" id="epsilon_Hft_median"	value="εHft_median">&nbsp;<b>εHft_median</b><br>
+								
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[21]" id="epsilonHftAverage"	value="εHft_average">&nbsp;<b>εHft_average</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[22]" id="tdmcMin"	value="TDMC_min">&nbsp;<b>TDMC_min</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[23]" id="tdmcMax" 	value="TDMC_Max">&nbsp;<b>TDMC_Max</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[24]" id="tdmcMedian"	value="TDMC_median">&nbsp;<b>TDMC_median</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[25]" id="tdmcAverage"	value="TDMC_average">&nbsp;<b>TDMC_average</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[26]" id="hfoisotope"	value="Is HfO Isotope">&nbsp;Is HfO Isotope<br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[27]" id="d18oMin"	value="d18O_min">&nbsp;<b>d<sup>18</sup>O_min</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[28]" id="d18oMax" 	value="d18O_max">&nbsp;<b>d<sup>18</sup>O_max</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[29]" id="d18oAverage"	value="d18O_average">&nbsp;<b>d<sup>18</sup>O_average</b><br>
+								<input type="checkbox" class="Isotopes" checked="" name="Isotopes[30]" id="d18oMedian"	value="d18O_median">&nbsp;<b>d<sup>18</sup>O_median</b><br>
+								
+							</td>
+							
+							
+						</tr>
+					</tbody>
+				</table>
+				<p><br>
+				</p>
+				<table cellspacing="0" cellpadding="0" border="0">
+
+					<script type="text/javascript">
+						document.getElementById('message').innerHTML =
+							'<input style="float:right" type="button" class="submitbuttonlarge" value="View and Download Results" onclick="return doSubmit();"><br clear="all">';
+					</script>
+					<input type="hidden" name="pkey" value="3415711">
+
+
+
+				</table>
+
+			</form>
+
+
+			<script type="text/javascript">
+				$(document).ready(function() {
+					ClearAll();
+					ShowStandard();
+		
+		
+				} );
+				function doSubmit(){
+
+					  var   getCK=document.getElementsByTagName('input');   
+					  var   j=0;   
+					 var map={};
+
+					  for(var   i=0;i<getCK.length;i++)   
+					  {   
+						  whichObj=getCK[i];   
+						  if(whichObj.type=="checkbox")   
+						  { 
+							  if(whichObj.checked){
+							  		 //console.log( whichObj.id,whichObj.value);   
+								  map[whichObj.id]=whichObj.value;
+									  j++;   
+							  }
+						  }   
+					  }   
+						console.log(map);
+						sessionStorage.setItem("options",JSON.stringify(map));
+						window.location.href="queryresult.html";
+						return true;
+					
+				};
+
+
+				
+			</script>
+
+
+
+
+
+			<!-- start footer -->
+		</div>
+
+		<@_includePlace path="/f95e232b-027b-40ae-9e2d-0a6385f7c418.html" />
+		<#-- footer -->
+</body>
+
+</html>

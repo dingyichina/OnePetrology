@@ -1,0 +1,67 @@
+<@_dPRbSr id=id><#assign a=object/></@_dPRbSr>
+<form method="post" action="dPRbSr/save.do?callbackType=closeCurrent&navTabId=dPRbSr/list" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <input name="id" type="hidden" value="${id!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+    <div class="pageContent">
+        <div class="pageFormContent" layoutH="56">
+            <dl>
+                <dt>ID：</dt>
+                <dd><input class="required" name="id" type="text" size="30" value="${(a.id)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>样品：</dt>
+                <dd><input class="required" name="sampleId" type="text" size="30" value="${(a.sampleId)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>衰变常数 （1/年）：</dt>
+                <dd><input class="required" name="decayConst" type="text" size="30" value="${(a.decayConst)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>铷(10<sup>-6</sup>)：</dt>
+                <dd><input class="required" name="rb" type="text" size="30" value="${(a.rb)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>锶（10<sup>-6</sup>）：</dt>
+                <dd><input class="required" name="sr" type="text" size="30" value="${(a.sr)!}"/></dd>
+            </dl>
+            <dl>
+                <dt><sup>87</sup>Rb／<sup>86</sup>Sr：</dt>
+                <dd><input class="required" name="rb87Sr86" type="text" size="30" value="${(a.rb87Sr86)!}"/></dd>
+            </dl>
+            <dl>
+                <dt><sup>87</sup>Sr／<sup>86</sup>Sr：</dt>
+                <dd><input class="required" name="sr87Sr86" type="text" size="30" value="${(a.sr87Sr86)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>表面年龄（Ma）：</dt>
+                <dd><input class="required" name="surfaceAge" type="text" size="30" value="${(a.surfaceAge)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>表面年龄误差（Ma）：</dt>
+                <dd><input class="required" name="surfaceAgeError" type="text" size="30" value="${(a.surfaceAgeError)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>模式年龄（Ma）：</dt>
+                <dd><input class="required" name="modelAge" type="text" size="30" value="${(a.modelAge)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>模式年龄误差(Ma)：</dt>
+                <dd><input class="required" name="modelAgeError" type="text" size="30" value="${(a.modelAgeError)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>εSr(o)：</dt>
+                <dd><input class="required" name="epsilonSrO" type="text" size="30" value="${(a.epsilonSrO)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>备注：</dt>
+                <dd><input class="required" name="remark" type="text" size="30" value="${(a.remark)!}"/></dd>
+            </dl>
+        </div>
+    </div>
+</form>

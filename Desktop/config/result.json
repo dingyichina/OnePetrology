@@ -1,0 +1,21 @@
+{
+    "档号+室编件号": "dc.identifier.FN",
+    "题名": "dc.title",
+    "作者": "dc.contributor",
+    "摘要": "dc.description.abstract",
+    "出版商": "dc.publisher",
+    "出处（来源）": "dc.source",
+    "出版日期": "dc.date.issued",
+    "是否原件": "dcterms.provenance.isOriginal",
+    "原件保存地": "dcterms.relation.originalDocumentLocation",
+    "载体代码": "dcterms.format.medium",
+    "存放路径": "dc.description.storagePath",
+    "语种": "dc.language.iso",
+    "提供者": "dc.description.provider",
+    "提供时间": "dc.date.provided",
+    "备注": "dc.description.comment",
+    "关联科学家": "relation.isScientistOfCollectionResults",
+    "dspace.entity.type": "CollectionResults",
+    "collection_uuid":"a0f61a3e-3968-4b5c-8f27-31595faed90a",
+    "savepath":"存放路径"
+}

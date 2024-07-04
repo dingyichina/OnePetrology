@@ -1,0 +1,77 @@
+ <div class="section-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="bc-blk-07">
+                    <div class="bc-blk-hd">
+                      <h4 class="bc-blk-hd-title"><span>Published Geological Maps</span></h4>
+                    </div>
+                    <div class="bc-blk-bd">
+                      <div class="bc-multi-col-pictext-list-02">
+            	
+						  <@_category code="homemap">
+						  <@_contentList categoryId=object.id containChild=true hasCover=true pageSize=6>
+							 <div  id='galley' class="row">
+								<#list page.list as a>
+								    <div class="col-md-4 col-12">
+                          			     <div class="item top-space-clear top-space-clear-sm">
+                                              <div class="img-ctn">
+                                                    <img class="img-fluid" data-original="${a.cover!}" alt="${a.title!}"  src="${a.cover!}" />
+                                              </div>
+                                              <h5 class="img-bottom-caption">${a.title}</h5>
+                                              <!--a href="/xdh/43971.htm"  target="_blank">
+											    <div class="text-ctn">
+                                                    <h4 class="art-caption text-center">${a.title}</h4>        
+												   <p class="art-abstract">${a.description}  </p>
+                                                 </div>
+											 </a -->
+                                          </div>
+                                     </div>
+                          	   </#list>
+							</div>
+							</@_contentList>
+							<div class="py-4">
+								<a href="/maps.html?id=${object.id}" class="d-inline-flex align-items-center">more... </a>
+							</div>
+							</@_category>
+						      <link href="${site.sitePath}viewerjs/viewer.min.css" rel="stylesheet">
+							<script src="${site.sitePath}viewerjs/viewer.min.js"></script>
+							<script>
+								window.addEventListener('DOMContentLoaded', function () {
+								  var galley = document.getElementById('galley');
+								  var viewer = new Viewer(galley, {
+									url: 'data-original',
+									toolbar: {
+									  oneToOne: true,
+
+									  prev: function() {
+										viewer.prev(true);
+									  },
+
+									  play: true,
+
+									  next: function() {
+										viewer.next(true);
+									  },
+
+									  download: function() {
+										const a = document.createElement('a');
+
+										a.href = viewer.image.src;
+										a.download = viewer.image.alt;
+										document.body.appendChild(a);
+										a.click();
+										document.body.removeChild(a);
+									  },
+									},
+								  });
+								});
+  							</script>
+                       </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+  </div>

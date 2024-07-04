@@ -1,0 +1,363 @@
+<div style="width:400px;height:180px;" id='map-container' >
+</div>
+
+<script>
+	// 默认页面加载之后运行
+   	$(document).ready(function() {
+		
+		try{
+        var currentMap = createMap();//创建地图
+			// var markers = new L.MarkerClusterGroup();
+		   // addMapPlugs(currentMap); //加载插件
+			//showPointInfo(currentMap);//显示当前点坐标信息
+			//showAntPath(currentMap);
+
+
+			//createLegend(currentMap);  //添加图例
+			//addAllData(currentMap); //把所有的点加上
+			showpolygon(currentMap);  //回显所选择的区域
+			//currentMap.setView(L.latLng(0, 0), 4);  //这个需要根据区域进行设置
+		}
+		catch(err){
+			console.log('ERROR:',err);
+		}
+    });
+ 
+
+	
+    //创建地图
+    function createMap(){
+       var newMap = L.map('map-container', {
+            minZoom: 2,
+            maxZoom: 13,
+            crs: L.CRS.EPSG3857,
+            fullscreenControl: {
+                pseudoFullscreen: false
+            },
+            center: [0,0]
+        });
+	
+ 
+		//换一种方式加载geoserver的图层
+		var rocklayer = L.tileLayer('${site.dynamicPath!}geoserver/gwc/service/tms/1.0.0/dde%3Aworld2021@EPSG%3A3857@png/{z}/{x}/{-y}.png', {
+			 minZoom: 2,
+			maxZoom: 18,
+			attribution: '&copy; <a href="https://petrology.deep-time.org">OnePetrology</a> contributors'
+		 });
+		newMap.addLayer(rocklayer);
+	  		
+		
+		//添加工具栏
+       // L.control.scale({'position': 'bottomleft', 'metric': true, 'imperial': false}).addTo(newMap);
+		//背景底图
+		var opacity=0.8; //背景底图透明度
+		//Esri 的世界影像
+		var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+		});
+		Esri_WorldImagery.setOpacity(opacity);
+		//Osm De的地图，包含中英文两种标注
+	    var OpenStreetMap_DE = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			maxZoom: 18,
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+		 });
+		//OpenStreetMap_DE.setOpacity(opacity);
+		//微软bing map的影像
+		//var BING_KEY = 'AvewBhQcQ8oh_dZ0rYIkYfHrrQdj87mT42i4plCmcqccDe0JXsWaOSNi4NuWvH0Z';
+       // var bingLayer = L.tileLayer.bing(BING_KEY);
+	//	bingLayer.setOpacity(opacity);
+		//高德影像
+		//var imgm = L.tileLayer.chinaProvider('GaoDe.Satellite.Map', {
+		//	maxZoom: 18,
+		//	minZoom: 3
+		//});
+		//var imga = L.tileLayer.chinaProvider('GaoDe.Satellite.Annotion', {
+		//	maxZoom: 18,
+	//		minZoom: 3
+	//	});
+      //  gaodeLayer = L.layerGroup([imgm, imga]);
+		//gaodeLayer.setOpacity(opacity);
+		//高德地图
+		var normalGaoDe = L.tileLayer.chinaProvider('GaoDe.Normal.Map', {
+			maxZoom: 18,
+			minZoom: 2
+		});
+		
+		//天地图
+		var normalm = L.tileLayer.chinaProvider('TianDiTu.Normal.Map', {
+			key:'3359c151db487347bd379173613694a3',
+        maxZoom: 18,
+        minZoom: 2
+    }),
+    normala = L.tileLayer.chinaProvider('TianDiTu.Normal.Annotion', {
+		key:'3359c151db487347bd379173613694a3',
+        maxZoom: 18,
+        minZoom: 2
+    }),
+    imgm = L.tileLayer.chinaProvider('TianDiTu.Satellite.Map', {
+		key:'3359c151db487347bd379173613694a3',
+        maxZoom: 18,
+        minZoom: 2
+    }),
+    imga = L.tileLayer.chinaProvider('TianDiTu.Satellite.Annotion', {
+		key:'3359c151db487347bd379173613694a3',
+        maxZoom: 18,
+        minZoom: 2
+    });
+
+var tianditunormal = L.layerGroup([normalm, normala]),
+    tiandituimage = L.layerGroup([imgm, imga]);
+
+// 自己的底图
+			var ourbaselayer = L.tileLayer('${site.dynamicPath!}geoserver/gwc/service/tms/1.0.0/dde%3Aworld2022@EPSG%3A3857@png/{z}/{x}/{-y}.png', {
+			 minZoom: 2,
+			maxZoom: 18,
+			attribution: '&copy; <a href="https://petrology.deep-time.org">OnePetrology</a> contributors'
+		 });
+		
+		//组合所有的背景图以供选择
+			var baselayer={"Magmatic rocks": ourbaselayer,"ESRI":Esri_WorldImagery,"OSM":OpenStreetMap_DE,"TianDiTu":normalm,"TianDiTu Satelite":imgm,"GaoDe":normalGaoDe};
+		 L.control.layers(baselayer, null).addTo(newMap);
+		  newMap.addLayer(tianditunormal); //默认添加天地图
+		
+		rocklayer.setZIndex(9);  //确保岩浆岩图在上面
+         newMap.setView(L.latLng(0, 0), 4);  //设置一个默认的中心点
+        return newMap;
+    }
+
+   
+    //加载插件
+    function addMapPlugs(map){
+        if(!map){
+            return ;
+        }
+        //标记插件--geoman
+        map.pm.addControls({
+            position: 'topleft',
+            drawCircle: true,
+        });
+	//绘制完成事件
+       map.on('pm:create', e => {
+        let shape = e.shape;
+        //多边形
+        if ('Polygon' === shape || 'Rectangle' === shape ||  'Circle' === shape) {
+          // 处理绘制完成的逻辑
+			console.log(e);//得到所绘的图形
+			shapes = e.layer.toGeoJSON();
+			console.log(shapes.geometry.type);//得到所绘的图形
+		   console.log(shapes.geometry.coordinates);//得到所绘的图形
+        }
+      });
+
+
+		
+        //测距插件
+        options = {
+            position: 'topleft',            // Position to show the control. Values: 'topright', 'topleft', 'bottomright', 'bottomleft'
+            unit: 'metres',                 // Show imperial or metric distances. Values: 'metres', 'landmiles', 'nauticalmiles'
+            clearMeasurementsOnStop: true,  // Clear all the measurements when the control is unselected
+            showBearings: false,            // Whether bearings are displayed within the tooltips
+            bearingTextIn: 'In',           // language dependend label for inbound bearings
+            bearingTextOut: 'Out',          // language dependend label for outbound bearings
+            tooltipTextFinish: '点击<b>测距点结束测距</b><br>',
+            tooltipTextDelete: '按住shift键同时点击测距点 <b>删除测距点</b>',
+            tooltipTextMove: '当手形图标时可以 <b>移动测距点</b><br>',
+            tooltipTextResume: '<br>Press CTRL-key and click to <b>resume line</b>',
+            tooltipTextAdd: '按测距线上按住ctrl键 &nbsp;<b>增加测距点</b>',
+            // language dependend labels for point's tooltips
+            measureControlTitleOn: '打开多段线测量',   // Title for the control going to be switched on
+            measureControlTitleOff: '关闭多段线测量', // Title for the control going to be switched off
+            measureControlLabel: '&#8614;', // Label of the Measure control (maybe a unicode symbol)
+            measureControlClasses: [],      // Classes to apply to the Measure control
+            showClearControl: false,        // Show a control to clear all the measurements
+            clearControlTitle: 'Clear Measurements', // Title text to show on the clear measurements control button
+            clearControlLabel: '&times',    // Label of the Clear control (maybe a unicode symbol)
+            clearControlClasses: [],        // Classes to apply to clear control button
+            showUnitControl: false,         // Show a control to change the units of measurements
+            distanceShowSameUnit: false,    // Keep same unit in tooltips in case of distance less then 1 km/mi/nm
+            unitControlTitle: {             // Title texts to show on the Unit Control button
+                text: 'Change Units',
+                metres: 'metres',
+                landmiles: 'land miles',
+                nauticalmiles: 'nautical miles'
+            },
+            unitControlLabel: {             // Unit symbols to show in the Unit Control button and measurement labels
+                metres: 'm',
+                kilometres: 'km',
+                feet: 'ft',
+                landmiles: 'mi',
+                nauticalmiles: 'nm'
+            },
+            tempLine: {                     // Styling settings for the temporary dashed line
+                color: '#00f',              // Dashed line color
+                weight: 2                   // Dashed line weight
+            },
+            fixedLine: {                    // Styling for the solid line
+                color: '#006',              // Solid line color
+                weight: 2                   // Solid line weight
+            },
+            startCircle: {                  // Style settings for circle marker indicating the starting point of the polyline
+                color: '#000',              // Color of the border of the circle
+                weight: 1,                  // Weight of the circle
+                fillColor: '#0f0',          // Fill color of the circle
+                fillOpacity: 1,             // Fill opacity of the circle
+                radius: 3                   // Radius of the circle
+            },
+            intermedCircle: {               // Style settings for all circle markers between startCircle and endCircle
+                color: '#000',              // Color of the border of the circle
+                weight: 1,                  // Weight of the circle
+                fillColor: '#ff0',          // Fill color of the circle
+                fillOpacity: 1,             // Fill opacity of the circle
+                radius: 3                   // Radius of the circle
+            },
+            currentCircle: {                // Style settings for circle marker indicating the latest point of the polyline during drawing a line
+                color: '#000',              // Color of the border of the circle
+                weight: 1,                  // Weight of the circle
+                fillColor: '#f0f',          // Fill color of the circle
+                fillOpacity: 1,             // Fill opacity of the circle
+                radius: 3                   // Radius of the circle
+            },
+            endCircle: {                    // Style settings for circle marker indicating the last point of the polyline
+                color: '#000',              // Color of the border of the circle
+                weight: 1,                  // Weight of the circle
+                fillColor: '#f00',          // Fill color of the circle
+                fillOpacity: 1,             // Fill opacity of the circle
+                radius: 3                   // Radius of the circle
+            },
+        };
+        L.control.polylineMeasure(options).addTo(map);
+
+
+        //搜索
+        L.control.search({
+            url: 'search.do?q={s}&_csrf=<@_csrfToken admin=true/>',
+            textPlaceholder: 'Press Enter to Search...',
+            position: 'topright',
+            hideMarkerOnCollapse: true,
+            marker: {
+                icon: new L.Icon({iconUrl:'${site.sitePath}leaflet/images/custom-icon.png', iconSize: [40,40]}),
+                circle: {
+                    radius: 20,
+                    color: '#0a0',
+                    opacity: 1
+                }
+            }
+
+        }).addTo(map);
+    }
+    //点击展示经纬度
+    function showPointInfo(map){
+        var mypop = L.popup();
+        map.on('click', function(e) {
+            var content = 'Current Point：<br>';
+            content += e.latlng.lng+"，"+e.latlng.lat;
+            mypop.setLatLng(e.latlng)
+                .setContent(content)
+                .openOn(map);
+        });
+    }
+
+    function showAntPath(map){
+        let arrs = [
+            [31.30, 120.58],  // 苏州市
+            [31.32, 120.63],   // 平江区
+            [31.30, 120.63],   // 沧浪区
+            [31.95789128, 120.64626101],
+            [31.30, 120.75]  // 虎丘区
+        ];
+        //---------------------leaflet-antvPath--------------------------
+        var antPath = L.polyline.antPath;
+        var path = antPath(arrs, {
+            "paused": false,   　　//暂停  初始化状态
+            "reverse": false,　　//方向反转
+            "delay": 1000,　　　　//延迟，数值越大效果越缓慢
+            "dashArray": [10, 20],　//间隔样式
+            "weight": 5,　　　　//线宽
+            "opacity": 0.5,　　//透明度
+            "color": "#0000FF",　//颜色
+            "pulseColor": "#FFFFFF"　　//块颜色
+        });
+        path.addTo(map);
+		
+//---------------------leaflet-antvPath--------------------------
+    }
+	
+	//回显所选择的polygon
+	function showpolygon(map){
+		//首先读取session中的polygon
+		   var ptlist=sessionStorage.getItem("polygon");
+		  // console.log(ptlist);
+			if (ptlist==null || ptlist==""){
+				//没设置的时候尝试读取默认的extent
+				ptlist=sessionStorage.getItem("extent");
+			}
+			if (ptlist==null || ptlist==""){
+				console.log('没有选直接退出 ');
+			     return map;   //没有选择，直接退出
+			 }else{
+				 // ptlist 是字符串，首先转换为js数组
+				 pointlist=[]
+				 latlngList=[];
+				 var splitlist = ptlist.split('],[');
+				 for (var  i=0;i<splitlist.length;i++){
+					 var tempstr= splitlist[i].replace('[','').replace(']','');
+					 //console.log(tempstr,"");
+					 pstr = tempstr.split(',');
+					 pointlist.push([parseFloat(pstr[0]),parseFloat(pstr[1])]);
+					 latlngList.push([parseFloat(pstr[1]),parseFloat(pstr[0])]);
+				 }
+				 console.log(pointlist);
+				 
+				// 加载geojson格式的polygon进行回显
+				var  geojson={
+									"type": "FeatureCollection",
+									"features": [{
+										"type": "Feature",
+										"properties": {
+											"adcode": 654301,
+											"name": "用户选择区域",
+											"center": [88.138743, 47.848911],
+											"centroid": [87.917843, 47.884663],
+											"childrenNum": 0,
+											"level": "district",
+											"parent": {
+												"adcode": 654300
+											},
+											"subFeatureIndex": 0,
+											"acroutes": [100000, 650000, 654300]
+										},
+										"geometry": {
+											"type": "MultiPolygon",
+											"coordinates": [
+												[
+													pointlist
+												]
+											]
+										}
+									}]
+								};
+									//渲染样式
+								 var myStyle = {
+											"color": "#00f",
+											"weight": 3,
+											"opacity": 0.8,
+							};
+                        console.log(geojson);
+						var layerGeo = L.geoJSON(geojson, {
+							style:myStyle
+						}).addTo(map);
+				        // 设置放缩范围和中心点
+				        var  bounds= L.latLngBounds(latlngList);
+				        var centerpoint = bounds.getCenter();
+				        var center= L.latLng(centerpoint.lng,centerpoint.lat);   //geojson的经纬度表达方式和leaflet反着来的，需要调换一下
+				 	    
+				        map.fitBounds(bounds);
+						layerGeo.setZIndex(99);  //确保在上面
+					    //map.setView(center,4);
+						return ; 
+				 
+			 }
+	}
+	
+	
+</script>

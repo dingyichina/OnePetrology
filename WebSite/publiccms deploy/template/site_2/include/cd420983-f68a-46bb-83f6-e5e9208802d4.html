@@ -1,0 +1,32 @@
+<div class="portfolio-area sp">
+        <div class="container">
+            <div class="section-title">
+                
+                    <h2>项目进展</h2>
+                
+            </div>
+            <div class="row">
+				<@_contentList  categoryId=139  pageIndex=0  pageSize=5 > 
+					<#list page.list as a>
+                <div class="single-portfolio col-md-4">
+                    <div class="inner">
+                        <div class="portfolio-img">
+                            <img src="    ${(a.cover)!}" alt="portfolio-image">
+                            <div class="hover-content">
+                                <div>
+                                    <a href="#" class="button">课题详情</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-content">
+                            <a href="#"><h4>    ${(a.title)!}</h4></a>
+                            <span>${(a.author)!}</span>
+                        </div>
+                    </div>
+                </div>
+				</#list>
+				</@_contentList>
+               
+        </div>
+    </div>
+  </div>

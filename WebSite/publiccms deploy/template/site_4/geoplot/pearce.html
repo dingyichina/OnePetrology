@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /> <!--- 强制升级https，避免混合错误  --->	
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Pearce</title>
+     <link href="${site.sitePath}style/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">    
+      .group {
+          padding: 1.5rem;
+          margin-right: 0;
+          margin-left: 0; 
+          border-width: 1px;
+          border-top-left-radius: .25rem;
+          border-top-right-radius: .25rem;
+
+          position: block;
+          padding: 1rem;
+          margin: 1rem -.75rem 0;
+          border: solid #dee2e6;
+          border-width: 1px 0 0;
+      }
+    </style>
+	<script src="${site.sitePath}js/plotly-2.18.0.min.js"></script>
+	<script src="${site.sitePath}js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<@_includePlace path="/12c11cf3-60f7-47ba-ad60-538a2add69b7.html"/> <#-- Pearce图 -->
+	
+	<script>
+     
+		    // 异步获取数据---测试
+		$.ajax({
+		        type: "get",        // 请求方式
+                url: "${site.dynamicPath!}fastapi/kdata/Igneous_Rock/geowind@126.com",
+			    data:{'boundary':"",'condition':"",'scope':'private','start':0,'length':2000},
+                dataType: "json",   // 预期返回一个 json 类型数据
+			    success: function (rtn) {   // data是形参名，代表返回的数据
+                    //处理返回数据
+					//把列名添加到分组列表
+					rtnColumns=rtn.columns;
+					 setData2Pearce(rtn.columns,rtn.data,rtn.numbercolumns);
+				}
+			 });	 
+        
+		
+	</script>
+	
+	
+    <script src="${site.dynamicPath}resource/js/cms.analytics.js"></script>
+    <script>
+        var ca = cmsAnalytics();
+        var url='${site.dynamicPath}api/visit/record';
+        if("string" ==typeof itemString){
+            url=url+"?"+itemString;
+        }
+        ca.report(url);
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+    "档号+室编件号": "dc.identifier.FN",
+    "题名": "dc.title",
+    "创建者": "dc.contributor",
+    "创建时间": "dc.date.created",
+    "创建地点": "dc.contributor.location",
+    "受访人/主要人物": "dc.contributor.interviewees",
+    "主要人物": "dc.contributor.interviewees",
+    "采访人": "dc.contributor.interviewer",
+    "内容摘要": "dc.description.abstract",
+    "载体代码": "dcterms.format.medium",
+    "存储路径": "dc.description.storagePath",
+    "字数": "dc.description.wordCount",
+    "语种": "dc.language.iso",
+    "提供者": "dc.description.provider",
+    "提供时间": "dc.date.provided",
+    "备注": "dc.description.comment",
+    "关联科学家": "relation.isScientistOfOralDocument",
+    "dspace.entity.type": "OralDocument",
+    "collection_uuid":"d35643a8-0474-4a4e-bcfb-e3e453b0bd26",
+    "savepath":"存储路径"
+}

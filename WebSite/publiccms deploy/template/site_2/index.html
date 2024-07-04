@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<@_includePlace path="/63241365-51a7-4903-89e6-7619031fa9fe.html"/> <#-- Header -->
+    <@_includePlace path="/3f5dfe1e-f43a-44c2-a436-cbd1518cbc50.html"/> <#-- head-gis-link -->
+
+    <script src="${site.sitePath}Cesium/Cesium.js"></script>
+
+
+	<link href="${site.sitePath}Cesium/Widgets/widgets.css" rel="stylesheet">
+</head>
+<body class="menu-always-on-top">
+	  	  <main>
+   <@_includePlace path="/c8014652-e25e-4c4d-a3ca-9aad7fa0385c.html"/> <#-- header -->
+
+
+	<@_includePlace path="/25b5a974-d2a3-4527-8971-0b23b020b7ab.html"/> <#-- home-world-gis-2d3d -->
+			  <@noCache>	    </@noCache>
+	 <@_includePlace path="/44113462-f3cc-4d40-99a4-042dc92e8d0d.html"/> <#-- data summary -->
+		
+
+		  <@_includePlace path="/f25eeb45-9e01-45c3-b2ce-fb6a84c53634.html"/> <#-- Publish Map  -->
+	<!--sso test-->	
+	<!--<script text="application/javascript">
+	
+		 var token=$.cookie('token');
+		  console.log("token="+token)
+		$.ajax({
+				type: "get",
+				url:"https://deep-time.org/v1.0/api/user",				
+		    	beforeSend: function(request) { 
+		 		var t=$.cookie('token');
+				console.log(t);
+			  request.setRequestHeader("rzpj",""+t);
+				//	 request.setRequestHeader("host","deep-time.org");
+					},
+				headers: {
+					"Accept": "*/*",
+					"rzpj":$.cookie('token'),//此处放置请求到的用户token
+					//host:"deep-time.org"
+				},
+			
+				
+				contentType: "application/json",
+				dataType: 'json',
+				cache: false,
+				async: true,
+			//data:{
+			//  "username":"ddedatatest05","password":"Root123!@$","service":"https://deep-time.org/"			
+			//},
+//    beforeSend: function (XMLHttpRequest) {
+//         XMLHttpRequest.setRequestHeader("Authorization", localStorage.getItem("mytoken"));
+//      },
+				success: function(res) {
+					console.log("请求结果=="+JSON.stringify(res));
+				},
+				error:function() {
+					console.log("请求失败！");
+				}
+			});
+	
+
+			  </script>-->
+
+    </main>
+    <footer>
+      <@_includePlace path="/f95e232b-027b-40ae-9e2d-0a6385f7c418.html"/> <#-- footer -->
+    </footer>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<#macro placeTree filepath=''>
+    <@_templateList path='/include'+filepath orderField='createDate'>
+        <#list list as a>
+            <li>
+                <#local path=filepath+'/'+a.fileName>
+                <#if a.directory>
+                    <a href="placeTemplate/directory.html?path=${(path?url)!}" target="ajax" rel="cmsTemplatePlace">${a.fileName}</a>
+                    <ul><@placeTree path/></ul>
+                <#else>
+                   <a href="placeTemplate/content.html?path=${(path?url)!}" target="ajax" rel="cmsTemplatePlace"><@_placeMetadata path=path><#if 0 lt ((object.size)!0)><@t.page 'place_data.place'/>:</#if>${(object.alias)!a.fileName}</@_placeMetadata></a>
+                </#if>
+            </li>
+        <#else>
+            <li><a><@t.page 'empty_directory'/></a></li>
+        </#list>
+    </@_templateList>
+</#macro>
+<div class="pageContent">
+    <div layoutH class="leftPageContent">
+        <h2 class="contentTitle">
+            <a class="button" href="placeTemplate/metadata.html" target="ajax" rel="cmsTemplatePlace"><@t.page 'place.create'/></a>
+        </h2>
+        <ul class="tree treeFolder">
+            <@placeTree/>
+        </ul>
+    </div>
+    <div id="cmsTemplatePlace" class="unitBox rightPageContent">
+        
+    </div>
+</div>

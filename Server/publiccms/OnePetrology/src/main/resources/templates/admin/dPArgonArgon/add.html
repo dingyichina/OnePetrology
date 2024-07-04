@@ -1,0 +1,55 @@
+<@_dPArgonArgon id=id><#assign a=object/></@_dPArgonArgon>
+<form method="post" action="dPArgonArgon/save.do?callbackType=closeCurrent&navTabId=dPArgonArgon/list" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <input name="id" type="hidden" value="${id!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+    <div class="pageContent">
+        <div class="pageFormContent" layoutH="56">
+            <dl>
+                <dt>ID：</dt>
+                <dd><input class="required" name="id" type="text" size="30" value="${(a.id)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>加热阶段次数（次）：</dt>
+                <dd><input class="required" name="NHeatStage" type="text" size="30" value="${(a.NHeatStage)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>衰变常数 （1/年）：</dt>
+                <dd><input class="required" name="cecayconst" type="text" size="30" value="${(a.cecayconst)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>J 值：</dt>
+                <dd><input class="required" name="JValue" type="text" size="30" value="${(a.JValue)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>全熔融年龄（Ma）：</dt>
+                <dd><input class="required" name="fullmeltAge" type="text" size="30" value="${(a.fullmeltAge)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>年龄误差1（Ma）：</dt>
+                <dd><input class="required" name="ageError1" type="text" size="30" value="${(a.ageError1)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>坪年龄（Ma）：</dt>
+                <dd><input class="required" name="plateauAge" type="text" size="30" value="${(a.plateauAge)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>年龄误差2（Ma）：</dt>
+                <dd><input class="required" name="ageError2" type="text" size="30" value="${(a.ageError2)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>备注：</dt>
+                <dd><input class="required" name="remark" type="text" size="30" value="${(a.remark)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>样品：</dt>
+                <dd><input class="required" name="sampleId" type="text" size="30" value="${(a.sampleId)!}"/></dd>
+            </dl>
+        </div>
+    </div>
+</form>

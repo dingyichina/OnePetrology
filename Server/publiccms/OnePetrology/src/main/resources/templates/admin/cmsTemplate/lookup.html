@@ -1,0 +1,34 @@
+<#macro templateTree field filepath=''>
+    <@_templateList path=filepath>
+        <#list list as a>
+            <li>
+                <#local path=filepath+'/'+a.fileName/>
+                <#if a.directory>
+                    <a href="javascript:;" onclick="return false;">${a.fileName}</a>
+                    <ul><@templateTree field path/></ul>
+                <#else>
+                    <@_metadata path=path>
+                        <a href="javascript:;" data="${path!}" onclick="$.bringBack({'${field}':'${path}'});return false;">
+                            ${(object.alias)?has_content?then(object.alias+' ('+a.fileName+')',a.fileName)}
+                        </a>
+                    </@_metadata>
+                </#if>
+            </li>
+        <#else>
+            <li><a><@t.page 'empty_directory'/></a></li>
+        </#list>
+    </@_templateList>
+</#macro>
+<div class="pageFormContent" layoutH>
+    <ul class="tree treeFolder">
+        <@templateTree field/>
+    </ul>
+    <script>
+        $('a[data="${(value?js_string)!}"]',$.pdialog.getCurrent()).parent().addClass('selected');
+    </script>
+</div>
+<div class="formBar">
+    <ul>
+        <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+    </ul>
+</div>

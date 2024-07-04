@@ -1,0 +1,1071 @@
+<div class="pageHeader">
+    <form class="pagerForm" onsubmit="return navTabSearch(this);" method="post">
+        <#include "../include_page/parameters.html"/>
+        <div class="searchBar">
+            <ul class="searchContent">
+                <li>
+                    <label>Sample Id：</label>
+                    <input type="text" name="sampleId" value="${sampleId!}" />
+                </li>
+                <li>
+                    <label>Oraginal Sample Id：</label>
+                    <input type="text" name="oraginalSampleId" value="${oraginalSampleId!}" />
+                </li>
+                <li>
+                    <label>Location：</label>
+                    <input type="text" name="location" value="${location!}" />
+                </li>
+                <li>
+                    <label>Region Location：</label>
+                    <input type="text" name="regionLocation" value="${regionLocation!}" />
+                </li>
+                <li>
+                    <label>Location Type：</label>
+                    <input type="text" name="locationType" value="${locationType!}" />
+                </li>
+                <li>
+                    <label>Tectonic Location：</label>
+                    <input type="text" name="tectonicLocation" value="${tectonicLocation!}" />
+                </li>
+                <li>
+                    <label>Tectonic Type：</label>
+                    <input type="text" name="tectonicType" value="${tectonicType!}" />
+                </li>
+                <li>
+                    <label>Lithology：</label>
+                    <input type="text" name="lithology" value="${lithology!}" />
+                </li>
+                <li>
+                    <label>Orginal Lithology：</label>
+                    <input type="text" name="lithologyOrigin" value="${lithologyOrigin!}" />
+                </li>
+                <li>
+                    <label>Occurrence：</label>
+                    <input type="text" name="occurrence" value="${occurrence!}" />
+                </li>
+                <li>
+                    <label>Intrusion：</label>
+                    <input type="text" name="intrusion" value="${intrusion!}" />
+                </li>
+                <li>
+                    <label>Pluton：</label>
+                    <input type="text" name="pluton" value="${pluton!}" />
+                </li>
+                <li>
+                    <label>Original Pluton：</label>
+                    <input type="text" name="plutonOrigin" value="${plutonOrigin!}" />
+                </li>
+                <li>
+                    <label>Rock Name：</label>
+                    <input type="text" name="rockName" value="${rockName!}" />
+                </li>
+                <li>
+                    <label>Rock Code：</label>
+                    <input type="text" name="rockCode" value="${rockCode!}" />
+                </li>
+                <li>
+                    <label>Era：</label>
+                    <input type="text" name="era" value="${era!}" />
+                </li>
+                <li>
+                    <label>Geobody Name：</label>
+                    <input type="text" name="geobodyName" value="${geobodyName!}" />
+                </li>
+                <li>
+                    <label>Geobody Code：</label>
+                    <input type="text" name="geobodyCode" value="${geobodyCode!}" />
+                </li>
+                <li>
+                    <label>Surrounding Rock Age：</label>
+                    <input type="text" name="surroundingRockAge" value="${surroundingRockAge!}" />
+                </li>
+                <li>
+                    <label>Surrounding Rock Lithology：</label>
+                    <input type="text" name="surroundingRockLithology" value="${surroundingRockLithology!}" />
+                </li>
+                <li>
+                    <label>Relationship with Surrounding Rock：</label>
+                    <input type="text" name="relationshipWithSurroundingRock" value="${relationshipWithSurroundingRock!}" />
+                </li>
+                <li>
+                    <label>Form：</label>
+                    <input type="text" name="form" value="${form!}" />
+                </li>
+                <li>
+                    <label>Whether to Cut Area Construction Line：</label>
+                    <input type="text" name="whetherToCutAreaConstructionLine" value="${whetherToCutAreaConstructionLine!}" />
+                </li>
+                <li>
+                    <label>Degree of Deformation：</label>
+                    <input type="text" name="degreeOfDeformation" value="${degreeOfDeformation!}" />
+                </li>
+                <li>
+                    <label>Characteristic Minerals：</label>
+                    <input type="text" name="characteristicMinerals" value="${characteristicMinerals!}" />
+                </li>
+                <li>
+                    <label>Mining Area：</label>
+                    <input type="text" name="miningArea" value="${miningArea!}" />
+                </li>
+                <li>
+                    <label>Ore Type：</label>
+                    <input type="text" name="oreType" value="${oreType!}" />
+                </li>
+                <li>
+                    <label>Genetic Type：</label>
+                    <input type="text" name="geneticType" value="${geneticType!}" />
+                </li>
+                <li>
+                    <label>Age（Ma）：</label>
+                    <input type="text" name="age" value="${age!}" />
+                </li>
+                <li>
+                    <label>Age Error（Ma）：</label>
+                    <input type="text" name="ageError" value="${ageError!}" />
+                </li>
+                <li>
+                    <label>Age Selected（Ma）：</label>
+                    <input type="text" name="ageSelected" value="${ageSelected!}" />
+                </li>
+                <li>
+                    <label>Age Selected Error（Ma）：</label>
+                    <input type="text" name="ageSelectedError" value="${ageSelectedError!}" />
+                </li>
+                <li>
+                    <label>Test Object：</label>
+                    <input type="text" name="testObject" value="${testObject!}" />
+                </li>
+                <li>
+                    <label>Test Method：</label>
+                    <input type="text" name="testMethod" value="${testMethod!}" />
+                </li>
+                <li>
+                    <label>Primary Structural Unit：</label>
+                    <input type="text" name="primaryStructuralUnit" value="${primaryStructuralUnit!}" />
+                </li>
+                <li>
+                    <label>Secondary Structural Unit：</label>
+                    <input type="text" name="secondaryStructuralUnit" value="${secondaryStructuralUnit!}" />
+                </li>
+                <li>
+                    <label>Tertiary Structural Unit：</label>
+                    <input type="text" name="tertiaryStructuralUnit" value="${tertiaryStructuralUnit!}" />
+                </li>
+                <li>
+                    <label>Source of Structural Type Discrimination：</label>
+                    <input type="text" name="sourceOfStructuralTypeDiscrimination" value="${sourceOfStructuralTypeDiscrimination!}" />
+                </li>
+                <li>
+                    <label>Alkalinity：</label>
+                    <input type="text" name="alkalinity" value="${alkalinity!}" />
+                </li>
+                <li>
+                    <label>Aluminum Quality：</label>
+                    <input type="text" name="aluminumQuality" value="${aluminumQuality!}" />
+                </li>
+                <li>
+                    <label>Photo：</label>
+                    <input type="text" name="photo" value="${photo!}" />
+                </li>
+                <li>
+                    <label>Collector：</label>
+                    <input type="text" name="collector" value="${collector!}" />
+                </li>
+                <li>
+                    <label>Collector Org：</label>
+                    <input type="text" name="collectorOrg" value="${collectorOrg!}" />
+                </li>
+                <li>
+                    <label>Reviewer：</label>
+                    <input type="text" name="reviewer" value="${reviewer!}" />
+                </li>
+                <li>
+                    <label>Analyze Org：</label>
+                    <input type="text" name="analyzeOrg" value="${analyzeOrg!}" />
+                </li>
+                <li>
+                    <label>Analyze Person：</label>
+                    <input type="text" name="analyzePerson" value="${analyzePerson!}" />
+                </li>
+                <li>
+                    <label>Test Date：</label>
+                    <input type="text" name="testDate" value="${testDate!}" />
+                </li>
+                <li>
+                    <label>Data Source：</label>
+                    <input type="text" name="dataSource" value="${dataSource!}" />
+                </li>
+                <li>
+                    <label>Article DOI：</label>
+                    <input type="text" name="articleDoi" value="${articleDoi!}" />
+                </li>
+                <li>
+                    <label>Remark：</label>
+                    <input type="text" name="remark" value="${remark!}" />
+                </li>
+                <li>
+                    <label>Ref.Author：</label>
+                    <input type="text" name="refAuthor" value="${refAuthor!}" />
+                </li>
+                <li>
+                    <label>Ref.Year：</label>
+                    <input type="text" name="refYear" value="${refYear!}" />
+                </li>
+                <li>
+                    <label>Ref.Magazine：</label>
+                    <input type="text" name="refMagazine" value="${refMagazine!}" />
+                </li>
+                <li>
+                    <label>Issue Page：</label>
+                    <input type="text" name="issuePage" value="${issuePage!}" />
+                </li>
+                <li>
+                    <label>Ref.Title：</label>
+                    <input type="text" name="refTitle" value="${refTitle!}" />
+                </li>
+                <li>
+                    <label>Ref.Origin：</label>
+                    <input type="text" name="refOrigin" value="${refOrigin!}" />
+                </li>
+                <li>
+                    <label>Ref.Magazine.Origin：</label>
+                    <input type="text" name="refMagazineOrigin" value="${refMagazineOrigin!}" />
+                </li>
+                <li>
+                    <label>Ref.Title.Origin：</label>
+                    <input type="text" name="refTitleOrigin" value="${refTitleOrigin!}" />
+                </li>
+                <li>
+                    <label>S<sub>i</sub>O<sub>2</sub>（10<sup>-2</sup>）：</label>
+                    <input type="text" name="sio2" value="${sio2!}" />
+                </li>
+                <li>
+                    <label>T<sub>i</sub>O<sub>2</sub>（10<sup>-2</sup>）：</label>
+                    <input type="text" name="tio2" value="${tio2!}" />
+                </li>
+                <li>
+                    <label>Al<sub>2</sub>O<sub>3</sub>（10<sup>-2</sup>）：</label>
+                    <input type="text" name="al2o3" value="${al2o3!}" />
+                </li>
+                <li>
+                    <label>Fe<sub>2</sub>O<sub>3</sub>（10<sup>-2</sup>）：</label>
+                    <input type="text" name="fe2o3" value="${fe2o3!}" />
+                </li>
+                <li>
+                    <label>FeO（10<sup>-2</sup>）：</label>
+                    <input type="text" name="feo" value="${feo!}" />
+                </li>
+                <li>
+                    <label>Fe<sub>2</sub>O<sub>3</sub>T（10<sup>-2</sup>）：</label>
+                    <input type="text" name="fe2o3t" value="${fe2o3t!}" />
+                </li>
+                <li>
+                    <label>FeOT（10<sup>-2</sup>）：</label>
+                    <input type="text" name="feot" value="${feot!}" />
+                </li>
+                <li>
+                    <label>TFe（10<sup>-2</sup>）：</label>
+                    <input type="text" name="tfe" value="${tfe!}" />
+                </li>
+                <li>
+                    <label>MnO（10<sup>-2</sup>）：</label>
+                    <input type="text" name="mno" value="${mno!}" />
+                </li>
+                <li>
+                    <label>MgO（10<sup>-2</sup>）：</label>
+                    <input type="text" name="mgo" value="${mgo!}" />
+                </li>
+                <li>
+                    <label>CaO（10<sup>-2</sup>）：</label>
+                    <input type="text" name="cao" value="${cao!}" />
+                </li>
+                <li>
+                    <label>Na<sub>2</sub>O（10<sup>-2</sup>）：</label>
+                    <input type="text" name="na2o" value="${na2o!}" />
+                </li>
+                <li>
+                    <label>K<sub>2</sub>O（10<sup>-2</sup>）：</label>
+                    <input type="text" name="k2o" value="${k2o!}" />
+                </li>
+                <li>
+                    <label>P<sub>2</sub>O<sub>5</sub>（10<sup>-2</sup>）：</label>
+                    <input type="text" name="p2o5" value="${p2o5!}" />
+                </li>
+                <li>
+                    <label>H<sub>2</sub>O<sup>+</sup>（10<sup>-2</sup>）：</label>
+                    <input type="text" name="h2op" value="${h2op!}" />
+                </li>
+                <li>
+                    <label>H<sub>2</sub>O<sup>-</sup>（10<sup>-2</sup>）：</label>
+                    <input type="text" name="h2on" value="${h2on!}" />
+                </li>
+                <li>
+                    <label>CO<sub>2</sub>（10<sup>-2</sup>）：</label>
+                    <input type="text" name="co2" value="${co2!}" />
+                </li>
+                <li>
+                    <label>SO<sub>3</sub>（10<sup>-2</sup>）：</label>
+                    <input type="text" name="so3" value="${so3!}" />
+                </li>
+                <li>
+                    <label>F（10<sup>-2</sup>）：</label>
+                    <input type="text" name="f" value="${f!}" />
+                </li>
+                <li>
+                    <label>Cl（10<sup>-2</sup>）：</label>
+                    <input type="text" name="cl" value="${cl!}" />
+                </li>
+                <li>
+                    <label>LOI（10<sup>-2</sup>）：</label>
+                    <input type="text" name="loi" value="${loi!}" />
+                </li>
+                <li>
+                    <label>Total（10<sup>-2</sup>）：</label>
+                    <input type="text" name="total" value="${total!}" />
+                </li>
+                <li>
+                    <label>镧 La（10<sup>-6</sup>）：</label>
+                    <input type="text" name="la" value="${la!}" />
+                </li>
+                <li>
+                    <label>铈 Ce（10<sup>-6</sup>）：</label>
+                    <input type="text" name="ce" value="${ce!}" />
+                </li>
+                <li>
+                    <label>镨 Pr（10<sup>-6</sup>）：</label>
+                    <input type="text" name="pr" value="${pr!}" />
+                </li>
+                <li>
+                    <label>钕 Nd（10<sup>-6</sup>）：</label>
+                    <input type="text" name="nd" value="${nd!}" />
+                </li>
+                <li>
+                    <label>钷 Pm（10<sup>-6</sup>）：</label>
+                    <input type="text" name="pm" value="${pm!}" />
+                </li>
+                <li>
+                    <label>钐 Sm（10<sup>-6</sup>）：</label>
+                    <input type="text" name="sm" value="${sm!}" />
+                </li>
+                <li>
+                    <label>铕 Eu（10<sup>-6</sup>）：</label>
+                    <input type="text" name="eu" value="${eu!}" />
+                </li>
+                <li>
+                    <label>钆 Gd（10<sup>-6</sup>）：</label>
+                    <input type="text" name="gd" value="${gd!}" />
+                </li>
+                <li>
+                    <label>铽 Tb（10<sup>-6</sup>）：</label>
+                    <input type="text" name="tb" value="${tb!}" />
+                </li>
+                <li>
+                    <label>镝 Dy（10<sup>-6</sup>）：</label>
+                    <input type="text" name="dy" value="${dy!}" />
+                </li>
+                <li>
+                    <label>钬 Ho（10<sup>-6</sup>）：</label>
+                    <input type="text" name="ho" value="${ho!}" />
+                </li>
+                <li>
+                    <label>铒 Er（10<sup>-6</sup>）：</label>
+                    <input type="text" name="er" value="${er!}" />
+                </li>
+                <li>
+                    <label>铥 Tm（10<sup>-6</sup>）：</label>
+                    <input type="text" name="tm" value="${tm!}" />
+                </li>
+                <li>
+                    <label>镱 Yb（10<sup>-6</sup>）：</label>
+                    <input type="text" name="yb" value="${yb!}" />
+                </li>
+                <li>
+                    <label>镥 Lu（10<sup>-6</sup>）：</label>
+                    <input type="text" name="lu" value="${lu!}" />
+                </li>
+                <li>
+                    <label>钇 Y（10<sup>-6</sup>）：</label>
+                    <input type="text" name="y" value="${y!}" />
+                </li>
+                <li>
+                    <label>钪 Sc（10<sup>-6</sup>）：</label>
+                    <input type="text" name="sc" value="${sc!}" />
+                </li>
+                <li>
+                    <label>Total Re Element（10<sup>-6</sup>）：</label>
+                    <input type="text" name="totalReElement" value="${totalReElement!}" />
+                </li>
+                <li>
+                    <label>钒 V（10<sup>-6</sup>）：</label>
+                    <input type="text" name="v" value="${v!}" />
+                </li>
+                <li>
+                    <label>铬 Cr（10<sup>-6</sup>）：</label>
+                    <input type="text" name="cr" value="${cr!}" />
+                </li>
+                <li>
+                    <label>钴 Co（10<sup>-6</sup>）：</label>
+                    <input type="text" name="co" value="${co!}" />
+                </li>
+                <li>
+                    <label>镍 Ni（10<sup>-6</sup>）：</label>
+                    <input type="text" name="ni" value="${ni!}" />
+                </li>
+                <li>
+                    <label>锰 Mn（10<sup>-6</sup>）：</label>
+                    <input type="text" name="mn" value="${mn!}" />
+                </li>
+                <li>
+                    <label>铜 Cu（10<sup>-6</sup>）：</label>
+                    <input type="text" name="cu" value="${cu!}" />
+                </li>
+                <li>
+                    <label>锌 Zn（10<sup>-6</sup>）：</label>
+                    <input type="text" name="zn" value="${zn!}" />
+                </li>
+                <li>
+                    <label>镓 Ga（10<sup>-6</sup>）：</label>
+                    <input type="text" name="ga" value="${ga!}" />
+                </li>
+                <li>
+                    <label>锗 Ge（10<sup>-6</sup>）：</label>
+                    <input type="text" name="ge" value="${ge!}" />
+                </li>
+                <li>
+                    <label>铯 Cs（10<sup>-6</sup>）：</label>
+                    <input type="text" name="cs" value="${cs!}" />
+                </li>
+                <li>
+                    <label>铷 Rb（10<sup>-6</sup>）：</label>
+                    <input type="text" name="rb" value="${rb!}" />
+                </li>
+                <li>
+                    <label>钡 Ba（10<sup>-6</sup>）：</label>
+                    <input type="text" name="ba" value="${ba!}" />
+                </li>
+                <li>
+                    <label>钍 Th（10<sup>-6</sup>）：</label>
+                    <input type="text" name="th" value="${th!}" />
+                </li>
+                <li>
+                    <label>铀 U（10<sup>-6</sup>）：</label>
+                    <input type="text" name="u" value="${u!}" />
+                </li>
+                <li>
+                    <label>铌 Nb（10<sup>-6</sup>）：</label>
+                    <input type="text" name="nb" value="${nb!}" />
+                </li>
+                <li>
+                    <label>钽 Ta（10<sup>-6</sup>）：</label>
+                    <input type="text" name="ta" value="${ta!}" />
+                </li>
+                <li>
+                    <label>钛 Ti（10<sup>-6</sup>）：</label>
+                    <input type="text" name="ti" value="${ti!}" />
+                </li>
+                <li>
+                    <label>磷 P（10<sup>-6</sup>）：</label>
+                    <input type="text" name="p" value="${p!}" />
+                </li>
+                <li>
+                    <label>铅 Pb（10<sup>-6</sup>）：</label>
+                    <input type="text" name="pb" value="${pb!}" />
+                </li>
+                <li>
+                    <label>锶 Sr（10<sup>-6</sup>）：</label>
+                    <input type="text" name="sr" value="${sr!}" />
+                </li>
+                <li>
+                    <label>锆 Zr（10<sup>-6</sup>）：</label>
+                    <input type="text" name="zr" value="${zr!}" />
+                </li>
+                <li>
+                    <label>铪 Hf（10<sup>-6</sup>）：</label>
+                    <input type="text" name="hf" value="${hf!}" />
+                </li>
+                <li>
+                    <label>锂 Li（10<sup>-6</sup>）：</label>
+                    <input type="text" name="li" value="${li!}" />
+                </li>
+                <li>
+                    <label>铍 Be（10<sup>-6</sup>）：</label>
+                    <input type="text" name="be" value="${be!}" />
+                </li>
+                <li>
+                    <label>钨 W（10<sup>-6</sup>）：</label>
+                    <input type="text" name="w" value="${w!}" />
+                </li>
+                <li>
+                    <label>铂 Pt（10<sup>-6</sup>）：</label>
+                    <input type="text" name="pt" value="${pt!}" />
+                </li>
+                <li>
+                    <label>钯 Pd（10<sup>-6</sup>）：</label>
+                    <input type="text" name="pd" value="${pd!}" />
+                </li>
+                <li>
+                    <label>锇 Os（10<sup>-6</sup>）：</label>
+                    <input type="text" name="os" value="${os!}" />
+                </li>
+                <li>
+                    <label>铱 Ir（10<sup>-6</sup>）：</label>
+                    <input type="text" name="ir" value="${ir!}" />
+                </li>
+                <li>
+                    <label>钌 Ru（10<sup>-6</sup>）：</label>
+                    <input type="text" name="ru" value="${ru!}" />
+                </li>
+                <li>
+                    <label>铑 Rh（10<sup>-6</sup>）：</label>
+                    <input type="text" name="rh" value="${rh!}" />
+                </li>
+                <li>
+                    <label>Sr Isotope：</label>
+                    <input type="text" name="srisotope" value="${srisotope!}" />
+                </li>
+                <li>
+                    <label>Nd Isotope：</label>
+                    <input type="text" name="ndisotope" value="${ndisotope!}" />
+                </li>
+                <li>
+                    <label>(<sup>87</sup>Rb/<sup>86</sup>Sr)m：</label>
+                    <input type="text" name="rb87Sr86" value="${rb87Sr86!}" />
+                </li>
+                <li>
+                    <label>(<sup>87</sup>Sr/<sup>86</sup>Sr)m：</label>
+                    <input type="text" name="sr87Sr86M" value="${sr87Sr86M!}" />
+                </li>
+                <li>
+                    <label>(<sup>147</sup>Sm/<sup>144</sup>Nd)m：</label>
+                    <input type="text" name="sm147Nd144" value="${sm147Nd144!}" />
+                </li>
+                <li>
+                    <label>(<sup>143</sup>Nd/<sup>144</sup>Nd)m：</label>
+                    <input type="text" name="nd143Nd144" value="${nd143Nd144!}" />
+                </li>
+                <li>
+                    <label>Test Rock (Ma)：</label>
+                    <input type="text" name="testRockMa" value="${testRockMa!}" />
+                </li>
+                <li>
+                    <label>(<sup>87</sup>Sr/<sup>86</sup>Sr)i：</label>
+                    <input type="text" name="sr87Sr86I" value="${sr87Sr86I!}" />
+                </li>
+                <li>
+                    <label>(<sup>143</sup>Nd/<sup>144</sup>Nd)t,CHUR：</label>
+                    <input type="text" name="nd143Nd144TChur" value="${nd143Nd144TChur!}" />
+                </li>
+                <li>
+                    <label>(<sup>143</sup>Nd/<sup>144</sup>Nd)i：</label>
+                    <input type="text" name="nd143Nd144I" value="${nd143Nd144I!}" />
+                </li>
+                <li>
+                    <label>f(Sm/Nd)s：</label>
+                    <input type="text" name="FSmNdS" value="${FSmNdS!}" />
+                </li>
+                <li>
+                    <label>εNd(0)：</label>
+                    <input type="text" name="epsilonNd0" value="${epsilonNd0!}" />
+                </li>
+                <li>
+                    <label>εNd(t)：</label>
+                    <input type="text" name="epsilonNdT" value="${epsilonNdT!}" />
+                </li>
+                <li>
+                    <label>TDM(Ma)：</label>
+                    <input type="text" name="tdmMa" value="${tdmMa!}" />
+                </li>
+                <li>
+                    <label>TDM2(Ma)：</label>
+                    <input type="text" name="tdm2Ma" value="${tdm2Ma!}" />
+                </li>
+                <li>
+                    <label>Hf Isotope：</label>
+                    <input type="text" name="hfisotope" value="${hfisotope!}" />
+                </li>
+                <li>
+                    <label>Hf Point Number：</label>
+                    <input type="text" name="hfPointnum" value="${hfPointnum!}" />
+                </li>
+                <li>
+                    <label>Hf Normal Number：</label>
+                    <input type="text" name="hfNormalnum" value="${hfNormalnum!}" />
+                </li>
+                <li>
+                    <label>εHft_min：</label>
+                    <input type="text" name="epsilonHftMin" value="${epsilonHftMin!}" />
+                </li>
+                <li>
+                    <label>εHft_max：</label>
+                    <input type="text" name="epsilonHftMax" value="${epsilonHftMax!}" />
+                </li>
+                <li>
+                    <label>εHft_median：</label>
+                    <input type="text" name="epsilonHftMedian" value="${epsilonHftMedian!}" />
+                </li>
+                <li>
+                    <label>εHft_average：</label>
+                    <input type="text" name="epsilonHftAverage" value="${epsilonHftAverage!}" />
+                </li>
+                <li>
+                    <label>T<sub>DM</sub><sup>C</sup>_min：</label>
+                    <input type="text" name="tdmcMin" value="${tdmcMin!}" />
+                </li>
+                <li>
+                    <label>T<sub>DM</sub><sup>C</sup>_max：</label>
+                    <input type="text" name="tdmcMax" value="${tdmcMax!}" />
+                </li>
+                <li>
+                    <label>T<sub>DM</sub><sup>C</sup>_median：</label>
+                    <input type="text" name="tdmcMedian" value="${tdmcMedian!}" />
+                </li>
+                <li>
+                    <label>T<sub>DM</sub><sup>C</sup>(Ma)_Average：</label>
+                    <input type="text" name="tdmcAverage" value="${tdmcAverage!}" />
+                </li>
+                <li>
+                    <label>HfO Isotope：</label>
+                    <input type="text" name="hfoisotope" value="${hfoisotope!}" />
+                </li>
+                <li>
+                    <label>d<sup>18</sup>O_min：</label>
+                    <input type="text" name="d18oMin" value="${d18oMin!}" />
+                </li>
+                <li>
+                    <label>d<sup>18</sup>O_max：</label>
+                    <input type="text" name="d18oMax" value="${d18oMax!}" />
+                </li>
+                <li>
+                    <label>d<sup>18</sup>O_average：</label>
+                    <input type="text" name="d18oAverage" value="${d18oAverage!}" />
+                </li>
+                <li>
+                    <label>d<sup>18</sup>O_median：</label>
+                    <input type="text" name="d18oMedian" value="${d18oMedian!}" />
+                </li>
+            </ul>
+            <div class="subBar">
+                <ul>
+                    <li>
+                    	<button type="submit" class="buttonActive"><@t.page 'button.search'/></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<@_sysAuthorized roleIds=admin.roles urls='sampleInfo/add,sampleInfo/delete'><#assign authorizedMap=map/></@_sysAuthorized>
+<div class="pageContent">
+    <div class="panelBar">
+        <ul class="toolBar">
+        <#if authorizedMap['sampleInfo/add']>
+            <li><a href="sampleInfo/add.html" target="navTab" rel="sampleInfo/add"><i class="icon-plus-sign-alt icon-large"></i> <@t.page 'button.add'/></a></li>
+            <li><a href="sampleInfo/add.html?id={sid}" target="navTab" rel="sampleInfo/edit"><i class="icon-edit icon-large"></i> <@t.page 'button.edit'/></a></li>
+        </#if>
+        <#if authorizedMap['sampleInfo/delete']>
+            <li><a href="sampleInfoAdmin/delete.do?_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.batch_delete'/>" target="selectedTodo" rel="ids"><i class="icon-trash icon-large"></i> <@t.page 'button.batch_delete'/></a></li>
+        </#if>
+        </ul>
+    </div>
+<@_sampleInfoList sampleId=sampleId oraginalSampleId=oraginalSampleId 
+            location=location regionLocation=regionLocation locationType=locationType 
+            tectonicLocation=tectonicLocation tectonicType=tectonicType lithology=lithology 
+            lithologyOrigin=lithologyOrigin occurrence=occurrence intrusion=intrusion 
+            pluton=pluton plutonOrigin=plutonOrigin rockName=rockName 
+            rockCode=rockCode era=era geobodyName=geobodyName 
+            geobodyCode=geobodyCode surroundingRockAge=surroundingRockAge surroundingRockLithology=surroundingRockLithology 
+            relationshipWithSurroundingRock=relationshipWithSurroundingRock form=form whetherToCutAreaConstructionLine=whetherToCutAreaConstructionLine 
+            degreeOfDeformation=degreeOfDeformation characteristicMinerals=characteristicMinerals miningArea=miningArea 
+            oreType=oreType geneticType=geneticType age=age 
+            ageError=ageError ageSelected=ageSelected ageSelectedError=ageSelectedError 
+            testObject=testObject testMethod=testMethod primaryStructuralUnit=primaryStructuralUnit 
+            secondaryStructuralUnit=secondaryStructuralUnit tertiaryStructuralUnit=tertiaryStructuralUnit sourceOfStructuralTypeDiscrimination=sourceOfStructuralTypeDiscrimination 
+            alkalinity=alkalinity aluminumQuality=aluminumQuality photo=photo 
+            collector=collector collectorOrg=collectorOrg reviewer=reviewer 
+            analyzeOrg=analyzeOrg analyzePerson=analyzePerson testDate=testDate 
+            dataSource=dataSource articleDoi=articleDoi remark=remark 
+            refAuthor=refAuthor refYear=refYear refMagazine=refMagazine 
+            issuePage=issuePage refTitle=refTitle refOrigin=refOrigin 
+            refMagazineOrigin=refMagazineOrigin refTitleOrigin=refTitleOrigin sio2=sio2 
+            tio2=tio2 al2o3=al2o3 fe2o3=fe2o3 
+            feo=feo fe2o3t=fe2o3t feot=feot 
+            tfe=tfe mno=mno mgo=mgo 
+            cao=cao na2o=na2o k2o=k2o 
+            p2o5=p2o5 h2op=h2op h2on=h2on 
+            co2=co2 so3=so3 f=f 
+            cl=cl loi=loi total=total 
+            la=la ce=ce pr=pr 
+            nd=nd pm=pm sm=sm 
+            eu=eu gd=gd tb=tb 
+            dy=dy ho=ho er=er 
+            tm=tm yb=yb lu=lu 
+            y=y sc=sc totalReElement=totalReElement 
+            v=v cr=cr co=co 
+            ni=ni mn=mn cu=cu 
+            zn=zn ga=ga ge=ge 
+            cs=cs rb=rb ba=ba 
+            th=th u=u nb=nb 
+            ta=ta ti=ti p=p 
+            pb=pb sr=sr zr=zr 
+            hf=hf li=li be=be 
+            w=w pt=pt pd=pd 
+            os=os ir=ir ru=ru 
+            rh=rh srisotope=srisotope ndisotope=ndisotope 
+            rb87Sr86=rb87Sr86 sr87Sr86M=sr87Sr86M sm147Nd144=sm147Nd144 
+            nd143Nd144=nd143Nd144 testRockMa=testRockMa sr87Sr86I=sr87Sr86I 
+            nd143Nd144TChur=nd143Nd144TChur nd143Nd144I=nd143Nd144I FSmNdS=FSmNdS 
+            epsilonNd0=epsilonNd0 epsilonNdT=epsilonNdT tdmMa=tdmMa 
+            tdm2Ma=tdm2Ma hfisotope=hfisotope hfPointnum=hfPointnum 
+            hfNormalnum=hfNormalnum epsilonHftMin=epsilonHftMin epsilonHftMax=epsilonHftMax 
+            epsilonHftMedian=epsilonHftMedian epsilonHftAverage=epsilonHftAverage tdmcMin=tdmcMin 
+            tdmcMax=tdmcMax tdmcMedian=tdmcMedian tdmcAverage=tdmcAverage 
+            hfoisotope=hfoisotope d18oMin=d18oMin d18oMax=d18oMax 
+            d18oAverage=d18oAverage d18oMedian=d18oMedian 
+            orderField=orderField orderType=orderType pageIndex=pageNum pageSize=numPerPage>
+    <table class="list" width="100%" layoutH="92">
+        <thead>
+            <tr>
+                <th orderField="id" class="<#if orderField??&&'id'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">ID</th>
+                <th orderField="sampleId" class="<#if orderField??&&'sampleId'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Sample Id</th>
+                <th orderField="oraginalSampleId" class="<#if orderField??&&'oraginalSampleId'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Oraginal Sample Id</th>
+                <th orderField="longitude" class="<#if orderField??&&'longitude'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Longitude</th>
+                <th orderField="latitude" class="<#if orderField??&&'latitude'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Latitude</th>
+                <th orderField="location" class="<#if orderField??&&'location'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Location</th>
+                <th orderField="regionLocation" class="<#if orderField??&&'regionLocation'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Region Location</th>
+                <th orderField="locationType" class="<#if orderField??&&'locationType'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Location Type</th>
+                <th orderField="tectonicLocation" class="<#if orderField??&&'tectonicLocation'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Tectonic Location</th>
+                <th orderField="tectonicType" class="<#if orderField??&&'tectonicType'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Tectonic Type</th>
+                <th orderField="lithology" class="<#if orderField??&&'lithology'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Lithology</th>
+                <th orderField="lithologyOrigin" class="<#if orderField??&&'lithologyOrigin'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Orginal Lithology</th>
+                <th orderField="occurrence" class="<#if orderField??&&'occurrence'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Occurrence</th>
+                <th orderField="intrusion" class="<#if orderField??&&'intrusion'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Intrusion</th>
+                <th orderField="pluton" class="<#if orderField??&&'pluton'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Pluton</th>
+                <th orderField="plutonOrigin" class="<#if orderField??&&'plutonOrigin'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Original Pluton</th>
+                <th orderField="rockName" class="<#if orderField??&&'rockName'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Rock Name</th>
+                <th orderField="rockCode" class="<#if orderField??&&'rockCode'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Rock Code</th>
+                <th orderField="era" class="<#if orderField??&&'era'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Era</th>
+                <th orderField="geobodyName" class="<#if orderField??&&'geobodyName'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Geobody Name</th>
+                <th orderField="geobodyCode" class="<#if orderField??&&'geobodyCode'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Geobody Code</th>
+                <th orderField="surroundingRockAge" class="<#if orderField??&&'surroundingRockAge'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Surrounding Rock Age</th>
+                <th orderField="surroundingRockLithology" class="<#if orderField??&&'surroundingRockLithology'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Surrounding Rock Lithology</th>
+                <th orderField="relationshipWithSurroundingRock" class="<#if orderField??&&'relationshipWithSurroundingRock'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Relationship with Surrounding Rock</th>
+                <th orderField="form" class="<#if orderField??&&'form'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Form</th>
+                <th orderField="whetherToCutAreaConstructionLine" class="<#if orderField??&&'whetherToCutAreaConstructionLine'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Whether to Cut Area Construction Line</th>
+                <th orderField="degreeOfDeformation" class="<#if orderField??&&'degreeOfDeformation'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Degree of Deformation</th>
+                <th orderField="characteristicMinerals" class="<#if orderField??&&'characteristicMinerals'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Characteristic Minerals</th>
+                <th orderField="miningArea" class="<#if orderField??&&'miningArea'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Mining Area</th>
+                <th orderField="oreType" class="<#if orderField??&&'oreType'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Ore Type</th>
+                <th orderField="geneticType" class="<#if orderField??&&'geneticType'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Genetic Type</th>
+                <th orderField="age" class="<#if orderField??&&'age'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Age（Ma）</th>
+                <th orderField="ageError" class="<#if orderField??&&'ageError'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Age Error（Ma）</th>
+                <th orderField="ageSelected" class="<#if orderField??&&'ageSelected'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Age Selected（Ma）</th>
+                <th orderField="ageSelectedError" class="<#if orderField??&&'ageSelectedError'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Age Selected Error（Ma）</th>
+                <th orderField="testObject" class="<#if orderField??&&'testObject'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Test Object</th>
+                <th orderField="testMethod" class="<#if orderField??&&'testMethod'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Test Method</th>
+                <th orderField="primaryStructuralUnit" class="<#if orderField??&&'primaryStructuralUnit'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Primary Structural Unit</th>
+                <th orderField="secondaryStructuralUnit" class="<#if orderField??&&'secondaryStructuralUnit'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Secondary Structural Unit</th>
+                <th orderField="tertiaryStructuralUnit" class="<#if orderField??&&'tertiaryStructuralUnit'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Tertiary Structural Unit</th>
+                <th orderField="sourceOfStructuralTypeDiscrimination" class="<#if orderField??&&'sourceOfStructuralTypeDiscrimination'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Source of Structural Type Discrimination</th>
+                <th orderField="alkalinity" class="<#if orderField??&&'alkalinity'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Alkalinity</th>
+                <th orderField="aluminumQuality" class="<#if orderField??&&'aluminumQuality'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Aluminum Quality</th>
+                <th orderField="photo" class="<#if orderField??&&'photo'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Photo</th>
+                <th orderField="collector" class="<#if orderField??&&'collector'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Collector</th>
+                <th orderField="collectorOrg" class="<#if orderField??&&'collectorOrg'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Collector Org</th>
+                <th orderField="reviewer" class="<#if orderField??&&'reviewer'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Reviewer</th>
+                <th orderField="analyzeOrg" class="<#if orderField??&&'analyzeOrg'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Analyze Org</th>
+                <th orderField="analyzePerson" class="<#if orderField??&&'analyzePerson'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Analyze Person</th>
+                <th orderField="testDate" class="<#if orderField??&&'testDate'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Test Date</th>
+                <th orderField="dataSource" class="<#if orderField??&&'dataSource'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Data Source</th>
+                <th orderField="articleDoi" class="<#if orderField??&&'articleDoi'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Article DOI</th>
+                <th orderField="remark" class="<#if orderField??&&'remark'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Remark</th>
+                <th orderField="refAuthor" class="<#if orderField??&&'refAuthor'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Ref.Author</th>
+                <th orderField="refYear" class="<#if orderField??&&'refYear'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Ref.Year</th>
+                <th orderField="refMagazine" class="<#if orderField??&&'refMagazine'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Ref.Magazine</th>
+                <th orderField="issuePage" class="<#if orderField??&&'issuePage'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Issue Page</th>
+                <th orderField="refTitle" class="<#if orderField??&&'refTitle'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Ref.Title</th>
+                <th orderField="refOrigin" class="<#if orderField??&&'refOrigin'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Ref.Origin</th>
+                <th orderField="refMagazineOrigin" class="<#if orderField??&&'refMagazineOrigin'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Ref.Magazine.Origin</th>
+                <th orderField="refTitleOrigin" class="<#if orderField??&&'refTitleOrigin'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Ref.Title.Origin</th>
+                <th orderField="sio2" class="<#if orderField??&&'sio2'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">S<sub>i</sub>O<sub>2</sub>（10<sup>-2</sup>）</th>
+                <th orderField="tio2" class="<#if orderField??&&'tio2'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">T<sub>i</sub>O<sub>2</sub>（10<sup>-2</sup>）</th>
+                <th orderField="al2o3" class="<#if orderField??&&'al2o3'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Al<sub>2</sub>O<sub>3</sub>（10<sup>-2</sup>）</th>
+                <th orderField="fe2o3" class="<#if orderField??&&'fe2o3'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Fe<sub>2</sub>O<sub>3</sub>（10<sup>-2</sup>）</th>
+                <th orderField="feo" class="<#if orderField??&&'feo'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">FeO（10<sup>-2</sup>）</th>
+                <th orderField="fe2o3t" class="<#if orderField??&&'fe2o3t'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Fe<sub>2</sub>O<sub>3</sub>T（10<sup>-2</sup>）</th>
+                <th orderField="feot" class="<#if orderField??&&'feot'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">FeOT（10<sup>-2</sup>）</th>
+                <th orderField="tfe" class="<#if orderField??&&'tfe'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">TFe（10<sup>-2</sup>）</th>
+                <th orderField="mno" class="<#if orderField??&&'mno'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">MnO（10<sup>-2</sup>）</th>
+                <th orderField="mgo" class="<#if orderField??&&'mgo'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">MgO（10<sup>-2</sup>）</th>
+                <th orderField="cao" class="<#if orderField??&&'cao'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">CaO（10<sup>-2</sup>）</th>
+                <th orderField="na2o" class="<#if orderField??&&'na2o'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Na<sub>2</sub>O（10<sup>-2</sup>）</th>
+                <th orderField="k2o" class="<#if orderField??&&'k2o'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">K<sub>2</sub>O（10<sup>-2</sup>）</th>
+                <th orderField="p2o5" class="<#if orderField??&&'p2o5'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">P<sub>2</sub>O<sub>5</sub>（10<sup>-2</sup>）</th>
+                <th orderField="h2op" class="<#if orderField??&&'h2op'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">H<sub>2</sub>O<sup>+</sup>（10<sup>-2</sup>）</th>
+                <th orderField="h2on" class="<#if orderField??&&'h2on'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">H<sub>2</sub>O<sup>-</sup>（10<sup>-2</sup>）</th>
+                <th orderField="co2" class="<#if orderField??&&'co2'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">CO<sub>2</sub>（10<sup>-2</sup>）</th>
+                <th orderField="so3" class="<#if orderField??&&'so3'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">SO<sub>3</sub>（10<sup>-2</sup>）</th>
+                <th orderField="f" class="<#if orderField??&&'f'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">F（10<sup>-2</sup>）</th>
+                <th orderField="cl" class="<#if orderField??&&'cl'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Cl（10<sup>-2</sup>）</th>
+                <th orderField="loi" class="<#if orderField??&&'loi'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">LOI（10<sup>-2</sup>）</th>
+                <th orderField="total" class="<#if orderField??&&'total'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Total（10<sup>-2</sup>）</th>
+                <th orderField="la" class="<#if orderField??&&'la'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">镧 La（10<sup>-6</sup>）</th>
+                <th orderField="ce" class="<#if orderField??&&'ce'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铈 Ce（10<sup>-6</sup>）</th>
+                <th orderField="pr" class="<#if orderField??&&'pr'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">镨 Pr（10<sup>-6</sup>）</th>
+                <th orderField="nd" class="<#if orderField??&&'nd'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钕 Nd（10<sup>-6</sup>）</th>
+                <th orderField="pm" class="<#if orderField??&&'pm'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钷 Pm（10<sup>-6</sup>）</th>
+                <th orderField="sm" class="<#if orderField??&&'sm'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钐 Sm（10<sup>-6</sup>）</th>
+                <th orderField="eu" class="<#if orderField??&&'eu'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铕 Eu（10<sup>-6</sup>）</th>
+                <th orderField="gd" class="<#if orderField??&&'gd'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钆 Gd（10<sup>-6</sup>）</th>
+                <th orderField="tb" class="<#if orderField??&&'tb'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铽 Tb（10<sup>-6</sup>）</th>
+                <th orderField="dy" class="<#if orderField??&&'dy'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">镝 Dy（10<sup>-6</sup>）</th>
+                <th orderField="ho" class="<#if orderField??&&'ho'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钬 Ho（10<sup>-6</sup>）</th>
+                <th orderField="er" class="<#if orderField??&&'er'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铒 Er（10<sup>-6</sup>）</th>
+                <th orderField="tm" class="<#if orderField??&&'tm'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铥 Tm（10<sup>-6</sup>）</th>
+                <th orderField="yb" class="<#if orderField??&&'yb'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">镱 Yb（10<sup>-6</sup>）</th>
+                <th orderField="lu" class="<#if orderField??&&'lu'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">镥 Lu（10<sup>-6</sup>）</th>
+                <th orderField="y" class="<#if orderField??&&'y'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钇 Y（10<sup>-6</sup>）</th>
+                <th orderField="sc" class="<#if orderField??&&'sc'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钪 Sc（10<sup>-6</sup>）</th>
+                <th orderField="totalReElement" class="<#if orderField??&&'totalReElement'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Total Re Element（10<sup>-6</sup>）</th>
+                <th orderField="v" class="<#if orderField??&&'v'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钒 V（10<sup>-6</sup>）</th>
+                <th orderField="cr" class="<#if orderField??&&'cr'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铬 Cr（10<sup>-6</sup>）</th>
+                <th orderField="co" class="<#if orderField??&&'co'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钴 Co（10<sup>-6</sup>）</th>
+                <th orderField="ni" class="<#if orderField??&&'ni'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">镍 Ni（10<sup>-6</sup>）</th>
+                <th orderField="mn" class="<#if orderField??&&'mn'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">锰 Mn（10<sup>-6</sup>）</th>
+                <th orderField="cu" class="<#if orderField??&&'cu'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铜 Cu（10<sup>-6</sup>）</th>
+                <th orderField="zn" class="<#if orderField??&&'zn'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">锌 Zn（10<sup>-6</sup>）</th>
+                <th orderField="ga" class="<#if orderField??&&'ga'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">镓 Ga（10<sup>-6</sup>）</th>
+                <th orderField="ge" class="<#if orderField??&&'ge'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">锗 Ge（10<sup>-6</sup>）</th>
+                <th orderField="cs" class="<#if orderField??&&'cs'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铯 Cs（10<sup>-6</sup>）</th>
+                <th orderField="rb" class="<#if orderField??&&'rb'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铷 Rb（10<sup>-6</sup>）</th>
+                <th orderField="ba" class="<#if orderField??&&'ba'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钡 Ba（10<sup>-6</sup>）</th>
+                <th orderField="th" class="<#if orderField??&&'th'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钍 Th（10<sup>-6</sup>）</th>
+                <th orderField="u" class="<#if orderField??&&'u'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铀 U（10<sup>-6</sup>）</th>
+                <th orderField="nb" class="<#if orderField??&&'nb'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铌 Nb（10<sup>-6</sup>）</th>
+                <th orderField="ta" class="<#if orderField??&&'ta'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钽 Ta（10<sup>-6</sup>）</th>
+                <th orderField="ti" class="<#if orderField??&&'ti'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钛 Ti（10<sup>-6</sup>）</th>
+                <th orderField="p" class="<#if orderField??&&'p'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">磷 P（10<sup>-6</sup>）</th>
+                <th orderField="pb" class="<#if orderField??&&'pb'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铅 Pb（10<sup>-6</sup>）</th>
+                <th orderField="sr" class="<#if orderField??&&'sr'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">锶 Sr（10<sup>-6</sup>）</th>
+                <th orderField="zr" class="<#if orderField??&&'zr'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">锆 Zr（10<sup>-6</sup>）</th>
+                <th orderField="hf" class="<#if orderField??&&'hf'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铪 Hf（10<sup>-6</sup>）</th>
+                <th orderField="li" class="<#if orderField??&&'li'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">锂 Li（10<sup>-6</sup>）</th>
+                <th orderField="be" class="<#if orderField??&&'be'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铍 Be（10<sup>-6</sup>）</th>
+                <th orderField="w" class="<#if orderField??&&'w'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钨 W（10<sup>-6</sup>）</th>
+                <th orderField="pt" class="<#if orderField??&&'pt'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铂 Pt（10<sup>-6</sup>）</th>
+                <th orderField="pd" class="<#if orderField??&&'pd'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钯 Pd（10<sup>-6</sup>）</th>
+                <th orderField="os" class="<#if orderField??&&'os'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">锇 Os（10<sup>-6</sup>）</th>
+                <th orderField="ir" class="<#if orderField??&&'ir'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铱 Ir（10<sup>-6</sup>）</th>
+                <th orderField="ru" class="<#if orderField??&&'ru'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">钌 Ru（10<sup>-6</sup>）</th>
+                <th orderField="rh" class="<#if orderField??&&'rh'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">铑 Rh（10<sup>-6</sup>）</th>
+                <th orderField="srisotope" class="<#if orderField??&&'srisotope'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Sr Isotope</th>
+                <th orderField="ndisotope" class="<#if orderField??&&'ndisotope'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Nd Isotope</th>
+                <th orderField="rb87Sr86" class="<#if orderField??&&'rb87Sr86'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">(<sup>87</sup>Rb/<sup>86</sup>Sr)m</th>
+                <th orderField="sr87Sr86M" class="<#if orderField??&&'sr87Sr86M'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">(<sup>87</sup>Sr/<sup>86</sup>Sr)m</th>
+                <th orderField="sm147Nd144" class="<#if orderField??&&'sm147Nd144'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">(<sup>147</sup>Sm/<sup>144</sup>Nd)m</th>
+                <th orderField="nd143Nd144" class="<#if orderField??&&'nd143Nd144'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">(<sup>143</sup>Nd/<sup>144</sup>Nd)m</th>
+                <th orderField="testRockMa" class="<#if orderField??&&'testRockMa'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Test Rock (Ma)</th>
+                <th orderField="sr87Sr86I" class="<#if orderField??&&'sr87Sr86I'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">(<sup>87</sup>Sr/<sup>86</sup>Sr)i</th>
+                <th orderField="nd143Nd144TChur" class="<#if orderField??&&'nd143Nd144TChur'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">(<sup>143</sup>Nd/<sup>144</sup>Nd)t,CHUR</th>
+                <th orderField="nd143Nd144I" class="<#if orderField??&&'nd143Nd144I'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">(<sup>143</sup>Nd/<sup>144</sup>Nd)i</th>
+                <th orderField="FSmNdS" class="<#if orderField??&&'FSmNdS'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">f(Sm/Nd)s</th>
+                <th orderField="epsilonNd0" class="<#if orderField??&&'epsilonNd0'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">εNd(0)</th>
+                <th orderField="epsilonNdT" class="<#if orderField??&&'epsilonNdT'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">εNd(t)</th>
+                <th orderField="tdmMa" class="<#if orderField??&&'tdmMa'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">TDM(Ma)</th>
+                <th orderField="tdm2Ma" class="<#if orderField??&&'tdm2Ma'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">TDM2(Ma)</th>
+                <th orderField="hfisotope" class="<#if orderField??&&'hfisotope'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Hf Isotope</th>
+                <th orderField="hfPointnum" class="<#if orderField??&&'hfPointnum'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Hf Point Number</th>
+                <th orderField="hfNormalnum" class="<#if orderField??&&'hfNormalnum'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">Hf Normal Number</th>
+                <th orderField="epsilonHftMin" class="<#if orderField??&&'epsilonHftMin'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">εHft_min</th>
+                <th orderField="epsilonHftMax" class="<#if orderField??&&'epsilonHftMax'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">εHft_max</th>
+                <th orderField="epsilonHftMedian" class="<#if orderField??&&'epsilonHftMedian'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">εHft_median</th>
+                <th orderField="epsilonHftAverage" class="<#if orderField??&&'epsilonHftAverage'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">εHft_average</th>
+                <th orderField="tdmcMin" class="<#if orderField??&&'tdmcMin'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">T<sub>DM</sub><sup>C</sup>_min</th>
+                <th orderField="tdmcMax" class="<#if orderField??&&'tdmcMax'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">T<sub>DM</sub><sup>C</sup>_max</th>
+                <th orderField="tdmcMedian" class="<#if orderField??&&'tdmcMedian'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">T<sub>DM</sub><sup>C</sup>_median</th>
+                <th orderField="tdmcAverage" class="<#if orderField??&&'tdmcAverage'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">T<sub>DM</sub><sup>C</sup>(Ma)_Average</th>
+                <th orderField="hfoisotope" class="<#if orderField??&&'hfoisotope'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">HfO Isotope</th>
+                <th orderField="d18oMin" class="<#if orderField??&&'d18oMin'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">d<sup>18</sup>O_min</th>
+                <th orderField="d18oMax" class="<#if orderField??&&'d18oMax'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">d<sup>18</sup>O_max</th>
+                <th orderField="d18oAverage" class="<#if orderField??&&'d18oAverage'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">d<sup>18</sup>O_average</th>
+                <th orderField="d18oMedian" class="<#if orderField??&&'d18oMedian'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">d<sup>18</sup>O_median</th>
+                <th><@t.page 'operate'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.id}">
+                <td>${a.id!}</td>
+                <td>${a.sampleId!}</td>
+                <td>${a.oraginalSampleId!}</td>
+                <td>${a.longitude!}</td>
+                <td>${a.latitude!}</td>
+                <td>${a.location!}</td>
+                <td>${a.regionLocation!}</td>
+                <td>${a.locationType!}</td>
+                <td>${a.tectonicLocation!}</td>
+                <td>${a.tectonicType!}</td>
+                <td>${a.lithology!}</td>
+                <td>${a.lithologyOrigin!}</td>
+                <td>${a.occurrence!}</td>
+                <td>${a.intrusion!}</td>
+                <td>${a.pluton!}</td>
+                <td>${a.plutonOrigin!}</td>
+                <td>${a.rockName!}</td>
+                <td>${a.rockCode!}</td>
+                <td>${a.era!}</td>
+                <td>${a.geobodyName!}</td>
+                <td>${a.geobodyCode!}</td>
+                <td>${a.surroundingRockAge!}</td>
+                <td>${a.surroundingRockLithology!}</td>
+                <td>${a.relationshipWithSurroundingRock!}</td>
+                <td>${a.form!}</td>
+                <td>${a.whetherToCutAreaConstructionLine!}</td>
+                <td>${a.degreeOfDeformation!}</td>
+                <td>${a.characteristicMinerals!}</td>
+                <td>${a.miningArea!}</td>
+                <td>${a.oreType!}</td>
+                <td>${a.geneticType!}</td>
+                <td>${a.age!}</td>
+                <td>${a.ageError!}</td>
+                <td>${a.ageSelected!}</td>
+                <td>${a.ageSelectedError!}</td>
+                <td>${a.testObject!}</td>
+                <td>${a.testMethod!}</td>
+                <td>${a.primaryStructuralUnit!}</td>
+                <td>${a.secondaryStructuralUnit!}</td>
+                <td>${a.tertiaryStructuralUnit!}</td>
+                <td>${a.sourceOfStructuralTypeDiscrimination!}</td>
+                <td>${a.alkalinity!}</td>
+                <td>${a.aluminumQuality!}</td>
+                <td>${a.photo!}</td>
+                <td>${a.collector!}</td>
+                <td>${a.collectorOrg!}</td>
+                <td>${a.reviewer!}</td>
+                <td>${a.analyzeOrg!}</td>
+                <td>${a.analyzePerson!}</td>
+                <td>${a.testDate!}</td>
+                <td>${a.dataSource!}</td>
+                <td>${a.articleDoi!}</td>
+                <td>${a.remark!}</td>
+                <td>${a.refAuthor!}</td>
+                <td>${a.refYear!}</td>
+                <td>${a.refMagazine!}</td>
+                <td>${a.issuePage!}</td>
+                <td>${a.refTitle!}</td>
+                <td>${a.refOrigin!}</td>
+                <td>${a.refMagazineOrigin!}</td>
+                <td>${a.refTitleOrigin!}</td>
+                <td>${a.sio2!}</td>
+                <td>${a.tio2!}</td>
+                <td>${a.al2o3!}</td>
+                <td>${a.fe2o3!}</td>
+                <td>${a.feo!}</td>
+                <td>${a.fe2o3t!}</td>
+                <td>${a.feot!}</td>
+                <td>${a.tfe!}</td>
+                <td>${a.mno!}</td>
+                <td>${a.mgo!}</td>
+                <td>${a.cao!}</td>
+                <td>${a.na2o!}</td>
+                <td>${a.k2o!}</td>
+                <td>${a.p2o5!}</td>
+                <td>${a.h2op!}</td>
+                <td>${a.h2on!}</td>
+                <td>${a.co2!}</td>
+                <td>${a.so3!}</td>
+                <td>${a.f!}</td>
+                <td>${a.cl!}</td>
+                <td>${a.loi!}</td>
+                <td>${a.total!}</td>
+                <td>${a.la!}</td>
+                <td>${a.ce!}</td>
+                <td>${a.pr!}</td>
+                <td>${a.nd!}</td>
+                <td>${a.pm!}</td>
+                <td>${a.sm!}</td>
+                <td>${a.eu!}</td>
+                <td>${a.gd!}</td>
+                <td>${a.tb!}</td>
+                <td>${a.dy!}</td>
+                <td>${a.ho!}</td>
+                <td>${a.er!}</td>
+                <td>${a.tm!}</td>
+                <td>${a.yb!}</td>
+                <td>${a.lu!}</td>
+                <td>${a.y!}</td>
+                <td>${a.sc!}</td>
+                <td>${a.totalReElement!}</td>
+                <td>${a.v!}</td>
+                <td>${a.cr!}</td>
+                <td>${a.co!}</td>
+                <td>${a.ni!}</td>
+                <td>${a.mn!}</td>
+                <td>${a.cu!}</td>
+                <td>${a.zn!}</td>
+                <td>${a.ga!}</td>
+                <td>${a.ge!}</td>
+                <td>${a.cs!}</td>
+                <td>${a.rb!}</td>
+                <td>${a.ba!}</td>
+                <td>${a.th!}</td>
+                <td>${a.u!}</td>
+                <td>${a.nb!}</td>
+                <td>${a.ta!}</td>
+                <td>${a.ti!}</td>
+                <td>${a.p!}</td>
+                <td>${a.pb!}</td>
+                <td>${a.sr!}</td>
+                <td>${a.zr!}</td>
+                <td>${a.hf!}</td>
+                <td>${a.li!}</td>
+                <td>${a.be!}</td>
+                <td>${a.w!}</td>
+                <td>${a.pt!}</td>
+                <td>${a.pd!}</td>
+                <td>${a.os!}</td>
+                <td>${a.ir!}</td>
+                <td>${a.ru!}</td>
+                <td>${a.rh!}</td>
+                <td>${a.srisotope!}</td>
+                <td>${a.ndisotope!}</td>
+                <td>${a.rb87Sr86!}</td>
+                <td>${a.sr87Sr86M!}</td>
+                <td>${a.sm147Nd144!}</td>
+                <td>${a.nd143Nd144!}</td>
+                <td>${a.testRockMa!}</td>
+                <td>${a.sr87Sr86I!}</td>
+                <td>${a.nd143Nd144TChur!}</td>
+                <td>${a.nd143Nd144I!}</td>
+                <td>${a.FSmNdS!}</td>
+                <td>${a.epsilonNd0!}</td>
+                <td>${a.epsilonNdT!}</td>
+                <td>${a.tdmMa!}</td>
+                <td>${a.tdm2Ma!}</td>
+                <td>${a.hfisotope!}</td>
+                <td>${a.hfPointnum!}</td>
+                <td>${a.hfNormalnum!}</td>
+                <td>${a.epsilonHftMin!}</td>
+                <td>${a.epsilonHftMax!}</td>
+                <td>${a.epsilonHftMedian!}</td>
+                <td>${a.epsilonHftAverage!}</td>
+                <td>${a.tdmcMin!}</td>
+                <td>${a.tdmcMax!}</td>
+                <td>${a.tdmcMedian!}</td>
+                <td>${a.tdmcAverage!}</td>
+                <td>${a.hfoisotope!}</td>
+                <td>${a.d18oMin!}</td>
+                <td>${a.d18oMax!}</td>
+                <td>${a.d18oAverage!}</td>
+                <td>${a.d18oMedian!}</td>
+                <td>
+                <#if authorizedMap['sampleInfo/delete']>
+                    <a href="sampleInfo/delete.do?ids=${a.id}&_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.delete'/>"  target="ajaxTodo"><@t.page 'button.delete'/></a>
+                </#if>
+                </td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</@_sampleInfoList>
+</div>

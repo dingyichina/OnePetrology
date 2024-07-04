@@ -1,0 +1,59 @@
+<@_sysClusterList startHeartbeatDate=startHeartbeatDate endHeartbeatDate=endHeartbeatDate master=master
+            orderField=orderField orderType=orderType pageIndex=pageNum pageSize=numPerPage>
+<div class="pageHeader">
+    <form class="pagerForm" autocomplete="off" onsubmit="return navTabSearch(this);" method="post">
+        <#include "../include_page/parameters.html"/>
+        <div class="searchBar">
+            <ul class="searchContent">
+                <li>
+                    <label><@t.page 'cluster.heartbeat_time'/>:</label>
+                    <input type="text" name="startHeartbeatDate" class="date" size="10" autocomplete="off" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="${startHeartbeatDate!}" />
+                    <span>-</span>
+                    <input type="text" name="endHeartbeatDate" class="date" size="10" autocomplete="off" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d+1}" value="${endHeartbeatDate!}" />
+                </li>
+                <li>
+                    <select class="combox" name="master">
+                        <option value=""${(!master?has_content)?then(' selected="true"','')?no_esc}><@t.page 'cluster.type'/></option>
+                        <option value="false"${(master??&&"false"=master)?then(' selected="true"','')?no_esc}><@t.page 'cluster.normal'/></option>
+                        <option value="true"${(master??&&"true"=master)?then(' selected="true"','')?no_esc}><@t.page 'cluster.master'/></option>
+                    </select>
+                </li>
+            </ul>
+            <div class="subBar">
+                <ul>
+                    <li>
+                        <button type="submit" class="buttonActive"><@t.page 'button.search'/></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="pageContent">
+    <div class="panelBar">
+    </div>
+    <table class="table" width="100%" layoutH>
+        <thead>
+            <tr>
+                <th><@t.page 'id'/></th>
+                <th orderField="createDate" class="<#if orderField??&&'createDate'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>"><@t.page 'cluster.startup_date'/></th>
+                <th orderField="heartbeatDate" class="<#if orderField??&&'heartbeatDate'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>"><@t.page 'cluster.heartbeat_time'/></th>
+                <th><@t.page 'version'/></th>
+                <th><@t.page 'revision'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.uuid}">
+                <td>${a.uuid!}<#if a.master>[<@t.page 'cluster.master'/>]</#if></td>
+                <td>${a.createDate!}</td>
+                <td>${a.heartbeatDate!}</td>
+                <td>${a.cmsVersion!}</td>
+                <td>${a.revision!}</td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</div>
+</@_sysClusterList>

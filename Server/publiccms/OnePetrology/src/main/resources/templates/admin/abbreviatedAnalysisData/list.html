@@ -1,0 +1,72 @@
+<div class="pageHeader">
+    <form class="pagerForm" onsubmit="return navTabSearch(this);" method="post">
+        <#include "../include_page/parameters.html"/>
+        <div class="searchBar">
+            <ul class="searchContent">
+                <li>
+                    <label><@t.page 'user'/>:</label>
+                    <#include "../include_page/articleId.html"/>
+                </li>
+                <li>
+                    <label>分析项目：</label>
+                    <input type="text" name="analyzeItem" value="${analyzeItem!}" />
+                </li>
+            </ul>
+            <div class="subBar">
+                <ul>
+                    <li>
+                    	<button type="submit" class="buttonActive"><@t.page 'button.search'/></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<@_sysAuthorized roleIds=admin.roles urls='abbreviatedAnalysisData/add,abbreviatedAnalysisData/delete'><#assign authorizedMap=map/></@_sysAuthorized>
+<div class="pageContent">
+    <div class="panelBar">
+        <ul class="toolBar">
+        <#if authorizedMap['abbreviatedAnalysisData/add']>
+            <li><a href="abbreviatedAnalysisData/add.html" target="navTab" rel="abbreviatedAnalysisData/add"><i class="icon-plus-sign-alt icon-large"></i> <@t.page 'button.add'/></a></li>
+            <li><a href="abbreviatedAnalysisData/add.html?id={sid}" target="navTab" rel="abbreviatedAnalysisData/edit"><i class="icon-edit icon-large"></i> <@t.page 'button.edit'/></a></li>
+        </#if>
+        <#if authorizedMap['abbreviatedAnalysisData/delete']>
+            <li><a href="abbreviatedAnalysisData/delete.do?_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.batch_delete'/>" target="selectedTodo" rel="ids"><i class="icon-trash icon-large"></i> <@t.page 'button.batch_delete'/></a></li>
+        </#if>
+        </ul>
+    </div>
+<@_abbreviatedAnalysisDataList analyzeItem=analyzeItem 
+            orderType=orderType pageIndex=pageNum pageSize=numPerPage>
+    <table class="list" width="100%" layoutH="92">
+        <thead>
+            <tr>
+                <th width="20"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+                <th>ID</th>
+                <th>样品</th>
+                <th orderField="analyzeItem" class="<#if orderField??&&'analyzeItem'==orderField><#if 'asc'=orderType>asc<#else>desc</#if><#else>order</#if>">分析项目</th>
+                <th>分析值</th>
+                <th>备注</th>
+                <th><@t.page 'operate'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.id}">
+                <td><input name="ids" value="${a.id}" type="checkbox"></td>
+                <td>${a.id!}</td>
+                <td>${a.sampleId!}</td>
+                <td>${a.analyzeItem!}</td>
+                <td>${a.analyzeValue!}</td>
+                <td>${a.remark!}</td>
+                <td>
+                <#if authorizedMap['abbreviatedAnalysisData/delete']>
+                    <a href="abbreviatedAnalysisData/delete.do?ids=${a.id}&_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.delete'/>"  target="ajaxTodo"><@t.page 'button.delete'/></a>
+                </#if>
+                </td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</@_abbreviatedAnalysisDataList>
+</div>

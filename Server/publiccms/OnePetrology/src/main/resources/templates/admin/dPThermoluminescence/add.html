@@ -1,0 +1,55 @@
+<@_dPThermoluminescence id=id><#assign a=object/></@_dPThermoluminescence>
+<form method="post" action="dPThermoluminescence/save.do?callbackType=closeCurrent&navTabId=dPThermoluminescence/list" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <input name="id" type="hidden" value="${id!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+    <div class="pageContent">
+        <div class="pageFormContent" layoutH="56">
+            <dl>
+                <dt>ID：</dt>
+                <dd><input class="required" name="id" type="text" size="30" value="${(a.id)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>样品：</dt>
+                <dd><input class="required" name="sampleId" type="text" size="30" value="${(a.sampleId)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>U（10<sup>-6</sup>）：</dt>
+                <dd><input class="required" name="u" type="text" size="30" value="${(a.u)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>Th（10<sup>-6</sup>）：</dt>
+                <dd><input class="required" name="th" type="text" size="30" value="${(a.th)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>K(%)：</dt>
+                <dd><input class="required" name="k" type="text" size="30" value="${(a.k)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>古剂量（Gy）：</dt>
+                <dd><input class="required" name="paleoDose" type="text" size="30" value="${(a.paleoDose)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>年剂量率(Gy/a)：</dt>
+                <dd><input class="required" name="annualDoseRate" type="text" size="30" value="${(a.annualDoseRate)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>热释光年龄(ka)：</dt>
+                <dd><input class="required" name="tiAge" type="text" size="30" value="${(a.tiAge)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>年龄误差(ka)：</dt>
+                <dd><input class="required" name="ageError" type="text" size="30" value="${(a.ageError)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>备注：</dt>
+                <dd><input class="required" name="remark" type="text" size="30" value="${(a.remark)!}"/></dd>
+            </dl>
+        </div>
+    </div>
+</form>

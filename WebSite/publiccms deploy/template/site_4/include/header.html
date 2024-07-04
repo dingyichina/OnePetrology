@@ -1,0 +1,131 @@
+  <div class="navbar navbar-bc navbar-expand-md">
+      <div class="container"     >
+		    <!--a class="navbar-brand" href="https://www.unesco.org/en"   target="_blank"><img src="${site.sitePath}images/UNESCOlogo.png"  alt="UNESCO-IGCP" /></a>
+		    <a class="navbar-brand" href="https://www.iugs.org/"   target="_blank"><img src="${site.sitePath}images/iugs-logo.png" alt="IUGS" /></a-->
+		  
+          <a class="navbar-brand" href="https://www.deep-time.org/"   target="_blank"><img src="${site.sitePath}images/ddelogo.png" alt="petrology" /></a>
+          <a class="navbar-brand" href="/"><img src="${site.sitePath}images/logo.png" alt="petrology" /></a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse-navbar">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="collapse-navbar">
+
+              <ul class="nav navbar-nav">
+
+                  <li class="nav-item dropdown">
+                      <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="/aaa/index.htm" data-text="About">About</a>
+                      <ul class="dropdown-menu">
+					<@_category code="About">
+						<@_contentList categoryId=object.id  pageSize=100>
+						    <#list page.list as a>
+                         		 <li class="dropdown-item"><a href="${site.dynamicPath!}about.html?id=${a.id}" data-text="${a.title}">${a.title}</a></li>
+                           </#list>
+					   </@_contentList>
+					</@_category>
+						   <li class="dropdown-item"><a href="${site.dynamicPath!}contactus.html" data-text="Team">Contact Us</a></li>
+                      </ul>
+                  </li>
+
+                  <!--li class="nav-item dropdown">
+                      <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="/geopark/hsh/index.htm" data-text="Submit Data">Submit Data</a>
+                      <ul class="dropdown-menu">
+
+                          <li class="dropdown-item"><a href="/geopark/hsh/index.htm" data-text="View Submissions">View Submissions</a></li>
+
+                          <li class="dropdown-item"><a href="/geopark/fsh/index.htm" data-text="Submit New Data">Submit New Data</a></li>
+
+                          <li class="dropdown-item"><a href="/geopark/wdlc/index.htm" data-text="Correct Data">Correct Data</a></li>
+                          <li class="dropdown-item"><a href="/geopark/wdlc/index.htm" data-text="Data Template">Data Template</a></li>
+
+                      </ul>
+                  </li-->
+
+                  <li class="nav-item dropdown">
+                      <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="/aaa/index.htm" data-text="Access Data">Data</a>
+                      <ul class="dropdown-menu">
+
+                          <li class="dropdown-item"><a href="${site.dynamicPath!}search/search.html" data-text="Search Data">Major Database</a></li>
+
+                          <li class="dropdown-item"><a href="${site.dynamicPath!}subject/index.html" data-text="Thematic database">Thematic database</a></li>
+					     
+						  <!-- li class="dropdown-item"><a href="${site.dynamicPath!}#collapse25895-6" data-text="Desktop Software ">Desktop Software </a></li-->
+                          <!--li class="dropdown-item"><a href="/aaa/wlcc/index.htm" data-text="Administrator">Administrator</a></li -->
+
+                      </ul>
+                  </li>
+
+                  <li class="nav-item dropdown">
+                      <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="/maps.html" data-text="Map">Maps</a>
+                       <ul class="dropdown-menu">
+
+                          <li class="dropdown-item"><a href="/gis/mapdetail.html" data-text="worldmap">World Map of Magmatic Rocks（Online）</a></li>
+						    <li class="dropdown-item"><a href="/gis/asia.html" data-text="asiamap">Asia Map of Magmatic Rocks（Online）</a></li>
+
+  						   <li class="dropdown-item"><a href="/maps.html" data-text="worldmap">Recently published Maps</a></li>
+
+                      </ul>
+                  </li>
+
+                  <li class="nav-item dropdown">
+                      <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="/geopark/hsh/index.htm" data-text="Map">Publications</a>
+                      <ul class="dropdown-menu">
+
+                          <li class="dropdown-item"><a href="/publications.html" data-text="2020 Asia Map & Data(3857)">Recently Papers List</a></li>
+
+                          <!--li class="dropdown-item"><a href="/geopark/fsh/index.htm" data-text="2020 Asia Map & Data(4326)">2020 Asia Map & Data(4326)</a></li>
+
+                          <li class="dropdown-item"><a href="/geopark/wdlc/index.htm" data-text="2020 Asia Map (3857)">2020 Asia Map (3857)</a></li>
+                          <li class="dropdown-item"><a href="/geopark/wdlc/index.htm" data-text="2021 World Map (3857)">2021 World Map (3857)</a></li-->
+
+
+
+                      </ul>
+                  </li>
+                  <!--li class="nav-item dropdown">
+                      <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="/geopark/hsh/index.htm" data-text="Map">En</a>
+                      <ul class="dropdown-menu">
+
+                          <li class="dropdown-item"><a href="/geopark/hsh/index.htm" data-text="2020 Asia Map & Data(3857)">中文</a></li>
+
+                      </ul>
+                  </li-->
+              </ul>
+          <a class="navbar-brand" href="https://www.cgs.gov.cn/"><img src="${site.sitePath}images/局标（无底）.gif" alt="petrology" /></a>
+          <a class="navbar-brand" href="http://www.igeo.cgs.gov.cn/"><img src="${site.sitePath}images/所标（无底）.gif" alt="petrology" /></a>
+			<a class="navbar-brand" href="http://www.igcp662.org.cn/"   target="_blank"><img src="${site.sitePath}images/igcp662.png" alt="IGCP662" /></a>
+          </div>
+      </div>
+	  <!-- 右侧，显示登录信息 -->
+	  <div style="float:right; margin-right:100px;">
+		  <span  id='username'></span>
+		  <script>
+			   function showUserInfo(){
+						var mycookie=$.cookie('dsAuthInfo');
+						if(mycookie==null || mycookie==undefined || mycookie=="")
+							return false;
+
+						var userinfo=$.cookie('OnePetrologyUserInfo');
+						console.log("userinfo:",userinfo);
+						if(userinfo!=null && userinfo!=undefined && userinfo!=""){
+							$('#username').html('hi, <a href="https://petrology.deep-time.org/dspace/profile" >'+userinfo+'</a>');
+						}
+			   }
+			  //调用显示用户信息
+			  showUserInfo();
+		  </script>
+		  
+		  <script>
+			  //百度统计代码
+					var _hmt = _hmt || [];
+					(function() {
+					  var hm = document.createElement("script");
+					  hm.src = "https://hm.baidu.com/hm.js?4880bb0259eceffe04341e95f5238e50";
+					  var s = document.getElementsByTagName("script")[0]; 
+					  s.parentNode.insertBefore(hm, s);
+					})();
+			</script>
+
+		  
+	  </div>
+  </div>

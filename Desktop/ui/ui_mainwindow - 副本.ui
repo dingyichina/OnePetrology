@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>939</width>
+    <height>707</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>DDE-OnePetrology</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>res/DDE-logo.png</normaloff>res/DDE-logo.png</iconset>
+  </property>
+  <property name="dockNestingEnabled">
+   <bool>true</bool>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>1</horstretch>
+     <verstretch>1</verstretch>
+    </sizepolicy>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="topMargin">
+     <number>1</number>
+    </property>
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="tabsClosable">
+       <bool>true</bool>
+      </property>
+      <property name="movable">
+       <bool>true</bool>
+      </property>
+      <widget class="WelcomeWidget" name="tab">
+       <attribute name="icon">
+        <iconset>
+         <normaloff>res/welcome.png</normaloff>res/welcome.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Welcome</string>
+       </attribute>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>939</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile_F">
+    <property name="title">
+     <string>File(&amp;F)</string>
+    </property>
+    <addaction name="actionCheck_update"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuAbout_A">
+    <property name="title">
+     <string>About(&amp;A)</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <widget class="QMenu" name="menuWindow_W">
+    <property name="title">
+     <string>Window(&amp;W)</string>
+    </property>
+    <addaction name="actionSaveState"/>
+    <addaction name="actionRestoreState"/>
+    <addaction name="separator"/>
+    <addaction name="actionOperPanel"/>
+    <addaction name="actionRootKnowledge"/>
+    <addaction name="actionLog"/>
+   </widget>
+   <addaction name="menuFile_F"/>
+   <addaction name="menuWindow_W"/>
+   <addaction name="menuAbout_A"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QDockWidget" name="dockOper">
+   <property name="features">
+    <set>QDockWidget::AllDockWidgetFeatures</set>
+   </property>
+   <property name="windowTitle">
+    <string>Operate Panel</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="OperWidget" name="dockWidgetContents"/>
+  </widget>
+  <widget class="QDockWidget" name="dockKnowledge">
+   <property name="windowTitle">
+    <string>Public Knowledge Tree</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="KTreeWidget" name="dockWidgetContents_4"/>
+  </widget>
+  <widget class="QDockWidget" name="dockInfo">
+   <property name="windowTitle">
+    <string>User Log</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>8</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QTableWidget" name="tableWidget"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="separator"/>
+   <addaction name="actionSaveState"/>
+   <addaction name="actionRestoreState"/>
+   <addaction name="separator"/>
+   <addaction name="actionOperPanel"/>
+   <addaction name="actionRootKnowledge"/>
+   <addaction name="actionLog"/>
+   <addaction name="separator"/>
+   <addaction name="actionCheck_update"/>
+   <addaction name="actionAbout"/>
+   <addaction name="separator"/>
+   <addaction name="actionExit"/>
+  </widget>
+  <action name="actionSaveState">
+   <property name="icon">
+    <iconset>
+     <normaloff>res/layout.png</normaloff>
+     <normalon>res/add.png</normalon>res/layout.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save Layout</string>
+   </property>
+   <property name="toolTip">
+    <string>OpenFile</string>
+   </property>
+  </action>
+  <action name="actionRootKnowledge">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normalon>res/entity.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Knowledge</string>
+   </property>
+   <property name="toolTip">
+    <string>Root knowledge tree edit</string>
+   </property>
+  </action>
+  <action name="actionOperPanel">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normalon>res/dir.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>OperPanel</string>
+   </property>
+   <property name="toolTip">
+    <string>Operate Panel</string>
+   </property>
+  </action>
+  <action name="actionLog">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normalon>res/log.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Log</string>
+   </property>
+   <property name="toolTip">
+    <string>Log Window</string>
+   </property>
+  </action>
+  <action name="actionRestoreState">
+   <property name="icon">
+    <iconset>
+     <normaloff>res/restore.png</normaloff>res/restore.png</iconset>
+   </property>
+   <property name="text">
+    <string>Restore Layout</string>
+   </property>
+   <property name="toolTip">
+    <string>Restore window layout state</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="icon">
+    <iconset>
+     <normaloff>res/exit.png</normaloff>res/exit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Exit</string>
+   </property>
+   <property name="toolTip">
+    <string>Exit Application</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="icon">
+    <iconset>
+     <normaloff>res/about.png</normaloff>res/about.png</iconset>
+   </property>
+   <property name="text">
+    <string>About</string>
+   </property>
+   <property name="toolTip">
+    <string>Information abuout application</string>
+   </property>
+  </action>
+  <action name="actionCheck_update">
+   <property name="icon">
+    <iconset>
+     <normaloff>res/update.png</normaloff>res/update.png</iconset>
+   </property>
+   <property name="text">
+    <string>Check update</string>
+   </property>
+   <property name="toolTip">
+    <string>Check and update version</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>WelcomeWidget</class>
+   <extends>QWidget</extends>
+   <header>WelcomeWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>OperWidget</class>
+   <extends>QWidget</extends>
+   <header>OperWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>KTreeWidget</class>
+   <extends>QWidget</extends>
+   <header>KTreeWidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>dockKnowledge</sender>
+   <signal>visibilityChanged(bool)</signal>
+   <receiver>actionRootKnowledge</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>898</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRootKnowledge</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>dockKnowledge</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>898</x>
+     <y>260</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dockInfo</sender>
+   <signal>visibilityChanged(bool)</signal>
+   <receiver>actionLog</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>469</x>
+     <y>568</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionLog</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>dockInfo</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>469</x>
+     <y>568</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dockOper</sender>
+   <signal>visibilityChanged(bool)</signal>
+   <receiver>actionOperPanel</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>39</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionOperPanel</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>dockOper</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>39</x>
+     <y>260</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

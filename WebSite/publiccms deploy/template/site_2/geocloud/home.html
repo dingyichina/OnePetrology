@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>地质云门户3.0</title>
+    <script type="text/javascript">
+    </script>
+	<link href="${site.sitePath}geocloud/css/default.css" rel="stylesheet">
+	<link href="${site.sitePath}css/earthchem.css" rel="stylesheet">
+	<script src="${site.sitePath}bootstrap/js/bootstrap.min.js"></script>
+  <script src="${site.sitePath}js/jquery-1.12.4.min.js"></script>
+<link href="${site.sitePath}datatables/DataTables-1.10.25/css/dataTables.bootstrap4.css" rel="stylesheet">
+	<script src="${site.sitePath}datatables/datatables.js"></script>
+	<link href="${site.sitePath}datatables/Buttons-1.7.1/css/buttons.bootstrap4.css" rel="stylesheet">
+	<script src="${site.sitePath}datatables/Buttons-1.7.1/js/buttons.bootstrap4.min.js"></script>
+	<script src="${site.sitePath}datatables/JSZip-2.5.0/jszip.min.js"></script>
+
+	<style>
+	div.dt-buttons {
+        clear: both;
+    }
+	</style>
+	
+</head>
+<body>
+<div id="app">
+    <div class="layout">
+        <div data-v-23e8c038="">
+            <div data-v-23e8c038="" id="header" class="header">
+                <div data-v-23e8c038="" class="header-logo">
+                    <a target="_blank" href="http://geocloud.cgs.gov.cn">
+                          <div data-v-23e8c038="" class="logo"></div>
+                    </a>
+                </div>
+                <div class="header-right clear">
+						<a class="fl cp" :href="linke" style="text-decoration:none;">
+							<img style="margin-right: 9px;width: 24px;height: 25px;vertical-align: middle
+" src="${site.sitePath}geocloud/image/技术支持图标.png">
+							<p>技术支持</p>
+						</a>
+                    <div v-else class="fl cp" >
+                        <a target="_blank" href="https://geocloud.cgs.gov.cn">
+                            <i class="index-icon icon-internet"></i>
+                            <p>进入业务网版</p>
+                        </a>
+                    </div>
+                    <div class="fl cp" @click="openMailUrl">
+                        <i class="index-icon icon-email">
+                            <span class=""></span>
+                        </i>
+                        <p>公务邮箱</p>
+                    </div>
+                    <div  class="fl cp">
+                        <a href="#/portalEn/home" class="">
+                            <i class="index-icon icon-english"></i> <p>English</p>
+                        </a>
+                    </div>
+                    <!--<i class="icon-search index-icon fl cp"></i>-->
+                    <span class="header-line fl"></span>
+                    <div v-if="!user || !user.username" class="fl cp login">
+                        <ul class="login-ul">
+                            <li>
+                                <a title="注 册" href="http://geocloudsso.cgs.gov.cn/ssoserver/jsp/public/ddregister/register.html">
+                                    <!--<i class="icon-login"></i>-->
+                                    <span class="user">注册</span>
+                                </a>
+                                <!--<a :href="loginUrl" title="登 录"><i class="icon-user1"></i><span class="user">登录</span></a>-->
+                                <a class="login-btn"href="http://geocloud.cgs.gov.cn:8080/login" title="登 录">
+                                    <!--<i class="icon-user1"></i>-->
+                                    <span class="user">登录</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--<div v-else>
+                          <ul class="login-ul">
+                            <li><a :href="logoutUrl" class="icon icon-end" title="退出系统"></a></li>
+                            <li class="line-none"><i class="icon-user"></i><a @click="openPortal('gtb/personalCenter?contentType=myServices')"><span class="user">{{user.name}}</span></a></li>
+                          </ul>
+                        </div>-->
+                    </div>
+                    <div v-else class="fl cp user-line" @click="hidePanel">
+                        <i class="index-icon icon-user" id="user">
+                            <span class=""></span>
+                        </i>
+                        <!--<p></p>-->
+                    </div>
+                </div>
+            </div>
+            <div  class="header-nav">
+            </div> <!---->
+        </div>
+
+        <section  class="app-main" style="margin-bottom:150px;">
+			<iframe src="${site.dynamicPath!}geocloud/query.html" id="tag" name="tag" allowTransparency="true" width="1920"   height="650" scrolling="yes" frameborder="0">
+           </iframe>
+			
+        </section>
+        <div class="footer">
+            <el-collapse v-model="activeNames">
+                <el-collapse-item name="1">
+                    <div class="about clear">
+                        <div class="main-width">
+                            <div class="list">
+                                <h4>云生态</h4>
+                                <ul>
+                                    <!--<li>-->
+                                        <!--<a href="http://10.90.128.181/#/ITOperation/save-approval?id=8a7484226c800198016c8038672901cd" target="_blank" v-if="intranet">数据发布</a>-->
+                                    <!--</li>-->
+                                    <li>
+                                        <a  href="http://geocloud.cgs.gov.cn/#/footer/applicationSystemEmbeddedness?typeName=应用系统迁入&&index=12">应用系统</a>
+                                    </li>
+                                    <!--<li>-->
+                                        <!--<a href="http://10.90.128.100/admin/token/token_help.html" target="_blank" v-if="intranet">地质云生态资源</a>-->
+                                    <!--</li>-->
+                                    <!--<li v-show="intranet">-->
+                                        <!--<a href="http://10.90.128.181/#/ITOperation/save-approval?id=8a7484226c800198016c80203258013d" target="_blank">资源申请</a>-->
+                                    <!--</li>-->
+                                </ul>
+                            </div>
+                            <div class="list">
+                                <h4>服务与支持</h4>
+                                <ul>
+                                    <!--<li>-->
+                                        <!--<router-link to="/footer/Technology?typeName=常见技术问题&&index=21" v-if="intranet">常见问题</router-link>-->
+                                    <!--</li>-->
+                                    <li>
+                                        <!--<router-link to="/footer/Support?typeName=账户与支持&&index=22" v-if="intranet">账户安全</router-link>-->
+                                        <a  href="http://geocloud.cgs.gov.cn/#/footer/Support?typeName=账户与支持&&index=22">账号管理</a>
+                                    </li>
+                                    <!--<li>-->
+                                        <!--<router-link to="/footer/download?typeName=产品与数据下载&&index=23" v-if="intranet">产品与数据下载</router-link>-->
+                                    <!--</li>-->
+                                    <!--<li>-->
+                                        <!--<router-link to="/footer/tutorial?typeName=地质云使用教程&&index=24" v-if="intranet">服务与支持</router-link>-->
+                                    <!--</li>-->
+                                </ul>
+                            </div>
+                            <div class="list">
+                                <h4>快速入口</h4>
+                                <ul>
+                                    <li>
+                                        <a href="http://geocloud.cgs.gov.cn/#/footer/manageAccount?typeName=账号管理&&index=31">帐号管理</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://geocloud.cgs.gov.cn/#/footer/cloudApply?typeName=云资源申请&&index=32">云资源申请</a>
+                                    </li>
+                                    <!--<li>
+                                      <router-link to="/">总体资源</router-link>
+                                    </li>
+                                    <li>
+                                      <router-link to="/">云服务日志查询</router-link>
+                                    </li>-->
+                                </ul>
+                            </div>
+                            <div class="list" style="width: 100px;">
+                                <h4>关注我们</h4>
+                                <div class="public-no">
+                                    <p>地质云APP</p>
+                                    <div class="img">
+                                        <img  alt="">
+                                    </div>
+                                    <!--<p>地质云微信</p>-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right-about fr">
+                            <p class="link-p">
+                                <span><a target="_blank" href="http://www.tianditu.cn/">天地图</a></span>
+                                <span><a target="_blank" href="http://www.csdb.cn/">中国科学院数据云</a></span>
+                                <span><a target="_blank" href="http://data.cma.cn/">中国气象数据网</a></span>
+                                <span><a target="_blank" href="http://www.csi.ac.cn/">中国地震信息网</a></span>
+                            </p>
+                            <p class="link-p">
+                                <span><a target="_blank" href="https://www.usgs.gov/">美国地质调查局</a></span>
+                                <span><a target="_blank" href="http://www.webmap.cn/main.do?method=index">全国地理信息资源目录服务系统</a></span>
+                            </p>
+                            <p>
+                                <span>主办：中国地质调查局</span>
+                                <span>技术支持：中国地质调查局发展研究中心</span>
+                            </p>
+                            <p>
+                                <i class="icon-dzy"></i>
+                                <span>联系我们：北京市西城区阜外大街45号院 100037</span>
+                            </p>
+                            <p>
+                                <span>京ICP备05036996号</span>
+                                <span><i class="index-icon icon-pos"></i>京公网安备 11010202007433</span>
+                            </p>
+                            <p>
+                                <span>推荐使用Chrome 65及以上版本浏览器访问地质云门户，以取得更佳使用效果。</span>
+                            </p>
+                        </div>
+                    </div>
+                </el-collapse-item>
+            </el-collapse>
+        </div>
+    </div>
+</div>
+	
+	<script>
+	$(document).ready(function() {
+			var map=JSON.parse(sessionStorage.getItem("options"));
+		     console.log(map);
+		    mycolumns=[
+    
+    {
+        "data": "oraginalSampleId",
+        "title": "Oraginal Sample Id",
+        "mData": "oraginalSampleId",
+        "sTitle": "Oraginal Sample Id"
+    },
+    {
+        "data": "lithology",
+        "title": "Lithology",
+        "mData": "lithology",
+        "sTitle": "Lithology"
+    },
+    {
+        "data": "age",
+        "title": "Age(Ma)",
+        "mData": "age",
+        "sTitle": "Age(Ma)"
+    },
+    {
+        "data": "ageError",
+        "title": "Age Error (Ma)",
+        "mData": "ageError",
+        "sTitle": "Age Error (Ma)"
+    },
+    {
+        "data": "tectonicLocation",
+        "title": "Tectonic Location",
+        "mData": "tectonicLocation",
+        "sTitle": "Tectonic Location"
+    },
+    {
+        "data": "era",
+        "title": "Era",
+        "mData": "era",
+        "sTitle": "Era"
+    },
+    {
+        "data": "sio2",
+        "title": "SiO2",
+        "mData": "sio2",
+        "sTitle": "SiO2"
+    },
+    {
+        "data": "tio2",
+        "title": "TiO2",
+        "mData": "tio2",
+        "sTitle": "TiO2"
+    },
+    {
+        "data": "al2o3",
+        "title": "Al2O3",
+        "mData": "al2o3",
+        "sTitle": "Al2O3"
+    },
+    {
+        "data": "fe2o3",
+        "title": "Fe2O3",
+        "mData": "fe2o3",
+        "sTitle": "Fe2O3"
+    },
+    {
+        "data": "feo",
+        "title": "FeO",
+        "mData": "feo",
+        "sTitle": "FeO"
+    },
+    {
+        "data": "fe2o3t",
+        "title": "Fe2O3 Total",
+        "mData": "fe2o3t",
+        "sTitle": "Fe2O3 Total"
+    },
+    {
+        "data": "feot",
+        "title": "FeOT",
+        "mData": "feot",
+        "sTitle": "FeOT"
+    },
+    {
+        "data": "mno",
+        "title": "MnO",
+        "mData": "mno",
+        "sTitle": "MnO"
+    },
+    {
+        "data": "mgo",
+        "title": "MgO",
+        "mData": "mgo",
+        "sTitle": "MgO"
+    },
+    {
+        "data": "cao",
+        "title": "CaO",
+        "mData": "cao",
+        "sTitle": "CaO"
+    },
+    {
+        "data": "na2o",
+        "title": "Na2O",
+        "mData": "na2o",
+        "sTitle": "Na2O"
+    },
+    {
+        "data": "k2o",
+        "title": "K2O",
+        "mData": "k2o",
+        "sTitle": "K2O"
+    },
+    {
+        "data": "p2o5",
+        "title": "P2O5",
+        "mData": "p2o5",
+        "sTitle": "P2O5"
+    },
+    {
+        "data": "h2op",
+        "title": "H2OP",
+        "mData": "h2op",
+        "sTitle": "H2OP"
+    },
+    {
+        "data": "h2on",
+        "title": "H2ON",
+        "mData": "h2on",
+        "sTitle": "H2ON"
+    },
+    {
+        "data": "co2",
+        "title": "CO2",
+        "mData": "co2",
+        "sTitle": "CO2"
+    },
+    {
+        "data": "so3",
+        "title": "SO3",
+        "mData": "so3",
+        "sTitle": "SO3"
+    },
+    {
+        "data": "f",
+        "title": "F",
+        "mData": "f",
+        "sTitle": "F"
+    },
+    {
+        "data": "cl",
+        "title": "Cl",
+        "mData": "cl",
+        "sTitle": "Cl"
+    },
+    {
+        "data": "loi",
+        "title": "LOI",
+        "mData": "loi",
+        "sTitle": "LOI"
+    },
+    {
+        "data": "total",
+        "title": "Total",
+        "mData": "total",
+        "sTitle": "Total"
+    },
+    {
+        "data": "la",
+        "title": "La",
+        "mData": "la",
+        "sTitle": "La"
+    },
+    {
+        "data": "ce",
+        "title": "Ce",
+        "mData": "ce",
+        "sTitle": "Ce"
+    },
+    {
+        "data": "pr",
+        "title": "Pr",
+        "mData": "pr",
+        "sTitle": "Pr"
+    },
+    {
+        "data": "nd",
+        "title": "Nd",
+        "mData": "nd",
+        "sTitle": "Nd"
+    },
+    {
+        "data": "pm",
+        "title": "Pm",
+        "mData": "pm",
+        "sTitle": "Pm"
+    },
+    {
+        "data": "sm",
+        "title": "Sm",
+        "mData": "sm",
+        "sTitle": "Sm"
+    },
+    {
+        "data": "eu",
+        "title": "Eu",
+        "mData": "eu",
+        "sTitle": "Eu"
+    },
+    {
+        "data": "gd",
+        "title": "Gd",
+        "mData": "gd",
+        "sTitle": "Gd"
+    },
+    {
+        "data": "tb",
+        "title": "Tb",
+        "mData": "tb",
+        "sTitle": "Tb"
+    },
+    {
+        "data": "dy",
+        "title": "Dy",
+        "mData": "dy",
+        "sTitle": "Dy"
+    },
+    {
+        "data": "ho",
+        "title": "Ho",
+        "mData": "ho",
+        "sTitle": "Ho"
+    },
+    {
+        "data": "er",
+        "title": "Er",
+        "mData": "er",
+        "sTitle": "Er"
+    },
+    {
+        "data": "tm",
+        "title": "Tm",
+        "mData": "tm",
+        "sTitle": "Tm"
+    },
+    {
+        "data": "yb",
+        "title": "Yb",
+        "mData": "yb",
+        "sTitle": "Yb"
+    },
+    {
+        "data": "lu",
+        "title": "Lu",
+        "mData": "lu",
+        "sTitle": "Lu"
+    },
+    {
+        "data": "y",
+        "title": "Y",
+        "mData": "y",
+        "sTitle": "Y"
+    },
+    {
+        "data": "sc",
+        "title": "Sc",
+        "mData": "sc",
+        "sTitle": "Sc"
+    },
+    {
+        "data": "totalReElement",
+        "title": "Total Rare Element",
+        "mData": "totalReElement",
+        "sTitle": "Total Rare Element"
+    },
+    {
+        "data": "rb87Sr86",
+        "title": "Rb87_Sr86",
+        "mData": "rb87Sr86",
+        "sTitle": "Rb87_Sr86"
+    },
+    {
+        "data": "sr87Sr86M",
+        "title": "Sr87_Sr86_m",
+        "mData": "sr87Sr86M",
+        "sTitle": "Sr87_Sr86_m"
+    },
+    {
+        "data": "sm147Nd144",
+        "title": "Sm147_Nd144",
+        "mData": "sm147Nd144",
+        "sTitle": "Sm147_Nd144"
+    },
+    {
+        "data": "nd143Nd144",
+        "title": "Nd143_Nd144",
+        "mData": "nd143Nd144",
+        "sTitle": "Nd143_Nd144"
+    },
+    {
+        "data": "testRockMa",
+        "title": "Test_Rock_Ma",
+        "mData": "testRockMa",
+        "sTitle": "Test_Rock_Ma"
+    },
+    {
+        "data": "sr87Sr86I",
+        "title": "Sr87_Sr86_i",
+        "mData": "sr87Sr86I",
+        "sTitle": "Sr87_Sr86_i"
+    },
+    {
+        "data": "nd143Nd144TChur",
+        "title": "Nd143_Nd144_t_CHUR",
+        "mData": "nd143Nd144TChur",
+        "sTitle": "Nd143_Nd144_t_CHUR"
+    },
+    {
+        "data": "nd143Nd144I",
+        "title": "Nd143_Nd144_i",
+        "mData": "nd143Nd144I",
+        "sTitle": "Nd143_Nd144_i"
+    },
+    {
+        "data": "epsilonNd0",
+        "title": "epsilon_Nd_0",
+        "mData": "epsilonNd0",
+        "sTitle": "epsilon_Nd_0"
+    },
+    {
+        "data": "epsilonNdT",
+        "title": "epsilon_Nd_t",
+        "mData": "epsilonNdT",
+        "sTitle": "epsilon_Nd_t"
+    },
+    {
+        "data": "tdmMa",
+        "title": "TDM_Ma",
+        "mData": "tdmMa",
+        "sTitle": "TDM_Ma"
+    },
+    {
+        "data": "tdm2Ma",
+        "title": "TDM2_Ma",
+        "mData": "tdm2Ma",
+        "sTitle": "TDM2_Ma"
+    }
+];
+		   console.log(mycolumns);
+		  
+		
+			$('#example').DataTable( {
+				"pageLength":25,
+				 "responsive": true,
+				"processing": true,
+				"serverSide": false,
+				"ajax":  {
+					"type":"post",
+					"url": "/sampleInfo/getSampleList4GeoCloud",
+					//"data": function ( d ) {
+						//d.polygon = sessionStorage.getItem("polygon");
+						//d.csrf=$("#_csrf").val();
+					//}
+				},
+				dom: 'Blfrtip',
+					   "buttons": [  
+				 			    {
+									extend: 'excel',
+									text:"Save...",
+									messageTop: 'The copyright of the data you downloaded belongs to the DDE onepetroleum team. Please abide by the relevant DDE regulations and the team agreement when using the data, and please quote it from this website when publishing.<br>您下载的数据版权属于DDE-OnePetrology团队，请您在使用数据时遵守相关DDE的规定以及团队的约定，并请在发表时一定标注上引自于本网站。'
+								}
+						   //'colvis'
+					   ],
+				 "columns":mycolumns
+			} );
+		
+		
+	} );
+</script>
+	
+</body>
+</html>

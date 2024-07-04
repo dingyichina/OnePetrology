@@ -1,0 +1,663 @@
+<div class="container">
+      <div class="row">
+        <div class="col-md-10" id="fig_container">
+              <div id="fig_main_acnk" style="height:700px;"></div>
+        </div>
+		  
+        <div class="col-md-2">
+           <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="chkLegend" checked>
+            <label class="form-check-label" for="chkLegend">
+              Legend
+            </label>
+          </div>
+ 
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" checked value="" id="chkDetail">
+            <label class="form-check-label" for="chkDetail">
+              Detail
+            </label>
+          </div>
+    
+		<label class="form-check-label" for="groupField4ACNK">
+              Group by:
+        </label>
+		  <select class="form-select" id="groupField4ACNK" >
+		        <option selected value="-1">No Group</option>
+          </select>
+			<hr/>
+		   	
+          <div  id="numberConfig4ACNK"   class="group" style="width:300px; display:none;">
+             <div  id='groupNumberConfig4ACNK' >
+				 
+			  </div>	 
+              <button  onclick="redrawNumberGroup4ACNK();"  style="margin-top:30px;margin-left:50px;"> ReDraw  </button>
+          </div>	
+			
+          <div id='groupSetting4ACNK' class="group"  style="width:300px;">
+             
+
+          </div>
+          <div class="d-grid gap-2">
+            
+          </div>
+        </div>
+      </div>
+  
+    </div> 
+		<script src="${site.sitePath}js/plotly-2.18.0.min.js"></script>
+	<script>
+		
+        //尝试绘制TAS图
+		var lineDiv4ACNK = document.getElementById('fig_main_acnk');
+        // 第一条线坐标	（0.5,1.0）	（1.0,1.0）	（2.0,1.0）
+        //第二条线坐标	（1.0,0.4）	（1.0,1.0）	（1.0,3.0）
+        //第三条线坐标	（0.5,0.5）	（1.0,1.0）	（2.0,2.0）
+
+		var LocationAreas4ACNK = [ [[0.5,1.0], [1.0, 1.0], [2.0,1.0]],
+                     [[1.0, 0.4], [1.0, 1.0], [1.0,  3.0]],
+                     [[0.5, 0.5], [1.0, 1.0], [2.0, 2.0]],
+                     ];
+
+			//标签位置
+		   var Locations4ACNK = [[0.8, 0.8], [0.85, 2.7], [1.4, 2.7]];
+		  var  Labels4ACNK = ['Peralkaine', 'Metaluminous', 'Peraluminous'];
+		
+		
+		 var data=buildData4ACNK();
+         // 图的layout设置
+		var layout4ACNK = {
+			  title:{
+				   text:'A/CNK-A/NK Diagram',
+				  font:{
+					size:40,  
+				  }
+			  },
+			  xaxis: {
+				rangemode: 'normal',
+				 title:{
+					text: 'A/CNK', 
+					font:{
+					    size:30,	
+					},
+				 },
+				   linewidth:3, 
+				 tickmode:'array',
+				 tickvals:[0.5,1.0,1.5,2.0] ,
+				 showgrid:false, 
+				 range:[0.5,2.0],
+				 showline:true,
+				  ticklen:8,
+				  tickwidth:3,
+				  tickfont:{
+					size:20,  
+				  },
+				  mirror:'allticks'
+			  },
+			  yaxis: {
+				rangemode: 'normal',
+				title:{
+					text: 'A/NK', 
+				    font:{
+					    size:30,	
+					},
+				 },
+				   linewidth:3, 
+		  	     tickmode:'array',
+				 tickvals:[0,4,0.6,0.8,1.0,1.2,1.4,1.6,1.8,2.0,2.2,2.4,2.6,2.8,3.0] ,
+				  showgrid:false,
+				  range:[0.4,3.0],
+			      showline:true,
+				    ticklen:8,
+				  tickwidth:3, 
+				  tickfont:{
+					size:20,  
+				  },
+				   mirror:'allticks'
+			  },
+			};
+		    var config4ACNK = {
+				  toImageButtonOptions: {
+					format: 'svg', // one of png, svg, jpeg, webp
+					filename: 'ACNK-ANK',
+					height: 700,
+					width: 900,
+					scale: 1 // Multiply title/legend/axis/canvas sizes by this factor
+				  }
+				};
+ 
+		  Plotly.newPlot( lineDiv4ACNK, data, layout4ACNK,config4ACNK);
+		   
+		  // 构造基础data中的trace，背景数据，分界线，标注文字等
+		  function buildData4ACNK(){
+			    var model = $('input:radio[name="model"]:checked').val();
+			    var detail = $('#chkDetail').prop("checked");
+			   // console.log('detail:',detail);
+			   var mapdata=[];  //初始化数组
+			
+				   //分界线
+				  for( var line of LocationAreas4ACNK) {
+						  var xlist=[],ylist=[];
+						  for(var i=0; i<line.length;i++){
+								xlist.push(line[i][0]);
+								ylist.push(line[i][1]);
+						  }
+						  var traceA = {
+							  x: xlist,
+							  y: ylist,
+							  type: 'scatter',
+							  fill: 'none',
+							  mode:'lines',	
+							  line: {
+								color: 'rgb(128, 128, 128)',
+							  },
+							  showlegend:false,
+							};
+						  mapdata.push(traceA);
+					}
+				  //分界线添加完毕
+				   if(detail == true){
+						  // 画标签
+
+						  var xlist=[],ylist=[];
+						  for(var i=0;i<Locations4ACNK.length;i++){
+							 xlist.push(Locations4ACNK[i][0]);
+							 ylist.push(Locations4ACNK[i][1]);
+						  }
+						 var traceLabel={
+								 x: xlist,
+								  y: ylist,
+								  type: 'scatter',
+								  fill: 'none',
+								  textposition:'top left',
+								  mode:'text',	
+								  text:Labels4ACNK,
+								  showlegend:false,
+								  textfont:{
+									family:"arial",
+									size:20,	
+								  },
+						 };
+						 mapdata.push(traceLabel);
+				   }
+			  return mapdata;
+		  }
+		
+		
+		  // 判断记录是否有效
+		   function isValidItem4ACNK(item){
+			      if(item.hasOwnProperty('Al2O3') && item.hasOwnProperty('CaO') && item.hasOwnProperty('Na2O') && item.hasOwnProperty('K2O')
+							  && item.Al2O3 !=null && item.CaO !=null  && item.Na2O!=null  && item.K2O!=null ){
+					  return true;  
+				  }else{
+					  return false;
+				  }
+		   }
+		    //格式化字符串函数
+			String.format = function() {
+				if (arguments.length == 0)
+					return null;
+				var str = arguments[0];
+				for ( var i = 1; i < arguments.length; i++) {
+					var re = new RegExp('\\{' + (i - 1) + '\\}', 'gm');
+					str = str.replace(re, arguments[i]);
+				}
+				return str;
+			};
+
+		    var rtnColumns4ACNK=[];  //返回得列名数组
+		    var numberColumns4ACNK=[];  //返回的数字列名数组
+		    var rtnData4ACNK;//返回的数据
+		    var traceList4ACNK=[]; //缓存所有的trace（不包括底图的）
+		    var numberSpanConfig4ACNK=[ ];   //缓存所有的数字字段的分段设置
+		 
+		   // 重绘所有图
+		    function redrawMap4ACNK(){
+			    var mydata=buildData4ACNK();
+				//添加traceLayer
+				//console.log(traceList4ACNK);
+				var drawdata=mydata.concat(traceList4ACNK);
+				//console.log(drawdata);
+				Plotly.newPlot( lineDiv4ACNK, drawdata, layout4ACNK,config4ACNK);
+			};
+		
+		   // 生成分组的html界面
+		    function buildGroupHtml4ACNK(groupName,color,index=0){
+				 var html= ' <div class="row" >\
+                                                <label for="color" style="font-size:0.5em;margin-right:10px; width:90px;">{0}</label> \
+				                                <input  name="colorSelector4ACNK" id="color-{0}"  type="color"   style="width:30px;margin-right:10px;" data-label="{0}" value="{1}" title="Choose color "> \
+				                                <select   style="width:80px;margin-right:10px;" id="shape-acnk-{2}" name="shapeSelector4ACNK"  data-label="{0}"  title="choose the shape"> \
+														<option  value="0">circle</option> \
+														<option value="1">square</option> \
+														<option value="2">diamond</option> \
+														<option value="3">cross</option> \
+														<option value="4">x</option> \
+														<option selected value="5">triangle-up</option> \
+														<option value="6">triangle-down</option> \
+														<option value="7">triangle-left</option> \
+														<option value="8">triangle-right</option> \
+														<option value="9">triangle-ne</option> \
+														<option value="10">triangle-se</option> \
+														<option value="11">triangle-sw</option> \
+														<option value="12">triangle-nw</option> \
+														<option value="13">pentagon</option> \
+														<option value="14">hexagon</option> \
+														<option value="15">hexagon2</option> \
+														<option value="16">octagon</option> \
+														<option value="17">star</option> \
+														<option value="18">hexagram</option> \
+				                                </select>\
+				                                <input  type="number" step="1" name="sizeSelector4ACNK"  data-label="{0}"  style="width:40px;margin-left:10px;"  min="3" max="15" value="5" title="set the size of shape"> \
+                                             </div>';
+						 return String.format(html,groupName,color,index);
+			}
+		    
+		    // 构造数字分组的html页面
+		    function buildNumberGroupHtml4ACNK(groupName,index=0){
+				 var html=' <div class="row"  id="numberSpan4ACNK-{1}"   data-label="{1}"  >\
+                                                <label for="color" style="font-size:0.5em;margin-right:10px; width:70px;">{0}：</label> \
+				                                 <input  type="number"  step="0.01" name="numberStart4ACNK"  data-label="{0}"  style="width:60px;"   title="the start value"> \
+				                                 <label>-</label> \
+				                                <input  type="number"   step="0.01"  name="numberEnd4ACNK"  data-label="{0}"  style="width:60px;"   title="the end value"> \
+  												<button  id="btnRemoveSpan4ACNK-{1}"  onclick="removeNumberGroupHtml4ACNK({1});"  style="margin-left:10px; width:30px;">  - </button> \
+												<button  id="btnAddSpan4ACNK-{1}"  onclick="addNumberGroupHtml4ACNK(\'{0}\',{1}); "  style="margin-left:10px; width:30px;">  + </button> \
+                                  </div>';
+				 return String.format(html,groupName,index);
+				
+			} //函数结束---构造数字分组的html页面
+		
+		    // 添加一个新的数字分组html组件
+		    function addNumberGroupHtml4ACNK(groupName,index){
+				 var myhtml=buildNumberGroupHtml4ACNK(groupName.toString(),index+1);
+			    // console.log($('#numberConfig4ACNK').css('display'),'构造数字分组：',myhtml);
+			    $('#groupNumberConfig4ACNK').append(myhtml);
+				//把上一个的+按钮禁用掉
+				var myAdd=String.format("#btnAddSpan4ACNK-{0}",index);
+				$(myAdd).hide();
+				
+				
+			}//函数结束——添加一个新的数字分组html组件
+		
+		  //移除一个数字分组html组件
+		  function removeNumberGroupHtml4ACNK(index){
+			   if ($('#groupNumberConfig4ACNK').children().length<=1){
+				   alert("the last one can't be removed");
+				   return true;
+			   }
+			  var myId=String.format("#numberSpan4ACNK-{0}",index);
+			  $(myId).empty();
+			  $(myId).remove();
+			  //把最后一个的添加按钮显示出来
+			  var lastDiv= $('#groupNumberConfig4ACNK').children().last();
+			  var lastIndex=lastDiv.data('label');
+			  var myAdd=String.format("#btnAddSpan4ACNK-{0}",lastIndex);
+			   $(myAdd).show();
+		  }
+		
+		   // 数字字段引发的重绘
+		   function  redrawNumberGroup4ACNK( ){
+			    //首先得到数字字段分组的设置
+			   numberSpanConfig4ACNK=[];  ////清空旧的，从ui中重新获取
+			   $.each( $('#groupNumberConfig4ACNK').children(),function (index,item){
+					let numSpan={};
+				  // console.log(index, ":", $(item).data("label"));
+				   //从item中进一步查找子元素
+				   var startitem=$(item).find("input[name='numberStart4ACNK']");
+				   var enditem=$(item).find("input[name='numberEnd4ACNK']");
+				   //判断是否是有效的设置，如果全空则无效
+				   numSpan.startValue=$(startitem).val().trim();
+				   numSpan.endValue=$(enditem).val().trim();
+				   if(numSpan.startValue ==""  && numSpan.endValue=="")
+					   return false ;
+				   //记录一下field
+				   numSpan["field"]=$(startitem).data("label");
+				
+				   numberSpanConfig4ACNK.push(numSpan);
+			   });
+			   //console.log("Number Span:",numberSpanConfig4ACNK);
+			   
+			   //如果没有有效分组，则按照不分组进行处理
+			   if(numberSpanConfig4ACNK.length ==0){
+				       console.log("没有有效数字分组，直接按照不分组重绘" );
+					   buildNoGroup4ACNK();
+				   		 //重绘全图
+				       redrawMap4ACNK();
+				       return true;  //直接退出
+			   }
+			   // 按照数值字段进行分组
+			   //置空 分组名称及分组结果的数组
+  			   var  groupNames=[], groupValues=[];  // 置空
+			   for(var i=0;i<rtnData4ACNK.length;i++){
+						var item=rtnData4ACNK[i];
+				        //只有有效的数据才需要分组
+						 if(isValidItem4ACNK(item)){
+							   var x=(item.Al2O3/101.96)/(item.CaO/56.08+item.Na2O/61.98+item.K2O/94.2);
+					           var y=(item.Al2O3/101.96)/(item.Na2O/61.98+item.K2O/94.2);
+					           if(x<0.5 || x>2 || y<0.4 || y>3)   //忽略掉不合规的非法数据
+								   continue;
+							 
+							 var hasMatched=false;
+							 // 对所有数字分组进行筛选，看看当前数据是否在某一个分组范围内，如果在，则加入到对应的groupList中
+							 for(var j=0; j<numberSpanConfig4ACNK.length;j++) {
+									 let myNumSpan=numberSpanConfig4ACNK[j];
+									 let filterKey=myNumSpan.field.trim();
+
+									 if(item.hasOwnProperty(myNumSpan.field.trim()) ==false || item[myNumSpan.field]=="undefined" )
+										 break;  //没有这个字段，则直接当作others处理
+
+									 //console.log("初始化filterKey:",myNumSpan.field,"   ,  numberSpan:",myNumSpan," 类型",typeof(myNumSpan.startValue));
+									 //var flag =false;
+									 if( myNumSpan.hasOwnProperty("startValue")  &&  typeof(myNumSpan.startValue)=="string" && myNumSpan.startValue !=""){
+										  //console.log("进入startValue逻辑",item,myNumSpan.field,item[myNumSpan.field]);
+										  filterKey = myNumSpan.startValue+"&lt;"+filterKey;
+										  if(item[myNumSpan.field]<=parseFloat(myNumSpan.startValue)) {// 如果比起始值还小
+											  //console.log("小于最小：",item,myNumSpan.field,item[myNumSpan.field]);
+											  continue;   //继续下一轮
+										  }
+									 }
+									 if(myNumSpan.hasOwnProperty("endValue")  &&  typeof(myNumSpan.endValue)=="string" && myNumSpan.endValue !=""){
+										  //console.log("进入endValue逻辑",item[myNumSpan.field] , parseFloat(myNumSpan.endValue), item,myNumSpan.field,item[myNumSpan.field]);
+										  filterKey=filterKey+"&le;"+myNumSpan.endValue;
+										  if(parseFloat(item[myNumSpan.field] )>parseFloat(myNumSpan.endValue)){ // 如果比起始值还小
+											  //console.log("大于最大：",item,myNumSpan.field,item[myNumSpan.field]);
+											  continue;   //继续下一轮
+										  }
+									 }
+									//console.log("filterKey:",filterKey,myNumSpan);
+									 //满足条件
+									 hasMatched=true;   // 已经匹配上了，不会出现在Others中
+									//检查是否已经在分组名称里，如果不在则添加
+									 var  groupValueList={'x':[ ],'y':[ ] };
+									 if(  groupNames.indexOf(filterKey) >=0){
+										 groupValueList = groupValues[filterKey];
+										// console.log('取出来的:',groupValueList);
+									 }else{
+										//把自己添加进去
+										groupNames.push(filterKey);
+										groupValues[filterKey]= groupValueList;
+									 }
+									 groupValueList['x'].push(x);
+									 groupValueList['y'].push(y);
+							 } //分组循环结束
+							 //如果没有匹配上的，则统一加到Other中
+							 if(hasMatched ==false){
+								 // console.log("进入others逻辑");
+								 let  keystr="Others";
+								 var groupValueList={'x':[ ],'y':[ ] };
+								  if(  groupNames.indexOf(keystr) >=0){
+									 groupValueList = groupValues[keystr];
+									// console.log('取出来的:',groupValueList);
+								 }else{
+									//把自己添加进去
+									groupNames.push(keystr);
+									groupValues[keystr]= groupValueList;
+								 }
+								 groupValueList['x'].push(x);
+								 groupValueList['y'].push(y);
+							 }
+						 } // end --if 有效
+					 }// end -for  遍历所有数据
+			   
+					 //循环结束
+					//console.log('group:',groupNames);
+					//console.log('values',groupValues); 
+					 //清空所有的筛选字段子元素，然后重新添加
+					buildGroupData4ACNK(groupNames, groupValues);
+			     	 //重绘全图
+				 	redrawMap4ACNK();
+			   
+		   }// 函数结束
+		   
+		
+		    //  构建不分组数据
+		    function buildNoGroup4ACNK(){
+				 //console.log('不分组');
+					 //此时需要清空分组选项，然后直接显示trace数据
+					  $('#groupSetting4ACNK').empty();
+					  html=buildGroupHtml4ACNK("No Group","#00008B");
+					 $('#groupSetting4ACNK').append(html);
+					//生成trace    
+					 var xlist =[],ylist=[];
+					for(var i=0;i<rtnData4ACNK.length;i++){
+							var item=rtnData4ACNK[i];
+						   if(isValidItem4ACNK(item)){
+							  // console.log(item);   
+							   var x=(item.Al2O3/101.96)/(item.CaO/56.08+item.Na2O/61.98+item.K2O/94.2);
+					           var y=(item.Al2O3/101.96)/(item.Na2O/61.98+item.K2O/94.2);
+					           if(x<0.5 || x>2 || y<0.4 || y>3)   //忽略掉不合规的非法数据
+								   continue;
+							   xlist.push(x);
+							   ylist.push(y); 
+						   }
+					}
+					//console.log(xlist,ylist);
+					//生成trace，并加进去，然后更新图
+					 var traceLayer={
+							 x: xlist,
+							  y: ylist,
+						      name:"No Group ("+ xlist.length+" )",
+							  type: 'scatter',
+						      showlegend: $('#chkLegend').prop('checked'),
+							  fill: 'none',
+							  textposition:'top left',
+							  mode:'markers',	
+							  marker:{
+								  'symbol':5,
+								  'size':5,
+								  'color':'rgb(0,0,139)',
+							  },
+						      title:'No Group'
+					 };
+					 traceList4ACNK=[];
+					 traceList4ACNK.push(traceLayer);
+					 registerListener4GroupACNK();// 注册监听器
+	   		         return false; //直接退出
+			}  // 不分组函数结束
+		   
+		   //构建数字型分组ui
+		  function buildNumberGroup4ACNK(filterField){
+			  //清空旧的
+			   $('#numberConfig4ACNK').show();
+			   $('#groupNumberConfig4ACNK').empty();
+			  var myhtml=buildNumberGroupHtml4ACNK(filterField,0);
+			  // console.log($('#numberConfig4ACNK').css('display'),'构造数字分组：',myhtml);
+			   $('#groupNumberConfig4ACNK').append(myhtml);
+		  }// 函数结束——构建数字型分组ui
+		
+		// 构造分组绘图数据
+		  function  buildGroupData4ACNK(groupNames, groupValues){
+			   //清空所有的筛选字段子元素，然后重新添加
+					 $('#groupSetting4ACNK').empty();
+					 var colorTable=['#00008B','#00FEFE','#E00098','#00EE00','#121212','#212121'];  //此处内置允许的的颜色查找表，回头补充科研时常用的颜色。 *************todo************
+					
+					 traceList4ACNK=[];//清空已有的traceList
+					 
+					 for(var i=0;i<groupNames.length;i++){
+					     var groupName=groupNames[i];
+					
+						 html=buildGroupHtml4ACNK(groupName,colorTable[i%colorTable.length],i+5);
+						 $('#groupSetting4ACNK').append(html);
+						 //添加后对shape设置默认选择值
+						 var myid=String.format('#shape-acnk-{0}',i);
+						 try{
+						 		$(myid).val(i %19);  //此时是为了规避特殊字符导致无法初始化这个。todo*****后期应该把空格给去掉
+						 } catch (e) {
+								console.log("发生异常:" + e)
+						}
+						 
+						  // 生成trace list
+						 	//生成trace，并加进去，然后更新图
+						 var traceLayer={
+								 x: groupValues[groupName]['x'],
+								  y: groupValues[groupName]['y'],
+								  type: 'scatter',
+								  fill: 'none',
+							      showlegend: $('#chkLegend').prop('checked'),
+							     name:groupName.replace('&le;',"≤")+" ("+ groupValues[groupName]['x'].length+" )",
+								  textposition:'top left',
+								  mode:'markers',	
+								  marker:{
+									  'symbol':(i+5) %19,
+									  'size':5,
+									  'color':colorTable[i%colorTable.length],
+								  },
+							     title:groupName
+							 
+						 };
+						 traceList4ACNK.push(traceLayer);
+					 }
+					 //筛选条件结束
+					 registerListener4GroupACNK();// 注册监听器
+			  
+		  }
+		   
+		    //构建字符型分组
+		    function buildStrGroup4ACNK(filterField){
+				     // console.log('分组字段：',filterField);
+					 //置空 分组名称及分组结果的数组
+					 var  groupNames=[], groupValues=[];
+					 for(var i=0;i<rtnData4ACNK.length;i++){
+						var item=rtnData4ACNK[i];
+						 if(isValidItem4ACNK(item)){
+							   var x=(item.Al2O3/101.96)/(item.CaO/56.08+item.Na2O/61.98+item.K2O/94.2);
+					           var y=(item.Al2O3/101.96)/(item.Na2O/61.98+item.K2O/94.2);
+					           if(x<0.5 || x>2 || y<0.4 || y>3)   //忽略掉不合规的非法数据
+								   continue;
+							   
+							 //有效数据则进行处理，无效则掠过
+							 //获取分组字段的值
+							 var filterValue=item[filterField];
+							 //console.log('filterValue',filterValue);
+							 //null或者‘’认为是 null
+							 if( filterValue ==null || filterValue=='')
+								 filterValue='null';
+							 filterValue=filterValue.replace(/\s*/g,""); //去除所有空格，包括头尾和中间的。中间的容易导致jquery定位错误
+							
+							 //检查是否已经在分组名称里，如果不在则添加
+							 var groupValueList={'x':[ ],'y':[ ] };
+							 if(  groupNames.indexOf(filterValue) >=0){
+								 groupValueList = groupValues[filterValue];
+								// console.log('取出来的:',groupValueList);
+							 }else{
+								//把自己添加进去
+								groupNames.push(filterValue);
+								groupValues[filterValue]= groupValueList;
+							 }
+							 groupValueList['x'].push(x);
+							 groupValueList['y'].push(y);
+						 }
+					 }
+					 //循环结束
+					//console.log('group:',groupNames);
+					//console.log('values',groupValues); 
+					buildGroupData4ACNK(groupNames, groupValues);
+			}// 构建字符型分组函数结束
+		
+		    //注册分组id变化事件
+		     $("#groupField4ACNK").change(function(){
+				 var selIndex=($(this).val());  
+				 $('#numberConfig4ACNK').hide(); //默认隐藏起来，如果是数字再打开
+				 
+				 if(selIndex ==-1) {  //此时不分组
+					buildNoGroup4ACNK(); //不分组数据
+				 }else{ //按照所选字段进行分组
+					 var filterField=rtnColumns4ACNK[selIndex];
+					 //此时需要判断是数字字段还是文本字段，如果是数字字段，则需要弹出新的ui来进行设置分段取值
+					 var index=numberColumns4ACNK.indexOf(filterField);
+					 if  (index >-1) {
+					       //数字字段
+					  	 buildNumberGroup4ACNK(filterField);
+					 }else{
+					       //字符串字段
+					   	  buildStrGroup4ACNK(filterField);
+					 }
+				 }
+					 //重绘全图
+				 redrawMap4ACNK();
+			 });
+		
+		 //注册分组Marker有关属性的事件监听
+		function registerListener4GroupACNK(){
+			 $("input[name='colorSelector4ACNK']").change(function(){
+					var title=$(this).data('label');
+					console.log(title,$(this).val());
+				    //遍历查找对应的图层进行修改
+				    for (trace of  traceList4ACNK){
+						console.log('重绘', trace.title.text);
+					    if(trace.title.text.replace("&le;","≤").replace("&lt;","<") ==title ){
+							trace.marker.color=$(this).val();
+						}
+					}
+					redrawMap4ACNK();//改变之后重绘
+					console.log('重绘', trace.title.text);
+					return true;
+			 });
+			 $("select[name='shapeSelector4ACNK']").change(function(){
+					var title=$(this).data('label');
+					console.log(title,$(this).val());
+				    //遍历查找对应的图层进行修改
+				    for (trace of  traceList4ACNK){
+					    if(trace.title.text.replace("&le;","≤").replace("&lt;","<") ==title){
+							trace.marker.symbol=$(this).val();
+							console.log('symbol:',$(this).val());
+						}
+					}
+				 	redrawMap4ACNK();//改变之后重绘
+					console.log('重绘', trace.title.text);
+					return true;
+			 });
+			$("input[name='sizeSelector4ACNK']").change(function(){
+					var title=$(this).data('label');
+					console.log(title,$(this).val());
+				    //遍历查找对应的图层进行修改
+				    for (trace of  traceList4ACNK){
+						console.log('重绘', trace.title.text);
+					    if(trace.title.text.replace("&le;","≤").replace("&lt;","<")==title){
+							trace.marker.size=$(this).val();
+						}
+					}
+					redrawMap4ACNK();//改变之后重绘
+					console.log('重绘', trace.title.text);
+					return true;
+			 });
+		}; //函数结束  ---注册分组Marker有关属性的事件监听
+		
+		
+
+		
+		// 注册事件，是否显示图例
+		$('#chkLegend').change(function(){
+			  var show= $(this).prop('checked');
+			  for (trace of traceList4ACNK){
+			  	   trace.showlegend=show;
+			  }
+			  redrawMap4ACNK();	  //刷新很消耗资源，暂时注掉
+			//Plotly.react(lineDiv4ACNK);//刷新图
+			  //  console.log(show);
+		});
+         
+		//外部设置数据的主函数
+		
+		function setData2ACNK(columns,data,numbercolumns){
+			rtnColumns4ACNK=columns;
+			numberColumns4ACNK=numbercolumns;
+			
+			rtnData4ACNK=data; //把返回值赋予全局变量
+			//把列名添加到分组列表
+			//清空列名列表
+		     $("#groupField4ACNK").empty();
+			//添加一个不分组
+			$("#groupField4ACNK").append('<option selected value="-1">No Group</option>');
+	
+			for(var i=0;i<rtnColumns4ACNK.length;i++){
+			      $("#groupField4ACNK").append("<option value="+i+">"+rtnColumns4ACNK[i]+"</option>");  
+			 }
+			 buildNoGroup4ACNK();
+			 redrawMap4ACNK();
+		}  //setdata2ACNK 函数结束
+		
+		
+		
+	</script>
+	
+	

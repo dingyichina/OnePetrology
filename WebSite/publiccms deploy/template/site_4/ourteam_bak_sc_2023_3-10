@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<@_includePlace path="/Header-link.html"/> <#-- head-link -->
+</head>
+<body>
+<@_includePlace path="/header.html"/> <#-- header -->
+	
+	<div class="locationbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- start location -->
+                    <ul class="breadcrumb pull-left">
+                        <li class="breadcrumb-prefix breadcrumb-item d-none d-md-block">You Are Here: </li>
+
+                        <li class="breadcrumb-item"><a href="${site.dynamicPath!}">Home</a></li>
+
+                        <li class="breadcrumb-item"><a href="${site.dynamicPath!}ourteam.html">Our Team</a></li>
+
+                    </ul>
+                    <!-- end location -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="bc-blk-07">
+                        <div class="bc-blk-hd">
+                            <h4 class="bc-blk-hd-title"><span>Our Team</span></h4>
+                            <p class="bc-blk-hd-desc">
+                                Refer to DDE rock database construction specification, Construction of magmatic rock database ，Collection through excel template，
+                                Provide data verification tools，The warehousing can be completed only after audit, and the double insurance ensures the data quality.
+                                Currently, there are 73,860 records of sample age and geochemical data，158,605 records of in situ U-Pb point dating data，29,204 records of zircon Hf-O isotopic data, for igneous rocks .
+                            </p>
+                        </div>
+                        <div class="bc-blk-bd">
+                            <div class="bc-multi-col-pictext-list-06">
+                                <div class="row">
+
+                                    <div class="col-md-4 col-12">
+                                        <div class="item top-space-clear top-space-clear-sm">
+                                            <div class="img-ctn">
+                                                <a href="/xdh/43971.htm" target="_blank">
+                                                    <img class="img-fluid" src="${site.sitePath!}images/huangshan.jpg" />
+                                                </a>
+                                            </div>
+                                            <div class="text-ctn">
+                                                <h4 class="art-caption"><a href="/xdh/43971.htm" title="Prof. John Smith" target="_blank">Prof. John Smith</a></h4>
+                                                <p class="art-abstract">Currently having problems with vertically aligning the slider buttons on Owl Carousel, so that as the slider responds the arrows stay in the vertical centre. ...</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-12">
+                                        <div class="item top-space-clear">
+                                            <div class="img-ctn">
+                                                <a href="/xdh/43571.htm" target="_blank">
+                                                    <img class="img-fluid" src="${site.sitePath!}images/img1.jpg" />
+                                                </a>
+                                            </div>
+                                            <div class="text-ctn">
+                                                <h4 class="art-caption"><a href="/xdh/43971.htm" title="Prof. John Smith" target="_blank">Prof. John Smith</a></h4>
+                                                <p class="art-abstract">Currently having problems with vertically aligning the slider buttons on Owl Carousel, so that as the slider responds the arrows stay in the vertical centre. ...</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-12">
+                                        <div class="item top-space-clear">
+                                            <div class="img-ctn">
+                                                <a href="/xdh/43575.htm" target="_blank">
+                                                    <img class="img-fluid" src="${site.sitePath!}images/jiuzhai.jpg" />
+                                                </a>
+                                            </div>
+                                            <div class="text-ctn">
+                                                <h4 class="art-caption"><a href="/xdh/43971.htm" title="Prof. John Smith" target="_blank">Prof. John Smith</a></h4>
+                                                <p class="art-abstract">Currently having problems with vertically aligning the slider buttons on Owl Carousel, so that as the slider responds the arrows stay in the vertical centre. ...</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-12">
+                                        <div class="item">
+                                            <div class="img-ctn">
+                                                <a href="/xdh/43572.htm" target="_blank">
+                                                    <img class="img-fluid" src="${site.sitePath!}images/img2.jpg" />
+                                                </a>
+                                            </div>
+                                            <div class="text-ctn">
+                                                <h4 class="art-caption"><a href="/xdh/43971.htm" title="Prof. John Smith" target="_blank">Prof. John Smith</a></h4>
+                                                <p class="art-abstract">Currently having problems with vertically aligning the slider buttons on Owl Carousel, so that as the slider responds the arrows stay in the vertical centre. ...</p>
+                                                <p class="art-detail text-center"><a href="/xdh/43971.htm" target="_blank">Read More</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-12">
+                                        <div class="item">
+                                            <div class="img-ctn">
+                                                <a href="/xdh/43578.htm" target="_blank">
+                                                    <img class="img-fluid" src="${site.sitePath!}images/hgs.jpg" />
+                                                </a>
+                                            </div>
+                                            <div class="text-ctn">
+                                                <h4 class="art-caption"><a href="/xdh/43971.htm" title="Prof. John Smith" target="_blank">Prof. John Smith</a></h4>
+                                                <p class="art-abstract">Currently having problems with vertically aligning the slider buttons on Owl Carousel, so that as the slider responds the arrows stay in the vertical centre. ...</p>
+                                                <p class="art-detail text-center"><a href="/xdh/43971.htm" target="_blank">Read More</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-12">
+                                        <div class="item">
+                                            <div class="img-ctn">
+                                                <a href="/xdh/43582.htm" target="_blank">
+                                                    <img class="img-fluid" src="${site.sitePath!}images/taishan.jpg" />
+                                                </a>
+                                            </div>
+                                            <div class="text-ctn">
+                                                <h4 class="art-caption"><a href="/xdh/43971.htm" title="Prof. John Smith" target="_blank">Prof. John Smith</a></h4>
+                                                <p class="art-abstract">Currently having problems with vertically aligning the slider buttons on Owl Carousel, so that as the slider responds the arrows stay in the vertical centre. ...</p>
+                                                <p class="art-detail text-center"><a href="/xdh/43971.htm" target="_blank">Read More</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+   <@_includePlace path="/53d9aa26-ab9a-41df-90d5-efc5307c3b3e.html"/> <#-- footer -->
+</body>
+</html>

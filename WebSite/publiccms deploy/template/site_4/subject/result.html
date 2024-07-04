@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /> <!--- 强制升级https，避免混合错误  --->	
+<@_includePlace path="/Header-link.html"/> <#-- head-link -->
+	<@_includePlace path="/5b99dd64-5fb7-4162-9d00-b2d53e3d1708.html"/> <#-- head-gis-link -->
+	 <!--引入Datatable -->
+<link href="${site.sitePath}datatables/datatables.css" rel="stylesheet">
+<script src="${site.sitePath}datatables/datatables.js"></script>
+		<style type="text/css">
+				.dataTables_wrapper .dataTables_processing {
+				  position: absolute;
+				  top: 50%;
+				  left: 50%;
+				/*   width: 100%; */
+				  width: 100px
+				  height: 40px;
+				  margin-left: -50%;
+				  margin-left: auto;
+				  margin-right: auto;
+				  margin-top: -25px;
+				  padding-top: 20px;
+				  text-align: center;
+				  font-size: 1.2em;
+				/*   background-color: #ccc; */
+				/*   background-color: white; */
+				/*   background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(25%, rgba(255, 255, 255, 0.9)), color-stop(75%, rgba(255, 255, 255, 0.9)), color-stop(100%, rgba(255, 255, 255, 0))); */
+				/*   background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%); */
+				/*   background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%); */
+				/*   background: -ms-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%); */
+				/*   background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%); */
+				/*   background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%); */
+				}
+		   /*  tab样式  */
+			  * {
+					margin: 0;
+					padding: 0;
+				}
+ 
+        .tabs {
+            display: flex;
+        }
+ 
+        .tabs li {
+            width: 100px;
+            height: 40px;
+			text-align:center;
+            text-decoration: none;
+            list-style-type: none;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+			margin-bottom:10px;
+        }
+ 
+        .tabs-box {
+            width: 100%;
+            
+            height: 100%;
+            display: none
+        }
+ 
+        .active {
+            background-color: steelblue;
+            color: #fff;
+        }
+ 
+        .boxOne {
+            display: block;
+        }
+
+	</style>  
+	    <title>OnePetrology：Search Results</title>
+</head>
+<body   oncontextmenu="return false;">
+<@_includePlace path="/header.html"/> <#-- header -->
+	
+	  <div class="container">
+			   <hr/>
+		  <h3> Search Results  in <span  id='tablename'></span>  :  </h3>	 <br/>
+		  
+		   <ul class="tabs">
+        		   <li class="active">DataTable</li>
+			      <li  id="tab-map">On Map</li>
+		   		  <li>TAS</li>
+			   	  <li>SiO2-K2O</li>
+		 	       <li>A/CNK</li>
+                  <li>Pearce</li>
+	             <li>2D Density</li>	   
+             </ul>
+    <div class="boxs">
+        <div class="tabs-box boxOne">
+		     <table id="searchResult" class="table table-striped table-bordered" style="width:80%;"  οncοntextmenu="return false;">  <!--屏蔽了右键菜单 -->
+     
+         	 </table>
+			<script>
+				// //按键触发，屏蔽ctrl，预防ctrl+c 
+				document.onkeydown = function () {
+				  // 禁止ctrl按键的使用
+				  if (event.ctrlKey) {
+					window.event.returnValue = false;
+					return false;
+				  }
+				}
+			</script>
+		</div>
+		<div class="tabs-box">
+		      <@_includePlace path="/dd821437-f1fe-4dbc-92be-012a8e4df377.html"/> <#-- 回显点在图上位置 -->
+		</div>
+		 <div class="tabs-box">
+		      <@_includePlace path="/c64f2f48-00d6-454b-8a0a-a2ce9edaac50.html"/> <#-- TAS图 -->
+		</div>
+		 <div class="tabs-box">
+		  <@_includePlace path="/cdf0dc1a-29e5-4509-951b-4b5695d09a76.html"/> <#-- SiO2-K2O图解 -->
+		</div> 
+		<div class="tabs-box">
+		     <@_includePlace path="/5b0f7398-f819-451b-b0cc-025b2b9d1f0a.html"/> <#-- ACNK图解 -->
+		</div>
+
+         <div class="tabs-box">
+		    <@_includePlace path="/12c11cf3-60f7-47ba-ad60-538a2add69b7.html"/> <#-- Pearce图 -->
+		</div>
+		<div class="tabs-box">
+		   <@_includePlace path="/1173308d-2bef-4788-bcd9-b074f267b86d.html"/> <#-- 二维核密度图 -->
+		</div>
+    </div>
+		
+	
+	
+  <@_includePlace path="/53d9aa26-ab9a-41df-90d5-efc5307c3b3e.html"/> <#-- footer -->
+	
+	<#--	<script >var  PAGE_NEED_LOGIN=true;   </script>
+		<@_includePlace path="/e6620450-3c68-4661-a7ea-4df4b7eb1b9e.html"/>  是否需要登录 -->
+		  
+		  
+		  
+    <script src="${site.dynamicPath}resource/js/cms.analytics.js"></script>
+    <script>
+        var ca = cmsAnalytics();
+        var url='${site.dynamicPath}api/visit/record';
+        if("string" ==typeof itemString){
+            url=url+"?"+itemString;
+        }
+        ca.report(url);
+		
+		 // Tab切换的代码
+        $('.tabs li').on('click', function () {
+            // 给当前选中的li添加一个选中的样式，除了点击当前的这个样式其他的删除样式
+            $(this).addClass('active').siblings().removeClass('active');
+            // 第一种写法
+            // $('.boxs > div').hide().eq($('.tabs li').index(this)).show();
+            // 第二种写法
+            // siblings:除自己以外
+            // 当前指向的上级父元素的下一个子元素的索引下标出现，让其他的消失
+            $(this).parent().next().children().eq($(this).index()).css('display', 'block').siblings().css('display', 'none');
+        })
+
+	
+			// dom加载完成后执行的函数
+		$(document).ready(function(){
+			 //从session中获取之前的设置字段
+		    var ptlist=sessionStorage.getItem("polygon");
+			var condition=sessionStorage.getItem("condition");
+			var	mycolumnslist=	 sessionStorage.getItem("mycolumns");
+			var totalCount=  sessionStorage.getItem("totalcount"); 
+			var	polygonCheck=	 sessionStorage.getItem("polygoncheck"); 
+			var conditionCheck=  sessionStorage.getItem("conditioncheck"); 
+			 var k_node = sessionStorage.getItem('k_node');
+		     var owner=  sessionStorage.getItem('owner');
+		     var scope =  sessionStorage.getItem('scope');
+		
+			 $('#tablename').text(k_node);
+			var mycolumns =[];
+			var mylist = mycolumnslist.split(',');
+			var myColumnDefs=[];
+			var hiddenColumns=['longitude','latitude','ref_all_authors'];  //需要隐藏的字段 
+			//var hiddenColumns=['ref_all_authors'  ];  //需要隐藏的字段 
+			var exportColumns=[];
+			for(var i=0;i<mylist.length;i++){
+				//added by sunchao
+				  let str=""+mylist[i]
+				  if(str.indexOf("Grain No.")>=0)
+						mylist[i]=str.replace("Grain No.","Grain_No")
+  				 mycolumns.push({'title':mylist[i],'data':mylist[i]});
+		        //暂时屏蔽经纬度和参考文献
+				   if(hiddenColumns.indexOf(mylist[i].toLowerCase())!=-1  ){
+						   myColumnDefs.push({target:i,visible:false,searchable:false });
+				   }else{
+					   exportColumns.push({'title':mylist[i],'data':mylist[i]});
+				   }
+			}
+			////console.log("Hide ",myColumnDefs);
+			
+			//console.log("exportColumns ",exportColumns);
+			
+			//console.log("mycolumns ",mycolumns);
+			//console.log("mylist ",mylist);
+			
+			if (polygonCheck == false )
+				ptlist='';
+			if (conditionCheck==false)
+				condition='';
+			//console.log(mycolumns);
+		
+			//根据返回值重建 DataTable----- 该函数废弃
+			function buildDataTable( rtnColumns,rtnData){
+			    let mycolumns=[],myColumnDefs=[],exportColumns=[];
+				
+				for(var i=0;i<rtnColumns.length;i++){
+						 mycolumns.push({'title':rtnColumns[i],'data':rtnColumns[i],'cellType':'th','width':30  });
+						//暂时屏蔽经纬度和参考文献
+						 if(hiddenColumns.indexOf(rtnColumns[i].toLowerCase())!=-1  ){
+								   myColumnDefs.push({target:i,visible:false,searchable:false });
+						   }else{
+							   exportColumns.push({'title':mylist[i],'data':mylist[i]});
+						 }
+				}
+				console.log(" 重构table：",mycolumns,rtnData);
+				    mytable.destroy();
+				   // $('#searchResult').fnDestroy(); //销毁
+					mytable= $('#searchResult').DataTable( {
+						    destroy:true,//销毁表格结构这个是重点
+				             deferRender: true,
+						    autoWidth:true,
+							pageLength:25,
+							 //"responsive": false,
+							processing: true,
+							serverSide: false,
+						    searching: true,
+						    ordering: true,
+						     scrollY:800,
+						     scrollX:1000,
+				             columnDefs: myColumnDefs,
+      						data: rtnData, //填充表格数据
+        					columns : mycolumns,  //填充表头数据
+    						//columnDefs: myColumnDefs,		
+					});
+				
+			}
+			
+			
+			
+			// 创建datatable
+			var mytable= $('#searchResult') .DataTable( {
+				       destroy:true,//销毁表格结构这个是重点
+				         deferRender: true,
+						    "autoWidth":true,
+							"pageLength":25,
+							 "responsive": false,
+							"processing": true,
+							"serverSide": false,
+						    "searching": true,
+						    "ordering": true,
+						     "scrollY":800,
+						     "scrollX":1000,
+				             columnDefs: myColumnDefs,
+							"ajax":  {
+								"type":"get",
+								"url": "${site.dynamicPath!}fastapi/kdata/"+k_node+"/"+owner,
+								"data": {'boundary':ptlist,'condition':condition,'scope':scope,'start':0,'length':totalCount}
+							},
+							/*dom: 'Blfrtip',
+								   "buttons": [  
+											{
+												extend: 'excel',
+												text:"Save...",
+												messageTop: 'The copyright of the data you downloaded belongs to the authors. Please abide by the relevant DDE regulations and the team agreement when using the data, and please quote it from this website when publishing.<br>您下载的数据权益属于原作者，请您在使用数据时遵守相关DDE的规定以及团队的约定，并请在发表时一定标注上引自于本网站。https://petrology.deep-time.org/',
+												action: function ( e, dt, node, config ) {
+													//自定义事件，处理登录事宜
+													 //判断是否登录
+													 	var mycookie=$.cookie('dsAuthInfo');
+														if(mycookie==null || mycookie==undefined || mycookie==""){
+															//需要登录
+															 var rtnUrl=window.location.pathname; 
+			  			 									window.location.href='/login.html?returnUrl='+rtnUrl; 
+															return true;
+														}
+													  $.fn.dataTable.ext.buttons.excelHtml5.action.call(this, e, dt, node, config); //调用
+											     },
+											}
+									   //'colvis'
+								   ],  */
+							"columns":exportColumns,
+							} ).on('xhr.dt', function ( e, settings, json, xhr ) {
+									//added by Sun
+								/*	for(var i=0;i<json.columns.length;i++){
+											  if (json.columns[i].indexOf("Grain No.")>=0)
+												  json.columns[i]=json.columns[i].replace("Grain No.","Grain_No")
+
+								  } */
+								console.log('data 到达',json.columns);
+				                //重新构造datatable
+				               // buildDataTable(json.columns,json.data);
+				
+								// console.log('jsondata:',json.data);	
+							//设置图上数据
+							viewDataOnMap(json.columns,json.data);
+				           setData2ACNK(json.columns,json.data,json.numbercolumns);
+				          //触发TAS绘图
+							setData2SiO2K2O(json.columns,json.data,json.numbercolumns);
+				           setData2TAS(json.columns,json.data,json.numbercolumns);
+				           setData2Pearce(json.columns,json.data,json.numbercolumns);
+				           setData2Density(json.columns,json.numbercolumns,json.data);
+						} );
+			// 创建结束
+			
+		});
+		
+		
+		
+    </script>
+</body>
+</html>

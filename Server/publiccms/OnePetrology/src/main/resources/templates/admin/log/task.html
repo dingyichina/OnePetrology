@@ -1,0 +1,78 @@
+<@_logTaskList taskId=taskId startCreateDate=startCreateDate endCreateDate=endCreateDate success=success pageIndex=pageNum pageSize=numPerPage>
+<div class="pageHeader">
+    <form class="pagerForm" autocomplete="off" onsubmit="return navTabSearch(this);" method="post">
+        <#include "../include_page/parameters.html"/>
+        <div class="searchBar">
+            <ul class="searchContent">
+            <#if taskId?has_content>
+                <li>
+                    <label><@t.page 'task'/>:</label>
+                    <@_sysTask id=taskId>${object.name}</@_sysTask>
+                </li>
+            </#if>
+                <li>
+                    <label><@t.page 'result'/>:</label>
+                    <select class="combox" name="success">
+                        <option value=""${(!success?has_content)?then(' selected="true"','')?no_esc}><@t.page 'unrestricted'/></option>
+                        <option value="true"${(success?has_content&&"true"=success)?then(' selected="true"','')?no_esc}><@t.page 'success'/></option>
+                        <option value="false"${(success?has_content&&"false"=success)?then(' selected="true"','')?no_esc}><@t.page 'fail'/></option>
+                    </select>
+                </li>
+                <li>
+                    <label><@t.page 'exec_date'/>:</label>
+                    <input type="text" name="startCreateDate" class="date" size="10" autocomplete="off" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d}" value="${startCreateDate!}" />
+                    <span>-</span>
+                    <input type="text" name="endCreateDate" class="date" size="10" autocomplete="off" dateFmt="yyyy-MM-dd" maxDate="{%y}-%M-{%d+1}" value="${endCreateDate!}" />
+                </li>
+            </ul>
+            <div class="subBar">
+                <ul>
+                    <li>
+                        <button type="submit" class="buttonActive"><@t.page 'button.search'/></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="pageContent">
+    <div class="panelBar">
+        <ul class="toolBar">
+            <li><a href="logTask/delete?_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.batch_delete'/>" target="selectedTodo" rel="ids"><i class="icon-trash icon-large"></i> <@t.page 'button.batch_delete'/></a></li>
+        </ul>
+    </div>
+    <table class="table" width="100%" layoutH>
+        <thead>
+            <tr>
+                <th width="20"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+                <th><@t.page 'task'/></th>
+                <th><@t.page 'start_time'/></th>
+                <th><@t.page 'end_time'/></th>
+                <th><@t.page 'result'/></th>
+                <th><@t.page 'operate'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+                <@t.merge 'taskIds' a.taskId!/>
+            </#list>
+            <@_sysTask ids=t.taskIds!><#assign taskMap=map!/></@_sysTask>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.id}">
+                <td><input name="ids" value="${a.id}" type="checkbox"></td>
+                <td>
+                    ${(taskMap[a.taskId?string].name)!}
+                </td>
+                <td>${a.begintime!}</td>
+                <td>${a.endtime!}</td>
+                <td>
+                    <#if a.endtime?has_content>${a.success?string(t.pageMessage('success'),t.pageMessage('fail'))}</#if>
+                </td>
+                <td class="wrap"><a href="log/taskView.html?id=${a.id}" class="btnText" target="dialog" rel="viewTask"><@t.page 'button.view_more'/></a></td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</div>
+</@_logTaskList>

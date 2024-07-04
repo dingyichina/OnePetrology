@@ -1,0 +1,22 @@
+{
+    "档号+室编件号": "dc.identifier.FN",
+    "题名": "dc.title",
+    "写信人": "dc.contributor.sender",
+    "收信人": "dc.contributor.addressee",
+    "信件摘要": "dc.description.abstract",
+    "书写人（誊抄人）": "dc.contributor.write",
+    "书写用笔及纸张": "dcterms.format.materials",
+    "创建日期": "dc.date.created",
+     "是否原件": "dcterms.provenance.isOriginal",
+    "原件保存地": "dcterms.relation.originalDocumentLocation",
+    "载体代码": "dcterms.format.medium",
+    "存放路径": "dc.description.storagePath",
+     "语种": "dc.language.iso",
+    "提供者": "dc.description.provider",
+    "提供时间": "dc.date.provided",
+    "备注": "dc.description.comment",
+    "关联科学家": "relation.isScientistOfLetter",
+    "dspace.entity.type": "Letter",
+    "collection_uuid":"584360a1-8aeb-4d9e-a55c-e36d4beafa3f",
+    "savepath":"存放路径"
+}

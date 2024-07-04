@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <@_includePlace path="/68b64403-920d-4df4-a441-14eafda88c71.html"/> <#-- head-link -->
+	<@_includePlace path="/96ecbd6b-32b1-4196-a292-001106505fce.html"/> <#-- head-gis-link -->
+</head>
+<body>
+	<@_includePlace path="/a496f82d-4dde-4400-b5f6-28d0f1816036.html"/> <#-- header -->
+	    <main>Welcome to One Deposit, the database is building ......</main>
+	<@_includePlace path="/8523bdd5-04bd-4177-92cb-de85ba59ea44.html"/> <#-- home-gis-2d3d -->
+
+    <footer>
+   <@_includePlace path="/80cea668-48f8-4114-b6f9-93d6419047da.html"/> <#-- footer -->
+    </footer>
+    <script src="${site.dynamicPath}resource/js/cms.analytics.js"></script>
+    <script>
+        var ca = cmsAnalytics();
+        var url='${site.dynamicPath}api/visit/record';
+        if("string" ==typeof itemString){
+            url=url+"?"+itemString;
+        }
+        ca.report(url);
+    </script>
+</body>
+</html>

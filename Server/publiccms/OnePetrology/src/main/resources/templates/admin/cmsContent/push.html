@@ -1,0 +1,40 @@
+<div class="pageFormContent" layoutH>
+    <h2 class="contentTitle"><@t.page 'recommended_to'/></h2>
+    <div class="unit">
+<@_contentRelatedList relatedContentId=contentId>
+        <p>
+            <label><@t.page 'content'/>:</label><label><@t.page 'total_count' page.totalCount/></label>
+            <a class="button" href="cmsContent/push_content.html?contentId=${contentId}" target="dialog" mask="true"><@t.page 'button.push'/></a>
+        </p>
+        <p>
+    <#list page.list as a>
+        <@t.merge 'contentIds' a.contentId!/>
+    </#list>
+    <@_content ids=t.contentIds!><#assign contentMap=map!/></@_content>
+    <#list page.list as a>
+            <a href="${(contentMap[a.contentId?string].url)!}" target="_blank">${(contentMap[a.contentId?string].title)!}</a> (${(a.clicks)!}) <a href="cmsContent/unrelated?id=${a.id}&_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.delete'/>" target="ajaxTodo" callback="$.pdialog.closeCurrent()"><@t.page 'button.delete'/></a><br/>
+    </#list>
+        </p>
+</@_contentRelatedList>
+    </div>
+    <div class="divider"></div>
+    <div class="unit">
+<@_placeList itemType='content' itemId=contentId>
+        <p>
+            <label><@t.page 'place'/>:</label><label><@t.page 'total_count' page.totalCount/></label>
+            <a class="button" href="cmsPlace/push.html?itemType=content&itemId=${contentId}" target="dialog" mask="true"><@t.page 'button.push'/></a>
+        </p>
+        <p>
+    <#list page.list as a>
+        ${a.path[0..a.path?last_index_of('/')]}<@_placeMetadata path=a.path>${(object.alias)!}</@_placeMetadata> (${a.clicks}) <a href="cmsPlace/delete?ids=${a.id}&_csrf=<@_csrfToken admin=true/>&path=${(a.path?url)!}" title="<@t.page 'confirm.delete'/>" target="ajaxTodo" callback="$.pdialog.closeCurrent()"><@t.page 'button.delete'/></a><br/>
+    </#list>
+        </p>
+</@_placeList>
+    </div>
+    <div class="divider"></div>
+</div>
+<div class="formBar">
+    <ul>
+        <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+    </ul>
+</div>

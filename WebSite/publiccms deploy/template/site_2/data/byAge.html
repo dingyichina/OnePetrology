@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<@_includePlace path="/63241365-51a7-4903-89e6-7619031fa9fe.html"/> <#-- Header-link -->
+	<link href="${site.sitePath}css/earthchem.css" rel="stylesheet">
+   <style type="text/css">
+		td, th {
+				 padding: 3px;
+			}
+
+	</style>
+
+</head>
+<body  class="menu-always-on-top">
+   <@_includePlace path="/c8014652-e25e-4c4d-a3ca-9aad7fa0385c.html"/> <#-- header -->
+	<div class="wrapper" style="margin-top:100px;">
+		<!-- end header -->
+
+
+<h1>Set Age</h1>
+<form id="ageInfo" action="sampleInfo/getSampleListByAge" method="post">
+	<table class="ku_grid">
+		<tbody><tr>
+			<td><h4>Age Span</h4>
+			</td>
+			<td>
+			Min: <input type="text"  id="age_min"  name="age_min" size="5" value="" οnpaste="return false" οndragenter="return false"  οnkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')"> Ma
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Max: <input type="text" id="age_max" name="age_max" size="5" value="" οnpaste="return false" οndragenter="return false"  οnkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')"> Ma
+			</td>
+		</tr>
+		<tr>
+		<td style="border:none" colspan="2"><div align="center">or</div></td>
+		</tr>
+		<tr>
+			<td><h4>Exact Age</h4>
+			</td>
+			<td>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="text" id="age" name="age" size="5" value="" οnpaste="return false" οndragenter="return false"  οnkeyup="this.value=check(this.value)"> Ma
+			</td>
+		</tr>
+		<tr>
+		<td style="border:none" colspan="2"><div align="center">or</div></td>
+		</tr>
+		<tr>
+			<td><h4>Geological Age</h4>
+			</td>
+			<td>
+			<select name="geoage" id="geoage">
+			<option value="">Select Age...
+			</option><option value="1"> CENOZOIC ( 0 Ma - 65.5 Ma )
+</option><option value="2"> QUATERNARY ( 0 Ma - 2.6 Ma )
+</option><option value="3"> HOLOCENE ( 0 Ma - 0.01 Ma )
+</option><option value="4"> PLEISTOCENE ( 0.01 Ma - 2.6 Ma )
+</option><option value="5"> CALABRIAN ( 0.01 Ma - 1.8 Ma )
+</option><option value="6"> GELASIAN ( 1.8 Ma - 2.6 Ma )
+</option><option value="7"> TERTIARY ( 2.6 Ma - 65.5 Ma )
+</option><option value="8"> NEOGENE ( 2.6 Ma - 23 Ma )
+</option><option value="9"> PLIOCENE ( 2.6 Ma - 5.3 Ma )
+</option><option value="10"> PIACENZIAN ( 2.6 Ma - 3.6 Ma )
+</option><option value="11"> ZANCLEAN ( 3.6 Ma - 5.3 Ma )
+</option><option value="12"> MIOCENE ( 5.3 Ma - 23 Ma )
+</option><option value="13"> MESSINIAN ( 5.3 Ma - 7.2 Ma )
+</option><option value="14"> TORTONIAN ( 7.3 Ma - 11.6 Ma )
+</option><option value="15"> SERRAVALLIAN ( 11.6 Ma - 13.8 Ma )
+</option><option value="16"> LANGHIAN ( 13.8 Ma - 16 Ma )
+</option><option value="17"> BURDIGALIAN ( 16 Ma - 20.4 Ma )
+</option><option value="18"> AQUITANIAN ( 20.4 Ma - 23 Ma )
+</option><option value="19"> OLIGOCENE ( 23 Ma - 33.9 Ma )
+</option><option value="20"> CHATTIAN ( 23 Ma - 28.4 Ma )
+</option><option value="21"> RUPELIAN ( 28.4 Ma - 33.9 Ma )
+</option><option value="22"> EOCENE ( 33.9 Ma - 55.8 Ma )
+</option><option value="23"> PRIABONIAN ( 33.9 Ma - 37.2 Ma )
+</option><option value="24"> BARTONIAN ( 37.2 Ma - 40.4 Ma )
+</option><option value="25"> LUTETIAN ( 40.4 Ma - 48.6 Ma )
+</option><option value="26"> YPRESIAN ( 48.6 Ma - 55.8 Ma )
+</option><option value="27"> PALEOCENE ( 55.8 Ma - 65.5 Ma )
+</option><option value="28"> THANETIAN ( 55.8 Ma - 58.7 Ma )
+</option><option value="29"> SELANDIAN ( 58.7 Ma - 61.7 Ma )
+</option><option value="30"> DANIAN ( 61.7 Ma - 65.5 Ma )
+</option><option value="31"> MESOZOIC ( 65.5 Ma - 251 Ma )
+</option><option value="32"> CRETACEOUS ( 65.5 Ma - 145.5 Ma )
+</option><option value="33"> LATE CRETACEOUS ( 65.5 Ma - 99.6 Ma )
+</option><option value="34"> MAASTRICHTIAN ( 65.5 Ma - 70.6 Ma )
+</option><option value="35"> CAMPANIAN ( 70.6 Ma - 83.5 Ma )
+</option><option value="36"> SANTONIAN ( 83.5 Ma - 85.8 Ma )
+</option><option value="37"> CONIACIAN ( 85.8 Ma - 89.3 Ma )
+</option><option value="38"> TURONIAN ( 89.3 Ma - 93.5 Ma )
+</option><option value="39"> CENOMANIAN ( 93.5 Ma - 99.6 Ma )
+</option><option value="40"> EARLY CRETACIOUS ( 99.6 Ma - 145.5 Ma )
+</option><option value="41"> ALBIAN ( 99.6 Ma - 112 Ma )
+</option><option value="42"> APTIAN ( 112 Ma - 125 Ma )
+</option><option value="43"> BARREMIAN ( 125 Ma - 130 Ma )
+</option><option value="44"> HAUTERIVIAN ( 130 Ma - 136 Ma )
+</option><option value="45"> VALANGINIAN ( 136 Ma - 140 Ma )
+</option><option value="46"> BERRIASIAN ( 140 Ma - 145.5 Ma )
+</option><option value="47"> JURASSIC ( 145.5 Ma - 201.6 Ma )
+</option><option value="48"> LATE JURASSIC ( 145.5 Ma - 161 Ma )
+</option><option value="49"> TITHONIAN ( 145.5 Ma - 151 Ma )
+</option><option value="50"> KIMMERIDGIAN ( 151 Ma - 156 Ma )
+</option><option value="51"> OXFORDIAN ( 156 Ma - 161 Ma )
+</option><option value="52"> MIDDLE JURASSIC ( 161 Ma - 176 Ma )
+</option><option value="53"> CALLOVIAN ( 161 Ma - 165 Ma )
+</option><option value="54"> BATHONIAN ( 165 Ma - 168 Ma )
+</option><option value="55"> BAJOCIAN ( 168 Ma - 172 Ma )
+</option><option value="56"> AALENIAN ( 172 Ma - 176 Ma )
+</option><option value="57"> EARLY JURASSIC ( 176 Ma - 201.6 Ma )
+</option><option value="58"> TOARCIAN ( 176 Ma - 183 Ma )
+</option><option value="59"> PLIENSBACHIAN ( 183 Ma - 190 Ma )
+</option><option value="60"> SINEMURIAN ( 190 Ma - 197 Ma )
+</option><option value="61"> HETTANGIAN ( 197 Ma - 201.6 Ma )
+</option><option value="62"> TRIASSIC ( 201.6 Ma - 251 Ma )
+</option><option value="63"> LATE TRIASSIC ( 201.6 Ma - 235 Ma )
+</option><option value="64"> RHAETIAN ( 201.6 Ma - 204 Ma )
+</option><option value="65"> NORIAN ( 204 Ma - 228 Ma )
+</option><option value="66"> CARNIAN ( 228 Ma - 235 Ma )
+</option><option value="67"> MIDDLE TRIASSIC ( 235 Ma - 245 Ma )
+</option><option value="68"> LADINIAN ( 235 Ma - 241 Ma )
+</option><option value="69"> ANISIAN ( 241 Ma - 245 Ma )
+</option><option value="70"> EARLY TRIASSIC ( 245 Ma - 251 Ma )
+</option><option value="71"> OLENEKIAN ( 245 Ma - 250 Ma )
+</option><option value="72"> INDUAN ( 250 Ma - 251 Ma )
+</option><option value="73"> PALEOZOIC ( 251 Ma - 542 Ma )
+</option><option value="74"> PERMIAN ( 251 Ma - 299 Ma )
+</option><option value="75"> LATE PERMIAN ( 251 Ma - 260 Ma )
+</option><option value="76"> CHANGHSINGIAN ( 251 Ma - 254 Ma )
+</option><option value="77"> WUCHIAPINGIAN ( 254 Ma - 260 Ma )
+</option><option value="78"> MIDLE PERMIAN ( 260 Ma - 271 Ma )
+</option><option value="79"> CAPITANIAN ( 260 Ma - 266 Ma )
+</option><option value="80"> WORDIAN ( 266 Ma - 268 Ma )
+</option><option value="81"> ROADIAN ( 268 Ma - 271 Ma )
+</option><option value="82"> EARLY PERMIAN ( 271 Ma - 299 Ma )
+</option><option value="83"> KUNGURIAN ( 271 Ma - 276 Ma )
+</option><option value="84"> ARTINSKIAN ( 276 Ma - 284 Ma )
+</option><option value="85"> SAKMARIAN ( 284 Ma - 297 Ma )
+</option><option value="86"> ASSELIAN ( 297 Ma - 299 Ma )
+</option><option value="87"> CARBONIFEROUS ( 299 Ma - 359 Ma )
+</option><option value="88"> PENNSYLVANIAN ( 299 Ma - 318 Ma )
+</option><option value="89"> GZELIAN ( 299 Ma - 304 Ma )
+</option><option value="90"> KASIMOVIAN ( 304 Ma - 306 Ma )
+</option><option value="91"> MOSCOVIAN ( 306 Ma - 312 Ma )
+</option><option value="92"> BASHKIRIAN ( 312 Ma - 318 Ma )
+</option><option value="93"> MISSISSIPPIAN ( 318 Ma - 359 Ma )
+</option><option value="94"> SERPUKHOVIAN ( 318 Ma - 326 Ma )
+</option><option value="95"> VISEAN ( 326 Ma - 345 Ma )
+</option><option value="96"> TOURNAISIAN ( 345 Ma - 359 Ma )
+</option><option value="97"> DEVONIAN ( 359 Ma - 416 Ma )
+</option><option value="98"> LATE DEVONIAN ( 359 Ma - 385 Ma )
+</option><option value="99"> FAMENNIAN ( 359 Ma - 374 Ma )
+</option><option value="100"> FRASNIAN ( 374 Ma - 385 Ma )
+</option><option value="101"> MIDDLE DEVONIAN ( 385 Ma - 398 Ma )
+</option><option value="102"> GIVETIAN ( 385 Ma - 392 Ma )
+</option><option value="103"> EIFELIAN ( 392 Ma - 398 Ma )
+</option><option value="104"> EARLY DEVONIAN ( 398 Ma - 416 Ma )
+</option><option value="105"> EMSIAN ( 398 Ma - 407 Ma )
+</option><option value="106"> PRAGHIAN ( 407 Ma - 411 Ma )
+</option><option value="107"> LOCKHOVIAN ( 411 Ma - 416 Ma )
+</option><option value="108"> SILURIAN ( 416 Ma - 444 Ma )
+</option><option value="109"> LATE SILURIAN ( 416 Ma - 423 Ma )
+</option><option value="110"> PRIDOLIAN ( 416 Ma - 419 Ma )
+</option><option value="111"> LUDFORDIAN ( 419 Ma - 421 Ma )
+</option><option value="112"> GORSTIAN ( 421 Ma - 423 Ma )
+</option><option value="113"> MIDDLE SILURIAN ( 423 Ma - 428 Ma )
+</option><option value="114"> HOMERIAN ( 423 Ma - 426 Ma )
+</option><option value="115"> SHEINWOODIAN ( 426 Ma - 428 Ma )
+</option><option value="116"> EARLY SILURIAN ( 428 Ma - 444 Ma )
+</option><option value="117"> TELYCHIAN ( 428 Ma - 436 Ma )
+</option><option value="118"> AERONIAN ( 436 Ma - 439 Ma )
+</option><option value="119"> RHUDDANIAN ( 439 Ma - 444 Ma )
+</option><option value="120"> ORDOVICIAN ( 444 Ma - 488 Ma )
+</option><option value="121"> LATE ORDOVICIAN ( 444 Ma - 461 Ma )
+</option><option value="122"> HIRNANTIAN ( 444 Ma - 446 Ma )
+</option><option value="123"> KATIAN ( 446 Ma - 455 Ma )
+</option><option value="124"> SANDBIAN ( 455 Ma - 461 Ma )
+</option><option value="125"> MIDDLE ORDOVICIAN ( 461 Ma - 472 Ma )
+</option><option value="126"> DARRIWILIAN ( 461 Ma - 468 Ma )
+</option><option value="127"> DAPINGIAN ( 468 Ma - 472 Ma )
+</option><option value="128"> EARLY ORDOVICIAN ( 472 Ma - 488 Ma )
+</option><option value="129"> FLOIAN ( 472 Ma - 479 Ma )
+</option><option value="130"> TREMADOCIAN ( 479 Ma - 488 Ma )
+</option><option value="131"> CAMBRIAN ( 488 Ma - 542 Ma )
+</option><option value="132"> FURONGIAN ( 488 Ma - 501 Ma )
+</option><option value="133"> STAGE 10 ( 488 Ma - 492 Ma )
+</option><option value="134"> STAGE 9 ( 492 Ma - 496 Ma )
+</option><option value="135"> PAIBIAN ( 496 Ma - 501 Ma )
+</option><option value="136"> SERIES 3 ( 501 Ma - 510 Ma )
+</option><option value="137"> GUZHANGIAN ( 501 Ma - 503 Ma )
+</option><option value="138"> DRUMIAN ( 503 Ma - 507 Ma )
+</option><option value="139"> STAGE 5 ( 507 Ma - 510 Ma )
+</option><option value="140"> SERIES 2 ( 510 Ma - 521 Ma )
+</option><option value="141"> STAGE 4 ( 510 Ma - 517 Ma )
+</option><option value="142"> STAGE 3 ( 517 Ma - 521 Ma )
+</option><option value="143"> TERREVEUVIAN ( 521 Ma - 542 Ma )
+</option><option value="144"> STAGE 2 ( 521 Ma - 535 Ma )
+</option><option value="145"> FORTUNIAN ( 535 Ma - 542 Ma )
+</option><option value="146"> PRECAMBRIAN ( 542 Ma - 3850 Ma )
+</option><option value="147"> PROTEROZOIC ( 542 Ma - 2500 Ma )
+</option><option value="148"> NEOPROTEROZOIC ( 542 Ma - 1000 Ma )
+</option><option value="149"> EDIACARAN ( 542 Ma - 630 Ma )
+</option><option value="150"> CRYOGENIAN ( 630 Ma - 850 Ma )
+</option><option value="151"> TONIAN ( 850 Ma - 1000 Ma )
+</option><option value="152"> MESEOPROTEROZOIC ( 1000 Ma - 1600 Ma )
+</option><option value="153"> STENIAN ( 1000 Ma - 1200 Ma )
+</option><option value="154"> ECTASIAN ( 1200 Ma - 1400 Ma )
+</option><option value="155"> CALYMMIAN ( 1400 Ma - 1600 Ma )
+</option><option value="156"> PALEOPROTEROZOIC ( 1600 Ma - 2500 Ma )
+</option><option value="157"> STATHERIAN ( 1600 Ma - 1800 Ma )
+</option><option value="158"> OROSIRIAN ( 1800 Ma - 2050 Ma )
+</option><option value="159"> RHYACIAN ( 2050 Ma - 2300 Ma )
+</option><option value="160"> SIDERIAN ( 2300 Ma - 2500 Ma )
+</option><option value="161"> ARCHEAN ( 2500 Ma - 3850 Ma )
+</option><option value="162"> NEOARCHEAN ( 2500 Ma - 2800 Ma )
+</option><option value="163"> MESOARCHEAN ( 2800 Ma - 3200 Ma )
+</option><option value="164"> PALEOARCHEAN ( 3200 Ma - 3600 Ma )
+</option><option value="165"> EOARCHEAN ( 3600 Ma - 3850 Ma )
+</option><option value="166"> HADEAN ( &gt; 3850 Ma )
+			</option></select>
+			</td>
+		</tr>
+		<tr>
+		<td style="border:none" colspan="2"><div align="center">or</div></td>
+		</tr>
+		<tr>
+			<td><h4>Age Exists</h4>
+			</td>
+			<td>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="checkbox" name="ageexists" id="ageexists" value="yes"><br>
+			Use this option to return all samples that have age values associated with them.
+			</td>
+		</tr>
+		<tr>
+			<td style="border:none" colspan="2" align="right">
+				<input class="submitbutton" type="button"  onclick="return doSubmit();"   value="Submit">
+			</td>
+		</tr>
+
+	</tbody></table>
+	<input type="hidden" name="pkey" value="3534378">
+	<input type="hidden" name="glossary_pkey" value="">
+</form>
+
+
+
+	</script><link rel="stylesheet" type="text/css" href="src/skin/classic/skin.css"><script type="text/javascript" src="src/skin/classic/skin.js"></script><script type="text/javascript" src="src/lang/shadowbox-en.js"></script><script type="text/javascript" src="src/player/shadowbox-flv.js"></script><script type="text/javascript" src="src/player/shadowbox-html.js"></script><script type="text/javascript" src="src/player/shadowbox-iframe.js"></script><script type="text/javascript" src="src/player/shadowbox-img.js"></script><script type="text/javascript" src="src/player/shadowbox-qt.js"></script><script type="text/javascript" src="src/player/shadowbox-swf.js"></script><script type="text/javascript" src="src/player/shadowbox-wmp.js"></script>
+<script language="javascript" type="text/javascript"> 
+	function check(str){
+	var temp=""
+	for(var i=0;i<str.length;i++){
+		if(str.charCodeAt(i)>0&&str.charCodeAt(i)<255){
+			temp+=str.charAt(i)
+			alert(temp)
+			return temp
+		}
+	}
+}
+	
+					function doSubmit(){
+						var age=$("#age").val();
+						if(age==null||age=="")
+							age=0;
+						var age_min=$("#age_min").val();
+						var age_max=$("#age_max").val();
+						var geoage=$("#geoage").val();
+						var ageexists="no"
+						
+						if($("#ageexists").prop("checked"))
+						 	ageexists=$("#ageexists").val();
+					
+					
+						if(isNaN(Number(age))||isNaN(Number(age_min))||isNaN(Number(age_max))){
+						   alert("Please input a number, Thanks!");
+						   return false;
+						   }
+						sessionStorage.setItem("age_min",age_min);
+						sessionStorage.setItem("age_max",age_max);
+						 if(age==0)
+							 age=-1;
+						sessionStorage.setItem("age",age);
+						sessionStorage.setItem("geoage",geoage);
+						sessionStorage.setItem("ageexists",ageexists);
+						//alert("age_min="+age_min+";"+"age_max="+age_max+";"+"age="+age+";"+"geoage="+geoage);
+						sessionStorage.setItem("user","dde");
+						window.location.href="${site.dynamicPath}search/options.html";
+						return true;
+					}
+	
+	
+</script>
+
+
+
+    <@_includePlace path="/f95e232b-027b-40ae-9e2d-0a6385f7c418.html"/> <#-- footer -->
+    <script src="${site.dynamicPath}resource/js/cms.analytics.js"></script>
+    <script>
+        var ca = cmsAnalytics();
+        var url='${site.dynamicPath}api/visit/record';
+        if("string" ==typeof itemString){
+            url=url+"?"+itemString;
+        }
+        ca.report(url);
+    </script>
+	
+</body>
+</html>

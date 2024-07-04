@@ -1,0 +1,199 @@
+	<style>
+		.left-bar{
+			position:fixed;
+			top:100px;
+			left:10px;
+			float:left；
+			border:1px solid;
+			z-index:999;
+			width:220px;
+			height:800px;
+			overflow-y:auto;
+		}
+		.right-bar{
+			position:fixed;
+			top:100px;
+			right:10px;
+			float:right；
+			border:1px solid;
+			
+			z-index:999;
+			width:220px;
+			height:800px;
+			overflow-y:auto;
+			overflow-x:visible;
+		}
+		
+	</style>
+
+	<div class ="left-bar" id="left-bar">
+			<h5>Major Database</h5>
+		    <div class="row">
+				      <div class="col-md-12 text-ctn"  style="margin:10px;  padding-left:30px;background-color:#F0F0F0; font-size:0.8em;">
+						  <span> <a href="${site.dynamicPath!}search/classfication.html"> Igneous rocks</a></span>
+				      </div>
+					  <div class="col-md-12 text-ctn"  style="margin:10px;  padding-left:30px;background-color:#F0F0F0;font-size:0.8em;">
+						  <span><a href="javascript: queryByFilter(2); ">Zircon Age</a></span>
+				      </div>
+					<div class="col-md-12 text-ctn"  style="margin:10 px;  padding-left:30px;background-color:#F0F0F0;font-size:0.8em;">
+						  <span><a href="javascript: queryByFilter(3); ">&nbsp  Element</a></span>
+				      </div>
+					<div class="col-md-12 text-ctn"  style="margin:10px;  padding-left:30px;background-color:#F0F0F0;font-size:0.8em;">
+						  <span><a href="javascript: queryByFilter(4); ">Nd Isotope</a></span>
+				      </div>
+					 <div class="col-md-12 text-ctn"  style="margin:10px;  padding-left:30px;background-color:#F0F0F0;font-size:0.8em;">
+						  <span><a href="javascript: queryByFilter(5); ">Hf Isotope</a></span>
+				      </div>
+					 <div class="col-md-12 text-ctn"  style="margin:10px;  padding-left:30px;background-color:#F0F0F0;font-size:0.8em;">
+						  <span><a href="javascript: queryByFilter(6); ">Other Isotopes</a></span>
+				      </div>
+				      <div class="col-md-12 text-ctn"  style="margin:10px;  padding-left:10px;background-color:#F0F0F0;font-size:0.8em;">
+						  <span><a href="javascript: queryByFilter(99); ">more ...</a></span>
+				      </div>
+		    </div>
+			<script type="text/javascript">
+				  //预置的查询条件
+			      function  queryByFilter( i ){
+				  	   if(i ==1){
+						   
+						   
+					   }else if( i==2){
+						   
+					   }
+				  }	
+				
+		     </script>
+			<h5>Thematic Database</h5>
+		 <@_category code="subject">
+			      <@_contentList categoryId=object.id containChild=true hasCover=true pageSize=9>
+			             <div class="row">
+			                     <#list page.list as a>
+			                         <div class="col-md-12">
+                          			      <div class="item top-space-clear top-space-clear-sm">
+                                                        <div class="img-ctn">
+																 <#assign attribute=getContentAttribute(a.id)/> 			<#-- 参数:内容Id -->
+																				 
+											  				<!-- 如果有外部链接，则跳转到外部链接；如果没有外部链接，则进入内部流程   --> 
+												                 <#if  (attribute.external_link) ?? &&  attribute.external_link!="">
+													                 <a href="${attribute.external_link}" title=${a.title}  target="_blank"> <!--img class="img-fluid" src="${a.cover!}" /--></a>
+														  </div>
+													    <div class="text-ctn"  style="background-color:#F0F0F0;margin:5px; ">
+                                                                   <a href="${attribute.external_link}" title=${a.title}  target="_blank"> <span class="art-caption" style="font-size:0.8em;">  ${a.title} </span>
+																	 <!--p class="art-abstract">${a.description}  ...</p>
+																	 <p class="art-detail text-center">  See  details</p--></a >
+																																								
+                                                        </div>
+																 		
+														      <#else>
+														   <a href="/subject/detail.html?id=${a.id}" > <!--img class="img-fluid" src="${a.cover}" /--></a>
+														 </div>
+														  <div class="text-ctn"   style="background-color:#F0F0F0;margin:5px;">
+                                                                 <a href="/subject/detail.html?id=${a.id}" >  <span class="art-caption"  style="font-size:0.8em;">  ${a.title} </span>
+																<!-- p class="art-abstract">${a.description}  ...</p>
+																<p class="art-detail text-center">  See  details</p--></a>
+																																								
+                                                          </div>
+															 </#if>
+										 </div>
+                                     </div>
+                          	      </#list>
+							</div>
+			   </@_contentList>
+		</@_category>
+			    <div class="py-4">
+					<a href="/subject/index.html" class="d-inline-flex align-items-center">more... </a>
+			    </div>
+
+	</div>
+	<div class ="right-bar"  id="right-bar">
+		<h5>Published Maps</h5>
+		<@_category code="homemap">
+		 	  <@_contentList categoryId=object.id containChild=true hasCover=true pageSize=6>
+				 <div  id='galley-right' class="row">
+					 <#list page.list as a>
+						    <div class="col-md-12">
+                     			     <div class="item top-space-clear top-space-clear-sm">
+                                           <div class="img-ctn">
+                                                 <img class="img-fluid" style="margin:0 auto; max-width:80%;cursor: pointer;"   data-original="${a.cover!}" alt="${a.title!}"  src="${a.cover!}" />
+                                           </div>
+                                          <span  style="margin-top:-130px; font-size:0.8em;" >${a.title}</span>
+                                            <!--  a href="/xdh/43971.htm"  target="_blank">
+											    <div class="text-ctn">
+                                                    <h4 class="art-caption text-center">${a.title}</h4>        
+												   <p class="art-abstract">${a.description}  </p>
+                                                 </div>
+											 </a -->
+                                      </div>
+                           </div>
+                    </#list>
+			 </div>
+		</@_contentList>
+				<div class="py-4">
+					<a href="/maps.html?id=${object.id}" class="d-inline-flex align-items-center">more... </a>
+			    </div>
+	</@_category>
+	</div>
+
+   <link href="${site.sitePath}viewerjs/viewer.min.css" rel="stylesheet">
+							<script src="${site.sitePath}viewerjs/viewer.min.js"></script>
+							<script>
+								//右侧浮动窗口的图可以点开
+								window.addEventListener('DOMContentLoaded', function () {
+								  var galley = document.getElementById('galley-right');
+								  var viewer = new Viewer(galley, {
+									url: 'data-original',
+									toolbar: {
+									  oneToOne: true,
+
+									  prev: function() {
+										viewer.prev(true);
+									  },
+
+									  play: true,
+
+									  next: function() {
+										viewer.next(true);
+									  },
+
+									  download: function() {
+										const a = document.createElement('a');
+
+										a.href = viewer.image.src;
+										a.download = viewer.image.alt;
+										document.body.appendChild(a);
+										a.click();
+										document.body.removeChild(a);
+									  },
+									},
+								  });
+								});
+  							</script>
+
+
+	<script type="text/javascript">
+	  $(function(){
+		$(window).resize(function(){
+		 //根据窗口大小动态调整两侧的div大小	
+		  var left=10,right=10;
+		  var width=($(window).width() - 1430)/2-2*left;
+		  var fixwidth=300;	
+		  if( width	>fixwidth){
+			  right=left+width-fixwidth;
+			  left=left+width-fixwidth;
+			  width=fixwidth;
+		  }else if (width<100){
+			    width=100;
+			  
+	    }
+		  console.log("left,right:",left,",",right);
+		  $("#left-bar").css("left", left);
+		  $("#right-bar").css("right", right);
+		 $("#left-bar").css("width", width);
+		  $("#right-bar").css("width", width);
+		  $("#left-bar").css("height", $(window).height() - 130);	
+		  $("#right-bar").css("height", $(window).height() - 130);
+		}).resize();
+	  })
+		
+     
+</script>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<@_includePlace path="/63241365-51a7-4903-89e6-7619031fa9fe.html"/> <#-- Header-link -->
+
+
+<link href="${site.sitePath}css/earthchem.css" rel="stylesheet">
+</head>
+<body  class="menu-always-on-top">
+	<@_includePlace path="/c8014652-e25e-4c4d-a3ca-9aad7fa0385c.html"/> <#-- header -->
+	
+	<main>
+	<div class="wrapper " style="padding-top:100px;padding-left:100px;">
+		<!-- end header -->
+
+
+<h1>Set Location Data
+</h1><h4>Define location using any of the methods offered below.
+</h4>
+<table class="ku_grid"  cellspacing="0" cellpadding="10" style="margin-left:100px;">
+	
+		
+	<tbody><tr>
+		<td><a href="earthchem_polygon_map.php?pkey=3415653&amp;glossary_pkey="><img style="height:200px;"  src="${site.sitePath}images/search/setlocationpng.png"  border="1" alt="polygon map"></a>
+		</td>
+		<td>1. Define a polygon on an interactive map.
+		</td>
+	</tr>
+
+	
+
+
+	<tr><td></td>
+		<td><br>2. Define a bounding box with north, south, west, east
+			<form action="searchupdate.php" method="post">
+				<table class="ku_grid" style="width:90%;"><!--
+					<TR>
+						<TD colspan="4" bgcolor="#FB8F4E">4. Define a bounding box with north, south, west, east
+						</TD>
+					</TR>-->
+					<tbody><tr>
+					
+						<td colspan="2" width="50%" align="center"><h4>						Longitude
+</h4>							-180 to 180 (degrees)
+						</td>
+							<td colspan="2" width="50%" align="center"><h4>						Latitude
+</h4>							-90 to 90 (degrees)
+						</td>
+					</tr>
+					<tr>
+						
+
+						<td align="right">Eastern Bound
+						</td>
+						<td>
+							<input name="longitudeeast" tabindex="3" type="text" id="longitudeeast" size="8" value="">
+						</td>
+						<td align="right">Northern Bound
+						</td>
+						<td>
+							<input name="latitudenorth" tabindex="4" type="text" id="latitudenorth" size="8" value="">
+						</td>
+					</tr>
+					<tr>
+						
+						<td align="right">Western Bound
+						</td>
+						<td>
+							<input name="longitudewest" tabindex="5" type="text" id="longitudewest" size="8" value="">
+						</td>
+						<td align="right">Southern Bound
+						</td>
+						<td>
+							<input name="latitudesouth" tabindex="6" type="text" id="latitudesouth" size="8" value="">
+						</td>
+					</tr>
+					<tr>
+						<td style="border-style:none" colspan="7" align="right">
+							<br>
+							<input type="submit" class="submitbutton" value="Submit" name="submit">
+						</td>
+					</tr>
+				</tbody></table>
+				<input type="hidden" name="pkey" value="3415653">
+				<input type="hidden" name="glossary_pkey" value="">
+			</form>
+		</td>
+	</tr>
+	<tr><td></td>
+		<td><br>3. Define a polygon with longitude/latitude pairs. <br><br>
+			
+			<form action="searchupdate.php" method="post">
+				<table class="ku_nogrid">
+
+					<tbody><tr>
+						<td valign="top">
+							<p>Enter a longitude/latitude pair for each vertice of an envelope or polygon.
+							<br>Separate the longitude/latitude pairs with semicolons.
+							<br>Enter the pairs in a sequence that traces the perimeter of a polygon.
+							<br>From 3 to 25 pairs are allowed.
+							<br>For&nbsp;example:<br><font size="4">( 118.22342, 23.1299494 ), (119.292001, 29.993993), (118.44520992, 25.1320021)</font>
+							<br>
+														
+							<textarea tabindex="8" name="latitude_longitude_data" rows="8" cols="60" wrap="virtual" style="font-size:10px;padding:10"></textarea>
+							<input type="hidden" name="pkey" value="3415653">
+							<input type="hidden" name="glossary_pkey" value="">
+						</p></td>
+					</tr>
+					<tr>
+						<td style="border-style:none" align="right">
+							<input type="submit" class="submitbutton" value="Submit" name="submit">
+						</td>
+					</tr>
+				</tbody></table>
+			</form>
+		</td>
+	</tr>
+
+</tbody></table>
+
+<a href="gazetteer.php?pkey=3415653&amp;glossary_pkey=">.
+		</a></div>
+	
+	
+	
+	
+	
+	</main>
+	
+   <@_includePlace path="/f95e232b-027b-40ae-9e2d-0a6385f7c418.html"/> <#-- footer -->
+</body>
+</html>

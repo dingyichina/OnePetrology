@@ -1,0 +1,43 @@
+<@_rockSectionIdentify id=id><#assign a=object/></@_rockSectionIdentify>
+<form method="post" action="rockSectionIdentify/save.do?callbackType=closeCurrent&navTabId=rockSectionIdentify/list" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+    <input name="id" type="hidden" value="${id!}" />
+    <input type="hidden" name="_csrf" value="<@_csrfToken admin=true/>"/>
+    <div class="formBar">
+        <ul>
+            <li><button type="submit" class="buttonActive"><@t.page 'button.save'/></button></li>
+            <li><button type="button" class="button close"><@t.page 'button.close'/></button></li>
+        </ul>
+    </div>
+    <div class="pageContent">
+        <div class="pageFormContent" layoutH="56">
+            <dl>
+                <dt>ID：</dt>
+                <dd><input class="required" name="id" type="text" size="30" value="${(a.id)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>样品：</dt>
+                <dd><input class="required" name="sampleId" type="text" size="30" value="${(a.sampleId)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>野外名称：</dt>
+                <dd><input class="required" name="fieldRockName" type="text" size="30" value="${(a.fieldRockName)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>镜下描述：</dt>
+                <dd><input class="required" name="microScopicDescribe" type="text" size="30" value="${(a.microScopicDescribe)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>鉴定名称：</dt>
+                <dd><input class="required" name="authorizedRockName" type="text" size="30" value="${(a.authorizedRockName)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>镜下照片：</dt>
+                <dd><input class="required" name="microscopicPhoto" type="text" size="30" value="${(a.microscopicPhoto)!}"/></dd>
+            </dl>
+            <dl>
+                <dt>备注：</dt>
+                <dd><input class="required" name="remark" type="text" size="30" value="${(a.remark)!}"/></dd>
+            </dl>
+        </div>
+    </div>
+</form>

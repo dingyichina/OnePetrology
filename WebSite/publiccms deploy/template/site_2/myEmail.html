@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<@_includePlace path="/63241365-51a7-4903-89e6-7619031fa9fe.html"/> <#-- Header-link -->
+</head>
+<body class="menu-always-on-top">
+<@_includePlace path="/c8014652-e25e-4c4d-a3ca-9aad7fa0385c.html"/> <#-- header -->
+<main>
+	<div class="container clearfix-after row" style="margin:100px">
+			 <div class="col-md-3">
+<@_includePlace path="/5b27cde5-351b-4d05-8fd0-fae82c896b70.html"/> <#-- 个人中心 -->
+				 </div>
+		<div class="right-content  col-md-9">
+			<div class="box">
+				<h3>修改邮箱</h3>
+				<#if user.emailChecked>
+				<p>已验证邮箱,您也可以使用您的邮箱"${user.email}"登录!</p>
+				<#else>
+				<form action="${site.dynamicPath}user/saveEmail" method="post" class="text-center">
+				<input type="hidden" name="_csrf" value="<@_csrfToken/>"/>
+				<input type="hidden" name="returnUrl" value="${site.dynamicPath}myEmail.html"/>
+				<p><input type="email" class="input-text" name="email" placeholder="邮箱地址" title="邮箱地址" value="${user.email!}"/></p>
+				<p>
+					<input type="submit" class="button" value="发送验证邮件"/>
+				</p>
+				</#if>
+              	<@import path="/ftl/tools.ftl" namespace="t"/>
+				<#if error??>
+					<p class="message red"><@t.m error/></p>
+				</#if>
+				<#if message??>
+					<p class="message"><@t.m "message."+message/></p>
+				</#if>
+			</form>
+			</div>
+		</div>
+	</div>	
+</main>
+<@_includePlace path="/f95e232b-027b-40ae-9e2d-0a6385f7c418.html"/> <#-- footer -->
+</body>
+</html>

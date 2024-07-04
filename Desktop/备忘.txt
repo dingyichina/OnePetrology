@@ -1,0 +1,8 @@
+更换qgis版本时，需要校对pyqt5的版本和qgis是否一致
+如果不一致，则卸载pyqt5并重新安装指定版本，包括pyqtwebengine在内也需要匹配版本。
+安装完之后，需要把apps/qt5下面的所有文件，复制到apps\Python39\Lib\site-packages\PyQt5\Qt 中，以保证两者的dll是一致的，要不会出现内存访问错
+
+
+一个新的qgis版本更换后，到启动为止，需要安装的包有：
+
+ pip install

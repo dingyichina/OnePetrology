@@ -1,0 +1,91 @@
+<#if parentId?has_content>
+    <@_sysDept id=parentId!>
+        <#assign parent=object/>
+    </@_sysDept>
+</#if>
+<@_sysDeptList parentId=parentId userId=userId name=name
+            pageIndex=pageNum pageSize=numPerPage>
+<div class="pageHeader">
+    <form class="pagerForm" autocomplete="off" onsubmit="return navTabSearch(this);" method="post">
+        <#include "../include_page/parameters.html"/>
+        <div class="searchBar">
+            <ul class="searchContent">
+            <#if parent?has_content>
+                <li>
+                    <label><@t.page 'dept.parent'/>:${(parent.name)!}</label>
+                </li>
+            </#if>
+                <li>
+                    <label><@t.page 'dept.master'/>:</label>
+                    <#include "../include_page/userId.html"/>
+                </li>
+                <li>
+                    <label><@t.page 'name'/>:</label>
+                    <input type="text" name="name" value="${(name)!}" />
+                </li>
+            </ul>
+            <div class="subBar">
+                <ul>
+                    <li>
+                        <button type="submit" class="buttonActive"><@t.page 'button.search'/></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="pageContent">
+    <div class="panelBar">
+        <ul class="toolBar">
+            <#if parent?has_content>
+                <li><a href="sysDept/list.html?parentId=${(parent.parentId)!}" target="navTab" rel="sysDept/list"><i class="icon-circle-arrow-up icon-large"></i> <@t.page 'button.return'/></a></li>
+                <li class="line">line</li>
+            </#if>
+            <li><a href="sysDept/add.html?parentId=${parentId!}" target="navTab" rel="sysDept/add"><i class="icon-plus-sign-alt icon-large"></i> <@t.page 'dept.add'/></a></li>
+        </ul>
+    </div>
+    <table class="table" width="100%" layoutH>
+        <thead>
+            <tr>
+                <th width="30"><@t.page 'id'/></th>
+                <th><@t.page 'name'/></th>
+                <th><@t.page 'dept.parent'/></th>
+                <th><@t.page 'description'/></th>
+                <th><@t.page 'dept.master'/></th>
+                <th><@t.page 'dept.own_all_category'/></th>
+                <th><@t.page 'content.max_top_level'/></th>
+                <th><@t.page 'dept.own_all_page'/></th>
+                <th><@t.page 'operate'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+                <@t.merge 'userIds' a.userId!/>
+            </#list>
+            <@_sysUser ids=t.userIds!><#assign userMap=map!/></@_sysUser>
+
+            <#list page.list as a>
+            <tr target="sid" rel="${a.id}">
+                <td>${a.id!}</td>
+                <td class="exclude-translate">${(a.name)!}</td>
+                <td>${a.parentId!}</td>
+                <td class="exclude-translate">${a.description!}</td>
+                <td class="exclude-translate">${(userMap[a.userId?string].nickName)!}</td>
+                <td>${a.ownsAllCategory?then(t.pageMessage('yes'),'')}</td>
+                <td>${a.maxSort}</td>
+                <td>${a.ownsAllPage?then(t.pageMessage('yes'),'')}</td>
+                <td class="wrap">
+                    <a href="sysDept/add.html?id=${a.id}" class="edit btnText blue" target="navTab" rel="sysDept/edit"><i class="icon-edit"></i> <@t.page 'dept.edit'/></a>
+                    <a href="sysDept/list.html?parentId=${a.id}" class="btnText" target="navTab" rel="sysDept/list"><@t.page 'dept.child_management'/></a>
+                <#if a.userId?has_content&&a.userId=admin.id>
+                    <a href="sysDept/userList.html?deptId=${a.id}" class="btnText" target="navTab" rel="sysDept/userList" icon="<i class='icon-user icon-large'></i>"><@t.page 'dept.user_list'/></a>
+                </#if>
+                    <a href="sysDept/delete?id=${a.id}&_csrf=<@_csrfToken admin=true/>" class="btnText warn" title="<@t.page 'confirm.delete'/>" target="ajaxTodo"><i class="icon-trash"></i> <@t.page 'button.delete'/></a>
+                </td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</div>
+</@_sysDeptList>

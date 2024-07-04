@@ -1,0 +1,43 @@
+<div class="row"  >
+      <div class="col-md-12">
+		 <table  border="2"  style="max-width:1430px;">
+			 <tr>
+				 <th>Data Count: </th>	
+				 <td> <span id="dbDataCount">please waiting for server response......</span> </td>
+			 </tr>	 
+			 <tr>  
+			 	<th> Data  Fields: 	</th>
+				<td><span id="dbFields">please waiting for server response......</span></td>
+			 </tr>
+			 <tr>
+				 <th>Contact mail：</th>
+				 <td><span id="dbOwner"></span></td>
+			 </tr>	
+	  </table> 
+	 </div>
+</div>
+<script>
+	    // dom加载完成后执行的函数
+		$(document).ready(function(){
+			 //从session中获取之前的设置字段
+			 var k_node = sessionStorage.getItem('k_node');
+		     var owner=  sessionStorage.getItem('owner');
+		     var scope =  sessionStorage.getItem('scope');
+			var extent= sessionStorage.getItem('extent');
+			 //异步请求结构树
+			 $.ajax({
+		          type: "get",        // 请求方式
+                   url: "${site.dynamicPath!}fastapi/kdata/"+k_node+"/"+owner,
+			       data:{'boundary':extent,'condition':"",'scope':scope,'start':0,'length':3},
+                  dataType: "json",   // 预期返回一个 json 类型数据
+			     success: function (data) {   // data是形参名，代表返回的数据
+                    //处理返回数据
+					 var totalCount=data.recordsTotal;
+					 var owner=data.owner;
+			  		  $("#dbDataCount").html('<p >find  <font color="#FF0000"> '+totalCount +' </font>  records. </p>');
+					  $("#dbFields").html('<p >find  <font color="#0000FF"> '+data.columns.join(" ,") +' </font>  fields. </p>');
+			     }
+			  });	 
+			  $("#dbOwner").html('<a href="mailto:'+owner+'">'+owner+'</a>');
+		});
+</script>

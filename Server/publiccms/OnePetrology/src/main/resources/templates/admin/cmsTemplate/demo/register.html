@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>${metadata.alias!}</title>
+    <script src="${site.dynamicPath!}resource/js/jquery-1.9.1.min.js"></script>
+    <style>
+        .red{color:#f00;}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>${(site.name)!}</h1>
+    </header>
+    <nav>
+        <a href="${base}">Home</a>
+<@_categoryList>
+    <#list page.list as a>
+        <a href="${a.url!}" target="_blank">${a.name}</a>
+    </#list>
+</@_categoryList>
+    </nav>
+    <main>
+        <#if user??>
+            <p>${user.nickName},You are already logged in!<a href="javascript:logout();">You can logout</a></p>
+            <form action="${site.dynamicPath}doLogout.do" method="post">
+                <input type="hidden" name="userId" value="${(user.id)!}"/>
+                <input type="hidden" name="returnUrl" value="${returnUrl!site.sitePath!}"/>
+            </form>
+        <#else>
+            <form action="${site.dynamicPath}doRegister.do" method="post">
+                <#if error??>
+                    <p class="red">${springMacroRequestContext.getMessage(error,error)}</p>
+                </#if>
+                <p><input type="text" name="name" placeholder="User name" title="User name" value="${name!}"/></p>
+                <p><input type="text" name="nickName" placeholder="Nickname" title="Nickname" value="${nickname!}"/></p>
+                <p><input type="password" name="password" placeholder="Password" title="Password"/></p>
+                <p><input type="password" name="repassword" placeholder="Repeat password" title="Repeat password"/></p>
+                <p>
+                    <input type="hidden" name="returnUrl" value="${returnUrl!}"/>
+                    <input type="hidden" name="clientId" value="${clientId!}"/>
+                    <input type="hidden" name="uuid" value="${uuid!}"/>
+                    <input type="submit" value="Register"/>
+                </p>
+                <p>Already have an account?<a href="login.html?clientId=${clientId!}&uuid=${uuid!}&returnUrl=${returnUrl!}">Please login</a></p>
+            </form>
+        </#if>
+    </main>
+    <footer>
+        Copyright &copy; ${.now?string('yyyy')}
+    </footer>
+<script>
+function logout(){
+    $("form").submit();
+}
+</script>
+</body>
+</html>

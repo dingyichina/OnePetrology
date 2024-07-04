@@ -1,0 +1,58 @@
+<@_content id=id>
+ <#assign attribute=getContentAttribute(id)/> 			<#-- 参数:内容Id -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+		    <title>OnePetrology：${object.title}</title>
+        <@_includePlace path="/Header-link.html"/> <#-- head-link -->
+	
+</head>
+<body>
+    <main>
+	<@_includePlace path="/header.html"/> <#-- header -->
+	    <div class="section-white">
+           <div class="container">
+            <div class="row">
+		      	<div class="col-md-4 ">
+				     <div class="item top-space-clear top-space-clear-sm">
+					      <div class="img-ctn">
+								<img class="img-fluid" src="${object.cover!}" />
+						  </div>
+						 <div class="text-ctn">
+						    <h4 class="art-caption"><a href="/person/detail.html?id=${a.id}" title="${object.title}" >${object.title!}</a></h4>
+								<p class="art-abstract">${object.description!}</p>
+			 			</div>
+					 </div>
+				</div>
+				<div class="col-md-8 ">	
+				  <span>
+                                    ${(attribute.text?no_esc)!}
+				 </span> 
+					
+				</div>
+					
+		</div>		
+	   </div>
+	 </div>
+				
+				
+				
+	</main>
+    <footer>
+    <@_includePlace path="/53d9aa26-ab9a-41df-90d5-efc5307c3b3e.html"/> <#-- footer -->
+    </footer>
+    <script src="${site.dynamicPath}resource/js/cms.analytics.js"></script>
+    <script>
+        var ca = cmsAnalytics();
+        var url='${site.dynamicPath}api/visit/record';
+        if("string" ==typeof itemString){
+            url=url+"?"+itemString;
+        }
+        ca.report(url);
+    </script>
+</body>
+</html>
+		
+</@_content>

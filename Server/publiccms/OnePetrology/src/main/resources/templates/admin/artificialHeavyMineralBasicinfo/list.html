@@ -1,0 +1,72 @@
+<div class="pageHeader">
+    <form class="pagerForm" onsubmit="return navTabSearch(this);" method="post">
+        <#include "../include_page/parameters.html"/>
+        <div class="searchBar">
+            <ul class="searchContent">
+            </ul>
+            <div class="subBar">
+                <ul>
+                    <li>
+                    	<button type="submit" class="buttonActive"><@t.page 'button.search'/></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<@_sysAuthorized roleIds=admin.roles urls='artificialHeavyMineralBasicinfo/add,artificialHeavyMineralBasicinfo/delete'><#assign authorizedMap=map/></@_sysAuthorized>
+<div class="pageContent">
+    <div class="panelBar">
+        <ul class="toolBar">
+        <#if authorizedMap['artificialHeavyMineralBasicinfo/add']>
+            <li><a href="artificialHeavyMineralBasicinfo/add.html" target="navTab" rel="artificialHeavyMineralBasicinfo/add"><i class="icon-plus-sign-alt icon-large"></i> <@t.page 'button.add'/></a></li>
+            <li><a href="artificialHeavyMineralBasicinfo/add.html?id={sid}" target="navTab" rel="artificialHeavyMineralBasicinfo/edit"><i class="icon-edit icon-large"></i> <@t.page 'button.edit'/></a></li>
+        </#if>
+        <#if authorizedMap['artificialHeavyMineralBasicinfo/delete']>
+            <li><a href="artificialHeavyMineralBasicinfo/delete.do?_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.batch_delete'/>" target="selectedTodo" rel="ids"><i class="icon-trash icon-large"></i> <@t.page 'button.batch_delete'/></a></li>
+        </#if>
+        </ul>
+    </div>
+<@_artificialHeavyMineralBasicinfoList 
+            pageIndex=pageNum pageSize=numPerPage>
+    <table class="list" width="100%" layoutH="92">
+        <thead>
+            <tr>
+                <th width="20"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+                <th>ID</th>
+                <th>样品</th>
+                <th>样品重量(Kg)</th>
+                <th>重砂总重量(g)</th>
+                <th>磁性部分重量(g)</th>
+                <th>电磁性部分重量(g)</th>
+                <th>重部分重量(g)</th>
+                <th>轻部分重量(g)</th>
+                <th>备注</th>
+                <th><@t.page 'operate'/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list page.list as a>
+            <tr target="sid" rel="${a.id}">
+                <td><input name="ids" value="${a.id}" type="checkbox"></td>
+                <td>${a.id!}</td>
+                <td>${a.sampleId!}</td>
+                <td>${a.sampleWeight!}</td>
+                <td>${a.heavySandWeight!}</td>
+                <td>${a.magnetCompoWeight!}</td>
+                <td>${a.electromagCompoWeight!}</td>
+                <td>${a.heavyCompoWeight!}</td>
+                <td>${a.lightCompoWeight!}</td>
+                <td>${a.remark!}</td>
+                <td>
+                <#if authorizedMap['artificialHeavyMineralBasicinfo/delete']>
+                    <a href="artificialHeavyMineralBasicinfo/delete.do?ids=${a.id}&_csrf=<@_csrfToken admin=true/>" title="<@t.page 'confirm.delete'/>"  target="ajaxTodo"><@t.page 'button.delete'/></a>
+                </#if>
+                </td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+    <#include "../include_page/page.html"/>
+</@_artificialHeavyMineralBasicinfoList>
+</div>

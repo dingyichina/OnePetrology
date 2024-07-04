@@ -1,0 +1,13 @@
+﻿.bc-body{}
+.header{}
+.header .logo-caption{}
+.header .logo-slogan{}
+.breadcrumb {}
+.bc-slide-12 .item{}
+.bc-article-01 .art-slides{}
+.bc-article-01 .art-video{}
+.bc-article-01 .body{}
+@media (max-width:767px){
+.bc-slide-12 .item{}
+}
+

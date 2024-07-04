@@ -1,0 +1,772 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>loginDlg</class>
+ <widget class="QDialog" name="loginDlg">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>793</width>
+    <height>490</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>12</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>DDE-OnePetrology</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>res/DDE-logo.png</normaloff>res/DDE-logo.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{
+    font-family:&quot;Microsoft YaHei&quot;;
+    font-size: 14px;
+    font-weight: bold;
+    color:#f0f0f0;
+	background:#125b4e;
+}
+QMainWindow#MainWindow{
+    background:#125b4e;
+}
+
+
+
+QStatusBar{
+	color:#fff;
+}
+QStatusBar QLabel{
+	color:#fff;
+}
+QStatusBar::item{
+	border: 0px
+}
+
+QCheckBox{
+	color:#fff;
+}
+
+QDateTimeEdit, QLineEdit, QTextEdit, QPlainTextEdit{
+	color:#fff;
+	height:20px;
+	padding-left:10px; 
+	background:transparent;
+	border:none;
+	border:1px solid #67968d;
+}
+
+QDateTimeEdit::focus, QLineEdit::focus, QTextEdit::focus, QPlainTextEdit::focus{
+	border:1px solid #00fffb;
+}
+
+QDateTimeEdit:hover{
+    background: #1f6155;
+	color:#f2f2f2;
+}
+
+QCalendarWidget QTableView {
+    alternate-background-color: #125b4e;
+    background-color: #67968d;
+}
+QToolButton#qt_calendar_monthbutton,#qt_calendar_yearbutton{
+    color: #67968d;
+    font: 9px simHei;
+}
+QCalendarWidget QWidget#qt_calendar_navigationbar{
+    background-color: #FFF;
+}
+
+QTextEdit::focus{
+	border:1px solid #00fffb;
+}
+QGroupBox::title {
+	color:#fff;
+}
+QGroupBox QLineEdit{
+    height:20px;
+	padding-left:10px; 
+	background:transparent;
+	border:none;
+	border-bottom:1px solid #67968d;
+}
+
+QDialog{
+    background:#125b4e;
+}
+QDialog QLabel{
+    color:#f0f0f0;
+}
+
+QSplitter::handle{
+	background-color:#125b4e;
+}
+
+QComboBox{
+	color:#fff;
+	height:20px;
+	padding-left:10px; 
+	background:transparent;
+	border: 1px solid #67968d; 
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;   
+    subcontrol-position: top right; 
+    width: 15px; 
+    border-left: 1px solid #67968d; 
+	image: url(&quot;:/res/home/combo_drop.png&quot;) 
+}
+QComboBox::drop-down:hover {
+    background: #00fffb;
+}
+
+QComboBox QAbstractItemView {
+    outline: 0px solid gray;
+    border: 1px solid #228c84;
+    color: #FFFFFF;
+    background-color: #07816e;
+    selection-background-color: #1f6155; 
+}
+QComboBox QAbstractItemView::item {
+    padding: 5px 10px; 
+}
+QComboBox QAbstractItemView::item:hover {
+    color: #FFFFFF;
+    background-color: #1f6155;
+}
+
+
+QToolButton{
+	padding:5px;
+	border:none;
+	background:transparent;
+	color:#bebebe;
+}
+QToolButton:hover{
+	background: #1f6155;
+	color:#f2f2f2;
+}
+QToolButton:pressed{
+	background: #34a897;
+	color:#f2f2f2;
+	border-radius: 3px;
+}
+
+QPushButton{
+	border:1px solid #4daa99;
+	color:#e3e3e3;
+	padding:4px 20px;
+}
+QPushButton:hover{
+	background: #1f6155;
+	color:#f2f2f2;
+}
+QPushButton:pressed{
+	background: #34a897;
+	color:#f2f2f2;
+	border-radius: 3px;
+}
+
+
+QListView{
+	background:transparent;
+	border:1px solid #228c84;
+}
+QListWidget{
+	background:transparent;
+	border:1px solid #228c84;
+	color:#fff;
+}
+
+QToolBox::tab{
+	padding:3px;
+	border-radius:5px;
+	color:#04ddd7;
+	font:15px &quot;Microsoft YaHei&quot;;
+
+}
+QToolTip{
+	border:0px solid #F0F0F0;
+	padding:1px;
+	color:#04ddd7;
+
+}
+
+
+/*===================================== 表格 =================================*/
+QTableView{
+    outline:none;
+    border-top:none;
+    border-bottom-left-radius:4px;
+    border-bottom-right-radius:4px;
+    alternate-background-color:#1b7065; 
+    selection-background-color:#01ae97;
+    gridline-color:#0fa48e;
+    color:#f2f2f2;
+    background:transparent;
+}
+QHeaderView{
+    border:none;
+    border-bottom:1px solid #125b4e;
+    background:#367b6e;
+}
+QHeaderView::section{
+    background:transparent;
+    color:#f2f2f2;
+}
+
+
+/*===================================== 树 =================================*/
+QTreeView{
+	show-decoration-selected:1;
+	border:none; 
+	background:transparent;
+}
+QTreeView::item{
+	height: 25px;
+	color:#eaecec;	
+	border:none;
+	background:transparent;
+}
+
+QTreeView::item:selected:active{  
+	color:f2f2f2;
+}
+
+QTreeView::item:selected:!active{   
+	color:#f2f2f2;	
+}
+QTreeView::branch:has-children:!has-siblings:closed,
+QTreeView::branch:closed:has-children:has-siblings{
+    border-image:none;
+    image:url(&quot;:/res/home/tree_right.png&quot;);
+}
+QTreeView::branch:open:has-children:!has-siblings,
+QTreeView::branch:open:has-children:has-siblings{
+    border-image:none;
+    image:url(&quot;:/res/home/tree_bottom.png&quot;);
+}
+
+QTreeView::indicator:unchecked {
+	image: url(&quot;:/res/home/tree_uncheck.png&quot;);
+}
+QTreeView::indicator:checked {
+	image: url(&quot;:/res/home/tree_check.png&quot;);
+}
+QTreeView::item:hover, QTreeView::branch:hover{
+	background:#1f6155;
+}
+QTreeView::item:selected, QTreeView::branch:selected{
+	background:#34a897;
+	color:f2f2f2;
+}
+
+
+/*===================================== Tab =================================*/
+QTabWidget#tabWidget{
+    background:transparent;
+}
+QTabWidget::pane{
+    border-top: 1px solid;
+    border-color: transparent;
+    top:-1px;
+}
+QTabBar::tab {
+    min-width:85px;
+    min-height:26px;
+    color: #FFFFFF;
+    border: 1px solid #e2e2e2;
+    font:20px &quot;Microsoft YaHei&quot; ;
+}
+QTabBar::tab:selected{
+    min-width:85px;
+    min-height:25px;
+    color: #000;
+    border: 0px solid;
+    background:#00fffb;
+    font:20px &quot;Microsoft YaHei&quot; ;
+}
+
+/*===================================== 垂直滚动条 =================================*/
+/*设置垂直滚动条基本样式*/
+QScrollBar:vertical {
+    width: 14px;
+    background: rgba(0,0,0,0%);
+    margin: 0px,0px,0px,0px;
+    /*留出9px给上面和下面的箭头*/
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
+QScrollBar::handle:vertical {
+    width: 14px;
+    background: #238d71; /* #176857;rgba(0,0,0,25%); */
+    /*滚动条两端变成椭圆 */
+    border-radius: 14px;
+    min-height: 20;
+}
+
+QScrollBar::handle:vertical:hover {
+    width: 14px;
+    /*鼠标放到滚动条上的时候，颜色变深*/
+    background:  #238d71;  /*rgba(0,0,0,50%);*/
+    border-radius: 12px;
+    min-height: 20;
+}
+
+/*这个应该是设置下箭头的，3.png就是箭头*/
+QScrollBar::add-line:vertical 
+{
+    height: 9px;
+    width: 14px;
+    border-image: url(:/res/down-arrow.png);
+    subcontrol-position: bottom;
+}
+
+/*设置上箭头 */
+QScrollBar::sub-line:vertical 
+{
+    height: 9px;
+    width: 14px;
+    border-image: url(:/res/up-arrow.png);
+    subcontrol-position: top;
+}
+
+/*当鼠标放到下箭头上的时候 */
+QScrollBar::add-line:vertical:hover 
+{
+    height: 9px;
+    width: 14px;
+    border-image: url(:/res/down-arrow.png);
+    subcontrol-position: bottom;
+}
+
+/*当鼠标放到下箭头上的时候*/
+QScrollBar::sub-line:vertical:hover 
+{
+    height: 9px;
+    width: 14px;
+    border-image: url(:/res/up-arrow.png);
+    subcontrol-position: top;
+}
+
+/*当滚动条滚动的时候，上面的部分和下面的部分*/
+QScrollBar::sub-page:vertical {
+    background: #176857;
+    border-radius: 12px;
+}
+
+QScrollBar::add-page:vertical 
+{
+    background: #176857; /* #238d71;*/
+    border-radius: 12px;
+}
+
+QScrollArea#scrollArea{
+	background:transparent;
+	border:none;
+}
+
+
+QWidget#scrollAreaWidgetContents{
+	background: transparent;
+}
+
+QScrollArea#scrollArea{
+    background:transparent;
+
+    QScrollBar:vertical{  /*//滚动条主体部分(滑道)*/
+        min-width: 10;/*//滑道最小宽度*/
+        min-height:100;/*//滑道最小高度*/
+        border-radius:5px;/*//滑道圆角*/
+        background-color:rgb(200,200,200);/*//滑轨的颜色*/
+    }
+
+    QScrollBar::handle:vertical{  /*//滑块主体*/
+        border-radius:5px;/*//滑块圆形角度*/
+        width: 10;/*//滑块宽度*/
+        border-radius:5px;/*//滑道圆角*/
+        background-color:rgb(50,50,20);/*//滑块颜色*/
+    }  
+
+    QScrollBar::handle:vertical:hover{  /*//鼠标放在上面时*/
+        width: 10;/*//滑块宽度*/
+        border-radius:5px;/*//滑道圆角*/
+        background-color:rgba(0,0,0,50%);/*//滑块颜色变化*/
+    }
+    
+}
+</string>
+  </property>
+  <property name="modal">
+   <bool>false</bool>
+  </property>
+  <widget class="QPushButton" name="btnLogin">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>420</y>
+     <width>101</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Login</string>
+   </property>
+   <property name="default">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnCancel">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>420</y>
+     <width>101</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Cancel</string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>180</y>
+     <width>771</width>
+     <height>182</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,1">
+    <item>
+     <widget class="QLabel" name="lblWorldMap">
+      <property name="minimumSize">
+       <size>
+        <width>320</width>
+        <height>180</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>320</width>
+        <height>180</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::RichText</enum>
+      </property>
+      <property name="pixmap">
+       <pixmap>res/worldmap.gif</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+      <property name="margin">
+       <number>30</number>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2">
+        <property name="leftMargin">
+         <number>10</number>
+        </property>
+        <property name="topMargin">
+         <number>30</number>
+        </property>
+        <property name="rightMargin">
+         <number>10</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>User Account：</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="txtUser">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>35</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="placeholderText">
+           <string>Please input your email</string>
+          </property>
+          <property name="clearButtonEnabled">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,2">
+        <property name="leftMargin">
+         <number>10</number>
+        </property>
+        <property name="rightMargin">
+         <number>10</number>
+        </property>
+        <property name="bottomMargin">
+         <number>30</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>150</horstretch>
+            <verstretch>50</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Password：</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="txtPassword">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="inputMask">
+           <string/>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="maxLength">
+           <number>18</number>
+          </property>
+          <property name="echoMode">
+           <enum>QLineEdit::Password</enum>
+          </property>
+          <property name="placeholderText">
+           <string>Please input your password</string>
+          </property>
+          <property name="clearButtonEnabled">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>791</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image:url(&quot;res/logo_header.png&quot;);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="chkRemember">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>380</y>
+     <width>281</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Remember user and password</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="chkAutoLogin">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>380</y>
+     <width>121</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Auto Login</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>370</y>
+     <width>321</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>&lt;a style=&quot;color:white&quot;  href=&quot;https://petrology.deep-time.org/dspace/register&quot;&gt;Click me to register new user...&lt;/a&gt;</string>
+   </property>
+   <property name="openExternalLinks">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>410</y>
+     <width>321</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>&lt;a style=&quot;color:yellow&quot;  href=&quot;https://petrology.deep-time.org/dspace/forgot&quot;&gt;Forgot Password, click here...&lt;/a&gt;</string>
+   </property>
+   <property name="openExternalLinks">
+    <bool>true</bool>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>btnCancel</sender>
+   <signal>clicked()</signal>
+   <receiver>loginDlg</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>535</x>
+     <y>360</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>349</x>
+     <y>209</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnLogin</sender>
+   <signal>clicked()</signal>
+   <receiver>loginDlg</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>420</x>
+     <y>360</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>349</x>
+     <y>209</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

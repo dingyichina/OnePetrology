@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8">
+<title>OnePetrology</title>
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<meta content="OnePetrology" name="description">
+<meta content="Petrology  DDE  wangtao  igeo cags  cgs" name="keywords">
+<meta content="dingyi " name="author">
+
+<meta property="og:petrology" content="-CUSTOMER VALUE-">
+<meta property="og:petrology" content="-CUSTOMER VALUE-">
+<meta property="og:description" content="-CUSTOMER VALUE-">
+<meta property="og:research" content="website">
+<meta property="og:www.igeodata.org" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
+<meta property="og:www.igeodata.org" content="-CUSTOMER VALUE-">
+
+<link rel="shortcut icon" href="favicon.ico">
+<!-- Fonts START -->
+<!--link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pathway+Gothic+One|PT+Sans+Narrow:400+700|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css"-->
+<link href="/webfile/assets/onepage/css/css.css" rel="stylesheet"  type="text/css"/>
+<!-- Fonts END -->
+<!-- Global styles BEGIN -->
+<link href="/webfile/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/webfile/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<!-- Global styles END -->
+<!-- Page level plugin styles BEGIN -->
+<link href="/webfile/assets/pages/css/animate.css" rel="stylesheet">
+<link href="/webfile/assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+<!-- Page level plugin styles END -->
+<!-- Theme styles BEGIN -->
+<link href="/webfile/assets/pages/css/components.css" rel="stylesheet">
+<link href="/webfile/assets/pages/css/slider.css" rel="stylesheet">
+<link href="/webfile/assets/onepage/css/style.css" rel="stylesheet">
+<link href="/webfile/assets/onepage/css/style-responsive.css" rel="stylesheet">
+<link href="/webfile/assets/onepage/css/themes/red.css" rel="stylesheet" id="style-color">
+<link href="/webfile/assets/onepage/css/custom.css" rel="stylesheet">
+<script src="/webfile/js/jquery-1.12.4.min.js"></script>
+<script src="/webfile/js/jquery.cookie.js"></script>
+<script src="/webfile/bootstrap/js/bootstrap.min.js"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4880bb0259eceffe04341e95f5238e50";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!-- Theme styles END --> 
+    <link rel="stylesheet" href="/webfile/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="/webfile/leaflet/leaflet-geoman.css" />
+    <link rel="stylesheet" href="/webfile/leaflet/Leaflet.PolylineMeasure.css" />
+    <link rel="stylesheet" href="/webfile/leaflet/leaflet-search.src.css" />
+    <link rel="stylesheet" href="/webfile/leaflet/leaflet.awesome-markers.css">
+    <link href="/webfile/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="/webfile/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="/webfile/leaflet/Leaflet.fullscreen.css">
+    <script src="/webfile/leaflet/leaflet.js"></script>
+    <script src="/webfile/leaflet/Leaflet.fullscreen.js"></script>
+    <script src="/webfile/leaflet/leaflet-tilelayer-wmts-src.js"></script>
+    <script src="/webfile/leaflet/leaflet-geoman.min.js"></script>
+    <script src="/webfile/leaflet/Leaflet.PolylineMeasure.js"></script>
+    <script src="/webfile/leaflet/leaflet-search.src.js"></script>
+    <script src="/webfile/leaflet/leaflet.awesome-markers.js"></script>
+    <script src="/webfile/leaflet/leaflet-ant-path.js"></script>
+	   <link rel="stylesheet" href="/webfile/leaflet/pruneCluster.css">
+	<script src="/webfile/leaflet/PruneCluster.js"></script>
+   <!--  图例  -->
+    <link href="/webfile/leaflet/leaflet.legend.css" rel="stylesheet">
+    <script src="/webfile/leaflet/leaflet.legend.js"></script>
+    <script src="/webfile/js/jquery-3.6.0.min.js"></script>
+<!--<script src="/webfile/js/jquery-3.6.0.min.map"></script>-->
+ <script src="/webfile/js/jquery_cookie.js"></script>
+<script src="/webfile/leaflet/leaflet.ChineseTmsProviders.js"></script> 
+
+    <script src="/webfile/Cesium/Cesium.js"></script>
+
+
+	<link href="/webfile/Cesium/Widgets/widgets.css" rel="stylesheet">
+</head>
+<body class="menu-always-on-top">
+	  	  <main>
+      <!-- Header BEGIN -->
+    <div class="header header-mobi-ext">
+        <div class="container">
+            <div class="row">
+                <!-- Logo BEGIN -->
+				<div class="col-md-2 col-s32">
+                    <a class="scroll site-logo" href="https://www.deep-time.org/"  style="padding-top: 3px;"><img src="/webfile/ddelogo.png" style="width:160px;height=60px;" /></a>
+                </div>
+                <div class="col-md-2 col-s32">
+                    <a class="scroll site-logo" href="/"  style="padding-top: 3px;"><img src="/webfile/logo.png" style="margin-top: 10px;width:160px;height=60px;" /></a>
+                </div>
+                <!-- Logo END -->
+                <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+                <!-- Navigation BEGIN -->
+                <div class="col-md-8 pull-right">
+                    <ul class="header-navigation">
+						<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About<span class="caret"></span></a>
+							 <ul class="dropdown-menu">
+							<li style="margin-left:5px;"><a href="/about/introduction.html">Introduction</a></li>
+							<li style="margin-left:5px;"><a href="/about/objective.html">Objective</a></li>
+							<li style="margin-left:5px;"><a href="/about/team.html">Team</a></li>
+							<li style="margin-left:5px;"><a href="/about/contact.html">Contact Us</a></li>
+						  </ul>
+						</li>
+						<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Submit Data<span class="caret"></span></a>
+							 <ul class="dropdown-menu">
+							<li style="margin-left:5px;"><a href="/category/list.html?categoryId=131">View Submissions</a></li>
+							<li style="margin-left:5px;"><a href="/admin/#content_cmsContent/list">Submit New Data</a></li>
+							<li style="margin-left:5px;"><a href="/admin/#sampleInfo/list-age.html">Correct Data</a></li>
+							<li style="margin-left:5px;"><a href="#">Data Template</a></li>
+						  </ul>
+						</li>
+						<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Access Data<span class="caret"></span></a>
+							 <ul class="dropdown-menu">
+							<li style="margin-left:5px;"><a href="/search/search.html">Search Data ...</a></li>
+								 <li style="margin-left:5px;"><a href="/theme/home.html">Thematic database...</a></li>
+							<li style="margin-left:5px;"><a href="/admin/">Administrator</a></li>
+						  </ul>
+						</li>
+						<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Map<span class="caret"></span></a>
+							 <ul class="dropdown-menu">
+							<li style="margin-left:5px;"><a href="/gis/viewmap3857.html">2020 Asia Map & Data(3857)</a></li>
+							<li style="margin-left:5px;"><a href="/gis/viewdata4326.html">2020 Asia Map & Data(4326)</a></li>
+							<li style="margin-left:5px;"><a href="/gis/3857map.html">2020 Asia Map (3857)</a></li>	 
+							<li style="margin-left:5px;"><a href="/gis/world2021.html">2021 World Map (3857)</a></li>	 
+						  </ul>
+						</li>
+					
+	                   </ul>
+                </div>
+                <!-- Navigation END -->
+            </div>
+        </div>
+    </div>
+    <!-- Header END --> 
+
+
+	<style>
+    .tab-switch{position: relative;}
+    .tab-title{position: absolute;top: 50%;right: 0;}
+    .tab-title ul{list-style: none;padding:0;margin:0;font-size: 0;border: 1px solid #cbcbcb;border-radius: 3px;}
+    .tab-title ul li{width: 50px;display: inline-block;cursor: pointer;padding: 5px 8px;text-align: center;font-size: 14px;}
+    .tab-title ul li:last-child{border-left: 1px solid #cbcbcb;}
+    .tab-title ul li:hover{background-color: #afe6ff;}
+    .tab-item {display: none;height: 800px;}
+    .current {background-color: #90dafd;}
+</style>
+
+<div class="portfolio-block content content-center" id="portfolio">
+    <div class="tab-switch">
+        <div class="container" style="margin-top:50px;">
+            <h2>Data  <strong>On  Map of Magmatic Rocks of World (2022)</strong></h2>
+        </div>
+        <div class="tab-title">
+            <ul>
+                <li class="current">2D </li>
+                <li>3D</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row tab-con">
+        <div class="tab-item" style="display: block;">
+            <div style="width:100%;height: 100%;" id='map-container' >
+</div>
+
+<script>
+    $(function() {
+        var currentMap = createMap();//创建地图
+        // var markers = new L.MarkerClusterGroup();
+       // addMapPlugs(currentMap); //加载插件
+        showPointInfo(currentMap);//显示当前点坐标信息
+        //showAntPath(currentMap);
+      // addMyResource(currentMap,markers);// 加载资源点
+		currentMap.setView(L.latLng(0, 0), 2);
+		createLegend(currentMap);  //添加图例
+		//addAllData(currentMap); //把所有的点加上
+		
+    })
+    //加载数据
+	function addAllData(map){
+
+		 //用异步方式加载数据，以避免阻塞主页的加载
+		$.ajax({
+			url:"/api/directive/sampleList",  
+			dataType:"json",   
+			async:true,
+			type:"GET",   //请求方式
+
+			success:function(req){
+			var leafletView = new PruneClusterForLeaflet();
+			  console.log( "totalcount %d points",req.count);
+			  for (a in req.page)
+			  {
+				p = req.page[a];
+			 	//console.log(p);
+				marker=new PruneCluster.Marker(p.latitude,p.longitude, {title:p.oraginalSampleId});
+				leafletView.RegisterMarker(marker);
+			  }
+				//完成后一次性添加到图上
+			  leafletView.PrepareLeafletMarker = function (marker, data) {
+					str=data.title;
+					var idindex=str.indexOf(':');
+					var strid="";
+					if(idindex>0){
+						strid=str.substring(0,str.indexOf(':'));
+					}else{
+						strid=str.trim();
+					}
+					var strlink=str+'<br/><a href="/sampleinfo/add.html?id='+strid+'">edit</a>';
+					if (marker.getPopup()) {
+						marker.setPopupContent(strlink);
+					} else {
+						marker.bindPopup(strlink);
+					}
+				};
+
+				map.addLayer(leafletView);
+				console.log("添加到map");
+
+			},
+			error:function(){
+				 console.log( "can't access server api");
+			}
+		});
+    
+   }
+	
+	//添加图例
+	function createLegend(map){
+		
+		  const legend = L.control.Legend({
+            position: "bottomright",
+            collapsed: false,
+            symbolWidth: 24,
+            opacity: 0.6,
+            column: 1,
+            legends: [{
+                label: "Age and geochemistry",
+                type: "circle",
+                radius: 4,
+                color: "black",
+                fillColor: "#FFFF00",
+                fillOpacity: 0.6,
+                weight: 2
+            },{
+                label: "Hf-O isotope",
+                type: "circle",
+                radius: 4,
+                color: "black",
+                fillColor: "#FF0000",
+                fillOpacity: 0.6,
+                weight: 2
+            },{
+                label: "U-Pb point dating",
+                type: "circle",
+                radius: 4,
+                color: "black",
+                fillColor: "#00FF00",
+                fillOpacity: 0.6,
+                weight: 2
+            },{
+                label: "IODP station",
+                type: "circle",
+                radius: 2.4,
+                color: "blue",
+                //fillColor: "#00FF00",
+                fillOpacity: 0.6,
+                weight: 1
+            }]
+        })
+        .addTo(map);
+	}
+	
+    //创建地图
+    function createMap(){
+       var newMap = L.map('map-container', {
+            minZoom: 2,
+            maxZoom: 13,
+            crs: L.CRS.EPSG3857,
+            fullscreenControl: {
+                pseudoFullscreen: false
+            },
+            center: [0,0]
+        });
+		/*
+        var url = '/geoserver/gwc/service/wmts';
+        var matrixIds = [];
+        for (var i = 0; i < 22; ++i) {
+            matrixIds[i] = {
+                identifier: i,
+                topLeftCorner: new L.LatLng(90, -180)
+            };
+        }
+		 var matrixIds3857 = new Array(16);
+        for (var i= 0; i<16; i++) {
+            matrixIds3857[i]= {
+                identifier    : "" + i,
+                topLeftCorner : new L.LatLng(20037508.3428,-20037508.3428)
+            };
+        }
+     
+        var ign = new L.TileLayer.WMTS(url, {
+				minZoom:3,
+			maxZoom:15,
+            layer: 'dde:world2021',
+            styles: 'default',
+           tilematrixset: "EPSG:3857",
+            format: 'image/png',
+            matrixIds: matrixIds3857,
+            attribution: '&copy; <a href="http://petrology.deep-time.org/">DDE OnePetrology</a> contributors'
+        });
+		newMap.addLayer(ign);
+		 var pointsLayer = new L.TileLayer.WMTS(url, {
+				minZoom:3,
+			maxZoom:15,
+            layer: 'dde:SamplePoints',
+            styles: 'default',
+           tilematrixset: "EPSG:3857",
+            format: 'image/png',
+            matrixIds: matrixIds3857,
+            attribution: '&copy; <a href="http://petrology.deep-time.org/">DDE OnePetrology</a> contributors'
+        });
+        newMap.addLayer(pointsLayer);  */
+		//换一种方式加载geoserver的图层
+		var rocklayer = L.tileLayer('/geoserver/gwc/service/tms/1.0.0/dde%3Aworld2021@EPSG%3A3857@png/{z}/{x}/{-y}.png', {
+			 minZoom: 2,
+			maxZoom: 18,
+			attribution: '&copy; <a href="https://petrology.deep-time.org">OnePetrology</a> contributors'
+		 });
+		newMap.addLayer(rocklayer);
+	    var pointslayer = L.tileLayer('/geoserver/gwc/service/tms/1.0.0/dde%3ASamplePoints@EPSG%3A3857@png/{z}/{x}/{-y}.png', {
+			 minZoom: 2,
+			maxZoom: 18,
+			attribution: '&copy; <a href="https://petrology.deep-time.org">OnePetrology</a> contributors'
+		 });
+		newMap.addLayer(pointslayer);
+		
+		
+		//添加工具栏
+        L.control.scale({'position': 'bottomleft', 'metric': true, 'imperial': false}).addTo(newMap);
+		//背景底图
+		var opacity=0.8; //背景底图透明度
+		//Esri 的世界影像
+		var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+		});
+		Esri_WorldImagery.setOpacity(opacity);
+		//Osm De的地图，包含中英文两种标注
+	    var OpenStreetMap_DE = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			maxZoom: 18,
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+		 });
+		//OpenStreetMap_DE.setOpacity(opacity);
+		//微软bing map的影像
+		//var BING_KEY = 'AvewBhQcQ8oh_dZ0rYIkYfHrrQdj87mT42i4plCmcqccDe0JXsWaOSNi4NuWvH0Z';
+       // var bingLayer = L.tileLayer.bing(BING_KEY);
+	//	bingLayer.setOpacity(opacity);
+		//高德影像
+		//var imgm = L.tileLayer.chinaProvider('GaoDe.Satellite.Map', {
+		//	maxZoom: 18,
+		//	minZoom: 3
+		//});
+		//var imga = L.tileLayer.chinaProvider('GaoDe.Satellite.Annotion', {
+		//	maxZoom: 18,
+	//		minZoom: 3
+	//	});
+      //  gaodeLayer = L.layerGroup([imgm, imga]);
+		//gaodeLayer.setOpacity(opacity);
+		//高德地图
+		var normalGaoDe = L.tileLayer.chinaProvider('GaoDe.Normal.Map', {
+			maxZoom: 18,
+			minZoom: 2
+		});
+		
+		//天地图
+		var normalm = L.tileLayer.chinaProvider('TianDiTu.Normal.Map', {
+			key:'3359c151db487347bd379173613694a3',
+        maxZoom: 18,
+        minZoom: 2
+    }),
+    normala = L.tileLayer.chinaProvider('TianDiTu.Normal.Annotion', {
+		key:'3359c151db487347bd379173613694a3',
+        maxZoom: 18,
+        minZoom: 2
+    }),
+    imgm = L.tileLayer.chinaProvider('TianDiTu.Satellite.Map', {
+		key:'3359c151db487347bd379173613694a3',
+        maxZoom: 18,
+        minZoom: 2
+    }),
+    imga = L.tileLayer.chinaProvider('TianDiTu.Satellite.Annotion', {
+		key:'3359c151db487347bd379173613694a3',
+        maxZoom: 18,
+        minZoom: 2
+    });
+
+var tianditunormal = L.layerGroup([normalm, normala]),
+    tiandituimage = L.layerGroup([imgm, imga]);
+
+// 自己的底图
+			var ourbaselayer = L.tileLayer('/geoserver/gwc/service/tms/1.0.0/dde%3Aworld2022@EPSG%3A3857@png/{z}/{x}/{-y}.png', {
+			 minZoom: 2,
+			maxZoom: 18,
+			attribution: '&copy; <a href="https://petrology.deep-time.org">OnePetrology</a> contributors'
+		 });
+		
+		//组合所有的背景图以供选择
+			var baselayer={"Magmatic rocks": ourbaselayer,"ESRI":Esri_WorldImagery,"OSM":OpenStreetMap_DE,"TianDiTu":normalm,"TianDiTu Satelite":imgm,"GaoDe":normalGaoDe};
+		 L.control.layers(baselayer, null).addTo(newMap);
+		  newMap.addLayer(tianditunormal); //默认添加天地图
+		
+		rocklayer.setZIndex(9);  //确保岩浆岩图在上面
+		pointslayer.setZIndex(10);//确保样品点在最上面 
+        return newMap;
+    }
+    // 加载资源点
+    function addMyResource(map,markers){
+        //先过去分类再按照分类加载
+        $.ajax({
+            type: 'POST',
+            url: 'getMapSiteResource.do?_csrf=',
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    markers =  addMyResourcePoint(map,markers,data[i],i)
+                }
+                map.addLayer(markers);
+            },
+            error: function (data){
+                alert("获取配置数据异常");
+            }
+        });
+    }
+   
+    //加载插件
+    function addMapPlugs(map){
+        if(!map){
+            return ;
+        }
+        //标记插件--geoman
+        map.pm.addControls({
+            position: 'topleft',
+            drawCircle: true,
+        });
+	//绘制完成事件
+       map.on('pm:create', e => {
+        let shape = e.shape;
+        //多边形
+        if ('Polygon' === shape || 'Rectangle' === shape ||  'Circle' === shape) {
+          // 处理绘制完成的逻辑
+			console.log(e);//得到所绘的图形
+			shapes = e.layer.toGeoJSON();
+			console.log(shapes.geometry.type);//得到所绘的图形
+		   console.log(shapes.geometry.coordinates);//得到所绘的图形
+        }
+      });
+
+
+		
+        //测距插件
+        options = {
+            position: 'topleft',            // Position to show the control. Values: 'topright', 'topleft', 'bottomright', 'bottomleft'
+            unit: 'metres',                 // Show imperial or metric distances. Values: 'metres', 'landmiles', 'nauticalmiles'
+            clearMeasurementsOnStop: true,  // Clear all the measurements when the control is unselected
+            showBearings: false,            // Whether bearings are displayed within the tooltips
+            bearingTextIn: 'In',           // language dependend label for inbound bearings
+            bearingTextOut: 'Out',          // language dependend label for outbound bearings
+            tooltipTextFinish: '点击<b>测距点结束测距</b><br>',
+            tooltipTextDelete: '按住shift键同时点击测距点 <b>删除测距点</b>',
+            tooltipTextMove: '当手形图标时可以 <b>移动测距点</b><br>',
+            tooltipTextResume: '<br>Press CTRL-key and click to <b>resume line</b>',
+            tooltipTextAdd: '按测距线上按住ctrl键 &nbsp;<b>增加测距点</b>',
+            // language dependend labels for point's tooltips
+            measureControlTitleOn: '打开多段线测量',   // Title for the control going to be switched on
+            measureControlTitleOff: '关闭多段线测量', // Title for the control going to be switched off
+            measureControlLabel: '&#8614;', // Label of the Measure control (maybe a unicode symbol)
+            measureControlClasses: [],      // Classes to apply to the Measure control
+            showClearControl: false,        // Show a control to clear all the measurements
+            clearControlTitle: 'Clear Measurements', // Title text to show on the clear measurements control button
+            clearControlLabel: '&times',    // Label of the Clear control (maybe a unicode symbol)
+            clearControlClasses: [],        // Classes to apply to clear control button
+            showUnitControl: false,         // Show a control to change the units of measurements
+            distanceShowSameUnit: false,    // Keep same unit in tooltips in case of distance less then 1 km/mi/nm
+            unitControlTitle: {             // Title texts to show on the Unit Control button
+                text: 'Change Units',
+                metres: 'metres',
+                landmiles: 'land miles',
+                nauticalmiles: 'nautical miles'
+            },
+            unitControlLabel: {             // Unit symbols to show in the Unit Control button and measurement labels
+                metres: 'm',
+                kilometres: 'km',
+                feet: 'ft',
+                landmiles: 'mi',
+                nauticalmiles: 'nm'
+            },
+            tempLine: {                     // Styling settings for the temporary dashed line
+                color: '#00f',              // Dashed line color
+                weight: 2                   // Dashed line weight
+            },
+            fixedLine: {                    // Styling for the solid line
+                color: '#006',              // Solid line color
+                weight: 2                   // Solid line weight
+            },
+            startCircle: {                  // Style settings for circle marker indicating the starting point of the polyline
+                color: '#000',              // Color of the border of the circle
+                weight: 1,                  // Weight of the circle
+                fillColor: '#0f0',          // Fill color of the circle
+                fillOpacity: 1,             // Fill opacity of the circle
+                radius: 3                   // Radius of the circle
+            },
+            intermedCircle: {               // Style settings for all circle markers between startCircle and endCircle
+                color: '#000',              // Color of the border of the circle
+                weight: 1,                  // Weight of the circle
+                fillColor: '#ff0',          // Fill color of the circle
+                fillOpacity: 1,             // Fill opacity of the circle
+                radius: 3                   // Radius of the circle
+            },
+            currentCircle: {                // Style settings for circle marker indicating the latest point of the polyline during drawing a line
+                color: '#000',              // Color of the border of the circle
+                weight: 1,                  // Weight of the circle
+                fillColor: '#f0f',          // Fill color of the circle
+                fillOpacity: 1,             // Fill opacity of the circle
+                radius: 3                   // Radius of the circle
+            },
+            endCircle: {                    // Style settings for circle marker indicating the last point of the polyline
+                color: '#000',              // Color of the border of the circle
+                weight: 1,                  // Weight of the circle
+                fillColor: '#f00',          // Fill color of the circle
+                fillOpacity: 1,             // Fill opacity of the circle
+                radius: 3                   // Radius of the circle
+            },
+        };
+        L.control.polylineMeasure(options).addTo(map);
+
+
+        //搜索
+        L.control.search({
+            url: 'search.do?q={s}&_csrf=',
+            textPlaceholder: 'Press Enter to Search...',
+            position: 'topright',
+            hideMarkerOnCollapse: true,
+            marker: {
+                icon: new L.Icon({iconUrl:'/webfile/leaflet/images/custom-icon.png', iconSize: [40,40]}),
+                circle: {
+                    radius: 20,
+                    color: '#0a0',
+                    opacity: 1
+                }
+            }
+
+        }).addTo(map);
+    }
+    //点击展示经纬度
+    function showPointInfo(map){
+        var mypop = L.popup();
+        map.on('click', function(e) {
+            var content = 'Current Point：<br>';
+            content += e.latlng.lng+"，"+e.latlng.lat;
+            mypop.setLatLng(e.latlng)
+                .setContent(content)
+                .openOn(map);
+        });
+    }
+
+    function showAntPath(map){
+        let arrs = [
+            [31.30, 120.58],  // 苏州市
+            [31.32, 120.63],   // 平江区
+            [31.30, 120.63],   // 沧浪区
+            [31.95789128, 120.64626101],
+            [31.30, 120.75]  // 虎丘区
+        ];
+        //---------------------leaflet-antvPath--------------------------
+        var antPath = L.polyline.antPath;
+        var path = antPath(arrs, {
+            "paused": false,   　　//暂停  初始化状态
+            "reverse": false,　　//方向反转
+            "delay": 1000,　　　　//延迟，数值越大效果越缓慢
+            "dashArray": [10, 20],　//间隔样式
+            "weight": 5,　　　　//线宽
+            "opacity": 0.5,　　//透明度
+            "color": "#0000FF",　//颜色
+            "pulseColor": "#FFFFFF"　　//块颜色
+        });
+        path.addTo(map);
+//---------------------leaflet-antvPath--------------------------
+    }
+</script>
+ 
+        </div>
+        <div class="tab-item">
+          <div style="width:100%;height: 100%;" id="cesiumContainer"></div>
+ <script type="text/javascript" >
+Cesium.Ion.defaultAccessToken='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkMDg0NGQzMy05OTZmLTQzYzgtYTgwMC1hNzU5YjczNTM0NmYiLCJpZCI6OTk3OTUsImlhdCI6MTY1Njc1MjU0MH0.qUQAdQoWUIofLI4hscUPGTcfthBF879kUh5bzPAc2Js';
+var viewer = new Cesium.Viewer( 'cesiumContainer', {
+    animation : false,//是否创建动画小器件，左下角仪表
+    baseLayerPicker : false,//是否显示图层选择器
+    fullscreenButton : true,//是否显示全屏按钮
+    geocoder : false,//是否显示geocoder小器件，右上角查询按钮
+    homeButton : true,//是否显示Home按钮
+    infoBox : false,//是否显示信息框
+    sceneModePicker : false,//是否显示3D/2D选择器
+    selectionIndicator : false,//是否显示选取指示器组件
+    timeline : false,//是否显示时间轴
+    navigationHelpButton : false,//是否显示右上角的帮助按钮
+    scene3DOnly : true,//如果设置为true，则所有几何图形以3D模式绘制以节约GPU资源
+    clock : new Cesium.Clock(),//用于控制当前时间的时钟对象
+    selectedImageryProviderViewModel : undefined,//当前图像图层的显示模型，仅baseLayerPicker设为true有意义
+    imageryProviderViewModels : Cesium.createDefaultImageryProviderViewModels(),//可供BaseLayerPicker选择的图像图层ProviderViewModel数组
+    selectedTerrainProviderViewModel : undefined,//当前地形图层的显示模型，仅baseLayerPicker设为true有意义
+    terrainProviderViewModels : Cesium.createDefaultTerrainProviderViewModels(),//可供BaseLayerPicker选择的地形图层ProviderViewModel数组
+   // imageryProvider : new Cesium.OpenStreetMapImageryProvider( {
+   //     credit :'',
+   //     url : '//192.168.0.89:5539/planet-satellite/'
+   // } ),//图像图层提供者，仅baseLayerPicker设为false有意义
+    terrainProvider : new Cesium.EllipsoidTerrainProvider(),//地形图层提供者，仅baseLayerPicker设为false有意义
+  //  skyBox : new Cesium.SkyBox({
+  //      sources : {
+  //        positiveX : 'Cesium-1.7.1/Skybox/px.jpg',
+  //        negativeX : 'Cesium-1.7.1/Skybox/mx.jpg',
+ //         positiveY : 'Cesium-1.7.1/Skybox/py.jpg',
+  //        negativeY : 'Cesium-1.7.1/Skybox/my.jpg',
+  //        positiveZ : 'Cesium-1.7.1/Skybox/pz.jpg',
+  //        negativeZ : 'Cesium-1.7.1/Skybox/mz.jpg'
+  //      }
+  //  }),//用于渲染星空的SkyBox对象
+    fullscreenElement : document.body,//全屏时渲染的HTML元素,
+    useDefaultRenderLoop : true,//如果需要控制渲染循环，则设为true
+    targetFrameRate : undefined,//使用默认render loop时的帧率
+    showRenderLoopErrors : false,//如果设为true，将在一个HTML面板中显示错误信息
+    automaticallyTrackDataSourceClocks : true,//自动追踪最近添加的数据源的时钟设置
+    contextOptions : undefined,//传递给Scene对象的上下文参数（scene.options）
+    sceneMode : Cesium.SceneMode.SCENE3D,//初始场景模式
+    mapProjection : new Cesium.WebMercatorProjection(),//地图投影体系
+    dataSources : new Cesium.DataSourceCollection()
+    //需要进行可视化的数据源的集合
+} );
+let imageProvider = new Cesium.WebMapTileServiceImageryProvider({
+        url:
+          "/geoserver/gwc/service/wmts",
+        layer: "dde:world2021", //图层名称
+        style: "",
+        format: "image/png",
+        tileMatrixSetID: "EPSG:3857",
+        tileMatrixLabels: [//这里一共发布了10层图层，有条件的可以多发布
+          "EPSG:3857:0",
+          "EPSG:3857:1",
+          "EPSG:3857:2",
+          "EPSG:3857:3",
+          "EPSG:3857:4",
+          "EPSG:3857:5",
+          "EPSG:3857:6",
+          "EPSG:3857:7",
+          "EPSG:3857:8",
+          "EPSG:3857:9",
+          "EPSG:3857:10",
+        ],
+    	//规定好x，y轴所对应的地理位置
+        tilingScheme: new Cesium.WebMercatorTilingScheme({
+          numberOfLevelZeroTilesX: 1,
+          numberOfLevelZeroTilesY: 1
+        })
+      });
+viewer.imageryLayers.add(
+    //将地图添加到cesium中
+    new Cesium.ImageryLayer(imageProvider, 0)
+);
+
+	 let pointsLayer = new Cesium.WebMapTileServiceImageryProvider({
+        url:
+          "/geoserver/gwc/service/wmts",
+        layer: "dde:SamplePoints", //图层名称
+        style: "",
+        format: "image/png",
+        tileMatrixSetID: "EPSG:3857",
+        tileMatrixLabels: [//这里一共发布了10层图层，有条件的可以多发布
+          "EPSG:3857:0",
+          "EPSG:3857:1",
+          "EPSG:3857:2",
+          "EPSG:3857:3",
+          "EPSG:3857:4",
+          "EPSG:3857:5",
+          "EPSG:3857:6",
+          "EPSG:3857:7",
+          "EPSG:3857:8",
+          "EPSG:3857:9",
+          "EPSG:3857:10",
+		  "EPSG:3857:11",
+        ],
+    	//规定好x，y轴所对应的地理位置
+        tilingScheme: new Cesium.WebMercatorTilingScheme({
+          numberOfLevelZeroTilesX: 1,
+          numberOfLevelZeroTilesY: 1
+        })
+      });
+viewer.imageryLayers.add(
+    //将地图添加到cesium中
+    new Cesium.ImageryLayer(pointsLayer, 0)
+);
+
+	 
+
+</script> 
+        </div>
+    </div>
+</div>
+
+<script>
+    var lis = document.querySelector('.tab-title ul').querySelectorAll('li');
+    var items = document.querySelector('.tab-con').querySelectorAll('.tab-item');
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].setAttribute('index', i); // 给每个li设置索引号
+        // 导航栏lis点击变色
+        lis[i].onclick = function() {
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].className = '';
+            }
+            this.className = 'current';
+            var index = this.getAttribute('index');
+            // 导航栏对应盒子里的内容
+            for (var i = 0; i < items.length; i++) {
+                items[i].style.display = 'none';
+            }
+            items[index].style.display = 'block';
+        }
+    }
+</script>  
+ 
+			  <@noCache>        </@noCache>
+	  <!-- Choose us block BEGIN -->
+    <div class="choose-us-block content text-center margin-bottom-40" id="benefits">
+        <div class="container">
+            <h2>Data <strong>Summary</strong></h2>
+            <h4>Refer to DDE rock database construction specification, <a href="javascript:void(0);">Construction of magmatic rock database</a> ，Collection through excel template，<br>Provide data verification tools，The warehousing can be completed only after audit, and the double insurance ensures the data quality.<br>Currently, there are <strong> 73,860</strong>  records of sample age and geochemical data，<strong>158,605 </strong>  records of in situ U-Pb point dating data，<strong>29,204 </strong>  records of zircon Hf-O isotopic data, for igneous rocks .</h4>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+                    <img src="/webfile/assets/onepage/img/choose-us.png" alt="Why to choose us" class="img-responsive">
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+                    <div class="panel-group" id="accordion1">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h5 class="panel-title">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_1">Database construction specification</a>
+                                </h5>
+                            </div>
+                            <div id="accordion1_1" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <p>Prepared by Wang Yanggang team of development research center of China Geological Survey.</p>
+                                    <p> <a href="/webfile/全球岩石数据库建设技术标准（初稿H）.pdf"> Download Url：specification.pdf </a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h5 class="panel-title">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_2">Excel Data Template</a>
+                                </h5>
+                            </div>
+                            <div id="accordion1_2" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>The magmatic rock database team of the Institute of geology shall sort out the data according to the data specification and provide specific data <a href="/webfile/岩石数据库-新模板20210509.xlsx">import Excel Data Template.</a></p>
+                                    <p>Please delete as required, but the format cannot be changed, otherwise it will lead to difficulties in warehousing.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h5 class="panel-title">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_3">Table extraction tool</a>
+                                </h5>
+                            </div>
+                            <div id="accordion1_3" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>Table data is extracted from documents such as PDF and optimized to support CAK, KDH and PDF (text format) table batch extraction. According to the extracted data results, the magmatic rock database is optimized.</p>
+                                    <p>The tool is also suitable for table data extraction in other disciplines.<a href="http://igeodata.org/handle/20.500.11758/426" >Download Url：Pdf Table Extractor</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h5 class="panel-title">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_4">Data Audit</a>
+                                </h5>
+                            </div>
+                            <div id="accordion1_4" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>Log in to the background system to import data, review the data, and delete or modify the data that does not meet the requirements.</p>
+                                    <p>Audit is the second threshold to ensure data quality. Batch audit comparison can be performed.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h5 class="panel-title">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_5">Data export usage</a>
+                                </h5>
+                            </div>
+                            <div id="accordion1_5" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>According to the amount of data provided, you can obtain and export the rights and interests of the corresponding amount of data.</p>
+                                    <p>The exported data shall follow the unified data usage rules of DDE.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h5 class="panel-title">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_6">Digital mapping</a>
+                                </h5>
+                            </div>
+                            <div id="accordion1_6" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>After the data is verified layer by layer, it enters the intelligent mapping link.</p>
+                                    <p>WMS / WFS / WMTs and other services will be opened in succession for ease of use.</p>
+                                </div>
+                            </div>
+                        </div>
+						<div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h5 class="panel-title">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_7">Desktop Software</a>
+                                </h5>
+                            </div>
+                            <div id="accordion1_7" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>Knowledge system construction, data processing, data query and export are carried out through desktop software.</p>
+                                    <p>The desktop software is run on win10，16G Ram and i7 CPU above .<a href="http://8.218.13.217:8080/server/api/core/bitstreams/333dcb28-2743-4d15-bd27-2bc8d7612795/content"> Download: DDE-OnePetrology </a> and <a href="http://8.218.13.217:8080/server/api/core/bitstreams/1687b324-837b-4880-b2a2-082ca049f920/content"> User manual </a></p>
+                                </div>
+                            </div>
+                        </div>
+						
+						
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Choose us block END --> 
+		
+
+		      <!-- Portfolio block BEGIN -->
+    <div class="portfolio-block content content-center" id="portfolio">
+        <div class="container">
+            <h2 class="margin-bottom-50">Published <strong>Geological Map</strong></h2>
+        </div>
+        <div class="row">
+            <div class="item col-md-2 col-sm-6 col-xs-12">
+              <img src="/webfile/publishmap/Intrusion of China (1：4000,000).png"  alt="Map missed" class="img-responsive">
+                <a href="/webfile/publishmap/Intrusion of China (1：4000,000).png"  target="_blank" class="zoom valign-center">
+                    <div class="valign-center-elem">
+                        <strong>Intrusion of China (1：4000,000) </strong>
+                        <em> DDE-OnePetrology, Wang Tao, etc.</em>
+                        <b>View </b>
+                    </div>
+                </a>
+            </div>
+            <div class="item col-md-2 col-sm-6 col-xs-12">
+              <img src="/webfile/publishmap/Granitoid and related intrusive rocks of North China and adjacent regions.png"  alt="Published map" class="img-responsive">
+                    <a href="/webfile/publishmap/Granitoid and related intrusive rocks of North China and adjacent regions.png" target="_blank" class="zoom valign-center">
+                    <div class="valign-center-elem">
+                        <strong>Granitoid and related intrusive rocks of North China and adjacent regions</strong>
+                         <em> DDE-OnePetrology, Wang Tao, etc.</em>
+                        <b>View </b>
+                    </div>
+                </a>
+            </div>
+            <div class="item col-md-2 col-sm-6 col-xs-12">
+               <img src="/webfile/publishmap/Granitoid map of CAOB.png" alt="NAME" class="img-responsive">
+                    <a href="/webfile/publishmap/Granitoid map of CAOB.png"  target="_blank" class="zoom valign-center">
+                    <div class="valign-center-elem">
+                        <strong>Granitoid map of CAOB</strong>
+                         <em> DDE-OnePetrology, Wang Tao, etc.</em>
+                        <b>View </b>
+                    </div>
+                </a>
+            </div>
+            <div class="item col-md-2 col-sm-6 col-xs-12">
+               <img src="/webfile/publishmap/Map of Granitoids and Related Rocks of Asia 2020 December.png"  alt="NAME" class="img-responsive">
+                <a href="/webfile/publishmap/Map of Granitoids and Related Rocks of Asia 2020 December.png" target="_blank" class="zoom valign-center">
+                    <div class="valign-center-elem">
+                        <strong>Map of Granitoids and Related Rocks of Asia 2020 December</strong>
+                        <em> DDE-OnePetrology, Wang Tao, etc.</em>
+                        <b>View </b>
+                    </div>
+                </a>
+            </div>
+            <div class="item col-md-2 col-sm-6 col-xs-12">
+                <img src="/webfile/publishmap/NE_ASIA MAP2019 update raster 10-11.png"  alt="NAME" class="img-responsive">
+                <a href="/webfile/publishmap/NE_ASIA MAP2019 update raster 10-11.png" target="_blank" class="zoom valign-center">
+                    <div class="valign-center-elem">
+                        <strong>NE_ASIA MAP2019 update raster 10-11</strong>
+                         <em> DDE-OnePetrology, Wang Tao, etc.</em>
+                        <b>View </b>
+                    </div>
+                </a>
+            </div>
+            <div class="item col-md-2 col-sm-6 col-xs-12">
+               <img src="/webfile/publishmap/Map of Mesozoic granitoids and related rocks of Asia_2019Oct.png"  alt="NAME" class="img-responsive">
+                <a href="/webfile/publishmap/Map of Mesozoic granitoids and related rocks of Asia_2019Oct.png" target="_blank" class="zoom valign-center">
+                    <div class="valign-center-elem">
+                        <strong>Map of Mesozoic granitoids and related rocks of Asia_2019 Oct</strong>
+                        <em> DDE-OnePetrology, Wang Tao, etc.</em>
+                        <b>View </b>
+                    </div>
+                </a>
+            </div>
+		</div>
+		<div class="row">
+            <div class="item col-md-2 col-sm-6 col-xs-12">
+                <img src="/webfile/publishmap/Map of Grantoids in Altai-Junggar-Tianshan area阿尔泰-准噶尔-天山-100万-基于亚洲花岗岩图.jpg"  alt="NAME" class="img-responsive">
+                <a href="/webfile/publishmap/Map of Grantoids in Altai-Junggar-Tianshan area阿尔泰-准噶尔-天山-100万-基于亚洲花岗岩图.jpg" target="_blank" class="zoom valign-center">
+                    <div class="valign-center-elem">
+                        <strong>Map of Grantoids in Altai-Junggar-Tianshan area</strong>
+                        <em> DDE-OnePetrology, Wang Tao, etc.</em>
+                        <b>View </b>
+                    </div>
+                </a>
+            </div>
+			<div class="item col-md-2 col-sm-6 col-xs-12">
+            <img src="/webfile/publishmap/Map of Magmatic Rocks of the World 20210315.jpg"  alt="NAME" class="img-responsive">
+                <a href="/webfile/publishmap/Map of Magmatic Rocks of the World 20210315.jpg" target="_blank" class="zoom valign-center">
+                    <div class="valign-center-elem">
+                        <strong>Map of Magmatic Rocks of the World 20210315</strong>
+                        <em> DDE-OnePetrology, Wang Tao, etc.</em>
+                        <b>View </b>
+                    </div>
+                </a>
+            </div>
+			
+            
+             <div class="item col-md-2 col-sm-6 col-xs-12">
+                <img src="/webfile/publishmap/Map of Magmatic rocks in Mongol-Okhotsk belt (C-J).jpg"  alt="NAME" class="img-responsive">
+                    <a href="/webfile/publishmap/Map of Magmatic rocks in Mongol-Okhotsk belt (C-J).jpg" target="_blank" class="zoom valign-center">
+                    <div class="valign-center-elem">
+                        <strong>Map of Magmatic rocks in Mongol-Okhotsk belt (C-J)</strong>
+                       <em> DDE-OnePetrology, Wang Tao, etc.</em>
+                        <b>View </b>
+                    </div>
+                </a>
+            </div>
+            <div class="item col-md-2 col-sm-6 col-xs-12">
+                <img src="/webfile/publishmap/Map of Magmatic rocks in Mongol-Okhotsk belt（C-P）.jpg" alt="NAME" class="img-responsive">
+                <a href="/webfile/publishmap/Map of Magmatic rocks in Mongol-Okhotsk belt（C-P）.jpg" target="_blank" class="zoom valign-center">
+                    <div class="valign-center-elem">
+                        <strong>Map of Magmatic rocks in Mongol-Okhotsk belt（C-P）</strong>
+                         <em> DDE-OnePetrology, Wang Tao, etc.</em>
+                        <b>View </b>
+                    </div>
+                </a>
+            </div>
+            <div class="item col-md-2 col-sm-6 col-xs-12">
+                <img src="/webfile/publishmap/Map of Magmatic rocks in Mongol-Okhotsk belt（T）.jpg"   alt="NAME" class="img-responsive">
+                    <a href="/webfile/publishmap/Map of Magmatic rocks in Mongol-Okhotsk belt（T）.jpg" target="_blank" class="zoom valign-center">
+                    <div class="valign-center-elem">
+                        <strong>Map of Magmatic rocks in Mongol-Okhotsk belt（T）</strong>
+                        <em> DDE-OnePetrology, Wang Tao, etc.</em>
+                        <b>View </b>
+                    </div>
+                </a>
+            </div>
+			  <div class="item col-md-2 col-sm-6 col-xs-12">
+                <img src="/webfile/publishmap/Map of Magmatic rocks in Mongol-Okhotsk belt（J）.jpg"  alt="NAME" class="img-responsive">
+                <a href="/webfile/publishmap/Map of Magmatic rocks in Mongol-Okhotsk belt（J）.jpg"  target="_blank" class="zoom valign-center">
+                    <div class="valign-center-elem">
+                        <strong>Map of Magmatic rocks in Mongol-Okhotsk belt（J）</strong>
+                         <em> DDE-OnePetrology, Wang Tao, etc.</em>
+                        <b>View </b>
+                    </div>
+                </a>
+            </div>
+			
+        </div>
+    </div>
+    <!-- Portfolio block END --> 
+	<!--sso test-->	
+	<!--<script text="application/javascript">
+	
+		 var token=$.cookie('token');
+		  console.log("token="+token)
+		$.ajax({
+				type: "get",
+				url:"https://deep-time.org/v1.0/api/user",				
+		    	beforeSend: function(request) { 
+		 		var t=$.cookie('token');
+				console.log(t);
+			  request.setRequestHeader("rzpj",""+t);
+				//	 request.setRequestHeader("host","deep-time.org");
+					},
+				headers: {
+					"Accept": "*/*",
+					"rzpj":$.cookie('token'),//此处放置请求到的用户token
+					//host:"deep-time.org"
+				},
+			
+				
+				contentType: "application/json",
+				dataType: 'json',
+				cache: false,
+				async: true,
+			//data:{
+			//  "username":"ddedatatest05","password":"Root123!@$","service":"https://deep-time.org/"			
+			//},
+//    beforeSend: function (XMLHttpRequest) {
+//         XMLHttpRequest.setRequestHeader("Authorization", localStorage.getItem("mytoken"));
+//      },
+				success: function(res) {
+					console.log("请求结果=="+JSON.stringify(res));
+				},
+				error:function() {
+					console.log("请求失败！");
+				}
+			});
+	
+
+			  </script>-->
+
+    </main>
+    <footer>
+      <!-- BEGIN PRE-FOOTER -->
+    <div class="pre-footer" id="contact">
+        <div class="container">
+            <div class="row">
+                <!-- BEGIN BOTTOM ABOUT BLOCK -->
+                <div class="col-md-4 col-sm-6 pre-footer-col">
+                    <h2>About us</h2>
+                    <p>We belong to the rock group of DDE science program, focusing on the research and construction of magmatic rock database. </p>
+                    <p>Our team is composed of Institute of geology, Chinese Academy of Geological Sciences and development research center of China Geological Survey. We warmly welcome colleagues from all walks of life to join us.</p>
+                </div>
+                <!-- END BOTTOM ABOUT BLOCK -->
+                <!-- BEGIN TWITTER BLOCK --> 
+                <div class="col-md-4 col-sm-6 pre-footer-col">
+                    <h2 class="margin-bottom-0">Links：</h2>
+					<p><a href="http://www.cags.ac.cn">Chinese Academy of Geological Sciences</a> </p>
+					<p><a href="http://igeo.cags.ac.cn">Institute of geology, Chinese Academy of Geological Sciences</a> </p>
+					<p><a href="http://geocloud.cgs.gov.cn">GeoCloud</a> </p>
+					<p><a href="http://www.ddeworld.org/">DDE World</a> </p>
+                </div>
+                <!-- END TWITTER BLOCK -->
+                <div class="col-md-4 col-sm-6 pre-footer-col">
+                    <!-- BEGIN BOTTOM CONTACTS -->
+                    <h2>Contact us：</h2>
+                    <address class="margin-bottom-20">
+                        26 wanwanzhuang street, Xicheng District, Beijing<br>
+                       Institute of geology, Chinese Academy of Geological Sciences<br>
+                        Phone: 010-88332550<br>
+                        Email: <a href="mailto:geowind@126.com">geowind@126.com</a><br>
+                  </address>
+                    <!-- END BOTTOM CONTACTS -->
+                  
+                </div>
+				 <div class="col-md-12 ">
+                    <h2>THANKS</h2>
+                    
+                    <p>The DDE platform (deep net) provides computing support.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END PRE-FOOTER --> 
+    </footer>
+</body>
+</html>
