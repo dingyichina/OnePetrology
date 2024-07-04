@@ -1,6 +1,6 @@
 # OnePetrology
 ![OnePetrology Igneous Database ](images/logo.png) 
-![DDE of IUGS](images/ddelogo.png)
+![DDE of IUGS](images/ddelogo.png)     查看中文版本[中文版](README.zh.md)
 
 Belonging to the DDE International Big Science Program, it focuses on the research of igneous rock discipline and adopts a "Data——Mapping——Papers" three in one approach to conduct discipline research by building databases and conducting mapping. 
 
